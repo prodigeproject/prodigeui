@@ -68,11 +68,17 @@ does NOT get a crossfading video hero. A portfolio absolutely does.
 | **Motion craft** | `patterns/motion-craft.md` | **Interaction-level polish: committed easing curves, entrance physics (never scale(0)), origin-aware popovers, interruptibility, asymmetric timing, `@starting-style`/WAAPI/clip-path, GPU/perf traps. Read for any interactive build.** |
 | **Interaction patterns** | `patterns/interaction-patterns.md` | **Modern accessible implementation: native `<dialog>`/`inert`, Popover API + anchor positioning (overflow-clip escape), roving tabindex, skip links, undo-over-confirm, forms, touch/native/nav/chart baselines.** |
 | Animation vocabulary | `patterns/animation-vocabulary.md` | Reverse-lookup glossary: name a motion effect before building/reviewing it |
+| **Motion personality** | `patterns/motion-personality.md` | **4 archetypes (Playful/Premium/Corporate/Energetic), the 3 motion layers (Primary/Secondary/Ambient), asymmetric enter/exit timing, emotion→curve mapping. Pick ONE personality per project.** |
+| **Advanced effects** | `patterns/advanced-effects.md` | **11 high-impact CSS/JS effects: clip-path reveals, cursor-glare 3D tilt, variable-font animation, shimmer, count-up, blur masks, velocity-matched, scroll-driven, avatar distance-falloff, icon morph + a ShaderToy-adaptable fragment catalog.** |
+| **Engine interactivity** | `patterns/engine-interactivity.md` | **The "premium agency" layer (gated by MOTION dial): GSAP ScrollTrigger (pin/scrub/timeline/horizontal-pan), Lenis smooth scroll, Three.js real-time scenes, WebGL/GLSL shader backgrounds, canvas particle systems, AudioContext audio-reactive, View Transitions+FLIP, skeleton screens, interactive charts, dev-tool aesthetic. Static page at MOTION≥7 = FAIL.** |
+| Responsive patterns | `patterns/responsive-patterns.md` | Exact breakpoint behavior per component (nav, hero, bento, carousel, masonry, pricing, footer) + universal responsive rules |
+| Component recipes | `recipes/*.recipe.md` | Copy-paste bug-free component recipes: segmented-toggle, horizontal-carousel, masonry-gallery, pricing-table, testimonial, mobile-nav (full HTML/CSS/JS + a11y + common mistakes) |
 
 ## Must-read companions
 | Doc | Purpose |
 |-----|---------|
-| `taste.md` | **The anti-generic + polish heuristics.** Mechanical rules that turn competent-but-forgettable into distinctive. Read before any expressive build. |
+| `design-read.md` | **START HERE, before any code.** Mandatory brief inference → declare the one-line Design Read → set the Three Dials → apply the Soul Formula (80% proven + 20% distinctive, incl. an engine-grade moment at MOTION≥7). This is the process gate that prevents default/soulless output. |
+| `taste.md` | **The anti-generic + polish heuristics.** Mechanical rules that turn competent-but-forgettable into distinctive. Read before any expressive build. Includes font/palette anti-defaults, layout tension, section separation, hero proportions. |
 | `composition.md` | **Page-level assembly.** How to compose a full page and choose a hero archetype. |
 | `compositions/` | **Full-page reference compositions** — complete known-good skeletons (the layer above atomic recipes). |
 | `design-system-routing.md` | **Before inventing tokens:** decide whether to reach for an official system (Fluent/Carbon/Material/Radix/shadcn/govuk/uswds) for functional product UI, or invent for expressive work. Plus stack/perf conventions. |

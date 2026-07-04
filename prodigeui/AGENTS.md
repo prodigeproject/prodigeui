@@ -61,9 +61,15 @@ Every UI/UX design task follows this sequence:
 
 ```
 1. Brief Analysis        — Understand the request, identify use-case and constraints
-2. Design Read           — Set aesthetic direction, calibrate Three Dials
+2. Design Read           — Set aesthetic direction, calibrate Three Dials.
+                           MANDATORY: read `craft/design-read.md` — declare the one-line
+                           Design Read, set dials, set the Soul Formula (80/20 + engine
+                           moment when MOTION_INTENSITY ≥ 7).
 3. Craft Selection       — For expressive work (VARIANCE>=0.6 / MOTION>=0.5), pick a
-                           hero signature + motion signature + texture from craft/
+                           hero signature + motion signature + texture from craft/.
+                           MOTION ≥ 7: also pick an engine element from
+                           `craft/patterns/engine-interactivity.md` (ScrollTrigger,
+                           Three.js, particles, Lenis, etc) — static page = FAIL here.
 4. Token Selection       — Choose/customize theme from Theme_Catalog
 5. Component Selection   — Map features to Component_Library (atomic design)
 6. Layout Design         — Apply grid system and structural rules
@@ -100,7 +106,7 @@ See `skills/prodige-ui-end-to-end/SKILL.md` for the detailed version of each ste
 
 | Folder | Contents | When to Use |
 |--------|----------|-------------|
-| `craft/` | Reference implementations — recipes for advanced techniques (video hero, liquid glass, magnetic hover, text reveal, parallax, bento, fluid type, grain) PLUS interaction-level craft: `patterns/motion-craft.md` (easing/physics/perf), `patterns/interaction-patterns.md` (dialog/popover/a11y), `patterns/animation-vocabulary.md`, `taste.md`, `composition.md`, and `design-system-routing.md` (invent vs reach for an official system) | **Every expressive build AND every interactive build. Rules prevent bad output, craft produces great output.** |
+| `craft/` | Reference implementations — recipes for advanced techniques (video hero, liquid glass, magnetic hover, text reveal, parallax, bento, fluid type, grain) PLUS interaction-level craft: `patterns/motion-craft.md` (easing/physics/perf), `patterns/interaction-patterns.md` (dialog/popover/a11y), `patterns/animation-vocabulary.md`, `taste.md`, `composition.md`, and `design-system-routing.md` (invent vs reach for an official system). **NEW:** `design-read.md` (brief inference + Design Read + Three Dials + Soul Formula), `patterns/motion-personality.md` (4 archetypes + 3 motion layers), `patterns/advanced-effects.md` (11 high-impact CSS/JS effects), `patterns/engine-interactivity.md` (GSAP/ScrollTrigger/Lenis/Three.js/WebGL/canvas/AudioContext/ViewTransitions/skeletons/charts/dev-tool), `patterns/responsive-patterns.md`, `recipes/*.recipe.md` (6 copy-paste component recipes) | **Every expressive build AND every interactive build. Rules prevent bad output, craft produces great output.** |
 | `tokens/` | Design tokens (primitive, semantic, component) + CSS build | Every visual value decision |
 | `themes/` | Ready-to-use themes (default, light, dark, saas-professional) | Choosing a visual identity |
 | `motion/` | Animation presets + motion principles | Adding transitions/animations |
