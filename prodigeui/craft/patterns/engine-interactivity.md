@@ -25,7 +25,9 @@ From `craft/design-read.md`, use MOTION_INTENSITY to decide:
 
 **Mandatory rule:** For an agency/portfolio/premium/experimental brief (MOTION ≥ 7), a fully
 static page (only CSS fade-ins) is a **FAIL** — it needs at least one engine-grade interactive
-moment. Conversely, do NOT bolt Three.js onto a trust-first B2B dashboard (MOTION ≤ 3).
+moment. Conversely, at MOTION ≤ 6 (B2B/SaaS/dashboard/trust-first) CSS craft + Lenis + ONE
+scroll-driven moment is enough — do NOT bolt Three.js / heavy WebGL onto it (over-engineering
+is its own slop). Three.js, shader backgrounds, particles, and audio-reactivity are MOTION 7+ moves.
 
 **Always:** feature-detect, lazy-init on visibility, disable/reduce under
 `prefers-reduced-motion`, and downgrade on mobile (no heavy WebGL on low-power devices).
