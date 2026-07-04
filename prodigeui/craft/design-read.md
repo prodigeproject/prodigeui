@@ -76,6 +76,11 @@ Every output MUST include at least ONE element from each category:
 1. **One bold visual move** — a typography choice, an unexpected color ratio, a dramatic proportion, a unique layout break.
 2. **One memorable micro-interaction** — a button press that feels physical, a number that counts up, a card that tilts toward the cursor, a reveal that wipes geometrically instead of fading.
 3. **One product-specific detail** — something that could only exist for THIS product. A status badge with domain-specific phrasing, a metric that references the product's actual value prop, a visual metaphor drawn from the product's domain.
+4. **One engine-grade interactive moment (when MOTION_INTENSITY ≥ 7)** — scroll-driven
+   storytelling (GSAP ScrollTrigger pin/scrub), a real-time WebGL/Three.js/canvas anchor, or
+   Lenis smooth scroll + a pinned narrative section. For agency/portfolio/premium/experimental
+   briefs, a fully static page (only CSS fade-ins) is a FAIL — see
+   `craft/patterns/engine-interactivity.md`. Do NOT over-engineer trust-first B2B/dashboards (MOTION ≤ 6).
 
 ### Soul Test
 
