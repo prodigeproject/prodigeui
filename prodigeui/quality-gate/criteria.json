@@ -181,6 +181,13 @@
       "severity": "fail"
     },
     {
+      "id": "image-fallback-resilience",
+      "category": "composition",
+      "description": "All image containers (img parent or element with background-image) MUST define a background-color fallback (e.g. var(--surface-2)). Without this, failed/blocked images render as broken icons or browser-chosen placeholder shapes instead of a graceful colored rectangle. See assets/fallback-images.md.",
+      "type": "auto",
+      "severity": "flag"
+    },
+    {
       "id": "progressive-disclosure",
       "category": "design-rules",
       "description": "Complex interfaces use progressive disclosure (<= 5 decisions/screen)",
