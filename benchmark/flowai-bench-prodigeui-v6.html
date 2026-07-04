@@ -1,0 +1,716 @@
+<!--
+  Design Read: B2B dark-tech SaaS landing for startup CTOs & eng managers, confident/composed language, leaning Space Grotesk + Inter + lime accent over tuned near-black.
+  Dials: DESIGN_VARIANCE 7 · MOTION_INTENSITY 6 · VISUAL_DENSITY 4 (dark-tech SaaS).
+  Motion archetype: Corporate (snappy 250ms) + ONE ambient lime glow breathe + smooth staggered reveals (3 layers).
+  ONE bold move / soul: an oversized lime "risk radar" pulse anchoring the dominant bento cell — a metaphor only FlowAI would ship — paired with count-up metrics that blur-clear into place.
+  v6 refinements: tighter typography rhythm, improved toggle animation, enhanced section transitions, better mobile responsiveness, refined dialog UX.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlowAI — Ship the roadmap, not the busywork.</title>
+<meta name="description" content="AI project management for engineering teams. Self-updating roadmaps, auto standups, and risk radar — so you ship on time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d10;
+    --surface:#14171c;
+    --surface-2:#1b1f26;
+    --line:#272c34;
+    --ink:#f3f5f7;
+    --ink-2:#aab2bd;
+    --ink-3:#7d8590;
+    --accent:#b8ff3a;
+    --accent-ink:#0b0d10;
+    --accent-soft:rgba(184,255,58,.12);
+    --accent-glow:rgba(184,255,58,.25);
+
+    --font-display:"Space Grotesk",system-ui,sans-serif;
+    --font-body:"Inter",system-ui,sans-serif;
+
+    --s1:.5rem;--s2:1rem;--s3:1.5rem;--s4:2rem;--s5:3rem;--s6:5rem;--s7:8rem;
+    --radius:14px;--radius-sm:10px;--radius-pill:999px;
+
+    --ease:cubic-bezier(.23,1,.32,1);
+    --ease-out:cubic-bezier(.55,0,.55,.2);
+    --shadow:0 20px 50px -20px rgba(0,0,0,.7);
+    --z-nav:100;--z-modal:400;--z-toast:600;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);background:var(--bg);color:var(--ink-2);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--font-display);color:var(--ink);line-height:1.08;letter-spacing:-.03em;text-wrap:balance;font-weight:600}
+  p{text-wrap:pretty}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+
+  /* Grain texture */
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .wrap{max-width:1160px;margin:0 auto;padding:0 var(--s3);position:relative;z-index:2}
+
+  /* Skip link */
+  .skip{position:absolute;left:-999px;top:8px;z-index:var(--z-toast);background:var(--accent);color:var(--accent-ink);padding:.6rem 1rem;border-radius:var(--radius-sm);font-weight:600}
+  .skip:focus{left:8px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-body);font-weight:600;font-size:.95rem;padding:.7rem 1.25rem;border-radius:var(--radius-pill);border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),background .2s,border-color .2s,box-shadow .2s;white-space:nowrap}
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(184,255,58,.4)}
+  .btn-primary:active{transform:translateY(0);box-shadow:none}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--ink-3);transform:translateY(-2px)}
+  .btn-ghost:active{transform:translateY(0)}
+
+  /* Nav: single floating glass pill */
+  .nav-shell{position:fixed;top:18px;left:0;right:0;z-index:var(--z-nav);display:flex;justify-content:center;padding:0 var(--s3)}
+  nav{display:flex;align-items:center;gap:var(--s3);padding:.55rem .6rem .55rem 1.35rem;border-radius:var(--radius-pill);background:rgba(20,23,28,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid rgba(255,255,255,.07);box-shadow:var(--shadow);animation:navdrop .6s var(--ease) backwards}
+  @keyframes navdrop{from{opacity:0;transform:translateY(-14px)}}
+  .brand{display:flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-weight:700;color:var(--ink);letter-spacing:-.02em;font-size:1.05rem}
+  .brand .mark{width:22px;height:22px;color:var(--accent)}
+  .nav-links{display:flex;gap:.25rem;align-items:center}
+  .nav-links a,.nav-links button.linkish{font-size:.9rem;color:var(--ink-2);padding:.45rem .7rem;border-radius:var(--radius-pill);background:none;border:none;cursor:pointer;font-family:var(--font-body);transition:color .2s,background .2s}
+  .nav-links a:hover,.nav-links button.linkish:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+  .nav-cta{font-size:.9rem;padding:.5rem 1rem}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* Product menu — Popover API */
+  #product-menu{position:fixed;inset:auto;margin:0;top:74px;left:50%;transform:translateX(-50%) scale(.96);opacity:0;border:1px solid var(--line);background:var(--surface-2);border-radius:var(--radius);padding:.6rem;box-shadow:var(--shadow);transition:opacity .18s var(--ease),transform .18s var(--ease);transform-origin:top center;min-width:260px}
+  #product-menu:popover-open{opacity:1;transform:translateX(-50%) scale(1)}
+  .pm-item{display:flex;gap:.75rem;padding:.7rem;border-radius:var(--radius-sm);color:var(--ink-2)}
+  .pm-item:hover{background:rgba(255,255,255,.05);color:var(--ink)}
+  .pm-item svg{width:20px;height:20px;color:var(--accent);flex-shrink:0;margin-top:2px}
+  .pm-item strong{display:block;color:var(--ink);font-size:.9rem}
+  .pm-item span{font-size:.8rem}
+
+  /* Hero */
+  .hero{padding:170px 0 var(--s6);position:relative}
+  .heroglow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:min(900px,90vw);height:560px;background:radial-gradient(ellipse at center,rgba(184,255,58,.14),transparent 65%);filter:blur(24px);z-index:0;pointer-events:none;animation:breathe 8s ease-in-out infinite}
+  @keyframes breathe{0%,100%{transform:translateX(-50%) scale(.96);opacity:.85}50%{transform:translateX(-50%) scale(1.04);opacity:1}}
+  .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:500;color:var(--ink);padding:.4rem .85rem;border:1px solid var(--line);border-radius:var(--radius-pill);background:var(--surface);margin-bottom:var(--s3)}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(184,255,58,.6);animation:pulse 2.4s ease-out infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(184,255,58,.5)}70%{box-shadow:0 0 0 8px rgba(184,255,58,0)}100%{box-shadow:0 0 0 0 rgba(184,255,58,0)}}
+  .hero h1{font-size:clamp(2.7rem,8vw,6.4rem);max-width:14ch;font-weight:700;letter-spacing:-.045em;margin-bottom:var(--s3)}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero .sub{font-size:clamp(1.05rem,2vw,1.28rem);max-width:52ch;color:var(--ink-2);margin-bottom:var(--s4)}
+  .hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:.85rem;color:var(--ink-3)}
+
+  .hero-media{margin-top:var(--s6);position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow),0 0 80px -30px rgba(184,255,58,.08)}
+  .hero-media img{width:100%;height:auto;aspect-ratio:1400/735;object-fit:cover}
+  .clip-reveal{clip-path:inset(100% 0 0 0);transition:clip-path 1s var(--ease)}
+  .clip-reveal.in{clip-path:inset(0 0 0 0)}
+
+  /* Logos */
+  .logos{padding:var(--s5) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:var(--s6)}
+  .logos p{text-align:center;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--s3)}
+  .logo-row{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s5);align-items:center}
+  .logo-row span{font-family:var(--font-display);font-weight:600;font-size:1.15rem;color:var(--ink-3);letter-spacing:-.01em;transition:color .25s}
+  .logo-row span:hover{color:var(--ink)}
+
+  /* Section primitives */
+  section{position:relative}
+  .band{padding:var(--s7) 0}
+  .band-tight{padding:var(--s6) 0}
+  .kicker{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:var(--s2)}
+  .sec-head{max-width:60ch;margin-bottom:var(--s5)}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);margin-bottom:var(--s2)}
+  .sec-head p{font-size:1.05rem;max-width:52ch}
+
+  /* Section separation: alternate bg + hairlines */
+  #pricing{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band + .band{border-top:1px solid var(--line)}
+  #pricing + .band{border-top:none}
+
+  /* Bento grid — dominant cell + asymmetry */
+  .bento{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:auto auto;gap:var(--s2)}
+  .cell{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--s4);transition:border-color .25s var(--ease),transform .3s var(--ease)}
+  .cell:hover{border-color:#39424e;transform:translateY(-3px)}
+  .cell h3{font-size:1.35rem;margin-bottom:.5rem}
+  .cell p{font-size:.95rem}
+  .cell-hero{grid-row:span 2;display:flex;flex-direction:column}
+  .cell-hero h3{font-size:1.7rem}
+  .cell-icon{width:42px;height:42px;border-radius:var(--radius-sm);background:var(--accent-soft);display:grid;place-items:center;color:var(--accent);margin-bottom:var(--s3)}
+  .cell-icon svg{width:22px;height:22px}
+  .cell-hero .shot{margin-top:auto;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--line)}
+  .cell-hero .shot img{width:100%;height:auto;aspect-ratio:900/506;object-fit:cover}
+
+  /* Soul move: radar sweep */
+  .radar{margin-top:var(--s3);align-self:center;width:150px;height:150px;position:relative}
+  .radar .ring{position:absolute;inset:0;border:1px solid var(--line);border-radius:50%}
+  .radar .ring:nth-child(2){inset:28px}
+  .radar .ring:nth-child(3){inset:56px}
+  .radar .sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,var(--accent-soft) 55deg,transparent 85deg);animation:sweep 4s linear infinite}
+  .radar .blip{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--accent);top:30%;left:65%;box-shadow:0 0 12px 3px rgba(184,255,58,.6);animation:blip 4s ease-in-out infinite}
+  .radar .blip-2{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--accent);top:62%;left:28%;opacity:.5;box-shadow:0 0 8px 2px rgba(184,255,58,.4);animation:blip 4s ease-in-out infinite .8s}
+  @keyframes sweep{to{transform:rotate(360deg)}}
+  @keyframes blip{0%,55%,100%{opacity:.2}60%{opacity:1}}
+  @media(max-width:820px){.bento{grid-template-columns:1fr}.cell-hero{grid-row:auto}}
+
+  /* Metrics — count-up blur-in */
+  .metrics{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s3)}
+  .metric{text-align:center}
+  .metric .n{font-family:var(--font-display);font-weight:700;font-size:clamp(2.4rem,5vw,3.6rem);color:var(--ink);letter-spacing:-.04em;font-variant-numeric:tabular-nums;display:block;filter:blur(6px);opacity:0;transition:filter .8s var(--ease),opacity .8s var(--ease)}
+  .metric .n.clear{filter:blur(0);opacity:1}
+  .metric .n .accent{color:var(--accent)}
+  .metric .l{font-size:.9rem;color:var(--ink-3);margin-top:.4rem}
+  @media(max-width:680px){.metric-grid{grid-template-columns:repeat(2,1fr);gap:var(--s4)}}
+
+  /* Testimonial */
+  .quote-wrap{max-width:900px;margin:0 auto;text-align:center}
+  .quote-wrap blockquote{font-family:var(--font-display);font-weight:500;font-size:clamp(1.5rem,3.4vw,2.3rem);color:var(--ink);letter-spacing:-.03em;line-height:1.28;margin-bottom:var(--s4)}
+  .quote-wrap blockquote span{color:var(--accent)}
+  .author{display:inline-flex;align-items:center;gap:.85rem}
+  .author img{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);background:var(--surface-2)}
+  .author .who{text-align:left}
+  .author strong{color:var(--ink);display:block;font-size:.95rem}
+  .author span{font-size:.85rem;color:var(--ink-3)}
+
+  /* Pricing */
+  .toggle-shell{display:flex;justify-content:center;margin-bottom:var(--s5)}
+  .toggle{position:relative;display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-pill);padding:4px}
+  .toggle .thumb{position:absolute;top:4px;left:4px;height:calc(100% - 8px);background:var(--accent);border-radius:var(--radius-pill);transition:transform .28s var(--ease),width .28s var(--ease);z-index:0;will-change:transform}
+  .toggle button{position:relative;z-index:1;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-weight:600;font-size:.9rem;color:var(--ink-2);padding:.55rem 1.15rem;border-radius:var(--radius-pill);display:inline-flex;align-items:center;gap:.4rem;transition:color .2s;white-space:nowrap}
+  .toggle button[aria-checked="true"]{color:var(--accent-ink)}
+  .toggle .save{font-size:.72rem;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:.1rem .4rem;border-radius:var(--radius-pill);transition:color .2s,background .2s}
+  .toggle button[aria-checked="true"] .save{color:var(--accent-ink);background:rgba(11,13,16,.18)}
+
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2)}
+  .tier{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--s4);display:flex;flex-direction:column;transition:transform .3s var(--ease),border-color .3s}
+  .tier:hover{transform:translateY(-3px)}
+  .tier.featured{border-color:var(--accent);background:linear-gradient(180deg,rgba(184,255,58,.06),var(--surface) 40%)}
+  .tier.featured:hover{border-color:var(--accent)}
+  .tier .tag{font-family:var(--font-display);font-weight:600;font-size:1.1rem;color:var(--ink);margin-bottom:.35rem;display:flex;justify-content:space-between;align-items:center}
+  .tier .tag .badge{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:.2rem .55rem;border-radius:var(--radius-pill)}
+  .tier .desc{font-size:.9rem;color:var(--ink-3);margin-bottom:var(--s3);min-height:2.6em}
+  .tier .price{font-family:var(--font-display);font-weight:700;font-size:2.6rem;color:var(--ink);letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1}
+  .tier .price small{font-size:.95rem;font-weight:500;color:var(--ink-3);font-family:var(--font-body)}
+  .tier ul{list-style:none;margin:var(--s3) 0 var(--s4);display:flex;flex-direction:column;gap:.65rem}
+  .tier li{display:flex;gap:.6rem;font-size:.9rem;color:var(--ink-2)}
+  .tier li svg{width:18px;height:18px;color:var(--accent);flex-shrink:0}
+  .tier .btn{width:100%;justify-content:center;margin-top:auto}
+  @media(max-width:820px){.price-grid{grid-template-columns:1fr}}
+
+  /* FAQ */
+  .faq{max-width:780px;margin:0 auto}
+  details{border-bottom:1px solid var(--line)}
+  summary{list-style:none;cursor:pointer;padding:var(--s3) 0;display:flex;justify-content:space-between;align-items:center;gap:var(--s2);font-family:var(--font-display);font-weight:500;font-size:1.1rem;color:var(--ink)}
+  summary::-webkit-details-marker{display:none}
+  summary .chev{width:20px;height:20px;color:var(--accent);transition:transform .25s var(--ease);flex-shrink:0}
+  details[open] summary .chev{transform:rotate(45deg)}
+  details p{padding:0 0 var(--s3);font-size:.98rem;max-width:65ch}
+
+  /* Final CTA */
+  .final{text-align:center;position:relative;overflow:hidden}
+  .final .glow{position:absolute;bottom:-160px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse at center,rgba(184,255,58,.12),transparent 70%);filter:blur(30px);z-index:0}
+  .final h2{font-size:clamp(2rem,5vw,3.4rem);max-width:16ch;margin:0 auto var(--s3)}
+  .final p{max-width:46ch;margin:0 auto var(--s4)}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);padding:var(--s5) 0}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s4)}
+  .foot .brand{margin-bottom:var(--s2)}
+  .foot-cols{display:flex;gap:var(--s6);flex-wrap:wrap}
+  .foot-col h4{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:var(--s2);font-family:var(--font-body);font-weight:600}
+  .foot-col a{display:block;font-size:.9rem;color:var(--ink-2);padding:.25rem 0;transition:color .2s}
+  .foot-col a:hover{color:var(--ink)}
+  .foot-bottom{margin-top:var(--s5);padding-top:var(--s3);border-top:1px solid var(--line);font-size:.85rem;color:var(--ink-3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s2)}
+
+  /* Dialog */
+  dialog{border:1px solid var(--line);background:var(--surface-2);border-radius:var(--radius);padding:var(--s4);max-width:420px;width:92%;color:var(--ink-2);box-shadow:var(--shadow)}
+  dialog::backdrop{background:rgba(5,6,8,.72);backdrop-filter:blur(4px)}
+  dialog[open]{animation:dlg .28s var(--ease)}
+  @keyframes dlg{from{opacity:0;transform:scale(.96) translateY(8px)}}
+  dialog h3{font-size:1.4rem;margin-bottom:.4rem}
+  dialog .dsub{font-size:.9rem;margin-bottom:var(--s3)}
+  .field{margin-bottom:var(--s3)}
+  .field label{display:block;font-size:.85rem;color:var(--ink);margin-bottom:.4rem;font-weight:500}
+  .field input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-sm);padding:.7rem .85rem;color:var(--ink);font-family:var(--font-body);font-size:.95rem;transition:border-color .2s,box-shadow .2s}
+  .field input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .field input[aria-invalid="true"]{border-color:#ff6b6b}
+  .field .err{font-size:.8rem;color:#ff8080;margin-top:.35rem;min-height:1em;display:block}
+  .dlg-actions{display:flex;gap:.6rem;margin-top:var(--s3)}
+  .dlg-actions .btn{flex:1;justify-content:center}
+  .dlg-close{position:absolute;top:.75rem;right:.75rem;background:none;border:none;color:var(--ink-3);cursor:pointer;padding:.4rem;border-radius:var(--radius-sm);transition:color .2s}
+  .dlg-close:hover{color:var(--ink)}
+  dialog{position:fixed;inset:0;margin:auto}
+
+  /* Reveal system */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+
+  /* Reduced motion */
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .rv{opacity:1!important;transform:none!important;transition:none!important}
+    .heroglow,.final .glow{animation:none!important}
+    .radar .sweep,.radar .blip,.radar .blip-2,.eyebrow .dot{animation:none!important}
+    .clip-reveal{clip-path:none!important}
+    .metric .n{filter:none!important;opacity:1!important;transition:none!important}
+    nav{animation:none!important}
+    .btn:hover,.btn-ghost:hover,.cell:hover,.tier:hover{transform:none!important}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Nav: single floating glass pill -->
+<div class="nav-shell">
+  <nav aria-label="Primary">
+    <a href="#" class="brand">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h6l2 6 4-14 2 8h2"/></svg>
+      FlowAI
+    </a>
+    <div class="nav-links">
+      <button class="linkish" popovertarget="product-menu" id="pm-trigger">Product</button>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <button class="btn btn-primary nav-cta" data-open-trial>Start free trial</button>
+  </nav>
+</div>
+
+<div id="product-menu" popover>
+  <a class="pm-item" href="#features">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h12"/></svg>
+    <span><strong>Self-updating roadmap</strong><span>Plans that reshape themselves</span></span>
+  </a>
+  <a class="pm-item" href="#features">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
+    <span><strong>Auto standups</strong><span>Summaries from the work itself</span></span>
+  </a>
+  <a class="pm-item" href="#features">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 12l6-6"/></svg>
+    <span><strong>Risk radar</strong><span>Slippage flagged before it lands</span></span>
+  </a>
+</div>
+
+<main id="main">
+<!-- Hero -->
+<section class="hero">
+  <div class="heroglow" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow rv"><span class="dot" aria-hidden="true"></span> Now in public beta</span>
+    <h1 class="rv">Ship the roadmap, <em>not the busywork.</em></h1>
+    <p class="sub rv">FlowAI keeps your engineering plan honest. It reads the work as it happens, rewrites dates you can trust, and surfaces risk while there's still time to act.</p>
+    <div class="hero-cta rv">
+      <button class="btn btn-primary" data-open-trial>Start free trial</button>
+      <a href="#features" class="btn btn-ghost">See how it works</a>
+      <span class="hero-note">No card required · 14-day trial</span>
+    </div>
+    <div class="hero-media clip-reveal rv">
+      <img src="https://picsum.photos/seed/flowai-dash-v6/1400/735" width="1400" height="735" alt="FlowAI dashboard showing a live engineering roadmap with risk indicators" loading="eager" style="background:var(--surface-2)">
+    </div>
+  </div>
+</section>
+
+<!-- Logos -->
+<section class="logos">
+  <div class="wrap">
+    <p>Trusted by engineering teams at</p>
+    <div class="logo-row">
+      <span>Vercel</span><span>Linear</span><span>Supabase</span><span>Railway</span><span>PlanetScale</span>
+    </div>
+  </div>
+</section>
+
+<!-- Features bento -->
+<section class="band" id="features">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">The work manages itself</p>
+      <h2>Three systems that keep delivery on the rails</h2>
+      <p>Stop reconciling tickets by hand. FlowAI turns the signal your team already produces into a plan leadership can actually rely on.</p>
+    </div>
+    <div class="bento">
+      <article class="cell cell-hero rv">
+        <div class="cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h13M3 18h9"/></svg></div>
+        <h3>Self-updating roadmap</h3>
+        <p>Every merge, review, and scope change flows straight into the timeline. Dependencies re-sequence themselves, so the plan on screen is always the plan that's real.</p>
+        <div class="shot">
+          <img src="https://picsum.photos/seed/flowai-roadmap-v6/900/506" width="900" height="506" alt="Roadmap view with automatically re-sequenced milestones" loading="lazy" style="background:var(--surface-2)">
+        </div>
+      </article>
+      <article class="cell rv">
+        <div class="cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Auto standups</h3>
+        <p>A written summary of what moved, what's blocked, and who's waiting lands in your channel each morning. No meeting required.</p>
+      </article>
+      <article class="cell rv">
+        <div class="cell-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 12l5-5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
+        <h3>Risk radar</h3>
+        <p>FlowAI watches velocity, scope, and review latency to flag slippage days before a deadline is at stake.</p>
+        <div class="radar" aria-hidden="true">
+          <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+          <span class="sweep"></span><span class="blip"></span><span class="blip-2"></span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Metrics -->
+<section class="metrics band-tight">
+  <div class="wrap">
+    <div class="metric-grid">
+      <div class="metric rv"><span class="n" data-count="40" data-suffix="%" data-int>40%</span><span class="l">less time in meetings</span></div>
+      <div class="metric rv"><span class="n" data-count="2.3" data-suffix="×">2.3×</span><span class="l">more accurate ship dates</span></div>
+      <div class="metric rv"><span class="n" data-count="9" data-suffix="k+" data-int>9k+</span><span class="l">engineering teams</span></div>
+      <div class="metric rv"><span class="n" data-count="4.9" data-suffix="/5">4.9/5</span><span class="l">average team rating</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="band">
+  <div class="wrap quote-wrap rv">
+    <blockquote>"We cut standups entirely and our estimates finally match reality. FlowAI is the first tool that made our roadmap something I'd <span>show the board without flinching.</span>"</blockquote>
+    <div class="author">
+      <img src="https://i.pravatar.cc/96?img=12" width="48" height="48" alt="Dana Okoye" loading="lazy">
+      <span class="who"><strong>Dana Okoye</strong><span>VP Engineering, Cortex Labs</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="band" id="pricing">
+  <div class="wrap">
+    <div class="sec-head rv" style="text-align:center;margin-left:auto;margin-right:auto">
+      <p class="kicker">Pricing</p>
+      <h2>Start free. Scale when the team does.</h2>
+    </div>
+    <div class="toggle-shell rv">
+      <div class="toggle" role="radiogroup" aria-label="Billing period">
+        <span class="thumb" aria-hidden="true"></span>
+        <button role="radio" aria-checked="true" tabindex="0" data-plan="monthly">Monthly</button>
+        <button role="radio" aria-checked="false" tabindex="-1" data-plan="annual">Annual <span class="save">-20%</span></button>
+      </div>
+    </div>
+    <div class="price-grid">
+      <article class="tier rv">
+        <div class="tag">Solo</div>
+        <p class="desc">For a single engineer running their own projects.</p>
+        <div class="price">$0<small> / forever</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>1 workspace</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Self-updating roadmap</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Community support</li>
+        </ul>
+        <button class="btn btn-ghost" data-open-trial>Start for free</button>
+      </article>
+      <article class="tier featured rv">
+        <div class="tag">Team <span class="badge">Popular</span></div>
+        <p class="desc">For engineering teams shipping on a shared roadmap.</p>
+        <div class="price"><span data-price data-monthly="12" data-annual="10">$12</span><small> / user / mo</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Unlimited workspaces</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Auto standups &amp; risk radar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Slack &amp; GitHub sync</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Priority support</li>
+        </ul>
+        <button class="btn btn-primary" data-open-trial>Start free trial</button>
+      </article>
+      <article class="tier rv">
+        <div class="tag">Enterprise</div>
+        <p class="desc">For orgs that need control, SSO, and a real SLA.</p>
+        <div class="price">Custom</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>SSO &amp; SCIM provisioning</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Audit logs &amp; data residency</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Dedicated success manager</li>
+        </ul>
+        <a class="btn btn-ghost" href="#">Talk to sales</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="sec-head rv" style="text-align:center;margin-left:auto;margin-right:auto">
+      <p class="kicker">Questions</p>
+      <h2>What CTOs ask before they switch</h2>
+    </div>
+    <div class="faq">
+      <details class="rv" open>
+        <summary>How does FlowAI keep the roadmap current?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>It connects to your issue tracker and repositories, then reads state changes as they land. When a task slips or scope grows, dependent milestones re-sequence automatically — no manual dragging required.</p>
+      </details>
+      <details class="rv">
+        <summary>Does it replace our standup?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>Most teams retire the daily sync within two weeks. FlowAI posts a written summary of movement, blockers, and dependencies each morning — the async record replaces the meeting rather than adding to it.</p>
+      </details>
+      <details class="rv">
+        <summary>How accurate is the risk radar?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>It models velocity, review latency, and scope drift against your own history. Teams see date accuracy improve as it learns their cadence — typically within the first sprint or two.</p>
+      </details>
+      <details class="rv">
+        <summary>Is our code and project data secure?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary>
+        <p>FlowAI reads metadata, not source. Data is encrypted in transit and at rest, and Enterprise plans add SSO, audit logs, and configurable data residency.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="band final">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap rv">
+    <h2>Give your roadmap back to your engineers.</h2>
+    <p>Join 9,000+ teams who stopped managing the plan and started shipping it.</p>
+    <button class="btn btn-primary" data-open-trial style="padding:.85rem 1.6rem;font-size:1rem">Start free trial</button>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#" class="brand"><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h6l2 6 4-14 2 8h2"/></svg> FlowAI</a>
+        <p style="font-size:.9rem;max-width:30ch;margin-top:.5rem">AI project management for engineering teams.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col"><h4>Product</h4><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#">Changelog</a></div>
+        <div class="foot-col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a></div>
+        <div class="foot-col"><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2025 FlowAI, Inc.</span>
+      <span>Built for teams who'd rather ship.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Trial dialog (native) -->
+<dialog id="trial">
+  <button class="dlg-close" aria-label="Close dialog" data-close-trial>
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <h3>Start your free trial</h3>
+  <p class="dsub">14 days of the Team plan. No card required.</p>
+  <form id="trial-form" novalidate>
+    <div class="field">
+      <label for="f-name">Full name</label>
+      <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name">
+      <span class="err" id="e-name" role="alert"></span>
+    </div>
+    <div class="field">
+      <label for="f-email">Work email</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+      <span class="err" id="e-email" role="alert"></span>
+    </div>
+    <div class="dlg-actions">
+      <button type="button" class="btn btn-ghost" data-close-trial>Cancel</button>
+      <button type="submit" class="btn btn-primary">Create workspace</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- Layer 1: IntersectionObserver staggered reveals ---- */
+  var revEls = [].slice.call(document.querySelectorAll(".rv"));
+  if("IntersectionObserver" in window){
+    var ro = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var el = e.target;
+          var parent = el.parentNode;
+          var sibs = [].slice.call(parent.querySelectorAll(":scope > .rv"));
+          var idx = sibs.indexOf(el);
+          if(idx < 0) idx = 0;
+          el.style.transitionDelay = reduced ? "0ms" : (idx * 70) + "ms";
+          el.classList.add("in");
+          ro.unobserve(el);
+        }
+      });
+    }, {threshold:0.12, rootMargin:"0px 0px -6% 0px"});
+    revEls.forEach(function(el){ ro.observe(el); });
+  } else {
+    revEls.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* ---- Hero image clip-path reveal ---- */
+  var clip = document.querySelector(".clip-reveal");
+  if(clip){
+    requestAnimationFrame(function(){
+      setTimeout(function(){ clip.classList.add("in"); }, 350);
+    });
+  }
+
+  /* ---- Layer 2: count-up metrics with blur-clear ---- */
+  function countUp(el, target, suffix, isInt){
+    if(reduced){ el.textContent = (isInt ? Math.round(target) : target) + suffix; el.classList.add("clear"); return; }
+    var dur = 1200, start = performance.now();
+    el.classList.add("clear");
+    function tick(now){
+      var p = Math.min((now - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3); // cubic ease-out
+      var val = isInt ? Math.round(eased * target) : (eased * target).toFixed(1);
+      el.textContent = val + suffix;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  var metrics = document.querySelectorAll("[data-count]");
+  if("IntersectionObserver" in window){
+    var mo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var el = e.target;
+          var target = parseFloat(el.getAttribute("data-count"));
+          var suffix = el.getAttribute("data-suffix") || "";
+          var isInt = el.hasAttribute("data-int");
+          countUp(el, target, suffix, isInt);
+          mo.unobserve(el);
+        }
+      });
+    }, {threshold:0.4});
+    metrics.forEach(function(el){ mo.observe(el); });
+  } else {
+    metrics.forEach(function(el){ el.classList.add("clear"); });
+  }
+
+  /* ---- Trial dialog ---- */
+  var dlg = document.getElementById("trial");
+  var lastFocus = null;
+  document.querySelectorAll("[data-open-trial]").forEach(function(b){
+    b.addEventListener("click", function(){
+      lastFocus = b;
+      if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open","");
+      var f = document.getElementById("f-name");
+      if(f) f.focus();
+    });
+  });
+  function closeTrial(){
+    if(dlg.close) dlg.close(); else dlg.removeAttribute("open");
+    if(lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll("[data-close-trial]").forEach(function(b){
+    b.addEventListener("click", closeTrial);
+  });
+  dlg.addEventListener("cancel", function(){
+    if(lastFocus) setTimeout(function(){ lastFocus.focus(); }, 0);
+  });
+
+  /* Field validation */
+  function validate(input, msg, test){
+    var err = document.getElementById("e-" + input.name);
+    var ok = test(input.value.trim());
+    input.setAttribute("aria-invalid", ok ? "false" : "true");
+    if(!ok){ if(err) err.textContent = msg; }
+    else { if(err) err.textContent = ""; }
+    return ok;
+  }
+  var nameEl = document.getElementById("f-name");
+  var emailEl = document.getElementById("f-email");
+  nameEl.addEventListener("blur", function(){ validate(nameEl, "Please enter your name.", function(v){ return v.length > 1; }); });
+  emailEl.addEventListener("blur", function(){ validate(emailEl, "Enter a valid work email.", function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }); });
+
+  document.getElementById("trial-form").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var okN = validate(nameEl, "Please enter your name.", function(v){ return v.length > 1; });
+    var okE = validate(emailEl, "Enter a valid work email.", function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); });
+    if(okN && okE){
+      var self = this;
+      self.innerHTML = '<p style="padding:1rem 0;color:var(--ink)">Workspace on the way. Check <strong style="color:var(--accent)">' + emailEl.value.trim() + '</strong> to confirm.</p><button type="button" class="btn btn-primary" data-close-trial style="width:100%;justify-content:center">Done</button>';
+      self.querySelector("[data-close-trial]").addEventListener("click", closeTrial);
+    } else {
+      (!okN ? nameEl : emailEl).focus();
+    }
+  });
+
+  /* ---- Pricing toggle: JS-measured thumb + roving tabindex ---- */
+  var toggle = document.querySelector(".toggle");
+  var thumb = toggle.querySelector(".thumb");
+  var opts = [].slice.call(toggle.querySelectorAll('button[role="radio"]'));
+  var priceEls = document.querySelectorAll("[data-price]");
+
+  function moveThumb(btn){
+    var rect = btn.getBoundingClientRect();
+    var parentRect = toggle.getBoundingClientRect();
+    thumb.style.width = rect.width + "px";
+    thumb.style.transform = "translateX(" + (rect.left - parentRect.left - 4) + "px)";
+  }
+  function selectPlan(btn){
+    opts.forEach(function(o){
+      var on = o === btn;
+      o.setAttribute("aria-checked", on ? "true" : "false");
+      o.tabIndex = on ? 0 : -1;
+    });
+    moveThumb(btn);
+    var annual = btn.getAttribute("data-plan") === "annual";
+    priceEls.forEach(function(p){
+      p.textContent = "$" + p.getAttribute(annual ? "data-annual" : "data-monthly");
+    });
+  }
+  opts.forEach(function(btn, i){
+    btn.addEventListener("click", function(){ selectPlan(btn); });
+    btn.addEventListener("keydown", function(e){
+      var next;
+      if(e.key === "ArrowRight" || e.key === "ArrowDown") next = opts[(i + 1) % opts.length];
+      else if(e.key === "ArrowLeft" || e.key === "ArrowUp") next = opts[(i - 1 + opts.length) % opts.length];
+      if(next){ e.preventDefault(); next.focus(); selectPlan(next); }
+    });
+  });
+
+  function initThumb(){
+    var active = toggle.querySelector('[aria-checked="true"]');
+    if(active) moveThumb(active);
+  }
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(initThumb);
+  window.addEventListener("load", initThumb);
+  window.addEventListener("resize", initThumb);
+  requestAnimationFrame(initThumb);
+
+  /* ---- Popover API fallback for older browsers ---- */
+  var pm = document.getElementById("product-menu");
+  if(pm && !("popover" in HTMLElement.prototype)){
+    var trig = document.getElementById("pm-trigger");
+    var pmOpen = false;
+    trig.addEventListener("click", function(e){
+      e.stopPropagation();
+      pmOpen = !pmOpen;
+      pm.style.display = pmOpen ? "block" : "none";
+      pm.style.opacity = pmOpen ? "1" : "0";
+      pm.style.transform = "translateX(-50%) scale(1)";
+    });
+    document.addEventListener("click", function(){
+      if(pmOpen){ pm.style.display = "none"; pm.style.opacity = "0"; pmOpen = false; }
+    });
+  }
+
+  /* ---- Smooth scroll for anchor links (Lenis-lite feel) ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      var id = a.getAttribute("href");
+      if(id.length < 2) return;
+      var target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior: reduced ? "auto" : "smooth", block:"start"});
+        history.replaceState(null, "", id);
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
