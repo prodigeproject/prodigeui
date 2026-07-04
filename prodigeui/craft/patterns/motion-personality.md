@@ -15,14 +15,14 @@
 |-----------|------|-------|------|-------|---------|
 | **Playful** | Bouncy, alive, overshoot | `cubic-bezier(0.34, 1.56, 0.64, 1)` 400ms | `cubic-bezier(0.55, 0, 1, 0.45)` 250ms | Spring overshoot, scale 1.03 | Gentle float/bob |
 | **Premium** | Slow, deliberate, confident | `cubic-bezier(0.16, 1, 0.3, 1)` 600ms | `cubic-bezier(0.4, 0, 1, 1)` 300ms | Smooth lift, no overshoot | Slow breathe/pulse |
-| **Corporate** | Snappy, efficient, invisible | `cubic-bezier(0.23, 1, 0.32, 1)` 250ms | `cubic-bezier(0.55, 0, 0.55, 0.2)` 180ms | Color/border only, no movement | None — static |
+| **Corporate** | Snappy, efficient, composed | `cubic-bezier(0.23, 1, 0.32, 1)` 250ms | `cubic-bezier(0.55, 0, 0.55, 0.2)` 180ms | Border/lift (translateY -2-3px ok) | ONE subtle ambient (glow breathe) |
 | **Energetic** | Fast, punchy, percussive | `cubic-bezier(0.22, 0.68, 0, 1.71)` 300ms | `cubic-bezier(0.55, 0, 1, 0.45)` 200ms | Snap scale 0.95→1.02 | Pulse/throb on accent |
 
 ### Archetype Selection (from Design Read)
 
 | Design Read signal | Archetype |
 |-------------------|-----------|
-| Dark-tech, dev-tool, SaaS, Linear-style | **Corporate** |
+| Dark-tech, dev-tool, SaaS, Linear-style | **Corporate** (but keep ONE ambient glow + smooth staggered reveals — the proven FlowAI benchmark feel; don't go fully static) |
 | Luxury, editorial, fashion, Apple-y | **Premium** |
 | Kids, gaming, social, Dribbble, agency portfolio | **Playful** |
 | Sports, music, fintech dashboards, hype/launch | **Energetic** |

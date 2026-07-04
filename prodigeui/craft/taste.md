@@ -240,12 +240,20 @@ MOTION_INTENSITY, VISUAL_DENSITY). This forces a deliberate direction instead of
 
 ## APPENDIX A: Font Anti-Defaults & Rotation Pool
 
-### Banned as Permanent Default (never use reflexively)
-- **Inter** (as display) — acceptable as body only
-- **Space Grotesk** — acceptable as ONE project's display, not the system default
-- **DM Sans / DM Serif** — LLM favorites, use only when justified
-- **Plus Jakarta Sans** — overused in AI output 2024-2026
-- **Instrument Serif / Fraunces** — banned as default display serif (see serif discipline above)
+> **Important nuance (do not over-correct):** The goal is VARIETY across projects and
+> avoiding the *thoughtless reflex* — NOT banning good fonts. **Space Grotesk + Inter is a
+> PROVEN, benchmark-winning pairing** (it produced the strongest FlowAI benchmark). It is a
+> first-class choice, not something to avoid. Reach for the rotation pool when you want a
+> different character, not because a proven pairing is "forbidden." A deliberate,
+> concept-fitting choice of Space Grotesk/Inter beats a random rotation pick every time.
+
+### Discouraged ONLY as thoughtless reflex (all fine when deliberate)
+- **Inter as display** — excellent as body; as display use with intent (tight tracking, weight).
+- **Space Grotesk** — proven display face; use it when the dark-tech/geometric character fits.
+- **DM Sans / Plus Jakarta Sans** — fine, just overused; pick deliberately.
+- **Instrument Serif / Fraunces** — the two most over-reached display serifs; justify if used.
+
+The real ban: reaching for a font WITHOUT a reason, or picking one that fights the concept.
 
 ### Preferred Sans Display Pool (rotate, never reuse across consecutive projects)
 `Geist` · `Outfit` · `Cabinet Grotesk` · `Satoshi` · `General Sans` · `Switzer` · `Clash Display` · `PP Neue Montreal` · `ABC Diatype` · `Söhne` · `GT Walsheim` · `Migra Sans`
