@@ -63,6 +63,13 @@ refined." Safe = invisible.
   default of 2026 — OKLCH L 0.84–0.97, C<0.06, hue 40–100, and token names `--paper/--cream/
   --sand/--bone/--linen` are tells in themselves); the premium beige+brass+espresso palette.
   Carry "warmth" via accent + type + imagery, not the body background.
+- **Framework-default palettes are ALSO a tell (the shadcn-default trap).** Do not ship raw
+  Tailwind `zinc`/`slate`/`neutral` scales (`#09090b/#18181b/#27272a/#3f3f46`) as the WHOLE
+  dark palette, and do not use framework-default accents verbatim: `#22c55e` (green-500),
+  `#3b82f6` (blue-500), `#ef4444` (red-500), `#8b5cf6` (violet-500), `#f59e0b` (amber-500).
+  These read as "shadcn starter, untouched." **Tune custom values** — e.g. a distinctive
+  lime `#b8ff3a`, or shift the neutral hue/lightness off the raw scale. A font-rotation or
+  color pick that lands EXACTLY on a framework default has failed the anti-default test.
 - Write a one-sentence physical scene ("who uses this, where, under what light, in what
   mood") to force the dark/light decision.
 
@@ -93,6 +100,19 @@ refined." Safe = invisible.
   and avatar rows below the fold.
 - **Legibility from chrome, not dimming:** liquid-glass + gradient fades over raw media beat
   a flat dark overlay (benchmark prompt 57 explicitly bans a scrim).
+- **Headline scale must be DRAMATIC** (the #1 hero regression): use
+  `clamp(2.7rem, 8vw, 6.4rem)` for the primary hero headline — upper bound ~6.4rem desktop.
+  Capping at 4.5rem reads timid and is a known downgrade. The headline is the single biggest
+  visual statement; let it dominate. Headline `max-width: ~14ch`; subtitle `max-width: ~52ch`
+  (generous, NOT a narrow 38ch column). Do not lock the whole hero block to `max-width:640px`.
+- **Eyebrow copy = status/announcement, never category restatement.** "Now in public beta"
+  or "Backed by YC" beats "AI project management for engineering." The eyebrow must add NEW
+  information (momentum/timeliness/proof), not echo the headline. See
+  `use-cases/landing/hero.guide.md`.
+- **Nav = single floating glass pill** (centered, pill radius, backdrop-blur), not a
+  full-width top bar with a nested inner pill.
+- **Stats animate by default** — count-up from 0 with a blur-clear on scroll-into-view
+  (`advanced-effects.md` §5), `tabular-nums`. Static metric numbers read dead.
 
 ## The eyebrow / marker restraint (the #1 over-used tell)
 
