@@ -88,6 +88,14 @@ refined." Safe = invisible.
 - **Semantic z-index scale** (base→dropdown→sticky→modal→toast→tooltip), never `9999`.
 - **Vary spacing for rhythm** (a 4pt scale gives finer control than 8pt). Tighter within a
   group, looser between groups.
+- **Section separation (mandatory):** two adjacent full-width sections must NOT share the
+  same flat background with only whitespace between them — they blur into one long scroll.
+  Separate them by ONE of: (a) alternating background tone (`--bg` ↔ `--surface`),
+  (b) a hairline top border (`border-top:1px solid var(--line)`), or (c) a distinct
+  treatment (full-bleed media, accent band, glow). Aim to alternate the surface tone across
+  the page (e.g. features=bg, metrics=surface, testimonial=bg, pricing=surface, faq=bg) so
+  the eye always registers a boundary. A run of 3+ consecutive same-background sections is a
+  FLAG. Never rely on padding alone to divide sections.
 
 ## Hero discipline (the NOVA-fix rules)
 

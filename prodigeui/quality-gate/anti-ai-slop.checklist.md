@@ -463,6 +463,9 @@ These are strong AI-output signals. Fix if possible; justify if kept.
 - **More than 12 raw hex values outside `:root`.** Tokens were not honoured.
 - **`var(--accent)` used 6+ times in rendered body per viewport.** Cap at 2 visible uses/screen.
 - **Every section perfectly centered** with no layout tension. See `craft/taste.md` Appendix C.
+- **3+ consecutive sections on the same flat background** with only whitespace between them —
+  they blur into one scroll. Alternate `--bg`/`--surface` or add hairline dividers. See
+  `craft/taste.md` layout discipline "Section separation."
 - **Uniform reveal animation** — same fade-up on every element. Choreograph with layers
   (see `craft/patterns/motion-personality.md` Layer 2).
 

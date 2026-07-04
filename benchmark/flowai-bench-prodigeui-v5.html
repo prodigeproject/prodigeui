@@ -127,6 +127,10 @@
   section{position:relative}
   .band{padding:var(--s7) 0}
   .band-tight{padding:var(--s6) 0}
+  /* section rhythm: alternate surface tone + hairline so adjacent sections never blur together */
+  #pricing{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band + .band{border-top:1px solid var(--line)}
+  #pricing + .band{border-top:none}
   .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:var(--s2)}
   .sec-head{max-width:60ch;margin-bottom:var(--s5)}
   .sec-head h2{font-size:clamp(1.9rem,4vw,2.9rem);margin-bottom:var(--s2)}
