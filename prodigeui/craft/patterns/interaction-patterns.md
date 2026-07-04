@@ -79,20 +79,30 @@ A sliding-thumb radio group (e.g. Monthly/Annual pricing toggle). Implementation
 
 **CSS requirements:**
 1. Container (`.seg`) MUST have `position:relative` (contains the absolute thumb).
-2. Radio buttons MUST have `flex:1` so they share equal width — this ensures the thumb
-   always aligns precisely. Without equal-width buttons, the thumb misaligns when one
-   label is longer than the other.
-3. Thumb: `position:absolute; top:4px; bottom:4px; left:4px; width:calc(50% - 4px)` for
-   2 options (or `calc(100%/N - offset)` for N). Slide via `transform:translateX(...)`.
+2. Radio buttons use natural width (sized by content + padding). Do NOT use `flex:1` —
+   it forces equal widths which distorts when one label is longer (e.g. "Annual −20%").
+3. Thumb: `position:absolute; top:4px; bottom:4px; left:4px; background:var(--accent);
+   border-radius:999px; z-index:0`. Width and translateX set dynamically by JS.
 4. Radio buttons MUST have `position:relative; z-index:1` so text renders ABOVE the thumb.
 5. **Color inversion on active state:** When a radio is checked (text sits on the colored
    thumb), ALL child elements (including badges like "−20%") must inherit the inverted
    foreground color. Use `[aria-checked="true"]{color:var(--on-accent)}` and cascade to
    children. Never leave accent-colored text on an accent-colored background.
 
-**JS:** Arrow keys move selection (roving tabindex). `thumb.style.transform` slides to
-the correct position: `translateX(0)` for first, `translateX(calc(100% + 8px))` for
-second option (accounts for padding gap between buttons).
+**JS (measurement-based thumb positioning):**
+```js
+function select(index) {
+  // ... aria-checked, tabindex updates ...
+  const activeBtn = radios[index];
+  const groupRect = group.getBoundingClientRect();
+  const btnRect = activeBtn.getBoundingClientRect();
+  thumb.style.width = btnRect.width + 'px';
+  thumb.style.transform = 'translateX(' + (btnRect.left - groupRect.left - 4) + 'px)';
+}
+// Call select(0) on init + window load (after fonts render)
+```
+This ensures the thumb ALWAYS covers the exact button width regardless of text length.
+Arrow keys move selection (roving tabindex).
 
 ## 6. Forms — the non-obvious rules
 

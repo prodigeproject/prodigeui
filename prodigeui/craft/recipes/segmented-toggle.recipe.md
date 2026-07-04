@@ -49,20 +49,19 @@ A sliding-thumb radio group for binary choices (e.g., Monthly/Annual pricing tog
   top: 4px;
   bottom: 4px;
   left: 4px;
-  width: calc(50% - 4px);
+  /* width set dynamically by JS (matches active button width) */
   background: var(--accent);
   border-radius: 999px;
-  transition: transform 0.22s var(--ease-out);
+  transition: transform 0.22s var(--ease-out), width 0.22s var(--ease-out);
   z-index: 0;
 }
 
 .segmented-toggle__btn {
-  flex: 1;
   text-align: center;
   position: relative;
   z-index: 1;
   border-radius: 999px;
-  padding: 8px 18px;
+  padding: 8px 20px;
   font-size: 13.5px;
   font-weight: 600;
   background: none;
@@ -108,9 +107,12 @@ function initSegmentedToggle(el) {
       btn.setAttribute('aria-checked', String(isActive));
       btn.setAttribute('tabindex', isActive ? '0' : '-1');
     });
-    // Move thumb
-    thumb.style.transform =
-      index === 0 ? 'translateX(0)' : 'translateX(calc(100% + 8px))';
+    // Measure active button and position thumb precisely
+    const activeBtn = buttons[index];
+    const containerRect = el.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+    thumb.style.width = btnRect.width + 'px';
+    thumb.style.transform = 'translateX(' + (btnRect.left - containerRect.left - 4) + 'px)';
     // Dispatch custom event
     el.dispatchEvent(new CustomEvent('toggle-change', { detail: { index } }));
   }

@@ -163,10 +163,10 @@ section{padding:96px 0}
 /* pricing */
 .pricehead{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px}
 .seg{display:inline-flex;position:relative;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:4px}
-.seg .thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);background:var(--accent);
-  border-radius:999px;z-index:0;transition:transform .22s var(--ease-out)}
-.seg [role="radio"]{flex:1;text-align:center;font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;
-  background:none;border:none;padding:8px 18px;border-radius:999px;position:relative;z-index:1;
+.seg .thumb{position:absolute;top:4px;bottom:4px;left:4px;background:var(--accent);
+  border-radius:999px;z-index:0;transition:transform .22s var(--ease-out),width .22s var(--ease-out)}
+.seg [role="radio"]{text-align:center;font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;
+  background:none;border:none;padding:8px 20px;border-radius:999px;position:relative;z-index:1;
   transition:color .2s var(--ease-out);white-space:nowrap}
 .seg [role="radio"][aria-checked="true"]{color:var(--accent-ink)}
 .seg [role="radio"][aria-checked="true"] *{color:inherit}
@@ -635,7 +635,13 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;color:var(--faint);f
       r.setAttribute('aria-checked', active ? 'true' : 'false');
       r.tabIndex = active ? 0 : -1;
     });
-    thumb.style.transform = index === 0 ? 'translateX(0)' : 'translateX(calc(100% + 8px))';
+    // Measure active button and position thumb precisely
+    const activeBtn = radios[index];
+    const groupRect = group.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+    thumb.style.width = btnRect.width + 'px';
+    thumb.style.transform = 'translateX(' + (btnRect.left - groupRect.left - 4) + 'px)';
+
     const period = radios[index].dataset.period;
     priceEls.forEach(el => {
       const val = el.dataset[period];
@@ -674,6 +680,10 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px;color:var(--faint);f
       radios[next].focus();
     }
   });
+
+  // Initial positioning (after fonts load)
+  select(0);
+  window.addEventListener('load', () => select(radios.findIndex(r => r.getAttribute('aria-checked') === 'true') || 0));
 })();
 </script>
 </body>
