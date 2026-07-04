@@ -167,3 +167,68 @@ Overshoot / spring family (use for settles and direct-manipulation, NOT default 
 - Separate transform from filter/opacity onto different layers under `preserve-3d` to avoid
   flicker. Use `void el.offsetWidth` to force reflow when replaying an animation.
 - Never animate `<img>` scale on hover — animate the card around it.
+
+---
+
+## Advanced Effects (transitions.dev + hyperframes additions)
+
+> These complement the recipes above with higher-impact techniques. Use 1-2 per project
+> (Soul Formula). Full implementation in `craft/patterns/advanced-effects.md`.
+
+**Card-tilt with cursor glare** — 3D perspective tilt toward cursor + radial gradient highlight
+tracks pointer position. `perspective(800px)`, `rotateX/Y ±8deg`, `::after` radial-gradient at
+`var(--mx) var(--my)`. Use: featured card, pricing popular tier, portfolio project. Max 3-6 cards.
+
+**Shimmer text (gradient sweep)** — animated gradient sweeps through text via `background-clip:text`.
+`background-size:200%`, animate `background-position`. One-shot on load for brand name, or infinite
+for loading states. Never on body text.
+
+**Number pop-in with blur** — count-up from 0 to target with motion-blur entrance. Combines
+`countUp()` JS with `filter:blur(8px)→blur(0)` transition on the number element. Use: metrics
+sections, social proof counts. Always pair with `font-variant-numeric:tabular-nums`.
+
+**Clip-path geometric reveals** — replace opacity+translateY fades with geometric wipes.
+Three variants: `inset()` (edge wipe), `circle()` (center expand), `polygon()` (diagonal sweep).
+Use on MAX one section per page — typically hero image or feature showcase.
+
+**Variable font weight breathe** — animate `font-variation-settings:'wght'` between 500-700 on
+a hero heading. Requires variable font (Inter Variable, Geist, Outfit). Subtle (≤100 weight
+units change), slow (≥4s cycle). Use: one accent heading per page.
+
+**Avatar distance-falloff hover** — in a stacked avatar group, hovering one causes neighbors
+to shift away proportionally (distance 1: 6px, distance 2: 3px). Creates organic "living" feel.
+JS: measure index distance, apply translateX proportional to 1/distance.
+
+**Plus-to-menu icon morph** — hamburger icon morphs to X using CSS transforms on 3 spans
+(translateY + rotate for top/bottom, scaleX(0) for middle). Pure CSS transition, no SVG swap.
+
+**Velocity-matched transitions** — exit uses ease-IN (accelerating away, 250ms), enter uses
+ease-OUT (decelerating in, 400ms). Their speeds match at the cut point for perceived continuous
+motion. Use: tab panel swaps, card content changes, carousel transitions.
+
+**Scroll-driven parallax (CSS native)** — `animation-timeline:scroll()` for parallax without JS.
+Hero image translateY on scroll, progress bar scaleX fills as page scrolls. Include
+`@supports not (animation-timeline:scroll())` fallback to IntersectionObserver.
+
+**Scroll-triggered view transitions** — `animation-timeline:view()` fires animation as element
+enters/exits viewport. Entry range `entry 0% entry 50%`. Use: section reveals without JS.
+
+**Depth-of-field rack focus** — tween `filter:blur()` on off-focus elements while focal element
+stays sharp. `--dof` CSS variable controls blur amount. Hover one card → siblings blur 2-3px.
+Instant cinematic hierarchy.
+
+**Blur mask transitions (Emil)** — use `filter:blur(8px)` on entering elements that clears
+to `blur(0)` as they settle. Hides imperfect motion (slight position jumps masked by blur).
+Especially effective on text reveals and image loads.
+
+**Conic-gradient animated border** — a highlight sweeps around a card perimeter. `@property
+--border-angle` animates 0→360deg; `conic-gradient(from var(--border-angle), ...)` on the
+border-box layer. Use: featured/pricing card, sign-in card. 6s linear infinite.
+
+**Magnetic hover (pointer-attracted element)** — element shifts toward cursor within a radius.
+Track pointer via `mousemove`, apply `translateX/Y` proportional to distance (max ±8px).
+Use: primary CTA button, logo on hover. Disable under `prefers-reduced-motion`.
+
+**Staggered blur-in text reveal** — split heading into words/chars, each enters with
+`filter:blur(12px);opacity:0;translateY(8px)` → clear. Stagger 40-60ms per word. One-shot
+on mount. Use: hero headline only. Related to hyperframes "per-word kinetic reveal."

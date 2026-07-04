@@ -411,6 +411,74 @@ See `craft/taste.md` for the full rationale and the font/color procedures;
 `craft/patterns/motion-craft.md` and `craft/patterns/interaction-patterns.md` for the
 implementation detail behind the last three groups.
 
+## The Seven Cardinal Sins (Open Design — P0 Lint Blocks)
+
+These are the patterns that read as "AI generated this" to any experienced designer.
+Presence of ANY in the final output = automatic FAIL (unless the brief explicitly justifies it).
+
+### Sin 1. Default Tailwind Indigo as Accent → FAIL
+- **Banned hex values:** `#6366f1`, `#4f46e5`, `#4338ca`, `#3730a3`, `#8b5cf6`, `#7c3aed`, `#a855f7`
+- **Why:** Indigo/purple is THE AI tell. Every LLM defaults to it.
+- **Fix:** Use a concept-justified accent from the Design Read. See `craft/taste.md` color discipline.
+
+### Sin 2. Two-Stop "Trust" Gradient on Hero → FAIL
+- **What:** purple→blue, blue→cyan, indigo→pink gradient backgrounds.
+- **Why:** A flat committed surface + intentional type always beats a generic gradient.
+- **Fix:** Solid background + real focal subject (type, image, video). See hero discipline.
+
+### Sin 3. Emoji as Feature Icons → FAIL
+- **Banned in:** `<h*>`, `<button>`, `<li>`, any UI icon context.
+- **Specifically banned:** ✨ 🚀 🎯 ⚡ 🔥 💡 🎨 💻 📊 🔒
+- **Fix:** 1.5-2px stroke monoline SVG with `currentColor`. One icon family per project.
+
+### Sin 4. Display Font Mismatch → FAIL
+- **What:** h1/h2 using hardcoded Inter/Roboto/system-ui when a display face is specified.
+- **Fix:** Display headlines MUST use the chosen display typeface from the Design Read.
+
+### Sin 5. Rounded Card with Colored Left-Border → FAIL
+- **What:** The canonical "AI dashboard tile" — `border-radius:12px` + `border-left:4px solid accent`.
+- **Why:** Appears in ~80% of generic AI output for feature/benefit cards.
+- **Fix:** Drop either the radius OR the left border. Use bento/hierarchy instead.
+
+### Sin 6. Invented Metrics → FLAG (P1)
+- **What:** "10× faster", "99.9% uptime", "3× more productive" with no source.
+- **Fix:** Pull from real data or use a clearly-labelled placeholder. Never fabricate precision.
+
+### Sin 7. Filler Copy → FAIL
+- **What:** `lorem ipsum`, `Feature One / Two / Three`, `placeholder text`, `Your text here`.
+- **Why:** An empty section is a design problem to solve with composition, not by inventing words.
+- **Fix:** Write real copy that demonstrates the product's actual value prop.
+
+---
+
+## Soft Tells (P1 — Should Fix)
+
+These are strong AI-output signals. Fix if possible; justify if kept.
+
+- **Standard "Hero → Features → Pricing → FAQ → CTA" sequence with zero variation.** Introduce
+  at least one unconventional section (testimonial wall, inline product demo, comparison
+  against status-quo, a full-bleed media break).
+- **External placeholder image CDNs** (unsplash.com, placehold.co, picsum.photos) used without
+  fallback styling. Fragile and obvious. Add `background-color` fallback on all containers.
+- **More than 12 raw hex values outside `:root`.** Tokens were not honoured.
+- **`var(--accent)` used 6+ times in rendered body per viewport.** Cap at 2 visible uses/screen.
+- **Every section perfectly centered** with no layout tension. See `craft/taste.md` Appendix C.
+- **Uniform reveal animation** — same fade-up on every element. Choreograph with layers
+  (see `craft/patterns/motion-personality.md` Layer 2).
+
+---
+
+## Polish Tells (P2 — Nice to Fix)
+
+- **Decorative blob/wave SVG backgrounds** — meaningless geometry. Remove unless concept-justified.
+- **Perfect symmetric layout** with no visual tension — alternate density for rhythm.
+- **Over-rounding** (cards at 24-32px radius) — cap at 12-16px for content cards.
+- **Ghost-card** (1px border + soft ≥16px shadow together) — pick one elevation method.
+- **Grid background** (repeating-linear-gradient dots/lines behind hero) — usually filler.
+- **Em-dash in generated copy** — strong AI tell. Use period, comma, or restructure.
+
+---
+
 ## How to Use This Checklist
 
 1. **Automated scan:** Run criteria.json evaluation (covers FAIL items 1-5, 7-10, C1-C5).

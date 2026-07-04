@@ -215,3 +215,74 @@ MOTION_INTENSITY, VISUAL_DENSITY). This forces a deliberate direction instead of
 - `research/benchmark-pattern-taxonomy.md` — the empirical basis
 - `craft/composition.md` — page-level assembly
 - `craft/patterns/` + `craft/patterns/effects-catalog.md` — the technique recipes
+
+---
+
+## APPENDIX A: Font Anti-Defaults & Rotation Pool
+
+### Banned as Permanent Default (never use reflexively)
+- **Inter** (as display) — acceptable as body only
+- **Space Grotesk** — acceptable as ONE project's display, not the system default
+- **DM Sans / DM Serif** — LLM favorites, use only when justified
+- **Plus Jakarta Sans** — overused in AI output 2024-2026
+- **Instrument Serif / Fraunces** — banned as default display serif (see serif discipline above)
+
+### Preferred Sans Display Pool (rotate, never reuse across consecutive projects)
+`Geist` · `Outfit` · `Cabinet Grotesk` · `Satoshi` · `General Sans` · `Switzer` · `Clash Display` · `PP Neue Montreal` · `ABC Diatype` · `Söhne` · `GT Walsheim` · `Migra Sans`
+
+### Preferred Monospace (for dev-tool/code aesthetics)
+`Geist Mono` · `JetBrains Mono` · `Berkeley Mono` · `Fira Code` · `IBM Plex Mono`
+
+### Serif (ONLY when justified per serif discipline)
+`PP Editorial New` · `GT Sectra Display` · `Reckless Neue` · `Tiempos Headline` · `Canela` · `Domaine Display` · `NB Architekt` · `Saol Display` · `Cormorant Garamond` · `EB Garamond`
+
+### Pairing Rules
+- Pair on a CONTRAST axis (serif display + sans body, OR one family across weights)
+- Never pair two similar sans-serifs
+- Body always ≥ 400 weight, display can go 300 (light) for elegance or 700+ for impact
+- `font-display: swap` mandatory on all custom fonts
+
+---
+
+## APPENDIX B: Premium-Consumer Palette Ban
+
+For premium/luxury/artisan/DTC briefs, the LLM default is warm beige + brass/clay + espresso. **BANNED as default:**
+
+### Banned Background Hex Families
+`#f5f1ea` · `#f7f5f1` · `#fbf8f1` · `#efeae0` · `#ece6db` · `#faf7f1` · `#e8dfcb` · `#faf8f5`
+(All "warm paper / cream / chalk / bone / linen" variants)
+
+### Banned Accent Hex Families
+`#b08947` · `#b6553a` · `#9a2436` · `#9c6e2a` · `#bc7c3a` · `#7d5621` · `#6b5c4c`
+(All "brass / clay / oxblood / ochre / walnut" variants)
+
+### Banned Text Hex Families
+`#1a1714` · `#1a1814` · `#1b1814`
+(All "espresso / warm near-black" variants)
+
+### Alternative Premium Palettes (rotate)
+| Name | Base | Accent | Character |
+|------|------|--------|-----------|
+| **Cold Luxury** | Silver-grey `#f4f4f5` | Chrome `#71717a` | Tesla/Apple Watch vibe |
+| **Forest** | Deep green `#052e16` | Bone `#fef9c3` + amber | Filson/Patagonia |
+| **Black & Tan** | True off-black `#0c0a09` | Warm tan `#d6a05c` | Sharp contrast, no beige |
+| **Ink & Paper** | Pure white `#fafafa` | Ink black `#18181b` | Editorial, stark |
+| **Deep Sea** | Navy `#0f172a` | Coral `#fb7185` | Unexpected premium |
+| **Graphite** | Dark grey `#1c1917` | Warm white `#fef3c7` | Modern minimal |
+
+---
+
+## APPENDIX C: Layout Tension Rules (Anti-Center-Bias)
+
+### The Problem
+AI defaults everything to centered: centered hero, centered section headers, centered cards.
+Result = visually flat, no tension, no eye movement.
+
+### Rules
+1. **Not every section heading is centered.** Alternate: left-aligned heading + right-aligned subtitle on same line (split-header), or left-aligned heading above content.
+2. **Asymmetric grid is default** for features/bento: `1.4fr 1fr` or `2fr 1fr`, not `1fr 1fr 1fr`.
+3. **One section per page MUST break the container** — a full-bleed image, a marquee that touches edges, or a background color shift that spans viewport width.
+4. **Visual weight distribution:** at least 2 sections should have dominant-side weight (content heavier on left OR right, not centered).
+5. **Vertical rhythm variation:** alternate tight sections (metrics/logos: py-44) with breathing sections (hero/testimonial: py-96). Never uniform padding.
+6. **The "scan path" test:** trace where the eye moves section-to-section. If it stays on center-axis the entire page, add a section that pulls attention left or right.
+
