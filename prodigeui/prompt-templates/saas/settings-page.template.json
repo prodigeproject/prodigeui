@@ -1,0 +1,84 @@
+{
+  "name": "saas-settings-page",
+  "useCase": "saas",
+  "context": "Design a settings and preferences page for a SaaS application. The audience is authenticated users managing their account, notifications, integrations, and workspace preferences. Target platforms: desktop (primary) and tablet. The interface must organize many options into logical groups without overwhelming the user, support instant-save and undo patterns, and clearly indicate which settings require confirmation.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json scale for section headings and option labels",
+    "Apply color.rules.json feedback tokens for save confirmations and destructive actions",
+    "Use layout.rules.json sidebar-content pattern with defined breakpoints",
+    "Form controls must follow Token_System sizing and spacing scale",
+    "Destructive actions (delete account, revoke) must use color.feedback.error tokens",
+    "All form inputs must have visible labels and not rely on placeholder-only patterns",
+    "Comply with Quality_Gate: logical grouping, proper form semantics, token-only styling"
+  ],
+  "outputCriteria": {
+    "format": "Settings page spec with navigation sidebar, grouped form sections, save/undo controls, and token references",
+    "qualityChecks": [
+      "Settings organized into logical sections with clear headings",
+      "Form controls use proper semantic elements (fieldset, legend, label)",
+      "Save and undo feedback uses Motion_Library state-transition presets",
+      "Destructive actions visually distinct via feedback.error tokens",
+      "All spacing and sizing uses Token_System scale values"
+    ],
+    "accessibilityRequirements": [
+      "All form inputs have associated visible labels",
+      "Related settings grouped with fieldset and legend elements",
+      "Save confirmation announced via aria-live region",
+      "Destructive action buttons have aria-describedby linking to warning text",
+      "Settings navigation supports keyboard with arrow key traversal"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Profile settings section with form fields, save bar, and destructive zone",
+      "output": "Page: SettingsPage\n  Layout: grid(columns: 240px 1fr, gap: var(--space-lg)) @desktop | stack @mobile\n  Children:\n    - Organism: SettingsNav(sticky, top: var(--space-lg))\n        - Atom: NavItem(label='Profile', active=true, color=color.text.primary)\n        - Atom: NavItem(label='Notifications', color=color.text.secondary)\n        - Atom: NavItem(label='Integrations', color=color.text.secondary)\n        - Atom: NavItem(label='Danger Zone', color=color.feedback.error)\n    - Organism: SettingsContent\n        - Molecule: SectionHeader(token=typography.heading.md, color=color.text.primary)\n        - Molecule: FormGroup(fieldset, legend='Display Name')\n            - Atom: Label(token=typography.body.sm, color=color.text.secondary)\n            - Atom: Input(bg=color.surface.input, border=border.default, radius=radius.md)\n        - Molecule: SaveBar(position=sticky, bottom=0)\n            bg: var(--color-surface-elevated)\n            shadow: var(--shadow-lg)\n            - Atom: Button(variant=primary, label='Save changes')\n            - Atom: Button(variant=ghost, label='Undo')\n            motion: enter-exit.slide-up",
+      "acceptanceCriteria": [
+        "Navigation and content use grid layout from layout.rules.json",
+        "All form elements have explicit labels with proper association",
+        "Save bar uses elevated surface token for visual separation",
+        "Destructive items use feedback.error token palette",
+        "Sticky positioning uses Token_System spacing values"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.surface.primary",
+      "color.surface.input",
+      "color.surface.elevated",
+      "color.text.primary",
+      "color.text.secondary",
+      "color.feedback.error",
+      "color.feedback.success",
+      "border.default",
+      "space.sm",
+      "space.md",
+      "space.lg",
+      "radius.md",
+      "shadow.lg",
+      "typography.heading.md",
+      "typography.body.sm"
+    ],
+    "components": [
+      "Input",
+      "Select",
+      "Toggle",
+      "Button",
+      "Text",
+      "Card",
+      "Sidebar"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "state-transition",
+      "enter-exit"
+    ]
+  }
+}

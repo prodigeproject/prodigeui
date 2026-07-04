@@ -1,0 +1,84 @@
+{
+  "name": "saas-notification-center",
+  "useCase": "saas",
+  "context": "Design a notification panel and inbox for a SaaS application. The audience is power users who receive frequent notifications about team activity, system alerts, mentions, and task updates. Target platforms: desktop (slide-over panel) and mobile (full-screen). The interface must handle high notification volume with grouping, filtering, bulk actions, and clear read/unread visual differentiation.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for notification titles, timestamps, and preview text",
+    "Apply color.rules.json to differentiate notification types (info, warning, error, success)",
+    "Unread indicator must use accent tokens with sufficient contrast against surface",
+    "Panel must support slide-over animation from Motion_Library enter-exit presets",
+    "Notification grouping must use clear visual hierarchy with date separators",
+    "Bulk actions (mark all read, clear all) must require confirmation for destructive ops",
+    "Comply with Quality_Gate: relative timestamps, no notification fatigue, proper grouping"
+  ],
+  "outputCriteria": {
+    "format": "Notification panel spec with notification list, filters, grouping, bulk actions, empty state, and panel animation",
+    "qualityChecks": [
+      "Unread notifications visually distinct via surface token or accent indicator",
+      "Notification types distinguishable by icon and subtle color token (not color alone)",
+      "Timestamps use relative format with typography.body.xs token",
+      "Empty state provides actionable guidance not just 'nothing here'",
+      "Panel entry/exit uses Motion_Library slide-over preset"
+    ],
+    "accessibilityRequirements": [
+      "New notifications announced via aria-live=polite region",
+      "Notification list uses proper list semantics with group labels",
+      "Unread count communicated in panel trigger button aria-label",
+      "Bulk action confirmations focus-trap to the confirm dialog",
+      "Each notification is keyboard activatable with clear focus indicators"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Notification panel with grouped items, unread indicator, and filter tabs",
+      "output": "Organism: NotificationPanel\n  Layout: flex(direction=column, height=100vh @mobile | 480px @desktop)\n  width: 380px @desktop | 100% @mobile\n  bg: var(--color-surface-primary)\n  shadow: var(--shadow-xl) @desktop\n  motion: enter-exit.slide-in-right(duration: 250ms)\n  role: dialog, aria-label: 'Notifications'\n  Children:\n    - Molecule: PanelHeader(flex, justify=space-between, padding=space.md)\n        - Atom: Heading(level=h2, token=typography.heading.sm, text='Notifications')\n        - Atom: Button(variant=ghost, size=sm, label='Mark all read')\n    - Molecule: FilterTabs(role=tablist)\n        - Atom: Tab(label='All', active=true, border-bottom=color.action.primary)\n        - Atom: Tab(label='Mentions', active=false)\n        - Atom: Tab(label='Alerts', active=false)\n    - Organism: NotificationList(flex=1, overflow=auto, role=list)\n        - Atom: DateSeparator(text='Today', token=typography.body.xs, color=color.text.tertiary)\n        - Molecule: NotificationItem(unread=true)\n            padding: var(--space-sm) var(--space-md)\n            bg: var(--color-surface-unread)\n            border-left: 3px solid var(--color-action-primary)\n            - Atom: Avatar(size=sm, src=user.avatar)\n            - Atom: Text(token=typography.body.sm, color=color.text.primary)\n            - Atom: Text(token=typography.body.xs, color=color.text.tertiary, text='2m ago')\n        - Molecule: NotificationItem(unread=false)\n            padding: var(--space-sm) var(--space-md)\n            bg: var(--color-surface-primary)\n    - Molecule: EmptyState(hidden when has items)\n        - Atom: Icon(name=bell-off, color=color.text.tertiary, size=48)\n        - Atom: Text(token=typography.body.md, text='All caught up')",
+      "acceptanceCriteria": [
+        "Panel uses dialog role with slide-in motion from Motion_Library",
+        "Unread items have distinct surface token and accent border indicator",
+        "Filter tabs use proper tablist/tab roles for accessibility",
+        "Date separators group notifications with tertiary text tokens",
+        "Empty state provides meaningful feedback with icon and text"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.surface.primary",
+      "color.surface.unread",
+      "color.action.primary",
+      "color.text.primary",
+      "color.text.tertiary",
+      "color.feedback.info",
+      "color.feedback.warning",
+      "color.feedback.error",
+      "space.sm",
+      "space.md",
+      "shadow.xl",
+      "typography.heading.sm",
+      "typography.body.sm",
+      "typography.body.xs"
+    ],
+    "components": [
+      "Button",
+      "Text",
+      "Avatar",
+      "Icon",
+      "Badge",
+      "Tabs",
+      "Card"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "enter-exit",
+      "state-transition",
+      "hover-focus"
+    ]
+  }
+}

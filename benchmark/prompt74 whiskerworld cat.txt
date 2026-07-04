@@ -1,0 +1,151 @@
+## Prompt to Recreate WhiskerWorld — Premium Cat Lifestyle Landing Page
+
+**Build a single-page "WhiskerWorld" premium cat lifestyle brand landing page using React, Tailwind CSS, and Lucide React icons. The page has a cinematic hero with looping video, product showcase cards, and smooth scroll-driven animations. Use Vite + TypeScript.**
+
+---
+
+### Fonts (Google Fonts)
+- **Playfair Display** (weights: 400, 500, 700) — hero heading, section titles
+- **Inter** (weights: 300, 400, 500, 600) — body/UI text
+
+Load via `<link>` in `index.html`:
+```
+https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap
+```
+
+Apply: `body { font-family: 'Inter', sans-serif; }` and `.font-display { font-family: 'Playfair Display', serif; }`
+
+---
+
+### Color Palette
+- Background: `#0f0f0f` (near-black)
+- Surface: `#1a1a1a`
+- Surface-2: `#242424`
+- Line/border: `#2e2e2e`
+- Text primary: `#f5f0eb` (warm cream)
+- Text muted: `#9a918a`
+- Accent: `#e8a87c` (warm coral/peach)
+- Accent hover: `#f0bd96`
+- Accent ink (on accent): `#1a1008`
+
+---
+
+### Video Background (Hero)
+- URL: `https://assets.mixkit.co/videos/45170/45170-720.mp4`
+- Fallback URL (if above fails): `https://assets.mixkit.co/videos/1542/1542-720.mp4`
+- Attributes: autoPlay, muted, loop, playsInline
+- Styling: absolute, full width/height, object-cover, opacity-40
+- A gradient overlay from bottom: `bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/60 to-transparent`
+
+---
+
+### Asset URLs
+
+| Asset | URL |
+|-------|-----|
+| Product 1 (Cat bed) | `https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=600&h=600&fit=crop` |
+| Product 2 (Cat tower) | `https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600&h=600&fit=crop` |
+| Product 3 (Cat food bowl) | `https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=600&h=600&fit=crop` |
+| Testimonial avatar 1 | `https://i.pravatar.cc/96?img=32` |
+| Testimonial avatar 2 | `https://i.pravatar.cc/96?img=44` |
+| Gallery cat 1 | `https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&h=1000&fit=crop` |
+| Gallery cat 2 | `https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=800&h=600&fit=crop` |
+| Gallery cat 3 | `https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=800&h=1000&fit=crop` |
+
+---
+
+### Header / Navbar
+- Fixed, top-0, full-width, z-50, `backdrop-blur-xl bg-[#0f0f0f]/60 border-b border-white/5`
+- Padding: `px-6 py-4 md:px-12 lg:px-16`
+- **Left:** Brand "Whisker" + "World" (accent color on "World"), Playfair Display, text-xl font-bold tracking-tight
+- **Center nav (hidden below md):** Links "Collection", "Story", "Community", "Journal" — text-sm, text-muted, hover:text-primary, transition
+- **Right:** Search icon button (ghost), Cart icon button with badge "2" (accent bg, tiny white text), "Shop Now" pill button (bg-accent, text-accent-ink, rounded-full, px-5 py-2, text-sm font-medium, hover:scale-105)
+- Mobile: hamburger menu with slide-down panel, same links stacked vertically
+
+---
+
+### Hero Section (min-h-screen)
+- Video background with gradient overlay
+- Content centered vertically, `max-w-4xl mx-auto text-center`
+- **Eyebrow:** "Premium Cat Lifestyle" — uppercase, text-xs, tracking-[0.25em], text-accent, animate-fadeIn delay-200
+- **Heading:** "Where Elegance Meets Purr-fection." — Playfair Display, `text-[clamp(2.5rem,8vw,5.5rem)]`, font-bold, leading-[1.05], text-primary, animate-slideUp delay-400
+- **Subtitle:** "Curated essentials for cats who deserve the extraordinary." — text-lg md:text-xl, text-muted, max-w-2xl mx-auto, animate-slideUp delay-600
+- **CTA row:** Two buttons side-by-side (flex gap-4 justify-center), animate-slideUp delay-800
+  - "Explore Collection" — bg-accent, text-accent-ink, rounded-full, px-8 py-3.5, font-medium, hover:scale-105 + hover:shadow-[0_0_30px_rgba(232,168,124,.3)]
+  - "Watch Story" — border border-white/20, text-primary, rounded-full, px-8 py-3.5, font-medium, hover:bg-white/5, inline-flex items-center gap-2 with Play icon (size 16)
+- **Scroll indicator:** Bottom center, animate-bounce, ChevronDown icon in a circle border
+
+---
+
+### Featured Products Section
+- Padding: `py-24 px-6 md:px-12`
+- Section heading: "The Collection" — Playfair Display, text-4xl, text-center
+- Subtext: "Each piece designed with feline comfort in mind." — text-muted, text-center, mb-16
+- **3-column grid** (1 col mobile, 3 col lg), gap-8
+- Each card:
+  - `bg-surface rounded-2xl overflow-hidden border border-line group cursor-pointer`
+  - Image container: aspect-square, overflow-hidden. Image scales to 1.05 on group-hover (transition 700ms ease)
+  - Content below: p-6
+    - Category tag: "Comfort" / "Play" / "Dining" — text-xs uppercase tracking-wider text-accent
+    - Product name: text-lg font-medium text-primary mt-2
+    - Price + "Add to Cart" row: flex justify-between items-center mt-4
+    - Price: text-xl font-display font-bold text-primary
+    - Cart button: 40x40 rounded-full bg-accent grid place-items-center, ShoppingBag icon (size 18, accent-ink)
+  - Card hover: `hover:border-accent/30 hover:-translate-y-1 transition-all duration-300`
+
+---
+
+### Masonry Gallery Section
+- Background: surface color
+- Padding: `py-24 px-6 md:px-12`
+- Heading: "Life with Cats" — Playfair Display, text-4xl, text-center, mb-4
+- Subtext: "Moments captured by our community." — text-muted, text-center, mb-16
+- **Masonry layout:** CSS columns (columns-1 sm:columns-2 lg:columns-3), gap-4
+- Each item: `break-inside-avoid mb-4 rounded-xl overflow-hidden group relative`
+  - Image: w-full, varying heights (use different aspect ratios from URLs)
+  - Overlay on hover: absolute inset-0, bg-black/40, flex items-end p-6
+    - Heart icon + count, Share icon — text-white, opacity-0 group-hover:opacity-100 transition
+
+---
+
+### Testimonials
+- Padding: `py-24`
+- Single centered testimonial with large quote
+- Blockquote: Playfair Display, text-2xl md:text-3xl, text-primary, italic, max-w-3xl mx-auto text-center, leading-relaxed
+- Quote text: "WhiskerWorld changed how we think about our cat's space. Every product feels intentional and beautiful."
+- Attribution: flex items-center gap-3 justify-center mt-8
+  - Avatar: 48x48 rounded-full
+  - Name: text-sm font-medium text-primary
+  - Role: text-xs text-muted
+
+---
+
+### Footer
+- Border-top, py-16 px-6 md:px-12
+- Grid: 4 columns (brand + 3 link groups)
+- Brand column: logo, short tagline, social icons row (Instagram, Twitter/X, Pinterest)
+- Link columns: "Shop" (Beds, Towers, Bowls, Toys), "Company" (Our Story, Journal, Careers), "Help" (Shipping, Returns, Contact)
+- Bottom bar: copyright + payment icons
+
+---
+
+### Animations (CSS keyframes)
+
+| Class | Effect | Duration | Easing |
+|-------|--------|----------|--------|
+| `.animate-fadeIn` | opacity 0→1 | 0.8s | ease-out |
+| `.animate-slideUp` | translateY(30px)→0 + opacity 0→1 | 0.9s | cubic-bezier(0.16, 1, 0.3, 1) |
+| `.animate-scaleIn` | scale(0.95)→1 + opacity 0→1 | 0.7s | cubic-bezier(0.16, 1, 0.3, 1) |
+
+All with `animation-fill-mode: both`. Delay utility classes: `.delay-200` through `.delay-1000` in 200ms steps.
+
+**IntersectionObserver:** elements with `.reveal` class start at `opacity-0 translate-y-6`, gain `.revealed` class (opacity-1 translate-y-0 transition duration-700) when 15% visible.
+
+---
+
+### Key Technical Details
+- Smooth scroll: `html { scroll-behavior: smooth; }`
+- Grain overlay: fixed, full-screen, pointer-events-none, z-50, opacity-[0.03], SVG noise texture
+- All images have loading="lazy" except hero video
+- Responsive: mobile-first, breakpoints at sm(640), md(768), lg(1024)
+- Lucide icons used: Search, ShoppingBag, Heart, Share2, Play, ChevronDown, Menu, X, Instagram, Twitter

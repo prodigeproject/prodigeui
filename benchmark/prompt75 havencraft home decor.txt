@@ -1,0 +1,194 @@
+## Prompt to Recreate HavenCraft — Minimalist Home Decor Landing Page
+
+**Build a single-page "HavenCraft" minimalist home decor e-commerce landing page using React, Tailwind CSS, and Lucide React icons. The page features a split-screen hero with parallax-scrolling product imagery, a horizontal-scroll product carousel, room inspiration gallery, and a smooth newsletter signup. Use Vite + TypeScript.**
+
+---
+
+### Fonts (Google Fonts)
+- **Cormorant Garamond** (weights: 300, 400, 500, 600) — hero heading, section titles, quotes
+- **Outfit** (weights: 300, 400, 500, 600) — body/UI text, navigation, buttons
+
+Load via `<link>` in `index.html`:
+```
+https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap
+```
+
+Apply: `body { font-family: 'Outfit', sans-serif; }` and `.font-display { font-family: 'Cormorant Garamond', serif; }`
+
+---
+
+### Color Palette
+- Background: `#faf8f5` (warm off-white)
+- Surface: `#f0ece6` (light warm beige)
+- Surface-2: `#e8e2da`
+- Line/border: `#d4ccc2`
+- Text primary: `#1c1917` (warm near-black)
+- Text muted: `#78716c`
+- Accent: `#6b5c4c` (warm brown/walnut)
+- Accent hover: `#8b7b6b`
+- Accent light: `#f5f0ea`
+- On-dark text: `#faf8f5`
+
+---
+
+### Video Background (Room Ambience — used in Inspiration section)
+- URL: `https://assets.mixkit.co/videos/4815/4815-720.mp4`
+- Fallback URL (if above fails): `https://assets.mixkit.co/videos/12436/12436-720.mp4`
+- Attributes: autoPlay, muted, loop, playsInline
+- Used in the "Room Inspiration" section as an inset rounded video with soft shadow
+- Styling: rounded-2xl, aspect-video, object-cover, shadow-2xl
+
+---
+
+### Asset URLs
+
+| Asset | URL |
+|-------|-----|
+| Hero image (living room) | `https://images.unsplash.com/photo-1616486338812-3dadae5b4458?w=900&h=1200&fit=crop` |
+| Product 1 (ceramic vase) | `https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=600&h=750&fit=crop` |
+| Product 2 (linen cushion) | `https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=750&fit=crop` |
+| Product 3 (wooden shelf) | `https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=600&h=750&fit=crop` |
+| Product 4 (table lamp) | `https://images.unsplash.com/photo-1507473885765-e6ed057ab852?w=600&h=750&fit=crop` |
+| Product 5 (woven basket) | `https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&h=750&fit=crop` |
+| Room 1 (bedroom) | `https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop` |
+| Room 2 (kitchen) | `https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=1000&fit=crop` |
+| Room 3 (bathroom) | `https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop` |
+| Designer portrait | `https://i.pravatar.cc/128?img=47` |
+
+---
+
+### Header / Navbar
+- Fixed, top-0, full-width, z-50
+- Initially transparent (`bg-transparent`), on scroll adds `bg-[#faf8f5]/90 backdrop-blur-lg shadow-sm border-b border-line` via scroll listener (threshold: 50px)
+- Padding: `px-6 py-5 md:px-12 lg:px-20`
+- **Left:** Brand "Haven" + "Craft" (accent color on "Craft"), Cormorant Garamond, text-2xl font-semibold, tracking-tight
+- **Center nav (hidden below lg):** Links "New In", "Living", "Bedroom", "Kitchen", "About" — text-sm font-medium, text-muted, hover:text-primary, `relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 hover:after:w-full after:h-[1.5px] after:bg-accent after:transition-all`
+- **Right:** Search icon, Heart/wishlist icon (badge), bag icon (badge "3"), all ghost style. "Book Consultation" text link on lg+ (font-medium text-accent hover:underline)
+- Mobile: hamburger with fullscreen overlay (bg-background), nav links centered large text, close X top-right
+
+---
+
+### Hero Section (min-h-screen)
+- **Split layout:** grid grid-cols-1 lg:grid-cols-2, min-h-screen
+- **Left half (content):** flex flex-col justify-center, px-8 md:px-16 lg:px-20, py-20
+  - Eyebrow: "New Season Collection" — text-xs uppercase tracking-[0.2em] text-accent font-medium, mb-6, animate-fadeIn delay-200
+  - Heading: "Crafted for Living." — Cormorant Garamond, `text-[clamp(3rem,7vw,5.5rem)]`, font-300 (light weight), leading-[1.05], text-primary, animate-slideUp delay-400
+  - Body: "Timeless home pieces designed at the intersection of natural beauty and modern function. Each item tells a story of material and craft." — text-base md:text-lg, text-muted, leading-relaxed, max-w-md, mt-6, animate-slideUp delay-600
+  - CTA row: flex gap-4 items-center mt-10, animate-slideUp delay-800
+    - "Shop Collection" — bg-accent text-on-dark rounded-none px-8 py-4 text-sm font-medium uppercase tracking-wider hover:bg-accent-hover transition
+    - "Our Process →" — text-accent font-medium text-sm hover:underline underline-offset-4
+- **Right half (image):** relative overflow-hidden (hidden on mobile, block on lg)
+  - Hero image: absolute inset-0, object-cover, w-full h-full
+  - Parallax: on scroll, image translateY at 0.3x scroll speed (via JS transform)
+  - Overlay: subtle gradient from left `bg-gradient-to-r from-[#faf8f5]/20 to-transparent`
+  - On mobile: image shows below content as a full-width block (aspect-[4/5], rounded-xl, mx-6)
+
+---
+
+### Marquee / Ticker Strip
+- Directly after hero, py-5, border-y border-line, bg-surface, overflow-hidden
+- Infinitely scrolling horizontal text, duplicated for seamless loop
+- Content: "Handmade Ceramics • Organic Linen • Sustainably Sourced • Scandinavian Design • Small-Batch Production • Free Styling Advice •"
+- Style: text-sm text-muted uppercase tracking-[0.15em] font-medium whitespace-nowrap
+- Animation: `@keyframes marquee { from { translateX(0) } to { translateX(-50%) } }` duration 30s linear infinite
+- On hover: `animation-play-state: paused`
+
+---
+
+### Product Carousel Section
+- Padding: `py-24 px-6 md:px-12 lg:px-20`
+- Section header row: flex justify-between items-end mb-12
+  - Left: "Curated Picks" heading (Cormorant Garamond, text-4xl md:text-5xl, font-400) + subtext "Thoughtfully selected for your space." (text-muted, mt-2)
+  - Right: prev/next arrow buttons (48x48 rounded-full border border-line, ChevronLeft/ChevronRight icons, hover:bg-surface transition)
+- **Horizontal scroll container:** flex gap-6 overflow-x-auto snap-x snap-mandatory, hide scrollbar (`scrollbar-hide`), scroll-padding-left matched to section padding
+- Each product card (snap-start, shrink-0):
+  - Width: `w-[280px] md:w-[320px]`
+  - Image: aspect-[4/5] rounded-xl overflow-hidden bg-surface
+    - Image hover: scale(1.03) transition-transform duration-700
+  - Below image: pt-4
+    - Product name: text-sm font-medium text-primary
+    - Material: text-xs text-muted mt-1
+    - Price row: flex justify-between items-center mt-3
+      - Price: text-lg font-medium text-primary
+      - "Add" pill: text-xs font-medium text-accent border border-accent rounded-full px-3 py-1 hover:bg-accent hover:text-on-dark transition
+
+---
+
+### Room Inspiration Section
+- Background: bg-surface, py-24, px-6 md:px-12 lg:px-20
+- Heading: "Room by Room" — Cormorant Garamond, text-4xl md:text-5xl, text-center
+- Subtext: "See how our pieces come alive in real homes." — text-muted, text-center, mb-16
+- **Bento grid:** grid-cols-1 md:grid-cols-3, grid-rows-2, gap-4
+  - Cell 1 (bedroom): col-span-2, row-span-1, rounded-2xl overflow-hidden, aspect-[16/9]
+  - Cell 2 (kitchen): col-span-1, row-span-2, rounded-2xl overflow-hidden (tall)
+  - Cell 3 (video): col-span-2, row-span-1, rounded-2xl overflow-hidden, aspect-video
+    - The ambient video plays here with a centered Play circle overlay (60x60 rounded-full bg-white/80 backdrop-blur grid place-items-center, Play icon)
+- Each image cell: relative group
+  - On hover: overlay with room name + "Shop this room →" link (opacity-0 → opacity-100, transition)
+  - Overlay: absolute inset-0 bg-black/30 flex flex-col justify-end p-6
+
+---
+
+### Designer Quote Section
+- Padding: py-24, max-w-4xl mx-auto, text-center, px-6
+- Large quotation mark: text-8xl text-accent/20 font-display, block, leading-none, mb-4
+- Quote: "We believe a home should feel like a deep breath — calm, honest, and entirely yours." — Cormorant Garamond, text-2xl md:text-3xl, italic, text-primary, leading-relaxed
+- Attribution: mt-10, flex items-center gap-4 justify-center
+  - Avatar: 56x56 rounded-full border-2 border-surface-2
+  - Text: "Elara Voss" (font-medium text-primary) + "Founder & Creative Director" (text-xs text-muted)
+
+---
+
+### Newsletter Section
+- Background: bg-accent, py-20, px-6, text-center, rounded-3xl mx-6 md:mx-12 lg:mx-20 mb-24
+- Heading: "Join the Haven" — Cormorant Garamond, text-3xl md:text-4xl, text-on-dark
+- Subtext: "First access to new collections, styling tips, and studio stories." — text-on-dark/70, mt-3, mb-8
+- Form: max-w-md mx-auto, flex gap-3
+  - Input: flex-1, bg-white/15 backdrop-blur border border-white/20 rounded-full px-6 py-3.5 text-sm text-on-dark placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30
+  - Submit button: bg-white text-accent rounded-full px-6 py-3.5 text-sm font-medium hover:scale-105 transition-transform, ArrowRight icon
+
+---
+
+### Footer
+- Border-top border-line, py-16 px-6 md:px-12 lg:px-20
+- Grid: 5 columns on lg (brand wide + 4 link groups), 2 on md, stack on mobile
+- Brand column: logo, "Timeless design, thoughtfully crafted." tagline, social row (Instagram, Pinterest, Dribbble icons)
+- Link columns: "Shop" (New In, Living, Bedroom, Kitchen, Sale), "About" (Our Story, Sustainability, Makers, Press), "Help" (Shipping, Returns, Size Guide, Contact), "Legal" (Privacy, Terms, Cookies)
+- Bottom bar: flex justify-between, copyright + payment method icons (Visa, Mastercard, Amex as simple text pills)
+
+---
+
+### Animations
+
+| Class | Effect | Duration | Easing |
+|-------|--------|----------|--------|
+| `.animate-fadeIn` | opacity 0→1 | 0.8s | ease-out |
+| `.animate-slideUp` | translateY(28px)→0 + opacity 0→1 | 0.9s | cubic-bezier(0.16, 1, 0.3, 1) |
+| `.animate-slideInLeft` | translateX(-20px)→0 + opacity 0→1 | 0.8s | cubic-bezier(0.16, 1, 0.3, 1) |
+| `.animate-scaleReveal` | scale(1.05)→1 + opacity 0→1 | 1.1s | cubic-bezier(0.22, 1, 0.36, 1) |
+
+All with `animation-fill-mode: both`. Delay utilities: `.delay-200` through `.delay-1200` in 200ms steps.
+
+**Scroll reveal:** IntersectionObserver at threshold 0.12, elements with `.rv` start opacity-0 translate-y-6 and transition to visible when intersecting. Stagger: each child delayed by index * 80ms.
+
+**Parallax (hero image):** On scroll, apply `transform: translateY(${scrollY * 0.3}px)` to hero image element. Use `requestAnimationFrame` for smooth updates. Disable under `prefers-reduced-motion`.
+
+---
+
+### Responsive Breakpoints
+- Mobile (default): single column, stacked layout, hero image below content
+- md (768px): 2-col grids, larger type, side padding increases
+- lg (1024px): split hero, 3-col bento, horizontal carousel visible, full nav
+- xl (1280px): max-width container, generous whitespace
+
+---
+
+### Key Technical Details
+- Color scheme: LIGHT mode (warm, earthy, Japandi-inspired)
+- Buttons: rectangular (rounded-none or rounded-sm) for primary CTAs — this is a deliberate design choice matching the architectural/minimal aesthetic. Pills (rounded-full) used only for tags and form inputs.
+- Smooth scroll: `html { scroll-behavior: smooth; }`
+- All images: loading="lazy" except hero. Include `onerror` fallback to bg-surface.
+- Nav scroll effect: useState + useEffect with scroll listener, debounced via requestAnimationFrame
+- Horizontal carousel: useRef on scroll container, prev/next buttons call `scrollBy({ left: ±340, behavior: 'smooth' })`
+- Lucide icons used: Search, Heart, ShoppingBag, ChevronLeft, ChevronRight, ArrowRight, Play, Menu, X, Instagram, Dribbble
+- Marquee uses duplicated content div trick: two identical spans side-by-side, parent overflow-hidden, animate the wrapper translateX(-50%)

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- Empty State: Abstract representation of an empty container -->
+  <rect x="40" y="60" width="120" height="90" rx="8" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="6 4"/>
+  <circle cx="100" cy="95" r="16" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="90" y1="95" x2="110" y2="95" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="100" y1="85" x2="100" y2="105" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  <rect x="70" y="125" width="60" height="8" rx="4" fill="#E2E8F0"/>
+  <rect x="80" y="138" width="40" height="6" rx="3" fill="#F1F5F9"/>
+</svg>

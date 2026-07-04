@@ -1,0 +1,80 @@
+{
+  "name": "ecommerce-product-listing",
+  "useCase": "ecommerce",
+  "context": "Design a product listing page for an ecommerce platform. The audience is online shoppers browsing products who need to quickly scan, filter, compare, and add items to cart. Target platforms: desktop, tablet, and mobile. The layout must optimize for product discovery with clear pricing, imagery, and quick-action patterns.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for price and label hierarchy",
+    "Apply color.rules.json: use feedback tokens for sale/discount indicators",
+    "Grid layout must adapt from multi-column (desktop) to single-column (mobile) per layout.rules.json",
+    "Product images must maintain consistent aspect ratio using token-based sizing",
+    "Interactive elements (add to cart, wishlist) require all documented states",
+    "Comply with Quality_Gate: no visual hierarchy violations, proper token usage throughout"
+  ],
+  "outputCriteria": {
+    "format": "Page layout spec with product card component, filter sidebar, and grid system using token references",
+    "qualityChecks": [
+      "Product cards use consistent token-based spacing and radius",
+      "Price typography follows scale hierarchy from typography.rules.json",
+      "Filter controls use form component tokens for consistency",
+      "Grid breakpoints match layout.rules.json definitions",
+      "All interactive states (hover, focus, active, disabled) documented"
+    ],
+    "accessibilityRequirements": [
+      "Product images have descriptive alt text",
+      "Price information is programmatically associated with product name",
+      "Filter controls are keyboard operable and properly labeled",
+      "Add to cart buttons have accessible names identifying the product",
+      "Focus management maintained during filter updates without losing user position"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Product card molecule with image, title, price, and quick-add action",
+      "output": "Molecule: ProductCard\n  Layout: flex(direction=column)\n  bg: var(--color-surface-primary)\n  radius: var(--radius-md)\n  shadow: var(--shadow-sm)\n  overflow: hidden\n  Children:\n    - Atom: Image(aspectRatio=4/3, objectFit=cover, alt='{product.name}')\n    - Container(padding: var(--space-md))\n        - Atom: Text(token=typography.body.md, color=color.text.primary) -> product.name\n        - Atom: Text(token=typography.heading.sm, color=color.text.primary) -> product.price\n        - Atom: Text(token=typography.body.sm, color=color.feedback.success) -> product.discount (conditional)\n        - Atom: Button(variant=primary, size=sm, ariaLabel='Add {product.name} to cart')\n  States:\n    hover: shadow(var(--shadow-md)), translateY(-2px) via state-transition preset\n    focus-within: outline(var(--color-focus-ring))",
+      "acceptanceCriteria": [
+        "All visual values use semantic token references",
+        "Hover state uses Motion_Library state-transition preset",
+        "Accessible labels include product name for screen readers",
+        "Discount color uses feedback semantic token",
+        "Card follows atomic design molecule pattern"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.surface.primary",
+      "color.text.primary",
+      "color.text.secondary",
+      "color.feedback.success",
+      "color.action.primary",
+      "space.md",
+      "space.sm",
+      "radius.md",
+      "shadow.sm",
+      "shadow.md",
+      "typography.heading.sm",
+      "typography.body.md",
+      "typography.body.sm"
+    ],
+    "components": [
+      "Card",
+      "Button",
+      "Text",
+      "Image",
+      "Input",
+      "Checkbox"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "state-transition",
+      "hover-focus"
+    ]
+  }
+}

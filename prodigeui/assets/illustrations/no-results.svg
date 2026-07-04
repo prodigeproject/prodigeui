@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- No Results: Magnifying glass over empty area -->
+  <circle cx="90" cy="90" r="35" stroke="#94A3B8" stroke-width="2.5"/>
+  <line x1="115" y1="115" x2="145" y2="145" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+  <line x1="78" y1="90" x2="102" y2="90" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/>
+  <rect x="60" y="150" width="80" height="6" rx="3" fill="#E2E8F0"/>
+  <rect x="75" y="162" width="50" height="5" rx="2.5" fill="#F1F5F9"/>
+</svg>

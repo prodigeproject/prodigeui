@@ -1,0 +1,30 @@
+{
+  "category": "hover-focus",
+  "description": "Micro-interactions for hover and focus states on interactive elements.",
+  "presets": [
+    {
+      "name": "hover-lift",
+      "duration": "motion.duration.fast",
+      "easing": "motion.easing.standard",
+      "properties": { "translateY": { "from": "0px", "to": "-2px" }, "boxShadow": { "from": "elevation.sm", "to": "elevation.md" } },
+      "principle": "Hover feedback must be immediate and subtle",
+      "reduceMotion": { "duration": "0ms", "properties": { "boxShadow": { "from": "elevation.sm", "to": "elevation.md" } } }
+    },
+    {
+      "name": "focus-ring",
+      "duration": "motion.duration.instant",
+      "easing": "motion.easing.entrance",
+      "properties": { "outlineOffset": { "from": "0px", "to": "2px" }, "opacity": { "from": 0, "to": 1 } },
+      "principle": "Focus indicators must appear instantly for accessibility",
+      "reduceMotion": { "duration": "0ms", "properties": { "opacity": { "from": 0, "to": 1 } } }
+    },
+    {
+      "name": "button-press",
+      "duration": "motion.duration.instant",
+      "easing": "motion.easing.standard",
+      "properties": { "scale": { "from": 1, "to": 0.97 } },
+      "principle": "Active press gives tactile confirmation",
+      "reduceMotion": { "duration": "0ms", "properties": { "scale": { "from": 1, "to": 0.97 } } }
+    }
+  ]
+}

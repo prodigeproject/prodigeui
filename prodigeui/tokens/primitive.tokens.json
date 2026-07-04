@@ -1,0 +1,733 @@
+{
+  "schemaVersion": 1,
+  "layer": "primitive",
+  "tokens": {
+    "palette.neutral.s50": {
+      "type": "color",
+      "value": "#fafafa",
+      "description": "Lightest neutral"
+    },
+    "palette.neutral.s100": {
+      "type": "color",
+      "value": "#f5f5f5",
+      "description": "Very light neutral"
+    },
+    "palette.neutral.s200": {
+      "type": "color",
+      "value": "#e5e5e5",
+      "description": "Light neutral"
+    },
+    "palette.neutral.s300": {
+      "type": "color",
+      "value": "#d4d4d4",
+      "description": "Neutral border light"
+    },
+    "palette.neutral.s400": {
+      "type": "color",
+      "value": "#a3a3a3",
+      "description": "Muted text"
+    },
+    "palette.neutral.s500": {
+      "type": "color",
+      "value": "#737373",
+      "description": "Mid neutral"
+    },
+    "palette.neutral.s600": {
+      "type": "color",
+      "value": "#525252",
+      "description": "Secondary text"
+    },
+    "palette.neutral.s700": {
+      "type": "color",
+      "value": "#404040",
+      "description": "Dark neutral"
+    },
+    "palette.neutral.s800": {
+      "type": "color",
+      "value": "#262626",
+      "description": "Very dark neutral"
+    },
+    "palette.neutral.s900": {
+      "type": "color",
+      "value": "#171717",
+      "description": "Near black"
+    },
+    "palette.neutral.s950": {
+      "type": "color",
+      "value": "#0a0a0a",
+      "description": "Deepest dark"
+    },
+    "palette.primary.s50": {
+      "type": "color",
+      "value": "#eff6ff",
+      "description": "Lightest primary"
+    },
+    "palette.primary.s100": {
+      "type": "color",
+      "value": "#dbeafe",
+      "description": "Light primary"
+    },
+    "palette.primary.s200": {
+      "type": "color",
+      "value": "#bfdbfe",
+      "description": "Soft primary"
+    },
+    "palette.primary.s300": {
+      "type": "color",
+      "value": "#93c5fd",
+      "description": "Mid-light primary"
+    },
+    "palette.primary.s400": {
+      "type": "color",
+      "value": "#60a5fa",
+      "description": "Mid primary"
+    },
+    "palette.primary.s500": {
+      "type": "color",
+      "value": "#3b82f6",
+      "description": "Base primary (brand)"
+    },
+    "palette.primary.s600": {
+      "type": "color",
+      "value": "#2563eb",
+      "description": "Strong primary"
+    },
+    "palette.primary.s700": {
+      "type": "color",
+      "value": "#1d4ed8",
+      "description": "Deep primary"
+    },
+    "palette.primary.s800": {
+      "type": "color",
+      "value": "#1e40af",
+      "description": "Dark primary"
+    },
+    "palette.primary.s900": {
+      "type": "color",
+      "value": "#1e3a8a",
+      "description": "Deepest primary"
+    },
+    "palette.secondary.s50": {
+      "type": "color",
+      "value": "#f5f3ff",
+      "description": "Lightest secondary"
+    },
+    "palette.secondary.s500": {
+      "type": "color",
+      "value": "#8b5cf6",
+      "description": "Base secondary"
+    },
+    "palette.secondary.s600": {
+      "type": "color",
+      "value": "#7c3aed",
+      "description": "Strong secondary"
+    },
+    "palette.secondary.s700": {
+      "type": "color",
+      "value": "#6d28d9",
+      "description": "Deep secondary"
+    },
+    "palette.success.s50": {
+      "type": "color",
+      "value": "#f0fdf4",
+      "description": "Lightest success"
+    },
+    "palette.success.s500": {
+      "type": "color",
+      "value": "#22c55e",
+      "description": "Base success"
+    },
+    "palette.success.s600": {
+      "type": "color",
+      "value": "#16a34a",
+      "description": "Strong success"
+    },
+    "palette.success.s700": {
+      "type": "color",
+      "value": "#15803d",
+      "description": "Dark success"
+    },
+    "palette.warning.s50": {
+      "type": "color",
+      "value": "#fffbeb",
+      "description": "Lightest warning"
+    },
+    "palette.warning.s500": {
+      "type": "color",
+      "value": "#f59e0b",
+      "description": "Base warning"
+    },
+    "palette.warning.s600": {
+      "type": "color",
+      "value": "#d97706",
+      "description": "Strong warning"
+    },
+    "palette.warning.s700": {
+      "type": "color",
+      "value": "#b45309",
+      "description": "Dark warning"
+    },
+    "palette.error.s50": {
+      "type": "color",
+      "value": "#fef2f2",
+      "description": "Lightest error"
+    },
+    "palette.error.s500": {
+      "type": "color",
+      "value": "#ef4444",
+      "description": "Base error"
+    },
+    "palette.error.s600": {
+      "type": "color",
+      "value": "#dc2626",
+      "description": "Strong error"
+    },
+    "palette.error.s700": {
+      "type": "color",
+      "value": "#b91c1c",
+      "description": "Dark error"
+    },
+    "palette.info.s50": {
+      "type": "color",
+      "value": "#ecfeff",
+      "description": "Lightest info"
+    },
+    "palette.info.s500": {
+      "type": "color",
+      "value": "#06b6d4",
+      "description": "Base info"
+    },
+    "palette.info.s600": {
+      "type": "color",
+      "value": "#0891b2",
+      "description": "Strong info"
+    },
+    "palette.white": {
+      "type": "color",
+      "value": "#ffffff",
+      "description": "Pure white"
+    },
+    "palette.black": {
+      "type": "color",
+      "value": "#000000",
+      "description": "Pure black"
+    },
+    "scale.space.n0": {
+      "type": "spacing",
+      "value": "0px",
+      "description": "No spacing"
+    },
+    "scale.space.n1": {
+      "type": "spacing",
+      "value": "4px",
+      "description": "4px — base unit"
+    },
+    "scale.space.n2": {
+      "type": "spacing",
+      "value": "8px",
+      "description": "8px — primary step"
+    },
+    "scale.space.n3": {
+      "type": "spacing",
+      "value": "12px",
+      "description": "12px"
+    },
+    "scale.space.n4": {
+      "type": "spacing",
+      "value": "16px",
+      "description": "16px — standard"
+    },
+    "scale.space.n5": {
+      "type": "spacing",
+      "value": "20px",
+      "description": "20px"
+    },
+    "scale.space.n6": {
+      "type": "spacing",
+      "value": "24px",
+      "description": "24px — gutter"
+    },
+    "scale.space.n8": {
+      "type": "spacing",
+      "value": "32px",
+      "description": "32px"
+    },
+    "scale.space.n10": {
+      "type": "spacing",
+      "value": "40px",
+      "description": "40px"
+    },
+    "scale.space.n12": {
+      "type": "spacing",
+      "value": "48px",
+      "description": "48px — section"
+    },
+    "scale.space.n16": {
+      "type": "spacing",
+      "value": "64px",
+      "description": "64px"
+    },
+    "scale.space.n20": {
+      "type": "spacing",
+      "value": "80px",
+      "description": "80px — large section"
+    },
+    "scale.space.n24": {
+      "type": "spacing",
+      "value": "96px",
+      "description": "96px"
+    },
+    "scale.space.n32": {
+      "type": "spacing",
+      "value": "128px",
+      "description": "128px — max section"
+    },
+    "scale.font.xs": {
+      "type": "typography",
+      "value": "12px",
+      "description": "Extra small / captions"
+    },
+    "scale.font.sm": {
+      "type": "typography",
+      "value": "14px",
+      "description": "Small / labels"
+    },
+    "scale.font.base": {
+      "type": "typography",
+      "value": "16px",
+      "description": "Base body text"
+    },
+    "scale.font.lg": {
+      "type": "typography",
+      "value": "18px",
+      "description": "Large body"
+    },
+    "scale.font.xl": {
+      "type": "typography",
+      "value": "20px",
+      "description": "H5 / small heading"
+    },
+    "scale.font.x2l": {
+      "type": "typography",
+      "value": "24px",
+      "description": "H4"
+    },
+    "scale.font.x3l": {
+      "type": "typography",
+      "value": "30px",
+      "description": "H3"
+    },
+    "scale.font.x4l": {
+      "type": "typography",
+      "value": "36px",
+      "description": "H2"
+    },
+    "scale.font.x5l": {
+      "type": "typography",
+      "value": "48px",
+      "description": "H1"
+    },
+    "scale.font.x6l": {
+      "type": "typography",
+      "value": "60px",
+      "description": "Display"
+    },
+    "scale.font.x7l": {
+      "type": "typography",
+      "value": "72px",
+      "description": "Hero display"
+    },
+    "scale.weight.regular": {
+      "type": "typography",
+      "value": "400",
+      "description": "Regular weight"
+    },
+    "scale.weight.medium": {
+      "type": "typography",
+      "value": "500",
+      "description": "Medium weight"
+    },
+    "scale.weight.semibold": {
+      "type": "typography",
+      "value": "600",
+      "description": "Semibold weight"
+    },
+    "scale.weight.bold": {
+      "type": "typography",
+      "value": "700",
+      "description": "Bold weight"
+    },
+    "scale.leading.tight": {
+      "type": "typography",
+      "value": "1.15",
+      "description": "Tight — headings"
+    },
+    "scale.leading.snug": {
+      "type": "typography",
+      "value": "1.3",
+      "description": "Snug — subheadings"
+    },
+    "scale.leading.normal": {
+      "type": "typography",
+      "value": "1.5",
+      "description": "Normal — body"
+    },
+    "scale.leading.relaxed": {
+      "type": "typography",
+      "value": "1.625",
+      "description": "Relaxed — small text"
+    },
+    "scale.leading.loose": {
+      "type": "typography",
+      "value": "1.75",
+      "description": "Loose — captions"
+    },
+    "scale.font-family.sans": {
+      "type": "typography",
+      "value": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
+      "description": "Sans-serif stack"
+    },
+    "scale.font-family.mono": {
+      "type": "typography",
+      "value": "'JetBrains Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace",
+      "description": "Monospace stack"
+    },
+    "scale.radius.none": {
+      "type": "radius",
+      "value": "0px",
+      "description": "No radius"
+    },
+    "scale.radius.sm": {
+      "type": "radius",
+      "value": "4px",
+      "description": "Small radius"
+    },
+    "scale.radius.md": {
+      "type": "radius",
+      "value": "6px",
+      "description": "Medium radius"
+    },
+    "scale.radius.lg": {
+      "type": "radius",
+      "value": "8px",
+      "description": "Large radius"
+    },
+    "scale.radius.xl": {
+      "type": "radius",
+      "value": "12px",
+      "description": "Extra large"
+    },
+    "scale.radius.x2l": {
+      "type": "radius",
+      "value": "16px",
+      "description": "Double extra large"
+    },
+    "scale.radius.full": {
+      "type": "radius",
+      "value": "9999px",
+      "description": "Full / pill"
+    },
+    "scale.shadow.sm": {
+      "type": "shadow",
+      "value": {
+        "x": "0px",
+        "y": "1px",
+        "blur": "2px",
+        "spread": "0px",
+        "color": "rgba(0,0,0,0.05)"
+      },
+      "description": "Small shadow"
+    },
+    "scale.shadow.md": {
+      "type": "shadow",
+      "value": {
+        "x": "0px",
+        "y": "2px",
+        "blur": "4px",
+        "spread": "-1px",
+        "color": "rgba(0,0,0,0.1)"
+      },
+      "description": "Medium shadow"
+    },
+    "scale.shadow.lg": {
+      "type": "shadow",
+      "value": {
+        "x": "0px",
+        "y": "4px",
+        "blur": "8px",
+        "spread": "-2px",
+        "color": "rgba(0,0,0,0.1)"
+      },
+      "description": "Large shadow"
+    },
+    "scale.shadow.xl": {
+      "type": "shadow",
+      "value": {
+        "x": "0px",
+        "y": "8px",
+        "blur": "16px",
+        "spread": "-4px",
+        "color": "rgba(0,0,0,0.1)"
+      },
+      "description": "Extra large shadow"
+    },
+    "scale.shadow.none": {
+      "type": "shadow",
+      "value": "none",
+      "description": "No shadow"
+    },
+    "scale.border.n0": {
+      "type": "border",
+      "value": "0px",
+      "description": "No border"
+    },
+    "scale.border.n1": {
+      "type": "border",
+      "value": "1px",
+      "description": "Default border"
+    },
+    "scale.border.n2": {
+      "type": "border",
+      "value": "2px",
+      "description": "Emphasis border"
+    },
+    "scale.border.n4": {
+      "type": "border",
+      "value": "4px",
+      "description": "Thick border"
+    },
+    "scale.z.base": {
+      "type": "z-index",
+      "value": "0",
+      "description": "Base layer"
+    },
+    "scale.z.raised": {
+      "type": "z-index",
+      "value": "10",
+      "description": "Slightly elevated"
+    },
+    "scale.z.sticky": {
+      "type": "z-index",
+      "value": "100",
+      "description": "Sticky elements"
+    },
+    "scale.z.dropdown": {
+      "type": "z-index",
+      "value": "200",
+      "description": "Dropdowns"
+    },
+    "scale.z.overlay": {
+      "type": "z-index",
+      "value": "300",
+      "description": "Overlays"
+    },
+    "scale.z.modal": {
+      "type": "z-index",
+      "value": "400",
+      "description": "Modals"
+    },
+    "scale.z.toast": {
+      "type": "z-index",
+      "value": "500",
+      "description": "Toast notifications"
+    },
+    "scale.z.tooltip": {
+      "type": "z-index",
+      "value": "600",
+      "description": "Tooltips (topmost)"
+    },
+    "scale.duration.instant": {
+      "type": "motion",
+      "value": "100ms",
+      "description": "Instant feedback"
+    },
+    "scale.duration.fast": {
+      "type": "motion",
+      "value": "150ms",
+      "description": "Quick transitions"
+    },
+    "scale.duration.normal": {
+      "type": "motion",
+      "value": "250ms",
+      "description": "Standard transitions"
+    },
+    "scale.duration.slow": {
+      "type": "motion",
+      "value": "350ms",
+      "description": "Deliberate transitions"
+    },
+    "scale.duration.slower": {
+      "type": "motion",
+      "value": "500ms",
+      "description": "Emphasis transitions"
+    },
+    "scale.duration.slowest": {
+      "type": "motion",
+      "value": "700ms",
+      "description": "Dramatic reveals"
+    },
+    "scale.easing.ease-out": {
+      "type": "motion",
+      "value": "cubic-bezier(0.33, 1, 0.68, 1)",
+      "description": "Decelerate — entrance"
+    },
+    "scale.easing.ease-in": {
+      "type": "motion",
+      "value": "cubic-bezier(0.32, 0, 0.67, 0)",
+      "description": "Accelerate — exit"
+    },
+    "scale.easing.ease-in-out": {
+      "type": "motion",
+      "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+      "description": "Standard — on-screen"
+    },
+    "scale.easing.linear": {
+      "type": "motion",
+      "value": "linear",
+      "description": "Linear — spinners, progress"
+    },
+    "scale.easing.spring": {
+      "type": "motion",
+      "value": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+      "description": "Spring overshoot — playful"
+    },
+    "scale.easing.emphasized": {
+      "type": "motion",
+      "value": "cubic-bezier(0.05, 0.7, 0.1, 1)",
+      "description": "Emphasized decelerate — attention"
+    },
+
+    "scale.opacity.s0": {
+      "type": "color",
+      "value": "0",
+      "description": "Fully transparent"
+    },
+    "scale.opacity.s5": {
+      "type": "color",
+      "value": "0.05",
+      "description": "Barely visible — overlay hints"
+    },
+    "scale.opacity.s10": {
+      "type": "color",
+      "value": "0.1",
+      "description": "Subtle — hover overlays, disabled patterns"
+    },
+    "scale.opacity.s20": {
+      "type": "color",
+      "value": "0.2",
+      "description": "Light — secondary overlays"
+    },
+    "scale.opacity.s40": {
+      "type": "color",
+      "value": "0.4",
+      "description": "Medium — modal backdrops mobile"
+    },
+    "scale.opacity.s60": {
+      "type": "color",
+      "value": "0.6",
+      "description": "Strong — modal backdrops desktop"
+    },
+    "scale.opacity.s80": {
+      "type": "color",
+      "value": "0.8",
+      "description": "Heavy — full overlay"
+    },
+    "scale.opacity.s100": {
+      "type": "color",
+      "value": "1",
+      "description": "Fully opaque"
+    },
+
+    "scale.container.xs": {
+      "type": "spacing",
+      "value": "480px",
+      "description": "Narrow — single-column forms, modals"
+    },
+    "scale.container.sm": {
+      "type": "spacing",
+      "value": "640px",
+      "description": "Small — auth cards, narrow content"
+    },
+    "scale.container.md": {
+      "type": "spacing",
+      "value": "768px",
+      "description": "Medium — text content (optimal line length)"
+    },
+    "scale.container.lg": {
+      "type": "spacing",
+      "value": "1024px",
+      "description": "Large — standard page content"
+    },
+    "scale.container.xl": {
+      "type": "spacing",
+      "value": "1280px",
+      "description": "XL — wide dashboard layouts"
+    },
+    "scale.container.xxl": {
+      "type": "spacing",
+      "value": "1440px",
+      "description": "Maximum — widescreen content"
+    },
+    "scale.container.prose": {
+      "type": "spacing",
+      "value": "720px",
+      "description": "Prose/reading — 65ch optimal line length (Bringhurst)"
+    },
+
+    "scale.shadow.xs": {
+      "type": "shadow",
+      "value": {
+        "x": "0px",
+        "y": "1px",
+        "blur": "1px",
+        "spread": "0px",
+        "color": "rgba(0,0,0,0.04)"
+      },
+      "description": "Minimal shadow — subtle card borders"
+    },
+    "scale.shadow.xxl": {
+      "type": "shadow",
+      "value": {
+        "x": "0px",
+        "y": "16px",
+        "blur": "32px",
+        "spread": "-8px",
+        "color": "rgba(0,0,0,0.12)"
+      },
+      "description": "Maximum elevation — floating panels, command palettes"
+    },
+    "scale.shadow.inner": {
+      "type": "shadow",
+      "value": {
+        "x": "inset 0px",
+        "y": "2px",
+        "blur": "4px",
+        "spread": "0px",
+        "color": "rgba(0,0,0,0.06)"
+      },
+      "description": "Inset shadow — pressed states, input fields (Practical UI)"
+    },
+
+    "scale.leading.none": {
+      "type": "typography",
+      "value": "1",
+      "description": "No leading — single line display text"
+    },
+    "scale.leading.x-tight": {
+      "type": "typography",
+      "value": "1.1",
+      "description": "Extra tight — large display headings (Bringhurst: heading at extreme scale)"
+    },
+
+    "scale.duration.x-fast": {
+      "type": "motion",
+      "value": "75ms",
+      "description": "Micro — tooltip show, hover highlight (Val Head: perceptual instant)"
+    },
+    "scale.duration.page": {
+      "type": "motion",
+      "value": "600ms",
+      "description": "Page — full page transitions (Designing Interface Animation Ch.5)"
+    }
+  }
+}

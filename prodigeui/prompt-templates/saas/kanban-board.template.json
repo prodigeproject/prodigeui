@@ -1,0 +1,51 @@
+{
+  "name": "saas-kanban-board",
+  "useCase": "saas",
+  "context": "Design a project management Kanban board interface for teams tracking work items across workflow stages. The audience is project managers and developers who need drag-and-drop task organization, status visibility, and quick task creation. Target platforms: desktop (primary) and tablet.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json scale ratio for card titles and metadata",
+    "Apply color.rules.json semantic roles for column status indicators",
+    "Use layout.rules.json grid system for column distribution",
+    "Drag-and-drop interactions must provide ARIA live region announcements",
+    "All interactive elements must meet WCAG 2.1 AA keyboard operability",
+    "Column containers must use proper list semantics (role=list, role=listitem)",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Component composition spec with token references, drag interaction states, and responsive layout",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens from Token_System",
+      "Column headers use defined heading scale from typography.rules.json",
+      "Card components document all interaction states including drag",
+      "Layout adapts from multi-column to stacked on smaller viewports",
+      "No raw/hardcoded visual values present in output"
+    ],
+    "accessibilityRequirements": [
+      "Drag-and-drop has keyboard alternative (select + move commands)",
+      "ARIA live regions announce card movement between columns",
+      "Focus management returns to logical position after card move",
+      "All text meets 4.5:1 contrast ratio against card background",
+      "Column count and card count announced to screen readers"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Kanban column with task cards using token-based styling",
+      "output": "Organism: KanbanColumn\n  Layout: flex(direction: column, gap: var(--space-sm))\n  bg: var(--color-surface-secondary)\n  radius: var(--radius-md)\n  padding: var(--space-md)\n  Children:\n    - Molecule: ColumnHeader\n        Content:\n          - Atom: Text(role=heading, token=typography.heading.sm, color=color.text.primary)\n          - Atom: Badge(count, variant=neutral)\n    - Molecule: TaskCard (role=listitem, draggable=true)\n        bg: var(--color-surface-primary)\n        border: var(--border-default)\n        radius: var(--radius-md)\n        padding: var(--space-md)\n        States: default, hover(shadow: var(--shadow-sm)), dragging(opacity: 0.6, shadow: var(--shadow-lg)), drop-target(border-color: var(--color-primary))",
+      "acceptanceCriteria": [
+        "Uses only semantic token references",
+        "Drag states are explicitly defined",
+        "Follows atomic design hierarchy",
+        "Keyboard interaction pattern documented"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": ["color.surface.primary", "color.surface.secondary", "color.text.primary", "color.primary", "space.sm", "space.md", "radius.md", "shadow.sm", "shadow.lg", "typography.heading.sm"],
+    "components": ["Card", "Badge", "Button", "Text", "Sidebar"],
+    "designRules": ["typography.rules.json", "color.rules.json", "layout.rules.json"],
+    "theme": "light",
+    "motionPresets": ["state-transition", "drag-drop"]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "ecommerce-cart-page",
+  "useCase": "ecommerce",
+  "context": "Design a shopping cart page displaying line items, quantities, pricing summary, and checkout actions. The audience is shoppers reviewing their selections before purchase. Target platforms: desktop and mobile responsive. Must handle empty cart state, item removal, quantity updates, and promo code input.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for price columns and summary totals",
+    "Apply color.rules.json for discount highlights and removal actions",
+    "Use layout.rules.json for cart table on desktop, card list on mobile",
+    "Quantity controls must use input with increment/decrement buttons",
+    "Remove item action must use confirmation or undo pattern",
+    "Empty cart state must use illustration asset and clear CTA",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Page layout spec with line item table, summary panel, and empty state",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens",
+      "Line item layout handles variable product name lengths",
+      "Price summary uses consistent alignment and typography",
+      "Empty state provides clear next-step action",
+      "No raw/hardcoded visual values present"
+    ],
+    "accessibilityRequirements": [
+      "Cart item count announced in page title or heading",
+      "Quantity changes reflect updated totals via aria-live",
+      "Remove buttons have accessible names including product name",
+      "Price summary table uses proper header associations",
+      "Promo code input has associated label and error feedback"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Cart line item row with quantity control and pricing",
+      "output": "Molecule: CartLineItem\n  Layout: grid(columns: [80px 1fr auto auto auto], gap: var(--space-md), align: center)\n  border-bottom: var(--border-subtle)\n  padding: var(--space-md) 0\n  Children:\n    - Atom: Image(size=80px, radius=var(--radius-sm), alt=product-name)\n    - Molecule: ProductMeta\n        - Atom: Text(token=typography.body.md, color=color.text.primary)\n        - Atom: Text(token=typography.body.sm, color=color.text.secondary)\n    - Molecule: QuantityControl(min=1, max=99)\n        - Atom: Button(icon=minus, variant=ghost, size=sm)\n        - Atom: Input(type=number, width=48px, text-align=center)\n        - Atom: Button(icon=plus, variant=ghost, size=sm)\n    - Atom: Text(token=typography.body.md, weight=strong, color=color.text.primary)\n    - Atom: Button(icon=trash, variant=ghost, color=color.feedback.error, aria-label='Remove [product]')",
+      "acceptanceCriteria": [
+        "Uses semantic tokens for all values",
+        "Grid adapts to card layout on mobile",
+        "Quantity controls are keyboard accessible",
+        "Remove button has descriptive aria-label"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": ["color.surface.primary", "color.text.primary", "color.text.secondary", "color.feedback.error", "space.md", "radius.sm", "border.subtle", "typography.body.md", "typography.body.sm"],
+    "components": ["Card", "Button", "Input", "Text", "Table"],
+    "designRules": ["typography.rules.json", "color.rules.json", "layout.rules.json"],
+    "theme": "light",
+    "motionPresets": ["state-transition", "enter-exit"],
+    "assets": ["illustration-empty-state"]
+  }
+}

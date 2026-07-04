@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HavenCraft — Minimalist Home Decor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #111;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.25rem 3rem;
+            background: rgba(17, 17, 17, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .nav-logo {
+            font-size: 1.5rem; font-weight: 700;
+            background: linear-gradient(135deg, #2dd4bf, #6ee7b7, #a78bfa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; color: #aaa; transition: color 0.3s; }
+        .nav-links a:hover { color: #2dd4bf; }
+        .nav-cta {
+            padding: 0.6rem 1.5rem; border-radius: 2rem;
+            background: linear-gradient(135deg, #2dd4bf, #10b981);
+            color: #111; font-weight: 600; font-size: 0.85rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .nav-cta:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(45,212,191,0.3); }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+            align-items: center; padding: 8rem 4rem 4rem;
+            background: linear-gradient(160deg, #111 0%, #1a1a2e 50%, #16213e 100%);
+        }
+        .hero-text h1 {
+            font-size: 4.5rem; font-weight: 800; line-height: 1.05;
+            background: linear-gradient(135deg, #2dd4bf, #a78bfa, #6ee7b7);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        .hero-text p {
+            font-size: 1.2rem; color: #999; line-height: 1.7; max-width: 480px;
+            margin-bottom: 2.5rem;
+        }
+        .hero-buttons { display: flex; gap: 1rem; }
+        .btn-primary {
+            padding: 1rem 2.5rem; border-radius: 2rem;
+            background: linear-gradient(135deg, #2dd4bf, #10b981);
+            color: #111; font-weight: 700; font-size: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 12px 40px rgba(45,212,191,0.35); }
+        .btn-secondary {
+            padding: 1rem 2.5rem; border-radius: 2rem;
+            border: 2px solid rgba(167,139,250,0.5); color: #a78bfa;
+            font-weight: 600; font-size: 1rem;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .btn-secondary:hover { transform: scale(1.05); background: rgba(167,139,250,0.1); }
+        .hero-image {
+            display: flex; justify-content: center; align-items: center;
+        }
+        .hero-image img {
+            width: 100%; max-width: 500px; height: 620px; object-fit: cover;
+            border-radius: 2rem;
+            box-shadow: 0 25px 80px rgba(45,212,191,0.15), 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Marquee */
+        .marquee {
+            padding: 1.25rem 0; overflow: hidden; white-space: nowrap;
+            background: linear-gradient(90deg, #1a1a2e, #16213e, #1a1a2e);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .marquee-inner {
+            display: inline-block; animation: marquee 20s linear infinite;
+        }
+        .marquee-inner span {
+            font-size: 0.95rem; font-weight: 500; color: #6ee7b7; margin-right: 3rem;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Section common */
+        section { padding: 6rem 4rem; }
+        .section-title {
+            font-size: 2.8rem; font-weight: 800; text-align: center; margin-bottom: 1rem;
+            background: linear-gradient(135deg, #2dd4bf, #a78bfa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle {
+            text-align: center; color: #888; font-size: 1.1rem; margin-bottom: 3.5rem;
+        }
+
+        /* Products */
+        .products-grid {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem;
+        }
+        .product-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1.5rem; overflow: hidden;
+            transition: transform 0.4s, box-shadow 0.4s;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(45,212,191,0.2), 0 8px 32px rgba(0,0,0,0.5);
+        }
+        .product-card img { width: 100%; height: 220px; object-fit: cover; }
+        .product-info { padding: 1.25rem; }
+        .product-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: #f0f0f0; }
+        .product-info .price {
+            font-size: 1.1rem; font-weight: 700;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* Room Inspiration */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+        }
+        .room-card {
+            position: relative; border-radius: 1.5rem; overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .room-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(45,212,191,0.15);
+        }
+        .room-card img, .room-card video {
+            width: 100%; height: 300px; object-fit: cover; display: block;
+        }
+        .room-card.tall img, .room-card.tall video { height: 100%; }
+        .room-card .room-label {
+            position: absolute; bottom: 1rem; left: 1rem;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
+            padding: 0.5rem 1rem; border-radius: 2rem;
+            font-size: 0.85rem; font-weight: 600; color: #6ee7b7;
+        }
+        .rooms-grid .room-card:nth-child(2) {
+            grid-row: span 2;
+        }
+
+        /* Quote */
+        .quote-section {
+            text-align: center;
+            background: linear-gradient(160deg, #1a1a2e, #111, #16213e);
+            padding: 6rem 4rem;
+        }
+        .quote-avatar {
+            width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 2rem;
+            border: 3px solid #2dd4bf;
+            box-shadow: 0 8px 30px rgba(45,212,191,0.2);
+        }
+        .quote-text {
+            font-size: 1.6rem; font-weight: 300; font-style: italic;
+            color: #ccc; max-width: 700px; margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+        .quote-author {
+            font-size: 1rem; font-weight: 600;
+            background: linear-gradient(135deg, #2dd4bf, #a78bfa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 2rem; max-width: 700px; margin: 0 auto;
+            padding: 4rem 3rem;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+        }
+        .newsletter h2 {
+            font-size: 2rem; font-weight: 700; margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #6ee7b7, #2dd4bf);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .newsletter p { color: #888; margin-bottom: 2rem; }
+        .newsletter-form { display: flex; gap: 0.75rem; justify-content: center; }
+        .newsletter-form input {
+            padding: 0.9rem 1.5rem; border-radius: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05); color: #fff;
+            font-size: 0.95rem; width: 300px; outline: none;
+            transition: border-color 0.3s;
+        }
+        .newsletter-form input:focus { border-color: #2dd4bf; }
+        .newsletter-form button {
+            padding: 0.9rem 2rem; border-radius: 2rem; border: none;
+            background: linear-gradient(135deg, #2dd4bf, #10b981);
+            color: #111; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .newsletter-form button:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(45,212,191,0.3); }
+
+        /* Footer */
+        footer {
+            padding: 4rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem; border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .footer-brand .nav-logo { margin-bottom: 1rem; display: inline-block; }
+        .footer-brand p { color: #666; font-size: 0.9rem; line-height: 1.6; max-width: 280px; }
+        .footer-col h4 { font-size: 0.85rem; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+        .footer-col a { display: block; font-size: 0.9rem; color: #666; margin-bottom: 0.6rem; transition: color 0.3s; }
+        .footer-col a:hover { color: #2dd4bf; }
+        .footer-bottom {
+            padding: 2rem 4rem; text-align: center; color: #555; font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(3, 1fr); }
+            .rooms-grid { grid-template-columns: 1fr 1fr; }
+            .rooms-grid .room-card:nth-child(2) { grid-row: span 1; }
+        }
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding: 7rem 2rem 3rem; }
+            .hero-text h1 { font-size: 3rem; }
+            .hero-text p { margin: 0 auto 2rem; }
+            .hero-buttons { justify-content: center; }
+            .hero-image { margin-top: 3rem; }
+            .hero-image img { max-width: 350px; height: 450px; }
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            section { padding: 4rem 1.5rem; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .rooms-grid { grid-template-columns: 1fr; }
+            footer { grid-template-columns: 1fr 1fr; }
+            .newsletter-form { flex-direction: column; align-items: center; }
+            .newsletter-form input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">HavenCraft</div>
+        <div class="nav-links">
+            <a href="#">Shop</a>
+            <a href="#">Rooms</a>
+            <a href="#">About</a>
+            <a href="#">Journal</a>
+        </div>
+        <a href="#" class="nav-cta">Shop Now</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-text fade-in">
+            <h1>Crafted for Living.</h1>
+            <p>Timeless home pieces designed with intention. Each object tells a story of craft, material honesty, and quiet beauty — made to be lived with, not just looked at.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Shop Collection</a>
+                <a href="#" class="btn-secondary">Our Process</a>
+            </div>
+        </div>
+        <div class="hero-image fade-in">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae5b4458?w=900&h=1200&fit=crop" alt="HavenCraft minimalist interior">
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-inner">
+            <span>Handmade Ceramics •</span>
+            <span>Organic Linen •</span>
+            <span>Sustainably Sourced •</span>
+            <span>Scandinavian Design •</span>
+            <span>Small-Batch Production •</span>
+            <span>Handmade Ceramics •</span>
+            <span>Organic Linen •</span>
+            <span>Sustainably Sourced •</span>
+            <span>Scandinavian Design •</span>
+            <span>Small-Batch Production •</span>
+        </div>
+    </div>
+
+    <!-- Products -->
+    <section>
+        <h2 class="section-title fade-in">Our Collection</h2>
+        <p class="section-subtitle fade-in">Thoughtfully designed pieces for every room</p>
+        <div class="products-grid">
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=600&h=750&fit=crop" alt="Ceramic Vase">
+                <div class="product-info">
+                    <h3>Ceramic Vase</h3>
+                    <span class="price">$89</span>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=750&fit=crop" alt="Linen Cushion">
+                <div class="product-info">
+                    <h3>Linen Cushion</h3>
+                    <span class="price">$45</span>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=600&h=750&fit=crop" alt="Wooden Shelf">
+                <div class="product-info">
+                    <h3>Wooden Shelf</h3>
+                    <span class="price">$179</span>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1507473885765-e6ed057ab852?w=600&h=750&fit=crop" alt="Table Lamp">
+                <div class="product-info">
+                    <h3>Table Lamp</h3>
+                    <span class="price">$129</span>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&h=750&fit=crop" alt="Woven Basket">
+                <div class="product-info">
+                    <h3>Woven Basket</h3>
+                    <span class="price">$65</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room Inspiration -->
+    <section>
+        <h2 class="section-title fade-in">Room Inspiration</h2>
+        <p class="section-subtitle fade-in">Discover how our pieces come together in real spaces</p>
+        <div class="rooms-grid">
+            <div class="room-card fade-in">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop" alt="Bedroom inspiration">
+                <span class="room-label">Bedroom</span>
+            </div>
+            <div class="room-card tall fade-in">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=1000&fit=crop" alt="Kitchen inspiration">
+                <span class="room-label">Kitchen</span>
+            </div>
+            <div class="room-card fade-in">
+                <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop" alt="Bathroom inspiration">
+                <span class="room-label">Bathroom</span>
+            </div>
+            <div class="room-card fade-in">
+                <video src="https://assets.mixkit.co/videos/4815/4815-720.mp4" autoplay muted loop playsinline></video>
+                <span class="room-label">Living Room</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+        <div class="fade-in">
+            <img class="quote-avatar" src="https://i.pravatar.cc/128?img=47" alt="Elara Voss">
+            <p class="quote-text">"We believe a home should feel like a deep breath — calm, honest, and entirely yours."</p>
+            <p class="quote-author">— Elara Voss, Founder</p>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section>
+        <div class="newsletter fade-in">
+            <h2>Stay Inspired</h2>
+            <p>Join our community for new arrivals, styling tips, and exclusive offers.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault();">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">
+            <div class="nav-logo">HavenCraft</div>
+            <p>Minimalist home decor crafted with intention. Sustainably sourced, thoughtfully designed.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <a href="#">New Arrivals</a>
+            <a href="#">Best Sellers</a>
+            <a href="#">Ceramics</a>
+            <a href="#">Textiles</a>
+            <a href="#">Lighting</a>
+        </div>
+        <div class="footer-col">
+            <h4>About</h4>
+            <a href="#">Our Story</a>
+            <a href="#">Materials</a>
+            <a href="#">Sustainability</a>
+            <a href="#">Press</a>
+        </div>
+        <div class="footer-col">
+            <h4>Support</h4>
+            <a href="#">Contact</a>
+            <a href="#">Shipping</a>
+            <a href="#">Returns</a>
+            <a href="#">FAQ</a>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        &copy; 2024 HavenCraft. All rights reserved.
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Basic IntersectionObserver fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "structure": {
+    "visualHierarchy": ["size", "weight", "color", "position"],
+    "maxNavItemsPerLevel": {
+      "unchunked": 4,
+      "chunked": 7,
+      "source": "Weinschenk Ch.20 corrects Miller's 7±2 to 4 for active working memory"
+    },
+    "workingMemoryLimit": 4,
+    "workingMemoryLimitNote": "Chunking extends effective capacity to 7, but unchunked items max at 4 (Weinschenk, 100 Things Every Designer Needs to Know About People)",
+    "recommendedNavItems": 5,
+    "maxNavigationDepth": 3,
+    "maxDecisionsPerScreen": 5,
+    "touchTarget": { "mobile": "44px", "desktop": "32px" },
+    "progressiveDisclosure": true,
+    "spacingRhythm": "related-tighter-unrelated-wider",
+    "maxPrimaryCtaPerViewport": 1,
+    "contentChunking": { "min": 5, "max": 7 },
+    "formFieldGrouping": { "maxPerGroup": 5 },
+    "criticalContentPlacement": "first-and-last-positions",
+    "interfaceNeedsHierarchy": {
+      "levels": ["functional", "reliable", "usable", "pleasurable"],
+      "source": "Aaron Walter - Designing for Emotion: interface must be functional and reliable before it can be pleasurable"
+    },
+    "simplicityStrategies": {
+      "order": ["remove", "organize", "hide", "displace"],
+      "acronym": "ROHD",
+      "source": "Giles Colborne - Simple and Usable: four strategies for simplicity applied in priority order"
+    },
+    "groupingPreference": {
+      "method": "proximity-over-borders",
+      "source": "Gestalt principle of proximity is stronger than enclosure; whitespace grouping preferred over boxes/dividers (Universal Principles of Design, Lidwell)"
+    }
+  }
+}

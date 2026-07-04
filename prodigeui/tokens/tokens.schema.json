@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://prodigeui.dev/schemas/tokens.schema.json",
+  "title": "ProdigeUI Token File",
+  "description": "Schema for ProdigeUI token files. Defines tokens across three layers: primitive, semantic, and component.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "layer",
+    "tokens"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "description": "Token schema version number.",
+      "minimum": 1
+    },
+    "layer": {
+      "type": "string",
+      "enum": [
+        "primitive",
+        "semantic",
+        "component"
+      ],
+      "description": "Token layer: primitive (concrete values), semantic (role referencing primitives), or component (referencing semantics)."
+    },
+    "tokens": {
+      "type": "object",
+      "description": "Collection of tokens. Key is the token name in dot-notation (e.g., color.surface.primary).",
+      "additionalProperties": {
+        "$ref": "#/definitions/tokenEntry"
+      },
+      "minProperties": 1
+    }
+  },
+  "definitions": {
+    "tokenEntry": {
+      "type": "object",
+      "description": "Definition of a single token.",
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "color",
+            "typography",
+            "spacing",
+            "radius",
+            "shadow",
+            "border",
+            "z-index",
+            "motion"
+          ],
+          "description": "Token type/category."
+        },
+        "ref": {
+          "type": "string",
+          "description": "Reference to another token (dot-notation). Required for semantic and component layer tokens.",
+          "pattern": "^[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)*$"
+        },
+        "value": {
+          "description": "Concrete token value. Required for primitive layer tokens.",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "description": "Composite value (e.g., shadow, typography shorthand)."
+            }
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the token role/function."
+        }
+      },
+      "if": {
+        "description": "Invariant: semantic/component tokens MUST have ref; primitive tokens MUST have value."
+      },
+      "oneOf": [
+        {
+          "description": "Token with reference (semantic/component layer) - must have ref, must not have value",
+          "required": [
+            "type",
+            "ref"
+          ],
+          "not": {
+            "required": [
+              "value"
+            ]
+          }
+        },
+        {
+          "description": "Token with concrete value (primitive layer) - must have value, must not have ref",
+          "required": [
+            "type",
+            "value"
+          ],
+          "not": {
+            "required": [
+              "ref"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

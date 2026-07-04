@@ -1,0 +1,77 @@
+{
+  "name": "portfolio-showcase",
+  "useCase": "portfolio",
+  "context": "Design a portfolio showcase page for creative professionals (designers, developers, photographers). The audience is potential clients and recruiters viewing project work. Target platforms: desktop (primary) and mobile responsive. The layout must emphasize visual work with minimal UI chrome, smooth transitions between project previews, and elegant typography.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Typography must follow typography.rules.json with emphasis on display/heading scale for project titles",
+    "Color usage minimal and restrained per color.rules.json to let portfolio content shine",
+    "Layout must use full-width or wide-grid options from layout.rules.json",
+    "Motion presets must enhance browsing without distracting from content",
+    "Assets (project thumbnails) referenced via Design_Asset_Package IDs",
+    "Comply with Quality_Gate: visual hierarchy guides eye to work samples, proper semantic structure"
+  ],
+  "outputCriteria": {
+    "format": "Page layout spec with project grid, project detail overlay, and navigation using token references",
+    "qualityChecks": [
+      "Project grid uses consistent spacing from Token_System",
+      "Typography scale creates clear hierarchy between project titles and metadata",
+      "Transitions between states use Motion_Library presets",
+      "Color palette is restrained, using surface and text tokens primarily",
+      "No raw visual values in the output"
+    ],
+    "accessibilityRequirements": [
+      "All project images have descriptive alt text summarizing the work",
+      "Navigation between projects is keyboard accessible",
+      "Modal/overlay project details can be dismissed with Escape key",
+      "Focus is trapped within open overlay and restored on close",
+      "Sufficient contrast maintained even with minimal color palette"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Project showcase grid with hover reveal and modal detail view",
+      "output": "Organism: ProjectGrid\n  Layout: grid(columns: 2 @tablet, 3 @desktop, 1 @mobile, gap: var(--space-lg))\n  Children:\n    - Molecule: ProjectCard\n        position: relative\n        radius: var(--radius-md)\n        overflow: hidden\n        Children:\n          - Atom: Image(aspectRatio=16/9, alt='{project.title} - {project.category}')\n          - Container: Overlay(opacity: 0 -> 1 on hover)\n              bg: var(--color-surface-overlay)\n              padding: var(--space-md)\n              motion: hover-focus.fade-in\n              - Atom: Text(token=typography.heading.md, color=color.text-on-dark)\n              - Atom: Text(token=typography.body.sm, color=color.text-on-dark-secondary)\n        States:\n          hover: overlay visible, scale(1.02) via state-transition\n          focus-within: outline(var(--color-focus-ring)), overlay visible\n        Interaction: click/Enter opens ProjectDetailModal",
+      "acceptanceCriteria": [
+        "Grid adapts responsively across breakpoints",
+        "Hover and focus states both reveal project info (not hover-only)",
+        "All motion uses declared Motion_Library presets",
+        "Image alt text includes project context",
+        "Token references used for all spacing, color, and typography"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.surface.primary",
+      "color.surface.overlay",
+      "color.text.primary",
+      "color.text-on-dark",
+      "space.md",
+      "space.lg",
+      "radius.md",
+      "typography.heading.md",
+      "typography.body.sm",
+      "typography.display.lg"
+    ],
+    "components": [
+      "Card",
+      "Image",
+      "Text",
+      "Modal",
+      "Button"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "dark",
+    "motionPresets": [
+      "hover-focus",
+      "state-transition",
+      "enter-exit"
+    ]
+  }
+}

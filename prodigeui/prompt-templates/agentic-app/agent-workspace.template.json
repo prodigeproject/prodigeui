@@ -1,0 +1,87 @@
+{
+  "name": "agentic-app-agent-workspace",
+  "useCase": "agentic-app",
+  "context": "Design a multi-agent workspace interface where users orchestrate multiple AI agents working in parallel across different tasks. The audience is developers and operations teams managing complex AI workflows with code generation, data analysis, and research agents running simultaneously. Target platforms: desktop only (high information density). The interface must show agent status, task queues, output panels, and inter-agent communication without overwhelming the user.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json monospace pairing for agent output and code panels",
+    "Apply color.rules.json status tokens for agent states (running, idle, error, completed)",
+    "Layout must support resizable panel grid using layout.rules.json panel constraints",
+    "Agent status indicators must use both color and icon (not color alone)",
+    "Panel headers must have consistent structure with agent name, status, and actions",
+    "Streaming output must use Motion_Library enter-exit for new content appearance",
+    "Comply with Quality_Gate: clear agent identity, no ambiguous states, proper density management"
+  ],
+  "outputCriteria": {
+    "format": "Multi-panel workspace spec with agent cards, resizable panels, status system, output streams, and task queue using token references",
+    "qualityChecks": [
+      "Agent states visually distinct via combined icon+color token system",
+      "Panel resize handles visible and use proper cursor tokens",
+      "Output streams use monospace tokens with proper line-height for readability",
+      "Task queue shows priority and assignment with consistent card styling",
+      "Panel layout persists user arrangement with defined min/max widths"
+    ],
+    "accessibilityRequirements": [
+      "Agent status changes announced via aria-live regions",
+      "Panels labeled with aria-label indicating agent name and function",
+      "Resize handles keyboard-operable with arrow key increment",
+      "Output streams contained in scrollable regions with proper roles",
+      "Agent switching possible via keyboard shortcut with visible indicator"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Three-panel workspace with code agent, research agent, and shared task queue",
+      "output": "Page: AgentWorkspace\n  Layout: grid(columns: 1fr var(--panel-divider) 1fr var(--panel-divider) 320px, rows: 48px 1fr)\n  bg: var(--color-surface-secondary)\n  Children:\n    - Organism: WorkspaceToolbar(grid-column: 1/-1)\n        bg: var(--color-surface-primary)\n        border-bottom: var(--border-default)\n        - Molecule: AgentSelector(tabs)\n            - Atom: AgentTab(name='Code Agent', status=running, icon=code, color=color.feedback.success)\n            - Atom: AgentTab(name='Research Agent', status=idle, icon=search, color=color.text.tertiary)\n        - Atom: Button(variant=ghost, icon=plus, label='Add agent')\n    - Organism: AgentPanel(panel=code-agent)\n        bg: var(--color-surface-primary)\n        border: var(--border-default)\n        radius: var(--radius-md)\n        - Molecule: PanelHeader(padding=space.sm)\n            - Atom: StatusDot(color=color.feedback.success)\n            - Atom: Text(token=typography.body.sm, text='Code Agent')\n            - Atom: Badge(text='Running', bg=color.feedback.success-subtle)\n        - Molecule: OutputStream(flex=1, overflow=auto, font=typography.mono.sm)\n            bg: var(--color-surface-code)\n            padding: var(--space-md)\n            motion: enter-exit.fade-in(per-line)\n    - Atom: PanelDivider(cursor=col-resize, width=4px, bg=color.border.subtle)\n    - Organism: TaskQueue(panel=queue)\n        - Atom: Heading(level=h3, token=typography.heading.xs, text='Task Queue')\n        - Molecule: TaskCard(priority=high)\n            border-left: 3px solid var(--color-feedback-warning)\n            - Atom: Text(token=typography.body.sm, text='Analyze dependencies')\n            - Atom: Badge(text='Code Agent', size=xs)",
+      "acceptanceCriteria": [
+        "Agent states use combined StatusDot+Badge with feedback tokens",
+        "Panel dividers are interactive with proper cursor indication",
+        "Output stream uses code surface token and monospace typography",
+        "Task cards indicate priority via border-left feedback color",
+        "Toolbar agent tabs show both icon and color for state"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.surface.primary",
+      "color.surface.secondary",
+      "color.surface.code",
+      "color.feedback.success",
+      "color.feedback.success-subtle",
+      "color.feedback.error",
+      "color.feedback.warning",
+      "color.text.primary",
+      "color.text.tertiary",
+      "color.border.subtle",
+      "border.default",
+      "space.sm",
+      "space.md",
+      "radius.md",
+      "typography.heading.xs",
+      "typography.body.sm",
+      "typography.mono.sm"
+    ],
+    "components": [
+      "Card",
+      "Button",
+      "Badge",
+      "Text",
+      "Icon",
+      "Tabs",
+      "Divider"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "dark",
+    "motionPresets": [
+      "enter-exit",
+      "state-transition",
+      "loading-shimmer"
+    ]
+  }
+}

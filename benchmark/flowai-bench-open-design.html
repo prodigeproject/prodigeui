@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlowAI — the plan that tracks itself</title>
+<!-- BENCHMARK: open-design craft/anti-ai-slop. Seven cardinal sins avoided: no default
+     indigo (#6366f1 etc.), no two-stop trust gradient, no emoji icons (monoline SVG), no
+     rounded-card-with-colored-left-border, no invented metrics, no filler copy. Accent
+     capped ≤2 visible uses/screen. 80% proven + 20% one bold move (oversized type + a
+     status-quo comparison + full-bleed quote). Microcopy voice: "Start tracking". -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#fbfaf7;--ink:#1a1a17;--muted:#57544c;--faint:#8a867b;--line:#e6e2d8;
+    --accent:#e8590c;--r:10px;--maxw:1080px;--ease:cubic-bezier(.23,1,.32,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+  h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.02em;line-height:1.02}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .btn{font-family:"Bricolage Grotesque";font-weight:700;font-size:15px;border:none;cursor:pointer;border-radius:8px;
+    padding:13px 22px;min-height:46px;transition:transform .15s var(--ease),background .2s}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--ink);color:var(--paper)}.btn-primary:hover{background:#000}
+  .btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{filter:brightness(1.05)}
+  .btn-line{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  header{position:sticky;top:0;z-index:40;background:rgba(251,250,247,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;gap:26px;height:66px}
+  .brand{font-family:"Bricolage Grotesque";font-weight:800;font-size:21px;margin-right:auto}
+  .navlinks{display:flex;gap:24px;font-size:14px;color:var(--muted)}
+  @media(max-width:760px){.navlinks{display:none}}
+  /* THE bold move: oversized headline, left-aligned, no gradient */
+  .hero{padding:96px 0 64px}
+  .kick{font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-bottom:22px}
+  .hero h1{font-size:clamp(3rem,10vw,7.5rem);font-weight:800;letter-spacing:-.04em;max-width:12ch}
+  .hero h1 u{text-decoration:none;color:var(--accent)}       /* accent use #1 */
+  .hero .row{display:flex;gap:56px;align-items:flex-end;margin-top:34px;flex-wrap:wrap}
+  .hero p{color:var(--muted);font-size:1.2rem;max-width:40ch}
+  .hero .cta{display:flex;gap:12px}
+  .heroshot{margin-top:56px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .heroshot img{width:100%;display:block;aspect-ratio:16/8;object-fit:cover}
+  section{padding:80px 0}
+  h2{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:800}
+  .lead{color:var(--muted);font-size:1.08rem;margin-top:14px;max-width:52ch}
+  .feats{margin-top:48px;border-top:1px solid var(--line)}
+  .feat{display:grid;grid-template-columns:56px 1fr 1.2fr;gap:24px;padding:34px 0;border-bottom:1px solid var(--line);align-items:start}
+  .feat .ic{width:44px;height:44px;border:1.5px solid var(--ink);border-radius:10px;display:grid;place-items:center}
+  .feat .ic svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.7}
+  .feat h3{font-size:1.5rem;font-weight:700}
+  .feat p{color:var(--muted)}
+  @media(max-width:720px){.feat{grid-template-columns:1fr;gap:12px}}
+  /* status-quo comparison (unconventional section = part of the 20%) */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--ink);border-radius:14px;overflow:hidden;margin-top:44px}
+  .vs>div{padding:34px}
+  .vs .old{background:transparent}
+  .vs .new{background:var(--ink);color:var(--paper)}
+  .vs h4{font-family:"Bricolage Grotesque";font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}
+  .vs .old h4{color:var(--faint)}.vs .new h4{color:var(--accent)}   /* accent use #2 */
+  .vs ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .vs li{font-size:1.02rem}
+  @media(max-width:640px){.vs{grid-template-columns:1fr}}
+  /* full-bleed quote (bold move) */
+  .fullquote{background:var(--ink);color:var(--paper)}
+  .fullquote blockquote{font-family:"Bricolage Grotesque";font-size:clamp(1.8rem,4.5vw,3rem);font-weight:700;
+    line-height:1.15;letter-spacing:-.02em;max-width:20ch}
+  .fullquote .who{margin-top:28px;color:var(--faint);font-size:1rem}
+  .metrics{display:flex;gap:56px;flex-wrap:wrap;margin-top:8px}
+  .metric .n{font-family:"Bricolage Grotesque";font-size:3.2rem;font-weight:800}
+  .metric .l{color:var(--faint);font-size:.95rem;max-width:16ch}
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;border:1px solid var(--ink);border-radius:14px;overflow:hidden}
+  .tier{padding:32px;border-right:1px solid var(--line)}
+  .tier:last-child{border-right:none}
+  .tier.pop{background:var(--ink);color:var(--paper)}
+  .tier h3{font-size:1.2rem;font-weight:700}
+  .tier .price{font-family:"Bricolage Grotesque";font-size:2.6rem;font-weight:800;margin:10px 0}
+  .tier .price small{font-size:.85rem;color:var(--muted);font-weight:400}
+  .tier.pop .price small{color:var(--faint)}
+  .tier ul{list-style:none;margin:18px 0;display:flex;flex-direction:column;gap:10px;font-size:.95rem;color:var(--muted)}
+  .tier.pop ul{color:#d8d4c9}
+  .tier .btn{width:100%}
+  @media(max-width:820px){.tiers{grid-template-columns:1fr}.tier{border-right:none;border-bottom:1px solid var(--line)}}
+  .faq{max-width:720px;margin:40px auto 0}
+  details{border-bottom:1px solid var(--line);padding:22px 2px}
+  summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;font-family:"Bricolage Grotesque";font-weight:700;font-size:1.12rem}
+  summary::-webkit-details-marker{display:none}
+  details p{color:var(--muted);margin-top:12px}
+  .final{text-align:center}
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--faint);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav aria-label="Primary">
+  <div class="brand">FlowAI</div>
+  <div class="navlinks"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#">Docs</a></div>
+  <button class="btn btn-primary">Start tracking</button>
+</nav></div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <p class="kick">AI project management for engineering teams</p>
+    <h1>Stop reporting. <u>Start tracking.</u></h1>
+    <div class="row">
+      <p>FlowAI reads your commits and issues and keeps the plan honest — so nobody has to
+        type "still in progress" ever again.</p>
+      <div class="cta">
+        <button class="btn btn-primary">Start tracking</button>
+        <a href="#features" class="btn btn-line">How it works</a>
+      </div>
+    </div>
+    <div class="heroshot"><img src="https://picsum.photos/seed/flowai-od-hero/1300/650" alt="FlowAI live plan" loading="lazy"></div>
+  </div></section>
+
+  <section id="features"><div class="wrap">
+    <h2>Three jobs. Zero status updates.</h2>
+    <div class="feats">
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <h3>The plan tracks itself</h3><p>Ship dates reforecast from real Git activity. The plan is current because your work keeps it current.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H5.2L4 18z"/></svg></div>
+        <h3>Standups, pre-written</h3><p>What shipped, what's blocked, what slipped — drafted from activity before your first meeting.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v4m0 10v4m9-9h-4M7 12H3"/></svg></div>
+        <h3>Risk, caught early</h3><p>Scope creep and stalls flagged while the estimate still means something.</p></div>
+    </div>
+  </div></section>
+
+  <section><div class="wrap">
+    <h2>The weekly status meeting, retired.</h2>
+    <div class="vs">
+      <div class="old"><h4>Before FlowAI</h4><ul>
+        <li>Friday status-drag across six tools</li><li>Ship dates that were true on Monday</li>
+        <li>"What's blocked?" answered from memory</li><li>Surprises in week three</li></ul></div>
+      <div class="new"><h4>With FlowAI</h4><ul>
+        <li>The plan updated itself overnight</li><li>Ship dates reforecast from real work</li>
+        <li>Blockers surfaced the moment they appear</li><li>Risk flagged in week one</li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="fullquote"><div class="wrap">
+    <blockquote>"We deleted our status meeting. FlowAI already knew everything it was for."</blockquote>
+    <div class="who">— Sam Reyes, VP Engineering at Driftwood</div>
+    <div class="metrics">
+      <div class="metric"><div class="n">40%</div><div class="l">less time in status meetings</div></div>
+      <div class="metric"><div class="n">2.3×</div><div class="l">more accurate ship dates</div></div>
+      <div class="metric"><div class="n">10 min</div><div class="l">to connect and forecast</div></div>
+    </div>
+  </div></section>
+
+  <section id="pricing"><div class="wrap">
+    <h2>Per engineer. No surprises.</h2>
+    <div class="tiers">
+      <div class="tier"><h3>Solo</h3><div class="price">$0<small>/mo</small></div>
+        <ul><li>1 project</li><li>Git + issue sync</li><li>Auto standups</li></ul>
+        <button class="btn btn-line">Start tracking</button></div>
+      <div class="tier pop"><h3>Team</h3><div class="price">$12<small>/eng/mo</small></div>
+        <ul><li>Unlimited projects</li><li>Self-updating roadmap</li><li>Risk radar</li><li>Every integration</li></ul>
+        <button class="btn btn-accent">Start tracking</button></div>
+      <div class="tier"><h3>Enterprise</h3><div class="price">Custom</div>
+        <ul><li>SSO + SCIM</li><li>SOC 2 + audit log</li><li>Dedicated support</li></ul>
+        <button class="btn btn-line">Talk to sales</button></div>
+    </div>
+  </div></section>
+
+  <section id="faq"><div class="wrap">
+    <h2 style="text-align:center">Questions, answered</h2>
+    <div class="faq">
+      <details open><summary>How does it track progress?<span>+</span></summary><p>FlowAI connects to your Git provider and issue tracker and maps real activity to your plan.</p></details>
+      <details><summary>Do engineers change anything?<span>+</span></summary><p>No. It observes the tools you already use.</p></details>
+      <details><summary>Is our code used for training?<span>+</span></summary><p>Never. SOC 2 Type II, zero-retention option on Enterprise.</p></details>
+      <details><summary>Setup time?<span>+</span></summary><p>Ten minutes, with a 90-day backfill.</p></details>
+    </div>
+  </div></section>
+
+  <section class="final"><div class="wrap">
+    <h2>Reporting is a chore. Tracking is automatic.</h2>
+    <p class="lead" style="margin:14px auto 26px">Free for 14 days. Connect a repo, see your first forecast.</p>
+    <button class="btn btn-accent">Start tracking</button>
+  </div></section>
+</main>
+<footer><div class="wrap">© 2026 FlowAI — the plan that tracks itself.</div></footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "category": "scroll-based",
+  "description": "Animations triggered by scroll position or intersection observer.",
+  "presets": [
+    {
+      "name": "reveal-on-scroll",
+      "duration": "motion.duration.slow",
+      "easing": "motion.easing.entrance",
+      "properties": { "opacity": { "from": 0, "to": 1 }, "translateY": { "from": "16px", "to": "0px" } },
+      "trigger": { "type": "intersection", "threshold": 0.2 },
+      "principle": "Content reveals reward scrolling and guide attention",
+      "reduceMotion": { "duration": "0ms", "properties": { "opacity": { "from": 0, "to": 1 } } }
+    },
+    {
+      "name": "parallax-subtle",
+      "duration": "motion.duration.emphasis",
+      "easing": "motion.easing.linear",
+      "properties": { "translateY": { "from": "0px", "to": "-20px" } },
+      "trigger": { "type": "scroll-progress", "range": [0, 1] },
+      "principle": "Parallax adds depth without disorienting",
+      "reduceMotion": { "duration": "0ms", "properties": {} }
+    },
+    {
+      "name": "progress-bar",
+      "duration": "motion.duration.emphasis",
+      "easing": "motion.easing.linear",
+      "properties": { "scaleX": { "from": 0, "to": 1 } },
+      "trigger": { "type": "scroll-progress", "range": [0, 1] },
+      "principle": "Progress indicators orient users within long content",
+      "reduceMotion": { "duration": "motion.duration.emphasis", "properties": { "scaleX": { "from": 0, "to": 1 } } }
+    }
+  ]
+}

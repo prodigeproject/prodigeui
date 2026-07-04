@@ -1,0 +1,562 @@
+{
+  "assets": [
+    {
+      "id": "icon-arrow-right",
+      "category": "icons",
+      "path": "assets/icons/arrow-right.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-check",
+      "category": "icons",
+      "path": "assets/icons/check.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-x-close",
+      "category": "icons",
+      "path": "assets/icons/x-close.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-search",
+      "category": "icons",
+      "path": "assets/icons/search.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-menu",
+      "category": "icons",
+      "path": "assets/icons/menu.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-chevron-down",
+      "category": "icons",
+      "path": "assets/icons/chevron-down.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-user",
+      "category": "icons",
+      "path": "assets/icons/user.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-plus",
+      "category": "icons",
+      "path": "assets/icons/plus.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-minus",
+      "category": "icons",
+      "path": "assets/icons/minus.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-settings",
+      "category": "icons",
+      "path": "assets/icons/settings.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-home",
+      "category": "icons",
+      "path": "assets/icons/home.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-bell",
+      "category": "icons",
+      "path": "assets/icons/bell.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-mail",
+      "category": "icons",
+      "path": "assets/icons/mail.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-calendar",
+      "category": "icons",
+      "path": "assets/icons/calendar.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-clock",
+      "category": "icons",
+      "path": "assets/icons/clock.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-edit",
+      "category": "icons",
+      "path": "assets/icons/edit.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-trash",
+      "category": "icons",
+      "path": "assets/icons/trash.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-copy",
+      "category": "icons",
+      "path": "assets/icons/copy.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-download",
+      "category": "icons",
+      "path": "assets/icons/download.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-upload",
+      "category": "icons",
+      "path": "assets/icons/upload.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-link",
+      "category": "icons",
+      "path": "assets/icons/link.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-external-link",
+      "category": "icons",
+      "path": "assets/icons/external-link.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-eye",
+      "category": "icons",
+      "path": "assets/icons/eye.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-eye-off",
+      "category": "icons",
+      "path": "assets/icons/eye-off.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-lock",
+      "category": "icons",
+      "path": "assets/icons/lock.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-unlock",
+      "category": "icons",
+      "path": "assets/icons/unlock.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-filter",
+      "category": "icons",
+      "path": "assets/icons/filter.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-sort",
+      "category": "icons",
+      "path": "assets/icons/sort.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-refresh",
+      "category": "icons",
+      "path": "assets/icons/refresh.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "icon-star",
+      "category": "icons",
+      "path": "assets/icons/star.svg",
+      "license": {
+        "name": "ISC License",
+        "source": "Lucide Icons (https://lucide.dev)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "font-inter-regular",
+      "category": "fonts",
+      "bundled": false,
+      "note": "Open-source font — download from source (see assets/fonts/README.md); not bundled in the kit.",
+      "path": "assets/fonts/inter-regular.woff2",
+      "license": {
+        "name": "SIL Open Font License 1.1",
+        "source": "Google Fonts (https://fonts.google.com/specimen/Inter)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "font-inter-medium",
+      "category": "fonts",
+      "bundled": false,
+      "note": "Open-source font — download from source (see assets/fonts/README.md); not bundled in the kit.",
+      "path": "assets/fonts/inter-medium.woff2",
+      "license": {
+        "name": "SIL Open Font License 1.1",
+        "source": "Google Fonts (https://fonts.google.com/specimen/Inter)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "font-inter-semibold",
+      "category": "fonts",
+      "bundled": false,
+      "note": "Open-source font — download from source (see assets/fonts/README.md); not bundled in the kit.",
+      "path": "assets/fonts/inter-semibold.woff2",
+      "license": {
+        "name": "SIL Open Font License 1.1",
+        "source": "Google Fonts (https://fonts.google.com/specimen/Inter)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "font-inter-bold",
+      "category": "fonts",
+      "bundled": false,
+      "note": "Open-source font — download from source (see assets/fonts/README.md); not bundled in the kit.",
+      "path": "assets/fonts/inter-bold.woff2",
+      "license": {
+        "name": "SIL Open Font License 1.1",
+        "source": "Google Fonts (https://fonts.google.com/specimen/Inter)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "font-jetbrains-mono-regular",
+      "category": "fonts",
+      "bundled": false,
+      "note": "Open-source font — download from source (see assets/fonts/README.md); not bundled in the kit.",
+      "path": "assets/fonts/jetbrains-mono-regular.woff2",
+      "license": {
+        "name": "SIL Open Font License 1.1",
+        "source": "JetBrains (https://www.jetbrains.com/lp/mono/)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "font-jetbrains-mono-bold",
+      "category": "fonts",
+      "bundled": false,
+      "note": "Open-source font — download from source (see assets/fonts/README.md); not bundled in the kit.",
+      "path": "assets/fonts/jetbrains-mono-bold.woff2",
+      "license": {
+        "name": "SIL Open Font License 1.1",
+        "source": "JetBrains (https://www.jetbrains.com/lp/mono/)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "font-geist-regular",
+      "category": "fonts",
+      "bundled": false,
+      "note": "Open-source font — download from source (see assets/fonts/README.md); not bundled in the kit.",
+      "path": "assets/fonts/geist-regular.woff2",
+      "license": {
+        "name": "SIL Open Font License 1.1",
+        "source": "Vercel (https://vercel.com/font)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "font-geist-medium",
+      "category": "fonts",
+      "bundled": false,
+      "note": "Open-source font — download from source (see assets/fonts/README.md); not bundled in the kit.",
+      "path": "assets/fonts/geist-medium.woff2",
+      "license": {
+        "name": "SIL Open Font License 1.1",
+        "source": "Vercel (https://vercel.com/font)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "font-geist-bold",
+      "category": "fonts",
+      "bundled": false,
+      "note": "Open-source font — download from source (see assets/fonts/README.md); not bundled in the kit.",
+      "path": "assets/fonts/geist-bold.woff2",
+      "license": {
+        "name": "SIL Open Font License 1.1",
+        "source": "Vercel (https://vercel.com/font)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-empty-state",
+      "category": "illustrations",
+      "path": "assets/illustrations/empty-state.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-error-404",
+      "category": "illustrations",
+      "path": "assets/illustrations/error-404.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-onboarding",
+      "category": "illustrations",
+      "path": "assets/illustrations/onboarding.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-success",
+      "category": "illustrations",
+      "path": "assets/illustrations/success.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-maintenance",
+      "category": "illustrations",
+      "path": "assets/illustrations/maintenance.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-no-results",
+      "category": "illustrations",
+      "path": "assets/illustrations/no-results.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-loading-error",
+      "category": "illustrations",
+      "path": "assets/illustrations/loading-error.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-permission-denied",
+      "category": "illustrations",
+      "path": "assets/illustrations/permission-denied.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-welcome",
+      "category": "illustrations",
+      "path": "assets/illustrations/welcome.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-upgrade",
+      "category": "illustrations",
+      "path": "assets/illustrations/upgrade.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-invite-team",
+      "category": "illustrations",
+      "path": "assets/illustrations/invite-team.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-data-analysis",
+      "category": "illustrations",
+      "path": "assets/illustrations/data-analysis.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-connection-lost",
+      "category": "illustrations",
+      "path": "assets/illustrations/connection-lost.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-achievement",
+      "category": "illustrations",
+      "path": "assets/illustrations/achievement.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    },
+    {
+      "id": "illustration-under-construction",
+      "category": "illustrations",
+      "path": "assets/illustrations/under-construction.svg",
+      "license": {
+        "name": "ProdigeUI License",
+        "source": "ProdigeUI (original)",
+        "commercialUse": true
+      }
+    }
+  ]
+}

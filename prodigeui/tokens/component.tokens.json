@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "layer": "component",
+  "tokens": {
+    "button.primary.bg": {
+      "type": "color",
+      "ref": "color.primary",
+      "description": "Primary button background"
+    },
+    "button.primary.fg": {
+      "type": "color",
+      "ref": "color.primary-foreground",
+      "description": "Primary button text"
+    },
+    "button.primary.bg.hover": {
+      "type": "color",
+      "ref": "color.primary",
+      "description": "Primary button hover background"
+    },
+    "button.secondary.bg": {
+      "type": "color",
+      "ref": "color.secondary",
+      "description": "Secondary button background"
+    },
+    "button.secondary.fg": {
+      "type": "color",
+      "ref": "color.secondary-foreground",
+      "description": "Secondary button text"
+    },
+    "button.ghost.bg": {
+      "type": "color",
+      "ref": "color.accent",
+      "description": "Ghost button hover background"
+    },
+    "button.ghost.fg": {
+      "type": "color",
+      "ref": "color.accent-foreground",
+      "description": "Ghost button text"
+    },
+    "button.destructive.bg": {
+      "type": "color",
+      "ref": "color.destructive",
+      "description": "Destructive button background"
+    },
+    "button.destructive.fg": {
+      "type": "color",
+      "ref": "color.destructive-foreground",
+      "description": "Destructive button text"
+    },
+    "button.radius": {
+      "type": "radius",
+      "ref": "radius.md",
+      "description": "Button border radius"
+    },
+    "button.padding-x": {
+      "type": "spacing",
+      "ref": "space.md",
+      "description": "Button horizontal padding"
+    },
+    "button.padding-y": {
+      "type": "spacing",
+      "ref": "space.sm",
+      "description": "Button vertical padding"
+    },
+    "button.font-size": {
+      "type": "typography",
+      "ref": "typography.size.body-sm",
+      "description": "Button text size"
+    },
+    "button.font-weight": {
+      "type": "typography",
+      "ref": "typography.weight.heading",
+      "description": "Button text weight"
+    },
+    "button.focus-ring": {
+      "type": "color",
+      "ref": "color.ring",
+      "description": "Button focus ring color"
+    },
+    "input.bg": {
+      "type": "color",
+      "ref": "color.background",
+      "description": "Input background"
+    },
+    "input.fg": {
+      "type": "color",
+      "ref": "color.foreground",
+      "description": "Input text color"
+    },
+    "input.border": {
+      "type": "color",
+      "ref": "color.input",
+      "description": "Input border color"
+    },
+    "input.border.focus": {
+      "type": "color",
+      "ref": "color.ring",
+      "description": "Input border on focus"
+    },
+    "input.border.error": {
+      "type": "color",
+      "ref": "color.destructive",
+      "description": "Input border on error"
+    },
+    "input.placeholder": {
+      "type": "color",
+      "ref": "color.muted-foreground",
+      "description": "Input placeholder text"
+    },
+    "input.radius": {
+      "type": "radius",
+      "ref": "radius.md",
+      "description": "Input border radius"
+    },
+    "input.padding-x": {
+      "type": "spacing",
+      "ref": "space.component-padding",
+      "description": "Input horizontal padding"
+    },
+    "input.padding-y": {
+      "type": "spacing",
+      "ref": "space.sm",
+      "description": "Input vertical padding"
+    },
+    "input.font-size": {
+      "type": "typography",
+      "ref": "typography.size.body",
+      "description": "Input text size"
+    },
+    "card.bg": {
+      "type": "color",
+      "ref": "color.surface",
+      "description": "Card background"
+    },
+    "card.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground",
+      "description": "Card text"
+    },
+    "card.border": {
+      "type": "color",
+      "ref": "color.border",
+      "description": "Card border"
+    },
+    "card.radius": {
+      "type": "radius",
+      "ref": "radius.lg",
+      "description": "Card border radius"
+    },
+    "card.padding": {
+      "type": "spacing",
+      "ref": "space.lg",
+      "description": "Card internal padding"
+    },
+    "card.shadow": {
+      "type": "shadow",
+      "ref": "shadow.md",
+      "description": "Card elevation"
+    },
+    "modal.bg": {
+      "type": "color",
+      "ref": "color.surface",
+      "description": "Modal background"
+    },
+    "modal.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground",
+      "description": "Modal text"
+    },
+    "modal.border": {
+      "type": "color",
+      "ref": "color.border",
+      "description": "Modal border"
+    },
+    "modal.radius": {
+      "type": "radius",
+      "ref": "radius.xl",
+      "description": "Modal border radius"
+    },
+    "modal.padding": {
+      "type": "spacing",
+      "ref": "space.lg",
+      "description": "Modal padding"
+    },
+    "modal.shadow": {
+      "type": "shadow",
+      "ref": "shadow.xl",
+      "description": "Modal elevation"
+    },
+    "modal.overlay-bg": {
+      "type": "color",
+      "ref": "color.foreground",
+      "description": "Modal overlay background"
+    },
+    "modal.z": {
+      "type": "z-index",
+      "ref": "z.modal",
+      "description": "Modal z-index"
+    },
+    "badge.bg": {
+      "type": "color",
+      "ref": "color.muted",
+      "description": "Badge background"
+    },
+    "badge.fg": {
+      "type": "color",
+      "ref": "color.muted-foreground",
+      "description": "Badge text"
+    },
+    "badge.radius": {
+      "type": "radius",
+      "ref": "radius.full",
+      "description": "Badge radius"
+    },
+    "badge.padding-x": {
+      "type": "spacing",
+      "ref": "space.sm",
+      "description": "Badge horizontal padding"
+    },
+    "badge.font-size": {
+      "type": "typography",
+      "ref": "typography.size.caption",
+      "description": "Badge text size"
+    },
+    "toggle.bg": {
+      "type": "color",
+      "ref": "color.muted",
+      "description": "Toggle off background"
+    },
+    "toggle.bg.active": {
+      "type": "color",
+      "ref": "color.primary",
+      "description": "Toggle on background"
+    },
+    "toggle.thumb": {
+      "type": "color",
+      "ref": "color.background",
+      "description": "Toggle thumb color"
+    },
+    "toggle.radius": {
+      "type": "radius",
+      "ref": "radius.full",
+      "description": "Toggle radius"
+    },
+    "navbar.bg": {
+      "type": "color",
+      "ref": "color.background",
+      "description": "Navbar background"
+    },
+    "navbar.fg": {
+      "type": "color",
+      "ref": "color.foreground",
+      "description": "Navbar text"
+    },
+    "navbar.border": {
+      "type": "color",
+      "ref": "color.border",
+      "description": "Navbar bottom border"
+    },
+    "navbar.z": {
+      "type": "z-index",
+      "ref": "z.sticky",
+      "description": "Navbar z-index"
+    },
+    "navbar.padding-x": {
+      "type": "spacing",
+      "ref": "space.lg",
+      "description": "Navbar horizontal padding"
+    },
+    "navbar.padding-y": {
+      "type": "spacing",
+      "ref": "space.sm",
+      "description": "Navbar vertical padding"
+    },
+    "table.header-bg": {
+      "type": "color",
+      "ref": "color.muted",
+      "description": "Table header background"
+    },
+    "table.header-fg": {
+      "type": "color",
+      "ref": "color.muted-foreground",
+      "description": "Table header text"
+    },
+    "table.row-bg": {
+      "type": "color",
+      "ref": "color.background",
+      "description": "Table row background"
+    },
+    "table.row-fg": {
+      "type": "color",
+      "ref": "color.foreground",
+      "description": "Table row text"
+    },
+    "table.row-bg.hover": {
+      "type": "color",
+      "ref": "color.accent",
+      "description": "Table row hover background"
+    },
+    "table.border": {
+      "type": "color",
+      "ref": "color.border",
+      "description": "Table border"
+    },
+    "table.cell-padding": {
+      "type": "spacing",
+      "ref": "space.component-padding",
+      "description": "Table cell padding"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOONHUB Carousel</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+    body { margin: 0; font-family: 'Inter', sans-serif; overflow: hidden; }
+    .grain-overlay {
+      position: fixed; inset: 0; pointer-events: none; z-index: 100;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+    .transition-all-custom {
+      transition: all 650ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div class="grain-overlay"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const characters = [
+      { id: 0, name: "Cosmic Fox", img: "https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=400&h=600&fit=crop", color: "#1a1a2e", desc: "A mysterious fox from the cosmic realm" },
+      { id: 1, name: "Neon Tiger", img: "https://images.unsplash.com/photo-1615497001839-b0a0eac3274c?w=400&h=600&fit=crop", color: "#16213e", desc: "A fierce tiger glowing with neon energy" },
+      { id: 2, name: "Shadow Wolf", img: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=400&h=600&fit=crop", color: "#0f3460", desc: "A wolf that moves through shadows" },
+      { id: 3, name: "Storm Eagle", img: "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=400&h=600&fit=crop", color: "#533483", desc: "An eagle that commands the storms" },
+    ];
+
+    function getPositions(activeIndex) {
+      const positions = {};
+      const total = characters.length;
+      positions.center = activeIndex;
+      positions.left = (activeIndex - 1 + total) % total;
+      positions.right = (activeIndex + 1) % total;
+      positions.back = (activeIndex + 2) % total;
+      return positions;
+    }
+
+    function App() {
+      const [active, setActive] = useState(0);
+      const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+      useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 640);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+      }, []);
+
+      const positions = getPositions(active);
+      const currentChar = characters[active];
+
+      const next = () => setActive((active + 1) % characters.length);
+      const prev = () => setActive((active - 1 + characters.length) % characters.length);
+
+      const getStyle = (charIndex) => {
+        if (charIndex === positions.center) {
+          return {
+            zIndex: 4,
+            transform: isMobile ? "translateX(0) scale(1)" : "translateX(0) scale(1)",
+            opacity: 1,
+            left: "50%",
+            marginLeft: isMobile ? "-100px" : "-140px",
+          };
+        }
+        if (charIndex === positions.left) {
+          return {
+            zIndex: 3,
+            transform: isMobile ? "translateX(-60px) scale(0.85)" : "translateX(-120px) scale(0.85)",
+            opacity: 0.7,
+            left: "50%",
+            marginLeft: isMobile ? "-220px" : "-340px",
+          };
+        }
+        if (charIndex === positions.right) {
+          return {
+            zIndex: 3,
+            transform: isMobile ? "translateX(60px) scale(0.85)" : "translateX(120px) scale(0.85)",
+            opacity: 0.7,
+            left: "50%",
+            marginLeft: isMobile ? "20px" : "60px",
+          };
+        }
+        // back
+        return {
+          zIndex: 1,
+          transform: "translateX(0) scale(0.7)",
+          opacity: 0.3,
+          left: "50%",
+          marginLeft: isMobile ? "-100px" : "-140px",
+        };
+      };
+
+      return (
+        <div
+          className="relative w-screen h-screen flex items-center justify-center overflow-hidden transition-all-custom"
+          style={{ backgroundColor: currentChar.color }}
+        >
+          {/* Ghost Text */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+            <span
+              className="text-white/5 font-black uppercase whitespace-nowrap transition-all-custom"
+              style={{ fontSize: isMobile ? "120px" : "220px", letterSpacing: "-0.02em" }}
+            >
+              3D SHAPE
+            </span>
+          </div>
+
+          {/* Brand Label */}
+          <div className="absolute top-6 left-6 z-50">
+            <span className="text-white font-black text-xl tracking-widest uppercase">TOONHUB</span>
+          </div>
+
+          {/* Character Images */}
+          <div className="relative w-full h-full flex items-center justify-center">
+            {characters.map((char) => {
+              const style = getStyle(char.id);
+              return (
+                <div
+                  key={char.id}
+                  className="absolute transition-all-custom rounded-2xl overflow-hidden shadow-2xl"
+                  style={{
+                    width: isMobile ? "200px" : "280px",
+                    height: isMobile ? "300px" : "420px",
+                    ...style,
+                  }}
+                >
+                  <img
+                    src={char.img}
+                    alt={char.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Navigation - Bottom Left */}
+          <div className="absolute bottom-8 left-6 z-50 flex items-center gap-4">
+            <button
+              onClick={prev}
+              className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button
+              onClick={next}
+              className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            <div className="ml-4">
+              <p className="text-white/60 text-xs uppercase tracking-wider">Character</p>
+              <p className="text-white text-sm font-bold transition-all-custom">{currentChar.name}</p>
+              <p className="text-white/50 text-xs mt-1 max-w-[200px]">{currentChar.desc}</p>
+            </div>
+          </div>
+
+          {/* Discover It - Bottom Right */}
+          <div className="absolute bottom-8 right-6 z-50">
+            <a
+              href="#"
+              className="text-white/80 text-sm font-bold uppercase tracking-wider hover:text-white transition-colors flex items-center gap-2"
+            >
+              DISCOVER IT
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

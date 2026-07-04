@@ -1,0 +1,51 @@
+{
+  "name": "saas-file-manager",
+  "useCase": "saas",
+  "context": "Design a file browser and manager interface for a SaaS application. The audience is users organizing, uploading, and managing documents and media files. Target platforms: desktop (primary) and tablet. Must support grid and list view toggle, breadcrumb navigation, file actions (rename, move, delete), and drag-and-drop upload.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for file names, metadata, and path breadcrumbs",
+    "Apply color.rules.json for file type indicators and selection highlights",
+    "Use layout.rules.json grid for file grid view and table for list view",
+    "File items must use proper listbox or grid semantics for keyboard navigation",
+    "Drag-and-drop upload must provide aria-live upload progress feedback",
+    "Multi-select must support Shift+Click and Ctrl+Click patterns",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Component composition spec with dual view modes, interaction states, and upload flow",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens",
+      "Grid and list views use consistent spacing from Token_System",
+      "File type icons use semantic color mapping",
+      "Upload progress documents all states (idle, uploading, success, error)",
+      "No raw/hardcoded visual values present"
+    ],
+    "accessibilityRequirements": [
+      "File list uses grid or listbox role with arrow key navigation",
+      "Selection state announced to screen readers",
+      "Breadcrumb navigation uses nav landmark with aria-label",
+      "Upload progress announced via aria-live polite",
+      "Context menu actions available via keyboard shortcut"
+    ]
+  },
+  "examples": [
+    {
+      "description": "File grid item with thumbnail and metadata",
+      "output": "Molecule: FileGridItem\n  Layout: flex(direction: column, gap: var(--space-xs))\n  bg: var(--color-surface-primary)\n  border: var(--border-default)\n  radius: var(--radius-md)\n  padding: var(--space-sm)\n  role: gridcell\n  Children:\n    - Atom: FileThumbnail(height: 120px, radius=var(--radius-sm), bg=var(--color-surface-secondary))\n    - Atom: Text(token=typography.body.sm, color=color.text.primary, truncate=true)\n    - Atom: Text(token=typography.body.xs, color=color.text.tertiary, content='file-size + date')\n  States: default, hover(shadow: var(--shadow-sm)), selected(border-color: var(--color-primary), bg: var(--color-surface-selected)), focus(outline: var(--color-focus-ring))",
+      "acceptanceCriteria": [
+        "Uses semantic tokens for all styling",
+        "Hover and selected states distinguishable",
+        "File name truncates with ellipsis",
+        "Focus ring visible on keyboard navigation"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": ["color.surface.primary", "color.surface.secondary", "color.surface.selected", "color.text.primary", "color.text.tertiary", "color.primary", "space.xs", "space.sm", "radius.md", "shadow.sm", "typography.body.sm", "typography.body.xs"],
+    "components": ["Card", "Button", "Text", "Table", "Badge", "SearchBar", "Modal"],
+    "designRules": ["typography.rules.json", "color.rules.json", "layout.rules.json"],
+    "theme": "light",
+    "motionPresets": ["state-transition", "enter-exit", "drag-drop"]
+  }
+}

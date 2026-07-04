@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://prodigeui.dev/schemas/template.schema.json",
+  "title": "ProdigeUI Prompt Template",
+  "description": "Schema for ProdigeUI prompt templates. Defines the structure of templates used to generate UI/UX artifacts with enterprise-grade quality.",
+  "type": "object",
+  "required": [
+    "name",
+    "useCase",
+    "context",
+    "constraints",
+    "outputCriteria"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique template name identifier.",
+      "minLength": 1
+    },
+    "useCase": {
+      "type": "string",
+      "enum": [
+        "saas",
+        "landing",
+        "ecommerce",
+        "portfolio",
+        "hris",
+        "agentic-app",
+        "general"
+      ],
+      "description": "The use case this template targets."
+    },
+    "context": {
+      "type": "string",
+      "description": "Context section describing the scenario, audience, platform, and relevant background for the prompt. Must explicitly state what the agent is designing and for whom.",
+      "minLength": 10
+    },
+    "constraints": {
+      "type": "array",
+      "description": "List of constraints and rules the output must adhere to (Design_Rules, Token_System usage, accessibility requirements, Quality_Gate criteria).",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "outputCriteria": {
+      "type": "object",
+      "description": "Criteria defining what constitutes acceptable output from this template.",
+      "required": [
+        "format",
+        "qualityChecks"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "type": "string",
+          "description": "Expected output format (e.g., component code, design spec, page layout)."
+        },
+        "qualityChecks": {
+          "type": "array",
+          "description": "List of quality checks the output must pass.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "accessibilityRequirements": {
+          "type": "array",
+          "description": "Specific accessibility requirements for the output (WCAG 2.1 AA compliance).",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "description": "One or more examples of expected output along with acceptance criteria.",
+      "items": {
+        "type": "object",
+        "required": [
+          "description",
+          "output"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Brief description of what this example demonstrates."
+          },
+          "output": {
+            "type": "string",
+            "description": "The expected output example (code snippet, design spec excerpt, etc.)."
+          },
+          "acceptanceCriteria": {
+            "type": "array",
+            "description": "Criteria that this specific example satisfies.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "references": {
+      "type": "object",
+      "description": "References to other ProdigeUI artifacts that this template uses or requires.",
+      "additionalProperties": false,
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Design tokens that must be used in the output."
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Components that must be used or referenced."
+        },
+        "designRules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Design rules that must be adhered to."
+        },
+        "theme": {
+          "type": "string",
+          "description": "Recommended theme for this template."
+        },
+        "motionPresets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Motion presets to apply."
+        },
+        "assets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Asset IDs to reference."
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional metadata for the template.",
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "page",
+            "component",
+            "layout",
+            "interaction",
+            "theme",
+            "full-app"
+          ],
+          "description": "Category of artifact this template produces."
+        }
+      }
+    }
+  }
+}

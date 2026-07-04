@@ -1,0 +1,1588 @@
+{
+  "schemaVersion": 1,
+  "description": "ProdigeUI Component Library manifest. Each component references only Design Tokens (no raw values). Organized by Atomic Design levels.",
+  "categories": ["input", "navigation", "feedback", "data-display", "layout", "overlay"],
+  "components": [
+    {
+      "name": "Button",
+      "level": "atom",
+      "category": "input",
+      "interactive": true,
+      "variants": ["primary", "secondary", "ghost", "destructive", "link"],
+      "props": ["size", "disabled", "loading", "iconLeft", "iconRight", "fullWidth"],
+      "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+      "a11y": {
+        "role": "button",
+        "keyboard": ["Enter", "Space"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-disabled", "aria-busy", "aria-label"]
+      },
+      "tokens": [
+        "button.primary.bg",
+        "button.primary.fg",
+        "button.primary.bg.hover",
+        "button.secondary.bg",
+        "button.secondary.fg",
+        "button.ghost.bg",
+        "button.ghost.fg",
+        "button.destructive.bg",
+        "button.destructive.fg",
+        "button.radius",
+        "button.padding-x",
+        "button.padding-y",
+        "button.font-size",
+        "button.font-weight",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Input",
+      "level": "atom",
+      "category": "input",
+      "interactive": true,
+      "variants": ["default", "filled", "outlined"],
+      "props": ["type", "placeholder", "disabled", "required", "value", "size", "error", "clearable"],
+      "states": ["default", "hover", "focus", "active", "disabled", "error", "readonly"],
+      "a11y": {
+        "role": "textbox",
+        "keyboard": ["Tab", "Shift+Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-invalid", "aria-required", "aria-describedby", "aria-disabled"]
+      },
+      "tokens": [
+        "input.bg",
+        "input.fg",
+        "input.border",
+        "input.border.focus",
+        "input.border.error",
+        "input.placeholder",
+        "input.radius",
+        "input.padding-x",
+        "input.padding-y",
+        "input.font-size"
+      ]
+    },
+    {
+      "name": "Icon",
+      "level": "atom",
+      "category": "data-display",
+      "interactive": false,
+      "variants": ["default", "filled", "outlined"],
+      "props": ["name", "size", "color", "ariaLabel"],
+      "states": ["default"],
+      "a11y": {
+        "role": "img",
+        "keyboard": [],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-label", "aria-hidden"]
+      },
+      "tokens": [
+        "color.foreground",
+        "color.muted-foreground",
+        "color.primary"
+      ]
+    },
+    {
+      "name": "Text",
+      "level": "atom",
+      "category": "data-display",
+      "interactive": false,
+      "variants": ["body", "heading", "caption", "display", "code"],
+      "props": ["as", "size", "weight", "color", "truncate", "align"],
+      "states": ["default"],
+      "a11y": {
+        "role": "none",
+        "keyboard": [],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-level"]
+      },
+      "tokens": [
+        "color.foreground",
+        "color.muted-foreground",
+        "typography.font-family.body",
+        "typography.font-family.heading",
+        "typography.font-family.code",
+        "typography.size.body",
+        "typography.size.body-sm",
+        "typography.size.body-lg",
+        "typography.size.caption",
+        "typography.size.h1",
+        "typography.size.h2",
+        "typography.size.h3",
+        "typography.size.h4",
+        "typography.size.h5",
+        "typography.size.h6",
+        "typography.size.display",
+        "typography.weight.body",
+        "typography.weight.heading",
+        "typography.weight.strong",
+        "typography.leading.body",
+        "typography.leading.heading"
+      ]
+    },
+    {
+      "name": "Badge",
+      "level": "atom",
+      "category": "feedback",
+      "interactive": false,
+      "variants": ["default", "primary", "secondary", "success", "warning", "destructive", "outline"],
+      "props": ["variant", "size", "removable"],
+      "states": ["default"],
+      "a11y": {
+        "role": "status",
+        "keyboard": [],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-label"]
+      },
+      "tokens": [
+        "badge.bg",
+        "badge.fg",
+        "badge.radius",
+        "badge.padding-x",
+        "badge.font-size",
+        "color.primary",
+        "color.primary-foreground",
+        "color.success",
+        "color.success-foreground",
+        "color.warning",
+        "color.warning-foreground",
+        "color.destructive",
+        "color.destructive-foreground"
+      ]
+    },
+    {
+      "name": "Toggle",
+      "level": "atom",
+      "category": "input",
+      "interactive": true,
+      "variants": ["default", "small", "large"],
+      "props": ["checked", "disabled", "onChange", "label"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "switch",
+        "keyboard": ["Space", "Enter"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-checked", "aria-disabled", "aria-label"]
+      },
+      "tokens": [
+        "toggle.bg",
+        "toggle.bg.active",
+        "toggle.thumb",
+        "toggle.radius",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Checkbox",
+      "level": "atom",
+      "category": "input",
+      "interactive": true,
+      "variants": ["default", "indeterminate"],
+      "props": ["checked", "disabled", "indeterminate", "onChange", "label", "error"],
+      "states": ["default", "hover", "focus", "active", "disabled", "error"],
+      "a11y": {
+        "role": "checkbox",
+        "keyboard": ["Space"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-checked", "aria-disabled", "aria-invalid", "aria-describedby"]
+      },
+      "tokens": [
+        "input.bg",
+        "input.border",
+        "input.border.focus",
+        "input.border.error",
+        "color.primary",
+        "color.primary-foreground",
+        "input.radius",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Radio",
+      "level": "atom",
+      "category": "input",
+      "interactive": true,
+      "variants": ["default"],
+      "props": ["checked", "disabled", "value", "name", "onChange", "label", "error"],
+      "states": ["default", "hover", "focus", "active", "disabled", "error"],
+      "a11y": {
+        "role": "radio",
+        "keyboard": ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-checked", "aria-disabled", "aria-invalid"]
+      },
+      "tokens": [
+        "input.bg",
+        "input.border",
+        "input.border.focus",
+        "input.border.error",
+        "color.primary",
+        "color.primary-foreground",
+        "radius.full",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Avatar",
+      "level": "atom",
+      "category": "data-display",
+      "interactive": false,
+      "variants": ["circle", "square", "with-status"],
+      "props": ["src", "alt", "size", "fallback", "status", "initials"],
+      "states": ["default", "loading"],
+      "a11y": {
+        "role": "img",
+        "keyboard": [],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-label", "aria-hidden"]
+      },
+      "tokens": [
+        "avatar.bg",
+        "avatar.fg",
+        "avatar.radius",
+        "avatar.size.sm",
+        "avatar.size.md",
+        "avatar.size.lg",
+        "avatar.border",
+        "color.primary",
+        "color.success",
+        "color.warning",
+        "color.muted"
+      ]
+    },
+    {
+      "name": "Divider",
+      "level": "atom",
+      "category": "layout",
+      "interactive": false,
+      "variants": ["horizontal", "vertical", "with-label"],
+      "props": ["orientation", "label", "variant", "spacing"],
+      "states": ["default"],
+      "a11y": {
+        "role": "separator",
+        "keyboard": [],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-orientation"]
+      },
+      "tokens": [
+        "divider.color",
+        "divider.thickness",
+        "divider.spacing",
+        "color.border",
+        "color.muted-foreground",
+        "typography.size.caption"
+      ]
+    },
+    {
+      "name": "Skeleton",
+      "level": "atom",
+      "category": "feedback",
+      "interactive": false,
+      "variants": ["text", "circle", "rectangle", "card"],
+      "props": ["width", "height", "variant", "animate", "count"],
+      "states": ["animating"],
+      "a11y": {
+        "role": "progressbar",
+        "keyboard": [],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-busy", "aria-label", "aria-valuetext"]
+      },
+      "tokens": [
+        "skeleton.bg",
+        "skeleton.highlight",
+        "skeleton.radius",
+        "skeleton.animation-duration",
+        "color.muted",
+        "radius.md",
+        "radius.full"
+      ]
+    },
+    {
+      "name": "Spinner",
+      "level": "atom",
+      "category": "feedback",
+      "interactive": false,
+      "variants": ["sm", "md", "lg"],
+      "props": ["size", "color", "label"],
+      "states": ["spinning"],
+      "a11y": {
+        "role": "progressbar",
+        "keyboard": [],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-busy", "aria-label", "aria-valuetext"]
+      },
+      "tokens": [
+        "spinner.color",
+        "spinner.track-color",
+        "spinner.size.sm",
+        "spinner.size.md",
+        "spinner.size.lg",
+        "spinner.animation-duration",
+        "color.primary"
+      ]
+    },
+    {
+      "name": "Tag",
+      "level": "atom",
+      "category": "data-display",
+      "interactive": true,
+      "variants": ["default", "removable", "clickable"],
+      "props": ["label", "variant", "color", "size", "onRemove", "onClick", "disabled"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "listitem",
+        "keyboard": ["Enter", "Space", "Backspace", "Delete"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-disabled", "aria-selected"]
+      },
+      "tokens": [
+        "tag.bg",
+        "tag.fg",
+        "tag.border",
+        "tag.radius",
+        "tag.padding-x",
+        "tag.padding-y",
+        "tag.font-size",
+        "color.primary",
+        "color.success",
+        "color.warning",
+        "color.destructive",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Field",
+      "level": "molecule",
+      "category": "input",
+      "interactive": true,
+      "variants": ["vertical", "horizontal", "inline"],
+      "props": ["label", "helperText", "error", "required", "disabled", "children"],
+      "states": ["default", "hover", "focus", "active", "disabled", "error"],
+      "a11y": {
+        "role": "group",
+        "keyboard": ["Tab", "Shift+Tab"],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-describedby", "aria-invalid", "aria-required"]
+      },
+      "tokens": [
+        "color.foreground",
+        "color.muted-foreground",
+        "color.destructive",
+        "typography.size.body-sm",
+        "typography.size.caption",
+        "typography.weight.heading",
+        "space.xs",
+        "space.sm"
+      ]
+    },
+    {
+      "name": "Card",
+      "level": "molecule",
+      "category": "data-display",
+      "interactive": false,
+      "variants": ["default", "outlined", "elevated", "interactive"],
+      "props": ["header", "footer", "media", "padding", "onClick"],
+      "states": ["default", "hover"],
+      "a11y": {
+        "role": "article",
+        "keyboard": ["Enter", "Space"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-describedby"]
+      },
+      "tokens": [
+        "card.bg",
+        "card.fg",
+        "card.border",
+        "card.radius",
+        "card.padding",
+        "card.shadow",
+        "color.accent"
+      ]
+    },
+    {
+      "name": "MenuItem",
+      "level": "molecule",
+      "category": "navigation",
+      "interactive": true,
+      "variants": ["default", "active", "destructive", "with-icon"],
+      "props": ["label", "icon", "shortcut", "disabled", "active", "onClick", "href"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "menuitem",
+        "keyboard": ["Enter", "Space", "ArrowUp", "ArrowDown"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-disabled", "aria-current", "aria-haspopup"]
+      },
+      "tokens": [
+        "color.foreground",
+        "color.accent",
+        "color.accent-foreground",
+        "color.primary",
+        "color.destructive",
+        "color.muted-foreground",
+        "space.sm",
+        "space.md",
+        "radius.md",
+        "typography.size.body-sm"
+      ]
+    },
+    {
+      "name": "SearchBar",
+      "level": "molecule",
+      "category": "input",
+      "interactive": true,
+      "variants": ["default", "expanded", "compact"],
+      "props": ["value", "placeholder", "onChange", "onSubmit", "disabled", "loading", "clearable"],
+      "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+      "a11y": {
+        "role": "search",
+        "keyboard": ["Enter", "Escape", "Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-expanded", "aria-controls", "aria-activedescendant"]
+      },
+      "tokens": [
+        "input.bg",
+        "input.fg",
+        "input.border",
+        "input.border.focus",
+        "input.placeholder",
+        "input.radius",
+        "input.padding-x",
+        "input.padding-y",
+        "input.font-size",
+        "color.muted-foreground",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Tooltip",
+      "level": "molecule",
+      "category": "overlay",
+      "interactive": false,
+      "variants": ["default", "rich"],
+      "props": ["content", "placement", "delay", "trigger"],
+      "states": ["default", "visible"],
+      "a11y": {
+        "role": "tooltip",
+        "keyboard": ["Escape"],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-describedby"]
+      },
+      "tokens": [
+        "color.foreground",
+        "color.surface",
+        "color.surface-foreground",
+        "shadow.lg",
+        "radius.md",
+        "space.sm",
+        "space.xs",
+        "typography.size.caption",
+        "z.tooltip"
+      ]
+    },
+    {
+      "name": "Alert",
+      "level": "molecule",
+      "category": "feedback",
+      "interactive": true,
+      "variants": ["info", "success", "warning", "error", "with-action"],
+      "props": ["variant", "title", "description", "icon", "dismissible", "action", "onDismiss"],
+      "states": ["default", "dismissing"],
+      "a11y": {
+        "role": "alert",
+        "keyboard": ["Escape", "Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-live", "aria-atomic", "aria-label", "aria-describedby"]
+      },
+      "tokens": [
+        "alert.bg.info",
+        "alert.bg.success",
+        "alert.bg.warning",
+        "alert.bg.error",
+        "alert.fg.info",
+        "alert.fg.success",
+        "alert.fg.warning",
+        "alert.fg.error",
+        "alert.border",
+        "alert.radius",
+        "alert.padding",
+        "alert.icon-size",
+        "color.info",
+        "color.success",
+        "color.warning",
+        "color.destructive"
+      ]
+    },
+    {
+      "name": "Toast",
+      "level": "molecule",
+      "category": "feedback",
+      "interactive": true,
+      "variants": ["info", "success", "warning", "error"],
+      "props": ["variant", "title", "description", "duration", "action", "onDismiss", "position"],
+      "states": ["entering", "visible", "exiting"],
+      "a11y": {
+        "role": "status",
+        "keyboard": ["Escape", "Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-live", "aria-atomic", "aria-label"]
+      },
+      "tokens": [
+        "toast.bg",
+        "toast.fg",
+        "toast.border",
+        "toast.radius",
+        "toast.padding",
+        "toast.shadow",
+        "toast.z",
+        "color.info",
+        "color.success",
+        "color.warning",
+        "color.destructive",
+        "motion.duration.fast",
+        "motion.easing.decelerate"
+      ]
+    },
+    {
+      "name": "Tabs",
+      "level": "molecule",
+      "category": "navigation",
+      "interactive": true,
+      "variants": ["line", "pill", "bordered"],
+      "props": ["items", "activeKey", "onChange", "disabled", "size", "orientation"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "tablist",
+        "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End", "Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-selected", "aria-controls", "aria-labelledby", "aria-orientation"]
+      },
+      "tokens": [
+        "tabs.bg",
+        "tabs.fg",
+        "tabs.border",
+        "tabs.indicator",
+        "tabs.radius",
+        "tabs.padding",
+        "color.primary",
+        "color.foreground",
+        "color.muted-foreground",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Accordion",
+      "level": "molecule",
+      "category": "data-display",
+      "interactive": true,
+      "variants": ["single", "multiple"],
+      "props": ["items", "defaultOpen", "allowMultiple", "disabled", "onChange"],
+      "states": ["collapsed", "expanded"],
+      "a11y": {
+        "role": "region",
+        "keyboard": ["Enter", "Space", "ArrowUp", "ArrowDown", "Home", "End"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-labelledby", "aria-disabled"]
+      },
+      "tokens": [
+        "accordion.bg",
+        "accordion.fg",
+        "accordion.border",
+        "accordion.radius",
+        "accordion.padding",
+        "accordion.header-padding",
+        "color.foreground",
+        "color.muted-foreground",
+        "color.border",
+        "motion.duration.normal",
+        "motion.easing.decelerate"
+      ]
+    },
+    {
+      "name": "Breadcrumb",
+      "level": "molecule",
+      "category": "navigation",
+      "interactive": false,
+      "variants": ["default", "with-icon"],
+      "props": ["items", "separator", "maxItems", "onNavigate"],
+      "states": ["default"],
+      "a11y": {
+        "role": "navigation",
+        "keyboard": ["Tab", "Shift+Tab"],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-label", "aria-current"]
+      },
+      "tokens": [
+        "breadcrumb.fg",
+        "breadcrumb.fg.active",
+        "breadcrumb.separator-color",
+        "breadcrumb.font-size",
+        "color.foreground",
+        "color.muted-foreground",
+        "color.primary",
+        "space.xs"
+      ]
+    },
+    {
+      "name": "Pagination",
+      "level": "molecule",
+      "category": "navigation",
+      "interactive": true,
+      "variants": ["default", "compact", "with-jump"],
+      "props": ["total", "current", "pageSize", "onChange", "disabled", "showQuickJump"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "navigation",
+        "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End", "Tab", "Enter"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-current", "aria-disabled"]
+      },
+      "tokens": [
+        "pagination.bg",
+        "pagination.fg",
+        "pagination.bg.active",
+        "pagination.fg.active",
+        "pagination.border",
+        "pagination.radius",
+        "pagination.padding",
+        "color.primary",
+        "color.primary-foreground",
+        "color.muted-foreground",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Select",
+      "level": "molecule",
+      "category": "input",
+      "interactive": true,
+      "variants": ["default", "multi", "searchable", "grouped"],
+      "props": ["options", "value", "placeholder", "disabled", "required", "error", "onChange", "multiple", "searchable"],
+      "states": ["default", "hover", "focus", "active", "disabled", "error", "open"],
+      "a11y": {
+        "role": "combobox",
+        "keyboard": ["ArrowUp", "ArrowDown", "Enter", "Escape", "Home", "End", "Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-invalid", "aria-required", "aria-multiselectable"]
+      },
+      "tokens": [
+        "select.bg",
+        "select.fg",
+        "select.border",
+        "select.border.focus",
+        "select.border.error",
+        "select.radius",
+        "select.padding",
+        "select.option-bg.hover",
+        "select.option-bg.selected",
+        "input.placeholder",
+        "color.primary",
+        "button.focus-ring",
+        "shadow.md",
+        "z.dropdown"
+      ]
+    },
+    {
+      "name": "DatePicker",
+      "level": "molecule",
+      "category": "input",
+      "interactive": true,
+      "variants": ["single", "range", "with-time"],
+      "props": ["value", "onChange", "min", "max", "disabled", "required", "error", "placeholder", "format", "locale"],
+      "states": ["default", "hover", "focus", "active", "disabled", "error", "open"],
+      "a11y": {
+        "role": "combobox",
+        "keyboard": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter", "Escape", "Home", "End", "PageUp", "PageDown"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-invalid", "aria-required", "aria-label"]
+      },
+      "tokens": [
+        "datepicker.bg",
+        "datepicker.fg",
+        "datepicker.border",
+        "datepicker.border.focus",
+        "datepicker.border.error",
+        "datepicker.radius",
+        "datepicker.padding",
+        "datepicker.cell-size",
+        "datepicker.cell-radius",
+        "datepicker.cell-bg.selected",
+        "datepicker.cell-bg.range",
+        "datepicker.cell-bg.hover",
+        "datepicker.header-fg",
+        "color.primary",
+        "color.primary-foreground",
+        "input.placeholder",
+        "button.focus-ring",
+        "shadow.lg",
+        "z.dropdown"
+      ]
+    },
+    {
+      "name": "Form",
+      "level": "organism",
+      "category": "input",
+      "interactive": true,
+      "variants": ["vertical", "horizontal", "inline", "multi-step"],
+      "props": ["onSubmit", "onReset", "disabled", "loading", "validationMode"],
+      "states": ["default", "hover", "focus", "active", "disabled", "error", "submitting"],
+      "a11y": {
+        "role": "form",
+        "keyboard": ["Tab", "Shift+Tab", "Enter"],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-label", "aria-describedby", "aria-busy"]
+      },
+      "tokens": [
+        "space.md",
+        "space.lg",
+        "space.component-gap",
+        "color.foreground",
+        "color.destructive",
+        "typography.size.body",
+        "typography.weight.heading"
+      ]
+    },
+    {
+      "name": "Navbar",
+      "level": "organism",
+      "category": "navigation",
+      "interactive": true,
+      "variants": ["fixed", "sticky", "static", "transparent"],
+      "props": ["brand", "items", "actions", "mobileMenuOpen", "onToggleMobile"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "navigation",
+        "keyboard": ["Tab", "Shift+Tab", "ArrowLeft", "ArrowRight", "Escape"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-expanded", "aria-controls"]
+      },
+      "tokens": [
+        "navbar.bg",
+        "navbar.fg",
+        "navbar.border",
+        "navbar.z",
+        "navbar.padding-x",
+        "navbar.padding-y",
+        "color.primary",
+        "color.accent",
+        "color.accent-foreground",
+        "shadow.sm"
+      ]
+    },
+    {
+      "name": "Table",
+      "level": "organism",
+      "category": "data-display",
+      "interactive": true,
+      "variants": ["default", "striped", "bordered", "compact"],
+      "props": ["columns", "data", "sortable", "selectable", "pagination", "loading", "emptyState"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "table",
+        "keyboard": ["Tab", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space", "Enter"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-sort", "aria-selected", "aria-rowcount", "aria-colcount", "aria-label"]
+      },
+      "tokens": [
+        "table.header-bg",
+        "table.header-fg",
+        "table.row-bg",
+        "table.row-fg",
+        "table.row-bg.hover",
+        "table.border",
+        "table.cell-padding",
+        "color.border",
+        "typography.size.body-sm",
+        "typography.weight.heading"
+      ]
+    },
+    {
+      "name": "Modal",
+      "level": "organism",
+      "category": "overlay",
+      "interactive": true,
+      "variants": ["default", "fullscreen", "side-panel", "alert"],
+      "props": ["open", "onClose", "title", "description", "size", "closeOnOverlay", "closeOnEscape"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "dialog",
+        "keyboard": ["Escape", "Tab", "Shift+Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-modal", "aria-labelledby", "aria-describedby"]
+      },
+      "tokens": [
+        "modal.bg",
+        "modal.fg",
+        "modal.border",
+        "modal.radius",
+        "modal.padding",
+        "modal.shadow",
+        "modal.overlay-bg",
+        "modal.z"
+      ]
+    },
+    {
+      "name": "Sidebar",
+      "level": "organism",
+      "category": "layout",
+      "interactive": true,
+      "variants": ["default", "collapsed", "overlay", "mini"],
+      "props": ["open", "collapsed", "position", "onToggle", "items", "width"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "complementary",
+        "keyboard": ["Tab", "Shift+Tab", "ArrowUp", "ArrowDown", "Escape"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-expanded", "aria-hidden"]
+      },
+      "tokens": [
+        "color.background",
+        "color.foreground",
+        "color.border",
+        "color.accent",
+        "color.accent-foreground",
+        "color.primary",
+        "shadow.lg",
+        "space.md",
+        "space.sm",
+        "z.sticky",
+        "border.width.default"
+      ]
+    },
+    {
+      "name": "Footer",
+      "level": "organism",
+      "category": "layout",
+      "interactive": false,
+      "variants": ["simple", "multi-column", "minimal"],
+      "props": ["columns", "copyright", "socialLinks", "newsletter"],
+      "states": ["default"],
+      "a11y": {
+        "role": "contentinfo",
+        "keyboard": ["Tab", "Shift+Tab"],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-label"]
+      },
+      "tokens": [
+        "color.muted",
+        "color.muted-foreground",
+        "color.foreground",
+        "color.border",
+        "space.lg",
+        "space.xl",
+        "space.md",
+        "typography.size.body-sm",
+        "typography.size.caption",
+        "border.width.default"
+      ]
+    },
+    {
+      "name": "Dialog",
+      "level": "organism",
+      "category": "overlay",
+      "interactive": true,
+      "variants": ["default", "confirm", "prompt", "fullscreen"],
+      "props": ["open", "onClose", "title", "description", "confirmLabel", "cancelLabel", "onConfirm", "size"],
+      "states": ["open", "closing"],
+      "a11y": {
+        "role": "alertdialog",
+        "keyboard": ["Escape", "Tab", "Shift+Tab", "Enter"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-modal", "aria-labelledby", "aria-describedby"]
+      },
+      "tokens": [
+        "dialog.bg",
+        "dialog.fg",
+        "dialog.border",
+        "dialog.radius",
+        "dialog.padding",
+        "dialog.shadow",
+        "dialog.overlay-bg",
+        "dialog.z",
+        "motion.duration.normal",
+        "motion.easing.decelerate"
+      ]
+    },
+    {
+      "name": "Drawer",
+      "level": "organism",
+      "category": "overlay",
+      "interactive": true,
+      "variants": ["left", "right", "bottom"],
+      "props": ["open", "onClose", "position", "size", "title", "closeOnOverlay", "closeOnEscape"],
+      "states": ["open", "closing"],
+      "a11y": {
+        "role": "dialog",
+        "keyboard": ["Escape", "Tab", "Shift+Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-modal", "aria-labelledby", "aria-hidden"]
+      },
+      "tokens": [
+        "drawer.bg",
+        "drawer.fg",
+        "drawer.border",
+        "drawer.shadow",
+        "drawer.overlay-bg",
+        "drawer.z",
+        "drawer.width",
+        "drawer.padding",
+        "motion.duration.normal",
+        "motion.easing.decelerate"
+      ]
+    },
+    {
+      "name": "Popover",
+      "level": "organism",
+      "category": "overlay",
+      "interactive": true,
+      "variants": ["default", "with-arrow", "rich"],
+      "props": ["open", "onClose", "trigger", "placement", "content", "closeOnOutside"],
+      "states": ["open", "closing"],
+      "a11y": {
+        "role": "dialog",
+        "keyboard": ["Escape", "Tab", "Shift+Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-haspopup", "aria-labelledby"]
+      },
+      "tokens": [
+        "popover.bg",
+        "popover.fg",
+        "popover.border",
+        "popover.radius",
+        "popover.padding",
+        "popover.shadow",
+        "popover.z",
+        "popover.arrow-size",
+        "motion.duration.fast",
+        "motion.easing.decelerate"
+      ]
+    },
+    {
+      "name": "Dropdown",
+      "level": "organism",
+      "category": "navigation",
+      "interactive": true,
+      "variants": ["default", "with-sections", "with-search"],
+      "props": ["items", "trigger", "open", "onSelect", "onClose", "placement", "searchable"],
+      "states": ["open", "closing"],
+      "a11y": {
+        "role": "menu",
+        "keyboard": ["ArrowUp", "ArrowDown", "Enter", "Space", "Escape", "Home", "End", "Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-haspopup", "aria-activedescendant", "aria-labelledby"]
+      },
+      "tokens": [
+        "dropdown.bg",
+        "dropdown.fg",
+        "dropdown.border",
+        "dropdown.radius",
+        "dropdown.padding",
+        "dropdown.shadow",
+        "dropdown.z",
+        "dropdown.item-bg.hover",
+        "dropdown.item-bg.active",
+        "dropdown.separator-color",
+        "color.foreground",
+        "color.muted-foreground",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Stepper",
+      "level": "organism",
+      "category": "navigation",
+      "interactive": true,
+      "variants": ["horizontal", "vertical"],
+      "props": ["steps", "current", "onChange", "disabled", "orientation", "clickable"],
+      "states": ["default", "active", "completed", "error"],
+      "a11y": {
+        "role": "navigation",
+        "keyboard": ["Tab", "Shift+Tab", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-current", "aria-disabled", "aria-describedby"]
+      },
+      "tokens": [
+        "stepper.bg",
+        "stepper.fg",
+        "stepper.bg.active",
+        "stepper.fg.active",
+        "stepper.bg.completed",
+        "stepper.fg.completed",
+        "stepper.bg.error",
+        "stepper.fg.error",
+        "stepper.connector-color",
+        "stepper.connector-color.completed",
+        "stepper.radius",
+        "stepper.size",
+        "color.primary",
+        "color.primary-foreground",
+        "color.success",
+        "color.destructive",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "FileUpload",
+      "level": "organism",
+      "category": "input",
+      "interactive": true,
+      "variants": ["dropzone", "button", "inline"],
+      "props": ["accept", "maxSize", "multiple", "disabled", "onUpload", "onRemove", "value", "maxFiles"],
+      "states": ["idle", "dragging", "uploading", "complete", "error"],
+      "a11y": {
+        "role": "button",
+        "keyboard": ["Enter", "Space", "Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-describedby", "aria-disabled", "aria-busy", "aria-invalid"]
+      },
+      "tokens": [
+        "fileupload.bg",
+        "fileupload.fg",
+        "fileupload.border",
+        "fileupload.border.active",
+        "fileupload.border.error",
+        "fileupload.radius",
+        "fileupload.padding",
+        "color.primary",
+        "color.success",
+        "color.destructive",
+        "color.muted-foreground",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "DataGrid",
+      "level": "organism",
+      "category": "data-display",
+      "interactive": true,
+      "variants": ["default", "editable", "virtualized"],
+      "props": ["columns", "rows", "sortable", "filterable", "selectable", "editable", "pagination", "loading", "onCellEdit", "onSort", "onFilter"],
+      "states": ["default", "hover", "editing", "loading"],
+      "a11y": {
+        "role": "grid",
+        "keyboard": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter", "Escape", "Tab", "Home", "End", "PageUp", "PageDown"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-rowcount", "aria-colcount", "aria-sort", "aria-selected", "aria-readonly", "aria-label", "aria-activedescendant"]
+      },
+      "tokens": [
+        "datagrid.header-bg",
+        "datagrid.header-fg",
+        "datagrid.row-bg",
+        "datagrid.row-fg",
+        "datagrid.row-bg.hover",
+        "datagrid.row-bg.selected",
+        "datagrid.border",
+        "datagrid.cell-padding",
+        "datagrid.cell-bg.editing",
+        "color.border",
+        "color.primary",
+        "typography.size.body-sm",
+        "typography.weight.heading",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "CommandPalette",
+      "level": "organism",
+      "category": "navigation",
+      "interactive": true,
+      "variants": ["default", "with-categories"],
+      "props": ["open", "onClose", "commands", "placeholder", "onSelect", "recentCommands", "emptyMessage"],
+      "states": ["open", "searching", "empty"],
+      "a11y": {
+        "role": "combobox",
+        "keyboard": ["ArrowUp", "ArrowDown", "Enter", "Escape", "Tab", "Ctrl+K", "Home", "End"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-label", "aria-modal"]
+      },
+      "tokens": [
+        "command.bg",
+        "command.fg",
+        "command.border",
+        "command.radius",
+        "command.padding",
+        "command.shadow",
+        "command.z",
+        "command.input-bg",
+        "command.item-bg.hover",
+        "command.item-bg.active",
+        "command.overlay-bg",
+        "command.group-heading-fg",
+        "color.foreground",
+        "color.muted-foreground",
+        "color.primary",
+        "button.focus-ring",
+        "typography.size.body-sm"
+      ]
+    },
+    {
+      "name": "ProgressBar",
+      "level": "atom",
+      "category": "feedback",
+      "interactive": false,
+      "variants": ["default", "circular", "striped", "indeterminate"],
+      "props": ["value", "max", "label", "size", "color"],
+      "states": ["idle", "filling", "complete"],
+      "a11y": {
+        "role": "progressbar",
+        "keyboard": [],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-valuenow", "aria-valuemax", "aria-valuemin", "aria-label"]
+      },
+      "tokens": [
+        "progressbar.bg",
+        "progressbar.fg",
+        "progressbar.track",
+        "progressbar.radius",
+        "progressbar.height",
+        "color.primary",
+        "color.success",
+        "color.warning",
+        "color.destructive",
+        "motion.duration.normal",
+        "motion.easing.decelerate"
+      ]
+    },
+    {
+      "name": "Rating",
+      "level": "atom",
+      "category": "input",
+      "interactive": true,
+      "variants": ["star", "heart", "numeric"],
+      "props": ["value", "max", "readOnly", "size", "onChange"],
+      "states": ["default", "hover", "focus", "disabled", "readonly"],
+      "a11y": {
+        "role": "radiogroup",
+        "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-valuenow", "aria-valuemax", "aria-disabled", "aria-readonly"]
+      },
+      "tokens": [
+        "rating.color.filled",
+        "rating.color.empty",
+        "rating.color.hover",
+        "rating.size.sm",
+        "rating.size.md",
+        "rating.size.lg",
+        "rating.gap",
+        "color.warning",
+        "color.muted",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "StatusDot",
+      "level": "atom",
+      "category": "feedback",
+      "interactive": false,
+      "variants": ["success", "warning", "error", "info", "neutral", "pulse"],
+      "props": ["status", "size", "label"],
+      "states": ["default", "pulsing"],
+      "a11y": {
+        "role": "status",
+        "keyboard": [],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-label", "aria-live"]
+      },
+      "tokens": [
+        "statusdot.color.success",
+        "statusdot.color.warning",
+        "statusdot.color.error",
+        "statusdot.color.info",
+        "statusdot.color.neutral",
+        "statusdot.size.sm",
+        "statusdot.size.md",
+        "statusdot.size.lg",
+        "color.success",
+        "color.warning",
+        "color.destructive",
+        "color.info",
+        "color.muted",
+        "motion.duration.slow"
+      ]
+    },
+    {
+      "name": "Timeline",
+      "level": "molecule",
+      "category": "data-display",
+      "interactive": true,
+      "variants": ["vertical", "horizontal", "compact"],
+      "props": ["items", "activeStep", "clickable"],
+      "states": ["default", "active", "completed", "disabled"],
+      "a11y": {
+        "role": "list",
+        "keyboard": ["ArrowUp", "ArrowDown", "Tab", "Enter"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-current", "aria-disabled"]
+      },
+      "tokens": [
+        "timeline.connector-color",
+        "timeline.connector-color.completed",
+        "timeline.dot-bg",
+        "timeline.dot-bg.active",
+        "timeline.dot-bg.completed",
+        "timeline.dot-size",
+        "timeline.dot-radius",
+        "timeline.spacing",
+        "color.primary",
+        "color.success",
+        "color.muted",
+        "color.foreground",
+        "typography.size.body-sm",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "EmptyState",
+      "level": "molecule",
+      "category": "feedback",
+      "interactive": false,
+      "variants": ["default", "error", "search", "permission"],
+      "props": ["icon", "title", "description", "action"],
+      "states": ["default"],
+      "a11y": {
+        "role": "region",
+        "keyboard": ["Tab"],
+        "focusVisible": false,
+        "ariaAttributes": ["aria-label", "aria-describedby"]
+      },
+      "tokens": [
+        "emptystate.icon-color",
+        "emptystate.icon-size",
+        "emptystate.title-fg",
+        "emptystate.description-fg",
+        "emptystate.padding",
+        "color.muted-foreground",
+        "color.foreground",
+        "typography.size.h4",
+        "typography.size.body",
+        "space.lg",
+        "space.md"
+      ]
+    },
+    {
+      "name": "Banner",
+      "level": "molecule",
+      "category": "feedback",
+      "interactive": true,
+      "variants": ["info", "success", "warning", "error", "neutral"],
+      "props": ["title", "description", "dismissible", "action"],
+      "states": ["default", "dismissing"],
+      "a11y": {
+        "role": "alert",
+        "keyboard": ["Escape", "Tab", "Enter"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-live", "aria-atomic", "aria-label", "aria-describedby"]
+      },
+      "tokens": [
+        "banner.bg.info",
+        "banner.bg.success",
+        "banner.bg.warning",
+        "banner.bg.error",
+        "banner.bg.neutral",
+        "banner.fg.info",
+        "banner.fg.success",
+        "banner.fg.warning",
+        "banner.fg.error",
+        "banner.fg.neutral",
+        "banner.border",
+        "banner.padding",
+        "banner.radius",
+        "color.info",
+        "color.success",
+        "color.warning",
+        "color.destructive",
+        "color.muted"
+      ]
+    },
+    {
+      "name": "SplitButton",
+      "level": "molecule",
+      "category": "input",
+      "interactive": true,
+      "variants": ["default", "primary", "destructive"],
+      "props": ["label", "options", "disabled", "onSelect"],
+      "states": ["default", "hover", "focus", "active", "disabled", "open"],
+      "a11y": {
+        "role": "group",
+        "keyboard": ["Enter", "Space", "ArrowDown", "Escape", "Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-haspopup", "aria-expanded", "aria-disabled"]
+      },
+      "tokens": [
+        "button.primary.bg",
+        "button.primary.fg",
+        "button.primary.bg.hover",
+        "button.destructive.bg",
+        "button.destructive.fg",
+        "button.radius",
+        "button.padding-x",
+        "button.padding-y",
+        "button.font-size",
+        "button.font-weight",
+        "button.focus-ring",
+        "dropdown.bg",
+        "dropdown.border",
+        "dropdown.shadow",
+        "dropdown.radius",
+        "dropdown.z"
+      ]
+    },
+    {
+      "name": "ToggleGroup",
+      "level": "molecule",
+      "category": "input",
+      "interactive": true,
+      "variants": ["single", "multiple", "outline"],
+      "props": ["items", "value", "onChange", "disabled"],
+      "states": ["default", "hover", "focus", "active", "disabled"],
+      "a11y": {
+        "role": "group",
+        "keyboard": ["ArrowLeft", "ArrowRight", "Tab", "Space", "Enter"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-pressed", "aria-disabled"]
+      },
+      "tokens": [
+        "togglegroup.bg",
+        "togglegroup.fg",
+        "togglegroup.bg.active",
+        "togglegroup.fg.active",
+        "togglegroup.border",
+        "togglegroup.radius",
+        "togglegroup.padding",
+        "togglegroup.gap",
+        "color.primary",
+        "color.primary-foreground",
+        "color.muted",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "BottomSheet",
+      "level": "organism",
+      "category": "overlay",
+      "interactive": true,
+      "variants": ["default", "fullscreen", "resizable"],
+      "props": ["open", "onClose", "snapPoints", "title"],
+      "states": ["open", "closing", "dragging", "snapped"],
+      "a11y": {
+        "role": "dialog",
+        "keyboard": ["Escape", "Tab", "Shift+Tab"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-modal", "aria-labelledby", "aria-describedby", "aria-hidden"]
+      },
+      "tokens": [
+        "bottomsheet.bg",
+        "bottomsheet.fg",
+        "bottomsheet.border",
+        "bottomsheet.radius",
+        "bottomsheet.padding",
+        "bottomsheet.shadow",
+        "bottomsheet.overlay-bg",
+        "bottomsheet.z",
+        "bottomsheet.handle-color",
+        "bottomsheet.handle-width",
+        "motion.duration.normal",
+        "motion.easing.decelerate"
+      ]
+    },
+    {
+      "name": "MobileNavBar",
+      "level": "organism",
+      "category": "navigation",
+      "interactive": true,
+      "variants": ["default", "with-labels", "fab-center"],
+      "props": ["items", "activeKey", "onChange"],
+      "states": ["default", "hover", "focus", "active"],
+      "a11y": {
+        "role": "navigation",
+        "keyboard": ["ArrowLeft", "ArrowRight", "Tab", "Enter", "Space"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-current", "aria-selected"]
+      },
+      "tokens": [
+        "mobilenavbar.bg",
+        "mobilenavbar.fg",
+        "mobilenavbar.fg.active",
+        "mobilenavbar.border",
+        "mobilenavbar.icon-size",
+        "mobilenavbar.padding",
+        "mobilenavbar.z",
+        "color.primary",
+        "color.muted-foreground",
+        "color.background",
+        "shadow.sm",
+        "typography.size.caption",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "KanbanBoard",
+      "level": "organism",
+      "category": "data-display",
+      "interactive": true,
+      "variants": ["default", "compact", "swimlane"],
+      "props": ["columns", "cards", "onDragEnd", "onCardClick"],
+      "states": ["default", "dragging", "dropping"],
+      "a11y": {
+        "role": "region",
+        "keyboard": ["Tab", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Space", "Enter", "Escape"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-grabbed", "aria-dropeffect", "aria-describedby", "aria-roledescription"]
+      },
+      "tokens": [
+        "kanban.bg",
+        "kanban.column-bg",
+        "kanban.column-border",
+        "kanban.column-radius",
+        "kanban.card-bg",
+        "kanban.card-border",
+        "kanban.card-radius",
+        "kanban.card-shadow",
+        "kanban.card-padding",
+        "kanban.gap",
+        "color.foreground",
+        "color.muted-foreground",
+        "color.primary",
+        "color.border",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "CalendarView",
+      "level": "organism",
+      "category": "data-display",
+      "interactive": true,
+      "variants": ["month", "week", "day", "agenda"],
+      "props": ["events", "selectedDate", "onDateSelect", "onEventClick"],
+      "states": ["default", "hover", "focus", "loading"],
+      "a11y": {
+        "role": "grid",
+        "keyboard": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter", "Space", "Home", "End", "PageUp", "PageDown"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-selected", "aria-current", "aria-describedby", "aria-activedescendant"]
+      },
+      "tokens": [
+        "calendar.bg",
+        "calendar.fg",
+        "calendar.border",
+        "calendar.radius",
+        "calendar.cell-size",
+        "calendar.cell-bg.selected",
+        "calendar.cell-bg.today",
+        "calendar.cell-bg.hover",
+        "calendar.event-bg",
+        "calendar.event-fg",
+        "calendar.event-radius",
+        "calendar.header-fg",
+        "color.primary",
+        "color.primary-foreground",
+        "color.muted-foreground",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "RichTextEditor",
+      "level": "organism",
+      "category": "input",
+      "interactive": true,
+      "variants": ["minimal", "standard", "full"],
+      "props": ["value", "onChange", "toolbar", "placeholder", "disabled"],
+      "states": ["default", "hover", "focus", "disabled", "readonly"],
+      "a11y": {
+        "role": "textbox",
+        "keyboard": ["Tab", "Shift+Tab", "Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Z", "Ctrl+Y", "Enter"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-multiline", "aria-disabled", "aria-readonly", "aria-describedby"]
+      },
+      "tokens": [
+        "richtexteditor.bg",
+        "richtexteditor.fg",
+        "richtexteditor.border",
+        "richtexteditor.border.focus",
+        "richtexteditor.radius",
+        "richtexteditor.padding",
+        "richtexteditor.toolbar-bg",
+        "richtexteditor.toolbar-border",
+        "richtexteditor.toolbar-button-bg.active",
+        "input.placeholder",
+        "color.foreground",
+        "color.muted-foreground",
+        "color.primary",
+        "button.focus-ring",
+        "typography.font-family.body"
+      ]
+    },
+    {
+      "name": "TreeView",
+      "level": "organism",
+      "category": "data-display",
+      "interactive": true,
+      "variants": ["default", "checkbox", "draggable"],
+      "props": ["data", "expandedKeys", "selectedKeys", "onSelect"],
+      "states": ["default", "hover", "focus", "expanded", "selected", "dragging"],
+      "a11y": {
+        "role": "tree",
+        "keyboard": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter", "Space", "Home", "End", "*"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-expanded", "aria-selected", "aria-level", "aria-setsize", "aria-posinset", "aria-label"]
+      },
+      "tokens": [
+        "treeview.bg",
+        "treeview.fg",
+        "treeview.item-bg.hover",
+        "treeview.item-bg.selected",
+        "treeview.indent",
+        "treeview.connector-color",
+        "treeview.icon-size",
+        "treeview.padding",
+        "color.foreground",
+        "color.muted-foreground",
+        "color.primary",
+        "color.accent",
+        "button.focus-ring"
+      ]
+    },
+    {
+      "name": "Chart",
+      "level": "organism",
+      "category": "data-display",
+      "interactive": true,
+      "variants": ["line", "bar", "pie", "area", "scatter"],
+      "props": ["data", "series", "xAxis", "yAxis", "legend", "tooltip"],
+      "states": ["default", "hover", "loading", "empty"],
+      "a11y": {
+        "role": "img",
+        "keyboard": ["Tab", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Enter"],
+        "focusVisible": true,
+        "ariaAttributes": ["aria-label", "aria-describedby", "aria-roledescription"]
+      },
+      "tokens": [
+        "chart.bg",
+        "chart.fg",
+        "chart.border",
+        "chart.radius",
+        "chart.padding",
+        "chart.grid-color",
+        "chart.axis-color",
+        "chart.axis-label-fg",
+        "chart.series.1",
+        "chart.series.2",
+        "chart.series.3",
+        "chart.series.4",
+        "chart.series.5",
+        "chart.tooltip-bg",
+        "chart.tooltip-fg",
+        "chart.tooltip-border",
+        "chart.legend-fg",
+        "color.primary",
+        "color.success",
+        "color.warning",
+        "color.destructive",
+        "color.info",
+        "typography.size.caption",
+        "button.focus-ring"
+      ]
+    }
+  ]
+}

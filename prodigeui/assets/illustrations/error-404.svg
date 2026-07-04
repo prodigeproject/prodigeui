@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- Error 404: Abstract broken link / disconnected paths -->
+  <circle cx="100" cy="100" r="60" stroke="#FCA5A5" stroke-width="2"/>
+  <path d="M70 80 L90 100 L70 120" stroke="#EF4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 80 L110 100 L130 120" stroke="#EF4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="85" y1="140" x2="115" y2="140" stroke="#FCA5A5" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="100" cy="55" r="4" fill="#FECACA"/>
+  <rect x="60" y="160" width="80" height="6" rx="3" fill="#FEE2E2"/>
+</svg>

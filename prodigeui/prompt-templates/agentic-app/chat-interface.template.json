@@ -1,0 +1,80 @@
+{
+  "name": "agentic-app-chat-interface",
+  "useCase": "agentic-app",
+  "context": "Design a chat interface for an AI-powered agentic application. The audience is knowledge workers interacting with AI assistants for tasks such as code generation, analysis, and decision support. Target platforms: desktop (primary) and mobile responsive. The interface must handle streaming text, code blocks, multi-turn conversations, and agent status indicators while remaining clean and scannable.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json: use monospace pairing for code blocks, body scale for messages",
+    "Apply color.rules.json: distinct but accessible colors for user vs agent messages",
+    "Layout must support full-height chat panel with input area pinned at bottom",
+    "Motion presets for message entry animations and typing indicators",
+    "Code block styling must use Token_System surface and border tokens",
+    "Comply with Quality_Gate: clear message attribution, proper reading order, token-only values"
+  ],
+  "outputCriteria": {
+    "format": "Chat interface spec with message list, input area, agent status, and code rendering using token references",
+    "qualityChecks": [
+      "User and agent messages visually distinct via surface token differentiation",
+      "Code blocks use proper typography tokens and surface contrast",
+      "Input area maintains consistent spacing and sizing from Token_System",
+      "Streaming/typing indicators use Motion_Library presets",
+      "All interactive elements have documented states"
+    ],
+    "accessibilityRequirements": [
+      "Chat messages are in a live region (aria-live=polite) for screen reader announcements",
+      "Message input supports multiline and is properly labeled",
+      "Code blocks are contained in elements with role and accessible copy functionality",
+      "Agent status changes are announced to assistive technology",
+      "Full keyboard navigation through message history and actions"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Chat message thread with user message, agent response containing a code block, and typing indicator",
+      "output": "Organism: ChatInterface\n  Layout: flex(direction=column, height=100vh)\n  Children:\n    - Organism: MessageList(flex=1, overflow=auto, padding: var(--space-md))\n        role: log, aria-live: polite\n        Children:\n          - Molecule: UserMessage\n              align: flex-end\n              bg: var(--color-surface-user-message)\n              radius: var(--radius-md)\n              padding: var(--space-sm) var(--space-md)\n              - Atom: Text(token=typography.body.md, color=color.text.primary)\n              motion: enter-exit.slide-in-right\n          - Molecule: AgentMessage\n              align: flex-start\n              bg: var(--color-surface-agent-message)\n              radius: var(--radius-md)\n              padding: var(--space-sm) var(--space-md)\n              - Atom: Text(token=typography.body.md, color=color.text.primary)\n              - Molecule: CodeBlock\n                  bg: var(--color-surface-code)\n                  border: var(--border-subtle)\n                  radius: var(--radius-sm)\n                  padding: var(--space-sm)\n                  font: typography.mono.sm\n              motion: enter-exit.fade-up\n    - Molecule: ChatInput(position=sticky, bottom=0)\n        bg: var(--color-surface-primary)\n        border-top: var(--border-default)\n        padding: var(--space-md)\n        - Atom: TextArea(ariaLabel='Message input', rows=1, autoExpand=true)\n        - Atom: Button(variant=primary, ariaLabel='Send message', icon=send)",
+      "acceptanceCriteria": [
+        "User and agent messages use different surface tokens for visual distinction",
+        "Code block uses dedicated surface and monospace typography tokens",
+        "Message entry uses Motion_Library enter-exit presets",
+        "Chat container uses aria-live for new message announcements",
+        "All values are token references from Token_System"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.surface.primary",
+      "color.surface.user-message",
+      "color.surface.agent-message",
+      "color.surface.code",
+      "color.text.primary",
+      "border.default",
+      "border.subtle",
+      "space.sm",
+      "space.md",
+      "radius.sm",
+      "radius.md",
+      "typography.body.md",
+      "typography.mono.sm"
+    ],
+    "components": [
+      "Text",
+      "Button",
+      "TextArea",
+      "Card",
+      "Icon"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "dark",
+    "motionPresets": [
+      "enter-exit",
+      "state-transition",
+      "hover-focus"
+    ]
+  }
+}

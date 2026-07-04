@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- Achievement: Star/medal concept -->
+  <polygon points="100,50 108,75 135,75 113,90 121,115 100,100 79,115 87,90 65,75 92,75" stroke="#F59E0B" stroke-width="2" fill="none"/>
+  <circle cx="100" cy="85" r="28" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <circle cx="72" cy="55" r="2" fill="#93C5FD"/>
+  <circle cx="132" cy="60" r="2.5" fill="#93C5FD"/>
+  <circle cx="60" cy="90" r="1.5" fill="#FCD34D"/>
+  <circle cx="140" cy="95" r="1.5" fill="#FCD34D"/>
+  <line x1="92" y1="125" x2="92" y2="140" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="108" y1="125" x2="108" y2="140" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="60" y="155" width="80" height="6" rx="3" fill="#E2E8F0"/>
+  <rect x="75" y="167" width="50" height="5" rx="2.5" fill="#F1F5F9"/>
+</svg>

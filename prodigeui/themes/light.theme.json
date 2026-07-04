@@ -1,0 +1,6 @@
+{
+  "name": "light",
+  "mode": "light",
+  "extends": "_default",
+  "overrides": {}
+}

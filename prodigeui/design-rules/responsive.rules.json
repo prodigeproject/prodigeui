@@ -1,0 +1,60 @@
+{
+  "responsive": {
+    "approach": "mobile-first",
+    "approachSource": "Content-out design ensures essential content is always accessible (Mobile App UX Principles; Grid Systems adaptation for responsive)",
+    "breakpoints": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "xxl": "1536px"
+    },
+    "breakpointsSource": "Content-based, not device-based. These align with standard device categories while being content-driven (Practical UI Ch.7; Grid Systems principle adapted)",
+    "gridColumnProgression": {
+      "sm": 4,
+      "md": 8,
+      "lg": 12
+    },
+    "gridColumnProgressionSource": "Grid Systems (Mueller-Brockmann) — column count based on content density needs; 12 is divisible by 2,3,4,6",
+    "fluidTypography": {
+      "method": "clamp",
+      "minViewport": "375px",
+      "maxViewport": "1440px",
+      "formula": "clamp(min, preferred-vw, max)"
+    },
+    "fluidTypographySource": "Typographic Style (Bringhurst) — type must respond to its container; clamp() provides bounds (modern CSS adaptation)",
+    "spacingScaling": {
+      "mobile": 0.75,
+      "tablet": 0.875,
+      "desktop": 1.0,
+      "method": "scale-factor-on-base-tokens"
+    },
+    "spacingScalingSource": "Grid Systems — proportional reduction maintains rhythm; spacing as percentage of base preserves ratios",
+    "componentAdaptation": {
+      "organisms-restructure": true,
+      "molecules-reflow": true,
+      "atoms-scale-only": true
+    },
+    "componentAdaptationSource": "Atomic Design (Frost) — atoms are indivisible (only scale), molecules can reflow (label above/beside), organisms can restructure (sidebar becomes bottom sheet)",
+    "touchTargets": {
+      "mobile": "44px",
+      "desktop": "32px",
+      "spacing": "8px"
+    },
+    "touchTargetsSource": "Fitts's Law (Laws of UX); Apple HIG (44pt); WCAG 2.5.5",
+    "contentPriority": "essential-first-supplementary-progressive",
+    "contentPrioritySource": "Progressive disclosure principle (Don't Make Me Think); show essential immediately, reveal supplementary on demand",
+    "imageStrategy": "art-direction-srcset",
+    "imageStrategySource": "Different crops/compositions per viewport, not just scaling (Responsive Web Design methodology; Practical UI Ch.12)",
+    "sidebarBehavior": {
+      "desktop": "visible-persistent",
+      "tablet": "collapsible-icon-only",
+      "mobile": "overlay-bottom-sheet"
+    },
+    "navigationBehavior": {
+      "desktop": "horizontal-full",
+      "tablet": "horizontal-priority-plus",
+      "mobile": "hamburger-or-bottom-tab"
+    }
+  }
+}

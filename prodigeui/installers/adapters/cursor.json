@@ -1,0 +1,7 @@
+{
+  "tool": "cursor",
+  "entryPointFile": ".cursorrules",
+  "configLocation": "<project-root>/.cursorrules",
+  "supportedFormats": [".cursorrules", "AGENTS.md", "skills/"],
+  "notes": "Cursor reads .cursorrules from project root. ProdigeUI content is adapted into .cursorrules format. AGENTS.md is also supported as a fallback."
+}

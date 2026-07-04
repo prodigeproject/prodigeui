@@ -1,0 +1,87 @@
+{
+  "name": "hris-admin-panel",
+  "useCase": "hris",
+  "context": "Design an admin CRUD panel for HR management operations. The audience is HR administrators who manage employee records, departments, roles, and organizational data. Target platforms: desktop (primary) and tablet. The interface must support bulk operations, advanced filtering, inline editing, and role-based action visibility while maintaining data integrity through confirmation dialogs and audit trail indicators.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for table headers, cell data, and action labels",
+    "Apply color.rules.json feedback tokens for status badges (active, inactive, pending)",
+    "Table layout must support sortable columns, resizable widths, and fixed header on scroll",
+    "Destructive actions (delete, deactivate) must trigger confirmation dialogs",
+    "Inline edit mode must visually differentiate from read mode using border/surface tokens",
+    "Pagination must support both page-based and load-more patterns",
+    "Comply with Quality_Gate: clear data hierarchy, no ambiguous status labels, proper table semantics"
+  ],
+  "outputCriteria": {
+    "format": "Admin panel spec with data table, CRUD modals, filter bar, bulk action toolbar, and pagination using token references",
+    "qualityChecks": [
+      "Table uses proper HTML table semantics with sortable column headers",
+      "Status badges use distinct feedback tokens with icon+text (not color alone)",
+      "Filter bar maintains visibility of active filter count and clear-all option",
+      "Bulk action toolbar appears contextually when rows are selected",
+      "Empty and error states provide actionable guidance"
+    ],
+    "accessibilityRequirements": [
+      "Table headers use scope and aria-sort for sortable columns",
+      "Row selection checkboxes have aria-label with employee identifier",
+      "Confirmation dialogs trap focus and return focus on dismiss",
+      "Filter controls are grouped in a form with submit and reset actions",
+      "Pagination announces current page and total to screen readers"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Employee data table with filters, bulk actions, and inline status editing",
+      "output": "Page: AdminPanel\n  Layout: flex(direction=column, gap=space.md)\n  padding: var(--space-lg)\n  Children:\n    - Molecule: PageHeader(flex, justify=space-between)\n        - Atom: Heading(level=h1, token=typography.heading.lg, text='Employees')\n        - Atom: Button(variant=primary, icon=plus, label='Add employee')\n    - Molecule: FilterBar(flex, gap=space.sm, padding=space.sm)\n        bg: var(--color-surface-secondary)\n        radius: var(--radius-md)\n        - Atom: Input(type=search, placeholder='Search by name...', icon=search)\n        - Atom: Select(label='Department', options=['All','Engineering','HR','Sales'])\n        - Atom: Select(label='Status', options=['All','Active','Inactive','Pending'])\n        - Atom: Badge(text='3 filters active', variant=info)\n        - Atom: Button(variant=ghost, size=sm, label='Clear all')\n    - Molecule: BulkActionBar(hidden when 0 selected, motion=enter-exit.slide-down)\n        bg: var(--color-surface-elevated)\n        padding: var(--space-sm) var(--space-md)\n        - Atom: Text(token=typography.body.sm, text='4 selected')\n        - Atom: Button(variant=ghost, label='Export')\n        - Atom: Button(variant=destructive, label='Deactivate')\n    - Organism: DataTable(overflow-x=auto)\n        - thead: Row(bg=color.surface.secondary, position=sticky, top=0)\n            - Atom: Checkbox(ariaLabel='Select all', indeterminate)\n            - Atom: ColumnHeader(text='Name', sortable, aria-sort=ascending)\n            - Atom: ColumnHeader(text='Department', sortable)\n            - Atom: ColumnHeader(text='Status', sortable)\n            - Atom: ColumnHeader(text='Actions')\n        - tbody: Row(hover: bg=color.surface.hover)\n            - Atom: Checkbox(ariaLabel='Select John Doe')\n            - Atom: Text(token=typography.body.sm, text='John Doe')\n            - Atom: Text(token=typography.body.sm, text='Engineering')\n            - Atom: Badge(text='Active', icon=check-circle, bg=color.feedback.success-subtle)\n            - Molecule: RowActions\n                - Atom: IconButton(icon=edit, ariaLabel='Edit employee')\n                - Atom: IconButton(icon=trash, ariaLabel='Delete employee', color=color.feedback.error)\n    - Molecule: Pagination(flex, justify=space-between)\n        - Atom: Text(token=typography.body.sm, text='Showing 1-20 of 156')\n        - Molecule: PageControls(aria-label='Pagination')\n            - Atom: Button(variant=ghost, label='Previous', disabled)\n            - Atom: Button(variant=ghost, label='1', aria-current=page)\n            - Atom: Button(variant=ghost, label='2')\n            - Atom: Button(variant=ghost, label='Next')",
+      "acceptanceCriteria": [
+        "Table uses semantic thead/tbody with sortable headers and aria-sort",
+        "Status badges combine icon and color for non-color-dependent communication",
+        "Bulk action bar appears with motion when rows selected",
+        "Filter bar shows active count and clear option",
+        "Row actions use icon buttons with descriptive aria-labels"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.surface.primary",
+      "color.surface.secondary",
+      "color.surface.elevated",
+      "color.surface.hover",
+      "color.feedback.success-subtle",
+      "color.feedback.error",
+      "color.feedback.warning-subtle",
+      "color.text.primary",
+      "color.text.secondary",
+      "border.default",
+      "space.sm",
+      "space.md",
+      "space.lg",
+      "radius.md",
+      "typography.heading.lg",
+      "typography.body.sm"
+    ],
+    "components": [
+      "Table",
+      "Button",
+      "Input",
+      "Select",
+      "Badge",
+      "Checkbox",
+      "Pagination",
+      "Card"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "state-transition",
+      "enter-exit",
+      "hover-focus"
+    ]
+  }
+}

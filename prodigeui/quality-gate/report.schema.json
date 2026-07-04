@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://prodigeui.dev/schemas/report.schema.json",
+  "title": "ProdigeUI Quality Gate Report",
+  "description": "Schema for Quality Gate reports. Ensures design output meets enterprise-grade standards and is free of AI slop.",
+  "type": "object",
+  "required": [
+    "overall",
+    "criteria"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "overall": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail"
+      ],
+      "description": "Overall result: pass only if ALL criteria pass, fail if one or more criteria fail."
+    },
+    "criteria": {
+      "type": "array",
+      "description": "List of evaluated criteria.",
+      "items": {
+        "$ref": "#/definitions/criterionResult"
+      },
+      "minItems": 1
+    }
+  },
+  "definitions": {
+    "criterionResult": {
+      "type": "object",
+      "description": "Result of evaluating a single Quality Gate criterion.",
+      "required": [
+        "id",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique criterion ID (kebab-case, e.g., no-raw-values, contrast-ratio).",
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pass",
+            "fail",
+            "not-evaluable"
+          ],
+          "description": "Criterion status: pass (met), fail (violated), not-evaluable (rule not measurable)."
+        },
+        "issue": {
+          "type": "string",
+          "description": "Description of the issue found (present when status is fail)."
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the artifact where the issue was found (relative path)."
+        },
+        "recommendation": {
+          "type": "string",
+          "description": "Actionable recommendation for fixing the issue."
+        }
+      }
+    }
+  }
+}

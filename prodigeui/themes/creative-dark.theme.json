@@ -1,0 +1,30 @@
+{
+  "name": "creative-dark",
+  "mode": "dark",
+  "extends": "_default",
+  "overrides": {
+    "color.background": "palette.neutral.s950",
+    "color.foreground": "palette.neutral.s50",
+    "color.muted": "palette.neutral.s900",
+    "color.muted-foreground": "palette.neutral.s400",
+    "color.surface": "palette.neutral.s800",
+    "color.surface-foreground": "palette.neutral.s50",
+    "color.border": "palette.neutral.s700",
+    "color.input": "palette.neutral.s700",
+    "color.ring": "palette.secondary.s500",
+    "color.primary": "palette.secondary.s500",
+    "color.primary-foreground": "palette.white",
+    "color.secondary": "palette.secondary.s700",
+    "color.secondary-foreground": "palette.white",
+    "color.accent": "palette.secondary.s50",
+    "color.accent-foreground": "palette.secondary.s700",
+    "color.destructive": "palette.error.s500",
+    "color.destructive-foreground": "palette.neutral.s50",
+    "color.success": "palette.success.s500",
+    "color.success-foreground": "palette.neutral.s950",
+    "color.warning": "palette.warning.s500",
+    "color.warning-foreground": "palette.neutral.s950",
+    "color.info": "palette.info.s500",
+    "color.info-foreground": "palette.neutral.s950"
+  }
+}

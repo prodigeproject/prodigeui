@@ -1,0 +1,14 @@
+{
+  "name": "saas-professional",
+  "mode": "light",
+  "extends": "_default",
+  "overrides": {
+    "color.primary": "palette.primary.s600",
+    "color.primary-foreground": "palette.white",
+    "color.accent": "palette.primary.s50",
+    "color.accent-foreground": "palette.primary.s700",
+    "color.muted": "palette.neutral.s50",
+    "color.surface": "palette.white",
+    "color.border": "palette.neutral.s200"
+  }
+}

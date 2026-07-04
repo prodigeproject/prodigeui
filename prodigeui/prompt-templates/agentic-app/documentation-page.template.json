@@ -1,0 +1,51 @@
+{
+  "name": "agentic-app-documentation-page",
+  "useCase": "agentic-app",
+  "context": "Design a documentation or wiki page interface for an AI-powered application. The audience is developers and users reading technical docs, API references, and guides generated or curated by AI agents. Target platforms: desktop and tablet. Must support sidebar navigation, search, code examples, and versioning.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for heading hierarchy, prose, and code snippets",
+    "Apply color.rules.json for syntax highlighting tokens and callout box variants",
+    "Use layout.rules.json for sidebar + content + table-of-contents three-panel layout",
+    "Code blocks must use monospace font token with accessible contrast",
+    "All navigation landmarks must have unique aria-labels",
+    "Search must support keyboard shortcuts (Cmd+K or Ctrl+K) with focus management",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Page layout spec with navigation tree, content area, and TOC panel",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens",
+      "Code blocks use monospace font with proper background contrast",
+      "Navigation tree documents expanded/collapsed/active states",
+      "Callout components (info, warning, error) use feedback color tokens",
+      "No raw/hardcoded visual values present"
+    ],
+    "accessibilityRequirements": [
+      "Navigation tree uses treeview role with proper aria-expanded",
+      "Active page indicated with aria-current=page",
+      "Code blocks have accessible labels or descriptions",
+      "Table of contents links use same-page navigation",
+      "Search dialog traps focus and returns on close"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Documentation sidebar navigation tree item",
+      "output": "Molecule: NavTreeItem\n  role: treeitem\n  aria-expanded: true|false\n  Layout: flex(direction: column)\n  Children:\n    - Molecule: NavLink\n        Layout: flex(direction: row, gap: var(--space-xs), align: center)\n        padding: var(--space-xs) var(--space-sm)\n        radius: var(--radius-sm)\n        Content:\n          - Atom: Icon(name=chevron-down, size=16, rotate=collapsed?-90:0)\n          - Atom: Text(token=typography.body.sm, color=color.text.primary)\n        States: default, hover(bg: var(--color-surface-hover)), active(bg: var(--color-surface-selected), font-weight: var(--font-weight-medium))\n    - Organism: NavTreeChildren(role=group, padding-left: var(--space-md))",
+      "acceptanceCriteria": [
+        "Uses treeview ARIA pattern correctly",
+        "States use semantic tokens only",
+        "Chevron rotates for expand/collapse indication",
+        "Nested items indented with consistent spacing"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": ["color.surface.primary", "color.surface.hover", "color.surface.selected", "color.text.primary", "space.xs", "space.sm", "space.md", "radius.sm", "typography.body.sm", "typography.body.md"],
+    "components": ["Sidebar", "SearchBar", "Text", "Card", "Badge", "Button"],
+    "designRules": ["typography.rules.json", "color.rules.json", "layout.rules.json", "structure.rules.json"],
+    "theme": "light",
+    "motionPresets": ["state-transition", "enter-exit"]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "name": "landing-pricing-page",
+  "useCase": "landing",
+  "context": "Design a pricing tier comparison page for a SaaS or subscription product. The audience is prospective customers evaluating plans, comparing features, and deciding which tier fits their needs. Target platforms: desktop (feature table), tablet, and mobile (stacked cards). The page must make tier differences scannable, highlight the recommended plan, and provide clear upgrade paths.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json scale for plan names, prices, and feature lists",
+    "Apply color.rules.json accent tokens to highlight the recommended/popular tier",
+    "Layout must adapt from side-by-side comparison on desktop to stacked cards on mobile",
+    "Feature comparison table must use proper table semantics (not div grids)",
+    "Price display must use typography.display tokens for visual prominence",
+    "Toggle for monthly/annual billing must clearly indicate current selection",
+    "Comply with Quality_Gate: clear visual hierarchy, no misleading strikethrough pricing without context"
+  ],
+  "outputCriteria": {
+    "format": "Pricing page spec with tier cards, feature comparison matrix, billing toggle, and CTA hierarchy using token references",
+    "qualityChecks": [
+      "Recommended tier is visually distinct via accent surface or border token",
+      "Price values use display typography tokens for immediate readability",
+      "Feature lists align across tiers for easy horizontal scanning",
+      "Billing toggle clearly indicates active state with proper token usage",
+      "CTA buttons use action hierarchy (primary for recommended, secondary for others)"
+    ],
+    "accessibilityRequirements": [
+      "Pricing table uses proper th/td semantics with scope attributes",
+      "Billing toggle is an accessible switch with aria-pressed state",
+      "Recommended plan indicated programmatically (not just visually)",
+      "Feature availability communicated via text (not just checkmark icons)",
+      "All tier CTAs have unique accessible names indicating the plan"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Three-tier pricing layout with billing toggle and highlighted pro plan",
+      "output": "Section: PricingSection\n  Layout: flex(direction=column, align=center, gap: var(--space-xl))\n  padding: var(--space-2xl) var(--space-lg)\n  Children:\n    - Atom: Heading(level=h2, token=typography.heading.xl, text='Choose your plan')\n    - Molecule: BillingToggle(role=switch, aria-pressed=false)\n        labels: ['Monthly', 'Annual (save 20%)']\n        track: var(--color-surface-tertiary)\n        active: var(--color-action-primary)\n    - Organism: TierGrid(grid, columns: repeat(3, 1fr) @desktop | 1fr @mobile, gap: var(--space-lg))\n        - Molecule: TierCard(tier='Starter')\n            bg: var(--color-surface-primary)\n            border: var(--border-default)\n            radius: var(--radius-lg)\n        - Molecule: TierCard(tier='Pro', recommended=true)\n            bg: var(--color-surface-primary)\n            border: 2px solid var(--color-action-primary)\n            radius: var(--radius-lg)\n            - Atom: Badge(text='Most popular', bg=color.action.primary, color=color.text.on-action)\n        - Molecule: TierCard(tier='Enterprise')\n            bg: var(--color-surface-primary)\n            border: var(--border-default)\n            radius: var(--radius-lg)",
+      "acceptanceCriteria": [
+        "Recommended tier has distinct border using action.primary token",
+        "Badge component marks popular plan for visual and programmatic identification",
+        "Grid adapts from 3-column desktop to single-column mobile",
+        "Billing toggle uses proper switch role with aria-pressed",
+        "All values reference Token_System"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.surface.primary",
+      "color.surface.tertiary",
+      "color.action.primary",
+      "color.text.primary",
+      "color.text.secondary",
+      "color.text.on-action",
+      "border.default",
+      "space.lg",
+      "space.xl",
+      "space.2xl",
+      "radius.lg",
+      "typography.heading.xl",
+      "typography.display.md",
+      "typography.body.md"
+    ],
+    "components": [
+      "Card",
+      "Button",
+      "Badge",
+      "Text",
+      "Toggle",
+      "Table",
+      "Heading"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "state-transition",
+      "enter-exit"
+    ]
+  }
+}

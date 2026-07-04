@@ -1,0 +1,166 @@
+/* ProdigeUI Design Tokens — CSS Custom Properties
+ * Auto-derived from primitive → semantic → component token layers.
+ * Use these variables in all visual styling. Never use raw values directly.
+ */
+
+:root {
+  /* === Color: Semantic Roles === */
+  --prodigeui-color-background: #ffffff;
+  --prodigeui-color-foreground: #0a0a0a;
+  --prodigeui-color-muted: #f5f5f5;
+  --prodigeui-color-muted-foreground: #737373;
+  --prodigeui-color-surface: #ffffff;
+  --prodigeui-color-surface-foreground: #0a0a0a;
+  --prodigeui-color-border: #e5e5e5;
+  --prodigeui-color-input: #e5e5e5;
+  --prodigeui-color-ring: #3b82f6;
+  --prodigeui-color-primary: #3b82f6;
+  --prodigeui-color-primary-foreground: #ffffff;
+  --prodigeui-color-secondary: #8b5cf6;
+  --prodigeui-color-secondary-foreground: #ffffff;
+  --prodigeui-color-accent: #f5f5f5;
+  --prodigeui-color-accent-foreground: #171717;
+  --prodigeui-color-destructive: #dc2626;
+  --prodigeui-color-destructive-foreground: #ffffff;
+  --prodigeui-color-success: #16a34a;
+  --prodigeui-color-success-foreground: #ffffff;
+  --prodigeui-color-warning: #f59e0b;
+  --prodigeui-color-warning-foreground: #171717;
+  --prodigeui-color-info: #06b6d4;
+  --prodigeui-color-info-foreground: #ffffff;
+
+  /* === Color: Component Tokens === */
+  --prodigeui-button-primary-bg: #3b82f6;
+  --prodigeui-button-primary-fg: #ffffff;
+  --prodigeui-button-primary-bg-hover: #3b82f6;
+  --prodigeui-button-secondary-bg: #8b5cf6;
+  --prodigeui-button-secondary-fg: #ffffff;
+  --prodigeui-button-ghost-bg: #f5f5f5;
+  --prodigeui-button-ghost-fg: #171717;
+  --prodigeui-button-destructive-bg: #dc2626;
+  --prodigeui-button-destructive-fg: #ffffff;
+  --prodigeui-button-focus-ring: #3b82f6;
+  --prodigeui-input-bg: #ffffff;
+  --prodigeui-input-fg: #0a0a0a;
+  --prodigeui-input-border: #e5e5e5;
+  --prodigeui-input-border-focus: #3b82f6;
+  --prodigeui-input-border-error: #dc2626;
+  --prodigeui-input-placeholder: #737373;
+  --prodigeui-card-bg: #ffffff;
+  --prodigeui-card-fg: #0a0a0a;
+  --prodigeui-card-border: #e5e5e5;
+  --prodigeui-modal-bg: #ffffff;
+  --prodigeui-modal-fg: #0a0a0a;
+  --prodigeui-modal-border: #e5e5e5;
+  --prodigeui-modal-overlay-bg: #0a0a0a;
+  --prodigeui-badge-bg: #f5f5f5;
+  --prodigeui-badge-fg: #737373;
+  --prodigeui-toggle-bg: #f5f5f5;
+  --prodigeui-toggle-bg-active: #3b82f6;
+  --prodigeui-toggle-thumb: #ffffff;
+  --prodigeui-navbar-bg: #ffffff;
+  --prodigeui-navbar-fg: #0a0a0a;
+  --prodigeui-navbar-border: #e5e5e5;
+  --prodigeui-table-header-bg: #f5f5f5;
+  --prodigeui-table-header-fg: #737373;
+  --prodigeui-table-row-bg: #ffffff;
+  --prodigeui-table-row-fg: #0a0a0a;
+  --prodigeui-table-row-bg-hover: #f5f5f5;
+  --prodigeui-table-border: #e5e5e5;
+
+  /* === Typography === */
+  --prodigeui-font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --prodigeui-font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --prodigeui-font-family-code: 'JetBrains Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  --prodigeui-font-size-body: 16px;
+  --prodigeui-font-size-body-sm: 14px;
+  --prodigeui-font-size-body-lg: 18px;
+  --prodigeui-font-size-caption: 12px;
+  --prodigeui-font-size-h6: 18px;
+  --prodigeui-font-size-h5: 20px;
+  --prodigeui-font-size-h4: 24px;
+  --prodigeui-font-size-h3: 30px;
+  --prodigeui-font-size-h2: 36px;
+  --prodigeui-font-size-h1: 48px;
+  --prodigeui-font-size-display: 60px;
+  --prodigeui-font-weight-body: 400;
+  --prodigeui-font-weight-heading: 600;
+  --prodigeui-font-weight-strong: 700;
+  --prodigeui-line-height-body: 1.5;
+  --prodigeui-line-height-heading: 1.15;
+  --prodigeui-button-font-size: 14px;
+  --prodigeui-button-font-weight: 600;
+  --prodigeui-input-font-size: 16px;
+  --prodigeui-badge-font-size: 12px;
+
+  /* === Spacing === */
+  --prodigeui-space-xs: 4px;
+  --prodigeui-space-sm: 8px;
+  --prodigeui-space-md: 16px;
+  --prodigeui-space-lg: 24px;
+  --prodigeui-space-xl: 32px;
+  --prodigeui-space-x2l: 48px;
+  --prodigeui-space-x3l: 64px;
+  --prodigeui-space-x4l: 96px;
+  --prodigeui-space-component-padding: 16px;
+  --prodigeui-space-component-gap: 12px;
+  --prodigeui-space-section-gap: 64px;
+  --prodigeui-space-page-margin: 24px;
+  --prodigeui-button-padding-x: 16px;
+  --prodigeui-button-padding-y: 8px;
+  --prodigeui-input-padding-x: 16px;
+  --prodigeui-input-padding-y: 8px;
+  --prodigeui-card-padding: 24px;
+  --prodigeui-modal-padding: 24px;
+  --prodigeui-badge-padding-x: 8px;
+  --prodigeui-navbar-padding-x: 24px;
+  --prodigeui-navbar-padding-y: 8px;
+  --prodigeui-table-cell-padding: 16px;
+
+  /* === Radius === */
+  --prodigeui-radius-sm: 4px;
+  --prodigeui-radius-md: 6px;
+  --prodigeui-radius-lg: 8px;
+  --prodigeui-radius-xl: 12px;
+  --prodigeui-radius-full: 9999px;
+  --prodigeui-button-radius: 6px;
+  --prodigeui-input-radius: 6px;
+  --prodigeui-card-radius: 8px;
+  --prodigeui-modal-radius: 12px;
+  --prodigeui-badge-radius: 9999px;
+  --prodigeui-toggle-radius: 9999px;
+
+  /* === Shadow === */
+  --prodigeui-shadow-sm: 0px 1px 2px 0px rgba(0,0,0,0.05);
+  --prodigeui-shadow-md: 0px 2px 4px -1px rgba(0,0,0,0.1);
+  --prodigeui-shadow-lg: 0px 4px 8px -2px rgba(0,0,0,0.1);
+  --prodigeui-shadow-xl: 0px 8px 16px -4px rgba(0,0,0,0.1);
+  --prodigeui-card-shadow: 0px 2px 4px -1px rgba(0,0,0,0.1);
+  --prodigeui-modal-shadow: 0px 8px 16px -4px rgba(0,0,0,0.1);
+
+  /* === Border === */
+  --prodigeui-border-width-default: 1px;
+  --prodigeui-border-width-thick: 2px;
+
+  /* === Z-Index === */
+  --prodigeui-z-sticky: 100;
+  --prodigeui-z-dropdown: 200;
+  --prodigeui-z-overlay: 300;
+  --prodigeui-z-modal: 400;
+  --prodigeui-z-toast: 500;
+  --prodigeui-z-tooltip: 600;
+  --prodigeui-navbar-z: 100;
+  --prodigeui-modal-z: 400;
+
+  /* === Motion === */
+  --prodigeui-motion-duration-instant: 100ms;
+  --prodigeui-motion-duration-fast: 150ms;
+  --prodigeui-motion-duration-normal: 250ms;
+  --prodigeui-motion-duration-slow: 350ms;
+  --prodigeui-motion-duration-emphasis: 500ms;
+  --prodigeui-motion-easing-entrance: cubic-bezier(0.33, 1, 0.68, 1);
+  --prodigeui-motion-easing-exit: cubic-bezier(0.32, 0, 0.67, 0);
+  --prodigeui-motion-easing-standard: cubic-bezier(0.65, 0, 0.35, 1);
+  --prodigeui-motion-easing-playful: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --prodigeui-motion-easing-emphasized: cubic-bezier(0.05, 0.7, 0.1, 1);
+}

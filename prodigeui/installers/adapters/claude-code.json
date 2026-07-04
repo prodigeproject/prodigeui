@@ -1,0 +1,7 @@
+{
+  "tool": "claude-code",
+  "entryPointFile": "CLAUDE.md",
+  "configLocation": "<project-root>/CLAUDE.md",
+  "supportedFormats": ["CLAUDE.md", "skills/", ".claude/"],
+  "notes": "Claude Code reads CLAUDE.md from project root. Skills can be installed via .claude/ directory."
+}

@@ -1,0 +1,51 @@
+{
+  "name": "saas-calendar-view",
+  "useCase": "saas",
+  "context": "Design a calendar and scheduling interface for a SaaS application. The audience is professionals managing appointments, meetings, and events across day, week, and month views. Target platforms: desktop (primary) and mobile. Must support event creation, drag-to-resize, and time zone awareness.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for date headers, time labels, and event titles",
+    "Apply color.rules.json for calendar category colors and today highlight",
+    "Use layout.rules.json grid for week/day time slots and month grid",
+    "Calendar grid must use proper table or grid role with day/time headers",
+    "Event creation via click-and-drag must have keyboard alternative",
+    "Time slots must be navigable via arrow keys with clear focus",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Component composition spec with month/week/day views, event rendering, and creation flow",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens",
+      "Event blocks use category-specific color with sufficient contrast for text",
+      "Calendar grid uses consistent cell sizing from spacing tokens",
+      "View switcher documents all view states",
+      "No raw/hardcoded visual values present"
+    ],
+    "accessibilityRequirements": [
+      "Calendar grid uses grid role with proper row/columnheader",
+      "Today cell has aria-current=date",
+      "Events are announced with time and title via screen reader",
+      "View navigation (prev/next month) updates live region",
+      "Focus management after event creation returns to calendar"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Calendar event chip rendered within a day cell",
+      "output": "Molecule: CalendarEvent\n  Layout: flex(direction: row, align: center, gap: var(--space-2xs))\n  bg: var(--color-category-blue-subtle)\n  border-left: 3px solid var(--color-category-blue)\n  radius: var(--radius-sm)\n  padding: var(--space-2xs) var(--space-xs)\n  cursor: pointer\n  role: button\n  aria-label: 'Event Title, 10:00 AM - 11:00 AM'\n  Children:\n    - Atom: Dot(size=6, bg=var(--color-category-blue))\n    - Atom: Text(token=typography.body.xs, color=color.text.primary, truncate=true)\n  States: default, hover(shadow: var(--shadow-sm)), focus(outline: var(--color-focus-ring)), dragging(opacity: 0.7)",
+      "acceptanceCriteria": [
+        "Uses category color tokens, not raw values",
+        "Event has full accessible name with time range",
+        "Truncates title gracefully on small cells",
+        "Drag state provides visual feedback"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": ["color.surface.primary", "color.text.primary", "color.primary", "space.2xs", "space.xs", "space.sm", "radius.sm", "shadow.sm", "typography.body.xs", "typography.body.sm", "typography.heading.sm"],
+    "components": ["Button", "Text", "Badge", "Modal", "Card"],
+    "designRules": ["typography.rules.json", "color.rules.json", "layout.rules.json"],
+    "theme": "light",
+    "motionPresets": ["state-transition", "enter-exit", "drag-drop"]
+  }
+}

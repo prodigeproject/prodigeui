@@ -1,0 +1,7 @@
+{
+  "tool": "glm",
+  "entryPointFile": "AGENTS.md",
+  "configLocation": "<project-root>/AGENTS.md",
+  "supportedFormats": ["AGENTS.md", "skills/"],
+  "notes": "GLM reads AGENTS.md from project root. Skills are discovered via the skills/ directory structure."
+}

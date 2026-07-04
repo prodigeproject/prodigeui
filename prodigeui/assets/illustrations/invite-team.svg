@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- Invite Team: People silhouettes with plus -->
+  <circle cx="80" cy="80" r="14" stroke="#64748B" stroke-width="2"/>
+  <path d="M66 115 C66 103 72 97 80 97 C88 97 94 103 94 115" stroke="#64748B" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="115" cy="80" r="14" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M101 115 C101 103 107 97 115 97 C123 97 129 103 129 115" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/>
+  <circle cx="140" cy="70" r="10" stroke="#3B82F6" stroke-width="1.5"/>
+  <line x1="140" y1="65" x2="140" y2="75" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+  <line x1="135" y1="70" x2="145" y2="70" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
+  <rect x="55" y="148" width="90" height="6" rx="3" fill="#E2E8F0"/>
+  <rect x="72" y="160" width="56" height="5" rx="2.5" fill="#F1F5F9"/>
+</svg>
