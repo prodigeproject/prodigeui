@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--
+=====================================================================================
+  SYSTEM ADHERENCE LOG - UI-UX-PRO-MAX  (BM25 engine ACTUALLY executed, reproducible)
+=====================================================================================
+  The real engine (src/ui-ux-pro-max/scripts/search.py, Python 3.12, BM25 + regex)
+  was run for this brief. Commands + the rows that actually ranked are pasted below,
+  and EVERY token that ships traces to one of them. (This file was previously built on
+  a fabricated "Kinetic Brutalism / Acid Yellow #DFE104 / Space Grotesk" direction -
+  those strings do NOT exist anywhere in styles.csv; that build has been discarded.)
+
+    search.py "creative agency portfolio" --domain style
+      -> #1 Interactive Cursor Design (custom cursor, magnetic pull, mix-blend-mode
+             difference, scale on hover; GSAP/Framer 10/10; touch/SR fallback required)
+      -> #2 Motion-Driven (scroll anim via IntersectionObserver, parallax 3-5 layers,
+             300-400ms transitions, GSAP/Framer 10/10, respect prefers-reduced-motion)
+    search.py "creative studio agency landing page bold" --domain style
+      -> #1 Exaggerated Minimalism (oversized type clamp 3rem-12rem, weight 900,
+             letter-spacing -0.05em, black/white + single accent, extreme whitespace)
+
+    search.py "creative studio agency bold brand" --domain color
+      -> #1 Creative Agency:  Primary #EC4899  Secondary #F472B6  Accent #0891B2
+             Background #FDF2F8  Foreground #831843  Muted #F1EEF5  MutedFg #64748B
+             Border #FBCFE8  Card #FFFFFF  Ring #EC4899   Notes: "Bold pink + cyan accent"
+
+    search.py "creative agency display bold headline" --domain typography
+      -> #2 Bold Typography Poster: Inter 600-800 display (letterSpacing -1.5px heroes,
+             -0.5px subheads), Playfair Display ITALIC only for pull-quotes, JetBrains
+             Mono for labels/stats. Scale to 72px+ hero, 5:1 H1:Body mandatory.
+
+    search.py "creative agency landing page sections" --domain landing
+      -> #1 Scroll-Triggered Storytelling: Intro hook -> Chapter 1 (problem) ->
+             Chapter 2 (journey) -> Chapter 3 (solution) -> Climax CTA. "Use progress
+             indicator." Color strategy = progressive reveal, each chapter distinct
+             colour, building intensity. Narrative lifts time-on-page ~3x.
+
+  SYNTHESIS (engine method: color row = palette, type row = type, style rows = behaviour,
+  landing row = section order): a light Creative-Agency pink/cyan poster page told as a
+  scroll-triggered story. Hero = intro hook (oversized Inter 800). "The Journey" = GSAP
+  pinned horizontal track of 4 chapters with progressive colour intensity (pink ->
+  magenta -> cyan). Custom magnetic cursor (fine-pointer only). Top progress indicator.
+  Playfair italic reserved for one pull-quote. JetBrains Mono on every label/stat.
+  Full prefers-reduced-motion + touch fallback (cursor off, track becomes vertical).
+=====================================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NOVA - Creative Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+<style>
+  /* ===== Creative Agency palette (colors.csv engine row, verbatim) ===== */
+  :root{
+    --bg:#FDF2F8; --fg:#831843; --card:#FFFFFF;
+    --primary:#EC4899; --secondary:#F472B6; --accent:#0891B2;
+    --muted:#F1EEF5; --muted-fg:#64748B; --border:#FBCFE8;
+    --radius:14px; --tr:340ms; /* Motion-Driven 300-400ms */
+    --pad:clamp(1.25rem,4vw,4rem);
+    --disp:"Inter",system-ui,sans-serif;
+    --quote:"Playfair Display",Georgia,serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg); color:var(--fg);
+    font-family:var(--disp); font-weight:400; line-height:1.55;
+    overflow-x:hidden; font-size:clamp(1rem,0.5vw + 0.9rem,1.15rem);
+  }
+  ::selection{background:var(--primary); color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  :focus-visible{outline:3px solid var(--accent); outline-offset:3px}
+  .mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+  .skip{position:absolute;left:-999px;top:0;background:var(--primary);color:#fff;
+    padding:.7rem 1.1rem;font-weight:700;z-index:200;border-radius:0 0 10px 0}
+  .skip:focus{left:0}
+
+  /* progress indicator (landing row: "use progress indicator") */
+  .prog{position:fixed;top:0;left:0;height:4px;width:100%;background:transparent;z-index:120}
+  .prog__fill{height:100%;width:100%;background:linear-gradient(90deg,var(--primary),var(--accent));
+    transform:scaleX(0);transform-origin:left}
+
+  /* custom magnetic cursor (Interactive Cursor Design; fine-pointer only) */
+  .cursor,.cursor-dot{position:fixed;top:0;left:0;z-index:300;pointer-events:none;
+    border-radius:50%;mix-blend-mode:difference;background:#fff;translate:-50% -50%}
+  .cursor{width:38px;height:38px;transition:width .25s,height .25s,background .25s}
+  .cursor-dot{width:6px;height:6px}
+  .cursor.grow{width:74px;height:74px}
+  body.cursor-on{cursor:none}
+  @media(hover:none),(pointer:coarse){.cursor,.cursor-dot{display:none!important}body.cursor-on{cursor:auto}}
+
+  /* nav */
+  .nav{position:fixed;top:4px;left:0;right:0;z-index:110;display:flex;
+    align-items:center;justify-content:space-between;padding:1rem var(--pad);
+    background:rgba(253,242,248,.78);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border)}
+  .nav__mark{font-weight:800;letter-spacing:-.02em;font-size:1.2rem;color:var(--fg)}
+  .nav__mark span{color:var(--primary)}
+  .nav__links{display:flex;gap:1.7rem}
+  .nav__links a{color:var(--muted-fg);transition:color var(--tr)}
+  .nav__links a:hover{color:var(--primary)}
+  @media(max-width:640px){.nav__links{display:none}}
+
+  /* ===== INTRO HOOK / HERO ===== */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    padding:7rem var(--pad) 3rem;position:relative;overflow:hidden}
+  /* .hero .hero__blob (not .hero__blob) so the decorative blobs KEEP position:absolute —
+     a plain .hero__blob ties on specificity with .hero>* below and gets forced in-flow,
+     rendering as giant half-viewport blurred squares that shove content and gut the layout
+     with blank bands. Higher specificity keeps them behind, absolutely placed. */
+  .hero .hero__blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;z-index:0}
+  .hero__blob.a{width:44vw;height:44vw;background:var(--secondary);top:-10vw;right:-8vw}
+  .hero__blob.b{width:30vw;height:30vw;background:var(--accent);bottom:-8vw;left:-6vw;opacity:.35}
+  /* oversized outline wordmark anchors the lower negative space so the tall hero reads as
+     activated, not empty (the move the earlier brutalist build had and this one had dropped) */
+  .hero .hero__ghost{position:absolute;left:0;right:0;bottom:-3.5vw;z-index:0;text-align:center;
+    font-weight:800;font-size:32vw;line-height:.7;letter-spacing:-.05em;white-space:nowrap;
+    color:transparent;-webkit-text-stroke:2px var(--border);opacity:.7;pointer-events:none}
+  .hero>*{position:relative;z-index:1}
+  .hero__eyebrow{color:var(--primary);margin-bottom:1.6rem;display:inline-flex;
+    align-items:center;gap:.7rem;font-weight:700}
+  .hero__eyebrow::before{content:"";width:34px;height:2px;background:var(--primary)}
+  .hero__title{font-weight:800;letter-spacing:-.045em;line-height:.92;
+    font-size:clamp(3.2rem,12vw,9.5rem);margin-bottom:1.6rem;max-width:16ch}
+  .hero__title em{font-style:normal;color:var(--primary)}
+  .hero__title .out{color:transparent;-webkit-text-stroke:2px var(--primary)}
+  .hero__lede{max-width:46ch;color:var(--muted-fg);font-size:clamp(1.1rem,1.4vw,1.45rem);
+    line-height:1.5;margin-bottom:2.4rem;font-weight:500}
+  .hero__row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;
+    font-size:.95rem;padding:1.05rem 1.9rem;border-radius:var(--radius);
+    background:var(--primary);color:#fff;border:2px solid var(--primary);
+    transition:background var(--tr),color var(--tr),transform var(--tr);cursor:pointer}
+  .btn:hover{background:#db2777;border-color:#db2777}
+  .btn--ghost{background:transparent;color:var(--fg);border-color:var(--border)}
+  .btn--ghost:hover{border-color:var(--primary);color:var(--primary);background:transparent}
+  .hero__meta{position:absolute;right:var(--pad);bottom:3rem;text-align:right;color:var(--muted-fg)}
+  .hero__meta b{display:block;color:var(--fg);font-size:2.1rem;letter-spacing:-.02em;
+    font-family:var(--mono);font-weight:700}
+  @media(max-width:640px){.hero__meta{display:none}}
+
+  /* ===== THE JOURNEY (horizontal pinned track; progressive colour intensity) ===== */
+  .journey{position:relative;background:#fff;border-top:1px solid var(--border)}
+  .journey__head{display:flex;justify-content:space-between;align-items:flex-end;
+    padding:5rem var(--pad) 2rem;gap:1rem;flex-wrap:wrap}
+  .journey__head h2{font-size:clamp(2rem,5vw,4rem);font-weight:800;
+    letter-spacing:-.03em;line-height:.95}
+  .journey__head p{color:var(--muted-fg);max-width:36ch;font-weight:500}
+  .track{display:flex;gap:1.5rem;padding:0 var(--pad) 4rem;will-change:transform}
+  .chapter{flex:0 0 clamp(300px,46vw,560px);min-height:70vh;border-radius:18px;
+    padding:clamp(1.4rem,2.4vw,2.4rem);display:flex;flex-direction:column;
+    justify-content:space-between;position:relative;overflow:hidden;color:#fff}
+  .chapter:nth-child(1){background:linear-gradient(160deg,#F472B6,#EC4899)}
+  .chapter:nth-child(2){background:linear-gradient(160deg,#EC4899,#BE185D)}
+  .chapter:nth-child(3){background:linear-gradient(160deg,#0891B2,#0E7490)}
+  .chapter:nth-child(4){background:linear-gradient(160deg,#831843,#0891B2)}
+  .chapter__img{flex:1;margin:1.3rem 0;border-radius:12px;
+    background:#00000022 center/cover no-repeat;min-height:220px;
+    filter:saturate(.7) contrast(1.02);transition:filter .5s,transform .5s}
+  .chapter:hover .chapter__img{filter:saturate(1.05) contrast(1.05);transform:scale(1.02)}
+  .chapter__title{font-size:clamp(1.7rem,3vw,3rem);font-weight:800;line-height:.98;letter-spacing:-.02em}
+  .chapter__foot{display:flex;justify-content:space-between;align-items:center;
+    margin-top:1rem;opacity:.92}
+  .chapter__tag{border:1px solid rgba(255,255,255,.5);padding:.35rem .75rem;border-radius:999px}
+  @media(max-width:860px){.chapter{flex-basis:82vw}}
+  /* ===== DETAIL / SOLUTION REVEAL ===== */
+  .detail{padding:6rem var(--pad);display:grid;grid-template-columns:1.25fr .75fr;
+    gap:3rem;align-items:center}
+  .detail h2{font-size:clamp(2rem,5.5vw,4.6rem);font-weight:800;line-height:.95;letter-spacing:-.03em}
+  .detail h2 em{font-style:normal;color:var(--primary)}
+  .detail p{color:var(--muted-fg);margin-top:1.3rem;max-width:46ch;font-weight:500}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.9rem}
+  .stat b{display:block;font-size:clamp(3rem,7vw,5rem);color:var(--fg);font-weight:800;
+    letter-spacing:-.03em;line-height:1;margin:.5rem 0}
+  .stat p{margin-top:.4rem}
+  @media(max-width:860px){.detail{grid-template-columns:1fr;gap:1.6rem}}
+
+  /* pull-quote - Playfair Display Italic ONLY (typography row) */
+  .pull{padding:5rem var(--pad);text-align:center;background:#fff;border-top:1px solid var(--border)}
+  .pull blockquote{font-family:var(--quote);font-style:italic;font-size:clamp(1.7rem,4vw,3.4rem);
+    line-height:1.18;max-width:22ch;margin:0 auto;color:var(--fg)}
+  .pull cite{display:block;margin-top:1.6rem;font-style:normal;color:var(--muted-fg)}
+
+  /* ===== CAPABILITIES ===== */
+  .caps{padding:5rem var(--pad);display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  .cap{background:var(--card);border:1px solid var(--border);border-radius:18px;
+    padding:clamp(1.5rem,2.5vw,2.4rem);min-height:15rem;display:flex;flex-direction:column;
+    justify-content:space-between;transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr)}
+  .cap:hover{transform:translateY(-6px);box-shadow:0 24px 48px -24px rgba(236,72,153,.45);border-color:var(--primary)}
+  .cap__no{color:var(--primary)}
+  .cap h3{font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:800;line-height:1;margin-top:1rem}
+  .cap p{color:var(--muted-fg);margin-top:.7rem;font-weight:500}
+  @media(max-width:860px){.caps{grid-template-columns:1fr}}
+
+  /* marquee proof */
+  .marquee{overflow:hidden;background:var(--primary);color:#fff;padding:1rem 0}
+  .marquee__row{display:flex;gap:2.6rem;width:max-content;white-space:nowrap;
+    animation:scroll 18s linear infinite;font-weight:800;letter-spacing:-.01em;font-size:1.15rem}
+  .marquee__row span{display:inline-flex;align-items:center;gap:2.6rem}
+  .marquee__row span::after{content:"\2726";opacity:.6}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ===== CLIMAX CTA ===== */
+  .contact{padding:6rem var(--pad);text-align:center;position:relative;overflow:hidden}
+  /* .contact .contact__blob — same specificity fix as the hero: keep the glow absolute and
+     behind, or .contact>* forces it in-flow as a 50vw square and blows a hole in the section */
+  .contact .contact__blob{position:absolute;width:50vw;height:50vw;border-radius:50%;filter:blur(80px);
+    background:var(--secondary);opacity:.4;top:50%;left:50%;translate:-50% -50%;z-index:0}
+  .contact>*{position:relative;z-index:1}
+  .contact h2{font-size:clamp(2.6rem,10vw,8rem);font-weight:800;line-height:.9;
+    letter-spacing:-.04em;color:var(--fg)}
+  .contact h2 em{font-style:normal;color:var(--primary)}
+  .contact p{color:var(--muted-fg);margin:1.4rem auto 2.4rem;max-width:42ch;font-weight:500}
+  .contact__detail{margin-top:2rem;display:flex;gap:1.4rem;justify-content:center;
+    flex-wrap:wrap;align-items:center;color:var(--muted-fg)}
+  .contact__detail a{color:var(--fg);border-bottom:1px solid var(--border);padding-bottom:2px;
+    transition:color var(--tr),border-color var(--tr)}
+  .contact__detail a:hover{color:var(--primary);border-color:var(--primary)}
+
+  footer{border-top:1px solid var(--border);padding:2.6rem var(--pad);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;color:var(--muted-fg)}
+
+  .fab{position:fixed;right:var(--pad);bottom:1.6rem;z-index:115;opacity:0;
+    transform:translateY(20px);transition:opacity .3s,transform .3s}
+  .fab.show{opacity:1;transform:none}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .track{flex-wrap:wrap;padding-bottom:2rem}
+    .chapter{flex-basis:100%}
+    .cursor,.cursor-dot{display:none!important}
+    body.cursor-on{cursor:auto}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+<div class="prog" aria-hidden="true"><div class="prog__fill" id="prog"></div></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="nav__mark" href="#top">NOVA<span>&#10038;</span></a>
+  <div class="nav__links mono">
+    <a href="#work">Work</a>
+    <a href="#detail">Studio</a>
+    <a href="#caps">Capabilities</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- INTRO HOOK -->
+<header class="hero" id="top">
+  <div class="hero__blob a" aria-hidden="true"></div>
+  <div class="hero__blob b" aria-hidden="true"></div>
+  <div class="hero__ghost" aria-hidden="true">NOVA</div>
+  <span class="hero__eyebrow mono">Creative Studio &middot; Est. Now</span>
+  <h1 class="hero__title">We build brands that <em>refuse</em> the <span class="out">quiet.</span></h1>
+  <p class="hero__lede">NOVA is a motion-first creative studio for founders who would rather be
+    unmistakable than safe. Identity, web, and film - loud on purpose.</p>
+  <div class="hero__row">
+    <a class="btn" href="#contact" data-magnetic>Start a project</a>
+    <a class="btn btn--ghost" href="#work" data-magnetic>See the work</a>
+  </div>
+  <div class="hero__meta mono">Scroll to travel<b>04</b>chapters</div>
+</header>
+
+<!-- CHAPTER 1-4: THE JOURNEY (horizontal, building colour intensity) -->
+<section class="journey" id="work" aria-label="Selected work - horizontal journey">
+  <div class="journey__head reveal">
+    <h2>The<br>Journey</h2>
+    <p class="mono">Four chapters from the last cycle. The track moves sideways as you
+      scroll - each stops for its own detail.</p>
+  </div>
+  <div class="track" id="track">
+    <article class="chapter">
+      <div class="mono">Chapter 01 / The Problem</div>
+      <div class="chapter__img" style="background-image:url('https://picsum.photos/seed/nova-halo/900/1100')"></div>
+      <div>
+        <h3 class="chapter__title">Halo Coffee Rebrand</h3>
+        <div class="chapter__foot mono"><span class="chapter__tag">Brand + Packaging</span><span>2026</span></div>
+      </div>
+    </article>
+    <article class="chapter">
+      <div class="mono">Chapter 02 / The Journey</div>
+      <div class="chapter__img" style="background-image:url('https://picsum.photos/seed/nova-pulse/900/1100')"></div>
+      <div>
+        <h3 class="chapter__title">Pulse Title Sequence</h3>
+        <div class="chapter__foot mono"><span class="chapter__tag">Film + 3D</span><span>2026</span></div>
+      </div>
+    </article>
+    <article class="chapter">
+      <div class="mono">Chapter 03 / The Solution</div>
+      <div class="chapter__img" style="background-image:url('https://picsum.photos/seed/nova-drift/900/1100')"></div>
+      <div>
+        <h3 class="chapter__title">Drift Commerce</h3>
+        <div class="chapter__foot mono"><span class="chapter__tag">Site + Build</span><span>2025</span></div>
+      </div>
+    </article>
+    <article class="chapter">
+      <div class="mono">Chapter 04 / The Launch</div>
+      <div class="chapter__img" style="background-image:url('https://picsum.photos/seed/nova-flare/900/1100')"></div>
+      <div>
+        <h3 class="chapter__title">Flare Product Launch</h3>
+        <div class="chapter__foot mono"><span class="chapter__tag">Art Direction</span><span>2025</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- SOLUTION DETAIL -->
+<section class="detail" id="detail">
+  <div class="reveal">
+    <h2>Design that <em>arrives</em> before you speak.</h2>
+    <p>We are eleven people who care too much - strategists, designers, animators and one
+      very tired coffee machine. We take on six brands a year so each one gets the whole
+      studio, not a spare afternoon.</p>
+  </div>
+  <div class="stat reveal">
+    <span class="cap__no mono">The count</span>
+    <b data-count="6">0</b>
+    <p class="mono">brands a year, deliberately - each ships with a motion system, not just a logo.</p>
+  </div>
+</section>
+
+<!-- PULL QUOTE (Playfair italic) -->
+<section class="pull reveal">
+  <blockquote>&ldquo;They didn't design us a logo. They designed us a reputation.&rdquo;</blockquote>
+  <cite class="mono">Mara Vause &middot; Founder, Halo Coffee</cite>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="caps" id="caps" aria-label="Capabilities">
+  <div class="cap reveal"><span class="cap__no mono">01</span><div><h3>Brand Identity</h3><p>Names, marks, type systems and the rules that keep them loud without falling apart.</p></div></div>
+  <div class="cap reveal"><span class="cap__no mono">02</span><div><h3>Motion &amp; Film</h3><p>Title sequences, product films, 3D. The part of the brand that actually moves.</p></div></div>
+  <div class="cap reveal"><span class="cap__no mono">03</span><div><h3>Web &amp; Build</h3><p>Sites that ship. Design and front-end under one roof, scroll-driven and fast.</p></div></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__row">
+    <span>Halo</span><span>Pulse</span><span>Drift</span><span>Flare</span><span>Meridian</span><span>Atlas</span>
+    <span>Halo</span><span>Pulse</span><span>Drift</span><span>Flare</span><span>Meridian</span><span>Atlas</span>
+  </div>
+</div>
+
+<!-- CLIMAX CTA -->
+<section class="contact" id="contact">
+  <div class="contact__blob" aria-hidden="true"></div>
+  <h2 class="reveal">Let's make<br>some <em>noise.</em></h2>
+  <p class="reveal">Six slots a year. Tell us what you're launching and we'll tell you honestly
+    whether we're the studio for it.</p>
+  <a class="btn reveal" href="mailto:hello@nova.studio" data-magnetic>Start a project</a>
+  <div class="contact__detail mono reveal">
+    <a href="mailto:hello@nova.studio">hello@nova.studio</a>
+    <span>Booking 6 slots &middot; 2026</span>
+  </div>
+</section>
+
+<footer class="mono">
+  <span>NOVA&#10038; Creative Studio</span>
+  <span>hello@nova.studio</span>
+  <span>&copy; 2026 - Built loud</span>
+</footer>
+
+<a class="btn fab" id="fab" href="#contact">Start a project</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = window.matchMedia && window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+
+  // progress indicator + floating CTA
+  var prog = document.getElementById("prog");
+  var fab = document.getElementById("fab");
+  function onScroll(){
+    var h = document.documentElement;
+    var p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+    if(prog) prog.style.transform = "scaleX(" + p + ")";
+    if(fab){ if(h.scrollTop > window.innerHeight*0.9) fab.classList.add("show"); else fab.classList.remove("show"); }
+  }
+  document.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+
+  // scroll reveal (Motion-Driven: IntersectionObserver)
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); countUp(e.target); } });
+  }, {threshold:0.18});
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+
+  function countUp(scope){
+    var el = scope.querySelector ? scope.querySelector("[data-count]") : null;
+    if(!el || el.dataset.done) return; el.dataset.done = "1";
+    var target = +el.getAttribute("data-count"); if(reduce){ el.textContent = target; return; }
+    var t0 = null;
+    function step(ts){ if(!t0) t0 = ts; var k = Math.min((ts - t0)/900, 1);
+      el.textContent = Math.round(k*target); if(k<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+
+  // custom magnetic cursor (Interactive Cursor Design - fine pointer only)
+  if(fine && !reduce){
+    document.body.classList.add("cursor-on");
+    var cur = document.getElementById("cursor"), dot = document.getElementById("cursorDot");
+    var cx=innerWidth/2, cy=innerHeight/2, tx=cx, ty=cy;
+    document.addEventListener("mousemove", function(e){ tx=e.clientX; ty=e.clientY;
+      dot.style.transform="translate("+tx+"px,"+ty+"px)"; });
+    (function loop(){ cx+=(tx-cx)*0.18; cy+=(ty-cy)*0.18;
+      cur.style.transform="translate("+cx+"px,"+cy+"px)"; requestAnimationFrame(loop); })();
+    document.querySelectorAll("a,button,[data-magnetic]").forEach(function(el){
+      el.addEventListener("mouseenter", function(){ cur.classList.add("grow"); });
+      el.addEventListener("mouseleave", function(){ cur.classList.remove("grow"); el.style.transform=""; });
+    });
+    // magnetic pull on buttons
+    document.querySelectorAll("[data-magnetic]").forEach(function(el){
+      el.addEventListener("mousemove", function(e){ var r=el.getBoundingClientRect();
+        var mx=e.clientX-(r.left+r.width/2), my=e.clientY-(r.top+r.height/2);
+        el.style.transform="translate("+mx*0.25+"px,"+my*0.35+"px)"; });
+    });
+  }
+
+  // THE JOURNEY - GSAP pinned horizontal pan (skipped under reduced motion)
+  if(!reduce && window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    var track = document.getElementById("track");
+    var journey = document.querySelector(".journey");
+    function panDist(){ return track.scrollWidth - window.innerWidth + (window.innerWidth*0.08); }
+    gsap.to(track, {
+      x: function(){ return -panDist(); }, ease:"none",
+      scrollTrigger:{ trigger:journey, start:"top top",
+        end:function(){ return "+=" + panDist(); },
+        pin:true, scrub:0.6, invalidateOnRefresh:true, anticipatePin:1 }
+    });
+  }
+})();
+</script>
+</body>
+</html>
