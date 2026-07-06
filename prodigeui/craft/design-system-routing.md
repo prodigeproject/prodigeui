@@ -56,6 +56,25 @@ standalone one-file deliverable may inline the token layer as CSS variables or a
 config rather than the full three-layer JSON — that is fine (see the craft exception in the
 anti-slop checklist).
 
+### Route the palette FAMILY from the product before picking hex
+
+Inventing a system does NOT mean falling back to ProdigeUI's house reflex (dark near-black +
+one warm ember accent + big grotesk). That look is now recognizable enough to read as
+"AI-house template" on its own. Comparator systems that key their palette off the *product
+type* first (e.g. "creative agency → bold committed color", "dev tool → ink + one signal
+hue", "wellness → light, low-chroma green") produce output that looks purpose-fit, while a
+recycled dark-ember page looks templated even when its craft is higher. So decide, from the
+product's meaning, in this order — BEFORE choosing any hex:
+
+1. **Light or dark** (from mood + where the product lives), not from habit.
+2. **Hue temperature** (from the concept), not always warm.
+3. **Commitment level** (from the register): expressive brands can go committed-saturated or
+   multi-role; near-mono restraint is the B2B/trust default, not a universal one.
+
+Then apply `craft/taste.md` color discipline (contrast, one-accent lock, anti-neon,
+anti-framework-default) *within* the chosen family. See taste.md "Derive the palette FAMILY
+from the product" and the third-altitude self-reference test.
+
 ## Stack conventions (when building React/Next, not a static file)
 
 - **Never `useState` for continuous input values** (mouse position, scroll progress, pointer

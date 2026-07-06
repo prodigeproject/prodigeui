@@ -18,6 +18,25 @@ If you can name *why* this concept needs a display serif / glass / gradient — 
 to it consistently — it's craft. If it's just your default, it's slop. Deliberateness and
 commitment are the dividing line.
 
+## Discipline must not flatten art direction (read this before "restraining" anything)
+
+There are TWO failure modes, not one. Slop (generic, purposeless) is the famous one. The
+other is **stiff**: a build so scrubbed by rules that it loses all artistic pull — timid
+type, safe centered layout, no signature move, no risk. For **expressive briefs** (creative
+studio, agency, portfolio, brand, launch, experimental) STIFF IS THE WORSE FAILURE, because
+"average is no longer findable" — a competent-but-forgettable page loses on arrival.
+
+- Rules are a floor, not a ceiling. Passing every anti-slop check does NOT make a page good;
+  it makes it not-bad. Art direction (a bold type statement, a committed accent, one
+  memorable engine moment, generous imagery) is what makes it good — never trade it away to
+  satisfy a mechanical rule.
+- When an anti-default rule (anti-neon, anti-big-type, restraint) would make an expressive
+  build calmer and safer, that rule is probably mis-applied to the register. Restraint is a
+  tool for FUNCTIONAL product UI, not a universal virtue. Match ambition to register: go big
+  and rich on brand/agency work; go calm and precise on dashboards.
+- If your "improved" version is more correct but less beautiful than the previous one, you
+  regressed. Revert toward the beautiful one and fix only the genuine defect.
+
 ## Anti-generic: the two-altitude slop test (impeccable)
 
 Before shipping, run both:
@@ -67,9 +86,42 @@ refined." Safe = invisible.
   Tailwind `zinc`/`slate`/`neutral` scales (`#09090b/#18181b/#27272a/#3f3f46`) as the WHOLE
   dark palette, and do not use framework-default accents verbatim: `#22c55e` (green-500),
   `#3b82f6` (blue-500), `#ef4444` (red-500), `#8b5cf6` (violet-500), `#f59e0b` (amber-500).
-  These read as "shadcn starter, untouched." **Tune custom values** — e.g. a distinctive
-  lime `#b8ff3a`, or shift the neutral hue/lightness off the raw scale. A font-rotation or
-  color pick that lands EXACTLY on a framework default has failed the anti-default test.
+  These read as "shadcn starter, untouched." **Tune custom values** or shift the neutral
+  hue/lightness off the raw scale. A font-rotation or color pick that lands EXACTLY on a
+  framework default has failed the anti-default test.
+- **Anti-neon accent guard (the NEW 2026 slop, supersedes the old "distinctive lime"
+  advice).** Over-correcting away from framework defaults into a fluorescent accent (acid
+  lime `#b8ff3a`, hot cyan, electric magenta, laser green) is now its own AI-techy tell — it
+  reads as "AI-generated tech page," not premium. Shipped premium landings (Linear, Stripe,
+  Vercel, Antimetal, Plasma) run near-monochrome + ONE *refined* accent. **Accent taste test:**
+  would this color live in a considered brand system, or only in an AI "tech" mock? A
+  confident accent usually sits at OKLCH chroma ~0.10–0.18; the 0.25+ fluorescent zone is
+  almost always wrong for body-adjacent UI. Deepen or desaturate before committing. See
+  `craft/patterns/modern-product-baseline.md` (Color).
+- **Derive the palette FAMILY from the product — do NOT default to the house look (the
+  third-altitude slop test).** ProdigeUI has a reflex of its own by now: near-black canvas +
+  ONE warm incandescent accent (ember / vermilion / amber) + a big grotesk. Shipped enough
+  times, that signature IS a template — a knowledgeable viewer can say "that's an AI
+  design-system page" from the dark+warm-accent+grotesk look ALONE, which is exactly the slop
+  the two-altitude test targets, one tier up. So before committing, run the **third altitude:
+  could someone guess this is a ProdigeUI / AI-house page from its dark-mono-warm-accent look,
+  regardless of what the product is?** If yes, you defaulted — the palette is decorating the
+  system's habit, not the product. Route the family from the product's meaning instead:
+  - **Light vs dark** follows the product's mood and where it lives, not habit. A creative
+    studio, a playful/consumer brand, editorial, retail, health, or anything "bright /
+    optimistic" often reads truer LIGHT or in a committed color. Dark-mono is not
+    automatically premium — it is one lane. (In the NOVA benchmark the comparator that "got"
+    the studio chose a committed light palette; the reflex dark-ember builds read as
+    templated next to it. That is the tell in action.)
+  - **Temperature + hue** follow the concept, not always warm. "Stellar heat → ember" is one
+    concept; a brand about clarity, water, growth, trust, craft, or play wants a cool, green,
+    ink, or bold-primary family, not a recycled ember.
+  - **Commitment level** follows the register (see the color-strategy axis above): expressive
+    brand work can run a committed saturated color or a 2–3 role palette, not only "mono + one
+    accent." Restrained near-mono is the right default for **trust-first B2B**, not a universal
+    virtue — applying it to expressive work is what makes the output look templated.
+  The anti-neon guard still holds (no fluorescent accent). It is NOT a licence to always go
+  dark-mono-warm. Pick the family for the product first; apply restraint *within* that family.
 - Write a one-sentence physical scene ("who uses this, where, under what light, in what
   mood") to force the dark/light decision.
 
@@ -106,11 +158,34 @@ refined." Safe = invisible.
   primary CTA visible without scrolling; top padding capped (~`pt-24`).
 - **Max ~4 text elements in the hero.** Move taglines, trust micro-strips, pricing teasers,
   and avatar rows below the fold.
+- **Negative space must be ACTIVATED, never dead.** A full-viewport hero (`min-height:100vh`)
+  with `justify-content:center` and only a few small elements leaves large empty bands above
+  and below — that reads as a bug, not as luxury whitespace. Same failure for a short centered
+  final-CTA / contact block sitting in a tall section. Fix by ONE of: (a) an oversized anchor
+  that fills the void (a giant outline wordmark, the focal subject / product mockup, real
+  background media or texture), (b) bigger art-directed type that occupies the space, or
+  (c) reducing `min-height` / section padding so the block sizes to its content. Empty is not
+  minimal. Also verify every decorative absolute layer (glow blobs, ghost text) actually STAYS
+  absolute: a `.hero>*{position:relative;z-index:1}` rule that ties on specificity with a
+  `.blob{position:absolute}` rule (later source order wins) silently forces the blob in-flow
+  as a giant blurred square that shoves content and guts the layout with blank bands — the
+  exact ui-ux-pro-max NOVA regression. Give decorative layers higher-specificity absolute
+  positioning (e.g. `.hero .hero__blob{position:absolute}`), or exclude them from the
+  content-lift rule.
 - **Legibility from chrome, not dimming:** liquid-glass + gradient fades over raw media beat
   a flat dark overlay (benchmark prompt 57 explicitly bans a scrim).
-- **Headline scale must be DRAMATIC** (the #1 hero regression): use
-  `clamp(2.7rem, 8vw, 6.4rem)` for the primary hero headline — upper bound ~6.4rem desktop.
-  Capping at 4.5rem reads timid and is a known downgrade. The headline is the single biggest
+- **Headline scale is REGISTER-DEPENDENT — do not apply one ceiling to every brief.**
+  This was over-corrected in an earlier revision and it flattened expressive work; the fix:
+  - **Expressive / creative / agency / portfolio / experimental briefs:** BIG art-directed
+    type is the point. `clamp(2.8rem, 11vw, 9rem)` (even to ~11rem) at weight 700-800,
+    line-height ~0.86-0.9, tracking -0.03 to -0.05em, an italic accent word. This is the
+    v4-NOVA hero and the pre-footer "go nova?" CTA (`clamp(2.6rem, 10vw, 7.5rem)`) — the
+    single biggest source of that build's beauty. Never shrink it in the name of "restraint."
+  - **B2B product / SaaS / dashboard / trust-first briefs:** confident but calmer, ~`clamp(
+    2.4rem, 5vw, 4.6rem)`. Impact comes from whitespace + a real product artifact, not scale.
+  Capping an expressive hero at 4.5-6.5rem reads TIMID and STIFF — a regression, not
+  refinement. The failure mode "competent but stiff" is as bad as "slop". See
+  `craft/patterns/modern-product-baseline.md` (Typography, register note). The headline is the single biggest
   visual statement; let it dominate. Headline `max-width: ~14ch`; subtitle `max-width: ~52ch`
   (generous, NOT a narrow 38ch column). Do not lock the whole hero block to `max-width:640px`.
 - **Eyebrow copy = status/announcement, never category restatement.** "Now in public beta"
@@ -127,8 +202,11 @@ refined." Safe = invisible.
 - **Eyebrow labels** (tiny uppercase tracked kicker above a section): max 1 per ~3 sections.
   Mechanically count them — fail if count > `ceil(sections / 3)`. Often the right move is to
   drop it entirely.
-- **Numbered section markers** (01 / 02 / 03) are not free scaffolding — use only with a real
-  reason.
+- **Numbered section markers** (01 / 02 / 03) — reconciled. A *decorative* number stuck above
+  every heading with no sequential meaning is scaffolding slop. But a *consistent running
+  index* that labels the page's real, continuous sections (as Antimetal's `01…06` does) is
+  CRAFT and welcome. Rule: number a series only if the numbers form a true, continuous index
+  of the whole page; never as a per-section ornament.
 
 ## Motion discipline
 

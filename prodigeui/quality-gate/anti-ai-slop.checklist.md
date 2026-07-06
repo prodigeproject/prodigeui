@@ -367,6 +367,12 @@ Run these as quick pass/fail scans; each is a known AI tell when violated by ref
 - [ ] **No side-stripe borders, ghost-cards** (1px border + ≥16px shadow), **over-rounding** (>16px cards by reflex).
 - [ ] **CTA copy** describes an outcome ("Start 14-day trial"), never "Get Started".
 - [ ] **Two-altitude slop test** passes (theme/palette not guessable from category, nor from category + obvious anti-reference).
+- [ ] **Third-altitude (house-style) test** passes: the palette family is NOT the ProdigeUI
+      default reflex (dark near-black + one warm ember/vermilion accent + big grotesk) shipped
+      by habit — it was routed from the product's meaning (light/dark, hue, commitment). See taste.md.
+- [ ] **No dead negative space**: no full-viewport hero or tall CTA/contact block left with
+      large empty bands; every decorative `position:absolute` layer (blob/glow/ghost) is
+      confirmed still absolute (not forced in-flow by an equal-specificity `.parent>*` rule).
 - [ ] **Real images/logos** present where the brief implies them; no div-fake screenshots.
 - [ ] **CTA wrap:** primary CTA fits one line at desktop (≤3 words). No wrapped CTA.
 - [ ] **No duplicate CTA intent:** one label per intent across the whole page.
@@ -474,6 +480,21 @@ These are strong AI-output signals. Fix if possible; justify if kept.
   conventional/template. Add at least one engine element. See
   `craft/patterns/engine-interactivity.md`. (Conversely: do NOT bolt Three.js onto a
   trust-first B2B dashboard — over-engineering is its own slop.)
+- **The ProdigeUI house look shipped by default (third-altitude tell).** Dark near-black
+  canvas + ONE warm incandescent accent (ember/vermilion/amber) + big grotesk display,
+  chosen because it is the system's habit rather than because the product asked for it. Once
+  every expressive build looks like this, the look itself is the template. Ask: *could an
+  outsider guess this is an AI-house page from the dark-mono-warm signature alone, regardless
+  of the product?* If yes, re-route the palette family (light/dark, hue, commitment) from the
+  product's meaning. See `craft/taste.md` "Derive the palette FAMILY from the product." Not a
+  ban on dark or on warm accents — a ban on defaulting to them.
+- **Dead negative space (empty ≠ minimal).** A full-viewport hero (`min-height:100vh` +
+  `justify-content:center`) with a few small elements, or a short centered CTA/contact block
+  in a tall padded section, leaving large empty bands. Reads as a layout bug, not luxury
+  whitespace. Activate the void (oversized wordmark/subject/media), enlarge the type, or size
+  the block to its content. ALSO a common cause: a decorative `position:absolute` glow/blob
+  forced in-flow by an equal-specificity `.hero>*{position:relative}` rule, rendering as a
+  giant blurred square. See `craft/taste.md` hero discipline "Negative space must be ACTIVATED."
 
 ---
 
@@ -508,3 +529,53 @@ These are strong AI-output signals. Fix if possible; justify if kept.
 - `quality-gate/report.schema.json` — Schema for evaluation reports
 - `design-rules/` — The rules these checks enforce
 - `tokens/` — The token system that prevents raw value usage
+
+---
+
+## 2026 slop update — new tells (from the modern product-landing audit)
+
+These were added after a benchmark showed a build passing every older check while still
+looking AI-generated. Source: `craft/patterns/modern-product-baseline.md` + the reference-site
+audit (Antimetal, Plasma, Tokens Studio, Infinite Machine, Eternal).
+
+### N1. Fluorescent / neon accent (FLAG → often FAIL)
+- **Check:** is the single accent a near-fluorescent (acid lime `#b8ff3a`-family, hot cyan,
+  electric magenta, laser green)? OKLCH chroma > ~0.22 on a body-adjacent accent.
+- **Why:** over-correcting away from shadcn defaults into neon is the current AI-techy tell.
+  Premium landings use ONE *refined* accent (chroma ~0.10–0.18).
+- **Passes if:** the loud color is genuinely brand-mandated (a neon brand) and used as a
+  controlled graphic accent, not on UI chrome. Otherwise deepen/desaturate.
+
+### N2. Particle-constellation / floating-blob hero (FLAG)
+- **Check:** is the hero "engine" moment a pointer-reactive dot-and-line particle field or a
+  floating low-poly blob, chosen as the default "make it feel alive" move?
+- **Why:** cliché; satisfies "moving pixels" while reading generic.
+- **Passes if:** it's genuinely concept-tied AND no higher-taste anchor (real 3D product,
+  scrubbed product-UI, restrained concept shader) fits. See engine-interactivity Anchor Priority.
+
+### N3. Invented / unsourced metrics (FAIL)
+- **Check:** any number presented as fact without a source ("120+ launches", "10× faster",
+  "99.9% uptime", "trusted by thousands").
+- **Why:** fabricated proof. Premium sites footnote real claims (superscript legal refs).
+- **Fix:** source it, footnote it, use a labelled placeholder, or cut it.
+
+### N4. Big-type mismatch — REGISTER-DEPENDENT (FLAG, narrow)
+- **Applies ONLY to B2B product / SaaS / dashboard / trust-first briefs.** There, a hero
+  pushed to 9-12rem can read as a dated "big-type" reflex; calmer ~2.4-4.6rem + whitespace +
+  a real product artifact is stronger.
+- **Expressive / creative / agency / portfolio / brand-launch briefs are EXEMPT.** Big
+  art-directed type (to ~9-11rem, weight 700-800, italic accent) is a signature strength, not
+  a tell. Do not flag it, and never shrink it toward the product ceiling — that produces the
+  "stiff" failure mode (see taste.md "Discipline must not flatten art direction").
+- The real tell is timid, undersized type on an expressive brief, and oversized type on a
+  calm B2B one. Match scale to register.
+
+### N5. Fade-in-everything motion (FLAG)
+- **Check:** is scroll motion only enter-fades, with no scroll that *transforms* content
+  (pin/scrub/sticky product reveal, one repeating-wordmark marquee)?
+- **Why:** the AI-template motion signature. Real "alive" = scroll drives a narrative.
+
+### N6. Copy voice tells (FAIL for em-dash/hype; FLAG for category-restatement)
+- Em-dash in generated copy; hype words (revolutionary, seamless, cutting-edge, unleash);
+  headline that restates the category instead of the outcome; eyebrow that echoes the
+  headline. See `craft/ux-writing.md`.
