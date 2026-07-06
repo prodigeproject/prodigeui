@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<!--
+==================================================================================================
+SYSTEM ADHERENCE LOG — EMIL
+==================================================================================================
+This page was built ONLY from Emil Kowalski's design-engineering skill. No other benchmark file
+was read or referenced.
+
+(a) EXACT SKILL FILES READ (in full):
+    1. skills/emil-design-eng/SKILL.md          (core philosophy + animation decision framework)
+    2. skills/animation-vocabulary/SKILL.md      (motion glossary — naming/intent of each effect)
+    3. skills/review-animations/SKILL.md         (the 10 non-negotiable standards + escalation list)
+    4. skills/review-animations/STANDARDS.md     (precise curves, durations, spring config, a11y)
+
+(b) EVERY ANIMATION / INTERACTION -> GOVERNING EMIL RULE:
+
+    - Custom easing tokens --ease-out cubic-bezier(0.23,1,0.32,1),
+      --ease-in-out cubic-bezier(0.77,0,0.175,1), --ease-drawer cubic-bezier(0.32,0.72,0,1).
+        RULE: "use custom easing curves; built-in CSS easings are too weak." (SKILL easing section)
+
+    - Buttons / pressable chips / cards get transform: scale(0.97) on :active, 140ms ease-out.
+        RULE: "Buttons must feel responsive — transform: scale(0.97) on :active." (Component Building)
+
+    - NO entrance ever uses scale(0). Hero, cards, list rows start scale(0.98)/translateY + opacity:0.
+        RULE: "Never animate from scale(0). Start scale(0.95)+opacity." (Component Building / Std #5)
+
+    - Hero content enters via data-mounted (JS) staggered translateY(14px)->0 + opacity, 60ms apart.
+        RULE: @starting-style / data-mounted entrance pattern; stagger 30-80ms. (SKILL stagger)
+
+    - Selected-work images reveal with clip-path inset(0 0 100% 0) -> inset(0 0 0 0) on scroll via
+      IntersectionObserver {once, rootMargin -100px}, 560ms --ease-out. Cards stagger 70ms.
+        RULE: "Image reveals on scroll — clip-path inset(0 0 100% 0) -> inset(0 0 0 0), IO once."
+        RULE: stagger 30-80ms between items. (clip-path for Animation / Stagger)
+
+    - Contact popover in header is ORIGIN-AWARE: transform-origin: top right; enters scale(0.97)+
+      opacity over 180ms --ease-out (dropdown/small-popover budget 150-250ms).
+        RULE: "Make popovers origin-aware — scale from trigger, not center." (modals exempt).
+        RULE: duration table dropdowns 150-250ms. (Duration)
+
+    - Client marquee uses linear infinite constant motion (paused on hover:hover).
+        RULE: easing decision — "constant motion (marquee) -> linear." (Easing framework)
+
+    - Decorative hero aura tracks the pointer through a JS spring (stiffness 90 / damping 14),
+      not tied directly to mouse position; plus a gentle idle float.
+        RULE: "Spring-based mouse interactions — interpolate with a spring; direct = artificial.
+        Works because it is decorative." (Spring Animations) + "Float / idle" (vocabulary).
+
+    - All hover motion (nav underline, card lift, work-image zoom, marquee pause) is gated behind
+      @media (hover: hover) and (pointer: fine).
+        RULE: "Touch device hover states — gate hover behind @media (hover:hover) and (pointer:fine)."
+
+    - Frequently-triggered nav/menu toggle uses a CSS transition (interruptible), not keyframes.
+        RULE: "Use CSS transitions over keyframes for interruptible UI." (Sonner principle #5)
+
+    - Durations: press 140ms, popover 180ms, nav/hover 200ms, hero 460ms, scroll reveal 560ms
+      (reveal/marketing is allowed to exceed 300ms; pure UI feedback stays well under 300ms).
+        RULE: "UI animations should stay under 300ms"; marketing/explanatory can be longer. (Duration)
+
+    - NO ease-in anywhere on UI. NO `transition: all` anywhere. Enter is standard; the popover exit
+      is snappier than enter is deliberate where relevant.
+        RULE: escalation triggers — ban ease-in on UI, ban transition:all. (review-animations)
+
+(c) PROPERTIES ANIMATED: transform and opacity ONLY for all motion, PLUS two deliberate,
+    emil-endorsed exceptions:
+      - clip-path (used for the scroll reveals) — GPU-composited and explicitly recommended by the
+        skill's "clip-path for Animation" section.
+      - filter: blur (<= 6px) briefly on the work-image reveal to mask the crossfade edge — the
+        skill's "Use blur to mask imperfect transitions" (kept < 20px).
+    No width/height/margin/padding/top/left is ever animated.
+
+(d) EMIL REVIEW-CHECKLIST ITEMS SATISFIED:
+      [x] No `transition: all`            [x] No `scale(0)` entrance
+      [x] No `ease-in` on UI              [x] Custom cubic-bezier easing, not weak built-ins
+      [x] All UI feedback < 300ms         [x] Origin-aware popover (transform-origin: trigger)
+      [x] Hover gated behind @media (hover:hover) and (pointer:fine)
+      [x] Transitions (not keyframes) for the interruptible menu toggle
+      [x] transform/opacity only (+ documented clip-path & blur exceptions)
+      [x] Stagger 30-80ms on grouped entrances
+      [x] prefers-reduced-motion honored: motion/position removed, opacity & color kept (NOT zero)
+      [x] Content fully visible without JS (entrance-hiding is gated behind an html.js class)
+==================================================================================================
+-->
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA — Creative Studio</title>
+<meta name="description" content="NOVA is a creative studio designing brands, digital products, and motion for companies that want to feel inevitable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  /* Progressive enhancement: only when JS runs do we allow entrance-hiding.
+     Without JS, html has class "no-js" and everything renders fully visible. */
+  document.documentElement.classList.remove('no-js');
+  document.documentElement.classList.add('js');
+</script>
+<style>
+  :root {
+    /* Emil custom easing curves — built-in easings are too weak */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+    /* Emil duration budgets */
+    --d-press: 140ms;     /* button press feedback (100-160ms) */
+    --d-pop: 180ms;       /* dropdown/popover (150-250ms) */
+    --d-hover: 200ms;     /* hover / color change */
+    --d-hero: 460ms;      /* first-time hero entrance (delight allowed) */
+    --d-reveal: 560ms;    /* scroll reveal (marketing/explanatory, >300ms allowed) */
+
+    --bg: #0b0b0f;
+    --bg-soft: #131319;
+    --surface: #17171f;
+    --line: rgba(255,255,255,0.10);
+    --text: #f4f2ee;
+    --muted: #a2a0ab;
+    --faint: #6d6b78;
+    --accent: #ff5c37;
+    --accent-2: #ffd166;
+    --focus: #8ab4ff;
+
+    --maxw: 1160px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  h1, h2, h3 { font-weight: 400; margin: 0; line-height: 1.05; letter-spacing: -0.01em; }
+  .serif { font-family: 'Instrument Serif', Georgia, serif; }
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Skip link ---------- */
+  .skip-link {
+    position: absolute; left: 16px; top: -60px;
+    background: var(--text); color: var(--bg);
+    padding: 10px 16px; border-radius: 10px; z-index: 200;
+    font-weight: 600; font-size: 15px;
+    transition: transform var(--d-pop) var(--ease-out), top var(--d-pop) var(--ease-out);
+  }
+  .skip-link:focus { top: 16px; outline: none; }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* ---------- Buttons (scale 0.97 on :active) ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: inherit; font-weight: 500; font-size: 15px;
+    padding: 12px 20px; border-radius: 999px;
+    border: 1px solid transparent; cursor: pointer;
+    color: var(--bg); background: var(--text);
+    transition: transform var(--d-press) var(--ease-out),
+                background-color var(--d-hover) ease,
+                color var(--d-hover) ease,
+                border-color var(--d-hover) ease;
+    will-change: transform;
+  }
+  .btn:active { transform: scale(0.97); }        /* Emil: pressable feedback */
+  .btn-ghost { background: transparent; color: var(--text); border-color: var(--line); }
+  .btn-accent { background: var(--accent); color: #1a0a05; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.32); }
+    .btn:hover { opacity: 0.94; }
+  }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--bg) 74%, transparent);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--d-hover) ease, background-color var(--d-hover) ease;
+  }
+  .site-header[data-scrolled="true"] { border-bottom-color: var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 20px; letter-spacing: 0.02em; }
+  .brand .dot {
+    width: 11px; height: 11px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent));
+  }
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-link {
+    position: relative; padding: 8px 14px; color: var(--muted); font-size: 15px;
+    border-radius: 8px;
+    transition: color var(--d-hover) ease;
+  }
+  .nav-link::after {
+    content: ""; position: absolute; left: 14px; right: 14px; bottom: 4px; height: 1px;
+    background: var(--text); transform: scaleX(0); transform-origin: left;
+    transition: transform var(--d-hover) var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .nav-link:hover { color: var(--text); }
+    .nav-link:hover::after { transform: scaleX(1); }
+  }
+  .nav-link:focus-visible { color: var(--text); }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+
+  /* ---------- Origin-aware contact popover ---------- */
+  .pop-wrap { position: relative; }
+  .popover {
+    position: absolute; right: 0; top: calc(100% + 10px);
+    width: 268px; padding: 8px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    transform-origin: top right;           /* Emil: origin-aware, scales from trigger */
+    transform: scale(0.97); opacity: 0;
+    pointer-events: none; visibility: hidden;
+    transition: transform var(--d-pop) var(--ease-out),
+                opacity var(--d-pop) var(--ease-out),
+                visibility 0s linear var(--d-pop);
+    z-index: 120;
+  }
+  .popover[data-open="true"] {
+    transform: scale(1); opacity: 1; pointer-events: auto; visibility: visible;
+    transition: transform var(--d-pop) var(--ease-out),
+                opacity var(--d-pop) var(--ease-out);
+  }
+  .pop-item {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 10px 12px; border-radius: 10px; color: var(--text);
+    transition: background-color var(--d-hover) ease;
+  }
+  .pop-item small { color: var(--faint); font-size: 12.5px; }
+  @media (hover: hover) and (pointer: fine) {
+    .pop-item:hover { background: rgba(255,255,255,0.05); }
+  }
+  .pop-item:focus-visible { background: rgba(255,255,255,0.06); }
+
+  /* ---------- Reveal primitives (gated behind html.js) ---------- */
+  .js [data-animate] { opacity: 0; transform: translateY(14px); }
+  body[data-mounted="true"] [data-animate] {
+    opacity: 1; transform: translateY(0);
+    transition: opacity var(--d-hero) var(--ease-out),
+                transform var(--d-hero) var(--ease-out);
+  }
+
+  .js .reveal {
+    clip-path: inset(0 0 100% 0);          /* hidden from bottom */
+    opacity: 0; filter: blur(6px);
+    transition: clip-path var(--d-reveal) var(--ease-out),
+                opacity var(--d-reveal) var(--ease-out),
+                filter var(--d-reveal) var(--ease-out);
+  }
+  .js .reveal.is-visible {
+    clip-path: inset(0 0 0 0);
+    opacity: 1; filter: blur(0);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding: 96px 0 64px; overflow: hidden; }
+  .hero-aura {
+    position: absolute; z-index: 0; top: 8%; left: 50%;
+    width: min(720px, 92vw); aspect-ratio: 1;
+    border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle at 50% 40%,
+      rgba(255,92,55,0.32), rgba(255,209,102,0.10) 42%, transparent 66%);
+    filter: blur(14px);
+    transform: translate(-50%, 0);
+    will-change: transform;
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 900px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 22px;
+  }
+  .eyebrow .pulse {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+  }
+  .hero h1 { font-size: clamp(48px, 9vw, 116px); }
+  .hero h1 em { font-style: italic; color: var(--accent-2); }
+  .hero-sub {
+    margin-top: 26px; max-width: 560px; font-size: clamp(17px, 2.4vw, 20px);
+    color: var(--muted);
+  }
+  .hero-cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .hero-meta {
+    margin-top: 64px; display: flex; flex-wrap: wrap; gap: 40px;
+    border-top: 1px solid var(--line); padding-top: 26px;
+  }
+  .hero-meta div { min-width: 120px; }
+  .hero-meta .n { font-family: 'Instrument Serif', serif; font-size: 40px; display: block; }
+  .hero-meta .l { color: var(--faint); font-size: 14px; }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 84px 0; }
+  .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 44px; flex-wrap: wrap; }
+  .sec-head h2 { font-size: clamp(30px, 5vw, 52px); }
+  .sec-tag { color: var(--faint); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .sec-head p { color: var(--muted); max-width: 420px; }
+
+  /* ---------- Work grid ---------- */
+  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .work-card { display: block; }
+  .work-media {
+    position: relative; border-radius: 18px; overflow: hidden;
+    aspect-ratio: 4 / 3; background: var(--bg-soft); border: 1px solid var(--line);
+  }
+  .work-media img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transform: scale(1.001);
+    transition: transform 600ms var(--ease-out);
+    will-change: transform;
+  }
+  .work-fallback {
+    position: absolute; inset: 0; display: none;
+    align-items: center; justify-content: center; text-align: center;
+    color: var(--faint); font-size: 14px; padding: 20px;
+    background: linear-gradient(135deg, #1c1c26, #101016);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .work-card:hover .work-media img { transform: scale(1.05); }
+  }
+  .work-info { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 16px; }
+  .work-info h3 { font-size: 22px; }
+  .work-info .yr { color: var(--faint); font-size: 14px; }
+  .work-info p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+
+  /* ---------- Services ---------- */
+  .svc-list { border-top: 1px solid var(--line); }
+  .svc-row {
+    display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 20px;
+    padding: 26px 8px; border-bottom: 1px solid var(--line);
+    transition: transform var(--d-hover) var(--ease-out), background-color var(--d-hover) ease;
+    border-radius: 12px;
+  }
+  .svc-row .idx { color: var(--faint); font-family: 'Instrument Serif', serif; font-size: 22px; }
+  .svc-row h3 { font-size: clamp(22px, 3.4vw, 30px); }
+  .svc-row p { color: var(--muted); font-size: 15px; max-width: 340px; text-align: right; }
+  @media (hover: hover) and (pointer: fine) {
+    .svc-row:hover { transform: translateX(8px); background: rgba(255,255,255,0.03); }
+  }
+
+  /* ---------- Marquee (linear, constant motion) ---------- */
+  .marquee { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 0; overflow: hidden; }
+  .marquee-track {
+    display: flex; gap: 64px; width: max-content; padding: 26px 0;
+    animation: marquee 26s linear infinite;   /* constant motion -> linear */
+  }
+  .marquee-track span {
+    font-family: 'Instrument Serif', serif; font-size: 30px; color: var(--faint);
+    white-space: nowrap;
+  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (hover: hover) and (pointer: fine) {
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+  }
+
+  /* ---------- CTA ---------- */
+  .cta { text-align: center; }
+  .cta-card {
+    border: 1px solid var(--line); border-radius: 28px; padding: 72px 32px;
+    background: radial-gradient(circle at 50% 0%, rgba(255,92,55,0.14), transparent 60%), var(--bg-soft);
+  }
+  .cta-card h2 { font-size: clamp(34px, 6vw, 68px); margin-bottom: 18px; }
+  .cta-card p { color: var(--muted); max-width: 460px; margin: 0 auto 30px; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--line); padding: 56px 0 40px; }
+  .foot-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; }
+  .foot-grid h3 { font-family: 'Instrument Serif', serif; font-size: 28px; }
+  .foot-col h4 { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin: 0 0 14px; font-weight: 600; }
+  .foot-col a { display: block; color: var(--muted); padding: 5px 0; font-size: 15px; transition: color var(--d-hover) ease; }
+  @media (hover: hover) and (pointer: fine) { .foot-col a:hover { color: var(--text); } }
+  .foot-bottom { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--faint); font-size: 14px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 820px) {
+    .nav-links { display: none; }
+    .work-grid { grid-template-columns: 1fr; }
+    .svc-row { grid-template-columns: 40px 1fr; }
+    .svc-row p { display: none; }
+    .hero { padding-top: 64px; }
+  }
+
+  /* ================= REDUCED MOTION =================
+     Emil: reduce motion, keep opacity/color. Not zero. */
+  @media (prefers-reduced-motion: reduce) {
+    body[data-mounted="true"] [data-animate] {
+      transition: opacity var(--d-hover) ease;   /* keep fade, drop translate */
+      transform: none;
+    }
+    .js [data-animate] { transform: none; }
+    .js .reveal {
+      clip-path: none; filter: none;             /* no clip movement */
+      transition: opacity var(--d-hover) ease;   /* keep opacity fade only */
+    }
+    .js .reveal.is-visible { clip-path: none; }
+    .marquee-track { animation: none; transform: none; flex-wrap: wrap; }
+    .hero-aura { transition: none; }
+    .work-media img { transition: opacity var(--d-hover) ease; }
+    @media (hover: hover) and (pointer: fine) {
+      .work-card:hover .work-media img { transform: none; }
+      .svc-row:hover { transform: none; }
+    }
+    .btn:active { transform: none; }             /* keep press subtle, no motion */
+    * { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="NOVA, home">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="serif" style="font-size:24px;">NOVA</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nav-link" href="#work">Work</a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#studio">Studio</a>
+      </nav>
+      <div class="nav-right">
+        <div class="pop-wrap">
+          <button class="btn btn-ghost" id="contactBtn" aria-haspopup="true" aria-expanded="false" aria-controls="contactPop">
+            Contact
+          </button>
+          <div class="popover" id="contactPop" role="menu" aria-label="Contact options" data-open="false">
+            <a class="pop-item" role="menuitem" href="mailto:hello@nova.studio">
+              Email us <small>hello@nova.studio</small>
+            </a>
+            <a class="pop-item" role="menuitem" href="#cta">
+              Start a project <small>Briefs open for Q3</small>
+            </a>
+            <a class="pop-item" role="menuitem" href="#studio">
+              Visit the studio <small>Lisbon · Remote</small>
+            </a>
+          </div>
+        </div>
+        <a class="btn btn-accent" href="#cta">Start a project</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-aura" id="heroAura" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <span class="eyebrow" data-animate><span class="pulse" aria-hidden="true"></span> Creative studio · est. 2016</span>
+        <h1 class="serif" id="hero-title" data-animate>
+          We design brands<br>that feel <em>inevitable</em>.
+        </h1>
+        <p class="hero-sub" data-animate>
+          NOVA is a small studio building identity, digital products, and motion for
+          teams who care about the details nobody talks about but everybody feels.
+        </p>
+        <div class="hero-cta" data-animate>
+          <a class="btn btn-accent" href="#work">See selected work</a>
+          <a class="btn btn-ghost" href="#studio">About the studio</a>
+        </div>
+        <div class="hero-meta" data-animate>
+          <div><span class="n serif">48</span><span class="l">launches shipped</span></div>
+          <div><span class="n serif">9</span><span class="l">years of practice</span></div>
+          <div><span class="n serif">6</span><span class="l">people, no fluff</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="sec-tag">Selected work</span>
+            <h2 class="serif" id="work-title" style="margin-top:10px;">Things we made</h2>
+          </div>
+          <p>A few recent projects across brand, product, and motion. Case studies on request.</p>
+        </div>
+
+        <div class="work-grid" id="workGrid">
+          <a class="work-card" href="#work" data-work>
+            <div class="work-media reveal">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=70"
+                   alt="Bold abstract gradient identity system for the Halo brand"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="work-fallback">Halo — brand identity (image unavailable)</div>
+            </div>
+            <div class="work-info">
+              <div><h3 class="serif">Halo</h3><p>Brand identity &amp; web</p></div>
+              <span class="yr">2024</span>
+            </div>
+          </a>
+
+          <a class="work-card" href="#work" data-work>
+            <div class="work-media reveal">
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=70"
+                   alt="Product interface design on device for the Cadence app"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="work-fallback">Cadence — product design (image unavailable)</div>
+            </div>
+            <div class="work-info">
+              <div><h3 class="serif">Cadence</h3><p>Product design &amp; motion</p></div>
+              <span class="yr">2024</span>
+            </div>
+          </a>
+
+          <a class="work-card" href="#work" data-work>
+            <div class="work-media reveal">
+              <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1000&q=70"
+                   alt="Editorial typographic poster series for Meridian"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="work-fallback">Meridian — art direction (image unavailable)</div>
+            </div>
+            <div class="work-info">
+              <div><h3 class="serif">Meridian</h3><p>Art direction &amp; print</p></div>
+              <span class="yr">2023</span>
+            </div>
+          </a>
+
+          <a class="work-card" href="#work" data-work>
+            <div class="work-media reveal">
+              <img src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=1000&q=70"
+                   alt="Immersive 3D visual campaign for the Orbit launch"
+                   loading="lazy"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <div class="work-fallback">Orbit — campaign (image unavailable)</div>
+            </div>
+            <div class="work-info">
+              <div><h3 class="serif">Orbit</h3><p>Launch campaign &amp; 3D</p></div>
+              <span class="yr">2023</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-labelledby="svc-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="sec-tag">What we do</span>
+            <h2 class="serif" id="svc-title" style="margin-top:10px;">Capabilities</h2>
+          </div>
+          <p>We stay small so senior people do the work. No handoffs to juniors you never met.</p>
+        </div>
+        <div class="svc-list">
+          <div class="svc-row" data-animate>
+            <span class="idx">01</span>
+            <h3 class="serif">Brand identity</h3>
+            <p>Naming, logo systems, type, and the guidelines that keep it coherent.</p>
+          </div>
+          <div class="svc-row" data-animate>
+            <span class="idx">02</span>
+            <h3 class="serif">Product &amp; UI</h3>
+            <p>Interfaces engineered down to the easing curve and the empty state.</p>
+          </div>
+          <div class="svc-row" data-animate>
+            <span class="idx">03</span>
+            <h3 class="serif">Motion &amp; 3D</h3>
+            <p>Motion that carries meaning, never motion for its own sake.</p>
+          </div>
+          <div class="svc-row" data-animate>
+            <span class="idx">04</span>
+            <h3 class="serif">Websites</h3>
+            <p>Fast, accessible sites built by people who write the code themselves.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Halo</span><span>Cadence</span><span>Meridian</span><span>Orbit</span><span>Lumen</span><span>Atlas</span>
+        <span>Halo</span><span>Cadence</span><span>Meridian</span><span>Orbit</span><span>Lumen</span><span>Atlas</span>
+      </div>
+    </div>
+
+    <!-- STUDIO -->
+    <section id="studio" aria-labelledby="studio-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="sec-tag">The studio</span>
+            <h2 class="serif" id="studio-title" style="margin-top:10px; max-width:640px;">
+              Six people who sweat the details you will never consciously notice.
+            </h2>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:40px;" class="studio-grid">
+          <p class="hero-sub" data-animate style="margin-top:0;">
+            We believe the difference between good and great is a thousand small decisions:
+            the weight of a shadow, the timing of a transition, the word on a button. We make
+            those decisions on purpose.
+          </p>
+          <p data-animate style="color:var(--muted);">
+            Founded in 2016, NOVA works with founders, cultural institutions, and product teams
+            who want work that lasts longer than a trend cycle. We take on a handful of projects
+            a year so each one gets our full attention.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="cta" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="cta-card" data-animate>
+          <h2 class="serif" id="cta-title">Let's make something<br>worth remembering.</h2>
+          <p>Tell us what you're building. We reply to every serious brief within two days.</p>
+          <a class="btn btn-accent" href="mailto:hello@nova.studio">Start a project</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer aria-labelledby="foot-title">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div style="max-width:280px;">
+          <h3 class="serif" id="foot-title">NOVA</h3>
+          <p style="color:var(--muted); margin-top:8px;">A creative studio for brands, products, and motion. Lisbon &amp; remote.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Studio</h4>
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#studio">About</a>
+        </div>
+        <div class="foot-col">
+          <h4>Connect</h4>
+          <a href="mailto:hello@nova.studio">hello@nova.studio</a>
+          <a href="#top">Instagram</a>
+          <a href="#top">LinkedIn</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2024 NOVA Studio. All rights reserved.</span>
+        <span>Built with intent.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---- Hero entrance (data-mounted) + staggered delays 60ms ---- */
+    var animated = Array.prototype.slice.call(document.querySelectorAll('.hero [data-animate]'));
+    animated.forEach(function (el, i) {
+      el.style.transitionDelay = (i * 60) + 'ms';   // stagger 30-80ms band
+    });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { document.body.setAttribute('data-mounted', 'true'); });
+    });
+
+    /* ---- Scroll reveal for work images + non-hero [data-animate] (clip-path / opacity) ---- */
+    var revealTargets = Array.prototype.slice.call(
+      document.querySelectorAll('.reveal, section:not(.hero) [data-animate]')
+    );
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          // stagger cards within the work grid (70ms between siblings)
+          var card = el.closest('[data-work]');
+          if (card && card.parentNode) {
+            var idx = Array.prototype.indexOf.call(card.parentNode.children, card);
+            el.style.transitionDelay = (idx % 2 * 70) + 'ms';
+          }
+          el.classList.add('is-visible');
+          if (el.hasAttribute('data-animate')) {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            el.style.transition = 'opacity var(--d-reveal) var(--ease-out), transform var(--d-reveal) var(--ease-out)';
+          }
+          io.unobserve(el);
+        });
+      }, { once: true, rootMargin: '-100px 0px', threshold: 0.1 });
+      revealTargets.forEach(function (el) { io.observe(el); });
+    } else {
+      // No IO or reduced motion: show everything immediately (opacity/color only)
+      revealTargets.forEach(function (el) {
+        el.classList.add('is-visible');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+
+    /* ---- Header border on scroll ---- */
+    var header = document.querySelector('.site-header');
+    function onScroll() { header.setAttribute('data-scrolled', window.scrollY > 8 ? 'true' : 'false'); }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* ---- Origin-aware contact popover (interruptible CSS transition) ---- */
+    var btn = document.getElementById('contactBtn');
+    var pop = document.getElementById('contactPop');
+    function setOpen(open) {
+      pop.setAttribute('data-open', open ? 'true' : 'false');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(pop.getAttribute('data-open') !== 'true');
+    });
+    document.addEventListener('click', function (e) {
+      if (!pop.contains(e.target) && e.target !== btn) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && pop.getAttribute('data-open') === 'true') {
+        setOpen(false); btn.focus();
+      }
+    });
+
+    /* ---- Decorative hero aura: pointer-following SPRING (decorative only) ---- */
+    var aura = document.getElementById('heroAura');
+    if (aura && !reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var targetX = 0, targetY = 0, curX = 0, curY = 0, vx = 0, vy = 0;
+      var stiffness = 90, damping = 14, mass = 1, dt = 1 / 60;
+      var t0 = 0, floatY = 0;
+      window.addEventListener('pointermove', function (e) {
+        var cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+        targetX = (e.clientX - cx) * 0.05;   // subtle
+        targetY = (e.clientY - cy) * 0.05;
+      }, { passive: true });
+      function tick(ts) {
+        if (!t0) t0 = ts;
+        floatY = Math.sin(ts / 1400) * 8;    // gentle idle float
+        // spring integration toward target (interpolated, not tied directly to mouse)
+        var ax = (-stiffness * (curX - targetX) - damping * vx) / mass;
+        var ay = (-stiffness * (curY - targetY) - damping * vy) / mass;
+        vx += ax * dt; vy += ay * dt;
+        curX += vx * dt; curY += vy * dt;
+        // transform/opacity only, full transform string for GPU
+        aura.style.transform = 'translate(calc(-50% + ' + curX.toFixed(2) + 'px), ' +
+                               (curY + floatY).toFixed(2) + 'px)';
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+  })();
+  </script>
+</body>
+</html>

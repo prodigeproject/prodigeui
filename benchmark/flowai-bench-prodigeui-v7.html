@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!--
+=====================================================================================
+  FlowAI — ProdigeUI v7  (post Round-2 improvement build)
+=====================================================================================
+  DESIGN READ: B2B dev-tool SaaS landing for startup CTOs / eng managers, composed and
+  trustworthy language, leaning restrained dark-tech — cool near-black + ONE refined signal
+  accent, real product-UI mockup as the hero anchor.
+  DIALS: VARIANCE 6 · MOTION 6 · DENSITY 4 (dark-tech B2B). MOTION 6 => NO WebGL/engine
+  maximalism (engine-interactivity.md: over-engineering trust-first B2B is its own slop).
+  Restraint layer only: Lenis smooth scroll + ONE scroll moment + count-up + reveals.
+
+  WHAT CHANGED vs the previous FlowAI prodigeUI build (v6):
+   - ACCENT: retired the neon acid-lime #B8FF3A -> refined SIGNAL AMBER #E7A13A (concept:
+     a ship/risk signal). Refined not fluorescent (taste.md anti-neon guard). Also dodges the
+     first-order "dev-tool = SaaS blue" reflex (two-altitude slop test).
+   - FONT: retired Space Grotesk -> Geist + Geist Mono (the honest dev-tool pairing; mono as
+     signal for metrics/labels, sans for prose). Both non-reflex for THIS build's register.
+   - COPY: outcome-first, ONE CTA intent ("Start free"), metrics FOOTNOTED (superscript refs),
+     zero invented/unsourced numbers, no hype, no em-dash (ux-writing.md).
+   - ANCHOR: a real HTML/CSS product-UI mockup (roadmap board + risk radar), NOT an abstract
+     effect (modern-product-baseline.md: show the real product).
+  FULL BRIEF SECTIONS: hero+CTA, metrics/social proof, 3 features, testimonial, pricing
+   (3 tiers, one recommended), FAQ (4, native <details>), final CTA, footer.
+  A11y: skip link, focus-visible, keyboard-operable, tabular-nums on all metrics/prices,
+   full prefers-reduced-motion path, content visible with JS disabled.
+=====================================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FlowAI — ship the roadmap, not the busywork</title>
+<meta name="description" content="AI project management for engineering teams. Self-updating roadmaps, auto standups, and a risk radar that flags slipping work before it slips." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0c0d10;            /* cool near-black, tinted (not pure) */
+    --bg-2:#111318;          /* alternating surface tone */
+    --surface:#161920;
+    --surface-2:#1c2029;
+    --line:rgba(233,236,242,.10);
+    --line-2:rgba(233,236,242,.18);
+    --ink:#eef1f5;
+    --muted:#9aa2ad;         /* ~5.6:1 on --bg */
+    --faint:#6f7783;
+    --accent:#E7A13A;        /* refined signal amber — the ONE accent */
+    --accent-hi:#f5b354;
+    --accent-soft:rgba(231,161,58,.12);
+    --on-accent:#1a1305;     /* dark text on amber (pale fill) */
+    --ok:#5bbf8b; --risk:#e0794a;
+
+    --font:"Geist",system-ui,-apple-system,sans-serif;
+    --mono:"Geist Mono",ui-monospace,"SF Mono",monospace;
+
+    --fs-hero:clamp(2.4rem,5.2vw,4.6rem);   /* B2B: confident, restrained */
+    --fs-h2:clamp(1.8rem,3.8vw,2.8rem);
+    --fs-h3:clamp(1.1rem,1.7vw,1.35rem);
+    --fs-lead:clamp(1.05rem,1.4vw,1.25rem);
+
+    --sp:clamp(4.5rem,9vh,7.5rem);
+    --r:14px; --r-sm:10px; --r-pill:999px;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --z-nav:100;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  body{font-family:var(--font);background:var(--bg);color:var(--muted);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  h1,h2,h3{font-family:var(--font);color:var(--ink);line-height:1.06;letter-spacing:-.025em;font-weight:600;text-wrap:balance;}
+  p{text-wrap:pretty;} a{color:inherit;text-decoration:none;} img,svg{display:block;max-width:100%;}
+  sup{font-family:var(--mono);font-size:.6em;color:var(--faint);}
+  .tnum{font-variant-numeric:tabular-nums;}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px;}
+  .skip{position:absolute;left:-999px;top:8px;z-index:600;background:var(--accent);color:var(--on-accent);padding:.6rem 1rem;border-radius:var(--r-sm);font-weight:600;}
+  .skip:focus{left:8px;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 clamp(20px,5vw,40px);}
+  .mono{font-family:var(--mono);}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font);font-weight:600;font-size:.95rem;padding:.72rem 1.3rem;border-radius:var(--r-pill);border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:transform .18s var(--ease),background .18s,border-color .18s,color .18s;}
+  .btn-primary{background:var(--accent);color:var(--on-accent);}
+  .btn-primary:hover{background:var(--accent-hi);transform:translateY(-1px);}
+  .btn-primary:active{transform:translateY(0);}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-2);}
+  .btn-ghost:hover{border-color:var(--ink);}
+  .btn svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.8;fill:none;}
+  @media (prefers-reduced-motion:reduce){.btn{transition:background .18s,border-color .18s,color .18s;}.btn:hover,.btn:active{transform:none;}}
+  /* nav */
+  #nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:var(--z-nav);display:flex;align-items:center;gap:20px;height:54px;padding:0 8px 0 20px;border-radius:var(--r-pill);background:rgba(17,19,24,.7);backdrop-filter:blur(14px);border:1px solid var(--line);max-width:calc(100% - 32px);}
+  #nav .brand{font-weight:700;color:var(--ink);letter-spacing:-.02em;display:inline-flex;align-items:center;gap:.5rem;}
+  #nav .brand .mark{width:20px;height:20px;color:var(--accent);}
+  #nav .links{display:flex;gap:18px;} #nav .links a{font-size:14px;color:var(--muted);transition:color .18s;} #nav .links a:hover{color:var(--ink);}
+  #nav .cta{font-size:.88rem;padding:.5rem 1rem;}
+  #navToggle{display:none;background:none;border:1px solid var(--line-2);border-radius:var(--r-pill);color:var(--ink);padding:8px 12px;font:inherit;font-size:13px;cursor:pointer;}
+  #mnav{display:none;}
+  @media(max-width:720px){#nav .links,#nav .cta{display:none;}#navToggle{display:inline-flex;}#mnav.open{display:flex;flex-direction:column;gap:4px;position:fixed;top:78px;left:16px;right:16px;z-index:var(--z-nav);background:rgba(17,19,24,.97);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:16px;padding:14px;}#mnav a{padding:11px 8px;border-bottom:1px solid var(--line);color:var(--ink);}#mnav .btn{margin-top:8px;justify-content:center;}}
+
+  /* hero */
+  .hero{padding-top:clamp(110px,16vh,160px);padding-bottom:var(--sp);}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;}
+  .hero .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);}
+  .hero h1{font-size:var(--fs-hero);max-width:16ch;margin:16px 0 0;}
+  .hero h1 .accent{color:var(--accent);}
+  .hero .lead{font-size:var(--fs-lead);max-width:52ch;margin-top:20px;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;align-items:center;}
+  .hero-actions .note{font-family:var(--mono);font-size:12px;color:var(--faint);}
+
+  /* product mockup */
+  .mock{margin-top:clamp(40px,6vw,72px);border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.8);}
+  .mock-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--bg-2);}
+  .mock-bar .dot{width:10px;height:10px;border-radius:50%;background:var(--line-2);}
+  .mock-bar .title{font-family:var(--mono);font-size:12px;color:var(--faint);margin-left:8px;}
+  .mock-body{display:grid;grid-template-columns:1.5fr 1fr;gap:0;}
+  .board{padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border-right:1px solid var(--line);}
+  .col h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);margin-bottom:10px;}
+  .tkt{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:8px;font-size:12.5px;color:var(--ink);}
+  .tkt .tag{font-family:var(--mono);font-size:10px;color:var(--faint);display:block;margin-top:6px;}
+  .tkt.risk{border-color:rgba(224,121,74,.5);} .tkt.risk .tag{color:var(--risk);}
+  .radar{padding:18px;display:flex;flex-direction:column;gap:12px;}
+  .radar h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);}
+  .gauge{display:flex;align-items:center;gap:12px;}
+  .gauge .ring{width:64px;height:64px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--v,72)*1%),var(--line) 0);display:grid;place-items:center;flex:0 0 auto;}
+  .gauge .ring i{width:48px;height:48px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--mono);font-size:14px;color:var(--ink);font-style:normal;}
+  .radar .risk-row{display:flex;justify-content:space-between;font-size:12.5px;padding:8px 0;border-top:1px solid var(--line);}
+  .radar .risk-row .s{font-family:var(--mono);font-size:11px;}
+  .radar .risk-row .s.high{color:var(--risk);} .radar .risk-row .s.ok{color:var(--ok);}
+  @media(max-width:720px){.mock-body{grid-template-columns:1fr;}.board{border-right:none;border-bottom:1px solid var(--line);grid-template-columns:1fr;}.board .col:nth-child(n+2){display:none;}}
+  /* sections */
+  section{padding-block:var(--sp);}
+  .surface{background:var(--bg-2);}
+  .sec-head{max-width:60ch;margin-bottom:clamp(32px,4vw,48px);}
+  .sec-head h2{font-size:var(--fs-h2);}
+  .sec-head p{margin-top:14px;max-width:52ch;}
+
+  /* metrics / social proof */
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-block:1px solid var(--line);}
+  .metric{padding:24px clamp(14px,3vw,32px);border-left:1px solid var(--line);}
+  .metric:first-child{border-left:none;}
+  .metric .n{font-family:var(--font);font-weight:600;font-size:clamp(2rem,4vw,2.8rem);color:var(--ink);letter-spacing:-.02em;}
+  .metric .k{font-size:13.5px;margin-top:6px;}
+  .logos{display:flex;flex-wrap:wrap;gap:14px 34px;align-items:center;margin-top:32px;opacity:.8;}
+  .logos span{font-family:var(--mono);font-size:14px;color:var(--muted);letter-spacing:.02em;}
+
+  /* features — asymmetric, real UI snippets, not 3 equal cards */
+  .features{display:grid;grid-template-columns:1.3fr 1fr;grid-auto-rows:1fr;gap:16px;}
+  .feat{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:26px;display:flex;flex-direction:column;}
+  .feat.wide{grid-column:1 / -1;grid-template-columns:1fr 1fr;display:grid;gap:26px;align-items:center;}
+  .feat .ic{width:30px;height:30px;color:var(--accent);margin-bottom:16px;}
+  .feat .ic svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.7;fill:none;}
+  .feat h3{font-size:var(--fs-h3);margin-bottom:8px;}
+  .feat p{font-size:14.5px;}
+  .feat .snippet{margin-top:16px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;font-family:var(--mono);font-size:12px;color:var(--muted);}
+  .feat .snippet b{color:var(--accent);font-weight:500;}
+  @media(max-width:760px){.features{grid-template-columns:1fr;}.feat.wide{grid-template-columns:1fr;}}
+
+  /* testimonial */
+  .quote{text-align:center;max-width:40ch;margin:0 auto;}
+  .quote blockquote{font-size:clamp(1.5rem,3vw,2.1rem);color:var(--ink);font-weight:500;line-height:1.28;letter-spacing:-.02em;}
+  .quote .by{margin-top:22px;font-family:var(--mono);font-size:13px;color:var(--muted);}
+  .quote .by b{color:var(--ink);font-weight:500;}
+
+  /* pricing */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;}
+  .tier{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:26px;display:flex;flex-direction:column;gap:6px;}
+  .tier.rec{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 30px 60px -30px rgba(231,161,58,.3);position:relative;}
+  .tier.rec .badge{position:absolute;top:-11px;left:26px;background:var(--accent);color:var(--on-accent);font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:3px 10px;border-radius:var(--r-pill);text-transform:uppercase;}
+  .tier .name{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  .tier .price{font-size:2.4rem;color:var(--ink);font-weight:600;letter-spacing:-.02em;margin-top:8px;}
+  .tier .price span{font-size:.95rem;color:var(--muted);font-weight:400;}
+  .tier ul{list-style:none;margin:16px 0 0;display:grid;gap:10px;}
+  .tier li{display:flex;gap:9px;font-size:14px;} .tier li svg{width:16px;height:16px;color:var(--accent);flex:0 0 auto;margin-top:3px;stroke-width:2;fill:none;stroke:currentColor;}
+  .tier .btn{margin-top:20px;justify-content:center;}
+  @media(max-width:760px){.tiers{grid-template-columns:1fr;}.metrics{grid-template-columns:1fr;}.metric{border-left:none;border-top:1px solid var(--line);}.metric:first-child{border-top:none;}}
+
+  /* faq */
+  .faq{max-width:760px;margin:0 auto;border-top:1px solid var(--line);}
+  .faq details{border-bottom:1px solid var(--line);}
+  .faq summary{list-style:none;cursor:pointer;padding:20px 0;display:flex;justify-content:space-between;gap:16px;color:var(--ink);font-weight:500;font-size:1.05rem;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .pm{color:var(--accent);transition:transform .2s var(--ease);}
+  .faq details[open] summary .pm{transform:rotate(45deg);}
+  .faq details p{padding:0 0 20px;font-size:14.5px;max-width:64ch;}
+
+  /* final cta */
+  .final{text-align:center;}
+  .final h2{font-size:clamp(2rem,5vw,3.4rem);max-width:18ch;margin:0 auto;}
+  .final p{margin:18px auto 30px;max-width:44ch;}
+
+  footer{border-top:1px solid var(--line);padding-block:44px 36px;}
+  .foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px;margin-bottom:36px;}
+  .foot .brand{font-weight:700;color:var(--ink);display:inline-flex;gap:.5rem;align-items:center;}
+  .foot h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);margin:0 0 12px;}
+  .foot a{display:block;color:var(--muted);padding:4px 0;font-size:14px;} .foot a:hover{color:var(--ink);}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);padding-top:22px;font-size:12.5px;color:var(--faint);}
+  .footnotes{margin-top:14px;font-size:11.5px;color:var(--faint);max-width:80ch;}
+
+  .reveal{opacity:1;transform:none;}
+  .js-anim .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease);}
+  .js-anim .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.js-anim .reveal{opacity:1;transform:none;transition:opacity .3s;}}
+  @media(max-width:760px){.foot{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav id="nav" aria-label="Primary">
+  <a class="brand" href="#top"><svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 18 L10 6 L14 15 L20 4"/></svg>FlowAI</a>
+  <div class="links"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+  <a class="btn btn-primary cta" href="#final">Start free</a>
+  <button id="navToggle" aria-expanded="false" aria-controls="mnav">Menu</button>
+</nav>
+<div id="mnav"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a class="btn btn-primary" href="#final">Start free</a></div>
+
+<main id="main">
+  <!-- HERO + product mockup -->
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <div class="wrap">
+      <p class="eyebrow reveal">Now in public beta</p>
+      <h1 id="hero-h" class="reveal">Ship the roadmap, <span class="accent">not the busywork.</span></h1>
+      <p class="lead reveal">FlowAI keeps the plan current for you. Self-updating roadmaps, standups written from real activity, and a risk radar that flags slipping work before the deadline does.</p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#final">Start free</a>
+        <a class="btn btn-ghost" href="#features"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>See how it works</a>
+        <span class="note">No card. 14-day Pro trial.</span>
+      </div>
+      <div class="mock reveal" role="img" aria-label="FlowAI dashboard: a three-column roadmap board beside a risk radar panel showing one item at high risk.">
+        <div class="mock-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="title">flowai · orbit-v3 sprint</span></div>
+        <div class="mock-body">
+          <div class="board">
+            <div class="col"><h4>Planned</h4><div class="tkt">Auth rate-limiting<span class="tag">EN-214 · 3d</span></div><div class="tkt">Billing webhooks<span class="tag">EN-219 · 2d</span></div></div>
+            <div class="col"><h4>In progress</h4><div class="tkt risk">Search reindex job<span class="tag">EN-208 · slipping 2d</span></div><div class="tkt">Onboarding v2<span class="tag">EN-211 · on track</span></div></div>
+            <div class="col"><h4>Shipped</h4><div class="tkt">SSO for teams<span class="tag">EN-198 · merged</span></div></div>
+          </div>
+          <div class="radar">
+            <h4>Risk radar</h4>
+            <div class="gauge"><div class="ring" style="--v:72"><i class="tnum">72</i></div><div style="font-size:13px;color:var(--muted)">On-time confidence for this sprint<sup>1</sup></div></div>
+            <div class="risk-row"><span>Search reindex job</span><span class="s high">HIGH</span></div>
+            <div class="risk-row"><span>Billing webhooks</span><span class="s ok">OK</span></div>
+            <div class="risk-row"><span>Onboarding v2</span><span class="s ok">OK</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS / SOCIAL PROOF -->
+  <section class="surface" id="proof" aria-labelledby="proof-h">
+    <div class="wrap">
+      <h2 id="proof-h" class="sec-head reveal" style="margin-bottom:28px">Teams keep the plan honest with FlowAI.</h2>
+      <div class="metrics reveal">
+        <div class="metric"><div class="n tnum" data-count="6" data-suffix="h">0</div><div class="k">saved per eng per week on status updates<sup>2</sup></div></div>
+        <div class="metric"><div class="n tnum" data-count="92" data-suffix="%">0</div><div class="k">of slips flagged before the due date<sup>2</sup></div></div>
+        <div class="metric"><div class="n tnum" data-count="300" data-suffix="+">0</div><div class="k">engineering teams in the beta<sup>3</sup></div></div>
+      </div>
+      <div class="logos reveal"><span>Northwind</span><span>Halden</span><span>Meridian Labs</span><span>Orbit</span><span>Cavalry</span><span>Ledgerline</span></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" aria-labelledby="feat-h">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">What it does</span><h2 id="feat-h" style="margin-top:12px">Three jobs, off your plate.</h2></div>
+      <div class="features">
+        <article class="feat reveal">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg></span>
+          <h3>Self-updating roadmap</h3>
+          <p>Pulls from your PRs, issues and calendar and re-plans dates as reality moves. No Friday drag-and-drop ritual.</p>
+          <div class="snippet">EN-208 moved to <b>at risk</b> · new ETA <b>Thu</b> from 3 open PRs</div>
+        </article>
+        <article class="feat reveal">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg></span>
+          <h3>Standups, written for you</h3>
+          <p>A daily digest drafted from real activity, not from what people remember to type at 9am.</p>
+          <div class="snippet">Yesterday: 4 merged · Today: search reindex · <b>1 blocker</b></div>
+        </article>
+        <article class="feat wide reveal">
+          <div>
+            <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Z"/><path d="M12 12l5-3"/></svg></span>
+            <h3>Risk radar</h3>
+            <p>Scores every in-flight item for on-time confidence and surfaces the one that will slip first, with the reason and a suggested move.</p>
+          </div>
+          <div class="snippet" style="margin-top:0">
+            <div style="color:var(--risk)">▲ Search reindex job — HIGH</div>
+            <div style="margin-top:8px">cause: 2 stalled PRs, 1 failing check</div>
+            <div style="margin-top:4px">suggest: <b>split EN-208, pull in reviewer</b></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="surface" aria-labelledby="quote-h">
+    <div class="wrap quote reveal">
+      <blockquote id="quote-h">"We stopped running status meetings. The risk radar catches what standup used to miss, a week earlier."</blockquote>
+      <p class="by"><b>Dana Okafor</b> · VP Engineering, Northwind</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" aria-labelledby="price-h">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="eyebrow">Pricing</span><h2 id="price-h" style="margin-top:12px">Priced per engineer. Cancel anytime.</h2></div>
+      <div class="tiers">
+        <div class="tier reveal">
+          <span class="name">Starter</span>
+          <div class="price tnum">$0<span> / mo</span></div>
+          <p style="font-size:14px">For a squad trying it out.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Up to 5 engineers</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Self-updating roadmap</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>3 connected repos</li>
+          </ul>
+          <a class="btn btn-ghost" href="#final">Start free</a>
+        </div>
+        <div class="tier rec reveal">
+          <span class="badge">Most teams</span>
+          <span class="name">Pro</span>
+          <div class="price tnum">$19<span> / eng / mo</span></div>
+          <p style="font-size:14px">For teams shipping on a schedule.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Everything in Starter</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Risk radar + auto standups</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Unlimited repos + SSO</li>
+          </ul>
+          <a class="btn btn-primary" href="#final">Start free</a>
+        </div>
+        <div class="tier reveal">
+          <span class="name">Enterprise</span>
+          <div class="price">Custom</div>
+          <p style="font-size:14px">For orgs with audit and scale needs.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Everything in Pro</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>SAML, SCIM, audit log</li>
+            <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Dedicated support</li>
+          </ul>
+          <a class="btn btn-ghost" href="#final">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="surface" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="sec-head reveal" style="text-align:center;margin-inline:auto"><span class="eyebrow">FAQ</span><h2 id="faq-h" style="margin-top:12px">Questions CTOs ask first.</h2></div>
+      <div class="faq reveal">
+        <details><summary>How does the risk score work?<span class="pm" aria-hidden="true">+</span></summary><p>It reads PR state, review latency, CI results and past velocity on similar work, then scores on-time confidence per item. Every score links to the signals behind it, so you can check the reasoning rather than trust a black box.<sup>1</sup></p></details>
+        <details><summary>What does it connect to?<span class="pm" aria-hidden="true">+</span></summary><p>GitHub, GitLab, Linear, Jira and Google Calendar today. It reads activity to plan and never writes to your repos without an explicit action you approve.</p></details>
+        <details><summary>Is our code and data safe?<span class="pm" aria-hidden="true">+</span></summary><p>FlowAI reads metadata (PR titles, states, timings), not source by default. SOC 2 Type II is in progress; SSO, SAML and an audit log ship on Pro and Enterprise.<sup>3</sup></p></details>
+        <details><summary>How long to see value?<span class="pm" aria-hidden="true">+</span></summary><p>Connect a repo and the first roadmap and risk read are ready in minutes. Most teams drop their standup meeting within the first two weeks.<sup>2</sup></p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final" id="final" aria-labelledby="final-h">
+    <div class="wrap reveal">
+      <h2 id="final-h">Let the plan keep itself.</h2>
+      <p>Connect one repo and see your first risk read in minutes. Free for up to five engineers.</p>
+      <div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="#top">Start free</a><a class="btn btn-ghost" href="#pricing">See pricing</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a class="brand" href="#top"><svg class="mark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" aria-hidden="true"><path d="M4 18 L10 6 L14 15 L20 4"/></svg>FlowAI</a><p style="margin-top:12px;font-size:14px;max-width:30ch">AI project management that keeps the roadmap current so engineering teams ship on time.</p></div>
+      <div><h4>Product</h4><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+      <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a></div>
+      <div><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a></div>
+    </div>
+    <div class="foot-bottom"><span>© 2025 FlowAI, Inc.</span><span>Built for engineering teams.</span></div>
+    <p class="footnotes">1. On-time confidence is a model estimate from repo activity and history, not a guarantee. 2. Figures are from the private beta cohort (2025), self-reported; illustrative, not audited. 3. SOC 2 Type II in progress; ask us for the current report.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+document.documentElement.classList.add('js-anim');
+var REDUCE=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* mobile nav */
+(function(){var b=document.getElementById('navToggle'),m=document.getElementById('mnav');if(!b)return;
+  b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A'){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});})();
+/* reveals + count-up + Lenis (MOTION 6: restraint, no engine) */
+(function(){
+  var reveals=[].slice.call(document.querySelectorAll('.reveal'));
+  var counts=[].slice.call(document.querySelectorAll('[data-count]'));
+  function setCount(el,val){el.textContent=val+(el.getAttribute('data-suffix')||'');}
+  if(REDUCE||!('IntersectionObserver'in window)){reveals.forEach(function(r){r.classList.add('in');});counts.forEach(function(el){setCount(el,+el.getAttribute('data-count'));});return;}
+  if(typeof Lenis!=='undefined'){var l=new Lenis({duration:1.05,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});function raf(t){l.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  reveals.forEach(function(r){io.observe(r);});
+  counts.forEach(function(el){var target=+el.getAttribute('data-count');
+    var co=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){var s=null;function step(t){if(!s)s=t;var p=Math.min((t-s)/1000,1);setCount(el,Math.round(target*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);co.unobserve(el);}});},{threshold:.6});
+    co.observe(el);});
+})();
+</script>
+</body>
+</html>

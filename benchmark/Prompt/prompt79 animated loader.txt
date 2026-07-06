@@ -1,0 +1,271 @@
+Build a one-page TanStack Start (React 19 + Vite 7 + Tailwind v4) landing page for a brand called "Nixole" — AI that converts patients for medical practices. Match the spec below pixel-for-pixel. Use TanStack file-based routing (src/routes/__root.tsx + src/routes/index.tsx) and Tailwind v4 (CSS-first config in src/styles.css, no tailwind.config.js). Install framer-motion (bun add framer-motion). Load the "Inter Tight" Google font via a <link> in the root route head (weights 300;400;500;600;700). Page title: "Nixole — AI that converts patients for your medical practice". Meta description: "Autonomous calls, enrollment & payments. AI that handles every patient touchpoint — calls, WhatsApp — until they book an appointment."
+
+ASSETS
+Download these nine files at build time and place them under src/assets/ (or upload through your asset pipeline). All are public:
+- https://qclay.design/lovable/nixole/main-logo.svg            -> src/assets/main-logo.svg            (Nixole mark, 38x38)
+- https://qclay.design/lovable/nixole/nixole-logo.svg          -> src/assets/nixole-logo.svg          (extra logo variant)
+- https://qclay.design/lovable/nixole/browser-mockup.png       -> src/assets/browser-mockup.png       (Medical.AI browser screenshot)
+- https://qclay.design/lovable/nixole/nurse-video.mp4          -> src/assets/nurse-video.mp4          (round looping nurse clip, used as inline avatar in H1)
+- https://qclay.design/lovable/nixole/nutanix-avatar.svg       -> src/assets/nutanix-avatar.svg       (Nutanix wordmark with avatar, testimonial footer)
+- https://qclay.design/lovable/nixole/frame-207.svg            -> src/assets/frame-207.svg            (stacked avatar group for "What our customers say")
+- https://qclay.design/lovable/nixole/programming-arrow.svg    -> src/assets/programming-arrow.svg    (tiny arrow icon for Key Features header)
+- https://qclay.design/lovable/nixole/upside-logo.svg          -> src/assets/upside-logo.svg          (Upside wordmark)
+- https://qclay.design/lovable/nixole/nurse-icon.svg           -> src/assets/nurse-icon.svg           (kept for completeness; not rendered)
+Reference them in code via the imported URL.
+
+DESIGN TOKENS (src/styles.css)
+Paste this file verbatim:
+
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-surface-dark: var(--surface-dark);
+  --color-pill: var(--pill);
+  --color-pill-foreground: var(--pill-foreground);
+  --color-pill-chip: var(--pill-chip);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.16 0.01 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.01 260);
+  --muted: oklch(0.97 0.005 260);
+  --muted-foreground: oklch(0.62 0.01 260);
+  --border: oklch(0.92 0.005 260);
+  --accent: oklch(0.88 0.18 95);
+  --accent-foreground: oklch(0.16 0.01 260);
+  --surface-dark: oklch(0.16 0.01 260);
+  --pill: oklch(0.97 0.005 260);
+  --pill-foreground: oklch(0.16 0.01 260);
+  --pill-chip: oklch(1 0 0);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+}
+
+.mesh-showcase {
+  position: relative;
+  background-color: #0c0a09;
+  background-image:
+    radial-gradient(55% 95% at 100% 50%, rgba(120, 180, 255, 0.85) 0%, rgba(120, 180, 255, 0) 70%),
+    radial-gradient(45% 75% at 88% 50%, rgba(170, 210, 255, 0.7) 0%, rgba(170, 210, 255, 0) 70%),
+    radial-gradient(60% 75% at 60% 50%, rgba(255, 215, 90, 0.95) 0%, rgba(255, 215, 90, 0) 70%),
+    radial-gradient(75% 80% at 50% 55%, rgba(255, 175, 60, 0.7) 0%, rgba(255, 175, 60, 0) 65%),
+    radial-gradient(80% 80% at 30% 60%, rgba(255, 150, 40, 0.6) 0%, rgba(255, 130, 30, 0) 60%),
+    radial-gradient(60% 70% at 12% 95%, rgba(255, 110, 25, 0.7) 0%, rgba(255, 110, 25, 0) 65%),
+    radial-gradient(55% 75% at 0% 0%, rgba(120, 80, 40, 0.85) 0%, rgba(120, 80, 40, 0) 60%),
+    linear-gradient(180deg, #1a120c 0%, #0c0a09 100%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 200% 200%;
+  animation: meshFlow 14s ease-in-out infinite, meshDrift 18s ease-in-out infinite;
+}
+.mesh-showcase::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(
+    -30deg,
+    rgba(255,255,255,0) 0px, rgba(255,255,255,0) 240px,
+    rgba(255,255,255,0.10) 340px, rgba(255,255,255,0.22) 380px, rgba(255,255,255,0.10) 420px,
+    rgba(255,255,255,0) 520px, rgba(255,255,255,0) 820px
+  );
+  background-size: 200% 200%;
+  mix-blend-mode: screen;
+  animation: shimmerSweep 9s linear infinite;
+  border-radius: inherit;
+}
+.mesh-showcase > * { position: relative; z-index: 1; }
+
+@keyframes meshFlow {
+  0%, 100% { filter: hue-rotate(0deg) saturate(1) brightness(1); }
+  50%      { filter: hue-rotate(-10deg) saturate(1.08) brightness(1.05); }
+}
+@keyframes meshDrift {
+  0%, 100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+  50%      { background-position: 0% 0%, 0% 0%, 2% -3%, -3% 2%, 3% 3%, -2% -2%, 0% 0%, 30% 70%; }
+}
+@keyframes shimmerSweep {
+  0%   { background-position: 0% 100%; }
+  100% { background-position: 100% 0%; }
+}
+
+.star { color: oklch(0.86 0.19 90); }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 28s linear infinite; }
+
+@keyframes dotPop {
+  from { opacity: 0; transform: scale(0.2); }
+  to   { opacity: 0.36; transform: scale(1); }
+}
+.dot-pop {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dotPop 0.35s ease-out forwards;
+}
+
+@keyframes logoPop {
+  0%   { opacity: 0; transform: scale(0.05); }
+  60%  { opacity: 1; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes letterRise {
+  0%   { opacity: 0; transform: translateY(100%) scale(0.6); }
+  100% { opacity: 1; transform: translateY(0)   scale(1);   }
+}
+@keyframes riseUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes proScale {
+  from { opacity: 0.2; transform: scale(2.4); }
+  to   { opacity: 1;   transform: scale(1);   }
+}
+
+ROOT ROUTE (src/routes/__root.tsx)
+Standard TanStack RootShell with HeadContent/Scripts and QueryClientProvider wrapping . In head(), set the meta+title above, link the appCss stylesheet, and add Inter Tight via Google Fonts .
+
+PAGE LAYOUT (src/routes/index.tsx)
+Single full-bleed white page, max content width 1400px, horizontal padding 24px (40px on md+).
+
+1) HEADER (top of page, padding-top 24px / 32px on md)
+- Left: Nixole logo group (anchor "/"). Image is src/assets/main-logo.svg 38x38 + the wordmark "Nixole" in Inter Tight 28px, weight 600, color #000, 9.23px gap between logo and text. The logo image scales 0 -> 1 with backOut ease over 0.5s on mount. Each letter of "Nixole" is wrapped in an inline overflow-hidden span and rises from y:110% opacity:0 to y:0 opacity:1 with cubic-bezier(0.25,1,0.5,1) over 0.6s, staggered 60ms starting at delay 0.5s.
+- Center (md+): nav with 36px gap, 15px medium font: Home (active — text-foreground with 1.5px underline offset 6px), How it works, Company (with a 12px chevron-down icon), Case Studies. Each link fades up (opacity 0 y:20 -> opacity 1 y:0) over 0.5s, staggered 80ms starting at 1.0s. Inactive links are muted-foreground, hover -> foreground.
+- Right: "Book a demo" pill button — rounded-full, 1px border-border, white bg, padding 20px x 10px, 14px medium, subtle 0_1px_0 shadow; scales 0->1 with backOut over 0.5s delay 1.3s. Hover -> bg-muted.
+
+2) HERO (mx-auto max-w 1400, padding-top 64px / 96px on md, centered)
+- Eyebrow pill (inline-flex, padding 4px 11px 4px 4px, gap 10px, radius 8px, background rgba(192,192,192,0.17)) containing: a 28x22 white inner chip with the "AI" badge (svg w14 h12, viewBox 0 0 12 10, path "M5.71198 0L9.56198 9.982H7.686L6.734 7.336H2.786L1.806 9.982H0L3.85 0H5.71198ZM6.272 6.02L4.788 1.82L3.234 6.02H6.272ZM11.998 0.014V9.982H10.234V0.014H11.998Z" opacity 0.85 fill currentColor) followed by the text "Autonomous calls, enrollment & payments" at 14px. Reveal: opacity 0 y:30 -> 1 y:0, 0.8s easeOut delay 1.5s.
+- H1 heading, max-w 1100px, mt 24px, weight 500, line-height 1.05, letter-spacing -0.035em, size 64px (88px on md). Content on three visual lines:
+    Line 1: "AI that converts patients"
+    Line 2: "for your " +  + " " + 
+  Each text fragment is rendered with an AnimatedWords component: each word is wrapped in an inline-block overflow-hidden span with padding-bottom 0.2em; the inner motion.span rises from y:110% opacity:0 to y:0 opacity:1, duration 0.6s, ease cubic-bezier(0.25,1,0.5,1), stagger 50ms. Word-group delays: 1.7s for "AI that converts patients", 1.95s for "for your", 2.10s for the muted "medical practice".
+  The inline avatar is a  using nurse-video.mp4 (autoPlay loop muted playsInline), 88x88 (108x108 on md), rounded-full, object-cover, aligned middle; it scales 0->1 with backOut over 0.6s at delay 2.15s.
+  The "medical practice" words use color text-foreground/25.
+- Subheading paragraph, mt 32px, max-w 760px, 18px, line-height 1.5, color muted-foreground. Exact copy:
+    Built for how patients actually decide. They Google. They hesitate. They miss calls.
+    
+ Our AI handles every touchpoint — calls, WhatsApp — until they book an appointment.
+  Reveal opacity 0 y:30 -> 1 y:0 0.8s easeOut delay 2.5s.
+- CTA row, mt 40px, gap 12px, centered: 
+    Button A "Book a demo" — same outlined pill style as header but padding 24px x 12px, 15px medium. Scale 0->1 backOut 0.5s delay 2.7s.
+    Button B "Let's Talk" — solid yellow background oklch(0.88 0.18 95), 24px x 12px, 15px semibold, text foreground, hover scale 1.02. Scale 0->1 backOut 0.5s delay 2.8s.
+
+3) SHOWCASE CARD (mt 64px, full width minus 16px side gutter)
+Outer container uses class "mesh-showcase" (the animated mesh gradient defined in CSS), rounded 28px, overflow-hidden, padding 20px (28px on md). Reveal opacity 0 y:60 -> 1 y:0, 1s cubic-bezier(0.25,1,0.5,1) delay 3.0s.
+Inside, grid of two equal columns on md (gap 20px).
+
+LEFT INNER CARD (dark, min-height 360px, rounded 22px, bg #1E1D19, padding 24-28px, text white). Reveal opacity 0 y:40 -> 1 y:0, 0.8s easeOut delay 3.2s.
+- "Pro" pill at top-left: 36x22, radius 6px, bg #FFFFFF, text #111114, 12px medium, centered. Animate from scale 2.4 opacity 0.2 -> scale 1 opacity 1, 0.7s cubic-bezier(0.25,1,0.5,1) delay 3.45s.
+- Heading mt 20px, 28px medium, line-height 1.15, tracking-tight, white. Two lines via AnimatedWords: "All-in-One" (delay 3.6s) 
+ "Enrollment Platform" (delay 3.75s).
+- At the bottom mt-auto pt 24px, paragraph color rgba(255,255,255,0.36), 16px 400 weight, line-height 19px:
+    "From lead capture to recurring payments,"
+    
+ "We run your enrollment with AI."
+- Floating browser mockup (md+ only): absolutely positioned bottom:0 right:0, width 330px, drop-shadow 0_20px_40px_rgba(0,0,0,0.45). Image is browser-mockup.png. At top:40px left:1px draw a 8x8 white dot with 2px solid rgba(255,255,255,0.12) border (using border + content-box) — this is the "browser seam dot".
+- Dashed connector SVG (component name AnimatedDottedFrame): absolutely positioned at left:-135.75px top:43.25px relative to the browser mockup container. The svg is 141x107 with viewBox 0 0 141 107. It contains a hidden guide path d="M140.75 3.75H5.75C2.98857 3.75 0.75 5.98858 0.75 8.75V95.75C0.75 98.5114 2.98858 100.75 5.75 100.75H40" plus a generated group of circles. Implementation: on mount, take pathRef.current.getTotalLength(); for d=2; d<=total; d+=4 push p=path.getPointAtLength(d). Render each as  with animation-delay = startDelay + i*40ms (use startDelay 4200ms). The .dot-pop CSS animation pops them in to opacity 0.36 over 0.35s ease-out, one after another, drawing the dashed L-shape from the browser dot to the Key Features dot.
+- "Key Features" floating popover (md+ only): absolute bottom:-24px right:214px, z-10, flex-col, width 210px height 222px, radius 13.654px, border 1px solid rgba(255,255,255,0.34), background linear-gradient(164deg, rgba(255,255,255,0.04) 14.62%, rgba(255,255,255,0.40) 85.2%), backdrop-blur 214.5px, padding 12px. Reveal opacity 0 y:30 -> 1 y:0, 0.8s easeOut delay 3.95s. Inside:
+    Header row (mb 8px): programming-arrow.svg 14x14 + text "Key Features" 13px medium white.
+    Divider (mb 8px, -mx-12px, height 1px, background rgba(255,255,255,0.19)) with a 8x8 white dot at left:-4px top:-4px (2px solid rgba(255,255,255,0.12) border, content-box).
+    Vertical list with space-y 4px. Each row: padding 6px 4px, gap 8px, items-center. Five entries:
+      "AI Sales Agent", "Lead Capture & Forms", "Payments & Subscriptions" (ACTIVE), "Automated Follow-ups", "CRM for Academies".
+    Inactive rows: white/90 text 12px medium, with a 12x12 rounded-[3px] bg-white/15 leading box (empty).
+    Active row: text #111114, background #F4F4F4 radius 4.312px; leading box is 12x12 background #FFD209 radius 1.006px holding a white check icon (svg 8x8, viewBox 0 0 24 24, stroke currentColor strokeWidth 4 lineCap round, polyline "20 6 9 17 4 12").
+
+RIGHT INNER CARD (white, min-height 360px, rounded 22px, padding 24-28px). Reveal opacity 0 y:40 -> 1 y:0, 0.8s easeOut delay 3.3s.
+- Top row (flex items-start justify-between gap 16px): left side is frame-207.svg at height 44px (stacked customer avatars) + text "What our customers say" 15px medium foreground. Right side is a two-bar pagination indicator stacked with 4.34px gap: bar 1 = 4.343 x 32.569px radius 5.428px background #131318; bar 2 = 4.343 x 16.285px radius 5.428px background #DCDCDC.
+- "Feb 02, 2026" mt 48px, 13px muted-foreground.
+- Quote mt 8px, max-w 420px, 22px medium, line-height 1.3, tracking-tight: first clause "They converted 40% more leads" in foreground color (AnimatedWords delay 3.6s) + space + remainder "than our sales team — and never missed a follow-up." in muted-foreground (AnimatedWords delay 3.75s, stagger 0.04).
+- Bottom row absolute bottom:24px left:24px right:24px, items-center justify-between: nutanix-avatar.svg height 28px on the left; on the right five stars (4 full + 1 half). Star SVG is 16x16 viewBox 0 0 24 24, class "star" (yellow), path "M12 2.5l2.95 6.2 6.8.78-5.05 4.66 1.4 6.66L12 17.6l-6.1 3.2 1.4-6.66L2.25 9.48l6.8-.78L12 2.5z". Half star uses a linearGradient id="half-star" stop 50% currentColor / stop 50% rgba(0,0,0,0.15).
+
+TRUSTED-BY ROW (inside the mesh card, mt 28px, px 4px, white text)
+- Left paragraph max-w-md, 13px line-height 1.5, white/75: "Trusted by industry leaders in X who don't just follow trends," 
+ "but define how the industry moves forward."
+- Right marquee container (md max-w 60%) with horizontal mask gradient: mask-image linear-gradient(to right, transparent 0, #000 80px, #000 calc(100% - 80px), transparent 100%). Inside, a flex row with 40px gap and class animate-marquee (keyframes marquee 0 -> translateX(-50%) over 28s linear infinite). Render two identical sequential groups (for seamless loop). Each group contains, with 40px gaps and 40px right padding: inline IntelLogo (white), inline OracleLogo (white), inline GoFundMeLogo (white), inline NutanixLogo (white), and upside-logo.svg height 24px. The inline brand SVGs are below — paste verbatim.
+
+INLINE BRAND SVG COMPONENTS — paste exactly:
+
+Intel (width 50 height 20 viewBox "0 0 50 20"):
+
+
+Oracle (width 110 height 15 viewBox "0 0 110 15"):
+
+
+GoFundMe (width 100 height 30 viewBox "0 0 100 30"): the full multi-path SVG describing the "GoFundMe" wordmark plus the bird mark. Paste exactly the eleven  entries with these d-values (already included in the source listing of this project's src/routes/index.tsx — copy them verbatim into the recreated file).
+
+Nutanix (width 105 height 14 viewBox "0 0 105 14"): the seven white  entries from the same source file — paste verbatim.
+
+Chevron-down icon (12x12, viewBox 0 0 24 24, fill none, stroke currentColor, strokeWidth 2.5, lineCap round, lineJoin round): polyline "6 9 12 15 18 9".
+
+Arrow icon (14x14, viewBox 0 0 16 16, fill currentColor) — paste the two paths:
+
+
+REUSABLE REACT COMPONENTS (inside src/routes/index.tsx)
+
+AnimatedWords({ text, className, delayStart=0, stagger=0.06, inView=false }):
+- splits text on spaces
+- if inView=true use IntersectionObserver via framer-motion useInView({ once: true, margin: "-80px" }); otherwise always animate on mount
+- each word lives in a  wrapper
+- inner  starts at { y: "110%", opacity: 0 } and animates to { y: "0%", opacity: 1 } with duration 0.6, ease [0.25,1,0.5,1], delay = delayStart + i*stagger
+- preserve spaces with "\u00A0" between words
+
+AnimatedDottedFrame({ className, style, startDelay=0 }):
+- SVG 141x107, viewBox 0 0 141 107, fill none, aria-hidden
+- guide path (no stroke, no fill) d="M140.75 3.75H5.75C2.98857 3.75 0.75 5.98858 0.75 8.75V95.75C0.75 98.5114 2.98858 100.75 5.75 100.75H40"
+- in useEffect compute path total length, then for d=2; d<=total; d+=4 collect path.getPointAtLength(d) into state
+- render each as 
+
+NOTES & PIXEL DETAILS
+- All asset URLs must be loaded as imports; do not hardcode HTTP paths in components.
+- Use bg-foreground/25, white/75, white/90, white/15 utilities as written.
+- The hero pill chip "AI" icon uses currentColor fill so it inherits surrounding text color.
+- "Let's Talk" button MUST be the apostrophe-curly version "Let's Talk" rendered via '.
+- The "What our customers say" date is exactly "Feb 02, 2026".
+- Quote text: "They converted 40% more leads than our sales team — and never missed a follow-up." (em dash, not hyphen).
+- The trusted-by paragraph copy: "Trusted by industry leaders in X who don't just follow trends, but define how the industry moves forward."
+- After the showcase add a final spacer 
+
+ before closing the page.
+- The page must build cleanly with TanStack Start. Routes: src/routes/__root.tsx and src/routes/index.tsx only.
+- Inter Tight is the only font; no purple gradients, no generic AI aesthetic.
+- Verify after build: header logo + wordmark animate in, eyebrow pill fades up, headline words rise per-word, nurse video plays in a circle, both CTAs scale in, showcase card rises with mesh animating continuously, dashed dots draw L-shape from browser to Key Features, "Payments & Subscriptions" row is highlighted yellow with check, testimonial card has 4.5 yellow stars, marquee loops seamlessly to the left.
+
+End of prompt.

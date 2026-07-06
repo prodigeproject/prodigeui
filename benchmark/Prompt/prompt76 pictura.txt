@@ -1,0 +1,1828 @@
+PROMPT — REBUILD THE "PICTURA" WEBSITE (PIXEL PERFECT)
+
+Build a single-page website called "Pictura". It is a full-screen dark-mode landing page (background #0E0E0E) where a photograph mosaic in the shape of a heart occupies the center of the screen. As the user scrolls (mouse wheel or touch), the heart's large cards disperse to fixed final positions around the viewport while a small pixel-heart in the center expands and reveals more mini-photos. When any dispersed card is clicked, it expands into a centered modal with metadata. There is no vertical page scroll — scroll events drive the animation state (progress 0..1), not the document.
+
+TECH STACK
+- TanStack Start v1 (React 19, Vite 7). File-based routing under src/routes/. Do not create src/pages/.
+- Tailwind CSS v4 via @import "tailwindcss" in src/styles.css.
+- No shadcn components used on the page; everything is plain divs / inline styles / a single <style> block for keyframes.
+- Fonts loaded through a <link rel="stylesheet"> in src/routes/__root.tsx head() — Instrument Serif (regular + italic) and Inter Tight (400, 500). Never @import remote fonts in CSS.
+- html/body: background #0E0E0E, color #FCFCFC, overflow hidden, height 100%.
+
+FILE STRUCTURE TO CREATE
+- src/routes/__root.tsx  (head with title/description/OG/Twitter meta, favicon, Google Fonts stylesheet, QueryClientProvider around <Outlet />)
+- src/routes/index.tsx   (the whole page — see full source below, use it verbatim)
+- src/styles.css         (Tailwind v4 base + the html/body rule above; shadcn tokens can stay as scaffolded but are unused)
+
+REMOTE ASSETS (do not download — reference them by absolute URL exactly as shown)
+Root:
+  https://qclay.design/lovable/pictura/favicon.ico
+  https://qclay.design/lovable/pictura/arrow-right-dark.svg
+  https://qclay.design/lovable/pictura/arrow-right-white.svg
+  https://qclay.design/lovable/pictura/frame.svg
+
+Icons (used inside the opened card modal):
+  https://qclay.design/lovable/pictura/icons/copy.svg
+  https://qclay.design/lovable/pictura/icons/like.svg
+  https://qclay.design/lovable/pictura/icons/dislike.svg
+  https://qclay.design/lovable/pictura/icons/plus.svg
+  https://qclay.design/lovable/pictura/icons/tick-circle.svg
+  https://qclay.design/lovable/pictura/icons/maximaze.svg
+  https://qclay.design/lovable/pictura/icons/btn_bottom.svg
+  https://qclay.design/lovable/pictura/icons/btn_left.svg
+  https://qclay.design/lovable/pictura/icons/btn_right.svg
+
+Large heart photos (43 total; skip person8): person1..person44.png at
+  https://qclay.design/lovable/pictura/person/personN.png
+
+Small heart photos (50 total): person1..person50.png at
+  https://qclay.design/lovable/pictura/person_small/personN.png
+
+HEAD METADATA
+- Title: "Pictura — Find the photo that reflects your ideas"
+- Description: "Explore, inspire, create – discover visuals that bring your vision to life."
+- Same values for og:title/og:description, og:type "website", twitter:card "summary_large_image".
+- Favicon: the remote favicon.ico above.
+- Google Fonts URL: https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500&display=swap  (with preconnect to fonts.googleapis.com and fonts.gstatic.com crossorigin).
+
+LAYER HIERARCHY OF THE PAGE (top of file to bottom, all inside one <section> with position:relative, w-screen h-screen, overflow-hidden, background #0E0E0E)
+1. <style> block containing keyframes: logoDraw, fadeInUp, lineGrow, letterIn, wordIn, wordInDim, paraWordIn, arrowIn, btnPop, btnExpand, cellReveal, smallCubeIn, smallImgIn, imgFadeIn, modalFade, pillPop, tagIn, plus a .modal-img-wrap::after gradient rule and .gs-hoverable hover rules.
+2. Decorative <img> "frame.svg" absolutely positioned top:0 left:55% translateX(-50%) z-index:1 (blurred 14px while a modal is open).
+3. <header> z-30 at top:40px paddingLeft/Right 50px, height 40px containing:
+   - Burger button at left:50 top:50% width:78 height:24, two 78x1 white horizontal <span> lines with 5px gap. Initial reveal: scaleX(0) -> scaleX(1) via lineGrow 0.9s (top delay 0.05s, bottom 0.5s). After the 1.5s "linesLoaded" flag flips, both lines follow menuOpen: scaleX(1) when closed, scaleX(0.53) when open (i.e. shrink by 47%), transitioned with transform 0.45s cubic-bezier(0.22,1,0.36,1). transform-origin is left center.
+   - Center logo: 8-line StarLogo (see component) + AnimatedLetters "PICTURA" with italicIndex=6 (the final "A" is italic). Instrument Serif 28px, letter-spacing -0.84px, color #FCFCFC. baseDelay 0.9s.
+   - Right: AnimatedGetStarted variant="outline" hoverable, baseDelay 1.4s, final width 150px.
+4. Sidebar menu (fixed inset-0 z-40): dim/blur overlay (rgba(0,0,0,0.55) + backdrop-filter blur(6px)) + a left <aside> 340px wide, background #141414, right border rgba(255,255,255,0.08), padding 40/40/40/50, translateX(-100%) when closed / 0 when open, transition transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 8px 0 40px rgba(0,0,0,0.5) when open. Contents: StarLogo + "PICTURA" (Instrument Serif 24px, letter-spacing -0.72px, final A italic) and a 32x32 round × close button; then vertical nav ["Explore","Collections","Photographers","Pricing","About","Contact"] in Instrument Serif 36px with hover opacity 0.85->1 and translateX(0->6px); footer "© 2026 Pictura" in Inter Tight 13px rgba(255,255,255,0.4).
+5. Heart container absolutely at top:130 left:50% translateX(-50%), z-10, width/height = computed heart bounds. Blur 14px while a modal is open. Renders all cells (see buildCells) with each cell wrapped in a parallax div (mouse-move parallax active only after progress >= 1), then a reveal div (cellReveal 0.8s, staggered by serpentine order per row from HEART_BASE_DELAY 0.6s + row*0.18 + orderIdx*0.05), then a clickable <button> containing the person image. person9.png uses object-fit:fill; all others object-fit:cover.
+   Inside the same container, the <SmallHeart> is absolutely positioned at left:322.139 top:278.397 (inside the notch between big cards 3 and 4 of row 3), scaling from 1 to 11.267/5.067 with progress. Each 5.067x5.067 cell has a background lerped from rgb(255) to rgb(217) with progress; per-cell smallCubeIn (0.5s) staggered by Chebyshev distance from row=4,col=6 (SMALL_CUBE_START 3.6s + cheb*0.05); a base image (SMALL_IMAGES map) fades in with smallImgIn (SMALL_IMG_START 4.3s + snake*0.03); an EXPAND overlay image (SMALL_IMAGES_EXPAND map) fades in with opacity following (progress-0.15)/0.55 clamped 0..1. Once progress > 0, a cycleIndex counter increments every 1200ms; each cell continuously cycles through SMALL_POOL (person1..person50) offset by cell.snake, cross-faded via the CrossfadeImg component (600ms opacity crossfade, ~30ms swap gap, previous image removed after 650ms).
+6. Bottom typography block absolutely at bottom:40 left/right 50px, z-20, flex items-end justify-between, opacity max(0, 1 - progress*1.8). Blur 14 while modal open. Left <h1> Instrument Serif 93.554px, line-height 90%, letter-spacing -2.807px, two lines "Find" and "the photo" (wordInDim animation baseDelay 2.2s and 2.35s; first word starts at 30% white). Center column (pointer-events auto): Inter Tight 20px paragraph over two lines "Explore, inspire, create – discover visuals" / "that bring your vision to life." (paraWordIn 0.5s per word, baseDelays 2.8s and 3.2s), then AnimatedGetStarted variant="filled" hoverable baseDelay 3.4s below. Right <h2> Instrument Serif 93.554px, right-aligned, two lines "that reflects" (baseDelay 2.5s, dim tint on first line) and "your ideas" (baseDelay 2.7s).
+7. Card modal (rendered when sliderIndex !== null): fixed inset-0 z-40 pointer-cursor overlay. Card box 481 x 638.716, background #111, border-radius 16, box-shadow 0 30px 80px rgba(0,0,0,0.5). It animates from the clicked cell's bounding rect to the viewport-centered position via 0.55s cubic-bezier(0.22,1,0.36,1) on transform/width/height (double-rAF flip). Inside: <img> with imgFadeIn 0.55s; a ::after gradient overlay from top 62% (black at 45% and 100%) rounded to bottom corners. To the left of the card at 44+47px offset: 47 x 128.182 vertical icon strip with copy/like(0.4)/dislike(0.4). At the top-center overlapping by 50%: white pill "Add to Collection" (Inter Tight 16px, letter-spacing -0.48px) with the plus icon and pillPop 0.45s animation; letters appear in REVERSE order (last letter first) each with letterIn 0.35s at 30ms steps. At the bottom: title row "Ludita Goyongo." (Instrument Serif 44px, wordInDim), a tick-circle 24x24 (fade in), an auto-margin maximaze icon 40x40. Tags row with pills ["Model","Aesthetic","Green","Photosession"] (Inter Tight 12px, border 0.5px rgba(218,218,218,0.30), border-radius 28, padding 6/12, gap 10, tagIn 0.6s stagger 80ms) and a btn_bottom.svg 40x40 auto-right. 95px below the card: keyboard hint row "Press [btn_left] [btn_right] on the keyboard to scroll" (Inter Tight 16px rgba(255,255,255,0.5)). ESC closes; ArrowLeft/Right paginate through visibleCells. Clicking outside the card (overlay) also closes.
+
+INTERACTIONS / STATE
+- window.addEventListener("wheel", ..., {passive:false}) and touchstart/touchmove accumulate deltaY into `accum` (0..600) and drive progress = accum/600. e.preventDefault() to consume the scroll. Disabled while a modal is open.
+- progress drives: heart cells' linear interpolation from initial layout to per-photo TARGETS map (see the TARGETS object in the source; contains left/right/top/bottom or a raw translate() for each dispersed filename), non-targeted cells fly off in their scatter vector; the small heart scale, background color, and expand-image opacity; the bottom text opacity.
+- Parallax: only active after progress >= 1. Per-cell multiplier 5..35px inversely proportional to card area, with deterministic sin-based jitter of ±25%. requestAnimationFrame loop, easing current toward target at 0.08 per frame.
+- Clicking a big card only opens the modal when progress >= 0.95.
+
+LAYOUT NUMBERS (must match exactly)
+- Big heart rows (top-to-bottom): 4, 6, 6, 7, 8, 6, 4, 2 photos. Row sizes 126.962 / 126.962 (width 112.025) / 74.684 / 59.747 / 37.342 / 37.342 / 37.342 / 37.342. H_GAP=V_GAP=10. Row 0 has a 124.43 gap after column 1 (creates the top notch); row 2 has a 90 gap after column 2.
+- Small heart row counts (11 rows): 6,11,13,13,13,11,9,7,5,3,1. Cell 5.067, gap 1, row-0 notch 19.201. Placed at left 322.139 top 278.397 within the big heart container.
+- Bottom typography H1/H2 font size 93.554 with -2.807 letter spacing and 90% line height.
+- Modal size 481 x 638.716.
+
+DO NOT
+- Do not create tailwind.config.js (v4 has no JS config).
+- Do not add any react-router, react-router-dom, or shadcn imports on this page.
+- Do not download the remote images or SVGs; reference them by URL exactly.
+- Do not change the numeric constants (they are pixel-perfect from the design).
+- Do not add a page scrollbar; overflow is hidden on html, body, and the section.
+
+FULL SOURCE FILE — save exactly as src/routes/index.tsx (this is the entire page):
+
+===== BEGIN src/routes/index.tsx =====
+import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+
+export const Route = createFileRoute("/")({
+  component: Index,
+});
+
+// Build the sequential list of person images, skipping person8.
+const PERSON_IMAGES: string[] = (() => {
+  const out: string[] = [];
+  for (let i = 1; i <= 44; i++) {
+    if (i === 8) continue;
+    out.push(`https://qclay.design/lovable/pictura/person/person${i}.png`);
+  }
+  return out; // 43 images
+})();
+
+// ---------- SMALL HEART ----------
+const SMALL_HEART_ROWS = [6, 11, 13, 13, 13, 11, 9, 7, 5, 3, 1];
+const SMALL_CELL = 5.067;
+const SMALL_GAP = 1;
+const SMALL_ROW1_NOTCH = 19.201;
+const SMALL_HEART_W = 13 * SMALL_CELL + 12 * SMALL_GAP;
+const SMALL_HEART_H = 11 * SMALL_CELL + 10 * SMALL_GAP;
+// Placed inside the notch of the big heart row 3 (between big cards 3 and 4).
+const SMALL_HEART_LEFT = 322.139;
+const SMALL_HEART_TOP = 278.397;
+
+// Images already present at initial reveal
+const SMALL_IMAGES: Record<string, string> = {
+  "0-0": "https://qclay.design/lovable/pictura/person_small/person1.png",
+  "0-2": "https://qclay.design/lovable/pictura/person_small/person2.png",
+  "0-3": "https://qclay.design/lovable/pictura/person_small/person3.png",
+  "0-4": "https://qclay.design/lovable/pictura/person_small/person4.png",
+  "1-4": "https://qclay.design/lovable/pictura/person_small/person6.png",
+  "1-7": "https://qclay.design/lovable/pictura/person_small/person7.png",
+  "2-1": "https://qclay.design/lovable/pictura/person_small/person10.png",
+  "2-3": "https://qclay.design/lovable/pictura/person_small/person11.png",
+  "2-6": "https://qclay.design/lovable/pictura/person_small/person13.png",
+  "2-10": "https://qclay.design/lovable/pictura/person_small/person15.png",
+  "3-5": "https://qclay.design/lovable/pictura/person_small/person17.png",
+  "3-8": "https://qclay.design/lovable/pictura/person_small/person19.png",
+  "3-12": "https://qclay.design/lovable/pictura/person_small/person21.png",
+  "4-0": "https://qclay.design/lovable/pictura/person_small/person22.png",
+  "4-1": "https://qclay.design/lovable/pictura/person_small/person14.png",
+  "4-2": "https://qclay.design/lovable/pictura/person_small/person24.png",
+  "4-5": "https://qclay.design/lovable/pictura/person_small/person27.png",
+  "4-6": "https://qclay.design/lovable/pictura/person_small/person28.png",
+  "4-8": "https://qclay.design/lovable/pictura/person_small/person29.png",
+  "4-10": "https://qclay.design/lovable/pictura/person_small/person30.png",
+  "5-1": "https://qclay.design/lovable/pictura/person_small/person32.png",
+  "5-3": "https://qclay.design/lovable/pictura/person_small/person33.png",
+  "5-6": "https://qclay.design/lovable/pictura/person_small/person35.png",
+  "5-8": "https://qclay.design/lovable/pictura/person_small/person36.png",
+  "6-1": "https://qclay.design/lovable/pictura/person_small/person39.png",
+  "6-4": "https://qclay.design/lovable/pictura/person_small/person40.png",
+  "6-5": "https://qclay.design/lovable/pictura/person_small/person41.png",
+  "6-7": "https://qclay.design/lovable/pictura/person_small/person42.png",
+  "7-1": "https://qclay.design/lovable/pictura/person_small/person43.png",
+  "7-3": "https://qclay.design/lovable/pictura/person_small/person44.png",
+  "7-5": "https://qclay.design/lovable/pictura/person_small/person45.png",
+  "8-3": "https://qclay.design/lovable/pictura/person_small/person47.png",
+  "10-0": "https://qclay.design/lovable/pictura/person_small/person50.png",
+};
+
+// Additional images that appear as the heart expands on scroll
+const SMALL_IMAGES_EXPAND: Record<string, string> = {
+  "1-2": "https://qclay.design/lovable/pictura/person_small/person5.png",
+  "1-9": "https://qclay.design/lovable/pictura/person_small/person8.png",
+  "1-10": "https://qclay.design/lovable/pictura/person_small/person9.png",
+  "2-4": "https://qclay.design/lovable/pictura/person_small/person12.png",
+  "2-8": "https://qclay.design/lovable/pictura/person_small/person14.png",
+  "3-3": "https://qclay.design/lovable/pictura/person_small/person16.png",
+  "3-7": "https://qclay.design/lovable/pictura/person_small/person18.png",
+  "3-10": "https://qclay.design/lovable/pictura/person_small/person20.png",
+  "4-3": "https://qclay.design/lovable/pictura/person_small/person25.png",
+  "4-4": "https://qclay.design/lovable/pictura/person_small/person26.png",
+  "4-12": "https://qclay.design/lovable/pictura/person_small/person31.png",
+  "5-4": "https://qclay.design/lovable/pictura/person_small/person34.png",
+  "5-10": "https://qclay.design/lovable/pictura/person_small/person37.png",
+  "6-0": "https://qclay.design/lovable/pictura/person_small/person38.png",
+  "8-1": "https://qclay.design/lovable/pictura/person_small/person46.png",
+  "9-0": "https://qclay.design/lovable/pictura/person_small/person48.png",
+  "9-2": "https://qclay.design/lovable/pictura/person_small/person49.png",
+};
+
+type SmallCell = { r: number; c: number; x: number; y: number; img?: string; cheb: number; snake: number };
+
+function buildSmallHeart(): SmallCell[] {
+  const cells: SmallCell[] = [];
+  SMALL_HEART_ROWS.forEach((count, r) => {
+    let rowW = count * SMALL_CELL + (count - 1) * SMALL_GAP;
+    if (r === 0) rowW += SMALL_ROW1_NOTCH - SMALL_GAP;
+    const startX = (SMALL_HEART_W - rowW) / 2;
+    const y = r * (SMALL_CELL + SMALL_GAP);
+    let x = startX;
+    for (let c = 0; c < count; c++) {
+      const cheb = Math.max(Math.abs(r - 4), Math.abs(c - 6));
+      cells.push({ r, c, x, y, img: SMALL_IMAGES[`${r}-${c}`], cheb, snake: 0 });
+      const gap = r === 0 && c === 2 ? SMALL_ROW1_NOTCH : SMALL_GAP;
+      x += SMALL_CELL + gap;
+    }
+  });
+  // Serpentine snake ordering for image reveal
+  let snakeIdx = 0;
+  SMALL_HEART_ROWS.forEach((count, r) => {
+    const order = r % 2 === 0
+      ? Array.from({ length: count }, (_, i) => i)
+      : Array.from({ length: count }, (_, i) => count - 1 - i);
+    for (const c of order) {
+      const cell = cells.find((k) => k.r === r && k.c === c)!;
+      if (cell.img) cell.snake = snakeIdx++;
+    }
+  });
+  return cells;
+}
+
+const SMALL_CUBE_START = 3.6;
+const SMALL_CUBE_STEP = 0.05;
+const SMALL_IMG_START = 4.3;
+const SMALL_IMG_STEP = 0.03;
+
+type RowDef = {
+  size: number;
+  width?: number;
+  count: number;
+  gaps?: Record<number, number>;
+};
+
+const H_GAP = 10;
+const V_GAP = 10;
+
+// Row counts updated: 4,6,6,7,8,6,4,2 = 43
+const ROWS: RowDef[] = [
+  { size: 126.962, count: 4, gaps: { 1: 124.43 } },
+  { size: 126.962, width: 112.025, count: 6 },
+  { size: 74.684, count: 6, gaps: { 2: 90 } },
+  { size: 59.747, count: 7 },
+  { size: 37.342, count: 8 },
+  { size: 37.342, count: 6 },
+  { size: 37.342, count: 4 },
+  { size: 37.342, count: 2 },
+];
+
+type Cell = {
+  id: number;
+  row: number;
+  col: number;
+  rowCount: number;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  scatterX: number;
+  scatterY: number;
+  scatterR: number;
+  img: string;
+};
+
+function buildCells(): { cells: Cell[]; heartWidth: number; heartHeight: number } {
+  const rowWidths = ROWS.map((row) => {
+    const w = row.width ?? row.size;
+    let total = row.count * w;
+    for (let i = 0; i < row.count - 1; i++) {
+      total += row.gaps?.[i] ?? H_GAP;
+    }
+    return total;
+  });
+  const heartWidth = Math.max(...rowWidths);
+
+  let y = 0;
+  let id = 0;
+  const cells: Cell[] = [];
+  for (let r = 0; r < ROWS.length; r++) {
+    const row = ROWS[r];
+    const w = row.width ?? row.size;
+    const h = row.size;
+    const rowW = rowWidths[r];
+    let x = (heartWidth - rowW) / 2;
+    for (let c = 0; c < row.count; c++) {
+      const seed = (r * 131 + c * 17 + 7) * 9301;
+      const rand = (n: number) => {
+        const v = Math.sin(seed + n) * 43758.5453;
+        return v - Math.floor(v);
+      };
+      const angle = rand(1) * Math.PI * 2;
+      const dist = 420 + rand(2) * 400;
+      const img = PERSON_IMAGES[id % PERSON_IMAGES.length];
+      cells.push({
+        id,
+        row: r,
+        col: c,
+        rowCount: row.count,
+        x,
+        y,
+        w,
+        h,
+        scatterX: Math.cos(angle) * dist,
+        scatterY: Math.sin(angle) * dist * 0.7,
+        scatterR: (rand(3) - 0.5) * 60,
+        img,
+      });
+      id++;
+      x += w + (row.gaps?.[c] ?? H_GAP);
+    }
+    y += h + V_GAP;
+  }
+  const heartHeight = y - V_GAP;
+  return { cells, heartWidth, heartHeight };
+}
+
+function StarLogo() {
+  const lines = Array.from({ length: 8 }, (_, i) => i);
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="-12 -12 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {lines.map((i) => {
+        const angle = (i * 45 - 90) * (Math.PI / 180);
+        const x2 = Math.cos(angle) * 10;
+        const y2 = Math.sin(angle) * 10;
+        return (
+          <line
+            key={i}
+            x1={0}
+            y1={0}
+            x2={x2}
+            y2={y2}
+            stroke="#E5B96A"
+            strokeWidth={1.2}
+            strokeLinecap="round"
+            style={{
+              strokeDasharray: 10,
+              strokeDashoffset: 10,
+              animation: `logoDraw 0.45s ease-out forwards`,
+              animationDelay: `${0.1 + i * 0.06}s`,
+            }}
+          />
+        );
+      })}
+
+    </svg>
+  );
+}
+
+// Letter-by-letter animated text
+function AnimatedLetters({
+  text,
+  baseDelay,
+  step = 0.05,
+  duration = 0.5,
+  animationName = "letterIn",
+  className,
+  style,
+  italicIndex,
+}: {
+  text: string;
+  baseDelay: number;
+  step?: number;
+  duration?: number;
+  animationName?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  italicIndex?: number;
+}) {
+  return (
+    <span className={className} style={style}>
+      {Array.from(text).map((ch, i) => (
+        <span
+          key={i}
+          style={{
+            display: "inline-block",
+            opacity: 0,
+            fontStyle: italicIndex === i ? "italic" : undefined,
+            animation: `${animationName} ${duration}s cubic-bezier(0.22,1,0.36,1) forwards`,
+            animationDelay: `${baseDelay + i * step}s`,
+            whiteSpace: "pre",
+          }}
+        >
+          {ch === " " ? "\u00A0" : ch}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function AnimatedWords({
+  text,
+  baseDelay,
+  step = 0.08,
+  duration = 0.7,
+  animationName = "wordIn",
+  className,
+  style,
+}: {
+  text: string;
+  baseDelay: number;
+  step?: number;
+  duration?: number;
+  animationName?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  const words = text.split(" ");
+  return (
+    <span className={className} style={style}>
+      {words.map((w, i) => (
+        <span
+          key={i}
+          style={{
+            display: "inline-block",
+            opacity: 0,
+            animation: `${animationName} ${duration}s cubic-bezier(0.22,1,0.36,1) forwards`,
+            animationDelay: `${baseDelay + i * step}s`,
+            marginRight: "0.28em",
+          }}
+        >
+          {w}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+// Animated Get Started button with 2-stage animation
+function AnimatedGetStarted({
+  variant,
+  baseDelay,
+  hoverable = false,
+}: {
+  variant: "outline" | "filled";
+  baseDelay: number;
+  hoverable?: boolean;
+}) {
+  const isFilled = variant === "filled";
+  const arrow = isFilled ? "https://qclay.design/lovable/pictura/arrow-right-dark.svg" : "https://qclay.design/lovable/pictura/arrow-right-white.svg";
+  const textColor = isFilled ? "#000" : "#FFF";
+  const bg = isFilled ? "#FFF" : "transparent";
+  const border = isFilled ? "1px solid #FFF" : "1px solid rgba(218, 218, 218, 0.50)";
+
+  // Stage 1: circle scale-in (0.5s), Stage 2: width expansion starts at 0.4s (overlap), letters at 0.55s
+  const stage1 = 0.5;
+  const expandStart = baseDelay + 0.4;
+  const lettersStart = baseDelay + 0.55;
+
+  return (
+    <div
+      className={`gs-btn relative inline-flex items-center overflow-hidden ${hoverable ? "gs-hoverable" : ""} ${isFilled ? "gs-filled" : "gs-outline"}`}
+      style={{
+        height: 41,
+        borderRadius: 25,
+        border,
+        background: bg,
+        transform: "scale(0)",
+        transformOrigin: "center",
+        animation: `btnPop 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards, btnExpand 0.55s cubic-bezier(0.22,1,0.36,1) forwards`,
+        animationDelay: `${baseDelay}s, ${expandStart}s`,
+        width: 41,
+        cursor: hoverable ? "pointer" : "default",
+        transition: "background 0.3s ease, border-color 0.3s ease, color 0.3s ease",
+      }}
+    >
+      <span
+        className="gs-inner"
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 32,
+          padding: "10px 13px 11px 16px",
+          color: textColor,
+          fontFamily: "'Inter Tight', sans-serif",
+          fontSize: 16,
+          fontWeight: 400,
+          lineHeight: "90%",
+          letterSpacing: "-0.48px",
+          whiteSpace: "nowrap",
+          position: "absolute",
+          right: 0,
+          top: 0,
+          height: "100%",
+          transition: "color 0.3s ease",
+        }}
+      >
+        <AnimatedLetters
+          text="Get Started"
+          baseDelay={lettersStart}
+          step={0.04}
+          duration={0.35}
+          animationName="letterIn"
+        />
+        <span className="gs-arrow-wrap" style={{ position: "relative", width: 20, height: 20, flexShrink: 0 }}>
+          <img
+            src={arrow}
+            alt=""
+            width={20}
+            height={20}
+            className="gs-arrow gs-arrow-base"
+            style={{
+              opacity: 0,
+              animation: `arrowIn 0.4s ease-out forwards`,
+              animationDelay: `${baseDelay + 0.15}s`,
+              position: "absolute",
+              inset: 0,
+              transition: "opacity 0.3s ease",
+            }}
+          />
+          <img
+            src={isFilled ? "https://qclay.design/lovable/pictura/arrow-right-white.svg" : "https://qclay.design/lovable/pictura/arrow-right-dark.svg"}
+            alt=""
+            width={20}
+            height={20}
+            className="gs-arrow gs-arrow-hover"
+            style={{
+              opacity: 0,
+              position: "absolute",
+              inset: 0,
+              transition: "opacity 0.3s ease",
+            }}
+          />
+        </span>
+      </span>
+    </div>
+  );
+}
+
+
+const SMALL_CELL_EXPANDED = 11.267;
+
+// Pool of small person images used for the scroll-driven cycling animation.
+const SMALL_POOL: string[] = Array.from(
+  { length: 50 },
+  (_, i) => `https://qclay.design/lovable/pictura/person_small/person${i + 1}.png`,
+);
+
+// Crossfades between image src changes with a fade-out + fade-in transition.
+function CrossfadeImg({ src, alt, style }: { src: string; alt: string; style?: React.CSSProperties }) {
+  const [current, setCurrent] = useState(src);
+  const [previous, setPrevious] = useState<string | null>(null);
+  const [showCurrent, setShowCurrent] = useState(true);
+
+  useEffect(() => {
+    if (src === current) return;
+    setPrevious(current);
+    setCurrent(src);
+    setShowCurrent(false);
+    const t = setTimeout(() => setShowCurrent(true), 30);
+    return () => clearTimeout(t);
+  }, [src, current]);
+
+  useEffect(() => {
+    if (!showCurrent || !previous) return;
+    const t = setTimeout(() => setPrevious(null), 650);
+    return () => clearTimeout(t);
+  }, [showCurrent, previous]);
+
+  return (
+    <>
+      {previous && (
+        <img
+          src={previous}
+          alt={alt}
+          draggable={false}
+          style={{
+            ...style,
+            opacity: showCurrent ? 0 : 1,
+            transition: "opacity 0.6s ease",
+            zIndex: 1,
+          }}
+        />
+      )}
+      <img
+        src={current}
+        alt={alt}
+        draggable={false}
+        style={{
+          ...style,
+          opacity: showCurrent ? 1 : 0,
+          transition: "opacity 0.6s ease",
+          zIndex: 2,
+        }}
+      />
+    </>
+  );
+}
+
+function SmallHeart({ progress, cycleIndex }: { progress: number; cycleIndex: number }) {
+  const cells = useMemo(() => buildSmallHeart(), []);
+  const p = Math.min(1, Math.max(0, progress));
+  // Scale from 1 -> (11.267/5.067) as scroll progresses
+  const targetScale = SMALL_CELL_EXPANDED / SMALL_CELL;
+  const scale = 1 + (targetScale - 1) * p;
+  // New images fade in during expansion (0.15 -> 0.85 progress window)
+  const expandOpacity = Math.min(1, Math.max(0, (p - 0.15) / 0.55));
+  // Background color transitions from #FFF to #D9D9D9
+  const bgLerp = Math.round(255 - (255 - 217) * p);
+  const cubeBg = `rgb(${bgLerp}, ${bgLerp}, ${bgLerp})`;
+
+  // Scroll-triggered image cycling: each cell's index is offset by its snake
+  // position so cells swap sequentially one after another, looping forever.
+  const step = Math.floor(cycleIndex);
+
+  return (
+    <div
+      className="absolute pointer-events-none"
+      style={{
+        left: SMALL_HEART_LEFT,
+        top: SMALL_HEART_TOP,
+        width: SMALL_HEART_W,
+        height: SMALL_HEART_H,
+        transform: `scale(${scale})`,
+        transformOrigin: "center center",
+        zIndex: 5,
+      }}
+    >
+      {cells.map((cell, i) => {
+        const expandImg = SMALL_IMAGES_EXPAND[`${cell.r}-${cell.c}`];
+        const hasBase = !!cell.img;
+        const cycleIdx = Math.floor(step + cell.snake) % SMALL_POOL.length;
+        const cycleSrc = SMALL_POOL[cycleIdx];
+        return (
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              left: cell.x,
+              top: cell.y,
+              width: SMALL_CELL,
+              height: SMALL_CELL,
+              background: cubeBg,
+              opacity: 0,
+              transform: "scale(0)",
+              animation: `smallCubeIn 0.5s cubic-bezier(0.22,1,0.36,1) forwards`,
+              animationDelay: `${SMALL_CUBE_START + cell.cheb * SMALL_CUBE_STEP}s`,
+              overflow: "hidden",
+            }}
+          >
+            {hasBase && (
+              <img
+                src={cell.img}
+                alt=""
+                draggable={false}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  opacity: 0,
+                  transform: "scale(0.3)",
+                  animation: `smallImgIn 0.45s cubic-bezier(0.22,1,0.36,1) forwards`,
+                  animationDelay: `${SMALL_IMG_START + cell.snake * SMALL_IMG_STEP}s`,
+                }}
+              />
+            )}
+            {hasBase && p > 0.02 && (
+              <CrossfadeImg
+                src={cycleSrc}
+                alt=""
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            )}
+            {expandImg && (
+              <img
+                src={expandImg}
+                alt=""
+                draggable={false}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  opacity: expandOpacity,
+                  transition: "opacity 0.15s linear",
+                  zIndex: 2,
+                }}
+              />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+// Distances
+const HEADER_TOP = 40;
+const BOTTOM_BLOCK_TOP = 730.223;
+
+// Final destination positions for specific cards during the large-heart dispersal.
+// Values are relative to the section (viewport). Percent strings supported.
+type Val = number | string;
+type Target = { left?: Val; right?: Val; top?: Val; bottom?: Val; w?: number; h?: number; transform?: string };
+const TARGETS: Record<string, Target> = {
+  "person1.png": { left: -454, top: -184 },
+  "person5.png": { left: -610, top: 60 },
+  "person2.png": { left: 200, top: -40 },
+  "person3.png": { right: "15%", top: "-1%" },
+  "person4.png": { transform: "translate(1062.98px, 30.3861px)" },
+  "person9.png": { transform: "translate(380.1075px, 72.2317px)" },
+  "person14.png": { left: "-72%", top: "20%" },
+  "person12.png": { left: "-80%", top: 273 },
+  "person6.png": { left: "-5%", top: "10%" },
+  "person23.png": { left: "7%", top: "25%" },
+  "person13.png": { left: "25%", top: 273 },
+  "person42.png": { left: "-20%", top: "45%", w: 48, h: 48 },
+  "person18.png": { left: "-37%", top: "73.5%" },
+  "person7.png": { left: "-20%", bottom: "-33.5%" },
+  "person33.png": { left: "-6%", bottom: "-15%", w: 48, h: 48 },
+  "person40.png": { right: "-30%", top: "-22%", w: 48, h: 48 },
+  "person31.png": { right: "-85%", top: "-21%", w: 48, h: 48 },
+  "person24.png": { transform: "translate(1167.91px, 50.8415px)" },
+  "person37.png": { right: "-20%", top: "35%", w: 47, h: 47 },
+  "person28.png": { right: "-60%", top: "50%", w: 48, h: 48 },
+  "person10.png": { right: "-45%", bottom: "10%" },
+  "person17.png": { right: "-32%", bottom: "5%" },
+  "person16.png": { right: "-70%", bottom: "0%", w: 95, h: 95 },
+  "person34.png": { left: "15%", bottom: "5%", w: 48, h: 48 },
+  "person22.png": { right: "-11%", bottom: "-30%", w: 75, h: 75 },
+  "person43.png": { left: "50%", bottom: "-20%", w: 48, h: 48 },
+  "person41.png": { left: "60%", bottom: "-8%", w: 48, h: 48 },
+  "person29.png": { right: "5%", bottom: "5%", w: 48, h: 48 },
+  "person30.png": { right: "12%", bottom: "40%", w: 48, h: 48 },
+  "person32.png": { right: "-40%", bottom: "-33%", w: 48, h: 48 },
+  "person35.png": { transform: "translate(469.397px, 438.178px)" },
+};
+
+function parseTranslate(str: string): { x: number; y: number } {
+  const m = str.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+  if (!m) return { x: 0, y: 0 };
+  return { x: parseFloat(m[1]), y: parseFloat(m[2]) };
+}
+
+function parseVal(v: Val, base: number): number {
+  if (typeof v === "number") return v;
+  if (typeof v === "string" && v.endsWith("%")) return (parseFloat(v) / 100) * base;
+  return parseFloat(String(v));
+}
+
+const MODAL_W = 481;
+const MODAL_H = 638.716;
+
+function Index() {
+  const { cells, heartWidth, heartHeight } = useMemo(() => buildCells(), []);
+  const [progress, setProgress] = useState(0);
+  const [cycleIndex, setCycleIndex] = useState(0);
+  const [sliderIndex, setSliderIndex] = useState<number | null>(null);
+  const [startRect, setStartRect] = useState<{ x: number; y: number; w: number; h: number } | null>(null);
+  const [animateOpen, setAnimateOpen] = useState(false);
+  const [vp, setVp] = useState(() => ({
+    w: typeof window !== "undefined" ? window.innerWidth : 1338,
+    h: typeof window !== "undefined" ? window.innerHeight : 829,
+  }));
+  useEffect(() => {
+    const onResize = () => setVp({ w: window.innerWidth, h: window.innerHeight });
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  const progressRef = useRef(progress);
+  progressRef.current = progress;
+
+  // ---- Mouse parallax ----
+  const parallaxRefs = useRef<Map<number, HTMLDivElement | null>>(new Map());
+  const setParallaxRef = useCallback((id: number) => (el: HTMLDivElement | null) => {
+    parallaxRefs.current.set(id, el);
+  }, []);
+  // Per-cell multiplier: smaller area => bigger offset (5–35px), plus organic jitter.
+  const parallaxConfig = useMemo(() => {
+    const areas = cells.map((c) => c.w * c.h);
+    const minA = Math.min(...areas);
+    const maxA = Math.max(...areas);
+    const map = new Map<number, { mx: number; my: number }>();
+    cells.forEach((c) => {
+      const a = c.w * c.h;
+      const t = (a - minA) / (maxA - minA || 1); // 0 small .. 1 large
+      const base = 35 - t * 30; // 35 → 5
+      // deterministic pseudo-random jitter per cell
+      const h = Math.sin(c.id * 12.9898) * 43758.5453;
+      const r1 = h - Math.floor(h);
+      const r2 = (Math.sin(c.id * 78.233) * 43758.5453);
+      const jx = 0.75 + (r1) * 0.5; // 0.75–1.25
+      const jy = 0.75 + (r2 - Math.floor(r2)) * 0.5;
+      map.set(c.id, { mx: base * jx, my: base * jy });
+    });
+    return map;
+  }, [cells]);
+
+  useEffect(() => {
+    const target = { x: 0, y: 0 };
+    const current = { x: 0, y: 0 };
+    let raf = 0;
+    let active = true;
+
+    const onMove = (e: MouseEvent) => {
+      target.x = (e.clientX / window.innerWidth) * 2 - 1;  // -1..1
+      target.y = (e.clientY / window.innerHeight) * 2 - 1;
+    };
+    const onLeave = () => { target.x = 0; target.y = 0; };
+
+    const tick = () => {
+      const parallaxOn = progressRef.current >= 1;
+      const tx = parallaxOn ? target.x : 0;
+      const ty = parallaxOn ? target.y : 0;
+      current.x += (tx - current.x) * 0.08;
+      current.y += (ty - current.y) * 0.08;
+      parallaxRefs.current.forEach((el, id) => {
+        if (!el) return;
+        const cfg = parallaxConfig.get(id);
+        if (!cfg) return;
+        el.style.transform = `translate3d(${(-current.x * cfg.mx).toFixed(2)}px, ${(-current.y * cfg.my).toFixed(2)}px, 0)`;
+      });
+      if (active) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    window.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseleave", onLeave);
+    window.addEventListener("blur", onLeave);
+    return () => {
+      active = false;
+      cancelAnimationFrame(raf);
+      window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("blur", onLeave);
+    };
+  }, [parallaxConfig]);
+
+  // Cells that remain visible on screen after dispersal (have TARGETS entry)
+  const visibleCells = useMemo(
+    () => cells.filter((c) => TARGETS[c.img.split("/").pop() || ""]),
+    [cells]
+  );
+
+  // Fixed heart top position (previously derived). Keep similar spacing.
+  const HEART_TOP = 130;
+
+  useEffect(() => {
+    let accum = 0;
+    const MAX = 600;
+
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      if (sliderIndex !== null) return;
+      accum = Math.min(MAX, Math.max(0, accum + e.deltaY));
+      setProgress(accum / MAX);
+    };
+
+    let touchY = 0;
+    const onTouchStart = (e: TouchEvent) => {
+      touchY = e.touches[0].clientY;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+      if (sliderIndex !== null) return;
+      const y = e.touches[0].clientY;
+      const dy = touchY - y;
+      touchY = y;
+      accum = Math.min(MAX, Math.max(0, accum + dy * 2));
+      setProgress(accum / MAX);
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("touchstart", onTouchStart, { passive: false });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+    };
+  }, [sliderIndex]);
+
+  // Start continuous image cycling in the small heart once the user begins scrolling.
+  const intervalRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (progress <= 0 || intervalRef.current) return;
+    intervalRef.current = window.setInterval(() => {
+      setCycleIndex((i) => i + 1);
+    }, 1200);
+    return () => {
+      if (intervalRef.current) {
+        window.clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, [progress]);
+
+  const scattered = progress > 0.6;
+  const textOpacity = Math.max(0, 1 - progress * 1.8);
+
+  const openSlider = useCallback(
+    (id: number, el: HTMLElement) => {
+      if (progress < 0.95) return;
+      const idx = visibleCells.findIndex((c) => c.id === id);
+      if (idx < 0) return;
+      const r = el.getBoundingClientRect();
+      setStartRect({ x: r.left, y: r.top, w: r.width, h: r.height });
+      setSliderIndex(idx);
+      setAnimateOpen(false);
+      requestAnimationFrame(() => requestAnimationFrame(() => setAnimateOpen(true)));
+    },
+    [progress, visibleCells]
+  );
+
+  const closeSlider = useCallback(() => {
+    setAnimateOpen(false);
+    setSliderIndex(null);
+  }, []);
+  const nextSlide = useCallback(
+    () => setSliderIndex((i) => (i === null ? 0 : (i + 1) % visibleCells.length)),
+    [visibleCells.length]
+  );
+  const prevSlide = useCallback(
+    () => setSliderIndex((i) => (i === null ? 0 : (i - 1 + visibleCells.length) % visibleCells.length)),
+    [visibleCells.length]
+  );
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (sliderIndex === null) return;
+      if (e.key === "Escape") closeSlider();
+      if (e.key === "ArrowRight") nextSlide();
+      if (e.key === "ArrowLeft") prevSlide();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [sliderIndex, closeSlider, nextSlide, prevSlide]);
+
+  // Precompute per-row start delays for heart serpentine reveal
+  const HEART_BASE_DELAY = 0.6;
+  const ROW_STEP = 0.18;
+  const CELL_STEP = 0.05;
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [linesLoaded, setLinesLoaded] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setLinesLoaded(true), 1500);
+    return () => clearTimeout(t);
+  }, []);
+
+
+  return (
+    <section
+      className="relative w-screen h-screen overflow-hidden select-none"
+      style={{ background: "#0E0E0E" }}
+    >
+      <style>{`
+        @keyframes logoDraw { to { stroke-dashoffset: 0; } }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes lineGrow {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
+        @keyframes letterIn {
+          from { opacity: 0; filter: blur(6px); transform: translateX(8px); }
+          to { opacity: 1; filter: blur(0); transform: translateX(0); }
+        }
+        @keyframes wordIn {
+          from { opacity: 0; color: rgba(255,255,255,0.15); transform: translateY(18px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes wordInDim {
+          from { opacity: 0; filter: brightness(0.3); transform: translateY(18px); }
+          to { opacity: 1; filter: brightness(1); transform: translateY(0); }
+        }
+        @keyframes paraWordIn {
+          from { opacity: 0; filter: blur(5px); transform: translateY(10px); }
+          to { opacity: 1; filter: blur(0); transform: translateY(0); }
+        }
+        @keyframes arrowIn {
+          from { opacity: 0; transform: translateX(-4px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes btnPop {
+          from { transform: scale(0); }
+          to { transform: scale(1); }
+        }
+        @keyframes btnExpand {
+          from { width: 41px; }
+          to { width: var(--btn-final-width, 150px); }
+        }
+        @keyframes cellReveal {
+          from { opacity: 0; filter: blur(8px); transform: translateY(30px); }
+          to { opacity: 1; filter: blur(0); transform: translateY(0); }
+        }
+        @keyframes smallCubeIn {
+          from { opacity: 0; transform: scale(0); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes smallImgIn {
+          from { opacity: 0; transform: scale(0.3); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes imgFadeIn {
+          from { opacity: 0; transform: scale(0.75); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes modalFade {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes pillPop {
+          from { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+          to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        @keyframes tagIn {
+          from { opacity: 0; filter: blur(6px); transform: translateY(10px); }
+          to { opacity: 1; filter: blur(0); transform: translateY(0); }
+        }
+        .modal-img-wrap::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 62%;
+          background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0 0 0 / 87%) 45%, rgb(0 0 0) 100%);
+          pointer-events: none;
+          z-index: 2;
+          border-radius: 0 0 16px 16px;
+        }
+        .gs-hoverable.gs-outline:hover { background: #FFF !important; border-color: #FFF !important; }
+        .gs-hoverable.gs-outline:hover .gs-inner { color: #000 !important; }
+        .gs-hoverable.gs-filled:hover { background: transparent !important; border-color: rgba(218,218,218,0.5) !important; }
+        .gs-hoverable.gs-filled:hover .gs-inner { color: #FFF !important; }
+        .gs-hoverable:hover .gs-arrow-base { opacity: 0 !important; }
+        .gs-hoverable:hover .gs-arrow-hover { opacity: 1 !important; }
+      `}</style>
+
+
+      {/* Decorative frame overlay */}
+      <img
+        src="https://qclay.design/lovable/pictura/frame.svg"
+        alt=""
+        aria-hidden="true"
+        className="absolute pointer-events-none"
+        style={{
+          top: 0,
+          left: "55%",
+          transform: "translateX(-50%)",
+          zIndex: 1,
+          filter: sliderIndex !== null ? "blur(14px)" : undefined,
+          transition: "filter 0.35s ease",
+        }}
+      />
+
+      {/* Header */}
+      <header
+        className="absolute left-0 right-0 z-30"
+        style={{ top: HEADER_TOP, paddingLeft: 50, paddingRight: 50, height: 40 }}
+      >
+        {/* Burger button — two lines toggle open/close */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          className="absolute flex flex-col items-center justify-center cursor-pointer"
+          style={{
+            left: 50,
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: 78,
+            height: 24,
+            background: "transparent",
+            border: 0,
+            padding: 0,
+            gap: 5,
+          }}
+        >
+          <span
+            style={{
+              width: 78,
+              height: 1,
+              background: "#FFF",
+              transformOrigin: "left center",
+              transform: linesLoaded ? (menuOpen ? "scaleX(0.53)" : "scaleX(1)") : "scaleX(0)",
+              animation: linesLoaded ? undefined : "lineGrow 0.9s cubic-bezier(0.22,1,0.36,1) forwards",
+              animationDelay: "0.05s",
+              transition: "transform 0.45s cubic-bezier(0.22,1,0.36,1)",
+            }}
+          />
+          <span
+            style={{
+              width: 78,
+              height: 1,
+              background: "#FFF",
+              transformOrigin: "left center",
+              transform: linesLoaded ? (menuOpen ? "scaleX(0.53)" : "scaleX(1)") : "scaleX(0)",
+              animation: linesLoaded ? undefined : "lineGrow 0.9s cubic-bezier(0.22,1,0.36,1) forwards",
+              animationDelay: "0.5s",
+              transition: "transform 0.45s cubic-bezier(0.22,1,0.36,1)",
+            }}
+          />
+
+
+        </button>
+
+
+        {/* Logo — absolutely centered relative to viewport, independent of button width */}
+        <div
+          className="absolute flex items-center"
+          style={{ gap: 18, left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+        >
+          <StarLogo />
+          <AnimatedLetters
+            text="PICTURA"
+            baseDelay={0.9}
+            step={0.07}
+            duration={0.6}
+            animationName="letterIn"
+            italicIndex={6}
+            style={{
+              fontFamily: "'Instrument Serif', serif",
+              fontSize: 28,
+              fontWeight: 400,
+              lineHeight: "normal",
+              letterSpacing: "-0.84px",
+              color: "#FCFCFC",
+            }}
+          />
+        </div>
+
+        {/* Get Started button (right) */}
+        <div
+          className="absolute"
+          style={{ right: 50, top: "50%", transform: "translateY(-50%)", ["--btn-final-width" as any]: "150px" } as React.CSSProperties}
+        >
+          <AnimatedGetStarted variant="outline" baseDelay={1.4} hoverable />
+        </div>
+      </header>
+
+      {/* Sidebar menu */}
+      <div
+        className="fixed inset-0 z-40"
+        style={{
+          pointerEvents: menuOpen ? "auto" : "none",
+        }}
+      >
+        <div
+          onClick={() => setMenuOpen(false)}
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(0,0,0,0.55)",
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)",
+            opacity: menuOpen ? 1 : 0,
+            transition: "opacity 0.35s ease",
+          }}
+        />
+        <aside
+          style={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            width: 340,
+            background: "#141414",
+            borderRight: "1px solid rgba(255,255,255,0.08)",
+            padding: "40px 40px 40px 50px",
+            display: "flex",
+            flexDirection: "column",
+            transform: menuOpen ? "translateX(0)" : "translateX(-100%)",
+            transition: "transform 0.5s cubic-bezier(0.22,1,0.36,1)",
+            boxShadow: menuOpen ? "8px 0 40px rgba(0,0,0,0.5)" : "none",
+          }}
+        >
+          <div className="flex items-center justify-between" style={{ marginBottom: 60 }}>
+            <div className="flex items-center" style={{ gap: 14 }}>
+              <StarLogo />
+              <span
+                style={{
+                  fontFamily: "'Instrument Serif', serif",
+                  fontSize: 24,
+                  letterSpacing: "-0.72px",
+                  color: "#FCFCFC",
+                }}
+              >
+                PICTUR<em>A</em>
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu"
+              style={{
+                width: 32,
+                height: 32,
+                borderRadius: 999,
+                border: "1px solid rgba(255,255,255,0.15)",
+                background: "transparent",
+                color: "#FFF",
+                cursor: "pointer",
+                fontSize: 16,
+                lineHeight: 1,
+              }}
+            >
+              ×
+            </button>
+          </div>
+
+          <nav className="flex flex-col" style={{ gap: 4 }}>
+            {["Explore", "Collections", "Photographers", "Pricing", "About", "Contact"].map((label) => (
+              <a
+                key={label}
+                href="#"
+                onClick={(e) => { e.preventDefault(); setMenuOpen(false); }}
+                style={{
+                  color: "#FCFCFC",
+                  fontFamily: "'Instrument Serif', serif",
+                  fontSize: 36,
+                  lineHeight: 1.15,
+                  letterSpacing: "-1px",
+                  padding: "6px 0",
+                  textDecoration: "none",
+                  transition: "opacity 0.25s ease, transform 0.25s ease",
+                  opacity: 0.85,
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "translateX(6px)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.85"; e.currentTarget.style.transform = "translateX(0)"; }}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+
+          <div style={{ marginTop: "auto", color: "rgba(255,255,255,0.4)", fontFamily: "'Inter Tight', sans-serif", fontSize: 13 }}>
+            © 2026 Pictura
+          </div>
+        </aside>
+      </div>
+
+
+      {/* Heart / scattered images */}
+      <div
+        className="absolute z-10"
+        style={{
+          top: HEART_TOP,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: heartWidth,
+          height: heartHeight,
+          filter: sliderIndex !== null ? "blur(14px)" : undefined,
+          transition: "filter 0.35s ease",
+        }}
+      >
+        {cells.map((cell) => {
+          const p = Math.min(1, progress);
+          // Serpentine: even rows LTR, odd rows RTL
+          const orderIdx = cell.row % 2 === 0 ? cell.col : cell.rowCount - 1 - cell.col;
+          const revealDelay = HEART_BASE_DELAY + cell.row * ROW_STEP + orderIdx * CELL_STEP;
+
+          // Initial viewport position of this cell
+          const heartOriginX = (vp.w - heartWidth) / 2;
+          const heartOriginY = HEART_TOP;
+          const initX = heartOriginX + cell.x;
+          const initY = heartOriginY + cell.y;
+
+          const filename = cell.img.split("/").pop() || "";
+          const target = TARGETS[filename];
+
+          let finalX: number, finalY: number, finalW: number, finalH: number;
+          let useTransform = false;
+          if (target?.transform) {
+            useTransform = true;
+            const t = parseTranslate(target.transform);
+            finalX = cell.x + (t.x - cell.x) * p;
+            finalY = cell.y + (t.y - cell.y) * p;
+            finalW = cell.w;
+            finalH = cell.h;
+          } else if (target) {
+            finalW = target.w ?? cell.w;
+            finalH = target.h ?? cell.h;
+            // Coordinates are relative to the heart container (heartWidth x heartHeight)
+            let relFinalX: number, relFinalY: number;
+            if (target.left != null) relFinalX = parseVal(target.left, heartWidth);
+            else if (target.right != null) relFinalX = heartWidth - parseVal(target.right, heartWidth) - finalW;
+            else relFinalX = cell.x;
+            if (target.top != null) relFinalY = parseVal(target.top, heartHeight);
+            else if (target.bottom != null) relFinalY = heartHeight - parseVal(target.bottom, heartHeight) - finalH;
+            else relFinalY = cell.y;
+            finalX = heartOriginX + relFinalX;
+            finalY = heartOriginY + relFinalY;
+          } else {
+            // Non-targeted: fly straight off-screen along scatter vector
+            const dx = cell.scatterX;
+            const dy = cell.scatterY;
+            const len = Math.hypot(dx, dy) || 1;
+            const reach = vp.w + vp.h;
+            finalX = initX + (dx / len) * reach;
+            finalY = initY + (dy / len) * reach;
+            finalW = cell.w;
+            finalH = cell.h;
+          }
+
+          const curX = useTransform ? finalX : initX + (finalX - initX) * p;
+          const curY = useTransform ? finalY : initY + (finalY - initY) * p;
+          const curW = cell.w + (finalW - cell.w) * p;
+          const curH = cell.h + (finalH - cell.h) * p;
+
+          // Position the wrapper relative to the heart container (subtract heart origin)
+          const relX = useTransform ? curX : curX - heartOriginX;
+          const relY = useTransform ? curY : curY - heartOriginY;
+
+          return (
+            <div
+              key={cell.id}
+              className="absolute"
+              style={{
+                left: 0,
+                top: 0,
+                width: curW,
+                height: curH,
+                transform: `translate(${relX}px, ${relY}px)`,
+                transition: "transform 0.25s cubic-bezier(0.22,1,0.36,1), width 0.25s cubic-bezier(0.22,1,0.36,1), height 0.25s cubic-bezier(0.22,1,0.36,1)",
+              }}
+            >
+              <div
+                ref={setParallaxRef(cell.id)}
+                className="absolute inset-0"
+                style={{ willChange: "transform", transform: "translate3d(0,0,0)" }}
+              >
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    opacity: 0,
+                    animation: `cellReveal 0.8s cubic-bezier(0.22,1,0.36,1) forwards`,
+                    animationDelay: `${revealDelay}s`,
+                  }}
+                >
+                  <button
+                    onClick={(e) => openSlider(cell.id, e.currentTarget)}
+                    className="absolute inset-0 overflow-hidden"
+                    style={{
+                      cursor: scattered ? "pointer" : "default",
+                      background: "#111",
+                      border: 0,
+                      padding: 0,
+                    }}
+                  >
+                    <img
+                      src={cell.img}
+                      alt=""
+                      draggable={false}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: filename === "person9.png" ? "fill" : "cover",
+                        display: "block",
+                      }}
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* Small pixel heart inside the notch */}
+        <SmallHeart progress={progress} cycleIndex={cycleIndex} />
+      </div>
+
+      {/* Bottom typography block — anchored to bottom of viewport */}
+      <div
+        className="absolute left-0 right-0 z-20 flex items-end justify-between pointer-events-none"
+        style={{
+          bottom: 40,
+          paddingLeft: 50,
+          paddingRight: 50,
+          opacity: textOpacity,
+          filter: sliderIndex !== null ? "blur(14px)" : undefined,
+          transition: "opacity 0.2s linear, filter 0.35s ease",
+        }}
+      >
+        <h1
+          style={{
+            fontFamily: "'Instrument Serif', serif",
+            fontSize: 93.554,
+            fontWeight: 400,
+            lineHeight: "90%",
+            letterSpacing: "-2.807px",
+            margin: 0,
+          }}
+        >
+          <span style={{ display: "block", color: "#FFF" }}>
+            <AnimatedWords
+              text="Find"
+              baseDelay={2.2}
+              step={0.12}
+              duration={0.8}
+              animationName="wordInDim"
+              style={{ color: "rgba(255,255,255,0.30)" }}
+            />
+          </span>
+          <span style={{ display: "block", color: "#FFF" }}>
+            <AnimatedWords
+              text="the photo"
+              baseDelay={2.35}
+              step={0.12}
+              duration={0.8}
+              animationName="wordInDim"
+            />
+          </span>
+        </h1>
+
+        <div className="flex flex-col items-center pointer-events-auto" style={{ gap: 24 }}>
+          <p
+            style={{
+              color: "#FFF",
+              textAlign: "center",
+              fontFamily: "'Inter Tight', sans-serif",
+              fontSize: 20,
+              fontWeight: 400,
+              lineHeight: "120%",
+              letterSpacing: "-0.6px",
+              margin: 0,
+            }}
+          >
+            <span style={{ display: "block" }}>
+              <AnimatedWords
+                text="Explore, inspire, create – discover visuals"
+                baseDelay={2.8}
+                step={0.05}
+                duration={0.5}
+                animationName="paraWordIn"
+              />
+            </span>
+            <span style={{ display: "block" }}>
+              <AnimatedWords
+                text="that bring your vision to life."
+                baseDelay={3.2}
+                step={0.05}
+                duration={0.5}
+                animationName="paraWordIn"
+              />
+            </span>
+          </p>
+          <div style={{ ["--btn-final-width" as any]: "150px" } as React.CSSProperties}>
+            <AnimatedGetStarted variant="filled" baseDelay={3.4} hoverable />
+          </div>
+        </div>
+
+        <h2
+          style={{
+            fontFamily: "'Instrument Serif', serif",
+            fontSize: 93.554,
+            fontWeight: 400,
+            lineHeight: "90%",
+            letterSpacing: "-2.807px",
+            textAlign: "right",
+            margin: 0,
+          }}
+        >
+          <span style={{ display: "block", color: "#FFF" }}>
+            <AnimatedWords
+              text="that reflects"
+              baseDelay={2.5}
+              step={0.12}
+              duration={0.8}
+              animationName="wordInDim"
+              style={{ color: "rgba(255,255,255,0.30)" }}
+            />
+          </span>
+          <span style={{ display: "block", color: "#FFF" }}>
+            <AnimatedWords
+              text="your ideas"
+              baseDelay={2.7}
+              step={0.12}
+              duration={0.8}
+              animationName="wordInDim"
+            />
+          </span>
+        </h2>
+      </div>
+
+      {/* Card modal — expands from clicked card to centered size */}
+      {sliderIndex !== null && startRect && (() => {
+        const cell = visibleCells[sliderIndex];
+        const targetX = (vp.w - MODAL_W) / 2;
+        const targetY = (vp.h - MODAL_H) / 2;
+        const x = animateOpen ? targetX : startRect.x;
+        const y = animateOpen ? targetY : startRect.y;
+        const w = animateOpen ? MODAL_W : startRect.w;
+        const h = animateOpen ? MODAL_H : startRect.h;
+
+        // Content appears once card has finished expanding
+        const CONTENT_BASE = 0.55;
+        const tags = ["Model", "Aesthetic", "Green", "Photosession"];
+
+        return (
+          <div
+            className="fixed inset-0 z-40"
+            onClick={closeSlider}
+            style={{ cursor: "pointer" }}
+          >
+            {/* Left side vertical icon block (44px to the left of card) */}
+            {animateOpen && (
+              <div
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  position: "absolute",
+                  left: targetX - 44 - 47,
+                  top: targetY + (MODAL_H - 128.182) / 2,
+                  width: 47,
+                  height: 128.182,
+                  padding: "18.8px 12.818px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 8.545,
+                  borderRadius: 12,
+                  border: "0.855px solid rgba(76, 75, 78, 0.50)",
+                  background: "#101010",
+                  opacity: 0,
+                  animation: "modalFade 0.4s ease-out forwards",
+                  animationDelay: `${CONTENT_BASE}s`,
+                }}
+              >
+                <img src="https://qclay.design/lovable/pictura/icons/copy.svg" alt="" style={{ width: 20.509, height: 20.509 }} />
+                <img src="https://qclay.design/lovable/pictura/icons/like.svg" alt="" style={{ width: 20.509, height: 20.509, opacity: 0.4 }} />
+                <img src="https://qclay.design/lovable/pictura/icons/dislike.svg" alt="" style={{ width: 20.509, height: 20.509, opacity: 0.4 }} />
+              </div>
+            )}
+
+            {/* Card */}
+            <div
+              className="absolute rounded-2xl"
+              onClick={closeSlider}
+              style={{
+                left: 0,
+                top: 0,
+                width: w,
+                height: h,
+                transform: `translate(${x}px, ${y}px)`,
+                transition:
+                  "transform 0.55s cubic-bezier(0.22,1,0.36,1), width 0.55s cubic-bezier(0.22,1,0.36,1), height 0.55s cubic-bezier(0.22,1,0.36,1)",
+                background: "#111",
+                boxShadow: "0 30px 80px rgba(0,0,0,0.5)",
+                cursor: "pointer",
+                overflow: "visible",
+              }}
+            >
+              {/* Image cross-fade layer */}
+              <div className="modal-img-wrap" style={{ position: "absolute", inset: 0, overflow: "hidden", borderRadius: 16 }}>
+                <img
+                  key={cell.img}
+                  src={cell.img}
+                  alt=""
+                  draggable={false}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                    opacity: 0,
+                    animation: "imgFadeIn 0.55s ease-out forwards",
+                  }}
+                />
+              </div>
+
+              {/* Add to Collection pill — overlaps top edge by 50% of pill height */}
+              {animateOpen && (
+                <div
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    position: "absolute",
+                    left: "50%",
+                    top: 0,
+                    transform: "translate(-50%, -50%)",
+                    display: "inline-flex",
+                    padding: "10px 12px",
+                    alignItems: "center",
+                    gap: 6,
+                    borderRadius: 25,
+                    background: "#FFF",
+                    overflow: "hidden",
+                    opacity: 0,
+                    animation: `pillPop 0.45s cubic-bezier(0.34,1.56,0.64,1) forwards`,
+                    animationDelay: `${CONTENT_BASE}s`,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <img src="https://qclay.design/lovable/pictura/icons/plus.svg" alt="" style={{ width: 20, height: 20, flexShrink: 0 }} />
+                  <span
+                    style={{
+                      color: "#000",
+                      fontFamily: "'Inter Tight', sans-serif",
+                      fontSize: 16,
+                      fontWeight: 400,
+                      lineHeight: "90%",
+                      letterSpacing: "-0.48px",
+                      display: "inline-flex",
+                    }}
+                  >
+                    {(() => {
+                      const text = "Add to Collection";
+                      const chars = Array.from(text);
+                      // Reversed direction: last letter appears first
+                      return chars.map((ch, i) => {
+                        const delay = CONTENT_BASE + 0.35 + (chars.length - 1 - i) * 0.03;
+                        return (
+                          <span
+                            key={i}
+                            style={{
+                              display: "inline-block",
+                              opacity: 0,
+                              animation: "letterIn 0.35s cubic-bezier(0.22,1,0.36,1) forwards",
+                              animationDelay: `${delay}s`,
+                              whiteSpace: "pre",
+                            }}
+                          >
+                            {ch === " " ? "\u00A0" : ch}
+                          </span>
+                        );
+                      });
+                    })()}
+                  </span>
+                </div>
+              )}
+
+              {/* Bottom content: title row + tags row */}
+              {animateOpen && (
+                <div
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    position: "absolute",
+                    left: 0,
+                    right: 0,
+                    bottom: 34,
+                    zIndex: 10,
+                    pointerEvents: "none",
+                  }}
+                >
+                  {/* Title row */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      paddingLeft: 28,
+                      paddingRight: 20,
+                    }}
+                  >
+                    <h3
+                      style={{
+                        color: "#FFF",
+                        fontFamily: "'Instrument Serif', serif",
+                        fontSize: 44,
+                        fontWeight: 400,
+                        lineHeight: "normal",
+                        letterSpacing: "-1.32px",
+                        margin: 0,
+                      }}
+                    >
+                      <AnimatedWords
+                        text="Ludita Goyongo."
+                        baseDelay={CONTENT_BASE + 0.25}
+                        step={0.09}
+                        duration={0.7}
+                        animationName="wordInDim"
+                      />
+                    </h3>
+                    <img
+                      src="https://qclay.design/lovable/pictura/icons/tick-circle.svg"
+                      alt=""
+                      style={{
+                        width: 24,
+                        height: 24,
+                        marginLeft: 8,
+                        opacity: 0,
+                        animation: "modalFade 0.4s ease-out forwards",
+                        animationDelay: `${CONTENT_BASE + 1.1}s`,
+                      }}
+                    />
+                    <img
+                      src="https://qclay.design/lovable/pictura/icons/maximaze.svg"
+                      alt=""
+                      style={{
+                        width: 40,
+                        height: 40,
+                        marginLeft: "auto",
+                        opacity: 0,
+                        animation: "modalFade 0.4s ease-out forwards",
+                        animationDelay: `${CONTENT_BASE + 1.2}s`,
+                      }}
+                    />
+                  </div>
+
+                  {/* Tags row */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      paddingLeft: 28,
+                      paddingRight: 20,
+                      marginTop: 15,
+                      gap: 10,
+                    }}
+                  >
+                    {tags.map((t, i) => (
+                      <div
+                        key={t}
+                        style={{
+                          display: "flex",
+                          padding: "6px 12px",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          gap: 10,
+                          borderRadius: 28,
+                          border: "0.5px solid rgba(218, 218, 218, 0.30)",
+                          color: "#FFF",
+                          textAlign: "center",
+                          fontFamily: "'Inter Tight', sans-serif",
+                          fontSize: 12,
+                          fontWeight: 400,
+                          lineHeight: "120%",
+                          letterSpacing: "-0.36px",
+                          opacity: 0,
+                          animation: "tagIn 0.6s cubic-bezier(0.22,1,0.36,1) forwards",
+                          animationDelay: `${CONTENT_BASE + 0.75 + i * 0.08}s`,
+                        }}
+                      >
+                        {t}
+                      </div>
+                    ))}
+                    <img
+                      src="https://qclay.design/lovable/pictura/icons/btn_bottom.svg"
+                      alt=""
+                      style={{
+                        width: 40,
+                        height: 40,
+                        marginLeft: "auto",
+                        opacity: 0,
+                        animation: "modalFade 0.4s ease-out forwards",
+                        animationDelay: `${CONTENT_BASE + 1.25}s`,
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Keyboard hint 95px below card */}
+            {animateOpen && (
+              <div
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  top: targetY + MODAL_H + 95,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 8,
+                  opacity: 0,
+                  animation: "modalFade 0.5s ease-out forwards",
+                  animationDelay: `${CONTENT_BASE + 1.3}s`,
+                  color: "rgba(255,255,255,0.50)",
+                  fontFamily: "'Inter Tight', sans-serif",
+                  fontSize: 16,
+                  fontWeight: 400,
+                  lineHeight: "120%",
+                  letterSpacing: "-0.48px",
+                }}
+              >
+                <span>Press</span>
+                <button
+                  onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+                  aria-label="Previous"
+                  style={{ background: "none", border: 0, padding: 0, cursor: "pointer" }}
+                >
+                  <img src="https://qclay.design/lovable/pictura/icons/btn_left.svg" alt="Prev" style={{ width: 27, height: 27, display: "block" }} />
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+                  aria-label="Next"
+                  style={{ background: "none", border: 0, padding: 0, cursor: "pointer", marginLeft: -2 }}
+                >
+                  <img src="https://qclay.design/lovable/pictura/icons/btn_right.svg" alt="Next" style={{ width: 27, height: 27, display: "block" }} />
+                </button>
+                <span>on the keyboard to scroll</span>
+              </div>
+            )}
+          </div>
+        );
+      })()}
+    </section>
+  );
+}
+
+===== END src/routes/index.tsx =====
+
+FULL SOURCE FILE — src/routes/__root.tsx (only the head() links/meta and the shell matter for parity; the rest is standard TanStack Start scaffolding):
+
+===== BEGIN src/routes/__root.tsx (head snippet) =====
+head: () => ({
+  meta: [
+    { charSet: "utf-8" },
+    { name: "viewport", content: "width=device-width, initial-scale=1" },
+    { title: "Pictura — Find the photo that reflects your ideas" },
+    { name: "description", content: "Explore, inspire, create – discover visuals that bring your vision to life." },
+    { property: "og:title", content: "Pictura — Find the photo that reflects your ideas" },
+    { property: "og:description", content: "Explore, inspire, create – discover visuals that bring your vision to life." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ],
+  links: [
+    { rel: "stylesheet", href: appCss },
+    { rel: "icon", href: "https://qclay.design/lovable/pictura/favicon.ico", type: "image/x-icon" },
+    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+    { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500&display=swap" },
+  ],
+}),
+===== END =====
+
+GLOBAL CSS — append to src/styles.css after the Tailwind import:
+
+html, body { background-color: #0E0E0E; color: #FCFCFC; overflow: hidden; height: 100%; }
+
+VERIFICATION CHECKLIST (build should satisfy all)
+- On load: two burger lines animate in (scaleX 0->1), star logo draws 8 rays, "PICTURA" letters blur-in, "Get Started" outline button pops as a 41px circle then expands to 150px with letters + arrow. Bottom H1/H2 words fade in dim-to-white; center paragraph words fade in with blur; filled "Get Started" button pops in.
+- Big heart cells reveal in a serpentine per-row order with blur + rise. Small pixel heart cells pop in from Chebyshev distance to center, then base mini-photos fade in in snake order.
+- Scrolling drives dispersal of every big cell to the exact TARGETS position (or off-screen for non-targeted), while the small heart scales 1 -> 2.223, background lerps #FFF -> #D9D9D9, expand-images fade in.
+- Every 1.2s the small heart cells cycle to the next image in SMALL_POOL using a fade-out/fade-in crossfade.
+- After progress >= 1, moving the mouse produces subtle inverse parallax on every big card (5..35px range).
+- Clicking a dispersed card opens a modal that grows from that card's rect to a centered 481x638.716 card in 0.55s; icon rail, "Add to Collection" pill (letters appear last-to-first), title/tags/keyboard hint animate in on stagger. ESC / arrow keys / overlay click behave as described.
+- Burger click toggles both lines to scaleX 0.53 and slides in a 340px left sidebar; clicking the overlay or × closes it.
+- Hovering either "Get Started" button swaps its fill (outline -> white bg with dark arrow; filled -> transparent with white arrow) via .gs-hoverable CSS.
+
+That is the entire specification. The single source file below is authoritative for anything the words above omit — copy it byte-for-byte.

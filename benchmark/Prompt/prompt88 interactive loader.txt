@@ -1,0 +1,463 @@
+
+PROJECT OVERVIEW
+
+Build a single-page, full-viewport cinematic preloader screen. It is one fixed full-screen overlay (z-index 9999) on a near-black navy background. A 1394 by 938 design canvas is uniformly scaled to fit the viewport (object-fit contain behavior). Inside the canvas: two soft radial blooms, 30 twinkling particle dots, a glowing 3D sphere image with color-dodge blend, a flowing dashed orbit line drawn as an SVG path with a vertical fade mask, a large concentric circles SVG behind the sphere, three decorative line ornaments (line-c-1, line-c-2, line-c-3) all centered on the canvas with no horizontal offset, a small 80x80 logo (full-logo.svg) revealed by two animated triangle masks producing a continuous wave-cut effect, the wordmark MONETA KEY below the logo, a curved canvas-based number arc 0–100 near the bottom, and four bouncing dots below the arc. Outside the scaled canvas, two SVG ornaments left.svg and right.svg are pinned flush to the actual viewport bottom-left and bottom-right corners. There is no exit transition triggered by reaching 100; the loader keeps idling forever.
+
+TECH STACK
+
+React 18 + TypeScript + Vite + Tailwind v3. framer-motion for AnimatePresence and motion components. Plain Canvas 2D API for the curved number arc. requestAnimationFrame for the chunked progress driver. Single index route renders a wrapper div with min-h-screen and inline style backgroundColor "#080B14" containing the Preloader component.
+
+CONSTANTS
+
+const BG = "#080B14";
+const DESIGN_WIDTH = 1394;
+const DESIGN_HEIGHT = 938;
+
+ASSETS (all hosted at https://qclay.design/lovable/moneta/)
+
+sphere-3.png — glowing orb
+circels.svg — concentric circles
+line-c-1.svg — decorative line ornament
+line-c-2.svg — decorative line ornament
+line-c-3.svg — decorative line ornament
+full-logo.svg — Moneta mark used inside an SVG image element with a mask
+left.svg — bottom-left viewport ornament
+right.svg — bottom-right viewport ornament
+
+ROOT CONTAINER (motion.div, key "preloader")
+
+initial { opacity: 1 }
+exit { opacity: 0, scale: 1.05, filter: "blur(8px)" }
+transition { duration: 0.8, ease: [0.4, 0, 0.2, 1] }
+style: position fixed, inset 0, zIndex 9999, background "#080B14", overflow hidden, fontFamily "'Inter Tight', sans-serif"
+className "flex flex-col items-center justify-center"
+
+The exit transition is defined but never triggered automatically — the component stays mounted forever.
+
+RESPONSIVE SCALE WRAPPER
+
+A child div, absolutely positioned at top 50% left 50%, width DESIGN_WIDTH (1394), height DESIGN_HEIGHT (938), transform `translate(-50%, -50%) scale(${scale})`, transformOrigin "center center". The scale value is computed in a useEffect:
+
+const update = () => setScale(Math.min(window.innerWidth / DESIGN_WIDTH, window.innerHeight / DESIGN_HEIGHT));
+update();
+window.addEventListener("resize", update);
+
+This makes the entire 1394x938 design fit the viewport while preserving aspect ratio.
+
+LAYER 1 — INNER RADIAL BLOOM (small, blue-violet)
+
+Absolute, top 50% left 50%, transform translate(-50%, -50%), width 600, height 600, borderRadius 50%,
+background: radial-gradient(circle, rgba(100,120,255,0.12) 0%, rgba(80,60,180,0.06) 40%, transparent 70%)
+pointerEvents none. Static — no animation.
+
+LAYER 2 — OUTER RADIAL BLOOM (large, deep blue)
+
+Absolute, top 50% left 50%, transform translate(-50%, -50%), width 900, height 900, borderRadius 50%,
+background: radial-gradient(circle, rgba(60,80,200,0.06) 0%, transparent 65%)
+pointerEvents none. Static.
+
+LAYER 3 — PARTICLE FIELD (30 twinkling dots)
+
+A wrapper div absolute inset 0 zIndex 0 pointerEvents none. Inside, exactly 30 motion.div particles. They are generated once with useMemo:
+
+const particles = useMemo(
+  () => Array.from({ length: 30 }, () => ({
+    top: Math.random() * 100,
+    left: Math.random() * 100,
+    opacity: 0.1 + Math.random() * 0.2,
+    duration: 3 + Math.random() * 4,
+    delay: Math.random() * 4,
+  })),
+  []
+);
+
+Each particle:
+style: position absolute, top `${p.top}%`, left `${p.left}%`, width 1.5, height 1.5, borderRadius 50%, background `rgba(255,255,255,${p.opacity})`
+animate { opacity: [0.05, 0.25, 0.05] }
+transition { duration: p.duration, delay: p.delay, repeat: Infinity, ease: "easeInOut" }
+
+LAYER 4 — SPHERE (sphere-3.png)
+
+motion.img src "https://qclay.design/lovable/moneta/sphere-3.png"
+initial { scale: 0.85, opacity: 0, filter: "blur(12px)" }
+animate { scale: [1, 1.025, 1], opacity: 0.7, filter: "blur(0px)" }
+transition {
+  scale: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.4 },
+  opacity: { duration: 1.4, delay: 2, ease: "easeOut" },
+  filter: { duration: 1.4, delay: 2, ease: "easeOut" },
+}
+style: position absolute, top 50%, left 50%, width 433, height 394, marginLeft -216.5, marginTop -197, objectFit contain, zIndex 1, pointerEvents none, mixBlendMode "color-dodge"
+
+The sphere fades in blurred and scaled down, then settles to opacity 0.7 with a continuous gentle 4-second breathing pulse between scale 1 and 1.025.
+
+LAYER 5 — DASHED ORBIT LINE (custom SVG path with front-fade mask)
+
+Wrapper div absolute, top 50%, left 50%, width 840, height 420, marginLeft -420, marginTop -210, zIndex 2, pointerEvents none.
+
+Inside: an svg with viewBox "0 0 1044 356", preserveAspectRatio "none", style position absolute, inset 0, width 100%, height 100%, overflow visible.
+
+defs:
+- linearGradient id "lineDrawGradient" x1 0% y1 0% x2 100% y2 0% with three stops:
+  0% rgba(255,255,255,0)
+  50% rgba(220,225,255,0.95)
+  100% rgba(255,255,255,0)
+- linearGradient id "lineFrontFadeGradient" x1 0 y1 0 x2 0 y2 1 gradientUnits objectBoundingBox with stops:
+  0% #000
+  40% #000
+  58% #fff
+  100% #fff
+- mask id "lineFrontFadeMask" maskUnits userSpaceOnUse x -200 y -200 width 1444 height 800, containing a single rect x -200 y -200 width 1444 height 800 fill "url(#lineFrontFadeGradient)"
+
+Inside a g with mask "url(#lineFrontFadeMask)", a single motion.path:
+key `linepath-${runId}`
+d "M1042.76 35.8838C1058.87 95.0224 838.678 206.483 550.956 284.839C263.235 363.194 16.9353 378.772 0.830078 319.634C-15.2752 260.495 204.913 149.034 492.634 70.6789C780.355 -7.67647 1026.66 -23.2548 1042.76 35.8838Z"
+fill "none"
+stroke "url(#lineDrawGradient)"
+strokeWidth 1
+strokeLinecap "round"
+pathLength 1
+initial { strokeDashoffset: 0 }
+animate { strokeDashoffset: [0, -1.45] }
+transition { duration: 5, delay: 1.6, repeat: Infinity, repeatDelay: 0, ease: "linear" }
+style { strokeDasharray: "0.45 1", filter: "drop-shadow(0 0 4px rgba(200,210,255,0.6))" }
+
+The mask's vertical gradient (black on top, white on bottom, soft transition around 40-58%) means the front (lower) half of the oval is hidden by the mask while the back (upper) half is fully drawn — creating the illusion that the dashed line passes behind the sphere on one side. Because pathLength=1 and the dasharray is "0.45 1", the dashes flow continuously around the oval.
+
+LAYER 6 — CIRCELS.SVG (concentric circles, behind sphere)
+
+img (no animation) src "https://qclay.design/lovable/moneta/circels.svg"
+style: position absolute, top 50%, left 50%, transform translate(-50%, -50%), width 766, height 766, zIndex -2, pointerEvents none.
+
+LAYER 7 — LINE-C-1 (centered)
+
+Outer div: position absolute, top 50%, left 50%, transform translate(-50%, -50%), zIndex -1, pointerEvents none.
+Inside, motion.img src "https://qclay.design/lovable/moneta/line-c-1.svg"
+initial { opacity: 0, y: 30 }
+animate { opacity: 1, y: 0 }
+transition { duration: 0.9, delay: 0.3, ease: "easeOut" }
+style { display: "block" }
+
+LAYER 8 — LINE-C-2 (centered, identical wrapper as line-c-1)
+
+Outer div: position absolute, top 50%, left 50%, transform translate(-50%, -50%), zIndex -1, pointerEvents none.
+motion.img src "https://qclay.design/lovable/moneta/line-c-2.svg"
+initial { opacity: 0, y: 30 }
+animate { opacity: 1, y: 0 }
+transition { duration: 0.9, delay: 0.5, ease: "easeOut" }
+
+LAYER 9 — LINE-C-3 (top-centered)
+
+Outer div: position absolute, top 0, left 50%, transform translateX(-50%), zIndex -1, pointerEvents none.
+motion.img src "https://qclay.design/lovable/moneta/line-c-3.svg"
+initial { opacity: 0, y: -30 }
+animate { opacity: 1, y: 0 }
+transition { duration: 0.9, delay: 0.4, ease: "easeOut" }
+
+All three line-c ornaments rely on the SVG asset's intrinsic dimensions and natural alignment. line-c-1 and line-c-2 are centered on the canvas; line-c-3 is anchored to the top edge, horizontally centered. None are off-center via positioning — the SVG artwork itself supplies any asymmetry.
+
+LAYER 10 — LOGO + WORDMARK BLOCK
+
+Outer div: position absolute, top 50%, left 50%, transform translate(-50%, -60%), zIndex 3, display flex, flexDirection column, alignItems center, gap 16.
+
+LOGO HALO (radial behind the 80x80 logo)
+A relative wrapper div width 80, height 80. Inside it, motion.div:
+initial { opacity: 0, scale: 0.5 }
+animate { opacity: 1, scale: 1 }
+transition { duration: 0.8, delay: 0.3 }
+style: position absolute, inset -20, borderRadius 50%, background "radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 65%)", zIndex -1, pointerEvents none.
+
+LOGO ITSELF — motion.svg with wave-cut mask
+viewBox "0 0 48 48", preserveAspectRatio "xMidYMid meet"
+initial { opacity: 0, y: -12 }
+animate { opacity: 1, y: 0 }
+transition { duration: 0.6, delay: 0, ease: "easeOut" }
+style: position absolute, inset 0, width 100%, height 100%, overflow visible.
+
+Two triangle parameter objects (kept in state, fully editable):
+const [tri1, setTri1] = useState({ width: 22.8, height: 24.4, offsetY: 0.2 });
+const [tri2, setTri2] = useState({ width: 26.3, height: 25.51, offsetY: 23.5 });
+
+Each triangle path is built by a helper:
+const triPath = (t) => {
+  const x1 = 24 - t.width / 2;
+  const x2 = 24 + t.width / 2;
+  const yTop = t.offsetY;
+  const yTip = t.offsetY + t.height;
+  return `M${x1} ${yTop}L24 ${yTip}L${x2} ${yTop}L${x1} ${yTop}Z`;
+};
+
+These are downward-pointing triangles centered at x=24, with tip at the bottom.
+
+defs > mask id "logoCutMask" maskUnits userSpaceOnUse x 0 y 0 width 48 height 48 contains:
+1. A white rect x 0 y 0 width 48 height 48 (entire logo visible by default).
+2. motion.path for tri1 (key uses tri1 dimensions), d=triPath(tri1), fill "black":
+   initial { y: -tri1.height, opacity: 0 }
+   animate {
+     y: [-tri1.height, -tri1.height, 0, 0, 60, 60, -tri1.height],
+     opacity: [0, 1, 1, 1, 1, 0, 0],
+   }
+   transition {
+     duration: 3,
+     times: [0, 0.02, 0.183, 0.617, 0.767, 0.787, 1],
+     ease: ["linear", "easeInOut", "linear", "easeIn", "linear", "linear"],
+     repeat: Infinity,
+     repeatDelay: 0,
+   }
+3. motion.path for tri2 (key uses tri2 dimensions), d=triPath(tri2), fill "black":
+   initial { y: -tri2.height, opacity: 0 }
+   animate {
+     y: [-tri2.height, -tri2.height, -tri2.height, 0, 0, 60, 60, -tri2.height],
+     opacity: [0, 0, 1, 1, 1, 1, 0, 0],
+   }
+   transition {
+     duration: 3,
+     times: [0, 0.183, 0.203, 0.367, 0.617, 0.767, 0.787, 1],
+     ease: ["linear", "linear", "easeInOut", "linear", "easeIn", "linear", "linear"],
+     repeat: Infinity,
+     repeatDelay: 0,
+   }
+
+After defs, an svg image element:
+
+The mask logic: white = visible, black triangles = cut out. tri1 sits hidden above the logo, then snaps to y=0 (covering the upper portion), holds, then slides down to y=60 (out the bottom), then jumps back to start. tri2 follows a slightly delayed and offset choreography. Together they produce a continuous wave-cut sweep through the logo, repeating every 3 seconds forever. The logo always renders full image masked; the slices rolling through cut visible chunks out and let them rebuild.
+
+WORDMARK "MONETA KEY"
+motion.div below the logo:
+initial { opacity: 0, y: 8, filter: "blur(4px)" }
+animate { opacity: 1, y: 0, filter: "blur(0px)" }
+transition { duration: 0.6, delay: 0.8, ease: "easeOut" }
+style: fontFamily "'Inter Tight', sans-serif", fontSize 13, fontWeight 400, letterSpacing "5px", color "rgba(255,255,255,0.75)", textAlign "center"
+text content: MONETA KEY
+
+LAYER 11 — NUMBER ARC (PreloaderNumberArc component)
+
+Rendered with key={runId} and prop progress={progress}.
+
+Component implementation (PreloaderNumberArc.tsx):
+
+Constants:
+CANVAS_WIDTH = 550
+CANVAS_HEIGHT = 70
+ARC_RADIUS = 310
+CENTER_X = 275 (CANVAS_WIDTH / 2)
+CENTER_Y = 330 (well below the visible canvas)
+CENTER_ANGLE = -Math.PI / 2 (straight up)
+ANGLE_STEP = Math.PI / 16
+FONT_SIZE = 17
+FONT = `300 17px "Inter Tight", sans-serif`
+VISIBLE_DISTANCE = 5
+
+Wrapper div:
+position absolute, left 50%, bottom 123, transform translateX(-50%), width 550, height 70, zIndex 4, pointerEvents none, overflow hidden, aria-hidden "true".
+
+Inside: a single canvas with style display block, width 100%, height 100%, and both WebkitMaskImage and maskImage set to:
+"radial-gradient(ellipse 55% 100% at 50% 50%, black 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0.4) 65%, transparent 100%)"
+This makes the numbers fade to invisible toward the canvas edges.
+
+DPR handling: in the draw function, multiply width and height by window.devicePixelRatio for crisp rendering, while keeping style width 550 / height 70 fixed.
+
+Drawing each frame, given a smoothed value:
+
+ctx.setTransform(1,0,0,1,0,0); ctx.scale(ratio, ratio); ctx.clearRect(0,0,550,70);
+ctx.save(); ctx.beginPath(); ctx.rect(0,0,550,70); ctx.clip();
+ctx.font = FONT; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+
+for (let number = 0; number <= 100; number += 1) {
+  const distance = number - value;
+  const absDistance = Math.abs(distance);
+  if (absDistance > 5) continue;
+  const angle = -Math.PI/2 + distance * (Math.PI/16);
+  const x = 275 + Math.cos(angle) * 310;
+  const y = 330 + Math.sin(angle) * 310;
+  if (x < -80 || x > 630 || y < -20 || y > 90) continue;
+  const fade = Math.pow(1 - absDistance / 5, 2.2);
+  const opacity = Math.max(0, 0.95 * fade);
+  const focal = Math.max(0, 1 - absDistance / 1.2);
+  const scale = 1 + focal * 0.35;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(scale, scale);
+  if (focal > 0.05) {
+    ctx.shadowColor = `rgba(180, 200, 255, ${focal * 0.9})`;
+    ctx.shadowBlur = 18 * focal;
+  }
+  ctx.fillStyle = `rgba(255,255,255,${opacity})`;
+  ctx.fillText(String(number), 0, 0);
+  ctx.restore();
+}
+ctx.restore();
+
+Per-frame smoothing toward target progress (lerp factor 0.045):
+
+const tick = () => {
+  const current = animatedProgressRef.current;
+  const target = targetProgressRef.current;
+  const delta = target - current;
+  if (Math.abs(delta) < 0.001) {
+    animatedProgressRef.current = target;
+    draw(target);
+    frameRef.current = null;
+    return;
+  }
+  animatedProgressRef.current = current + delta * 0.045;
+  draw(animatedProgressRef.current);
+  frameRef.current = requestAnimationFrame(tick);
+};
+
+This produces a smooth inertial slide of numbers across the curve even when the underlying progress jumps in chunks. The focal number (closest to the top of the arc) scales up to 1.35x and gets a soft cool-blue glow. Numbers further from focal fade smoothly via the power curve.
+
+LAYER 12 — BOUNCING DOTS (Mexican wave under the arc)
+
+const dotColors = [
+  "rgba(255,255,255,0.70)",
+  "rgba(255,255,255,0.55)",
+  "rgba(255,255,255,0.55)",
+  "rgba(255,255,255,0.70)",
+];
+
+Wrapper div: position absolute, bottom 107, left 50%, transform translateX(-50%), zIndex 4, display flex, alignItems center, gap 7.
+
+Each of the 4 dots is a motion.div:
+animate { y: [-7, 0, -7] }
+transition { duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: i * 0.18 }
+style: width 7, height 7, borderRadius 50%, background dotColors[i].
+
+This creates a continuous left-to-right wave bounce.
+
+LAYER 13 — EDGE-PINNED ORNAMENTS (outside the scaled wrapper, hugging viewport)
+
+motion.img src "https://qclay.design/lovable/moneta/left.svg"
+initial { opacity: 0, y: 20 }
+animate { opacity: 1, y: 0 }
+transition { duration: 0.9, delay: 0.6, ease: "easeOut" }
+style: position absolute, bottom 0, left 0, zIndex 4, pointerEvents none, display block.
+
+motion.img src "https://qclay.design/lovable/moneta/right.svg"
+initial { opacity: 0, y: 20 }
+animate { opacity: 1, y: 0 }
+transition { duration: 0.9, delay: 0.6, ease: "easeOut" }
+style: position absolute, bottom 0, right 0, zIndex 4, pointerEvents none, display block.
+
+These are siblings of the scaled design wrapper inside the root motion.div, so they always stay flush to the actual viewport edges regardless of how the 1394x938 design canvas is scaled.
+
+PROGRESS DRIVER (CRITICAL — non-linear realistic loading)
+
+Implemented in useEffect keyed on runId. It builds a sequence of variable chunks summing to 100, each with random pre-delay and random traversal duration:
+
+useEffect(() => {
+  setProgress(0);
+  let cancelled = false;
+  let current = 0;
+
+  const segments = [];
+  let acc = 0;
+  while (acc < 100) {
+    const r = Math.random();
+    let chunk;
+    if (r < 0.15) chunk = 1 + Math.random() * 3;          // tiny stall-ish
+    else if (r < 0.85) chunk = 4 + Math.random() * 12;    // normal
+    else chunk = 14 + Math.random() * 18;                 // burst
+    acc = Math.min(100, acc + chunk);
+    const delay = 40 + Math.random() * 220;
+    const duration = 120 + Math.random() * 380;
+    segments.push({ to: acc, delay, duration });
+  }
+
+  const animateSegment = (i) => {
+    if (cancelled || i >= segments.length) return;
+    const seg = segments[i];
+    setTimeout(() => {
+      if (cancelled) return;
+      const from = current;
+      const start = performance.now();
+      const step = (t) => {
+        if (cancelled) return;
+        const k = Math.min(1, (t - start) / seg.duration);
+        const eased = 1 - Math.pow(1 - k, 2); // easeOut quadratic
+        const value = from + (seg.to - from) * eased;
+        current = value;
+        setProgress(value);
+        if (k < 1) requestAnimationFrame(step);
+        else { current = seg.to; setProgress(seg.to); animateSegment(i + 1); }
+      };
+      requestAnimationFrame(step);
+    }, seg.delay);
+  };
+
+  animateSegment(0);
+  return () => { cancelled = true; };
+}, [runId]);
+
+Result: bursts of fast progress, brief stalls, slow crawls — natural and unpredictable. Total loading time typically 4–8 seconds. When progress reaches 100, NOTHING fades out; the loader simply rests at 100 with all loops continuing forever.
+
+ORBIT DOT HELPER (defined but currently unused in render)
+
+A subcomponent OrbitDot exists in the file. It animates a small white dot with a soft glow and a 20-pixel trailing gradient, rotating around an ellipse of arbitrary rx, ry, rotation, and duration via requestAnimationFrame. It is exported as a helper but not currently rendered in the main composition. Keep its implementation intact for future use:
+
+const OrbitDot = ({ rx, ry, rotateDeg, duration, size, opacity, trailOpacity, startOffset = 0 }) => {
+  const [angle, setAngle] = useState(startOffset  Math.PI  2);
+  useEffect(() => {
+    let raf = 0;
+    const start = performance.now();
+    const tick = (t) => {
+      const elapsed = (t - start) / 1000;
+      const a = startOffset  Math.PI  2 + (elapsed / duration)  Math.PI  2;
+      setAngle(a);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [duration, startOffset]);
+  const x = Math.cos(angle) * rx;
+  const y = Math.sin(angle) * ry;
+  const rad = (rotateDeg * Math.PI) / 180;
+  const rotX = x  Math.cos(rad) - y  Math.sin(rad);
+  const rotY = x  Math.sin(rad) + y  Math.cos(rad);
+  return (
+
+  );
+};
+
+STATE INVENTORY
+
+const [progress, setProgress] = useState(0);
+const [runId, setRunId] = useState(0);
+const [mounted] = useState(true);
+const [scale, setScale] = useState(1);
+const [tri1, setTri1] = useState({ width: 22.8, height: 24.4, offsetY: 0.2 });
+const [tri2, setTri2] = useState({ width: 26.3, height: 25.51, offsetY: 23.5 });
+
+The runId is wired into the line and arc keys so any future replay would reset their animations cleanly, but no replay UI is rendered.
+
+WHAT IS NOT IN THE SCREEN
+
+No replay button, no skip button, no close button. No top hairline progress bar. No status text line. No tagline. No phrase cycling. No exit fade triggered on 100. The arc and dots and bloom and orbit all keep running indefinitely.
+
+PAGE WRAPPER (src/pages/Index.tsx)
+
+import Preloader from "@/components/Preloader";
+const Index = () => (
+
+);
+export default Index;
+
+FILE STRUCTURE
+
+src/pages/Index.tsx — page wrapper as above.
+src/components/Preloader.tsx — the entire composition described above, including the OrbitDot helper subcomponent.
+src/components/PreloaderNumberArc.tsx — the canvas-based curved 0–100 number scroller described in Layer 11.
+
+TYPOGRAPHY
+
+Single font family throughout: Inter Tight (loaded via Google Fonts in index.html or imported globally). The arc uses 300 weight 17px. The "MONETA KEY" wordmark uses 400 weight 13px with 5px letter-spacing and color rgba(255,255,255,0.75). Everything else is white at varying opacities.
+
+COLOR PALETTE
+
+Background: #080B14.
+All foreground content: white at opacities ranging from ~0.05 (faintest particle) to ~0.95 (focal arc number).
+Glows: cool blue-white rgba(180, 200, 255, alpha) for the focal arc number; rgba(200,210,255,0.6) drop-shadow on the orbit line; rgba(255,255,255,…) soft halos.
+Blooms: rgba(100,120,255,0.12) inner and rgba(60,80,200,0.06) outer. No warm colors anywhere.
+
+OVERALL BEHAVIOR
+
+On mount: sphere fades in blurred, blooms appear, particles begin twinkling, line ornaments slide into place, the dashed orbit begins flowing, the 80x80 logo fades down with its wave-cut mask already cycling, the wordmark MONETA KEY blurs in below it, the number arc starts at 0 and climbs in irregular chunks toward 100, the four dots begin their continuous Mexican wave below the arc, and left/right SVGs fade up from the viewport corners. The composition is dark, glowing, restrained, and once it reaches 100 it simply rests there with all idle loops still running.

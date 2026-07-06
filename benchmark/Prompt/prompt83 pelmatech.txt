@@ -1,0 +1,252 @@
+Build a single-page React + Vite + TypeScript + Tailwind v4 app (shadcn-ui base) that exactly recreates the VALMAX photography landing page described below. Use framer-motion and lucide-react. Implement the page inside src/components/ValmaxLanding.tsx and mount it from src/routes/index.tsx (TanStack Start). Do not introduce custom Tailwind color tokens for components — use the semantic theme tokens defined in src/styles.css plus the literal oklch/hex/rgba values listed below.
+
+Global setup
+
+- Stack: TanStack Start v1, React 19, Tailwind v4 (single src/styles.css with @import "tailwindcss" source(none) and @source "../src"), framer-motion, lucide-react. Path alias "@/..." → "src/...".
+- src/styles.css imports tailwindcss and tw-animate-css, plus Google Font "Poppins" weights 300/400/500/600/700.
+- @theme inline registers font tokens: --font-display = 'Neue Haas Grotesk Display Pro', 'NeueHaasDisplay', 'Helvetica Neue', 'Helvetica', 'Arial', system-ui, sans-serif. --font-body = 'Poppins', system-ui, sans-serif. Radius tokens are derived from --radius (0.625rem). Color tokens (--color-background … --color-ring) are bound to root variables.
+- :root variables (light-mode = dark-mode here, the site is permanently dark):
+  --radius: 0.625rem;
+  --background: oklch(0.06 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card / --popover: oklch(0.09 0 0); foreground oklch(0.98 0 0);
+  --primary: oklch(0.98 0 0); --primary-foreground: oklch(0.06 0 0);
+  --secondary / --muted / --accent: oklch(0.18 0 0); --muted-foreground: oklch(0.55 0 0);
+  --destructive: oklch(0.6 0.22 27);
+  --border: oklch(1 0 0 / 10%); --input: oklch(1 0 0 / 12%); --ring: oklch(0.7 0 0);
+  --lime: oklch(0.92 0.18 130).
+- body { background-color: var(--color-background); color: var(--color-foreground); font-family: var(--font-body); -webkit-font-smoothing: antialiased }.
+- ::selection { background: var(--lime); color: oklch(0.06 0 0) }.
+- Utility .font-display applies font-family var(--font-display) and letter-spacing -0.02em. Helpers .text-lime / .bg-lime use var(--lime).
+- A "matte" section background constant MATTE = "bg-[oklch(0.16_0.004_240)]" (used by all sections above MechanicalMarvels).
+- Easing constant used throughout: EASE = [0.22, 1, 0.36, 1].
+- A single intro orchestrates everything; sections wait for it via INTRO_DELAY = 2.9s before triggering their entrance animations.
+
+Assets (all live under src/assets/, imported as ES modules)
+
+Asset fallback rules
+- If any photo image (photo-*.png) fails to load (onError), render a placeholder div of identical dimensions (same width / aspect-ratio classes) with background oklch(0.18 0 0) and no visible error state, icon, or text.
+- If logo.svg fails to load, render the plain text "VALMAX" in font-display, font-black, text-white, sized to occupy the same box the logo would (e.g. h-6 in the TopBar, 64px tall during IntroSequence).
+- If any decorative or background asset (noise.png, bg-silhouettes.png, bg-nikon.png, bg-fabric.png, ellipse-arc.png, get-in-touch-bg.png) fails to load, omit it entirely — the parent section must remain fully functional and visually intact without it.
+- If Vector.svg fails to load, replace it with a lucide ArrowUpRight icon sized to the same pixel box (w-[5.86px] h-[5.53px] in the MechanicalMarvels decorative circle).
+- All  tags include alt: descriptive text for content images (e.g. "Portrait red", "Athlete"), alt="" for decorative ones (noise, bg-*, ellipse-arc, get-in-touch-bg). The alt attribute is rendered regardless of load success/failure.
+
+photo-ralph-portrait.png, photo-basketball.png, photo-hat.png, photo-red.png, photo-sculpture-bw.png, photo-sculpture-color.png, photo-twins.png, photo-berries.png, photo-fields-bw.png, photo-fields-color.png, photo-car.png, photo-girl-grass.png, photo-camera.png, get-in-touch-bg.png (marvels background), logo.svg (icon + wordmark, 113×27 viewBox), noise.png, bg-silhouettes.png, bg-nikon.png, bg-fabric.png, Vector.svg (small arrow), ellipse-arc.png.
+
+Icons (lucide-react): ArrowUpRight, Instagram, MoveRight, Menu, Clock3. Pinterest "P" rendered as an inline SVG width="12" height="12" viewBox="0 0 24 24" fill="currentColor" with the exact path d="M12 0a12 12 0 0 0-4.4 23.2c-.1-1-.2-2.5 0-3.6l1.5-6.3s-.4-.7-.4-1.8c0-1.7 1-3 2.2-3 1 0 1.5.8 1.5 1.7 0 1-.7 2.6-1 4 .2.7.8 1.4 1.7 1.4 2 0 3.5-2.2 3.5-5.3 0-2.8-2-4.7-4.8-4.7-3.3 0-5.2 2.5-5.2 5 0 1 .4 2 .9 2.6.1.1.1.2.1.3-.1.4-.3 1.1-.3 1.3-.1.2-.2.3-.4.2-1.4-.7-2.3-2.7-2.3-4.4 0-3.6 2.6-6.9 7.6-6.9 4 0 7.1 2.8 7.1 6.6 0 4-2.5 7.2-6 7.2-1.2 0-2.3-.6-2.6-1.3l-.7 2.7c-.3 1-1 2.3-1.5 3.1A12 12 0 1 0 12 0z".
+
+Layout overview (top → bottom, single )
+
+
+  IntroSequence (z 100, fixed)
+  TopBar (fixed header)
+  RalphHero (matte section)
+  OurPhotographer (matte section)
+  AllTypes (matte section, star ring)
+  MechanicalMarvels (two stacked blocks, parallax background)
+  Footer
+
+
+Background layer bindings per section
+
+| Section                 | StarField props                                                                | LineField variant |
+| ----------------------- | ------------------------------------------------------------------------------ | ----------------- |
+| RalphHero               | count=700, ring=false                                                          | hero              |
+| OurPhotographer         | count=500, ring=false                                                          | photographer      |
+| AllTypes                | count=550, ring=true, ringCount=260, ringRadiusFactor=0.37, ringBandWidth=50   | projects          |
+| MechanicalMarvels (top) | count=450, ring=false                                                          | marvels           |
+| MechanicalMarvels (bot) | —                                                                              | marvelsBottom     |
+| IntroSequence           | —                                                                              | —                 |
+| TopBar                  | —                                                                              | —                 |
+| Footer                  | —                                                                              | —                 |
+
+1. IntroSequence — fullscreen opener (≈3.6s = 3600ms total, skipped if prefers-reduced-motion)
+
+- Fixed inset-0, z-100, pointer-events: none. Render the real logo.svg, scaled so visible height is 64px; icon part is 64px wide, full wordmark width is 268px, icon center x = 32px.
+- A solid backdrop in oklch(0.16 0.004 240) fades opacity [1, 1, 0] across the full 3600ms timeline at times [0, 0.82, 1] // 0ms, 2952ms, 3600ms, easing EASE.
+- Three concentric circles centered: borders white at 10% opacity, sizes 260px × n (n = 1,2,3). Each animates opacity [0, 0.55, 0] and scale [0.15, 1, 1.4] over 2400ms with stagger delays 1220ms / 1340ms / 1460ms, implicit keyframe times [0, 0.5, 1] // 0ms, 1200ms, 2400ms (relative to each circle's start), EASE.
+- Nine SVG rays emerge from center at angles 0°, 30°, 60°, 120°, 150°, 210°, 240°, 300°, 330°. Stroke white at opacity 0.45, width 0.12 (within a 0..100 viewBox), strokeLinecap round, length 60 in the viewBox. Each animates pathLength [0, 1, 1] and opacity [0, 0.65, 0] over 2000ms with delay 1200ms + i·50ms, keyframe times [0, 0.7, 1] // 0ms, 1400ms, 2000ms (relative to each ray's start), EASE.
+- The logo container starts dead-center (top/left 50%, translate -50%/-50%) and at the very end of the timeline snaps to top:24px / left:24px with scale 0.42 (so it lands on the TopBar slot). Keyframe times [0, 0.6, 0.82, 1] // 0ms, 2160ms, 2952ms, 3600ms, EASE.
+- A white dot sits exactly over the icon's center: starts at 8×8, grows to 10×10 around 18%, expands to 64×64 by 40%, then opacity drops to 0. Times [0, 0.18, 0.4, 1] // 0ms, 648ms, 1440ms, 3600ms, EASE.
+- The wordmark reveals via a width clip: an overflow-hidden box starts at width = 64 (icon-only) with the full 268×64 logo image inside (max-w-none). Opacity ramps [0, 0, 1, 1, 1] and width [64, 64, 64, 268, 268] at times [0, 0.3, 0.42, 0.78, 1] // 0ms, 1080ms, 1512ms, 2808ms, 3600ms, EASE.
+- After 3600ms the intro unmounts (setHidden(true)).
+
+2. TopBar (fixed, top 0, left/right 0, z-50, padding pt-6 px-6 md:px-10)
+
+Inner row: flex, items-center, justify-between, gap-4.
+
+a) Logo link (left): logo.svg at h-6 w-auto. Fade in opacity 0 → 1 over 0.4s, delay INTRO_DELAY − 0.2 = 2.7s, EASE.
+
+b) Email form (hidden on : group, flex items-center justify-between, px-4 py-3, rounded-xl, text-sm, text-white/80 hover:text-white hover:bg-white/[0.06], transition. Right side: ArrowUpRight w-4 h-4 opacity-40, transition; on group-hover opacity-100 plus translate-x-0.5 -translate-y-0.5. Clicking a link closes the menu (sets open=false).
+   - Footer row inside panel: mt-2, px-4 py-3, top-border white/10, flex items-center justify-between, text-xs text-white/50. Left text "Follow". Right anchor "Instagram" with lucide Instagram icon w-3.5 h-3.5, hover text-white.
+
+3. RalphHero (first section, matte bg, min-h 110vh, pt-32 pb-24, overflow-hidden, relative)
+
+Background stack (all pointer-events: none unless noted):
+- StarField canvas with count=700 (see StarField spec). z 0.
+- LineField variant="hero" SVG with z 0.
+- noise.png absolute inset, object-cover, opacity 0.12, mix-blend overlay, z 1.
+- Two ellipse-arc.png arcs forming the constellation ring: each 1500px wide, top 10%, left 50%, opacity 0.5; first translateX(-78%), second translateX(-22%), so they overlap slightly. z 0.
+- A central glow: -top-40, left 50% (translate -50%), 800×800 rounded-full, bg-white/[0.04], blur-3xl. z 1.
+
+Pointer parallax: section sets CSS vars --mx and --my (mouse position normalized to [-0.5, 0.5]) on mousemove window listener. Disabled when prefers-reduced-motion.
+
+Center hero block (relative, z-10, grid place-items-center, min-h-80vh, px-6, text-center, max-w-2xl):
+- h1 "RALPH" + 
+ + "EDWARDS". Classes: font-display, font-black, text-7xl md:text-[110px], leading-[0.95], tracking-tight. Enters with the blurIn variant (opacity 0 → 1, y 24 → 0, filter blur(14px) → 0, duration 1.1s, delay INTRO_DELAY + 1·0.08 = 2.98s, EASE).
+- p: mt-8, text-white/55, text-base md:text-[15px], leading-relaxed, max-w-md mx-auto. Copy verbatim: "Crafting digital experiences that captivate and inspire. Elevating your brand through design and innovation." Enters with blurIn custom=3 (delay 2.9 + 0.24).
+
+Floating photo collage — seven absolutely-positioned cards, z-20, with parallax depth offsets. Each card uses the photoIn variant (opacity 0 → 1, scale 0.92 → 1, blur(12px) → 0, duration 1.2s, delay INTRO_DELAY + 0.1 + i·0.1, EASE) and a transform `translate3d(calc(var(--mx)*px), calc(var(--my)*px), 0)` with transition transform 0.4s cubic-bezier(0.22,1,0.36,1). Frame styling for each card: relative w-full h-full overflow-hidden (NO border-radius — sharp corners), shadow 0 30px 80px -30px rgba(0,0,0,0.9), ring-1 ring-white/10, group. Image is `w-full h-full object-cover`, with `transition-transform duration-[1200ms] group-hover:scale-105`.
+
+List of cards (alt, position, size, depth, badge):
+1. photo-fields-bw.png — "Fields", top-[2%] left-[34%], w-[150px] aspect-[4/3], depth 18, badge "ig".
+2. photo-berries.png — "Berries", top-[2%] right-[2%], w-[260px] aspect-[16/9], depth 22, no badge.
+3. photo-basketball.png — "Athlete", top-[7%] left-[4%], w-[110px] aspect-[3/4], depth 28, badge "ig".
+4. photo-red.png — "Portrait red", top-[10%] right-[12%], w-[200px] aspect-[3/4], depth 26, badge "pin", plus the "View album" overlay below.
+5. photo-hat.png — "Hat", top-[18%] left-[3%], w-[220px] aspect-[3/4], depth 20, badge "ig".
+6. photo-sculpture-bw.png — "Sculpture", bottom-[calc(6%-10px)] left-[calc(34%-90px)], w-[160px] aspect-[4/5], depth 24, badge "pin".
+7. photo-twins.png — "Twins", bottom-[6%] right-[22%], w-[230px] aspect-[16/10], depth 22, no badge.
+
+Badge overlay (when present): absolute bottom-2 right-2, w-6 h-6, rounded-md, bg-black/40, backdrop-blur-sm, grid place-items-center, text-white/80. Inside it either Instagram lucide w-3 h-3 ("ig"), or the inline Pinterest SVG ("pin").
+
+"View album" overlay on the "Portrait red" card only: absolute left-4 bottom-5, pointer-events none, flex items-center gap-2.5.
+- A glowing white dot: relative grid place-items-center. Two absolute blurred halos sit behind: 55×55 rounded-full bg-white/30 blur-[10px], and 38×38 rounded-full bg-white/50 blur-[4px]. The dot itself is a 25×25 rounded-full bg-white block with shadow 0 0 18px 4px rgba(255,255,255,0.7).
+- The pill: grid place-items-center, rounded-full, bg-black/35, backdrop-blur-md, text-white text-[13px], border white/15, fixed inline size 119px × 39px, label "View album".
+
+4. OurPhotographer (matte section, px-6 md:px-12, py-32, overflow-hidden, relative)
+
+Background:
+- StarField count=500, no ring.
+- LineField variant="photographer".
+- noise overlay (opacity 0.12, mix-blend-overlay, z 1).
+- Three decorative photos at low opacity (pointer-events none, select-none, z 1):
+  bg-fabric.png — left-0 top-1/3, w-[280px] md:w-[340px], opacity 0.13.
+  bg-silhouettes.png — right-0 top-[12%], w-[360px] md:w-[460px], opacity 0.16.
+  bg-nikon.png — right-[4%] bottom-0, w-[280px] md:w-[360px], opacity 0.14.
+- A side glow: -left-20 top-1/2 -translate-y-1/2, 500×500 rounded-full bg-white/[0.02] blur-3xl. z 1.
+
+Foreground grid (relative z 2, grid 1 col / md:2 cols, gap-12, max-w-7xl mx-auto, items-start):
+- Left card: motion.div with bg #efeae0, padding p-4 pb-20, max-w-[440px], width full, justify-self center on mobile / md:justify-self-end. Shadow 0 40px 100px -30px rgba(0,0,0,0.8). Enter: opacity 0 → 1, y 60 → 0, filter blur(16px) → 0, duration 1.2s, EASE, viewport once, margin -100px.
+  Inside:
+  - "Our photographer" heading positioned absolutely above the photo (absolute -top-16 md:-top-19 left-[40rem] -translate-x-1/2). font-display, font-medium, text-4xl md:text-5xl, leading-[0.95], uppercase, text-white, whitespace-nowrap. Enter: opacity 0→1, y 30→0, blur(14px)→0, 1.1s EASE.
+  - portrait photo: w-full aspect-[3/4] object-cover, src = photo-ralph-portrait.png.
+  - Caption overlay (absolute bottom-6 left-6): "RALPH" + 
+ + "EDWARDS". Classes text-black, font-display, font-black, text-2xl, leading-none.
+- Right column: space-y-8, max-w-xl.
+  - h2 "will select the / best images and ideas / for you" (with explicit 
+ between lines). font-display, font-medium, text-4xl md:text-5xl, leading-[1.05], uppercase, fixed width w-[600px], mt-[-28px]. Same blur-in entrance (1.1s).
+  - Two paragraphs of body copy at text-white/55, text-[15px], leading-relaxed, separated by space-y-4. Enter: opacity 0→1, y 20→0, 1s delay 0.2 EASE.
+    P1 verbatim: "Once upon a time, nestled in a quaint little town, there lived an author named Alice. She wasn't your typical writer; her stories weren't just ink on paper; they were portals to worlds beyond imagination. Alice had a peculiar gift — she could breathe life into her characters, making them dance off the pages and into the hearts of her readers."
+    P2 verbatim: "Alice's love for storytelling began in her childhood. She would spend hours in her attic, surrounded by dusty old books, dreaming up adventures for her imaginary friends. As she grew older, her passion for writing only intensified. She studied literature at university, honing her craft and delving deeper into the mysteries of storytelling."
+
+5. AllTypes (matte section, px-6 md:px-12, py-32, overflow-hidden, relative)
+
+Background: StarField count=550 with ring enabled (ringCount=260, ringRadiusFactor=0.37, ringBandWidth=50) — produces a visible constellation ring at center; LineField variant="projects"; noise overlay opacity 0.12 mix-blend-overlay z 1.
+
+Header grid (max-w-7xl mx-auto, grid 1col / md:2cols, gap-12, mb-20):
+- h2 "All types of" + 
+ + "projects". font-display, font-black, text-5xl md:text-6xl, uppercase, leading-[0.95]. Same blur-in (1.1s) on view.
+- Right block: paragraph of intro text (white/55, text-[15px], max-w-md) verbatim: "Welcome to the Innovation Hub: Where Ideas Take Shape. Explore the Intersection of Creativity and Technology. Dive Into Our Portfolio and Witness the Power of Ingenuity." Plus a CTA button: flex items-center gap-3, text-sm, uppercase, tracking-widest, text-white/70 hover:text-white, label "View the artwork" followed by MoveRight (lucide) w-4 h-4 that translates x+1 on group-hover.
+
+Project cards grid (grid 2cols / md:4cols, gap-8 md:gap-12, items-start). Four projects (index, src, alt/title, tall flag, mt class, width):
+1. i=0 — photo-car.png — "Company Photo" — tall=false (aspect-[4/5]) — md:mt-20 — w-[216px].
+2. i=1 — photo-fields-color.png — "Landscape Series" — tall=true (aspect-[3/4]) — md:mt-25 — w-[220px].
+3. i=2 — photo-girl-grass.png — "Classy Photo Shoot" — tall=false (aspect-[4/5]) — md:mt-10 — w-[230px].
+4. i=3 — photo-sculpture-color.png — "Photo Brand" — tall=false (aspect-[4/5]) — md:mt-4 — w-[200px].
+
+Each card is a motion.div with entrance opacity 0→1, y 40→0, blur(12px)→0, duration 1.1s, delay i·0.12, EASE, viewport once margin -80px.
+
+Inside each card:
+- Image frame: overflow-hidden (NO border-radius — sharp corners), ring-1 ring-white/10, shadow 0 30px 80px -30px rgba(0,0,0,0.8), group. Image w-full, aspect ratio per `tall` flag above, object-cover, `transition-transform duration-[1500ms] group-hover:scale-110`.
+- Caption block (text-center, space-y-3, mt-4):
+  - h3 title: font-display, font-bold, text-sm, uppercase, tracking-wider, text-white.
+  - "photo shoot" pill: inline-flex items-center gap-2, text-xs, text-white/60, border border-white/15, rounded-full, px-3 py-1.5, hover bg-white/5, transition. Label text "photo shoot" followed by a 16×16 (w-4 h-4) circle with border border-white/20, rounded-full, grid place-items-center, holding a lucide ArrowUpRight w-2.5 h-2.5.
+
+6. MechanicalMarvels (two stacked blocks, no matte background)
+
+Top block (relative, px-6 md:px-12, pt-28 pb-12, overflow-hidden):
+- StarField count=450 (no ring), LineField variant="marvels", noise overlay opacity 0.12 mix-blend-overlay z 1.
+- h2 (font-display, font-medium, uppercase, text-5xl md:text-[90px], leading-[0.95], tracking-tight, max-w-[1200px]): "Mechanical " + an inline-flex centered image of photo-camera.png (h-10 md:h-20 w-auto, rounded-md) acting as the "O" replacement + " Marvels: Unveiling the artistry of automation". Same blur-in (y 40, blur 16px, duration 1.2s).
+- Below: flex justify-between, items-center, mt-16, text-xs, uppercase, tracking-widest, text-white/50. Two buttons:
+  Left: "View the artwork" then MoveRight w-3.5 h-3.5 rotated -45° (arrow up-right), translate-x-1 on group-hover.
+  Right: "Scroll to view more" then MoveRight w-3.5 h-3.5 rotated 90° (arrow down), translate-y-1 on group-hover.
+
+Bottom block (relative, h-[80vh], overflow-hidden):
+- Parallax background: a motion.div positioned absolute inset-0 with extended bounds (-top-[10%] -bottom-[10%]) holding get-in-touch-bg.png at w-full h-full object-cover. Its y is driven by useScroll on the whole section (offset ["start end","end start"]) mapped useTransform([0,1], ["0%","-15%"]).
+- Overlay gradient: absolute inset-0, bg-gradient-to-t from-black/30 via-transparent to-black/20.
+- LineField variant="marvelsBottom".
+- Centered content (relative h-full grid place-items-center px-6, text-center):
+  - h3: font-display, font-black, uppercase, text-4xl md:text-7xl, leading-[1], tracking-tight. Content: "Get in touch to our" + 
+ + a span with class .text-lime containing "Modern maintenance." Enter: opacity 0→1, y 40→0, blur(16px)→0, 1.2s EASE.
+  - Beneath: a flex items-center justify-center gap-1 row:
+    - Button (mt-10, inline-flex, bg-white, text-black, rounded-full, px-6 py-2, text-sm, font-medium, hover bg white/90, uppercase) label "GET IN TOUCH". Enter: opacity 0→1, y 20→0, 1s delay 0.3 EASE.
+    - Decorative circle: w-[18.86px] h-[18.53px], rounded-full, border-[1px] border-white, mt-[4rem], flex items-center justify-center, containing the Vector.svg arrow at w-[5.86px] h-[5.53px].
+
+7. Footer (relative, border-t white/10, px-6 md:px-12, py-6, flex items-center justify-between, text-xs text-white/40)
+
+- Left: "All right reserved — 2024".
+- Right: link "Privacy Policy" with hover text-white.
+
+8. StarField component (canvas-based)
+
+Props: count (default 600), className (defaults to "absolute inset-0 pointer-events-none"), ring (boolean), ringCount (240), ringRadiusFactor (0.36), ringBandWidth (52). Canvas style zIndex 0.
+
+- Canvas sized to parent via ResizeObserver, scaled by devicePixelRatio.
+- Background stars built once per resize:
+  - Position uniformly distributed across (w,h).
+  - Radius: 65% chance 0.25–0.50, 27% chance 0.50–0.80, 8% chance 0.80–1.30.
+  - opacity 0.2–0.95, twinkleSpeed 0.4–1.6, twinkleOffset 0…2π.
+- Ring stars (only when ring=true), 2 × ringCount total:
+  - center cx = w/2, cy = h/2; ringR = min(w,h) · ringRadiusFactor; half = ringBandWidth/2.
+  - Angle uniform 0…2π. Radial offset = Gaussian(0, half·0.65) via Box-Muller. dist = ringR + offset.
+  - Radius: 70% chance 0.15–0.30, 23% chance 0.30–0.50, 7% chance 0.50–0.70.
+  - opacity 0.25–0.80, twinkleSpeed 0.3–1.3.
+- Per-frame draw:
+  - Clear, then draw each background star as a filled circle with alpha = opacity · (0.55 + 0.45·sin(t·speed + offset)·0.5+0.5). Stars with r>1.1 also draw a radial gradient glow of radius r·4 (white center alpha·0.3 → transparent).
+  - When ring=true, first paint a soft halo: radial gradient at center, inner radius ringR − ringBandWidth·4, outer radius ringR + ringBandWidth·4, stops 0 → 0.42 white 0.022 → 0.5 white 0.038 → 0.58 white 0.022 → 1 transparent.
+  - Then draw each ring star: alpha = opacity · twinkle · max(0.15, 1 − |radiusOffset|/(ringBandWidth·0.65)). Stars with r>1.0 also get a glow at radius r·5 (alpha·0.4 → 0).
+- Animation runs continuously via requestAnimationFrame, canceled on unmount.
+
+9. LineField component (SVG line + star markers)
+
+Props: variant ∈ {hero, photographer, projects, marvels, marvelsBottom} (default "hero"). Renders an absolute inset-0 SVG (viewBox 0 0 100, preserveAspectRatio none, zIndex 0, pointer-events none, select-none).
+
+Line coordinates per variant (each line is [x1, y1, x2, y2] in 0..100 percent space):
+- hero: [0,0,22,100], [50,0,82,100], [100,0,58,100], [0,35,100,80], [100,10,0,70], [30,0,100,55].
+- photographer: [22,0,14,100], [58,0,48,100], [82,0,86,100], [0,20,100,90], [100,15,0,80].
+- projects: [14,0,28,100], [48,0,64,100], [86,0,92,100], [0,30,100,75], [100,5,0,90].
+- marvels: [28,0,18,100], [64,0,50,100], [92,0,80,100], [0,15,100,85].
+- marvelsBottom: [10,30,45,35], [55,28,92,32], [8,55,40,58], [60,62,90,60], [20,78,80,82].
+
+Each line is a motion.line, stroke white, strokeWidth 0.08, strokeOpacity 0.1 (or 0.22 for the marvelsBottom variant). Animation: pathLength 0 → 1, opacity 0 → 1, duration 1.4s, delay i·0.12, EASE, triggered whileInView (viewport once, amount 0.2). transformOrigin is the line midpoint.
+
+Star markers (only for variants hero, photographer, projects):
+- hero markers: on line index 1 at t=0.38 with label "48768 gytsdactfj (7645t5.87)"; line 3 at t=0.62 label "21094 hjkpoplmn (3321q8.14)"; line 5 at t=0.28 label "90213 vbnxzlkj (5512w2.06)".
+- photographer markers: line 0 t=0.55 "33910 plkmnbvx (2287r1.92)"; line 3 t=0.72 "67452 qwertyui (8841p3.45)".
+- projects markers: line 1 t=0.41 "10248 zxcvbnma (6634k9.27)"; line 4 t=0.58 "84210 mnbvcxlk (1192s7.63)"; line 2 t=0.83 "57023 asdfghjk (4458d2.81)".
+
+Each marker is a motion.g animated opacity 0→1, scale 0→1, duration 0.8s, delay 1.2 + i·0.25, EASE, transformOrigin at the marker point. Inside: a white circle r=0.18 at opacity 0.95, and a multi-line  at x+0.5%, y-0.6% with fill white at 55% opacity, fontSize 0.5, ui-monospace family, letter-spacing 0.02em. The label string is split on spaces and each word becomes a  stacked vertically with dy 0.7em starting from the second word.
+
+10. Motion variants used across sections
+
+- blurIn: hidden { opacity 0, y 24, filter blur(14px) } → show(i=0) { opacity 1, y 0, blur 0, transition duration 1.1s, delay INTRO_DELAY + i·0.08, EASE }.
+- photoIn: hidden { opacity 0, scale 0.92, filter blur(12px) } → show(i=0) { opacity 1, scale 1, blur 0, transition duration 1.2s, delay INTRO_DELAY + 0.1 + i·0.1, EASE }.
+- Section headings and supporting paragraphs use whileInView with viewport once + margin "-100px", typical durations 1.0–1.2s, and the same EASE.
+
+11. Accessibility & misc
+
+- All decorative images use alt="" and aria-hidden.
+- prefers-reduced-motion shortens the IntroSequence to 0.1s and disables RalphHero parallax.
+- The page is single-route (/), so src/routes/index.tsx simply renders . The route's head() metadata is:
+  title "VALMAX — Ralph Edwards Photography"
+  meta description "VALMAX. Photography studio of Ralph Edwards. Crafting cinematic visual stories — portraits, landscapes, brand campaigns."
+  og:title "VALMAX — Ralph Edwards Photography"
+  og:description "Cinematic photography studio. Portraits, landscapes, brand campaigns."
+
+Dependencies
+
+react, react-dom, @tanstack/react-router, @tanstack/react-start, framer-motion, lucide-react, tailwindcss v4, tw-animate-css, vite, typescript, plus the standard shadcn-ui boilerplate. Only src/styles.css, src/routes/index.tsx, src/routes/__root.tsx, src/components/ValmaxLanding.tsx, src/components/IntroSequence.tsx, src/components/StarField.tsx, src/components/LineField.tsx and the listed assets in src/assets/ are page-specific; everything else is the default TanStack Start + shadcn template.
+
+FOR EVERY ASSETS USE THIS URL: qclay.design/lovable/valmax/
+
+I've putted everything there

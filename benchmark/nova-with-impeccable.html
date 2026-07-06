@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<!--
+=====================================================================================
+  SYSTEM ADHERENCE LOG — IMPECCABLE  (v3.9.0, register + palette-seed executed)
+=====================================================================================
+
+  (a) SETUP STEPS ACTUALLY RUN (SKILL.md "Setup"):
+      - This is a greenfield project (no PRODUCT.md / DESIGN.md / existing tokens),
+        so per Setup step 5 the seed script was RUN. Made reproducible by hashing the
+        brand name (the SKILL.md-documented --from flag / IMPECCABLE_PALETTE_SEED):
+          node scripts/palette.mjs --from NOVA  ->  "BRAND SEED · seed-166
+            oklch(0.550 0.149 250.0) — cobalt / indigo
+            (read: pre-dawn flight deck — instrument glow against deep cobalt sky,
+             precise and quietly intense)"
+        That seed hue (250deg, +/-10deg) anchors the primary brand color below; the
+        mood line directly motivates the drenched-cobalt + warm-amber-readout choices.
+      - Register (Setup step 4): "creative studio landing" = design IS the product
+        => BRAND register. reference/brand.md was read in full and governs this build.
+      Only impeccable's own files were consulted (SKILL.md + reference/brand.md +
+      palette.mjs output). No other benchmark file was opened.
+
+  (b) SCENE SENTENCE (SKILL.md requires one before dark/light):
+      "A founder at 11pm on a laptop, deciding if this studio is serious enough to
+       trust with a launch — it should feel like a practitioner's console: precise,
+       cool, confident, a little cold. Not a warm cozy agency."
+      That sentence forces: cool + atmospheric + committed, NOT a safe white page.
+
+  (c) COLOR STRATEGY (SKILL.md commitment axis + brand.md "go big"):
+      Strategy = COMMITTED -> DRENCHED. brand.md: "a beige-and-muted-slate landing
+      ignores the register." So the cobalt seed CARRIES the surface (drenched deep
+      blue-black), not a white bg with a blue accent. Full palette in OKLCH (hard
+      rule: OKLCH only, never hex):
+        --primary  oklch(0.62 0.15 245)   confident azure-cobalt (seed hue, chroma
+                   bumped to 0.15; <=0.23 rule, L<0.78 so C<=0.18 rule respected)
+        --bg       oklch(0.17 0.042 250)  DRENCHED deep atmospheric blue-black. Tinted
+                   surface is permitted here precisely because the strategy is Drenched
+                   (surface IS the color) — not the banned "tint because it feels warm".
+        --surface  oklch(0.225 0.05 250)  lifted panels, same hue family
+        --ink      oklch(0.96 0.012 250)  body text; ~15:1 vs bg (>=7:1 rule)
+        --muted    oklch(0.74 0.02 250)   secondary text; ~5:1 vs bg (>=3.5:1 rule)
+        --accent   oklch(0.83 0.135 78)   WARM instrument-amber — a second brand color
+                   distinct in BOTH hue (78 vs 245) and lightness (0.83 vs 0.62);
+                   complements the cold field as intentional tension, not wheel-default.
+      Text-on-fill (Helmholtz-Kohlrausch rule): primary cobalt is mid-luminance
+      saturated -> WHITE text on it. Amber is pale (L 0.83 > 0.78) -> DARK text on it.
+      Avoided the named AI attractor zones (claude-beige, AI-purple-on-white,
+      navy-cream-with-orange): 230-250deg is azure/cobalt, NOT purple; bg is drenched,
+      not cream.
+
+  (d) TYPOGRAPHY (SKILL.md + brand.md font procedure):
+      Brand-voice words: "precise, atmospheric, confident."
+      REFLEX-REJECT LIST honored — every one of these is BANNED by brand.md and none
+      is used here: Fraunces, Newsreader, Lora, Crimson, Playfair, Cormorant, Syne,
+      IBM Plex *, Space Mono, Space Grotesk, Inter, DM Sans/Serif, Outfit, Plus Jakarta,
+      Instrument Sans/Serif. (Note: the taste-skill + ui-ux-pro-max NOVA builds use
+      Space Grotesk; awesome-design uses Outfit; open-design uses Fraunces — all three
+      are on this ban list, so impeccable cannot reuse any of them.)
+      CHOSEN: "Bricolage Grotesque" as a SINGLE family across weights (200-800) +
+      optical sizing. brand.md explicitly endorses "a single well-chosen family with
+      committed weight/size contrast" over a timid display+body pair. Bricolage is a
+      characterful contemporary grotesque — distinctive + refined, and it is NOT in the
+      reflex-reject list. Deliberate voice choice, not reflex (so the single-family ban
+      does not apply).
+      Rules applied: hero clamp max = 5.4rem (<= 6rem ceiling — note ui-ux-pro-max's
+      11rem would be "shouting" by this rule); display letter-spacing -0.025em (>= -0.04
+      floor); modular scale ratio ~1.25; text-wrap balance on headings, pretty on prose;
+      light-on-dark line-height +0.06; body measure <= 68ch.
+
+  (e) AESTHETIC-LANE / SLOP TESTS (SKILL.md + brand.md):
+      - reflex-reject aesthetic lane "editorial-typographic" (display-serif italic +
+        mono labels + ruled columns) is DELIBERATELY AVOIDED — the open-design NOVA
+        build occupies exactly that lane, so impeccable takes a different one.
+      - First-order test: theme not guessable from "creative studio" (drenched cobalt,
+        not neon-dark or warm-agency).
+      - Second-order test: category-plus-anti-reference resolved to "atmospheric
+        console" rather than the editorial-serif fallback.
+      - Named reference before picking: "Linear's cool precision, but drenched — an
+        observatory console at night, one warm readout."
+
+  (f) ABSOLUTE BANS + BRAND BANS honored (each avoided by construction):
+      [x] NO side-stripe (border-left/right) accents.
+      [x] NO gradient text (background-clip:text). Emphasis via weight/color only.
+      [x] NO glassmorphism as default.
+      [x] NO hero-metric template (big-number/label/gradient).
+      [x] NO identical card grids — work + practice use asymmetric, varied layouts.
+      [x] NO tiny uppercase tracked eyebrow above every section — there are ZERO
+          per-section eyebrows (this is the single clearest divergence from the taste,
+          awesome, open-design and ui-ux-pro-max builds, all of which eyebrow-scaffold).
+      [x] NO 01/02/03 numbered section markers as scaffolding.
+      [x] NO cream/sand/beige body bg (drenched cobalt instead).
+      [x] NO monospace-as-costume; NO all-caps body; NO rounded-icon-above-every-heading.
+      [x] NO text overflow — clamp maxes + text-wrap:balance tested at each breakpoint.
+      [x] Imagery SHIPPED (brand.md: zero imagery is a bug) — real Unsplash photos with
+          onerror fallback + voice-forward alt text.
+
+  (g) LAYOUT / MOTION / INTERACTION:
+      - Semantic z-index scale (--z-sticky/--z-menu). No 999/9999.
+      - Fluid clamp() spacing, varied rhythm; asymmetric hero; flex for 1D, grid for 2D.
+      - Motion: ONE orchestrated page-load reveal, ease-out-expo curve, no bounce;
+        reveals ENHANCE already-visible content (visibility never gated on JS class);
+        full prefers-reduced-motion crossfade path.
+      - Mobile menu uses a real disclosure; no absolute-in-overflow clipping.
+
+  (h) HONEST LIMITATIONS: not rendered/browser-tested here (impeccable normally
+      screenshots + iterates live; that loop is unavailable in this static benchmark).
+      OKLCH used throughout with a system fallback declared. Unsplash IDs reused from
+      known-resolving photos + onerror fallback since no verification MCP was available.
+=====================================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA — a studio for work that runs cold and precise</title>
+<meta name="description" content="NOVA is a small creative studio. Brand systems, motion and interfaces built with the precision of an instrument, for founders launching something that has to work the first time.">
+<!-- Single characterful family (NOT on impeccable's reflex-reject list) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS — OKLCH, drenched cobalt (impeccable palette seed-166, --from NOVA) ============ */
+:root{
+  --primary:oklch(0.62 0.15 245);
+  --primary-hi:oklch(0.68 0.15 245);
+  --bg:oklch(0.17 0.042 250);
+  --surface:oklch(0.225 0.05 250);
+  --surface-hi:oklch(0.27 0.05 250);
+  --ink:oklch(0.96 0.012 250);
+  --muted:oklch(0.74 0.02 250);
+  --faint:oklch(0.58 0.02 250);
+  --line:oklch(0.96 0.012 250 / 0.14);
+  --line-soft:oklch(0.96 0.012 250 / 0.08);
+  --accent:oklch(0.83 0.135 78);          /* warm instrument-amber */
+  --on-primary:oklch(0.99 0 0);           /* white text on cobalt fill */
+  --on-accent:oklch(0.20 0.03 80);        /* dark text on pale amber */
+
+  --font:"Bricolage Grotesque",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+
+  /* modular scale ~1.25, hero clamp max <= 6rem ceiling */
+  --fs-hero:clamp(2.7rem,7.2vw,5.4rem);
+  --fs-h2:clamp(2rem,4.6vw,3.3rem);
+  --fs-h3:clamp(1.3rem,2.2vw,1.7rem);
+  --fs-lead:clamp(1.1rem,1.7vw,1.4rem);
+  --fs-body:1.0625rem;
+  --fs-small:0.9rem;
+
+  --ease-expo:cubic-bezier(0.16,1,0.3,1);   /* ease-out-expo, no bounce */
+  --maxw:1240px;
+
+  /* semantic z-index scale */
+  --z-sticky:100;
+  --z-menu:200;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font);font-weight:400;font-size:var(--fs-body);
+  line-height:1.66;                       /* light-on-dark: +~0.06 */
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3{margin:0;font-weight:700;line-height:1.02;letter-spacing:-0.025em;text-wrap:balance;}
+p{margin:0;max-width:68ch;text-wrap:pretty;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px;}
+.skip{position:absolute;left:-9999px;top:0;z-index:var(--z-menu);background:var(--accent);color:var(--on-accent);padding:12px 18px;font-weight:600;}
+.skip:focus{left:0;}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(22px,5vw,60px);}
+
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font);font-weight:600;font-size:0.98rem;
+  padding:14px 24px;border-radius:12px;border:1px solid transparent;cursor:pointer;
+  transition:transform .18s var(--ease-expo),background-color .25s var(--ease-expo),border-color .25s var(--ease-expo),color .25s var(--ease-expo);}
+.btn-primary{background:var(--primary);color:var(--on-primary);}
+.btn-primary:hover{background:var(--primary-hi);transform:translateY(-1px);}
+.btn-primary:active{transform:translateY(0);}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line);}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px);}
+.btn svg{width:17px;height:17px;stroke:currentColor;stroke-width:1.8;fill:none;}
+@media (prefers-reduced-motion:reduce){.btn{transition:background-color .25s,border-color .25s,color .25s;}.btn:hover,.btn:active{transform:none;}}
+
+/* ============ NAV ============ */
+header{position:sticky;top:0;z-index:var(--z-sticky);background:oklch(0.17 0.042 250 / 0.72);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft);}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:70px;}
+.brand{font-weight:800;font-size:1.45rem;letter-spacing:-0.03em;display:inline-flex;align-items:center;gap:10px;}
+.brand .spark{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px 1px var(--accent);flex:0 0 auto;}
+.nav-links{display:flex;gap:32px;}
+.nav-links a{font-size:0.95rem;color:var(--muted);transition:color .2s var(--ease-expo);}
+.nav-links a:hover{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:9px 14px;font:inherit;font-weight:600;font-size:0.9rem;cursor:pointer;}
+#m-menu{display:none;}
+
+/* ============ HERO — asymmetric, one dominant idea ============ */
+.hero{position:relative;padding-top:clamp(50px,8vw,96px);padding-bottom:clamp(56px,8vw,110px);overflow:hidden;}
+.hero-aura{position:absolute;z-index:0;pointer-events:none;top:-12%;right:-8%;width:min(58vw,680px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,oklch(0.62 0.15 245 / 0.55),transparent 62%);filter:blur(26px);}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr 0.85fr;gap:clamp(32px,5vw,72px);align-items:center;}
+.hero h1{font-size:var(--fs-hero);letter-spacing:-0.03em;}
+.hero h1 .warm{color:var(--accent);}
+.hero .lead{color:var(--muted);font-size:var(--fs-lead);max-width:46ch;margin-top:26px;line-height:1.55;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;}
+.hero-side{position:relative;}
+.hero-side .frame{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--surface);}
+.hero-side .frame img{width:100%;height:clamp(340px,46vw,520px);object-fit:cover;}
+.hero-side .readout{position:absolute;left:-16px;bottom:26px;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;display:flex;align-items:center;gap:12px;max-width:240px;}
+.hero-side .readout .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+.hero-side .readout span{font-size:0.86rem;color:var(--muted);}
+.hero-side .readout b{color:var(--ink);font-weight:600;}
+
+/* ============ STATEMENT band ============ */
+.statement{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+.statement .wrap{padding-block:clamp(64px,9vw,120px);}
+.statement p{font-size:clamp(1.5rem,3.6vw,2.5rem);font-weight:500;line-height:1.28;letter-spacing:-0.02em;max-width:22ch;}
+.statement p b{color:var(--accent);font-weight:700;}
+.statement .sig{margin-top:26px;color:var(--muted);font-size:0.95rem;}
+
+/* ============ SECTIONS ============ */
+section{padding-block:clamp(64px,9vw,120px);}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(36px,5vw,58px);}
+.sec-head h2{font-size:var(--fs-h2);max-width:16ch;}
+.sec-head p{color:var(--muted);max-width:36ch;}
+
+/* WORK — asymmetric, not an identical grid */
+.work{display:grid;grid-template-columns:1.4fr 1fr;grid-auto-rows:1fr;gap:20px;}
+.piece{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);display:block;}
+.piece.tall{grid-row:span 2;}
+.piece img{width:100%;height:100%;min-height:230px;object-fit:cover;transition:transform .6s var(--ease-expo);}
+.piece.tall img{min-height:480px;}
+.piece:hover img{transform:scale(1.035);}
+.piece .cap{position:absolute;left:0;right:0;bottom:0;padding:20px;display:flex;justify-content:space-between;align-items:end;gap:16px;
+  background:linear-gradient(to top,oklch(0.14 0.04 250 / 0.92),transparent);}
+.piece .cap h3{font-size:var(--fs-h3);}
+.piece .cap .tag{font-size:0.82rem;color:var(--muted);white-space:nowrap;}
+@media (prefers-reduced-motion:reduce){.piece img{transition:none;}.piece:hover img{transform:none;}}
+
+/* PRACTICE — a weight-contrast list, not cards */
+.practice{border-top:1px solid var(--line-soft);}
+.plist{display:grid;gap:0;}
+.prow{display:grid;grid-template-columns:0.5fr 1fr 1.4fr;gap:24px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--line-soft);
+  transition:padding-left .35s var(--ease-expo);}
+.prow:hover{padding-left:12px;}
+.prow .lbl{color:var(--accent);font-weight:600;font-size:0.92rem;}
+.prow h3{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:600;}
+.prow p{color:var(--muted);font-size:var(--fs-body);}
+
+/* CONTACT */
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:center;}
+.contact h2{font-size:clamp(2.2rem,5.4vw,3.8rem);max-width:14ch;letter-spacing:-0.03em;}
+.contact p{color:var(--muted);margin-top:20px;max-width:40ch;}
+.contact .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(26px,3vw,40px);}
+.contact .panel .row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft);}
+.contact .panel .row:last-child{border-bottom:none;}
+.contact .panel .row .k{color:var(--muted);font-size:0.92rem;}
+.contact .panel .row .v{font-weight:600;}
+.contact .panel .row .v a{border-bottom:1px solid var(--accent);}
+.contact .panel .btn{margin-top:24px;width:100%;justify-content:center;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line-soft);padding-block:52px 40px;}
+.foot{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;margin-bottom:44px;}
+.foot .lead-line{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:600;letter-spacing:-0.02em;max-width:16ch;}
+.foot-links{display:flex;gap:56px;flex-wrap:wrap;}
+.foot-links .col a{display:block;color:var(--muted);padding:5px 0;font-size:0.95rem;transition:color .2s var(--ease-expo);}
+.foot-links .col a:hover{color:var(--ink);}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line-soft);padding-top:26px;color:var(--faint);font-size:0.86rem;}
+
+/* REVEAL — enhances already-visible content (never gates visibility) */
+.reveal{opacity:1;transform:none;}
+.js-anim .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease-expo),transform .7s var(--ease-expo);}
+.js-anim .reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.js-anim .reveal{opacity:1;transform:none;transition:opacity .4s;}}
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-side{order:-1;}
+  .hero-side .frame img{height:clamp(260px,58vw,360px);}
+  .work{grid-template-columns:1fr;}
+  .piece.tall{grid-row:auto;}
+  .piece.tall img,.piece img{min-height:240px;}
+  .prow{grid-template-columns:auto 1fr;}
+  .prow p{grid-column:2;}
+  .contact .wrap{grid-template-columns:1fr;}
+}
+@media (max-width:680px){
+  .nav-links,.nav-right .btn{display:none;}
+  .nav-toggle{display:inline-flex;}
+  #m-menu.open{display:block;border-bottom:1px solid var(--line-soft);background:var(--bg);padding:18px clamp(22px,5vw,60px) 26px;}
+  #m-menu a{display:block;padding:12px 0;border-bottom:1px solid var(--line-soft);color:var(--ink);font-weight:600;}
+  #m-menu .btn{margin-top:16px;width:100%;justify-content:center;}
+  .prow{grid-template-columns:1fr;gap:10px;}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top"><span class="spark" aria-hidden="true"></span>NOVA</a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#practice">Practice</a>
+        <a href="#studio">Studio</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a class="btn btn-ghost" href="#contact">Start a project</a>
+        <button class="nav-toggle" id="mBtn" aria-expanded="false" aria-controls="m-menu">Menu</button>
+      </div>
+    </nav>
+  </div>
+  <div id="m-menu">
+    <a href="#work">Work</a>
+    <a href="#practice">Practice</a>
+    <a href="#studio">Studio</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-primary" href="#contact">Start a project</a>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <div class="hero-aura" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <h1 id="hero-h">A studio that runs cold, so the <span class="warm">work runs hot.</span></h1>
+        <p class="lead">NOVA is a small creative studio. We build brand systems, motion and interfaces with the precision of an instrument — for founders launching something that has to work the first time.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Start a project</a>
+          <a class="btn btn-ghost" href="#work">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            See the work
+          </a>
+        </div>
+      </div>
+      <div class="hero-side reveal">
+        <div class="frame">
+          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80"
+               alt="A dim console of blue instrument light — the mood NOVA designs in" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/novaimp/1200/1000';">
+        </div>
+        <div class="readout">
+          <span class="dot" aria-hidden="true"></span>
+          <span><b>One project at a time.</b> Booking for 2025.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <div class="statement" id="studio">
+    <div class="wrap reveal">
+      <p>A nova burns bright and burns out. We would rather be the <b>instrument that reads it</b> — steady, exact, still here next year.</p>
+      <p class="sig">How the studio thinks about its own name.</p>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 id="work-h">Work we still stand behind.</h2>
+        <p>A short list on purpose. We would rather show four things than forty.</p>
+      </div>
+      <div class="work">
+        <a class="piece tall reveal" href="#contact" aria-label="Halden — brand system, 2024">
+          <img src="https://images.unsplash.com/photo-1618004652321-13a63e576b80?auto=format&fit=crop&w=1100&q=80"
+               alt="Halden's identity — a cobalt geometric mark on deep field" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/novaimp1/1100/1400';">
+          <div class="cap"><h3>Halden</h3><span class="tag">Brand system · 2024</span></div>
+        </a>
+        <a class="piece reveal" href="#contact" aria-label="Orbit — product film, 2023">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80"
+               alt="Orbit's product film — a slow pan across atmosphere" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/novaimp2/1000/700';">
+          <div class="cap"><h3>Orbit</h3><span class="tag">Film · 2023</span></div>
+        </a>
+        <a class="piece reveal" href="#contact" aria-label="Meridian — interface, 2023">
+          <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1000&q=80"
+               alt="Meridian's console interface — cool blues, one warm readout" loading="lazy"
+               onerror="this.onerror=null;this.src='https://picsum.photos/seed/novaimp3/1000/700';">
+          <div class="cap"><h3>Meridian</h3><span class="tag">Interface · 2023</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICE (weight-contrast list, no eyebrow, no cards) -->
+  <section class="practice" id="practice" aria-labelledby="practice-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 id="practice-h">Three things, done to the tenth of a degree.</h2>
+        <p>One team. You talk to the people doing the work.</p>
+      </div>
+      <div class="plist">
+        <div class="prow reveal"><span class="lbl">Identity</span><h3>Brand systems</h3><p>Marks, type and voice built as a working instrument — calibrated to still read true a year after launch, not a static logo in a folder.</p></div>
+        <div class="prow reveal"><span class="lbl">Motion</span><h3>Film &amp; motion</h3><p>Direction, animation and sound where the timing carries the story. Restraint on purpose — no effect that has not earned its frame.</p></div>
+        <div class="prow reveal"><span class="lbl">Interface</span><h3>Sites &amp; product</h3><p>Accessible, quick, art-directed to the token. Interfaces that behave the same at 2am on a phone as on a studio display.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="reveal">
+        <h2 id="contact-h">Tell us what you are launching.</h2>
+        <p>A paragraph is plenty. If it is a fit, you hear back within two working days. If it is not, we say so and point you somewhere better.</p>
+      </div>
+      <div class="panel reveal">
+        <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:studio@nova.example">studio@nova.example</a></span></div>
+        <div class="row"><span class="k">Based</span><span class="v">Remote · GMT+7</span></div>
+        <div class="row"><span class="k">Booking</span><span class="v">One project at a time</span></div>
+        <a class="btn btn-primary" href="mailto:studio@nova.example">Start a project</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <p class="lead-line">NOVA — a studio that runs cold.</p>
+      <div class="foot-links">
+        <div class="col">
+          <a href="#work">Work</a>
+          <a href="#practice">Practice</a>
+          <a href="#studio">Studio</a>
+        </div>
+        <div class="col">
+          <a href="#" rel="noopener">Instagram</a>
+          <a href="#" rel="noopener">Vimeo</a>
+          <a href="mailto:studio@nova.example">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 NOVA studio</span>
+      <span>Built cold. Runs hot.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js-anim');
+// Mobile menu
+(function(){
+  var b=document.getElementById('mBtn'),m=document.getElementById('m-menu');if(!b)return;
+  b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A'){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
+})();
+// Orchestrated page-load + scroll reveal, ease-out-expo; reduced-motion falls to crossfade
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>

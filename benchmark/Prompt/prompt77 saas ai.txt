@@ -1,0 +1,1570 @@
+Recreate this exact website pixel-perfectly using TanStack Start v1 + React 19 + Vite 7 + Tailwind CSS v4 + framer-motion. Bun. Single landing page on route "/". Background is pure black (#000), text Inter Tight / Inter. No backend, no database.
+
+ASSETS — DO NOT DOWNLOAD. Reference these URLs directly:
+const MEDIA = "https://qclay.design/lovable/codeba/";
+const ICONS = "https://qclay.design/lovable/codeba/icons/";
+const BARS  = "https://qclay.design/lovable/codeba/bars/";
+Images used: Bg.png, woman.png, Card.png, 01.svg, dash02.svg, Line.svg, Card_3.png, Card_3pink.png, Card_4.png, Card_5.png
+Icons used: Logo.svg, Logo2.svg, Logo3.svg, MacDot.svg, type.svg, image-plus.svg, mouse-pointer.svg, square.svg, plus.svg, search.svg, Sr.svg, Nm.svg, ThreeDot.svg, blueArrow.svg, WhiteCursor.svg, Copy.svg, users-round.svg, webhook.svg, code-xml.svg, CheckMark.svg, figma.svg, WhiteArrowUpRight.svg
+Bars: bar0.svg .. bar5.svg
+
+DEPENDENCIES: install framer-motion.
+
+FILE: src/styles.css  (replace contents)
+------------------------------ BEGIN src/styles.css ------------------------------
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+:root {
+  --background: #000000;
+  --foreground: #f5f5f5;
+}
+
+@layer base {
+  html, body {
+    background-color: #000000;
+    color: #f5f5f5;
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@keyframes rise-up {
+  0% { opacity: 0; transform: translateY(24px); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.6); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes reveal-right {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+.anim-rise { opacity: 0; animation: rise-up 1s ease-out forwards; }
+.anim-pop  { opacity: 0; animation: pop-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.anim-reveal-right { clip-path: inset(0 100% 0 0); animation: reveal-right 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.word-stagger > span { display: inline-block; opacity: 0; animation: rise-up 0.9s ease-out forwards; }
+------------------------------ END src/styles.css ------------------------------
+
+In src/routes/__root.tsx head(), include Google Fonts:
+{ rel: "preconnect", href: "https://fonts.googleapis.com" },
+{ rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+{ rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" },
+
+FILE: src/routes/index.tsx  (replace contents exactly with the code below — pixel-perfect, do not modify any class, delay, color, or value)
+------------------------------ BEGIN src/routes/index.tsx ------------------------------
+import type * as React from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useTransform, animate, useInView as useInViewFM } from "framer-motion";
+import { createFileRoute } from "@tanstack/react-router";
+const MEDIA = "https://qclay.design/lovable/codeba/";
+const ICONS = "https://qclay.design/lovable/codeba/icons/";
+const BARS = "https://qclay.design/lovable/codeba/bars/";
+const bgAsset = { url: MEDIA + "Bg.png" };
+const womanAsset = { url: MEDIA + "woman.png" };
+const cardAsset = { url: MEDIA + "Card.png" };
+const dash01 = { url: MEDIA + "01.svg" };
+const dash02 = { url: MEDIA + "dash02.svg" };
+const dashLine = { url: MEDIA + "Line.svg" };
+const dashCard3 = { url: MEDIA + "Card_3.png" };
+const dashCard3Pink = { url: MEDIA + "Card_3pink.png" };
+const dashCard4 = { url: MEDIA + "Card_4.png" };
+const dashCard5 = { url: MEDIA + "Card_5.png" };
+const logoUrl = ICONS + "Logo.svg";
+const logo2Url = ICONS + "Logo2.svg";
+const logo3Url = ICONS + "Logo3.svg";
+const macDotUrl = ICONS + "MacDot.svg";
+const typeUrl = ICONS + "type.svg";
+const imagePlusUrl = ICONS + "image-plus.svg";
+const mousePointerUrl = ICONS + "mouse-pointer.svg";
+const squareUrl = ICONS + "square.svg";
+const plusUrl = ICONS + "plus.svg";
+const searchUrl = ICONS + "search.svg";
+const srUrl = ICONS + "Sr.svg";
+const nmUrl = ICONS + "Nm.svg";
+const threeDotUrl = ICONS + "ThreeDot.svg";
+const blueArrowUrl = ICONS + "blueArrow.svg";
+const whiteCursorUrl = ICONS + "WhiteCursor.svg";
+const copyUrl = ICONS + "Copy.svg";
+const usersRoundUrl = ICONS + "users-round.svg";
+const webhookUrl = ICONS + "webhook.svg";
+const codeXmlUrl = ICONS + "code-xml.svg";
+const checkMarkUrl = ICONS + "CheckMark.svg";
+const figmaLogoUrl = ICONS + "figma.svg";
+const whiteArrowUpRightUrl = ICONS + "WhiteArrowUpRight.svg";
+const barUrls: string[] = [0, 1, 2, 3, 4, 5].map((i) => `${BARS}bar${i}.svg`);
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "E-Endless — The easiest way to build your design products" },
+      { name: "description", content: "AI-powered content and design creator for content and marketing teams." },
+    ],
+  }),
+  component: Index,
+});
+
+const navItems = [
+  { label: "Product", active: true },
+  { label: "Our story", active: false },
+  { label: "Pricing", active: false },
+  { label: "Career", active: false },
+];
+
+function Index() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [heroReady, setHeroReady] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setHeroReady(true), 2100);
+    return () => clearTimeout(t);
+  }, []);
+  return (
+    <div className="relative w-full bg-black overflow-hidden">
+      {/* Hero */}
+      <div className="relative">
+      {/* Header */}
+      <header className="flex items-center px-[20px] pt-6">
+
+        <a href="/" className="shrink-0 anim-rise" style={{ animationDelay: "480ms" }}>
+          <img src={logoUrl} alt="Logo" width={48} height={48} />
+        </a>
+        <nav className="hidden md:flex items-center gap-[30px] ml-[80px]">
+          {navItems.map((item, i) => (
+            <a
+              key={item.label}
+              href="#"
+              className={`text-[15px] text-neutral-100 ${item.active ? "opacity-100" : "opacity-50"} hover:opacity-100 transition-opacity anim-rise`}
+              style={{ animationDelay: `${600 + i * 60}ms` }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <div className="ml-auto hidden md:block anim-pop" style={{ animationDelay: "900ms" }}>
+          <button className="bg-white text-black rounded-lg py-[11px] px-[20px] text-[15px] font-medium hover:bg-neutral-200 transition-colors">
+            Join beta
+          </button>
+        </div>
+        {/* Mobile burger */}
+        <button
+          aria-label="Open menu"
+          onClick={() => setMenuOpen(true)}
+          className="ml-auto md:hidden flex flex-col gap-1.5 p-2 anim-pop"
+          style={{ animationDelay: "600ms" }}
+        >
+          <span className="block w-6 h-0.5 bg-neutral-100" />
+          <span className="block w-6 h-0.5 bg-neutral-100" />
+          <span className="block w-6 h-0.5 bg-neutral-100" />
+        </button>
+      </header>
+
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-[100] bg-black md:hidden flex flex-col p-6">
+          <div className="flex items-center justify-between">
+            <img src={logoUrl} alt="Logo" width={48} height={48} />
+            <button
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+              className="p-2 text-neutral-100 text-3xl leading-none"
+            >
+              ×
+            </button>
+          </div>
+          <nav className="flex flex-col gap-6 mt-12">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href="#"
+                onClick={() => setMenuOpen(false)}
+                className="text-3xl text-neutral-100 font-medium"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <button className="mt-auto bg-white text-black rounded-lg py-4 text-base font-medium">
+            Join beta
+          </button>
+        </div>
+      )}
+
+      {/* Macbook window */}
+      <div className="relative mt-[10px] mx-[20px] rounded-2xl overflow-hidden anim-rise" style={{ backgroundColor: "#0F0D0F", animationDelay: "0ms" }}>
+        <div className="relative">
+          {/* Top bar */}
+          <div className="flex items-center px-6 py-4">
+            <div className="flex-1 flex items-center">
+              <img src={macDotUrl} alt="" width={60} height={12} />
+            </div>
+            <div className="flex items-center gap-2 sm:gap-4">
+              <ToolIcon src={typeUrl} className="anim-rise" style={{ animationDelay: "1140ms" }} />
+              <ToolIcon src={imagePlusUrl} className="anim-rise" style={{ animationDelay: "1200ms" }} />
+              <ToolIcon src={mousePointerUrl} className="anim-rise" style={{ animationDelay: "1260ms" }} />
+              <ToolIcon src={squareUrl} className="anim-rise" style={{ animationDelay: "1320ms" }} />
+              <ToolIcon src={plusUrl} className="anim-rise" style={{ animationDelay: "1380ms" }} />
+            </div>
+            <div className="flex-1 flex items-center justify-end gap-4">
+              <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-[10px] px-4 py-1.5 transition-colors anim-pop" style={{ animationDelay: "1440ms" }}>
+                Share
+              </button>
+              <div className="flex items-center space-x-[-10px]">
+                <img src={srUrl} alt="Sr" width={36} height={36} className="relative z-0 outline outline-2 outline-stone-950 rounded-full anim-pop" style={{ animationDelay: "1500ms" }} />
+                <img src={nmUrl} alt="Nm" width={36} height={36} className="relative z-10 outline outline-2 outline-stone-950 rounded-full anim-pop" style={{ animationDelay: "1560ms" }} />
+              </div>
+            </div>
+          </div>
+
+
+          {/* Hero content */}
+          <div className="relative overflow-hidden mx-4 mb-0 border border-white/10 rounded-2xl flex flex-col items-center text-center pt-[64px] px-6 pb-0">
+            <img
+              src={bgAsset.url}
+              alt=""
+              aria-hidden
+              className="absolute inset-0 w-full h-full object-cover z-0"
+            />
+            <div className="absolute inset-0 bg-black/80 z-0" />
+            <h1 className="relative z-10 text-[34px] leading-[38px] sm:text-7xl sm:leading-[72px] font-medium text-neutral-100 max-w-5xl tracking-tight mb-[24px] sm:mb-[32px] word-stagger">
+              <StaggeredWords text="The easiest way to build your design products." baseDelay={300} step={54} />
+            </h1>
+            <p className="relative z-10 text-base sm:text-2xl opacity-60 text-neutral-100 w-[634px] max-w-full leading-snug mb-[24px] sm:mb-[30px] word-stagger">
+              <StaggeredWords text="E-Endless designer — the AI-powered content and design creator for content and marketing teams." baseDelay={900} step={33} />
+            </p>
+            <div className="relative z-10 w-[572px] max-w-full h-12 mb-[25px]">
+              <div className="absolute inset-0 bg-neutral-900 outline outline-[1.30px] outline-white/10 rounded-xl flex items-center px-4 gap-3 anim-reveal-right" style={{ animationDelay: "1620ms", clipPath: "inset(0 100% 0 0)" }}>
+                <div className="w-5 shrink-0" />
+                <TypingPlaceholderInput placeholder="Write your prompt/" startDelay={2040} speed={70} />
+                <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-lg h-8 px-4 transition-colors">
+                  Generate
+                </button>
+              </div>
+              <img src={searchUrl} alt="" width={20} height={20} className="absolute left-4 top-1/2 -translate-y-1/2 z-20 anim-pop" style={{ animationDelay: "1500ms" }} />
+            </div>
+            <div
+              className="w-full max-w-[1124px] h-[465px] mx-auto bg-black rounded-[20px] outline outline-[1.4px] outline-neutral-100/10 flex overflow-hidden relative z-10 anim-rise"
+              style={{ animationDelay: "2100ms" }}
+            >
+              {/* Left sidebar */}
+              <aside className="w-56 shrink-0 h-full relative bg-black">
+                <motion.div
+                  className="flex items-center gap-5 px-4 py-5"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.36, delay: 0.06, ease: "easeOut" }}
+                >
+                  <span className="text-sm font-medium text-neutral-100">Layers</span>
+                  <span className="text-sm font-medium text-neutral-100 opacity-30">Assets</span>
+                </motion.div>
+                <div className="flex flex-col gap-4 p-4 w-[calc(100%+1rem)] -ml-4 pl-8 border-t border-white/10">
+                  {[
+                    <img key="d1" src={dash01.url} alt="Headlines" className="h-[34px] w-auto object-contain object-left ml-2" />,
+                    <img key="d2" src={dash02.url} alt="Images and fill" className="h-[34px] w-auto object-contain object-left ml-2" />,
+                    <div key="tools" className="flex items-center gap-3 h-9 px-2 text-neutral-300 text-sm">
+                      <span className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m14.7 6.3 3 3"/><path d="M3 21v-3l11-11 3 3L6 21z"/></svg>
+                      </span>
+                      Tools
+                    </div>,
+                    <div key="cards" className="flex items-center gap-3 h-[46px] px-1 rounded-lg bg-white/[0.08] outline outline-1 outline-white/5">
+                      <span className="w-9 h-9 ml-1 rounded-lg bg-blue-500 flex items-center justify-center">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                      </span>
+                      <span className="text-sm text-neutral-100">Cards</span>
+                    </div>,
+                    <div key="add" className="flex items-center gap-3 h-9 px-2 text-neutral-300 text-sm">
+                      <span className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                      </span>
+                      Add more
+                    </div>,
+                  ].map((node, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                      transition={{ duration: 0.72, delay: 0.12 + i * 0.2, ease: "easeOut" }}
+                    >
+                      {node}
+                    </motion.div>
+                  ))}
+                </div>
+              </aside>
+
+              {/* Right grid */}
+              <div className="flex-1 p-5 flex flex-wrap gap-x-4 gap-y-5 content-start">
+                {/* Card 1 - Beige */}
+                <motion.div
+                  className="w-96 h-60 relative bg-[#D0C9B9] rounded-2xl overflow-hidden p-5 flex flex-col text-[#131113]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.36, delay: 0.18, ease: "easeOut" }}
+                >
+                  <div className="flex justify-between relative z-10">
+                    <div className="flex flex-col">
+                      <WordsReveal as="span" className="text-xs opacity-40 -ml-[20px] block" text="Design token style" delay={0.66} step={0.048} duration={0.3} active={heroReady} />
+                      <WordsReveal as="span" className="text-2xl font-medium mt-1 block" text="17 Updated" delay={0.75} step={0.048} duration={0.3} active={heroReady} />
+                    </div>
+                    <div className="flex flex-col items-end">
+                      <WordsReveal as="span" className="text-xs opacity-40 block" text="Status" delay={0.66} step={0.048} duration={0.3} active={heroReady} />
+                      <span className="text-2xl font-medium mt-1">
+                        <CountUpInView end={93} duration={1200} delay={780} active={heroReady} />%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex justify-between w-full mt-3 relative z-10">
+                    <WordsReveal as="span" className="text-xs text-stone-950" text="Pr" delay={0.9} step={0.048} duration={0.3} active={heroReady} />
+                    <WordsReveal as="span" className="text-xs opacity-40" text="Sec" delay={0.9} step={0.048} duration={0.3} active={heroReady} />
+                  </div>
+                  <motion.div
+                    className="absolute inset-0 z-0 pointer-events-none"
+                    initial={{ clipPath: "inset(0 100% 0 0)" }}
+                    animate={heroReady ? { clipPath: "inset(0 0% 0 0)" } : { clipPath: "inset(0 100% 0 0)" }}
+                    transition={{ duration: 0.72, delay: 0.48, ease: "easeInOut" }}
+                  >
+                    <img src={dashLine.url} alt="" className="absolute inset-0 w-full h-full object-cover scale-[1.015] origin-center pointer-events-none" />
+                  </motion.div>
+                </motion.div>
+
+
+                {/* Card 2 - Pink */}
+                <motion.div
+                  className="w-36 h-60 relative rounded-2xl overflow-hidden flex flex-col justify-center items-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.36, delay: 0.24, ease: "easeOut" }}
+                >
+                  <img src={dashCard3Pink.url} alt="" className="absolute inset-0 w-full h-full object-cover z-0" />
+                  <div className="relative z-10 flex flex-col items-center">
+                    <span className="text-3xl font-medium text-neutral-900">
+                      <CountUpInView end={8000} duration={1200} delay={360} active={heroReady} />
+                    </span>
+                    <motion.span
+                      className="text-sm text-neutral-900/60 mt-1"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                      transition={{ duration: 0.3, delay: 0.42, ease: "easeOut" }}
+                    >
+                      Components
+                    </motion.span>
+                  </div>
+                </motion.div>
+
+                {/* Card 3 - Custom AI */}
+                <motion.div
+                  className="w-72 h-60 rounded-2xl overflow-hidden"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.36, delay: 0.3, ease: "easeOut" }}
+                >
+                  <img src={dashCard3.url} alt="" className="w-full h-full object-cover" />
+                </motion.div>
+
+                {/* Card 4 - Its Magic */}
+                <motion.div
+                  className="w-72 h-60 rounded-2xl overflow-hidden -mt-[56px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.36, delay: 0.36, ease: "easeOut" }}
+                >
+                  <img src={dashCard4.url} alt="" className="w-full h-full object-contain object-center" />
+                </motion.div>
+
+                {/* Card 5 - AI Created */}
+                <motion.div
+                  className="w-[555px] h-60 rounded-2xl overflow-hidden -mt-[56px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.36, delay: 0.42, ease: "easeOut" }}
+                >
+                  <img src={dashCard5.url} alt="" className="w-full h-full object-contain object-center" />
+                </motion.div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 w-full h-[300px] bg-gradient-to-t from-black via-black/90 to-transparent pointer-events-none z-50" />
+      </div>
+
+
+
+
+      {/* Features section */}
+      <section className="px-[20px] pt-[120px] pb-[120px]">
+        {/* Section header */}
+        <SectionHeader />
+
+
+
+        <FeatureCards />
+
+      </section>
+
+      {/* Stats section */}
+      <StatsSection />
+
+
+      {/* Mad for designer section */}
+      <section className="bg-black">
+        <div className="max-w-7xl mx-auto px-5 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          {/* Left column */}
+          <div className="flex flex-col gap-8">
+            <WordsReveal
+              as="h2"
+              className="text-5xl lg:text-6xl leading-tight text-white"
+              text="Mad for designer by developers"
+              step={0.08}
+              duration={0.6}
+            />
+            <WordsReveal
+              as="p"
+              className="text-2xl opacity-60 text-neutral-100 max-w-[500px]"
+              text="Anchor provides all you need to build, embed and launch banking and payment products."
+              step={0.05}
+              delay={0.3}
+              duration={0.5}
+            />
+            <motion.div
+              className="flex gap-3"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            >
+              <button className="bg-white text-black px-7 py-4 rounded-xl font-medium hover:bg-neutral-200 transition-colors">
+                How it work
+              </button>
+              <button className="bg-white/10 text-white px-7 py-4 rounded-xl font-medium hover:bg-white/20 transition-colors">
+                View code
+              </button>
+            </motion.div>
+          </div>
+
+          {/* Right column - macOS window */}
+          <motion.div
+            className="rounded-3xl border border-white/10 overflow-hidden flex flex-col"
+            style={{ backgroundColor: "#0F0D0F" }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          >
+            {/* Top bar */}
+            <div className="flex justify-between items-center px-5 py-4">
+              <img src={macDotUrl} alt="" width={60} height={12} />
+              <motion.div
+                className="flex gap-3"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ staggerChildren: 0.15, delayChildren: 0.5 }}
+              >
+                {[whiteCursorUrl, copyUrl, plusUrl].map((src, i) => (
+                  <motion.div
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                  >
+                    <ToolIcon src={src} />
+                  </motion.div>
+                ))}
+              </motion.div>
+              <motion.button
+                className="bg-white text-black text-sm px-4 py-1.5 rounded-lg font-medium hover:bg-neutral-200 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
+              >
+                Export code
+              </motion.button>
+            </div>
+
+            {/* Inner tab */}
+            <div className="mx-[20px] mb-[20px] relative rounded-2xl overflow-hidden">
+              <img src={bgAsset.url} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-black/80" />
+              <div className="relative p-10">
+                <div className="flex justify-between items-start gap-4">
+                  <WordsReveal
+                    as="h3"
+                    className="text-5xl text-white max-w-[400px] leading-tight"
+                    text="Code and design togather"
+                    step={0.08}
+                    delay={0.5}
+                    duration={0.6}
+                  />
+                  <motion.button
+                    className="size-10 bg-zinc-800 rounded-lg flex items-center justify-center shrink-0 mt-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.5, delay: 1.1, ease: "easeOut" }}
+                  >
+                    <img src={copyUrl} alt="" width={16} height={16} />
+                  </motion.button>
+                </div>
+                <Typewriter
+                  className="mt-12 text-xl opacity-60 text-neutral-100 leading-relaxed whitespace-pre-wrap font-mono"
+                  delay={1.2}
+                  speed={18}
+                  text={`color: var(--Black-on-White, #1A1A1A);
+font-variant-numeric: lining-nums proportional-nums;
+font-family: Manrope;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;`}
+                />
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+
+      {/* Pill tags section */}
+      <section className="bg-black pb-24">
+        <div className="max-w-7xl mx-auto px-5 flex flex-col gap-3 lg:gap-5">
+          <div className="flex flex-col lg:flex-row w-full gap-3 lg:gap-4">
+            <PillReveal delay={0.3}>
+              <Pill label="Developer and Designer" icon={usersRoundUrl} bg="#D0C9B9" text="text-neutral-900" iconBg="bg-black/5" invertIcon />
+            </PillReveal>
+            <PillReveal delay={0.4}>
+              <Pill label="Export ({ image})" icon={imagePlusUrl} bg="#131113" text="text-white" iconBg="bg-white/10" />
+            </PillReveal>
+            <PillReveal delay={0.5}>
+              <Pill label="Copy code" icon={copyUrl} bg="#F7C8FF" text="text-neutral-900" iconBg="bg-black/5" invertIcon />
+            </PillReveal>
+          </div>
+          <div className="flex flex-col lg:flex-row w-full gap-3 lg:gap-4">
+            <PillReveal delay={0.4}>
+              <Pill label="Engineers" icon={usersRoundUrl} bg="#131113" text="text-white" iconBg="bg-white/10" />
+            </PillReveal>
+            <PillReveal delay={0.5}>
+              <Pill label="View source code" icon={codeXmlUrl} bg="#131113" text="text-white" iconBg="bg-white/10" />
+            </PillReveal>
+            <PillReveal delay={0.6}>
+              <Pill label="Punch data" icon={webhookUrl} bg="#81FFBD" text="text-neutral-900" iconBg="bg-black/5" invertIcon />
+            </PillReveal>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Plans and Pricing section */}
+      <section className="bg-black p-5">
+        <div className="rounded-3xl px-8 py-12 sm:px-20 sm:py-20 max-w-7xl mx-auto" style={{ backgroundColor: "#D8D0BC" }}>
+          <WordsReveal
+            as="h2"
+            className="text-5xl lg:text-6xl text-stone-950 text-center mb-20 block"
+            text="Plans and Pricing"
+            step={0.1}
+            duration={0.6}
+          />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            {/* Left plan */}
+            <PricingPlan
+              price="$20"
+              description="Upgrade to unlock additional features for a more comprehensive and freedom designs"
+              features={[
+                { label: "Up to 5 Design System LITE" },
+                { label: "Standard components" },
+                { label: "Animated titles, captions, B-roll" },
+                { label: "AI Co-Producer™", dim: true },
+              ]}
+              cta="Get Started"
+              ctaClass="bg-neutral-900 text-white"
+            />
+            {/* Right plan */}
+            <PricingPlan
+              price="59"
+              description="Elevate your design game with advanced tools and exclusive features."
+              features={[
+                { label: "Unlimited Design System LITE" },
+                { label: "Pro components" },
+                { label: "Animated titles, captions, B-roll" },
+                { label: "AI Co-Producer™" },
+              ]}
+              cta="Send Message"
+              ctaClass="bg-transparent text-stone-950 border border-stone-950/50"
+            />
+          </div>
+
+          {/* Partners footer */}
+          <motion.div
+            className="mt-24 border-t border-black/10 pt-12 flex flex-wrap justify-center items-center gap-10"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ staggerChildren: 0.15, delayChildren: 0.1 }}
+          >
+            {[
+              <span key="t" className="text-3xl font-medium text-stone-950">Partners</span>,
+              <div key="bar" className="w-64 h-3 bg-stone-400/40 rounded-full relative overflow-hidden">
+                <div className="w-16 h-full bg-stone-950 rounded-full" />
+              </div>,
+              <div key="logos" className="px-6 py-2 bg-stone-200/60 rounded-xl flex gap-10 items-center">
+                <img src={figmaLogoUrl} alt="Figma" className="h-8 w-auto" />
+                <img src={logo2Url} alt="Partner" className="h-8 w-auto" />
+                <img src={logo3Url} alt="Partner" className="h-8 w-auto" />
+              </div>,
+            ].map((child, i) => (
+              <motion.div
+                key={i}
+                variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }}
+                transition={{ duration: 0.55, ease: "easeOut" }}
+              >
+                {child}
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* Updates and news section */}
+      <section className="bg-black">
+        <div className="max-w-7xl mx-auto px-5 py-24 flex flex-col gap-16 relative">
+          {/* Header row */}
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
+            <div className="flex flex-col gap-8 max-w-2xl">
+              <WordsReveal
+                as="h2"
+                className="text-5xl lg:text-6xl text-neutral-100 leading-tight block"
+                text="E-Endless designer updated and news"
+                step={0.08}
+                duration={0.6}
+              />
+              <WordsReveal
+                as="p"
+                className="text-xl lg:text-2xl opacity-60 text-neutral-100 leading-8 block"
+                text="With its latest update, E-Endless pushes the boundaries of creativity even further, offering an array of new features and enhancements to elevate your design experience."
+                step={0.04}
+                delay={0.3}
+                duration={0.5}
+              />
+            </div>
+            <motion.a
+              href="#"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+              className="inline-flex shrink-0 bg-white text-black px-7 py-4 rounded-xl font-medium text-lg hover:bg-neutral-200 transition-colors"
+            >
+              I want to learn more
+            </motion.a>
+          </div>
+
+          {/* Content row */}
+          <div className="flex flex-col lg:flex-row gap-16 relative">
+            {/* Left column - card image */}
+            <motion.div
+              className="w-full lg:w-[35%] shrink-0"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <div className="rounded-3xl overflow-hidden bg-neutral-900">
+                <img src={cardAsset.url} alt="" className="w-full h-auto block" />
+              </div>
+            </motion.div>
+
+            {/* Right column - Announcement */}
+            <div className="w-full lg:w-[65%] flex flex-col relative pb-20">
+              <div className="flex justify-between items-center mb-6">
+                <WordsReveal as="h3" className="text-4xl text-neutral-100 block" text="Announcement" step={0.1} duration={0.6} />
+                <img src={whiteArrowUpRightUrl} alt="" width={28} height={28} />
+              </div>
+              <WordsReveal
+                as="p"
+                className="text-xl lg:text-2xl text-neutral-100 opacity-60 leading-8 mb-6 block"
+                text="Revolutionize your design process with our latest AI design tool feature announcement! Introducing a groundbreaking addition to our toolkit that will transform the way you create."
+                step={0.03}
+                delay={0.2}
+                duration={0.5}
+              />
+              <WordsReveal
+                as="p"
+                className="text-xl lg:text-2xl text-neutral-100 opacity-60 leading-8 mb-6 block"
+                text="Packed with innovative features and enhancements, this release marks a significant milestone in revolutionizing the way you design and create."
+                step={0.03}
+                delay={0.4}
+                duration={0.5}
+              />
+              <WordsReveal
+                as="p"
+                className="text-xl lg:text-2xl text-neutral-100 opacity-40 leading-8 block"
+                text="Experience enhanced user experience, advanced AI capabilities, collaboration tools, an expanded asset library, performance improvements, customization options, integration with popular tools, enhanced security, and comprehensive tutorials and support – all in one update!"
+                step={0.025}
+                delay={0.6}
+                duration={0.5}
+              />
+              <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <motion.footer
+        className="bg-black border-t-2 border-neutral-100/20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+      >
+        <div className="max-w-7xl mx-auto px-2 py-16 flex flex-col gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+            <div className="md:col-span-4 flex items-center gap-4">
+              <motion.img
+                src={logoUrl}
+                alt="E-Endless"
+                className="size-12"
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              />
+              <span className="text-3xl font-medium text-neutral-100" aria-label="E-Endless">
+                {"E-Endless".split("").map((ch, i) => (
+                  <motion.span
+                    key={i}
+                    className="inline-block"
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.4, delay: 0.3 + i * 0.06, ease: "easeOut" }}
+                  >
+                    {ch}
+                  </motion.span>
+                ))}
+              </span>
+            </div>
+            <motion.nav
+              className="md:col-span-4 flex flex-col gap-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ staggerChildren: 0.12, delayChildren: 0.9 }}
+            >
+              {["About", "Privacy policy", "Terms and conditions", "Contact us"].map((l) => (
+                <motion.a
+                  key={l}
+                  className="text-base font-medium text-neutral-100 cursor-pointer hover:opacity-70 transition-opacity"
+                  variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                  {l}
+                </motion.a>
+              ))}
+            </motion.nav>
+            <motion.nav
+              className="md:col-span-4 flex flex-col gap-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ staggerChildren: 0.12, delayChildren: 1.5 }}
+            >
+              {["Twitter/X", "LinkedIn", "Instagram"].map((l) => (
+                <motion.a
+                  key={l}
+                  className="text-base font-medium text-neutral-100 cursor-pointer hover:opacity-70 transition-opacity"
+                  variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                  {l}
+                </motion.a>
+              ))}
+            </motion.nav>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
+            <div className="md:col-span-4">
+              <motion.p
+                className="text-sm font-medium text-neutral-100"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: 2.0, ease: "easeOut" }}
+              >
+                E-Endless- 2024
+              </motion.p>
+            </div>
+            <div className="md:col-span-8">
+              <p className="text-sm font-normal text-neutral-100 opacity-70 leading-5 max-w-[866px]">
+                <WordsReveal
+                  text={'Our AI design tool is committed to protecting your privacy and data security. We collect only necessary information to enhance your user experience and provide personalized services. Your data is encrypted and securely stored, accessible only to authorized personnel. We do not share your information with third parties without your consent. Rest assured, your privacy is our top priority, and we adhere to strict privacy standards and regulations. For more details on how we handle your data, please refer to our comprehensive privacy policy."'}
+                  step={0.02}
+                  delay={2.3}
+                  duration={0.4}
+                />
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.footer>
+
+    </div>
+  );
+}
+
+function PricingPlan({
+  price,
+  description,
+  features,
+  cta,
+  ctaClass,
+}: {
+  price: string;
+  description: string;
+  features: { label: string; dim?: boolean }[];
+  cta: string;
+  ctaClass: string;
+}) {
+  const item = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0 },
+  };
+  return (
+    <motion.div
+      className="flex flex-col"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ staggerChildren: 0.12, delayChildren: 0.2 }}
+    >
+      <motion.div className="flex items-baseline gap-3" variants={item} transition={{ duration: 0.55, ease: "easeOut" }}>
+        <span className="text-4xl font-medium text-stone-950">{price}</span>
+        <span className="text-2xl text-stone-950/50">/ Per Month</span>
+      </motion.div>
+      <motion.p className="text-2xl text-stone-950 mt-6" variants={item} transition={{ duration: 0.55, ease: "easeOut" }}>
+        {description}
+      </motion.p>
+      <motion.div className="border-t border-black/10 my-8" variants={item} transition={{ duration: 0.5, ease: "easeOut" }} />
+      <div className="flex flex-col gap-6">
+        {features.map((f) => (
+          <motion.div key={f.label} className="flex items-center gap-5" variants={item} transition={{ duration: 0.55, ease: "easeOut" }}>
+            <div className={`size-6 bg-stone-950 rounded-full flex justify-center items-center shrink-0 ${f.dim ? "opacity-20" : ""}`}>
+              <img src={checkMarkUrl} alt="" width={20} height={20} />
+            </div>
+            <span className="text-lg text-stone-950">{f.label}</span>
+          </motion.div>
+        ))}
+      </div>
+      <motion.button
+        className={`w-full py-4 rounded-xl font-medium mt-10 ${ctaClass}`}
+        variants={item}
+        transition={{ duration: 0.55, ease: "easeOut" }}
+      >
+        {cta}
+      </motion.button>
+    </motion.div>
+  );
+}
+
+
+function ToolIcon({ src, className, style }: { src: string; className?: string; style?: React.CSSProperties }) {
+  return (
+    <div className={`size-9 relative bg-white/10 rounded-lg flex items-center justify-center ${className ?? ""}`} style={style}>
+      <img src={src} alt="" width={20} height={20} />
+    </div>
+  );
+}
+
+function StaggeredWords({ text, baseDelay = 0, step = 90, active = true, groupSize = 1 }: { text: string; baseDelay?: number; step?: number; active?: boolean; groupSize?: number }) {
+  const words = text.split(" ");
+  return (
+    <>
+      {words.map((w, i) => {
+        const group = Math.floor(i / groupSize);
+        return (
+          <span
+            key={i}
+            style={{
+              display: "inline-block",
+              opacity: active ? undefined : 0,
+              animation: active ? "rise-up 0.9s ease-out forwards" : undefined,
+              animationDelay: active ? `${baseDelay + group * step}ms` : undefined,
+            }}
+          >
+            {w}{i < words.length - 1 ? "\u00A0" : ""}
+          </span>
+        );
+      })}
+    </>
+  );
+}
+
+function CountNumber({ to, duration = 1.5, start }: { to: number; duration?: number; start: boolean }) {
+  const mv = useMotionValue(0);
+  const rounded = useTransform(mv, (v) => Math.round(v).toString());
+  useEffect(() => {
+    if (!start) return;
+    const controls = animate(mv, to, { duration, ease: "easeOut" });
+    return () => controls.stop();
+  }, [start, to, duration, mv]);
+  return <motion.span>{rounded}</motion.span>;
+}
+
+function StatsSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInViewFM(ref, { once: true, margin: "-100px" });
+
+  // Cursor choreography keyframes (delays start after card appears ~0.6s)
+  const cursorKeyframes = {
+    opacity: [0, 1, 1, 1, 1],
+    x: [100, -125, 35, 115, 115],
+    y: [100, -10, -10, 40, 40],
+
+  };
+  const cursorTransition = {
+    duration: 2.6,
+    delay: 0.9,
+    times: [0, 0.25, 0.6, 0.85, 1],
+    ease: "easeInOut" as const,
+  };
+
+  return (
+    <section ref={ref} className="bg-black py-24">
+      <div className="max-w-7xl mx-auto px-5 flex flex-col md:flex-row items-center justify-between gap-12">
+        {/* Stat 1 */}
+        <motion.div
+          className="flex flex-col items-center text-center gap-4"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0 }}
+        >
+          <span className="text-6xl text-neutral-100">
+            <CountNumber to={47} start={inView} />%
+          </span>
+          <p className="text-2xl text-neutral-100 opacity-40 max-w-[250px]">
+            of designs build with E-endless Designer
+          </p>
+        </motion.div>
+
+        {/* Stat 2 */}
+        <motion.div
+          className="flex flex-col items-center text-center gap-4"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+        >
+          <span className="text-6xl text-neutral-100">
+            <CountNumber to={63} start={inView} />%
+          </span>
+          <p className="text-2xl text-neutral-100 opacity-40 max-w-[340px]">
+            of the top AI startups use E-Endless Designer
+          </p>
+        </motion.div>
+
+        {/* Multiplayer card */}
+        <motion.div
+          className="relative bg-neutral-900 rounded-3xl p-10 w-full max-w-[570px] overflow-hidden"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+        >
+          <p className="text-4xl text-white leading-snug">
+            We helped{" "}
+            <span className="relative inline-block align-baseline px-2 py-1">
+              {/* white sweep bar */}
+              <motion.span
+                aria-hidden
+                className="absolute inset-0 bg-white rounded-sm origin-left"
+                initial={{ scaleX: 0 }}
+                animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
+                transition={{ duration: 0.91, delay: 1.55, ease: "linear" }}
+                style={{ transformOrigin: "left center" }}
+              />
+              {/* white base text */}
+              <span className="relative font-medium text-white">build marketing</span>
+              {/* black overlay text revealed in sync with bar */}
+              <motion.span
+                aria-hidden
+                className="absolute inset-0 px-2 py-1 font-medium text-stone-950 whitespace-nowrap"
+                initial={{ clipPath: "inset(0 100% 0 0)" }}
+                animate={inView ? { clipPath: "inset(0 0% 0 0)" } : { clipPath: "inset(0 100% 0 0)" }}
+                transition={{ duration: 0.91, delay: 1.55, ease: "linear" }}
+              >
+                build marketing
+              </motion.span>
+            </span>{" "}
+            and portfolio products
+          </p>
+          {/* Animated cursor */}
+          <motion.div
+            className="absolute pointer-events-none"
+            style={{ top: "40%", left: "55%" }}
+            initial={{ opacity: 0, x: 100, y: 100 }}
+            animate={inView ? cursorKeyframes : { opacity: 0, x: 100, y: 100 }}
+            transition={cursorTransition}
+          >
+            <img src={blueArrowUrl} alt="" width={28} height={28} />
+            <span className="absolute top-[22px] left-[18px] whitespace-nowrap bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded-tr-md rounded-bl-md rounded-br-md">
+              Manager
+            </span>
+          </motion.div>
+
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function useInView<T extends HTMLElement>(rootMargin = "0px 0px -15% 0px") {
+  const ref = useRef<T>(null);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    if (!ref.current || seen) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setSeen(true); obs.disconnect(); }
+    }, { rootMargin });
+    obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [rootMargin, seen]);
+  return [ref, seen] as const;
+}
+
+function TypingPlaceholderInput({ placeholder, startDelay = 0, speed = 70 }: { placeholder: string; startDelay?: number; speed?: number }) {
+  const [shown, setShown] = useState("");
+  const [done, setDone] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    let i = 0;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const start = setTimeout(() => {
+      const tick = () => {
+        if (cancelled) return;
+        i += 1;
+        setShown(placeholder.slice(0, i));
+        if (i < placeholder.length) {
+          timer = setTimeout(tick, speed);
+        } else {
+          setDone(true);
+        }
+      };
+      tick();
+    }, startDelay);
+    return () => {
+      cancelled = true;
+      clearTimeout(start);
+      if (timer) clearTimeout(timer);
+    };
+  }, [placeholder, startDelay, speed]);
+  return (
+    <input
+      type="text"
+      placeholder={done ? placeholder : shown}
+      className="flex-1 min-w-0 bg-transparent text-sm text-neutral-100 placeholder:text-transparent sm:placeholder:text-neutral-400 outline-none"
+    />
+  );
+}
+
+function Typewriter({ text, className, speed = 20, delay = 0 }: { text: string; className?: string; speed?: number; delay?: number }) {
+  const ref = useRef<HTMLPreElement>(null);
+  const inView = useInViewFM(ref, { once: true, margin: "-80px" });
+  const [shown, setShown] = useState("");
+  useEffect(() => {
+    if (!inView) return;
+    let i = 0;
+    let raf = 0;
+    const start = setTimeout(() => {
+      const tick = () => {
+        i += 1;
+        setShown(text.slice(0, i));
+        if (i < text.length) raf = window.setTimeout(tick, speed) as unknown as number;
+      };
+      tick();
+    }, delay * 1000);
+    return () => {
+      clearTimeout(start);
+      clearTimeout(raf);
+    };
+  }, [inView, text, speed, delay]);
+  return (
+    <pre ref={ref} className={className}>
+      {shown}
+      <span className="inline-block w-[0.5ch] -mb-0.5 bg-white/60 animate-pulse" style={{ height: "1em" }} />
+    </pre>
+  );
+}
+
+
+
+function WordsReveal({
+  text,
+  className,
+  as = "span",
+  step = 0.06,
+  delay = 0,
+  duration = 0.7,
+  active,
+}: {
+  text: string;
+  className?: string;
+  as?: "span" | "h2" | "h3" | "p";
+  step?: number;
+  delay?: number;
+  duration?: number;
+  active?: boolean;
+}) {
+  const words = text.split(" ");
+  const MotionTag = motion[as] as typeof motion.span;
+  const triggerProps =
+    active === undefined
+      ? { whileInView: "visible" as const, viewport: { once: true, margin: "-80px" } }
+      : { animate: active ? ("visible" as const) : ("hidden" as const) };
+  return (
+    <MotionTag
+      className={className}
+      initial="hidden"
+      {...triggerProps}
+      transition={{ staggerChildren: step, delayChildren: delay }}
+    >
+      {words.map((w, i) => (
+        <motion.span
+          key={i}
+          style={{ display: "inline-block" }}
+          variants={{
+            hidden: { opacity: 0, y: 18 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration, ease: "easeOut" }}
+        >
+          {w}
+          {i < words.length - 1 ? "\u00A0" : ""}
+        </motion.span>
+      ))}
+    </MotionTag>
+  );
+}
+
+function SectionHeader() {
+  return (
+    <div className="flex flex-col md:flex-row items-start justify-between mb-[80px] gap-8">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="flex flex-col gap-10 w-full md:max-w-[690px]"
+      >
+        <WordsReveal
+          as="h2"
+          className="text-4xl leading-tight text-neutral-100 font-normal"
+          text="Create space for tools that matters. now create designs from scratch to stunning design with code in few seconds"
+        />
+        <div className="flex items-center gap-4">
+          <button className="bg-white text-black rounded-xl px-5 py-4 text-[15px] font-medium hover:bg-neutral-200 transition-colors">
+            Join beta now
+          </button>
+          <span className="md:hidden text-base text-neutral-500">Make things fast</span>
+        </div>
+      </motion.div>
+      <motion.p
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+        className="hidden md:block text-xl text-neutral-500 text-right shrink-0"
+      >
+        Make things fast
+      </motion.p>
+    </div>
+  );
+}
+
+function PillReveal({ delay, children }: { delay: number; children: React.ReactNode }) {
+  return (
+    <motion.div
+      className="grow flex"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+
+
+function Pill({ label, icon, bg, text, iconBg, invertIcon = false }: { label: string; icon: string; bg: string; text: string; iconBg: string; invertIcon?: boolean }) {
+  return (
+    <div
+      style={{ backgroundColor: bg }}
+      className={`h-20 w-full grow flex items-center gap-4 px-8 rounded-2xl cursor-pointer hover:scale-[1.02] transition-transform min-w-0 ${text}`}
+    >
+      <div className={`size-9 rounded-lg flex items-center justify-center shrink-0 ${iconBg}`}>
+        <img src={icon} alt="" width={20} height={20} style={invertIcon ? { filter: "brightness(0)" } : undefined} />
+      </div>
+      <span className="text-2xl font-medium truncate">{label}</span>
+    </div>
+  );
+}
+
+function ListItem({ icon, label, active = false }: { icon: string; label: string; active?: boolean }) {
+  return (
+    <div
+      className={`flex items-center gap-3 px-3 py-2.5 rounded-xl ${
+        active
+          ? "bg-white/5 bg-gradient-to-r from-[#999999]/20 via-transparent to-transparent border border-white/10 border-r-transparent border-b-transparent"
+          : "border border-transparent"
+      }`}
+
+    >
+      <div
+        className={`size-8 rounded-md flex items-center justify-center ${
+          active ? "bg-white/80" : "bg-white/5 border border-white/10"
+        }`}
+      >
+        <img
+          src={icon}
+          alt=""
+          width={16}
+          height={16}
+          style={active ? { filter: "invert(1)" } : undefined}
+        />
+      </div>
+      <span className={`text-sm text-neutral-100 ${active ? "" : "opacity-60"}`}>{label}</span>
+    </div>
+  );
+}
+
+function CountUp({ end, duration = 1500, active, format = (n: number) => n.toLocaleString("en-US") }: { end: number; duration?: number; active: boolean; format?: (n: number) => string }) {
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    if (!active) return;
+    let raf = 0;
+    const start = performance.now();
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setVal(Math.round(end * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [active, end, duration]);
+  return <>{format(val)}</>;
+}
+
+function CountUpDelayed({ end, delay, active, duration = 1800 }: { end: number; delay: number; active: boolean; duration?: number }) {
+  const [start, setStart] = useState(false);
+  useEffect(() => {
+    if (!active) return;
+    const t = setTimeout(() => setStart(true), delay);
+    return () => clearTimeout(t);
+  }, [active, delay]);
+  return <CountUp end={end} duration={duration} active={start} />;
+}
+
+function CountUpInView({ end, duration = 1500, delay = 0, format, active }: { end: number; duration?: number; delay?: number; format?: (n: number) => string; active?: boolean }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInViewFM(ref, { once: true, margin: "-100px" });
+  const trigger = active === undefined ? inView : active;
+  const [start, setStart] = useState(false);
+  useEffect(() => {
+    if (!trigger) return;
+    const t = setTimeout(() => setStart(true), delay);
+    return () => clearTimeout(t);
+  }, [trigger, delay]);
+  return <span ref={ref}><CountUp end={end} duration={duration} active={start} format={format} /></span>;
+}
+
+function RevealItem({ active, delay, type = "rise", children, className, style }: { active: boolean; delay: number; type?: "rise" | "pop"; children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
+  const anim = type === "rise"
+    ? "rise-up 1s ease-out forwards"
+    : "pop-in 0.7s cubic-bezier(0.22,1,0.36,1) forwards";
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        opacity: active ? undefined : 0,
+        animation: active ? anim : undefined,
+        animationDelay: active ? `${delay}ms` : undefined,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function FeatureCards() {
+  const cardAnim = (delay: number) => ({
+    initial: { opacity: 0, y: 50 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" },
+    transition: { duration: 0.7, delay, ease: "easeOut" as const },
+  });
+  const [countActive, setCountActive] = useState(false);
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-[30px]">
+      {/* Card 1 */}
+      <motion.div
+        {...cardAnim(0.1)}
+        className="relative h-[520px] rounded-3xl overflow-hidden bg-neutral-950 flex flex-col items-center text-center pt-12 px-6"
+        style={{ backgroundImage: "radial-gradient(ellipse at 31% -7%, rgba(255,255,255,0.05), transparent)" }}
+      >
+        <WordsReveal as="h3" className="text-4xl text-neutral-100 leading-tight" text="A assistant to create your design" delay={0.2} />
+        <WordsReveal as="p" className="mt-6 text-base opacity-40 text-neutral-100 max-w-[320px]" text="Insert blocks, perform powerful actions and leverage the limitless power of AI - all without leaving your keyboard" delay={0.5} step={0.04} duration={0.6} />
+        <motion.div
+          className="absolute bottom-0 left-5 right-5 bg-white/5 border border-white/5 rounded-t-2xl p-3 pt-[30px] flex flex-col gap-1"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: { opacity: 0, y: 60 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut", delayChildren: 0.5, staggerChildren: 0.15 } },
+          }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+        >
+          {[
+            { icon: typeUrl, label: "Headlines", active: true },
+            { icon: imagePlusUrl, label: "Images and fill" },
+            { icon: squareUrl, label: "Tools" },
+          ].map((it) => (
+            <motion.div
+              key={it.label}
+              variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <ListItem icon={it.icon} label={it.label} active={it.active} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Card 2 */}
+      <motion.div
+        {...cardAnim(0.3)}
+        className="relative h-[520px] rounded-3xl overflow-hidden bg-neutral-900 flex flex-col items-center text-center pt-12 px-6"
+      >
+        <WordsReveal as="h3" className="text-4xl text-neutral-100 leading-tight" text="AI helps to generate images free" delay={0.4} />
+        <WordsReveal as="p" className="mt-6 text-base opacity-40 text-neutral-100 max-w-[340px]" text="With endless, all it takes to create professional-grade images is a browser and a story to tell—no experience required." delay={0.7} step={0.04} duration={0.6} />
+        <motion.div
+          className="mt-4 flex justify-center gap-2"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ staggerChildren: 0.12, delayChildren: 1.0 }}
+        >
+          {["V1.0", "v2.0", "Remaster"].map((t) => (
+            <motion.span
+              key={t}
+              variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="bg-white/10 text-neutral-100 text-xs opacity-40 rounded-md px-2 py-1"
+            >
+              {t}
+            </motion.span>
+          ))}
+        </motion.div>
+        <motion.div
+          className="absolute bottom-0 w-1/2 left-1/2 h-[240px]"
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.5 }}
+          style={{ x: "-50%" }}
+        >
+          <img src={womanAsset.url} alt="" className="w-full h-full object-cover object-top rounded-t-2xl" />
+          <button className="absolute top-10 -right-6 bg-white text-black text-sm font-medium rounded-lg px-3 py-1.5 shadow-lg">
+            Regenerate
+          </button>
+        </motion.div>
+      </motion.div>
+
+      {/* Card 3 */}
+      <motion.div
+        {...cardAnim(0.5)}
+        onViewportEnter={() => setCountActive(true)}
+        className="relative h-[520px] rounded-3xl overflow-hidden"
+        style={{ backgroundColor: "#D0C9B9" }}
+      >
+        <div className="flex items-start justify-between p-6 pb-0">
+          <div>
+            <WordsReveal as="p" className="text-2xl opacity-40 text-neutral-900" text="Get audience" delay={0.6} step={0.08} />
+            <WordsReveal
+              as="h3"
+              className="mt-1 text-neutral-900 leading-tight text-[36px] font-normal [font-family:'Inter_Tight',sans-serif]"
+              text="Our search engine optimazation"
+              delay={0.85}
+              step={0.07}
+            />
+          </div>
+          <img src={threeDotUrl} alt="" className="mt-3 shrink-0" />
+        </div>
+        <motion.div
+          className="absolute bottom-[80px] left-0 w-full h-[180px] px-6 flex items-end justify-between gap-2 overflow-hidden"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ staggerChildren: 0.1, delayChildren: 0.7 }}
+        >
+          {["33%", "16%", "72%", "36%", "88%", "22%"].map((h, i) => (
+            <motion.div
+              key={i}
+              className="relative w-full flex items-end"
+              style={{ height: h }}
+              variants={{ hidden: {}, visible: {} }}
+            >
+              <motion.div
+                className="relative w-full h-full flex flex-col"
+                variants={{
+                  hidden: { y: "100%" },
+                  visible: { y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+                }}
+              >
+                <div className="w-full h-1.5 bg-black shrink-0 z-20" />
+                <div className="relative w-full flex-1 overflow-hidden">
+                  <motion.div
+                    className="absolute inset-0 w-full z-0"
+                    style={{
+                      backgroundImage:
+                        "repeating-linear-gradient(-45deg, rgba(0,0,0,0.06) 0, rgba(0,0,0,0.06) 8px, rgba(0,0,0,0.12) 8px, rgba(0,0,0,0.12) 16px)",
+                      backgroundSize: "22.63px 22.63px",
+                    }}
+                    animate={{ backgroundPosition: ["0px 0px", "22.63px 0px"] }}
+                    transition={{ repeat: Infinity, ease: "linear", duration: 1.5 }}
+                  />
+                  <motion.div
+                    className="absolute inset-0 bg-black z-10"
+                    variants={{
+                      hidden: { y: "0%" },
+                      visible: { y: "-100%", transition: { duration: 0.4, delay: 0.4, ease: "easeOut" } },
+                    }}
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+        <div className="absolute bottom-0 left-0 w-full h-[80px] flex items-end pb-4 px-6 gap-2">
+          <span className="text-4xl text-neutral-900 leading-none">
+            <CountUp end={27000} duration={3200} active={countActive} />
+          </span>
+          <span className="text-base text-neutral-900/80 leading-none pb-1">new visitors</span>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+// Force clean production rebuild trigger
+------------------------------ END src/routes/index.tsx ------------------------------
+
+ROUTE META (set in createFileRoute("/")):
+title: "E-Endless — The easiest way to build your design products"
+description: "AI-powered content and design creator for content and marketing teams."
+
+PAGE STRUCTURE / LAYER HIERARCHY (top to bottom):
+1) Root wrapper: relative w-full bg-black overflow-hidden
+2) Hero block:
+   - Header (px-[20px] pt-6): Logo (48x48) | nav links [Product (active), Our story, Pricing, Career] with opacity-50 idle / 100 active | right side "Join beta" white pill button | mobile hamburger that opens a full-screen black overlay.
+   - Macbook window card (mx-[20px] mt-[10px] rounded-2xl, bg #0F0D0F):
+     * Top bar: MacDot (60x12) on left | 5 tool icons (type, image-plus, mouse-pointer, square, plus) each in a 36x36 white/10 rounded-lg | blue "Share" button (rounded-[10px], bg blue-500) | two avatars (Sr.svg, Nm.svg) overlapping with -10px spacing, ringed with stone-950.
+     * Hero panel (mx-4, rounded-2xl, border white/10): Bg.png cover + black/80 overlay; H1 staggered words "The easiest way to build your design products." (text-7xl medium); subtitle "E-Endless designer — the AI-powered content and design creator for content and marketing teams." (opacity-60); search-style input (572x48, bg neutral-900, outline white/10, rounded-xl) with search icon and typing placeholder "Write your prompt/" + blue "Generate" button.
+     * Dashboard preview card (max-w 1124, h 465, bg black, rounded-[20px], outline white/10):
+        Left aside (w-56): tabs row "Layers" (active) and "Assets" (opacity-30); list items below border-t white/10:
+          - 01.svg row (Headlines, height 34)
+          - dash02.svg row (Images and fill, height 34)
+          - "Tools" row with 36x36 white/5 box + inline SVG pen icon
+          - "Cards" active row: 46h, bg white/[0.08] outline white/5; 36x36 blue-500 box with grid icon
+          - "Add more" row: 36x36 white/5 + plus icon
+        Right grid (flex-wrap gap-x-4 gap-y-5):
+          Card1 96x60 beige #D0C9B9: "Design token style / 17 Updated" left, "Status / 93%" right (count up to 93%), bottom row "Pr" / "Sec", Line.svg sweep clip-path reveal.
+          Card2 36x60 (Card_3pink.png bg): "8000" count + "Components".
+          Card3 72x60 (Card_3.png cover).
+          Card4 72x60 (Card_4.png contain, -mt 56).
+          Card5 555x60 (Card_5.png contain, -mt 56).
+     * Black gradient at bottom of hero (h 300, from-black to transparent).
+3) Features section (px-[20px] py-[120px]):
+   - SectionHeader: H2 word-reveal "Create space for tools that matters. now create designs from scratch to stunning design with code in few seconds" (text-4xl), white "Join beta now" button, right-aligned "Make things fast" subtitle.
+   - FeatureCards 3-col grid gap-[30px], each h-[520px] rounded-3xl:
+       Card1 bg neutral-950 with radial gradient at top-left, H3 "A assistant to create your design", body text, bottom panel with 3 ListItem rows (Headlines active, Images and fill, Tools).
+       Card2 bg neutral-900, H3 "AI helps to generate images free", tag pills V1.0/v2.0/Remaster, woman.png at bottom-center w-1/2 h-240, "Regenerate" white pill button.
+       Card3 bg #D0C9B9, "Get audience" + H3 "Our search engine optimazation", ThreeDot icon, animated barchart of 6 bars (heights 33,16,72,36,88,22 %) with diagonal stripe pattern that scrolls; bottom CountUp to 27000 + "new visitors".
+4) StatsSection (py-24): two stats "47% of designs build with E-endless Designer", "63% of the top AI startups use E-Endless Designer" (count up on in-view); Multiplayer card bg neutral-900 rounded-3xl text-4xl "We helped [build marketing] and portfolio products" — the bracket animates: white sweep bar grows scaleX 0->1 while a black text overlay reveals via clip-path simultaneously. Animated cursor (blueArrow.svg + "Manager" tag in blue-500) does keyframed move: opacity [0,1,1,1,1], x [100,-125,35,115,115], y [100,-10,-10,40,40], duration 2.6, delay 0.9, times [0,0.25,0.6,0.85,1].
+5) "Mad for designer" section: two columns; left H2 "Mad for designer by developers", subtitle "Anchor provides all you need to build, embed and launch banking and payment products.", buttons "How it work" (white) + "View code" (white/10). Right Macbook window bg #0F0D0F: MacDot, 3 tool icons (WhiteCursor, Copy, plus), white "Export code" button; inner tab with Bg.png + black/80, H3 "Code and design togather", small copy button (zinc-800), Typewriter renders CSS block:
+       color: var(--Black-on-White, #1A1A1A);
+       font-variant-numeric: lining-nums proportional-nums;
+       font-family: Manrope;
+       font-size: 12px;
+       font-style: normal;
+       font-weight: 500;
+       line-height: normal;
+   with a pulsing block caret.
+6) Pill tags section (two rows of 3 pills, h-20 rounded-2xl text-2xl):
+   Row1: "Developer and Designer" (bg #D0C9B9, users-round, inverted icon)
+         "Export ({ image})" (bg #131113, image-plus)
+         "Copy code" (bg #F7C8FF, copy, inverted)
+   Row2: "Engineers" (#131113, users-round)
+         "View source code" (#131113, code-xml)
+         "Punch data" (#81FFBD, webhook, inverted)
+   Each icon in 36x36 rounded-lg. Hover scale 1.02.
+7) Plans and Pricing section: outer p-5; inner rounded-3xl bg #D8D0BC px-20 py-20 max-w-7xl. Centered H2 "Plans and Pricing" text-6xl. 2-col plans:
+   Left "$20 / Per Month", description "Upgrade to unlock additional features for a more comprehensive and freedom designs", features: Up to 5 Design System LITE, Standard components, Animated titles captions B-roll, AI Co-Producer™ (dim opacity-20), CTA "Get Started" (bg neutral-900 white).
+   Right "59 / Per Month", description "Elevate your design game with advanced tools and exclusive features.", features same first three + AI Co-Producer™ (active), CTA "Send Message" (transparent border stone-950/50).
+   Each feature row: 24px stone-950 circle with CheckMark icon.
+   Partners footer: border-t black/10 pt-12, "Partners" text-3xl, segmented progress bar (w-64 h-3 stone-400/40 with w-16 stone-950 fill), pill bg stone-200/60 with figma.svg + Logo2.svg + Logo3.svg.
+8) Updates and news section: H2 "E-Endless designer updated and news", subtitle "With its latest update, E-Endless pushes the boundaries of creativity even further, offering an array of new features and enhancements to elevate your design experience.", white CTA "I want to learn more". Two columns: left Card.png in rounded-3xl bg neutral-900; right column with H3 "Announcement" + WhiteArrowUpRight icon, three paragraphs (opacity 60, 60, 40):
+   p1: "Revolutionize your design process with our latest AI design tool feature announcement! Introducing a groundbreaking addition to our toolkit that will transform the way you create."
+   p2: "Packed with innovative features and enhancements, this release marks a significant milestone in revolutionizing the way you design and create."
+   p3: "Experience enhanced user experience, advanced AI capabilities, collaboration tools, an expanded asset library, performance improvements, customization options, integration with popular tools, enhanced security, and comprehensive tutorials and support – all in one update!"
+   Bottom black gradient (h-48) over right column.
+9) Footer: border-t neutral-100/20, 12-col grid. Brand: Logo.svg (48) + animated letter-stagger "E-Endless" text-3xl. Two link columns: [About, Privacy policy, Terms and conditions, Contact us] and [Twitter/X, LinkedIn, Instagram]. Bottom row: "E-Endless- 2024" plus a long privacy paragraph (word-stagger reveal) starting "Our AI design tool is committed to protecting your privacy...".
+
+ANIMATIONS (must match exactly — all values are in the source code above):
+- Hero entry: header logo/nav/button rise/pop with staggered delays 480/600+60i/900/1140-1560ms.
+- Hero headline + subtitle: StaggeredWords word rise (rise-up 0.9s ease-out), baseDelay 300/900ms, step 54/33ms.
+- Search bar: clip-path reveal-right at 1620ms; search icon pop at 1500ms; typing placeholder starts 2040ms speed 70ms/char.
+- Dashboard appears at 2100ms (anim-rise 1s ease-out); inside, framer-motion children rise (y20->0) with stagger after heroReady.
+- Beige Card1 has Line.svg revealed left-to-right via clip-path 0.72s ease-in-out delay 0.48s after heroReady; counts (93, 8000) animate via custom CountUp easing 1-(1-p)^3 over 1200ms.
+- All scroll-triggered sections use framer-motion whileInView with viewport margin "-80px" or "-100px", once: true.
+- WordsReveal: split text into words, hidden {opacity:0,y:18} -> visible {opacity:1,y:0}, staggerChildren default 0.06, duration default 0.7.
+- StatsSection: cursor keyframes as specified above; white sweep + black text clip-path reveal both duration 0.91, delay 1.55, linear.
+- FeatureCards Card3 bars: per-bar height stays fixed; inner column slides up from y:100% to 0 (0.4s easeOut), then a black overlay slides up off (y:0% -> -100%) 0.4s after 0.4s delay, revealing diagonal stripe pattern that infinitely scrolls (backgroundPosition 0 -> 22.63px, 1.5s linear repeat). Top edge is a 6px solid black cap.
+- Footer "E-Endless" letters individually stagger in (0.06s).
+- Typewriter writes the CSS block character-by-character on view, 18ms/char, after 1.2s delay; trailing pulsing caret span.
+
+COLORS / TOKENS (exact values seen in code):
+black #000, hero card bg #0F0D0F, beige #D0C9B9, pink card (image), pricing tan #D8D0BC, mint #81FFBD, pink pill #F7C8FF, dark pill #131113, primary blue Tailwind blue-500/600.
+
+CONSTRAINTS:
+- Use TanStack Start file-routing; only edit src/routes/__root.tsx (meta + fonts) and src/routes/index.tsx and src/styles.css.
+- Do not create src/pages or React Router.
+- Do not download or re-host the remote images/icons — always reference the qclay.design URLs above.
+- Do not change any class name, pixel value, color, delay, duration, ease, or text string from the provided source.
+
+Verify after build: page loads on "/", all images render from qclay.design, every animation fires (hero on load, the rest on scroll), no console errors.

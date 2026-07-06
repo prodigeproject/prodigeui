@@ -25,12 +25,40 @@ From `craft/design-read.md`, use MOTION_INTENSITY to decide:
 
 **Mandatory rule:** For an agency/portfolio/premium/experimental brief (MOTION ≥ 7), a fully
 static page (only CSS fade-ins) is a **FAIL** — it needs at least one engine-grade interactive
-moment. Conversely, at MOTION ≤ 6 (B2B/SaaS/dashboard/trust-first) CSS craft + Lenis + ONE
-scroll-driven moment is enough — do NOT bolt Three.js / heavy WebGL onto it (over-engineering
-is its own slop). Three.js, shader backgrounds, particles, and audio-reactivity are MOTION 7+ moves.
+moment. At MOTION ≤ 6 (a plain B2B/SaaS/dashboard/trust-first surface) CSS craft + Lenis + ONE
+scroll-driven moment is enough. BUT this is a floor, not a cap: a B2B product **positioned as
+a premium launch** legitimately earns agency-grade motion (MOTION 8-9) — a concept-tied
+particle/constellation field (e.g. "the network we observe"), pinned feature sequencing,
+scrubbed product reveals. The caution is against RANDOM decoration and jank on a
+working-tool surface, NOT against ambition on a marketing page. If the brief wants premium,
+go premium (the FlowAI high-motion build is the reference). What is genuinely wrong is
+bolting heavy WebGL onto the *in-app product UI* (dashboards, editors) where users work daily.
+Three.js, shader backgrounds, particles, and audio-reactivity are MOTION 7+ moves.
 
 **Always:** feature-detect, lazy-init on visibility, disable/reduce under
 `prefers-reduced-motion`, and downgrade on mobile (no heavy WebGL on low-power devices).
+
+**Anchor taste priority (learned the hard way — the NOVA v5 lesson).** "Engine-grade" is not
+enough; the *choice* of engine element decides whether it reads premium or as AI-techy slop.
+Rank the hero anchor best → worst and pick the highest that fits the concept:
+1. **A real 3D product / object** (R3F/Three.js) — e.g. Infinite Machine's vehicle. Best when
+   there's a physical or brandable object.
+2. **A scroll-scrubbed real product-UI walkthrough** — pinned device/screen advancing through
+   states (Plasma, Tokens Studio). Best for software.
+3. **A restrained generative shader tied to the concept** (kept dim, behind content).
+4. **A particle / constellation field — LAST resort.** Pointer-reactive dot-and-line fields
+   and floating low-poly blobs are now clichés; they satisfy "moving pixels" while reading as
+   generic. Use only with a genuine conceptual reason AND a distinct visual treatment, never
+   as the default "make it feel alive" move. Prefer options 1–3.
+Also prefer a **committed refined accent** on the anchor over a fluorescent one (see
+`taste.md` anti-neon guard) — a neon particle field is the double-slop combination.
+
+**Modern stack additions** (beyond the vanilla recipes below): in a React/Next context reach
+for **React Three Fiber + drei** for option 1, **Framer Motion** for component/layout motion
+and `whileInView`, and **WAAPI** (`element.animate`) for interruptible one-off
+micro-interactions (button press, toast, count-up) instead of a library. View Transitions API
+for state/page morphs. All still obey the auto-trigger + fallback contract at the bottom of
+this file.
 
 ---
 
