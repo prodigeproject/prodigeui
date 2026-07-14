@@ -47,8 +47,10 @@ for(const target of targets)for(const viewport of viewports){
   },target);
   const intendedDisplay=target.display.test(probe.h1.font||'');
   const row={target:target.key,family:target.family,viewport:viewport.name,...probe,intendedDisplay,disclosureKeyboard,keyboardFocus,external,errors};rows.push(row);
-  await page.screenshot({path:resolve(directory,`shot-${target.key}-${viewport.name}-hero.png`),fullPage:false});
-  await page.screenshot({path:resolve(directory,`shot-${target.key}-${viewport.name}-full.png`),fullPage:true});
+  if(target.key.endsWith('-proof')){
+    await page.screenshot({path:resolve(directory,`shot-${target.key}-${viewport.name}-hero.png`),fullPage:false});
+    await page.screenshot({path:resolve(directory,`shot-${target.key}-${viewport.name}-full.png`),fullPage:true});
+  }
   if(probe.overflow||probe.hiddenMeaningful||probe.brokenMedia||probe.smallTargets||probe.contrastFailures.length||probe.h1.clipped||!probe.closingContinuity||!intendedDisplay||!keyboardFocus||external.length||errors.length||(target.disclosure&&disclosureKeyboard!==true)||(target.engine&&probe.engineReady!=='true'))failed=true;
   await page.close();
 }
