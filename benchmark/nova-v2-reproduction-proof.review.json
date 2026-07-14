@@ -1,0 +1,24 @@
+{
+  "artifact": "nova-v2-reproduction-proof.html",
+  "criteria": [
+    {"id":"keyboard-operable","status":"pass","evidence":["All actions are native anchors with visible focus and logical source order."]},
+    {"id":"spacing-consistency","status":"pass","evidence":["Poster-scale intervals, compact labels, and editorial section spacing form distinct but repeated rhythm bands."]},
+    {"id":"type-role-integrity","status":"pass","evidence":["Arial Black owns proposition and project display, Georgia owns editorial belief, and DM Mono owns navigation, captions, and metadata."]},
+    {"id":"closing-cta-color-continuity","status":"pass","evidence":["The close resolves the established cream, ink, cobalt, coral, and yellow roles without introducing a new hue."]},
+    {"id":"quality-profile-transfer","status":"pass","evidence":["The expressive profile is reproduced through a proposition-led hero, concept-tied transmission field, authored campaign artwork, and varied editorial rhythm."]},
+    {"id":"grid-adherence","status":"pass","evidence":["The hero, staggered work sequence, belief split, utility list, and close use intentional axes without forcing subjects into equal frames."]},
+    {"id":"state-coverage","status":"pass","evidence":["Navigation and circular contact action own focus, hover, active, and reduced-motion behavior."]},
+    {"id":"visual-hierarchy","status":"pass","evidence":["The proposition is the first read; signal artwork amplifies it; editorial thesis and studio caption remain subordinate."]},
+    {"id":"anti-slop-patterns","status":"pass","evidence":["No generic agency card grid, stock image, gradient-mesh subject, glass surface, or interchangeable service cards are present."]},
+    {"id":"craft-presence","status":"pass","evidence":["Staggered headline, live signal engine, varied campaign fields, owned captions, and poster/editorial counterpoint form an authored system."]},
+    {"id":"hero-real-focal-subject","status":"pass","evidence":["The signal transmission engine is concept-bound to the promise that a moment can travel."]},
+    {"id":"real-media-not-placeholder","status":"pass","evidence":["Every visual is finished code-authored campaign matter; no placeholder rectangles or unloaded media are used."]},
+    {"id":"display-type-deliberate","status":"pass","evidence":["Display type carries only poster claims and work identity; editorial and UI voices keep stable separate functions."]},
+    {"id":"mechanical-taste","status":"pass","evidence":["Rings, stripes, offsets, rules, and labels repeat as a transmission/print language rather than random decoration."]},
+    {"id":"decorative-glow-containment","status":"pass","evidence":["The canvas uses crisp rings and particles without glow; it remains subordinate behind the proposition."]},
+    {"id":"progressive-disclosure","status":"pass","evidence":["The short studio narrative is directly scannable and does not add unnecessary hidden interaction."]},
+    {"id":"feedback-timing","status":"pass","evidence":["The contact action responds within 300ms and transition duration collapses under reduced motion."]},
+    {"id":"proximity-grouping","status":"pass","evidence":["Each work title and discipline owns a stable local backdrop over its authored artwork."]},
+    {"id":"working-memory-limit","status":"pass","evidence":["Four navigation destinations and four practice roles remain within a single scannable set."]}
+  ]
+}

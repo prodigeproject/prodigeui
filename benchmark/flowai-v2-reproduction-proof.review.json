@@ -1,0 +1,24 @@
+{
+  "artifact": "flowai-v2-reproduction-proof.html",
+  "criteria": [
+    {"id":"keyboard-operable","status":"pass","evidence":["Native links and details controls follow logical keyboard order with visible focus."]},
+    {"id":"spacing-consistency","status":"pass","evidence":["Operational density and section breathing room reuse a coherent spacing cadence."]},
+    {"id":"type-role-integrity","status":"pass","evidence":["Recursive owns display hierarchy, Manrope owns reading/actions, and DM Mono is restricted to evidence metadata."]},
+    {"id":"closing-cta-color-continuity","status":"pass","evidence":["The close returns to established forest and signal-coral roles."]},
+    {"id":"quality-profile-transfer","status":"pass","evidence":["A first-viewport release decision includes risk, PR, time, owner, confidence, impact, and next action."]},
+    {"id":"grid-adherence","status":"pass","evidence":["Hero, evidence ribbon, capability ledger, pricing, FAQ, and close share one controlled alignment system."]},
+    {"id":"state-coverage","status":"pass","evidence":["Links and details own hover/focus/open behavior and reduced-motion fallback."]},
+    {"id":"visual-hierarchy","status":"pass","evidence":["Headline and decision record share dominance; navigation, assurance, and metrics remain subordinate."]},
+    {"id":"anti-slop-patterns","status":"pass","evidence":["The page varies layout families and avoids generic KPI dashboards, equal feature cards, glow, glass, and decorative AI effects."]},
+    {"id":"craft-presence","status":"pass","evidence":["The offset decision record, evidence ledger, time afterimage, and operational type roles are product-specific."]},
+    {"id":"hero-real-focal-subject","status":"pass","evidence":["The product state proves how live work changes a sprint sequence."]},
+    {"id":"real-media-not-placeholder","status":"pass","evidence":["The authored product state is complete evidence rather than placeholder media."]},
+    {"id":"display-type-deliberate","status":"pass","evidence":["Recursive variable display settings retain technical-human word shapes on desktop and mobile."]},
+    {"id":"mechanical-taste","status":"pass","evidence":["Rules, pills, mono labels, and offsets consistently encode operating semantics."]},
+    {"id":"decorative-glow-containment","status":"pass","evidence":["No glow is used; one restrained artifact shadow owns separation."]},
+    {"id":"progressive-disclosure","status":"pass","evidence":["FAQ uses native disclosure while core product evidence stays visible."]},
+    {"id":"feedback-timing","status":"pass","evidence":["Action transitions complete in 180ms and collapse under reduced motion."]},
+    {"id":"proximity-grouping","status":"pass","evidence":["Risk, ownership, recommendation, pricing benefits, and FAQ answers are grouped by task."]},
+    {"id":"working-memory-limit","status":"pass","evidence":["Navigation and each decision set remain within compact scannable limits."]}
+  ]
+}

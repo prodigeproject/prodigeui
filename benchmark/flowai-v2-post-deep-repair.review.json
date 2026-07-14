@@ -1,0 +1,24 @@
+{
+  "artifact": "flowai-v2-post-deep-repair.html",
+  "criteria": [
+    {"id":"keyboard-operable","status":"pass","evidence":["Native links, details/summary controls, and visible focus treatment cover all interactions."]},
+    {"id":"spacing-consistency","status":"pass","evidence":["The page uses repeated 12/18/22/28/42/72px relationships with larger section intervals reserved for pacing."]},
+    {"id":"type-role-integrity","status":"pass","evidence":["Recursive carries editorial technical hierarchy, Manrope carries reading/actions, and DM Mono appears only on operational metadata."]},
+    {"id":"closing-cta-color-continuity","status":"pass","evidence":["The close returns to the forest operational surface and signal coral established in the hero artifact."]},
+    {"id":"quality-profile-transfer","status":"pass","evidence":["The operational profile is visible through a first-viewport plan change with owner, PR, timestamp, risk, confidence, and next decision."]},
+    {"id":"grid-adherence","status":"pass","evidence":["Hero, evidence ribbon, feature ledger, pricing, FAQ, and close share one controlled wrap and intentional column changes."]},
+    {"id":"state-coverage","status":"pass","evidence":["Links own hover and focus states; FAQ uses native open/closed states; CTA surfaces own foreground colors."]},
+    {"id":"visual-hierarchy","status":"pass","evidence":["Headline and credible sprint artifact dominate; assurance, metrics, and navigation remain subordinate."]},
+    {"id":"anti-slop-patterns","status":"pass","evidence":["The full page changes layout families and avoids repeated generic feature cards, glow, glass, and decorative dashboard chrome."]},
+    {"id":"craft-presence","status":"pass","evidence":["The skewed decision record, evidence ledger, operational typography, and timestamp afterimage are product-specific authored choices."]},
+    {"id":"hero-real-focal-subject","status":"pass","evidence":["The hero subject is a legible sprint-risk decision, not a decorative analytics shell."]},
+    {"id":"real-media-not-placeholder","status":"pass","evidence":["No placeholder media is used; the authored HTML product state is the required evidence artifact."]},
+    {"id":"display-type-deliberate","status":"pass","evidence":["Recursive variable settings and moderate tracking create technical-human authority without compressed word shapes."]},
+    {"id":"mechanical-taste","status":"pass","evidence":["Borders, pills, mono labels, and alignment are used for operating semantics rather than indiscriminate decoration."]},
+    {"id":"decorative-glow-containment","status":"pass","evidence":["No decorative glow is present; the single shadow separates the product artifact from the paper surface."]},
+    {"id":"progressive-disclosure","status":"pass","evidence":["Four FAQ answers use native details disclosure while essential product evidence remains immediately visible."]},
+    {"id":"feedback-timing","status":"pass","evidence":["Hover transitions are 180ms and reduced-motion collapses transitions to 0.01ms."]},
+    {"id":"proximity-grouping","status":"pass","evidence":["Evidence, ownership, recommendation, plan benefits, and FAQ answers are spatially grouped by their information jobs."]},
+    {"id":"working-memory-limit","status":"pass","evidence":["Primary navigation has four destinations; each feature and pricing plan exposes one scannable decision set."]}
+  ]
+}
