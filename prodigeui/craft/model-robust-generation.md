@@ -25,6 +25,23 @@ habits but not an explicit user direction.
    clipped text, horizontal overflow, dead space, and computed foreground/background for
    every interactive state. Scan for mojibake before delivery.
 
+## Accepted v2 quality-profile transfer
+
+Read `canonical/accepted-quality.profile.json` before making the six required generation
+decisions. Select `operationalProduct` or `expressiveStudio` only when the current brief
+actually matches it, and record the match in working context.
+
+This profile transfers a quality threshold, not a visual template. Keep its product intent,
+artifact semantics, type-role discipline, palette commitment, focal hierarchy, rhythm
+argument, and closing behavior. Derive fresh copy and composition from the current brief.
+Never load benchmark HTML, retrieve its headline, reproduce its section order, or encode its
+dimensions and color values. `benchmarkGeometryAllowed` is false.
+
+For a no-reference verification run, fail and revise when the output is technically clean but
+loses the selected profile's value mechanism, credible artifact, type-role contrast, committed
+palette story, or rhythm. "Different" is allowed; falling back to a generic product or agency
+template is not.
+
 ## Reference-quality defaults when the brief is vague
 
 - Use 4-5 distinct layout families across a full landing page. Never repeat equal cards for

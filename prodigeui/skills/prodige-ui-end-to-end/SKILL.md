@@ -48,6 +48,13 @@ Actions:
    prove that the selected fonts rendered and the closing CTA continues an established color
    role rather than inventing a new one.
 
+   Read `canonical/accepted-quality.profile.json` immediately after the generation contract.
+   When the brief matches `operationalProduct` or `expressiveStudio`, transfer its semantic
+   quality invariants into the six decisions. Do not read or imitate benchmark HTML: the
+   profile explicitly forbids benchmark geometry, copy, section order, dimensions, and color
+   retrieval. A fresh no-reference run must still preserve the selected profile's value
+   mechanism, credible artifact, type-role discipline, palette commitment, rhythm, and close.
+
 5. **Route: invent vs reach for a real system.** Read `craft/design-system-routing.md`.
    If design SERVES the product (dashboard, admin, enterprise, regulated), consider an
    official design system (Fluent/Carbon/Material/Radix/shadcn/govuk/uswds) before building

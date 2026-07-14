@@ -269,6 +269,11 @@
       "status": "created"
     },
     {
+      "path": "canonical/accepted-quality.profile.json",
+      "type": "configuration",
+      "status": "created"
+    },
+    {
       "path": "canonical/generation.contract.json",
       "type": "configuration",
       "status": "created"

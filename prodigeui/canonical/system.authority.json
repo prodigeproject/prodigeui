@@ -13,6 +13,7 @@
     "assets": "assets/assets.manifest.json",
     "templates": "prompt-templates/**/*.template.json",
     "generationContract": "canonical/generation.contract.json",
+    "acceptedQualityProfile": "canonical/accepted-quality.profile.json",
     "modelRobustGuidance": "craft/model-robust-generation.md",
     "typographyRules": "design-rules/typography.rules.json",
     "colorRules": "design-rules/color.rules.json",

@@ -79,6 +79,13 @@
       "severity": "fail"
     },
     {
+      "id": "quality-profile-transfer",
+      "category": "quality",
+      "description": "When a canonical accepted quality profile applies, the output transfers its semantic product intent, artifact credibility, type roles, palette commitment, focal hierarchy, rhythm, and closing behavior without copying benchmark copy or geometry.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
       "id": "weight-limit",
       "category": "design-rules",
       "description": "Maximum 3-4 font weights used",

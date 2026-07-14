@@ -41,6 +41,32 @@ else if (existsSync(join(ROOT, generationContractPath))) {
   }
 }
 
+const acceptedQualityProfilePath = authority.sources.acceptedQualityProfile;
+if (!acceptedQualityProfilePath) failures.push('accepted-quality-profile-source missing');
+else if (existsSync(join(ROOT, acceptedQualityProfilePath))) {
+  const profile = read(acceptedQualityProfilePath);
+  if (profile.benchmarkGeometryAllowed !== false) failures.push('accepted-quality-profile permits benchmark geometry');
+  for (const lane of ['operationalProduct', 'expressiveStudio']) {
+    const entry = profile.profiles?.[lane];
+    if (!entry) {
+      failures.push(`accepted-quality-profile missing ${lane}`);
+      continue;
+    }
+    for (const field of ['productIntent', 'artifactSemantics', 'typeRoles', 'paletteCommitment', 'focalHierarchy', 'rhythmArgument', 'closingBehavior', 'reject']) {
+      if (!entry[field] || (Array.isArray(entry[field]) && entry[field].length === 0)) failures.push(`accepted-quality-profile ${lane} missing ${field}`);
+    }
+  }
+  const robustGuidance = readFileSync(join(ROOT, authority.sources.modelRobustGuidance), 'utf8');
+  if (!robustGuidance.includes('canonical/accepted-quality.profile.json')) failures.push('model-robust-guidance does not consume accepted quality profile');
+  const endToEndSkill = readFileSync(join(ROOT, 'skills/prodige-ui-end-to-end/SKILL.md'), 'utf8');
+  if (!endToEndSkill.includes('canonical/accepted-quality.profile.json')) failures.push('end-to-end-skill does not consume accepted quality profile');
+  const qualityPath = authority.sources.qualityCriteria;
+  if (qualityPath && existsSync(join(ROOT, qualityPath))) {
+    const ids = new Set((read(qualityPath).criteria || []).map(item => item.id));
+    for (const id of (profile.requiredQualityCriteria || [])) if (!ids.has(id)) failures.push(`accepted-quality-criterion missing ${id}`);
+  }
+}
+
 const walk = dir => readdirSync(dir, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(join(dir,e.name)) : [join(dir,e.name)]);
 const motionPresetFiles = walk(join(ROOT,'motion/presets')).filter(f=>f.endsWith('.json'));
 const motionIds = new Set();
