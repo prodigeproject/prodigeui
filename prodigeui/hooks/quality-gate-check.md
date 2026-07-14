@@ -14,6 +14,11 @@ Evaluates the generated output against all Quality Gate criteria defined in `qua
 2. The hook loads `quality-gate/criteria.json` and `quality-gate/anti-ai-slop.checklist.md`.
 3. Each criterion is evaluated against the generated output.
 4. A report is produced with overall pass/fail status.
+5. `npm run quality-gate` must also pass canonical authority, provenance, normative
+   precedence, semantic references, all-theme contrast, bidirectional manifest, and
+   generated-artifact freshness.
+6. Generated HTML is separately checked for UTF-8 integrity, runtime errors, reduced-motion
+   final visibility, focus/keyboard basics, target size, broken assets, and overflow.
 
 ## Integration
 

@@ -1,6 +1,7 @@
+
 # Anti-AI-Slop Checklist
 
-> **Purpose:** Identify and reject GENERIC, low-effort AI output — WITHOUT punishing
+> **Purpose:** Identify and reject GENERIC, low-effort AI output â€” WITHOUT punishing
 > intentional craft. Every design output MUST be evaluated against this checklist before
 > passing the Quality Gate.
 >
@@ -14,14 +15,14 @@
 >
 > **Two things must both be true for expressive output:**
 > 1. It avoids the generic AI defaults below (the negative gate).
-> 2. It actually demonstrates craft — advanced technique, choreography, texture,
+> 2. It actually demonstrates craft â€” advanced technique, choreography, texture,
 >    distinctive typography (the positive gate, see "Craft Presence Check" below and
 >    `quality-gate/positive-patterns.md`). Avoiding slop is necessary but NOT sufficient.
 >
 > **Severity levels:**
-> - **FAIL** — Hard block. Must be fixed before shipping. These are correctness and
+> - **FAIL** â€” Hard block. Must be fixed before shipping. These are correctness and
 >   accessibility failures that are universal regardless of aesthetic ambition.
-> - **FLAG** — A slop *signal*. Investigate intent. Passes if the technique is purposeful
+> - **FLAG** â€” A slop *signal*. Investigate intent. Passes if the technique is purposeful
 >   and well-executed; fails only if it is a purposeless generic default.
 >
 > **Sources:** taste-skill-main (primary anti-slop methodology), impeccable-main,
@@ -35,6 +36,19 @@
 
 These patterns indicate fundamental quality failures. Presence of ANY = automatic fail.
 
+### C0. Rendered intent failure
+
+- **FAIL:** Fewer than three visible decisions are specific enough that they could only belong
+  to the current product; generic palette, generic type pairing, and generic cards do not count.
+- **FAIL:** The intended display/identity webfont is declared but the rendered element uses an
+  accidental fallback after `document.fonts.ready`.
+- **FAIL:** Entrance effects leave meaningful content invisible during no-JS, reduced-motion,
+  or animation-disabled review.
+- **FAIL:** Artwork text or an interactive surface relies on inherited foreground or arbitrary
+  image pixels instead of owning a verified foreground/background treatment.
+- **FAIL:** An output imitates benchmark geometry or uses a fixed topology recipe to satisfy
+  this gate. The gate protects product-specific reasoning, not visual sameness.
+
 > **Craft exception for FAIL #1, #5, and typography-scale:** Fluid and computed values
 > that are *systematic* are NOT raw-value violations. `clamp(2.5rem, 14vw, 17.5rem)` for a
 > display headline, `translateX(-50%)`, viewport units for full-bleed layout, and
@@ -43,7 +57,7 @@ These patterns indicate fundamental quality failures. Presence of ANY = automati
 > one-off values with no system (`padding: 13px`, `#4a4a4a` picked at random). Judge
 > "is this part of a coherent system?" not "is this a token literal?" Standalone
 > one-file deliverables (a single HTML landing page) may inline a token layer via CSS
-> variables or a Tailwind config rather than the full three-layer JSON — that is fine.
+> variables or a Tailwind config rather than the full three-layer JSON â€” that is fine.
 
 ### 1. Raw Values Instead of Tokens
 
@@ -137,20 +151,20 @@ These patterns indicate fundamental quality failures. Presence of ANY = automati
 
 ---
 
-## FAIL Indicators — Composition & Focal Subject (added after the NOVA regression)
+## FAIL Indicators â€” Composition & Focal Subject (added after the NOVA regression)
 
 These are the hard rules that would have caught the messy NOVA output. They apply to
 expressive use-cases (landing, portfolio, launch, brand, creative tool).
 
-### C1. No real focal subject in the hero → FAIL (expressive)
-- **What to check:** The hero must be anchored by a REAL focal subject — full-bleed video,
+### C1. No real focal subject in the hero â†’ FAIL (expressive)
+- **What to check:** The hero must be anchored by a REAL focal subject â€” full-bleed video,
   real photography, a product/UI artifact, a 3D render, OR deliberate oversized display type.
 - **Why:** ~83% of the 73 benchmark heroes use real media; a hero with no real subject reads
   as empty and generic. This is the single biggest cause of "competent but forgettable."
 - **Violation:** text floating on a plain/animated background with no image, video, product,
   or genuine type-as-subject. See `craft/compositions/`.
 
-### C2. Blurry CSS gradient / mesh as the hero background → FAIL (expressive)
+### C2. Blurry CSS gradient / mesh as the hero background â†’ FAIL (expressive)
 - **What to check:** The hero background is a large blurred CSS gradient/mesh/radial "soup"
   standing in for a real subject.
 - **Why:** This is THE NOVA failure and a top AI tell. Gradient-mesh-as-subject appears in 0
@@ -159,12 +173,12 @@ expressive use-cases (landing, portfolio, launch, brand, creative tool).
 - **Fix:** use the `giant-type-hero` (type as subject) or `cinematic-video-hero` (real video)
   composition instead.
 
-### C2b. Absolute-positioned element without positioned parent → FAIL
+### C2b. Absolute-positioned element without positioned parent â†’ FAIL
 - **What to check:** Any element with `position:absolute` whose intended containing parent
   does NOT have `position:relative` (or absolute/fixed).
 - **Why:** The element escapes to the nearest positioned ancestor (or viewport).
   Percentage-based `width`/`height` then compute against an unintended (often much larger)
-  container — a small toggle thumb renders at 50% of the VIEWPORT width instead of 50% of
+  container â€” a small toggle thumb renders at 50% of the VIEWPORT width instead of 50% of
   its toggle parent. This is the exact cause of "giant colored circle" bugs.
 - **Common violations:**
   - Segmented control / toggle `.thumb` without `position:relative` on the toggle wrapper
@@ -174,30 +188,41 @@ expressive use-cases (landing, portfolio, launch, brand, creative tool).
   intended containing block) has `position:relative`.
 - **Fix:** Add `position:relative` to the intended parent container.
 
-### C2c. Segmented control text invisible on active thumb → FAIL
+### C2c. Segmented control text invisible on active thumb â†’ FAIL
 - **What to check:** When the sliding thumb (accent-colored) is behind the active option,
   ALL text in that option must be readable against the thumb color. Child elements like
-  discount badges ("−20%") that keep their accent color become invisible on an accent
+  discount badges ("âˆ’20%") that keep their accent color become invisible on an accent
   background.
-- **Why:** The text is literally the same hue as the surface behind it — zero contrast.
+- **Why:** The text is literally the same hue as the surface behind it â€” zero contrast.
 - **How to detect:** Click each option; check that every piece of text (including small
   badges/labels) is legible in the active state.
 - **Fix:** `[aria-checked="true"]{color:var(--accent-ink)}` must cascade to ALL children.
   Use `[aria-checked="true"] .badge{color:inherit}` or set explicitly.
 
-### C3. Placeholder boxes / no real media on expressive work → FAIL (expressive)
+### C3. Placeholder boxes / no real media on expressive work â†’ FAIL (expressive)
 - **What to check:** Gray `bg-gray-200` rectangles, div-based fake screenshots, or "image
   here" placeholders where real media belongs.
 - **Why:** Real images/video are mandatory when the brief implies them. Placeholder boxes =
   unfinished. See `assets/asset-sourcing.guide.md`.
 
-### C4. Muddy stacked-texture hero (low contrast) → FAIL
+### C3e. Inherited foreground collides with a component surface â†’ FAIL
+- **Check:** Render every button, menu item, tab, popover, badge, and pricing CTA inside
+  both light and dark parents. A component that sets a surface but inherits text color can
+  become white-on-white or dark-on-dark even when theme tokens pass.
+- **Rule:** A component that owns its background must own its foreground in the same CSS
+  rule. Descendant labels and icons inherit from that component root. Test computed styles
+  for default, hover, focus, active, selected, disabled, and open states.
+- **FAIL example:** `.featured { color:white } .btn { background:white }` without an
+  explicit button foreground. Its label becomes invisible inside the featured card.
+- **Fix:** `.btn { background:var(--button-bg); color:var(--button-fg) } .btn *{color:inherit}`.
+
+### C4. Muddy stacked-texture hero (low contrast) â†’ FAIL
 - **What to check:** Multiple semi-transparent texture layers stacked (blurred gradient +
   heavy grain + faint ghost text + low-contrast type) producing a muddy, low-legibility hero.
 - **Why:** The NOVA hero stacked exactly these. Texture must serve legibility and depth, not
-  fight it. Verify headline contrast ≥ 4.5:1 over the actual background.
+  fight it. Verify headline contrast â‰¥ 4.5:1 over the actual background.
 
-### C5. Untouched system/Inter display type at hero scale → FAIL (expressive)
+### C5. Untouched system/Inter display type at hero scale â†’ FAIL (expressive)
 - **What to check:** The giant headline uses the default system font or Inter as the DISPLAY
   face with default tracking.
 - **Why:** Distinctive display typography is the near-universal benchmark signature. Run the
@@ -207,27 +232,27 @@ expressive use-cases (landing, portfolio, launch, brand, creative tool).
 
 ---
 
-## FLAG Indicators — Slop Signals (investigate intent, don't auto-reject)
+## FLAG Indicators â€” Slop Signals (investigate intent, don't auto-reject)
 
 > **How to read a FLAG:** Each item has a **SLOP form** (the generic, purposeless default
-> — this is what we reject) and a **CRAFT form** (the same territory, done with intent and
-> execution — this PASSES). Do not reject the technique. Reject the *purposelessness*.
+> â€” this is what we reject) and a **CRAFT form** (the same territory, done with intent and
+> execution â€” this PASSES). Do not reject the technique. Reject the *purposelessness*.
 > The discriminator question tells you which one you're looking at.
 
 ### 11. Purple/blue "default AI" gradient
-- **SLOP:** Purple→blue gradient chosen as the accent because it's the model's default,
+- **SLOP:** Purpleâ†’blue gradient chosen as the accent because it's the model's default,
   unrelated to any brand or concept.
 - **CRAFT:** A deliberate, concept-driven gradient (brand colors, a duotone that matches
-  the photography, a warm sunset ramp for a travel product) — or a single confident accent.
+  the photography, a warm sunset ramp for a travel product) â€” or a single confident accent.
 - **Discriminator:** *Does the palette derive from the concept/brand, or is it the
   model's reflex?* Reject only the reflex.
 
 ### 12. Centered hero on a dark gradient/mesh
 - **SLOP:** Centered headline + subtext + two buttons on a generic dark mesh, no media,
-  no texture, no motion — the "Lorem ipsum" of layouts.
+  no texture, no motion â€” the "Lorem ipsum" of layouts.
 - **CRAFT:** A centered hero over a **crossfading video** or real photography, with grain,
   liquid-glass chrome, and a choreographed entrance (see `craft/patterns/video-hero-crossfade.md`).
-  Many reference sites ARE centered heroes — executed with depth and media.
+  Many reference sites ARE centered heroes â€” executed with depth and media.
 - **Discriminator:** *Is there real media, texture, and motion, or is it a flat empty gradient?*
 
 ### 13. Three equal feature cards
@@ -240,7 +265,7 @@ expressive use-cases (landing, portfolio, launch, brand, creative tool).
 ### 14. Inter + slate-900 by reflex
 - **SLOP:** Inter + slate as the default because it's the Tailwind starting point, with
   no display face and no typographic personality.
-- **CRAFT:** An intentional pairing — a display font (Anton, Instrument Serif, Kanit,
+- **CRAFT:** An intentional pairing â€” a display font (Anton, Instrument Serif, Kanit,
   Playfair, Helvetica Now Display) for headlines at fluid `clamp()` scale with tight
   tracking, and a clean body face (see `craft/patterns/fluid-display-type.md`). Inter is
   fine as a *body* face when paired with a display face and chosen deliberately.
@@ -256,16 +281,16 @@ expressive use-cases (landing, portfolio, launch, brand, creative tool).
   decoration on a flat background?*
 
 ### 16. Many type sizes
-- **SLOP:** Random, unrelated sizes with no ratio — typographic chaos.
+- **SLOP:** Random, unrelated sizes with no ratio â€” typographic chaos.
 - **CRAFT:** A fluid display ramp (giant hero, section headings, lead, body) that reads as
   intentional even with several sizes, because they follow a coherent scale/rhythm.
 - **Discriminator:** *Do the sizes follow a system (modular or fluid), or are they
   arbitrary?* Count is less important than coherence.
 
 ### 17. Decorative animation
-- **SLOP:** Motion sprinkled on everything with no sequence — things wobble for no reason.
-- **CRAFT:** **Choreographed** motion — staggered word reveals, scroll-linked opacity,
-  ambient video, marquees — that sets mood and guides the eye deliberately (see
+- **SLOP:** Motion sprinkled on everything with no sequence â€” things wobble for no reason.
+- **CRAFT:** **Choreographed** motion â€” staggered word reveals, scroll-linked opacity,
+  ambient video, marquees â€” that sets mood and guides the eye deliberately (see
   `motion/choreography.md`). Expressive pages SHOULD have rich, purposeful motion.
 - **Discriminator:** *Is the motion choreographed and mood-setting, or random and
   sprinkled?* Ambient/brand motion is legitimate on expressive pages; on high-frequency
@@ -291,7 +316,7 @@ expressive use-cases (landing, portfolio, launch, brand, creative tool).
 ### 21. Generic CTA copy
 - **SLOP:** "Get Started" / "Learn More" / "Click Here" with no specificity.
 - **CRAFT:** Outcome-specific copy ("Start your 14-day trial", "See the work", "Claim a
-  spot"). Still applies — generic copy is almost always improvable.
+  spot"). Still applies â€” generic copy is almost always improvable.
 
 ### 22. Gradient borders
 - **SLOP:** Rainbow borders everywhere as noise.
@@ -301,7 +326,7 @@ expressive use-cases (landing, portfolio, launch, brand, creative tool).
 
 ### 23. Uniform large radius
 - **SLOP:** `rounded-2xl` reflexively on every element with no radius system.
-- **CRAFT:** A radius SYSTEM (large for containers/cards, smaller for nested controls) —
+- **CRAFT:** A radius SYSTEM (large for containers/cards, smaller for nested controls) â€”
   and note some reference brands DO use heavy uniform radius as a signature. Intent again.
 - **Discriminator:** *Is radius part of a system or applied without thought?*
 
@@ -320,10 +345,10 @@ expressive use-cases (landing, portfolio, launch, brand, creative tool).
 
 ---
 
-## Craft Presence Check (Positive Gate — for expressive use-cases)
+## Craft Presence Check (Positive Gate â€” for expressive use-cases)
 
 Avoiding slop is necessary but NOT sufficient. For expressive use-cases (landing,
-portfolio, product launch, brand, creative tool — anything with `DESIGN_VARIANCE >= 0.6`
+portfolio, product launch, brand, creative tool â€” anything with `DESIGN_VARIANCE >= 0.6`
 or `MOTION_INTENSITY >= 0.5`), the output must ALSO demonstrate craft. If it passes every
 FAIL/FLAG above but is flat and forgettable, it **fails the craft presence check**.
 
@@ -331,16 +356,16 @@ Verify at least the following for expressive output (see `quality-gate/positive-
 for the full rubric):
 
 - [ ] **A hero signature technique** is present (crossfading video, cursor spotlight,
-      magnetic hero element, giant fluid display type, or equivalent) — not just a
+      magnetic hero element, giant fluid display type, or equivalent) â€” not just a
       centered headline on a color.
 - [ ] **Choreographed motion** exists (staggered/scroll-linked entrance, not just fade-in),
       with a reduced-motion fallback.
 - [ ] **Texture / depth** is present (grain overlay, liquid glass, real shadows, layered
-      z-index) — the page is not a flat color field.
-- [ ] **Distinctive typography** — a display face at real scale with intentional tracking,
+      z-index) â€” the page is not a flat color field.
+- [ ] **Distinctive typography** â€” a display face at real scale with intentional tracking,
       not the untouched system/Inter default.
 - [ ] **Real media** where the concept calls for it (video/image), not gray placeholder
-      boxes — see `assets/asset-sourcing.guide.md`.
+      boxes â€” see `assets/asset-sourcing.guide.md`.
 - [ ] **A clear focal point** per viewport (one dominant element), not uniform weight.
 
 Reference the `craft/` library to implement these. Output that fails the craft presence
@@ -348,39 +373,47 @@ check should loop back to Step 6 (Motion) / craft selection, not ship.
 
 ---
 
-## Mechanical taste checks (fast, binary — from `craft/taste.md`)
+## Mechanical taste checks (fast, binary â€” from `craft/taste.md`)
 
 Run these as quick pass/fail scans; each is a known AI tell when violated by reflex:
 - [ ] **Exact banned accent hex** (open-design linted P0): the accent is NOT one of the
       default-indigo tells `#6366f1 #4f46e5 #4338ca #3730a3 #8b5cf6 #7c3aed #a855f7`. These
       are the textbook AI accent; if present without explicit brand justification, it fails.
 - [ ] **Accent overuse cap:** the accent appears at most ~2 visible times per screen (a
-      rendered `var(--accent)` used 6+ times across the body is a fail — it stops being an
+      rendered `var(--accent)` used 6+ times across the body is a fail â€” it stops being an
       accent). One confident accent, used with restraint.
 - [ ] **Em-dash:** none in generated copy (headlines, body, captions). Use period/comma/restructure.
-- [ ] **Cream/beige body background** not used as the default (OKLCH L 0.84–0.97, C<0.06, hue
-      40–100; token names `--paper/--cream/--sand/--bone/--linen`). Carry warmth via accent + imagery.
-- [ ] **Eyebrow count** ≤ `ceil(sections / 3)` (tiny uppercase tracked kickers). Often drop entirely.
+- [ ] **Cream/beige body background** not used as the default (OKLCH L 0.84â€“0.97, C<0.06, hue
+      40â€“100; token names `--paper/--cream/--sand/--bone/--linen`). Carry warmth via accent + imagery.
+- [ ] **Eyebrow count** â‰¤ `ceil(sections / 3)` (tiny uppercase tracked kickers). Often drop entirely.
 - [ ] **No `<img>` hover-scale** (incl. `group-hover:scale` on a child image). Animate the card instead.
 - [ ] **No gradient text** (`background-clip:text`) as a default flourish (deliberate accent word only).
 - [ ] **No hero-metric template** (giant number + label + gradient) as scaffolding.
-- [ ] **No side-stripe borders, ghost-cards** (1px border + ≥16px shadow), **over-rounding** (>16px cards by reflex).
+- [ ] **No side-stripe borders, ghost-cards** (1px border + â‰¥16px shadow), **over-rounding** (>16px cards by reflex).
 - [ ] **CTA copy** describes an outcome ("Start 14-day trial"), never "Get Started".
+- [ ] **Type jobs are explicit:** display owns identity/hierarchy, body owns reading/actions,
+      and mono/annotation is limited to structured metadata. A single accidental fallback
+      voice across all three jobs fails.
+- [ ] **Font render truth:** after `document.fonts.ready`, computed hero typography matches
+      the declared display face. A silent condensed/system fallback fails even if CSS names a
+      custom family.
+- [ ] **Closing CTA color continuity:** the final CTA resolves an established signal/accent or
+      primary surface. No new hue or muddy near-match appears only at the bottom of the page.
 - [ ] **Two-altitude slop test** passes (theme/palette not guessable from category, nor from category + obvious anti-reference).
 - [ ] **Third-altitude (house-style) test** passes: the palette family is NOT the ProdigeUI
       default reflex (dark near-black + one warm ember/vermilion accent + big grotesk) shipped
-      by habit — it was routed from the product's meaning (light/dark, hue, commitment). See taste.md.
+      by habit â€” it was routed from the product's meaning (light/dark, hue, commitment). See taste.md.
 - [ ] **No dead negative space**: no full-viewport hero or tall CTA/contact block left with
       large empty bands; every decorative `position:absolute` layer (blob/glow/ghost) is
       confirmed still absolute (not forced in-flow by an equal-specificity `.parent>*` rule).
 - [ ] **Real images/logos** present where the brief implies them; no div-fake screenshots.
-- [ ] **CTA wrap:** primary CTA fits one line at desktop (≤3 words). No wrapped CTA.
+- [ ] **CTA wrap:** primary CTA fits one line at desktop (â‰¤3 words). No wrapped CTA.
 - [ ] **No duplicate CTA intent:** one label per intent across the whole page.
-- [ ] **Nav one line + ≤80px tall** at desktop; no two-line nav.
-- [ ] **Zigzag cap ≤2** consecutive image+text splits; ≥4 layout families per ~8 sections.
-- [ ] **Bento cell count = content count**; no empty tile; ≥2–3 cells with real visual variation.
+- [ ] **Nav one line + â‰¤80px tall** at desktop; no two-line nav.
+- [ ] **Zigzag cap â‰¤2** consecutive image+text splits; â‰¥4 layout families per ~8 sections.
+- [ ] **Bento cell count = content count**; no empty tile; â‰¥2â€“3 cells with real visual variation.
 - [ ] **No split-header** (big-headline-left + small-explainer-right) by reflex.
-- [ ] **Hero top padding ≤ pt-24**; consistency locks hold (one accent, one radius system,
+- [ ] **Hero top padding â‰¤ pt-24**; consistency locks hold (one accent, one radius system,
       one shadow scale, one icon family + stroke width, page-wide).
 - [ ] **Italic descender clearance** on display italics (`leading-[1.1]`+ reserve).
 - [ ] **No emoji as icons**; one icon family; no hand-rolled SVG icon paths.
@@ -390,13 +423,13 @@ Run these as quick pass/fail scans; each is a known AI tell when violated by ref
       move, the voice/microcopy, one memorable micro-interaction, and one detail only
       someone who used the product would add.
 - [ ] **Outsider screenshot test:** if someone outside the project screenshots the page,
-      could they identify which product it is? If yes → it has soul. If it's an
-      interchangeable template → it hasn't shipped craft yet (loops back to craft selection).
+      could they identify which product it is? If yes â†’ it has soul. If it's an
+      interchangeable template â†’ it hasn't shipped craft yet (loops back to craft selection).
 
 ### Motion-craft checks (from `craft/patterns/motion-craft.md`)
 - [ ] **No animation on 100+/day or keyboard-triggered actions** (command palette, shortcuts).
-- [ ] **Committed easing** — no weak built-in `ease-in` on UI; entrances use a strong custom
-      `ease-out` (`cubic-bezier(0.23,1,0.32,1)`); exits ~60–75% of enter duration.
+- [ ] **Committed easing** â€” no weak built-in `ease-in` on UI; entrances use a strong custom
+      `ease-out` (`cubic-bezier(0.23,1,0.32,1)`); exits ~60â€“75% of enter duration.
 - [ ] **No `scale(0)` entrance** (use `scale(0.95)`+opacity); popovers/dropdowns/tooltips are
       origin-aware (`transform-origin` from trigger); modals stay centered.
 - [ ] **Interruptible** rapid UI (toasts/toggles/drag) uses transitions/springs, not keyframes.
@@ -417,51 +450,51 @@ See `craft/taste.md` for the full rationale and the font/color procedures;
 `craft/patterns/motion-craft.md` and `craft/patterns/interaction-patterns.md` for the
 implementation detail behind the last three groups.
 
-## The Seven Cardinal Sins (Open Design — P0 Lint Blocks)
+## The Seven Cardinal Sins (Open Design â€” P0 Lint Blocks)
 
 These are the patterns that read as "AI generated this" to any experienced designer.
 Presence of ANY in the final output = automatic FAIL (unless the brief explicitly justifies it).
 
-### Sin 1. Default Tailwind Indigo as Accent → FAIL
+### Sin 1. Default Tailwind Indigo as Accent â†’ FAIL
 - **Banned hex values:** `#6366f1`, `#4f46e5`, `#4338ca`, `#3730a3`, `#8b5cf6`, `#7c3aed`, `#a855f7`
 - **Why:** Indigo/purple is THE AI tell. Every LLM defaults to it.
 - **Fix:** Use a concept-justified accent from the Design Read. See `craft/taste.md` color discipline.
 
-### Sin 2. Two-Stop "Trust" Gradient on Hero → FAIL
-- **What:** purple→blue, blue→cyan, indigo→pink gradient backgrounds.
+### Sin 2. Two-Stop "Trust" Gradient on Hero â†’ FAIL
+- **What:** purpleâ†’blue, blueâ†’cyan, indigoâ†’pink gradient backgrounds.
 - **Why:** A flat committed surface + intentional type always beats a generic gradient.
 - **Fix:** Solid background + real focal subject (type, image, video). See hero discipline.
 
-### Sin 3. Emoji as Feature Icons → FAIL
+### Sin 3. Emoji as Feature Icons â†’ FAIL
 - **Banned in:** `<h*>`, `<button>`, `<li>`, any UI icon context.
-- **Specifically banned:** ✨ 🚀 🎯 ⚡ 🔥 💡 🎨 💻 📊 🔒
+- **Specifically banned:** âœ¨ ðŸš€ ðŸŽ¯ âš¡ ðŸ”¥ ðŸ’¡ ðŸŽ¨ ðŸ’» ðŸ“Š ðŸ”’
 - **Fix:** 1.5-2px stroke monoline SVG with `currentColor`. One icon family per project.
 
-### Sin 4. Display Font Mismatch → FAIL
+### Sin 4. Display Font Mismatch â†’ FAIL
 - **What:** h1/h2 using hardcoded Inter/Roboto/system-ui when a display face is specified.
 - **Fix:** Display headlines MUST use the chosen display typeface from the Design Read.
 
-### Sin 5. Rounded Card with Colored Left-Border → FAIL
-- **What:** The canonical "AI dashboard tile" — `border-radius:12px` + `border-left:4px solid accent`.
+### Sin 5. Rounded Card with Colored Left-Border â†’ FAIL
+- **What:** The canonical "AI dashboard tile" â€” `border-radius:12px` + `border-left:4px solid accent`.
 - **Why:** Appears in ~80% of generic AI output for feature/benefit cards.
 - **Fix:** Drop either the radius OR the left border. Use bento/hierarchy instead.
 
-### Sin 6. Invented Metrics → FLAG (P1)
-- **What:** "10× faster", "99.9% uptime", "3× more productive" with no source.
+### Sin 6. Invented Metrics â†’ FLAG (P1)
+- **What:** "10Ã— faster", "99.9% uptime", "3Ã— more productive" with no source.
 - **Fix:** Pull from real data or use a clearly-labelled placeholder. Never fabricate precision.
 
-### Sin 7. Filler Copy → FAIL
+### Sin 7. Filler Copy â†’ FAIL
 - **What:** `lorem ipsum`, `Feature One / Two / Three`, `placeholder text`, `Your text here`.
 - **Why:** An empty section is a design problem to solve with composition, not by inventing words.
 - **Fix:** Write real copy that demonstrates the product's actual value prop.
 
 ---
 
-## Soft Tells (P1 — Should Fix)
+## Soft Tells (P1 â€” Should Fix)
 
 These are strong AI-output signals. Fix if possible; justify if kept.
 
-- **Standard "Hero → Features → Pricing → FAQ → CTA" sequence with zero variation.** Introduce
+- **Standard "Hero â†’ Features â†’ Pricing â†’ FAQ â†’ CTA" sequence with zero variation.** Introduce
   at least one unconventional section (testimonial wall, inline product demo, comparison
   against status-quo, a full-bleed media break).
 - **External placeholder image CDNs** (unsplash.com, placehold.co, picsum.photos) used without
@@ -469,17 +502,17 @@ These are strong AI-output signals. Fix if possible; justify if kept.
 - **More than 12 raw hex values outside `:root`.** Tokens were not honoured.
 - **`var(--accent)` used 6+ times in rendered body per viewport.** Cap at 2 visible uses/screen.
 - **Every section perfectly centered** with no layout tension. See `craft/taste.md` Appendix C.
-  - **3+ consecutive sections on the same flat background** with only whitespace between them —
+  - **3+ consecutive sections on the same flat background** with only whitespace between them â€”
   they blur into one scroll. Alternate `--bg`/`--surface` or add hairline dividers. See
   `craft/taste.md` layout discipline "Section separation."
-- **Uniform reveal animation** — same fade-up on every element. Choreograph with layers
+- **Uniform reveal animation** â€” same fade-up on every element. Choreograph with layers
   (see `craft/patterns/motion-personality.md` Layer 2).
-- **Static page on a high-motion brief** — for agency/portfolio/premium/experimental briefs
-  (MOTION_INTENSITY ≥ 7), shipping ONLY CSS fade-in reveals with no engine-grade interactivity
+- **Static page on a high-motion brief** â€” for agency/portfolio/premium/experimental briefs
+  (MOTION_INTENSITY â‰¥ 7), shipping ONLY CSS fade-in reveals with no engine-grade interactivity
   (no scroll-driven storytelling, no WebGL/canvas/3D anchor, no smooth-scroll) reads as
   conventional/template. Add at least one engine element. See
   `craft/patterns/engine-interactivity.md`. (Conversely: do NOT bolt Three.js onto a
-  trust-first B2B dashboard — over-engineering is its own slop.)
+  trust-first B2B dashboard â€” over-engineering is its own slop.)
 - **The ProdigeUI house look shipped by default (third-altitude tell).** Dark near-black
   canvas + ONE warm incandescent accent (ember/vermilion/amber) + big grotesk display,
   chosen because it is the system's habit rather than because the product asked for it. Once
@@ -487,8 +520,8 @@ These are strong AI-output signals. Fix if possible; justify if kept.
   outsider guess this is an AI-house page from the dark-mono-warm signature alone, regardless
   of the product?* If yes, re-route the palette family (light/dark, hue, commitment) from the
   product's meaning. See `craft/taste.md` "Derive the palette FAMILY from the product." Not a
-  ban on dark or on warm accents — a ban on defaulting to them.
-- **Dead negative space (empty ≠ minimal).** A full-viewport hero (`min-height:100vh` +
+  ban on dark or on warm accents â€” a ban on defaulting to them.
+- **Dead negative space (empty â‰  minimal).** A full-viewport hero (`min-height:100vh` +
   `justify-content:center`) with a few small elements, or a short centered CTA/contact block
   in a tall padded section, leaving large empty bands. Reads as a layout bug, not luxury
   whitespace. Activate the void (oversized wordmark/subject/media), enlarge the type, or size
@@ -498,18 +531,25 @@ These are strong AI-output signals. Fix if possible; justify if kept.
 
 ---
 
-## Polish Tells (P2 — Nice to Fix)
+## Polish Tells (P2 â€” Nice to Fix)
 
-- **Decorative blob/wave SVG backgrounds** — meaningless geometry. Remove unless concept-justified.
-- **Perfect symmetric layout** with no visual tension — alternate density for rhythm.
-- **Over-rounding** (cards at 24-32px radius) — cap at 12-16px for content cards.
-- **Ghost-card** (1px border + soft ≥16px shadow together) — pick one elevation method.
-- **Grid background** (repeating-linear-gradient dots/lines behind hero) — usually filler.
-- **Em-dash in generated copy** — strong AI tell. Use period, comma, or restructure.
+- **Decorative blob/wave SVG backgrounds** â€” meaningless geometry. Remove unless concept-justified.
+- **Perfect symmetric layout** with no visual tension â€” alternate density for rhythm.
+- **Over-rounding** (cards at 24-32px radius) â€” cap at 12-16px for content cards.
+- **Ghost-card** (1px border + soft â‰¥16px shadow together) â€” pick one elevation method.
+- **Grid background** (repeating-linear-gradient dots/lines behind hero) â€” usually filler.
+- **Em-dash in generated copy** â€” strong AI tell. Use period, comma, or restructure.
 
 ---
 
 ## How to Use This Checklist
+
+### Encoding integrity â†’ FAIL
+- The final HTML, CSS, JS, and visible copy MUST be UTF-8 clean.
+- Scan for mojibake fragments: `ÃƒÂ¢`, `ÃƒÆ’`, `Ãƒâ€š`, `ÃƒÂ°Ã…Â¸`, `ÃƒÂ¯Ã‚Â¸`, `ÃŽâ€œ`.
+- Prefer ASCII punctuation in generated copy. Use HTML entities for intentional special
+  symbols (`&bull;`, `&copy;`, `&rarr;`, quotes) when transport encoding is uncertain.
+- Any visible mojibake is an automatic failure, even when layout and accessibility pass.
 
 1. **Automated scan:** Run criteria.json evaluation (covers FAIL items 1-5, 7-10, C1-C5).
 2. **Slop-signal review:** For each FLAG present, apply the discriminator question. It
@@ -525,47 +565,47 @@ These are strong AI-output signals. Fix if possible; justify if kept.
 
 ## Related Files
 
-- `quality-gate/criteria.json` — Machine-readable criteria definitions
-- `quality-gate/report.schema.json` — Schema for evaluation reports
-- `design-rules/` — The rules these checks enforce
-- `tokens/` — The token system that prevents raw value usage
+- `quality-gate/criteria.json` â€” Machine-readable criteria definitions
+- `quality-gate/report.schema.json` â€” Schema for evaluation reports
+- `design-rules/` â€” The rules these checks enforce
+- `tokens/` â€” The token system that prevents raw value usage
 
 ---
 
-## 2026 slop update — new tells (from the modern product-landing audit)
+## 2026 slop update â€” new tells (from the modern product-landing audit)
 
 These were added after a benchmark showed a build passing every older check while still
 looking AI-generated. Source: `craft/patterns/modern-product-baseline.md` + the reference-site
 audit (Antimetal, Plasma, Tokens Studio, Infinite Machine, Eternal).
 
-### N1. Fluorescent / neon accent (FLAG → often FAIL)
+### N1. Fluorescent / neon accent (FLAG â†’ often FAIL)
 - **Check:** is the single accent a near-fluorescent (acid lime `#b8ff3a`-family, hot cyan,
   electric magenta, laser green)? OKLCH chroma > ~0.22 on a body-adjacent accent.
 - **Why:** over-correcting away from shadcn defaults into neon is the current AI-techy tell.
-  Premium landings use ONE *refined* accent (chroma ~0.10–0.18).
+  Premium landings use ONE *refined* accent (chroma ~0.10â€“0.18).
 - **Passes if:** the loud color is genuinely brand-mandated (a neon brand) and used as a
   controlled graphic accent, not on UI chrome. Otherwise deepen/desaturate.
 
 ### N2. Particle-constellation / floating-blob hero (FLAG)
 - **Check:** is the hero "engine" moment a pointer-reactive dot-and-line particle field or a
   floating low-poly blob, chosen as the default "make it feel alive" move?
-- **Why:** cliché; satisfies "moving pixels" while reading generic.
+- **Why:** clichÃ©; satisfies "moving pixels" while reading generic.
 - **Passes if:** it's genuinely concept-tied AND no higher-taste anchor (real 3D product,
   scrubbed product-UI, restrained concept shader) fits. See engine-interactivity Anchor Priority.
 
 ### N3. Invented / unsourced metrics (FAIL)
-- **Check:** any number presented as fact without a source ("120+ launches", "10× faster",
+- **Check:** any number presented as fact without a source ("120+ launches", "10Ã— faster",
   "99.9% uptime", "trusted by thousands").
 - **Why:** fabricated proof. Premium sites footnote real claims (superscript legal refs).
 - **Fix:** source it, footnote it, use a labelled placeholder, or cut it.
 
-### N4. Big-type mismatch — REGISTER-DEPENDENT (FLAG, narrow)
+### N4. Big-type mismatch â€” REGISTER-DEPENDENT (FLAG, narrow)
 - **Applies ONLY to B2B product / SaaS / dashboard / trust-first briefs.** There, a hero
   pushed to 9-12rem can read as a dated "big-type" reflex; calmer ~2.4-4.6rem + whitespace +
   a real product artifact is stronger.
 - **Expressive / creative / agency / portfolio / brand-launch briefs are EXEMPT.** Big
   art-directed type (to ~9-11rem, weight 700-800, italic accent) is a signature strength, not
-  a tell. Do not flag it, and never shrink it toward the product ceiling — that produces the
+  a tell. Do not flag it, and never shrink it toward the product ceiling â€” that produces the
   "stiff" failure mode (see taste.md "Discipline must not flatten art direction").
 - The real tell is timid, undersized type on an expressive brief, and oversized type on a
   calm B2B one. Match scale to register.

@@ -44,23 +44,23 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.secondary",
-      "color.surface.code",
-      "color.feedback.success",
-      "color.feedback.success-subtle",
-      "color.feedback.error",
-      "color.feedback.warning",
-      "color.text.primary",
-      "color.text.tertiary",
-      "color.border.subtle",
-      "border.default",
+      "color.background",
+      "color.surface",
+      "color.muted",
+      "color.success",
+      "color.success",
+      "color.destructive",
+      "color.warning",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.border",
+      "border.width.default",
       "space.sm",
       "space.md",
       "radius.md",
-      "typography.heading.xs",
-      "typography.body.sm",
-      "typography.mono.sm"
+      "typography.size.h6",
+      "typography.size.body-sm",
+      "typography.size.body-sm"
     ],
     "components": [
       "Card",
@@ -79,9 +79,9 @@
     ],
     "theme": "dark",
     "motionPresets": [
-      "enter-exit",
-      "state-transition",
-      "loading-shimmer"
+      "fade-in",
+      "button-press",
+      "progress-bar"
     ]
   }
 }

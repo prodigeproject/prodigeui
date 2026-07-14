@@ -45,12 +45,15 @@ The more frequently a user triggers an action, the less animation it should have
 - Secondary receives 60-80% of primary duration, delayed by stagger offset
 - Ambient receives 40-60% of primary duration and is always non-essential (disabled under reduce-motion)
 
-**Stagger formula:** `baseDuration / 3 * elementIndex` (max total sequence must not exceed 600ms)
+**Stagger formula:** `baseDuration / 3 * elementIndex`. Product/UI sequences cap at 600ms;
+expressive first-load storytelling may extend to 1500ms when the primary message is visible
+within 600ms. Continuous ambient motion is outside the discrete sequence budget.
 
 ### 4. Directional Easing
 
 - **Entrance** (appearing): ease-out (decelerate) — elements "land" into position, settling naturally
-- **Exit** (leaving): ease-in (accelerate) — elements "depart" from view, launching away
+- **Exit** (leaving): the semantic `motion.easing.exit` accelerating custom curve. Do not use
+  the CSS keyword `ease-in` on user-triggered UI; it delays visible feedback.
 - **On-screen** movement: ease-in-out — natural acceleration then deceleration for repositioning
 
 > **Interaction motion uses stronger curves.** The Material-style curves below are fine for
@@ -76,9 +79,11 @@ Total animation sequence should not exceed the cognitive patience threshold:
 |----------|---------------|----------|
 | Micro-interactions | 80-200ms | Tooltips, button feedback, icon transforms |
 | Standard transitions | 200-400ms | Cards, panels, modal enter/exit |
-| Complex choreography | 400-600ms max total | Page transitions, multi-element sequences |
+| Complex product/UI choreography | 400-600ms max total | Page transitions, multi-element sequences |
+| Expressive first-load choreography | 600-1500ms total | Marketing/portfolio storytelling; primary meaning visible by 600ms |
 
-**Hard rule:** No single animation exceeds 1000ms. No sequence total exceeds 600ms. Exceeding these thresholds triggers Quality Gate failure.
+**Hard rule:** Product/UI sequences do not exceed 600ms. Expressive sequences do not exceed
+1500ms and may never postpone primary meaning beyond 600ms. Ambient loops are exempt.
 
 **Ratio-based duration computation:** Motion presets should use ratio-based computation (min=base x ratio, max=base/ratio) for proportional relationships. Suggested presets:
 - Snappy: fast=100ms, medium=250ms (for data-heavy, high-frequency UIs)

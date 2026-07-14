@@ -306,6 +306,1174 @@
       "type": "spacing",
       "ref": "space.component-padding",
       "description": "Table cell padding"
+    },
+    "avatar.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "avatar.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "avatar.radius": {
+      "type": "radius",
+      "ref": "radius.full"
+    },
+    "avatar.size.sm": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "avatar.size.md": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "avatar.size.lg": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "avatar.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "divider.color": {
+      "type": "color",
+      "ref": "color.foreground"
+    },
+    "divider.thickness": {
+      "type": "border",
+      "ref": "border.width.default"
+    },
+    "divider.spacing": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "skeleton.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "skeleton.highlight": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "skeleton.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "skeleton.animation-duration": {
+      "type": "motion",
+      "ref": "motion.duration.normal"
+    },
+    "spinner.color": {
+      "type": "color",
+      "ref": "color.foreground"
+    },
+    "spinner.track-color": {
+      "type": "color",
+      "ref": "color.muted"
+    },
+    "spinner.size.sm": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "spinner.size.md": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "spinner.size.lg": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "spinner.animation-duration": {
+      "type": "motion",
+      "ref": "motion.duration.normal"
+    },
+    "tag.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "tag.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "tag.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "tag.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "tag.padding-x": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "tag.padding-y": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "tag.font-size": {
+      "type": "typography",
+      "ref": "typography.size.body-sm"
+    },
+    "alert.bg.info": {
+      "type": "color",
+      "ref": "color.info"
+    },
+    "alert.bg.success": {
+      "type": "color",
+      "ref": "color.success"
+    },
+    "alert.bg.warning": {
+      "type": "color",
+      "ref": "color.warning"
+    },
+    "alert.bg.error": {
+      "type": "color",
+      "ref": "color.destructive"
+    },
+    "alert.fg.info": {
+      "type": "color",
+      "ref": "color.info-foreground"
+    },
+    "alert.fg.success": {
+      "type": "color",
+      "ref": "color.success-foreground"
+    },
+    "alert.fg.warning": {
+      "type": "color",
+      "ref": "color.warning-foreground"
+    },
+    "alert.fg.error": {
+      "type": "color",
+      "ref": "color.destructive-foreground"
+    },
+    "alert.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "alert.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "alert.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "alert.icon-size": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "toast.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "toast.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "toast.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "toast.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "toast.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "toast.shadow": {
+      "type": "shadow",
+      "ref": "shadow.lg"
+    },
+    "toast.z": {
+      "type": "z-index",
+      "ref": "z.toast"
+    },
+    "tabs.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "tabs.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "tabs.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "tabs.indicator": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "tabs.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "tabs.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "accordion.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "accordion.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "accordion.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "accordion.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "accordion.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "accordion.header-padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "breadcrumb.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "breadcrumb.fg.active": {
+      "type": "color",
+      "ref": "color.primary-foreground"
+    },
+    "breadcrumb.separator-color": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "breadcrumb.font-size": {
+      "type": "typography",
+      "ref": "typography.size.body-sm"
+    },
+    "pagination.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "pagination.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "pagination.bg.active": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "pagination.fg.active": {
+      "type": "color",
+      "ref": "color.primary-foreground"
+    },
+    "pagination.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "pagination.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "pagination.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "select.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "select.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "select.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "select.border.focus": {
+      "type": "color",
+      "ref": "color.ring"
+    },
+    "select.border.error": {
+      "type": "color",
+      "ref": "color.destructive"
+    },
+    "select.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "select.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "select.option-bg.hover": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "select.option-bg.selected": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "datepicker.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "datepicker.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "datepicker.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "datepicker.border.focus": {
+      "type": "color",
+      "ref": "color.ring"
+    },
+    "datepicker.border.error": {
+      "type": "color",
+      "ref": "color.destructive"
+    },
+    "datepicker.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "datepicker.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "datepicker.cell-size": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "datepicker.cell-radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "datepicker.cell-bg.selected": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "datepicker.cell-bg.range": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "datepicker.cell-bg.hover": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "datepicker.header-fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "dialog.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "dialog.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "dialog.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "dialog.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "dialog.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "dialog.shadow": {
+      "type": "shadow",
+      "ref": "shadow.lg"
+    },
+    "dialog.overlay-bg": {
+      "type": "color",
+      "ref": "color.foreground"
+    },
+    "dialog.z": {
+      "type": "z-index",
+      "ref": "z.modal"
+    },
+    "drawer.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "drawer.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "drawer.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "drawer.shadow": {
+      "type": "shadow",
+      "ref": "shadow.lg"
+    },
+    "drawer.overlay-bg": {
+      "type": "color",
+      "ref": "color.foreground"
+    },
+    "drawer.z": {
+      "type": "z-index",
+      "ref": "z.overlay"
+    },
+    "drawer.width": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "drawer.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "popover.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "popover.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "popover.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "popover.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "popover.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "popover.shadow": {
+      "type": "shadow",
+      "ref": "shadow.lg"
+    },
+    "popover.z": {
+      "type": "z-index",
+      "ref": "z.dropdown"
+    },
+    "popover.arrow-size": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "dropdown.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "dropdown.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "dropdown.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "dropdown.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "dropdown.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "dropdown.shadow": {
+      "type": "shadow",
+      "ref": "shadow.lg"
+    },
+    "dropdown.z": {
+      "type": "z-index",
+      "ref": "z.dropdown"
+    },
+    "dropdown.item-bg.hover": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "dropdown.item-bg.active": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "dropdown.separator-color": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "stepper.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "stepper.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "stepper.bg.active": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "stepper.fg.active": {
+      "type": "color",
+      "ref": "color.primary-foreground"
+    },
+    "stepper.bg.completed": {
+      "type": "color",
+      "ref": "color.success"
+    },
+    "stepper.fg.completed": {
+      "type": "color",
+      "ref": "color.success-foreground"
+    },
+    "stepper.bg.error": {
+      "type": "color",
+      "ref": "color.destructive"
+    },
+    "stepper.fg.error": {
+      "type": "color",
+      "ref": "color.destructive-foreground"
+    },
+    "stepper.connector-color": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "stepper.connector-color.completed": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "stepper.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "stepper.size": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "fileupload.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "fileupload.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "fileupload.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "fileupload.border.active": {
+      "type": "color",
+      "ref": "color.ring"
+    },
+    "fileupload.border.error": {
+      "type": "color",
+      "ref": "color.destructive"
+    },
+    "fileupload.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "fileupload.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "datagrid.header-bg": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "datagrid.header-fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "datagrid.row-bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "datagrid.row-fg": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "datagrid.row-bg.hover": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "datagrid.row-bg.selected": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "datagrid.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "datagrid.cell-padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "datagrid.cell-bg.editing": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "command.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "command.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "command.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "command.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "command.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "command.shadow": {
+      "type": "shadow",
+      "ref": "shadow.lg"
+    },
+    "command.z": {
+      "type": "z-index",
+      "ref": "z.sticky"
+    },
+    "command.input-bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "command.item-bg.hover": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "command.item-bg.active": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "command.overlay-bg": {
+      "type": "color",
+      "ref": "color.foreground"
+    },
+    "command.group-heading-fg": {
+      "type": "color",
+      "ref": "color.muted-foreground"
+    },
+    "progressbar.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "progressbar.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "progressbar.track": {
+      "type": "color",
+      "ref": "color.muted"
+    },
+    "progressbar.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "progressbar.height": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "rating.color.filled": {
+      "type": "color",
+      "ref": "color.success"
+    },
+    "rating.color.empty": {
+      "type": "color",
+      "ref": "color.muted"
+    },
+    "rating.color.hover": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "rating.size.sm": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "rating.size.md": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "rating.size.lg": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "rating.gap": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "statusdot.color.success": {
+      "type": "color",
+      "ref": "color.success"
+    },
+    "statusdot.color.warning": {
+      "type": "color",
+      "ref": "color.warning"
+    },
+    "statusdot.color.error": {
+      "type": "color",
+      "ref": "color.destructive"
+    },
+    "statusdot.color.info": {
+      "type": "color",
+      "ref": "color.info"
+    },
+    "statusdot.color.neutral": {
+      "type": "color",
+      "ref": "color.foreground"
+    },
+    "statusdot.size.sm": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "statusdot.size.md": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "statusdot.size.lg": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "timeline.connector-color": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "timeline.connector-color.completed": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "timeline.dot-bg": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "timeline.dot-bg.active": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "timeline.dot-bg.completed": {
+      "type": "color",
+      "ref": "color.success"
+    },
+    "timeline.dot-size": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "timeline.dot-radius": {
+      "type": "radius",
+      "ref": "radius.full"
+    },
+    "timeline.spacing": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "emptystate.icon-color": {
+      "type": "color",
+      "ref": "color.muted"
+    },
+    "emptystate.icon-size": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "emptystate.title-fg": {
+      "type": "color",
+      "ref": "color.muted"
+    },
+    "emptystate.description-fg": {
+      "type": "color",
+      "ref": "color.muted-foreground"
+    },
+    "emptystate.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "banner.bg.info": {
+      "type": "color",
+      "ref": "color.info"
+    },
+    "banner.bg.success": {
+      "type": "color",
+      "ref": "color.success"
+    },
+    "banner.bg.warning": {
+      "type": "color",
+      "ref": "color.warning"
+    },
+    "banner.bg.error": {
+      "type": "color",
+      "ref": "color.destructive"
+    },
+    "banner.bg.neutral": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "banner.fg.info": {
+      "type": "color",
+      "ref": "color.info-foreground"
+    },
+    "banner.fg.success": {
+      "type": "color",
+      "ref": "color.success-foreground"
+    },
+    "banner.fg.warning": {
+      "type": "color",
+      "ref": "color.warning-foreground"
+    },
+    "banner.fg.error": {
+      "type": "color",
+      "ref": "color.destructive-foreground"
+    },
+    "banner.fg.neutral": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "banner.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "banner.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "banner.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "togglegroup.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "togglegroup.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "togglegroup.bg.active": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "togglegroup.fg.active": {
+      "type": "color",
+      "ref": "color.primary-foreground"
+    },
+    "togglegroup.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "togglegroup.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "togglegroup.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "togglegroup.gap": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "bottomsheet.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "bottomsheet.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "bottomsheet.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "bottomsheet.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "bottomsheet.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "bottomsheet.shadow": {
+      "type": "shadow",
+      "ref": "shadow.lg"
+    },
+    "bottomsheet.overlay-bg": {
+      "type": "color",
+      "ref": "color.foreground"
+    },
+    "bottomsheet.z": {
+      "type": "z-index",
+      "ref": "z.overlay"
+    },
+    "bottomsheet.handle-color": {
+      "type": "color",
+      "ref": "color.foreground"
+    },
+    "bottomsheet.handle-width": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "mobilenavbar.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "mobilenavbar.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "mobilenavbar.fg.active": {
+      "type": "color",
+      "ref": "color.primary-foreground"
+    },
+    "mobilenavbar.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "mobilenavbar.icon-size": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "mobilenavbar.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "mobilenavbar.z": {
+      "type": "z-index",
+      "ref": "z.sticky"
+    },
+    "kanban.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "kanban.column-bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "kanban.column-border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "kanban.column-radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "kanban.card-bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "kanban.card-border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "kanban.card-radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "kanban.card-shadow": {
+      "type": "shadow",
+      "ref": "shadow.sm"
+    },
+    "kanban.card-padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "kanban.gap": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "calendar.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "calendar.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "calendar.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "calendar.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "calendar.cell-size": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "calendar.cell-bg.selected": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "calendar.cell-bg.today": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "calendar.cell-bg.hover": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "calendar.event-bg": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "calendar.event-fg": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "calendar.event-radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "calendar.header-fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "richtexteditor.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "richtexteditor.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "richtexteditor.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "richtexteditor.border.focus": {
+      "type": "color",
+      "ref": "color.ring"
+    },
+    "richtexteditor.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "richtexteditor.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "richtexteditor.toolbar-bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "richtexteditor.toolbar-border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "richtexteditor.toolbar-button-bg.active": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "treeview.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "treeview.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "treeview.item-bg.hover": {
+      "type": "color",
+      "ref": "color.accent"
+    },
+    "treeview.item-bg.selected": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "treeview.indent": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "treeview.connector-color": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "treeview.icon-size": {
+      "type": "spacing",
+      "ref": "space.lg"
+    },
+    "treeview.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "chart.bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "chart.fg": {
+      "type": "color",
+      "ref": "color.surface-foreground"
+    },
+    "chart.border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "chart.radius": {
+      "type": "radius",
+      "ref": "radius.md"
+    },
+    "chart.padding": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "chart.grid-color": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "chart.axis-color": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "chart.axis-label-fg": {
+      "type": "color",
+      "ref": "color.muted-foreground"
+    },
+    "chart.series.1": {
+      "type": "color",
+      "ref": "color.primary"
+    },
+    "chart.series.2": {
+      "type": "color",
+      "ref": "color.success"
+    },
+    "chart.series.3": {
+      "type": "color",
+      "ref": "color.warning"
+    },
+    "chart.series.4": {
+      "type": "color",
+      "ref": "color.destructive"
+    },
+    "chart.series.5": {
+      "type": "color",
+      "ref": "color.info"
+    },
+    "chart.tooltip-bg": {
+      "type": "color",
+      "ref": "color.surface"
+    },
+    "chart.tooltip-fg": {
+      "type": "spacing",
+      "ref": "space.md"
+    },
+    "chart.tooltip-border": {
+      "type": "color",
+      "ref": "color.border"
+    },
+    "chart.legend-fg": {
+      "type": "color",
+      "ref": "color.muted-foreground"
     }
   }
 }

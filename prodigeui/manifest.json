@@ -3,171 +3,1784 @@
   "version": "1.0.0",
   "description": "A portable UI/UX knowledge system for AI coding agents",
   "artifacts": [
-    { "path": "tokens/primitive.tokens.json", "type": "token-file", "status": "created" },
-    { "path": "tokens/semantic.tokens.json", "type": "token-file", "status": "created" },
-    { "path": "tokens/component.tokens.json", "type": "token-file", "status": "created" },
-    { "path": "tokens/tokens.schema.json", "type": "schema", "status": "created" },
-    { "path": "tokens/build/tokens.css", "type": "derived", "status": "created" },
-    { "path": "themes/_default.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/light.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/dark.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/dark-premium.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/creative-dark.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/saas-professional.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/startup-bold.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/enterprise-neutral.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/fintech-blue.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/healthcare-green.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/education-warm.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/ecommerce-warm.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/government-accessible.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/portfolio-minimal.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/social-vibrant.theme.json", "type": "theme", "status": "created" },
-    { "path": "themes/theme.schema.json", "type": "schema", "status": "created" },
-    { "path": "themes/creating-a-theme.md", "type": "documentation", "status": "created" },
-    { "path": "motion/motion.tokens.json", "type": "token-file", "status": "created" },
-    { "path": "motion/presets/enter-exit.json", "type": "motion-preset", "status": "created" },
-    { "path": "motion/presets/state-transition.json", "type": "motion-preset", "status": "created" },
-    { "path": "motion/presets/hover-focus.json", "type": "motion-preset", "status": "created" },
-    { "path": "motion/presets/scroll-based.json", "type": "motion-preset", "status": "created" },
-    { "path": "motion/principles.md", "type": "documentation", "status": "created" },
-    { "path": "motion/choreography.md", "type": "documentation", "status": "created" },
-    { "path": "components/components.manifest.json", "type": "manifest", "status": "created" },
-    { "path": "components/composition-guidelines.md", "type": "documentation", "status": "created" },
-    { "path": "assets/assets.manifest.json", "type": "manifest", "status": "created" },
-    { "path": "assets/asset-sourcing.guide.md", "type": "documentation", "status": "created" },
-    { "path": "design-system/design-system.md", "type": "documentation", "status": "created" },
-    { "path": "design-system/entry-point.md", "type": "documentation", "status": "created" },
-    { "path": "design-rules/typography.rules.json", "type": "rules", "status": "created" },
-    { "path": "design-rules/color.rules.json", "type": "rules", "status": "created" },
-    { "path": "design-rules/layout.rules.json", "type": "rules", "status": "created" },
-    { "path": "design-rules/structure.rules.json", "type": "rules", "status": "created" },
-    { "path": "design-rules/form.rules.json", "type": "rules", "status": "created" },
-    { "path": "design-rules/responsive.rules.json", "type": "rules", "status": "created" },
-    { "path": "design-rules/data-visualization.rules.json", "type": "rules", "status": "created" },
-    { "path": "design-rules/advanced-methodology.rules.json", "type": "rules", "status": "created" },
-    { "path": "design-rules/design-rules.md", "type": "documentation", "status": "created" },
-    { "path": "prompt-templates/template.schema.json", "type": "schema", "status": "created" },
-    { "path": "quality-gate/criteria.json", "type": "rules", "status": "created" },
-    { "path": "quality-gate/anti-ai-slop.checklist.md", "type": "documentation", "status": "created" },
-    { "path": "quality-gate/positive-patterns.md", "type": "documentation", "status": "created" },
-    { "path": "quality-gate/report.schema.json", "type": "schema", "status": "created" },
-    { "path": "research/research-log.json", "type": "data", "status": "created" },
-    { "path": "research/synthesis.md", "type": "documentation", "status": "created" },
-    { "path": "research/benchmark-pattern-taxonomy.md", "type": "research", "status": "created" },
-    { "path": "craft/AGENTS.md", "type": "entry-point", "status": "created" },
-    { "path": "craft/patterns/video-hero-crossfade.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/liquid-glass.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/magnetic-hover.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/text-reveal.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/scroll-parallax.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/sticky-card-stack.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/marquee.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/cursor-spotlight-mask.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/bento-grid.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/hls-video.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/fluid-display-type.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/grain-noise-overlay.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/effects-catalog.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/motion-craft.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/interaction-patterns.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/patterns/animation-vocabulary.md", "type": "craft-recipe", "status": "created" },
-    { "path": "craft/design-system-routing.md", "type": "documentation", "status": "created" },
-    { "path": "craft/design-lenses.md", "type": "documentation", "status": "created" },
-    { "path": "craft/taste.md", "type": "documentation", "status": "created" },
-    { "path": "craft/composition.md", "type": "documentation", "status": "created" },
-    { "path": "craft/styles/AGENTS.md", "type": "registry", "status": "created" },
-    { "path": "craft/styles/style-presets.md", "type": "documentation", "status": "created" },
-    { "path": "craft/styles/brand-presets.md", "type": "documentation", "status": "created" },
-    { "path": "craft/compositions/AGENTS.md", "type": "registry", "status": "created" },
-    { "path": "craft/compositions/cinematic-video-hero.md", "type": "craft-composition", "status": "created" },
-    { "path": "craft/compositions/giant-type-hero.md", "type": "craft-composition", "status": "created" },
-    { "path": "craft/compositions/spotlight-reveal-hero.md", "type": "craft-composition", "status": "created" },
-    { "path": "craft/compositions/split-editorial-hero.md", "type": "craft-composition", "status": "created" },
-    { "path": "craft/compositions/bento-showcase.md", "type": "craft-composition", "status": "created" },
-    { "path": "craft/compositions/dark-portfolio-multisection.md", "type": "craft-composition", "status": "created" },
-    { "path": "skills/AGENTS.md", "type": "registry", "status": "created" },
-    { "path": "skills/prodige-ui-end-to-end/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/quality-check/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/token-management/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/theme-creation/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/responsive-design/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/accessibility-audit/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/color-palette-generation/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/typography-system/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/layout-composition/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/motion-choreography/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/motion-review/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/design-lens/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/design-review/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "skills/dark-mode-adaptation/SKILL.md", "type": "skill", "status": "created" },
-    { "path": "prompt-templates/saas/dashboard.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/saas/analytics-dashboard.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/saas/authentication.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/saas/calendar-view.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/saas/file-manager.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/saas/kanban-board.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/saas/notification-center.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/saas/onboarding-flow.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/saas/settings-page.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/saas/user-profile.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/landing/hero-page.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/landing/pricing-page.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/landing/blog-article.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/ecommerce/product-listing.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/ecommerce/product-detail.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/ecommerce/cart-page.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/ecommerce/checkout-flow.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/portfolio/showcase.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/portfolio/case-study.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/hris/employee-dashboard.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/hris/admin-panel.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/hris/team-directory.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/agentic-app/chat-interface.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/agentic-app/agent-workspace.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "prompt-templates/agentic-app/documentation-page.template.json", "type": "prompt-template", "status": "created" },
-    { "path": "use-cases/saas/guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/saas/onboarding.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/saas/billing.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/saas/settings.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/landing/guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/landing/hero.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/landing/pricing.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/landing/testimonials.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/ecommerce/guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/ecommerce/product-detail.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/ecommerce/cart.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/ecommerce/checkout.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/portfolio/guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/portfolio/about.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/portfolio/contact.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/portfolio/project-grid.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/hris/guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/hris/employee-list.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/hris/leave-management.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/hris/performance.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/agentic-app/guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/agentic-app/conversation.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/agentic-app/agent-status.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "use-cases/agentic-app/tool-output.guide.md", "type": "use-case-guide", "status": "created" },
-    { "path": "hooks/quality-gate-check.md", "type": "hook", "status": "created" },
-    { "path": "installers/install.claude-code.md", "type": "installer", "status": "created" },
-    { "path": "installers/install.glm.md", "type": "installer", "status": "created" },
-    { "path": "installers/install.codex.md", "type": "installer", "status": "created" },
-    { "path": "installers/install.antigravity.md", "type": "installer", "status": "created" },
-    { "path": "installers/install.hermes.md", "type": "installer", "status": "created" },
-    { "path": "installers/install.cursor.md", "type": "installer", "status": "created" },
-    { "path": "installers/adapters/claude-code.json", "type": "adapter", "status": "created" },
-    { "path": "installers/adapters/glm.json", "type": "adapter", "status": "created" },
-    { "path": "installers/adapters/codex.json", "type": "adapter", "status": "created" },
-    { "path": "installers/adapters/antigravity.json", "type": "adapter", "status": "created" },
-    { "path": "installers/adapters/hermes.json", "type": "adapter", "status": "created" },
-    { "path": "installers/adapters/cursor.json", "type": "adapter", "status": "created" },
-    { "path": "research/book-extractions-verified.md", "type": "documentation", "status": "created" },
-    { "path": "PHILOSOPHY.md", "type": "documentation", "status": "created" },
-    { "path": "AGENTS.md", "type": "entry-point", "status": "created" },
-    { "path": "CLAUDE.md", "type": "entry-point", "status": "created" },
-    { "path": "README.md", "type": "documentation", "status": "created" },
-    { "path": "manifest.json", "type": "manifest", "status": "created" }
-  ]
+    {
+      "path": "AGENTS.md",
+      "type": "entry-point",
+      "status": "created"
+    },
+    {
+      "path": "CLAUDE.md",
+      "type": "entry-point",
+      "status": "created"
+    },
+    {
+      "path": "PHILOSOPHY.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "README.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "assets/asset-sourcing.guide.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "assets/assets.manifest.json",
+      "type": "manifest",
+      "status": "created"
+    },
+    {
+      "path": "assets/fallback-images.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "assets/fonts/README.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/arrow-right.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/bell.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/calendar.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/check.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/chevron-down.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/clock.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/copy.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/download.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/edit.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/external-link.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/eye-off.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/eye.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/filter.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/home.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/link.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/lock.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/mail.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/menu.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/minus.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/plus.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/refresh.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/search.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/settings.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/sort.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/star.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/trash.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/unlock.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/upload.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/user.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/icons/x-close.svg",
+      "type": "asset-icon",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/achievement.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/connection-lost.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/data-analysis.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/empty-state.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/error-404.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/invite-team.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/loading-error.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/maintenance.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/no-results.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/onboarding.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/permission-denied.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/success.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/under-construction.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/upgrade.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "assets/illustrations/welcome.svg",
+      "type": "asset-illustration",
+      "status": "created"
+    },
+    {
+      "path": "canonical/generation.contract.json",
+      "type": "configuration",
+      "status": "created"
+    },
+    {
+      "path": "canonical/system.authority.json",
+      "type": "configuration",
+      "status": "created"
+    },
+    {
+      "path": "components/components.manifest.json",
+      "type": "manifest",
+      "status": "created"
+    },
+    {
+      "path": "components/composition-guidelines.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/AGENTS.md",
+      "type": "entry-point",
+      "status": "created"
+    },
+    {
+      "path": "craft/brief-to-art-direction.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/composition.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/compositions/AGENTS.md",
+      "type": "registry",
+      "status": "created"
+    },
+    {
+      "path": "craft/compositions/bento-showcase.md",
+      "type": "craft-composition",
+      "status": "created"
+    },
+    {
+      "path": "craft/compositions/cinematic-video-hero.md",
+      "type": "craft-composition",
+      "status": "created"
+    },
+    {
+      "path": "craft/compositions/dark-portfolio-multisection.md",
+      "type": "craft-composition",
+      "status": "created"
+    },
+    {
+      "path": "craft/compositions/giant-type-hero.md",
+      "type": "craft-composition",
+      "status": "created"
+    },
+    {
+      "path": "craft/compositions/product-preview-video-hero.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/compositions/split-editorial-hero.md",
+      "type": "craft-composition",
+      "status": "created"
+    },
+    {
+      "path": "craft/compositions/spotlight-reveal-hero.md",
+      "type": "craft-composition",
+      "status": "created"
+    },
+    {
+      "path": "craft/design-lenses.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/design-read.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/design-system-routing.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/model-robust-generation.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/advanced-effects.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/animation-vocabulary.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/bento-grid.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/coded-product-preview.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/cursor-spotlight-mask.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/effects-catalog.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/engine-interactivity.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/fluid-display-type.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/grain-noise-overlay.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/hls-video.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/interaction-patterns.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/liquid-glass.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/magnetic-hover.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/marquee.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/modern-product-baseline.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/motion-craft.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/motion-personality.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/responsive-patterns.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/scroll-parallax.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/sticky-card-stack.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/text-reveal.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/patterns/video-hero-crossfade.md",
+      "type": "craft-recipe",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/horizontal-carousel.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/masonry-gallery.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/mobile-nav.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/motion-stack-lenis-gsap.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/pricing-table.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/segmented-toggle.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/testimonial.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/reference-audit-2026.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/styles/AGENTS.md",
+      "type": "registry",
+      "status": "created"
+    },
+    {
+      "path": "craft/styles/brand-presets.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/styles/style-presets.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/taste.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/ux-writing.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "design-rules/advanced-methodology.rules.json",
+      "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "design-rules/color.rules.json",
+      "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "design-rules/data-visualization.rules.json",
+      "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "design-rules/design-rules.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "design-rules/form.rules.json",
+      "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "design-rules/layout.rules.json",
+      "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "design-rules/responsive.rules.json",
+      "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "design-rules/structure.rules.json",
+      "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "design-rules/typography.rules.json",
+      "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "design-system/design-system.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "design-system/entry-point.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "hooks/quality-gate-check.hook.json",
+      "type": "configuration",
+      "status": "created"
+    },
+    {
+      "path": "hooks/quality-gate-check.md",
+      "type": "hook",
+      "status": "created"
+    },
+    {
+      "path": "installers/adapters/antigravity.json",
+      "type": "adapter",
+      "status": "created"
+    },
+    {
+      "path": "installers/adapters/claude-code.json",
+      "type": "adapter",
+      "status": "created"
+    },
+    {
+      "path": "installers/adapters/codex.json",
+      "type": "adapter",
+      "status": "created"
+    },
+    {
+      "path": "installers/adapters/cursor.json",
+      "type": "adapter",
+      "status": "created"
+    },
+    {
+      "path": "installers/adapters/glm.json",
+      "type": "adapter",
+      "status": "created"
+    },
+    {
+      "path": "installers/adapters/hermes.json",
+      "type": "adapter",
+      "status": "created"
+    },
+    {
+      "path": "installers/install.antigravity.md",
+      "type": "installer",
+      "status": "created"
+    },
+    {
+      "path": "installers/install.claude-code.md",
+      "type": "installer",
+      "status": "created"
+    },
+    {
+      "path": "installers/install.codex.md",
+      "type": "installer",
+      "status": "created"
+    },
+    {
+      "path": "installers/install.cursor.md",
+      "type": "installer",
+      "status": "created"
+    },
+    {
+      "path": "installers/install.glm.md",
+      "type": "installer",
+      "status": "created"
+    },
+    {
+      "path": "installers/install.hermes.md",
+      "type": "installer",
+      "status": "created"
+    },
+    {
+      "path": "manifest.json",
+      "type": "manifest",
+      "status": "created"
+    },
+    {
+      "path": "motion/choreography.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "motion/motion.tokens.json",
+      "type": "token-file",
+      "status": "created"
+    },
+    {
+      "path": "motion/presets/enter-exit.json",
+      "type": "motion-preset",
+      "status": "created"
+    },
+    {
+      "path": "motion/presets/hover-focus.json",
+      "type": "motion-preset",
+      "status": "created"
+    },
+    {
+      "path": "motion/presets/scroll-based.json",
+      "type": "motion-preset",
+      "status": "created"
+    },
+    {
+      "path": "motion/presets/state-transition.json",
+      "type": "motion-preset",
+      "status": "created"
+    },
+    {
+      "path": "motion/principles.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/agentic-app/agent-workspace.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/agentic-app/chat-interface.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/agentic-app/documentation-page.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/ecommerce/cart-page.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/ecommerce/checkout-flow.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/ecommerce/product-detail.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/ecommerce/product-listing.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/hris/admin-panel.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/hris/employee-dashboard.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/hris/team-directory.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/landing/blog-article.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/landing/hero-page.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/landing/pricing-page.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/portfolio/case-study.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/portfolio/showcase.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/analytics-dashboard.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/authentication.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/calendar-view.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/dashboard.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/file-manager.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/kanban-board.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/notification-center.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/onboarding-flow.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/settings-page.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/saas/user-profile.template.json",
+      "type": "prompt-template",
+      "status": "created"
+    },
+    {
+      "path": "prompt-templates/template.schema.json",
+      "type": "schema",
+      "status": "created"
+    },
+    {
+      "path": "quality-gate/anti-ai-slop.checklist.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "quality-gate/criteria.json",
+      "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "quality-gate/positive-patterns.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "quality-gate/report.schema.json",
+      "type": "schema",
+      "status": "created"
+    },
+    {
+      "path": "research/PROVENANCE.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/benchmark-pattern-taxonomy.md",
+      "type": "research",
+      "status": "created"
+    },
+    {
+      "path": "research/book-extractions-verified.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/100-things-designers.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/Graphite-master.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/Motion-development.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/Semantic-UI-master.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ShipSwift-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/animation-for-the-web.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/animation-in-design-systems.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ant-motion-master.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/app-design-apprentice.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/arrow-js-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/astryx-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/atomic-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/awesome-design-md-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/awesome-design-skills-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/basics-ux-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/claude-code-ui-agents-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/color-codes-philosophy.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/color-theory-dan-scott.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/color-vision-colorimetry.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/color-works.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/colour-perception.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/complete-guide-choosing-colors.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/contemporary-color-theory.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/css-animations-transitions.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/cssanimation-master.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-by-nature.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-dna-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-elements-3rd.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-elements-samara.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-evolution.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-for-developers.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-for-how-people-think.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-motion-principles-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-of-everyday-things-norman.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-of-everyday-things.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/design-systems-handbook.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designers-dictionary-color.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designers-guide-figma.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-for-emotion.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-in-figma.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-interface-animation.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-interfaces.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-prototyping-2nd-ed.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-prototyping-interfaces-figma.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-user-interfaces-calonaci.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-user-interfaces-malewicz.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-ux-forms.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-ux-prototyping.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-with-ai-generated.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designing-with-mind-in-mind.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/designops-handbook.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/dont-make-me-think-revisited.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/dont-make-me-think.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/effective-ui.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/elements-of-typographic-style.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/elements-user-experience.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/emil-skills-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/essential-guide-user-interface.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/experiencing-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/expo-motion-tabs-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/fixing-bad-ux-designs.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/graphic-design-rules.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/grid-systems-graphic-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/huashu-design-master.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/hyperframes-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/impeccable-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/integration-exploitation-ai.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/laws-of-ux.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/mobile-app-ux-principles.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/morphos-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/motion-design-skill-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/motion-ui-design-master.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/neuro-web-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/open-design-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/pearl-ui-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/practical-ui-2nd.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/practical-ui-patterns.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/practical-ui.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/principles-product-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/react-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/refactoring-ui.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ruined-by-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/seraui-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/signage-wayfinding-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/simple-and-usable.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/skills-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/smoothui-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/storybook-next.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/storytelling-in-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/strategic-writing-ux.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/swiftui-design-skill-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/tailwindcss-motion-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/taste-skill-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/theatre-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/tixl-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/tragic-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/transitions.dev-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ui-design-principles-filipiuk.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ui-design-systems-mastery.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ui-neumorphism-master.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ui-pedia.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ui-shadcn.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ui-ux-design-pro-skill-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ui-ux-pro-max-skill-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ultimate-ui-design-roadmap.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/universal-principles-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/universal-principles-ux.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/user-experience-design.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ux-design-with-figma.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ux-for-dummies.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ux-fundamentals-non-ux.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ux-fundamentals.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/ux-writing.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/video-production-skills-main.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/visual-design-solutions.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/wayfinding-designs-worldwide.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/web-in-motion.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/web-ui-design-human-eye.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/notes/white-hat-ux.note.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "research/research-log.json",
+      "type": "data",
+      "status": "created"
+    },
+    {
+      "path": "research/synthesis.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "skills/AGENTS.md",
+      "type": "registry",
+      "status": "created"
+    },
+    {
+      "path": "skills/accessibility-audit/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/color-palette-generation/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/dark-mode-adaptation/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/design-lens/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/design-review/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/layout-composition/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/motion-choreography/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/motion-review/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/prodige-ui-end-to-end/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/quality-check/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/responsive-design/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/theme-creation/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/token-management/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "skills/typography-system/SKILL.md",
+      "type": "skill",
+      "status": "created"
+    },
+    {
+      "path": "themes/_default.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/creating-a-theme.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "themes/creative-dark.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/dark-premium.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/dark.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/ecommerce-warm.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/education-warm.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/enterprise-neutral.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/fintech-blue.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/government-accessible.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/healthcare-green.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/light.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/portfolio-minimal.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/saas-professional.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/social-vibrant.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/startup-bold.theme.json",
+      "type": "theme",
+      "status": "created"
+    },
+    {
+      "path": "themes/theme.schema.json",
+      "type": "schema",
+      "status": "created"
+    },
+    {
+      "path": "tokens/build/tokens.css",
+      "type": "derived",
+      "status": "created"
+    },
+    {
+      "path": "tokens/component.tokens.json",
+      "type": "token-file",
+      "status": "created"
+    },
+    {
+      "path": "tokens/primitive.tokens.json",
+      "type": "token-file",
+      "status": "created"
+    },
+    {
+      "path": "tokens/semantic.tokens.json",
+      "type": "token-file",
+      "status": "created"
+    },
+    {
+      "path": "tokens/tokens.schema.json",
+      "type": "schema",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/agentic-app/agent-status.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/agentic-app/conversation.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/agentic-app/guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/agentic-app/tool-output.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/ecommerce/cart.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/ecommerce/checkout.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/ecommerce/guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/ecommerce/product-detail.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/hris/employee-list.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/hris/guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/hris/leave-management.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/hris/performance.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/landing/guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/landing/hero.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/landing/pricing.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/landing/testimonials.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/portfolio/about.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/portfolio/contact.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/portfolio/guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/portfolio/project-grid.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/saas/billing.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/saas/guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/saas/onboarding.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    },
+    {
+      "path": "use-cases/saas/settings.guide.md",
+      "type": "use-case-guide",
+      "status": "created"
+    }
+  ],
+  "manifestPolicy": {
+    "authority": "canonical/system.authority.json#/manifestPolicy",
+    "generated": true
+  }
 }

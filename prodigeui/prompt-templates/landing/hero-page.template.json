@@ -44,21 +44,21 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.text.primary",
-      "color.text.secondary",
-      "color.action.primary",
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.primary",
       "space.lg",
       "space.xl",
-      "space.2xl",
-      "typography.display.lg",
-      "typography.body.lg"
+      "space.x2l",
+      "typography.size.display",
+      "typography.size.body-lg"
     ],
     "components": [
       "Button",
       "Text",
-      "Image",
-      "Heading"
+      "Avatar",
+      "Text"
     ],
     "designRules": [
       "typography.rules.json",
@@ -68,8 +68,8 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "enter-exit",
-      "scroll-based"
+      "fade-in",
+      "parallax-subtle"
     ]
   }
 }

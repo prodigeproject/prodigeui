@@ -4,12 +4,12 @@
   "extends": "_default",
   "overrides": {
     "color.background": "palette.white",
-    "color.foreground": "palette.neutral.s900",
+    "color.foreground": "palette.neutral.s950",
     "color.muted": "palette.primary.s50",
-    "color.muted-foreground": "palette.neutral.s600",
+    "color.muted-foreground": "palette.neutral.s950",
     "color.surface": "palette.white",
-    "color.surface-foreground": "palette.neutral.s900",
-    "color.border": "palette.neutral.s200",
+    "color.surface-foreground": "palette.neutral.s950",
+    "color.border": "palette.neutral.s500",
     "color.input": "palette.neutral.s200",
     "color.ring": "palette.primary.s700",
     "color.primary": "palette.primary.s700",
@@ -17,14 +17,14 @@
     "color.secondary": "palette.primary.s900",
     "color.secondary-foreground": "palette.white",
     "color.accent": "palette.primary.s50",
-    "color.accent-foreground": "palette.primary.s800",
+    "color.accent-foreground": "palette.neutral.s950",
     "color.destructive": "palette.error.s600",
     "color.destructive-foreground": "palette.white",
     "color.success": "palette.success.s600",
-    "color.success-foreground": "palette.white",
+    "color.success-foreground": "palette.neutral.s950",
     "color.warning": "palette.warning.s600",
-    "color.warning-foreground": "palette.neutral.s900",
+    "color.warning-foreground": "palette.neutral.s950",
     "color.info": "palette.info.s600",
-    "color.info-foreground": "palette.white"
+    "color.info-foreground": "palette.neutral.s950"
   }
 }

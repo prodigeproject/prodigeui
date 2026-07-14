@@ -58,6 +58,27 @@
       "severity": "fail"
     },
     {
+      "id": "type-role-integrity",
+      "category": "design-rules",
+      "description": "Display, body, and optional annotation typography have declared, distinct, repeated jobs appropriate to the product; font switching is functional rather than decorative.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "font-render-truth",
+      "category": "design-rules",
+      "description": "Custom fonts are loaded before visual evaluation and the computed family on display text matches the declared display face; silent fallback is a failure.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "closing-cta-color-continuity",
+      "category": "design-rules",
+      "description": "The closing CTA reuses an established semantic signal/accent or primary surface, owns its foreground, and does not introduce a new or muddy near-match hue.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
       "id": "weight-limit",
       "category": "design-rules",
       "description": "Maximum 3-4 font weights used",

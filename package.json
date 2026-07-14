@@ -1,0 +1,28 @@
+{
+  "name": "prodigeui",
+  "version": "1.0.0",
+  "description": "A portable UI/UX knowledge system for AI coding agents.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:tokens": "node scripts/build-tokens.mjs",
+    "build:manifest": "node scripts/build-manifest.mjs",
+    "check:tokens": "node scripts/build-tokens.mjs --check",
+    "check:schemas": "node scripts/validate-schemas.mjs",
+    "check:references": "node scripts/check-references.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "check:naming": "node scripts/check-token-naming.mjs",
+    "check:manifest": "node scripts/check-manifest.mjs",
+    "check:research": "node scripts/check-research-log.mjs",
+    "check:consistency": "node scripts/check-consistency.mjs",
+    "check:canonical": "node scripts/check-canonical-authority.mjs",
+    "check:provenance": "node scripts/check-provenance.mjs",
+    "check:normative": "node scripts/check-normative-precedence.mjs",
+    "check:output-encoding": "node scripts/check-output-encoding.mjs",
+    "test": "node scripts/validate-all.mjs",
+    "quality-gate": "node scripts/validate-all.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

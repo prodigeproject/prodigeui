@@ -62,7 +62,12 @@ this file.
 
 ---
 
-## 1. GSAP + ScrollTrigger — the scroll-engine (highest impact)
+## 1. GSAP + ScrollTrigger — restricted optional scroll engine
+
+**Product/legal boundary:** Motion and native browser APIs are the default production
+recommendation. GSAP/ScrollTrigger may be used for isolated benchmarks or after explicit
+product and legal clearance; do not silently ship it inside a no-code builder or redistribute
+premium plugins. Provide static, reduced-motion, and mobile fallbacks for every GSAP scene.
 
 The single biggest "premium site" lever. Scroll becomes a timeline scrubber, not just a reveal trigger.
 

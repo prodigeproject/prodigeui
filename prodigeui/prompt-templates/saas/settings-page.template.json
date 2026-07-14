@@ -44,21 +44,21 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.input",
-      "color.surface.elevated",
-      "color.text.primary",
-      "color.text.secondary",
-      "color.feedback.error",
-      "color.feedback.success",
-      "border.default",
+      "color.background",
+      "color.input",
+      "color.surface",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.destructive",
+      "color.success",
+      "border.width.default",
       "space.sm",
       "space.md",
       "space.lg",
       "radius.md",
       "shadow.lg",
-      "typography.heading.md",
-      "typography.body.sm"
+      "typography.size.h4",
+      "typography.size.body-sm"
     ],
     "components": [
       "Input",
@@ -77,8 +77,8 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "state-transition",
-      "enter-exit"
+      "button-press",
+      "fade-in"
     ]
   }
 }

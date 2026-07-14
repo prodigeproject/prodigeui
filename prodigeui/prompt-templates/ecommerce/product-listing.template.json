@@ -43,25 +43,25 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.text.primary",
-      "color.text.secondary",
-      "color.feedback.success",
-      "color.action.primary",
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.success",
+      "color.primary",
       "space.md",
       "space.sm",
       "radius.md",
       "shadow.sm",
       "shadow.md",
-      "typography.heading.sm",
-      "typography.body.md",
-      "typography.body.sm"
+      "typography.size.h5",
+      "typography.size.body",
+      "typography.size.body-sm"
     ],
     "components": [
       "Card",
       "Button",
       "Text",
-      "Image",
+      "Avatar",
       "Input",
       "Checkbox"
     ],
@@ -73,8 +73,8 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "state-transition",
-      "hover-focus"
+      "button-press",
+      "hover-lift"
     ]
   }
 }

@@ -1,0 +1,847 @@
+{
+  "generatedAt": "2026-07-14T17:07:43.615Z",
+  "rows": [
+    {
+      "target": "flowai-baseline",
+      "viewport": "desktop",
+      "baseline": true,
+      "documentHeight": 4310,
+      "horizontalOverflow": 0,
+      "nodeCount": 155,
+      "maxDepth": 9,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 0
+      },
+      "fixedSticky": 0,
+      "targetFailures": [
+        {
+          "tag": "A",
+          "text": "FlowAI",
+          "width": 72,
+          "height": 26
+        },
+        {
+          "tag": "A",
+          "text": "System",
+          "width": 40,
+          "height": 20
+        },
+        {
+          "tag": "A",
+          "text": "Proof",
+          "width": 29,
+          "height": 20
+        },
+        {
+          "tag": "A",
+          "text": "Pricing",
+          "width": 37,
+          "height": 20
+        },
+        {
+          "tag": "A",
+          "text": "FAQ",
+          "width": 24,
+          "height": 20
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Does FlowAI replace our issue tr",
+          "width": 648,
+          "height": 26
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Will it post updates without rev",
+          "width": 648,
+          "height": 26
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "What does the AI learn from our ",
+          "width": 648,
+          "height": 26
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "How quickly can a team start?",
+          "width": 648,
+          "height": 26
+        },
+        {
+          "tag": "A",
+          "text": "FlowAI",
+          "width": 56,
+          "height": 20
+        },
+        {
+          "tag": "A",
+          "text": "System",
+          "width": 37,
+          "height": 18
+        },
+        {
+          "tag": "A",
+          "text": "Pricing",
+          "width": 34,
+          "height": 18
+        },
+        {
+          "tag": "A",
+          "text": "FAQ",
+          "width": 22,
+          "height": 18
+        }
+      ],
+      "textClipping": [],
+      "fontsStatus": "loaded",
+      "fontFaces": [],
+      "displayFont": "Recursive, sans-serif",
+      "closingContinuity": "n/a",
+      "paletteArea": [
+        [
+          "rgba(0, 0, 0, 0)",
+          25333211.77000712
+        ],
+        [
+          "rgb(238, 244, 240)",
+          6206085
+        ],
+        [
+          "rgb(255, 255, 255)",
+          1855259.6189662814
+        ],
+        [
+          "rgb(185, 241, 209)",
+          618146.71875
+        ],
+        [
+          "rgb(16, 36, 31)",
+          467596.015625
+        ],
+        [
+          "rgb(255, 115, 93)",
+          376290.9375
+        ],
+        [
+          "rgb(237, 242, 239)",
+          97829.71026557684
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          128
+        ],
+        [
+          "6px",
+          6
+        ],
+        [
+          "4px",
+          5
+        ],
+        [
+          "5px",
+          3
+        ],
+        [
+          "9px",
+          3
+        ],
+        [
+          "99px",
+          1
+        ],
+        [
+          "7px",
+          1
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "n/a",
+      "tabFocus": {
+        "tag": "A",
+        "text": "FlowAI",
+        "visible": true
+      },
+      "disclosureKeyboard": "opened",
+      "externalRequests": [
+        "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Recursive:CASL,MONO,slnt,wght@0..1,0..1,-15..0,300..1000&display=swap"
+      ],
+      "errors": [
+        "console:Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "target": "flowai-baseline",
+      "viewport": "mobile",
+      "baseline": true,
+      "documentHeight": 6182,
+      "horizontalOverflow": 0,
+      "nodeCount": 155,
+      "maxDepth": 9,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 0
+      },
+      "fixedSticky": 0,
+      "targetFailures": [
+        {
+          "tag": "A",
+          "text": "FlowAI",
+          "width": 72,
+          "height": 26
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Does FlowAI replace our issue tr",
+          "width": 360,
+          "height": 26
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Will it post updates without rev",
+          "width": 360,
+          "height": 26
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "What does the AI learn from our ",
+          "width": 360,
+          "height": 26
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "How quickly can a team start?",
+          "width": 360,
+          "height": 26
+        },
+        {
+          "tag": "A",
+          "text": "FlowAI",
+          "width": 56,
+          "height": 20
+        }
+      ],
+      "textClipping": [],
+      "fontsStatus": "loaded",
+      "fontFaces": [],
+      "displayFont": "Recursive, sans-serif",
+      "closingContinuity": "n/a",
+      "paletteArea": [
+        [
+          "rgba(0, 0, 0, 0)",
+          11109064.120117188
+        ],
+        [
+          "rgb(238, 244, 240)",
+          2410852.03125
+        ],
+        [
+          "rgb(255, 255, 255)",
+          1085755.9921875
+        ],
+        [
+          "rgb(185, 241, 209)",
+          389489.0625
+        ],
+        [
+          "rgb(16, 36, 31)",
+          180142.490234375
+        ],
+        [
+          "rgb(255, 115, 93)",
+          134741.25
+        ],
+        [
+          "rgb(237, 242, 239)",
+          63136.796875
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          121
+        ],
+        [
+          "6px",
+          6
+        ],
+        [
+          "4px",
+          5
+        ],
+        [
+          "5px",
+          3
+        ],
+        [
+          "9px",
+          3
+        ],
+        [
+          "99px",
+          1
+        ],
+        [
+          "7px",
+          1
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "n/a",
+      "tabFocus": {
+        "tag": "A",
+        "text": "FlowAI",
+        "visible": true
+      },
+      "disclosureKeyboard": "opened",
+      "externalRequests": [
+        "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Recursive:CASL,MONO,slnt,wght@0..1,0..1,-15..0,300..1000&display=swap"
+      ],
+      "errors": [
+        "console:Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "target": "flowai-post-repair",
+      "viewport": "desktop",
+      "baseline": false,
+      "documentHeight": 4374,
+      "horizontalOverflow": 0,
+      "nodeCount": 176,
+      "maxDepth": 9,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 0
+      },
+      "fixedSticky": 0,
+      "targetFailures": [],
+      "textClipping": [],
+      "fontsStatus": "loaded",
+      "fontFaces": [
+        "Recursive Local:loaded",
+        "Manrope Local:loaded",
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "displayFont": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+      "closingContinuity": true,
+      "paletteArea": [
+        [
+          "rgba(0, 0, 0, 0)",
+          25568493.14111328
+        ],
+        [
+          "rgb(245, 241, 232)",
+          6298425
+        ],
+        [
+          "rgb(255, 253, 248)",
+          1880555.8823242188
+        ],
+        [
+          "rgb(255, 115, 93)",
+          490387.5
+        ],
+        [
+          "rgb(24, 36, 31)",
+          460737.34375
+        ],
+        [
+          "rgb(36, 94, 74)",
+          423570.36767578125
+        ],
+        [
+          "rgb(220, 231, 223)",
+          195765.1875
+        ],
+        [
+          "rgb(244, 234, 209)",
+          24384.621337890625
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          159
+        ],
+        [
+          "6px",
+          11
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "n/a",
+      "tabFocus": {
+        "tag": "A",
+        "text": "FlowAI",
+        "visible": true
+      },
+      "disclosureKeyboard": "opened",
+      "externalRequests": [],
+      "errors": []
+    },
+    {
+      "target": "flowai-post-repair",
+      "viewport": "mobile",
+      "baseline": false,
+      "documentHeight": 6414,
+      "horizontalOverflow": 0,
+      "nodeCount": 176,
+      "maxDepth": 9,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 0
+      },
+      "fixedSticky": 0,
+      "targetFailures": [],
+      "textClipping": [],
+      "fontsStatus": "loaded",
+      "fontFaces": [
+        "Recursive Local:loaded",
+        "Manrope Local:loaded",
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "displayFont": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+      "closingContinuity": true,
+      "paletteArea": [
+        [
+          "rgba(0, 0, 0, 0)",
+          11860468.287353516
+        ],
+        [
+          "rgb(245, 241, 232)",
+          2501283.28125
+        ],
+        [
+          "rgb(255, 253, 248)",
+          1121554.7294921875
+        ],
+        [
+          "rgb(24, 36, 31)",
+          225767.53125
+        ],
+        [
+          "rgb(36, 94, 74)",
+          219718.9892578125
+        ],
+        [
+          "rgb(220, 231, 223)",
+          173102.375
+        ],
+        [
+          "rgb(255, 115, 93)",
+          136980
+        ],
+        [
+          "rgb(244, 234, 209)",
+          21765.1875
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          148
+        ],
+        [
+          "6px",
+          11
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "n/a",
+      "tabFocus": {
+        "tag": "A",
+        "text": "FlowAI",
+        "visible": true
+      },
+      "disclosureKeyboard": "opened",
+      "externalRequests": [],
+      "errors": []
+    },
+    {
+      "target": "nova-baseline",
+      "viewport": "desktop",
+      "baseline": true,
+      "documentHeight": 4529,
+      "horizontalOverflow": 0,
+      "nodeCount": 79,
+      "maxDepth": 7,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 0
+      },
+      "fixedSticky": 0,
+      "targetFailures": [
+        {
+          "tag": "A",
+          "text": "NOVA",
+          "width": 99,
+          "height": 32
+        },
+        {
+          "tag": "A",
+          "text": "Belief",
+          "width": 44,
+          "height": 16
+        },
+        {
+          "tag": "A",
+          "text": "Work",
+          "width": 37,
+          "height": 16
+        },
+        {
+          "tag": "A",
+          "text": "Services",
+          "width": 62,
+          "height": 16
+        },
+        {
+          "tag": "A",
+          "text": "Contact",
+          "width": 58,
+          "height": 16
+        }
+      ],
+      "textClipping": [],
+      "fontsStatus": "loaded",
+      "fontFaces": [],
+      "displayFont": "",
+      "closingContinuity": "n/a",
+      "paletteArea": [
+        [
+          "rgba(0, 0, 0, 0)",
+          22698884.297851562
+        ],
+        [
+          "rgb(16, 16, 16)",
+          6521760
+        ],
+        [
+          "rgb(215, 255, 63)",
+          1133380
+        ],
+        [
+          "rgb(233, 228, 220)",
+          905760
+        ],
+        [
+          "rgb(36, 73, 255)",
+          558895.21875
+        ],
+        [
+          "rgba(16, 16, 16, 0.867)",
+          66306.703125
+        ],
+        [
+          "rgba(16, 16, 16, 0.863)",
+          27157.09375
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          67
+        ],
+        [
+          "50%",
+          3
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "n/a",
+      "tabFocus": {
+        "tag": "A",
+        "text": "NOVA",
+        "visible": true
+      },
+      "disclosureKeyboard": "n/a",
+      "externalRequests": [
+        "https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,50..150,100..900;1,50..150,100..900&family=DM+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap"
+      ],
+      "errors": [
+        "console:Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "target": "nova-baseline",
+      "viewport": "mobile",
+      "baseline": true,
+      "documentHeight": 4201,
+      "horizontalOverflow": 0,
+      "nodeCount": 79,
+      "maxDepth": 7,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 0
+      },
+      "fixedSticky": 0,
+      "targetFailures": [
+        {
+          "tag": "A",
+          "text": "NOVA",
+          "width": 99,
+          "height": 32
+        },
+        {
+          "tag": "A",
+          "text": "Contact",
+          "width": 58,
+          "height": 16
+        }
+      ],
+      "textClipping": [],
+      "fontsStatus": "loaded",
+      "fontFaces": [],
+      "displayFont": "",
+      "closingContinuity": "n/a",
+      "paletteArea": [
+        [
+          "rgba(0, 0, 0, 0)",
+          6001668.40625
+        ],
+        [
+          "rgb(16, 16, 16)",
+          1638475.3125
+        ],
+        [
+          "rgb(233, 228, 220)",
+          327624.375
+        ],
+        [
+          "rgb(215, 255, 63)",
+          253600
+        ],
+        [
+          "rgb(36, 73, 255)",
+          140000
+        ],
+        [
+          "rgba(16, 16, 16, 0.867)",
+          66306.703125
+        ],
+        [
+          "rgba(16, 16, 16, 0.863)",
+          27157.09375
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          64
+        ],
+        [
+          "50%",
+          3
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "n/a",
+      "tabFocus": {
+        "tag": "A",
+        "text": "NOVA",
+        "visible": true
+      },
+      "disclosureKeyboard": "n/a",
+      "externalRequests": [
+        "https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,50..150,100..900;1,50..150,100..900&family=DM+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap"
+      ],
+      "errors": [
+        "console:Failed to load resource: net::ERR_FAILED"
+      ]
+    },
+    {
+      "target": "nova-post-repair",
+      "viewport": "desktop",
+      "baseline": false,
+      "documentHeight": 4377,
+      "horizontalOverflow": 0,
+      "nodeCount": 89,
+      "maxDepth": 7,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 1
+      },
+      "fixedSticky": 0,
+      "targetFailures": [],
+      "textClipping": [],
+      "fontsStatus": "loaded",
+      "fontFaces": [],
+      "displayFont": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+      "closingContinuity": true,
+      "paletteArea": [
+        [
+          "rgba(0, 0, 0, 0)",
+          19483001.294151727
+        ],
+        [
+          "rgb(241, 234, 223)",
+          8607638.833007812
+        ],
+        [
+          "rgb(18, 18, 18)",
+          1766601.4921875
+        ],
+        [
+          "rgb(31, 66, 216)",
+          1186560
+        ],
+        [
+          "rgb(242, 83, 53)",
+          958788.0000710641
+        ],
+        [
+          "rgb(255, 210, 74)",
+          126720
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          79
+        ],
+        [
+          "50%",
+          2
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "true",
+      "tabFocus": {
+        "tag": "A",
+        "text": "NOVA",
+        "visible": true
+      },
+      "disclosureKeyboard": "n/a",
+      "externalRequests": [],
+      "errors": []
+    },
+    {
+      "target": "nova-post-repair",
+      "viewport": "mobile",
+      "baseline": false,
+      "documentHeight": 4211,
+      "horizontalOverflow": 0,
+      "nodeCount": 89,
+      "maxDepth": 7,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 1
+      },
+      "fixedSticky": 0,
+      "targetFailures": [],
+      "textClipping": [],
+      "fontsStatus": "loaded",
+      "fontFaces": [],
+      "displayFont": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+      "closingContinuity": true,
+      "paletteArea": [
+        [
+          "rgba(0, 0, 0, 0)",
+          5427985.0639010025
+        ],
+        [
+          "rgb(241, 234, 223)",
+          2096425.576171875
+        ],
+        [
+          "rgb(18, 18, 18)",
+          573782.7421875
+        ],
+        [
+          "rgb(242, 83, 53)",
+          344702.53128869535
+        ],
+        [
+          "rgb(31, 66, 216)",
+          299520
+        ],
+        [
+          "rgb(255, 210, 74)",
+          34320
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          68
+        ],
+        [
+          "50%",
+          2
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "true",
+      "tabFocus": {
+        "tag": "A",
+        "text": "NOVA",
+        "visible": true
+      },
+      "disclosureKeyboard": "n/a",
+      "externalRequests": [],
+      "errors": []
+    }
+  ]
+}

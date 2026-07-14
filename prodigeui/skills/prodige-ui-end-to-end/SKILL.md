@@ -1,3 +1,4 @@
+
 ---
 name: prodige-ui-end-to-end
 description: |
@@ -34,11 +35,24 @@ Actions:
 
 **Output:** Brief summary document with use-case, audience, platform, key screens, and constraints.
 
+0. Read `craft/model-robust-generation.md` and keep its six-line Generation Contract in
+   working context. This is mandatory on Kiro, DeepSeek, and other models prone to following
+   the nearest visual example instead of completing the product-derivation steps.
+   Apply its Typography enhancement layer after the composition is stable; typography may
+   refine hierarchy and measure but must not replace the successful page structure.
+   Complete its five-decision creative checkpoint before implementation and its render-truth
+   checkpoint after implementation. These checkpoints assess reasoning and rendered quality;
+   they must never be converted into benchmark geometry or a fixed section recipe.
+   Also read `canonical/generation.contract.json`. Record its six required decisions,
+   especially `typeJobs` and `closingSurface`, in working context. The final Quality Gate must
+   prove that the selected fonts rendered and the closing CTA continues an established color
+   role rather than inventing a new one.
+
 5. **Route: invent vs reach for a real system.** Read `craft/design-system-routing.md`.
    If design SERVES the product (dashboard, admin, enterprise, regulated), consider an
    official design system (Fluent/Carbon/Material/Radix/shadcn/govuk/uswds) before building
    a bespoke token layer. If design IS the product (landing, portfolio, brand), invent with
-   `craft/`. Record the decision; it changes Steps 3–4.
+   `craft/`. Record the decision; it changes Steps 3â€“4.
 
 ---
 
@@ -62,6 +76,8 @@ Actions:
      - 0.4-0.6 = Balanced (SaaS, ecommerce)
      - 0.7-1.0 = Dense (HRIS, data-heavy dashboards)
 3. Document the rationale for each dial setting
+4. Declare display, body, and annotation type jobs before choosing font names
+5. Declare the closing CTA surface role and which existing signal/primary token it resolves
 
 **Output:** Design Read with aesthetic direction and Three Dials values with rationale.
 
@@ -156,7 +172,7 @@ Actions:
 5. Each animation choice must link to a documented motion principle
 6. **Apply interaction-level motion craft** from `craft/patterns/motion-craft.md`: committed
    easing curves (not weak built-ins; `ease-in` banned on UI), entrance physics (never
-   `scale(0)` → `scale(0.95)`+opacity), origin-aware popovers (modals exempt), interruptible
+   `scale(0)` â†’ `scale(0.95)`+opacity), origin-aware popovers (modals exempt), interruptible
    transitions for rapid UI, asymmetric enter/exit, GPU-only properties. **No animation on
    keyboard-triggered or 100+/day actions.**
 
@@ -205,7 +221,7 @@ Actions:
    - **Token compliance:** No raw/hardcoded values (hex, px, rem) outside token system
    - **Design Rules adherence:** Typography scale, grid alignment, contrast ratios
    - **Theme consistency:** All values sourced from active theme tokens
-   - **Accessibility:** WCAG 2.1 AA — contrast, keyboard, ARIA, focus indicators
+   - **Accessibility:** WCAG 2.1 AA â€” contrast, keyboard, ARIA, focus indicators
 2. Run `quality-gate/anti-ai-slop.checklist.md` indicators:
    - Consistent spacing rhythm (no arbitrary margins)
    - Intentional visual hierarchy (not random sizing)
@@ -213,6 +229,9 @@ Actions:
    - Meaningful whitespace (not filler)
    - Coherent color usage (roles, not decoration)
    - Typography discipline (scale adherence, limited weights)
+   - Computed font truth (the intended display family actually rendered)
+   - Type-role integrity (display, body, and annotation keep distinct repeated jobs)
+   - Closing CTA continuity (no new or muddy near-match hue at the final section)
 3. For each criterion:
    - Status: PASS or FAIL
    - If FAIL: identify the issue, location, and actionable recommendation
@@ -228,8 +247,8 @@ Actions:
 ## Workflow Summary
 
 ```
-Brief Analysis → Design Read → Token Selection → Component Selection
-     → Layout Design → Motion Design → Implementation → Quality Gate
+Brief Analysis â†’ Design Read â†’ Token Selection â†’ Component Selection
+     â†’ Layout Design â†’ Motion Design â†’ Implementation â†’ Quality Gate
 ```
 
 If Quality Gate fails, loop back to the step that produced the violation and fix it.

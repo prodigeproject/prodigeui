@@ -44,20 +44,20 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.unread",
-      "color.action.primary",
-      "color.text.primary",
-      "color.text.tertiary",
-      "color.feedback.info",
-      "color.feedback.warning",
-      "color.feedback.error",
+      "color.background",
+      "color.accent",
+      "color.primary",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.info",
+      "color.warning",
+      "color.destructive",
       "space.sm",
       "space.md",
       "shadow.xl",
-      "typography.heading.sm",
-      "typography.body.sm",
-      "typography.body.xs"
+      "typography.size.h5",
+      "typography.size.body-sm",
+      "typography.size.caption"
     ],
     "components": [
       "Button",
@@ -76,9 +76,9 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "enter-exit",
-      "state-transition",
-      "hover-focus"
+      "fade-in",
+      "button-press",
+      "hover-lift"
     ]
   }
 }

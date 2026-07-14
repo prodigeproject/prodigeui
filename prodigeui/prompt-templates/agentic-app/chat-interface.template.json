@@ -43,24 +43,24 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.user-message",
-      "color.surface.agent-message",
-      "color.surface.code",
-      "color.text.primary",
-      "border.default",
-      "border.subtle",
+      "color.background",
+      "color.primary",
+      "color.surface",
+      "color.muted",
+      "color.foreground",
+      "border.width.default",
+      "border.width.default",
       "space.sm",
       "space.md",
       "radius.sm",
       "radius.md",
-      "typography.body.md",
-      "typography.mono.sm"
+      "typography.size.body",
+      "typography.size.body-sm"
     ],
     "components": [
       "Text",
       "Button",
-      "TextArea",
+      "Input",
       "Card",
       "Icon"
     ],
@@ -72,9 +72,9 @@
     ],
     "theme": "dark",
     "motionPresets": [
-      "enter-exit",
-      "state-transition",
-      "hover-focus"
+      "fade-in",
+      "button-press",
+      "hover-lift"
     ]
   }
 }

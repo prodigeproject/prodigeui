@@ -1,3 +1,4 @@
+
 # Atomic Design Composition Guidelines
 
 Guidelines for composing ProdigeUI components from atoms through organisms, ensuring
@@ -5,9 +6,9 @@ consistent, accessible, and token-driven interfaces.
 
 ## 1. Atomic Design Levels
 
-> "Atoms are the smallest functional unit that cannot be broken further without losing their meaning." — Brad Frost, Atomic Design
+> "Atoms are the smallest functional unit that cannot be broken further without losing their meaning." â€” Brad Frost, Atomic Design
 >
-> "Organisms form distinct sections of an interface." — Brad Frost, Atomic Design
+> "Organisms form distinct sections of an interface." â€” Brad Frost, Atomic Design
 
 | Level | Description | Examples |
 |-------|-------------|----------|
@@ -20,7 +21,7 @@ consistent, accessible, and token-driven interfaces.
 Atoms never contain other components. Molecules combine 2-4 atoms. Organisms combine
 molecules and/or atoms into distinct interface sections.
 
-**Molecule litmus test:** If removing one child atom does not change the component's purpose, it is NOT a molecule — it is a layout. A true molecule's identity depends on the cooperation of all its atoms.
+**Molecule litmus test:** If removing one child atom does not change the component's purpose, it is NOT a molecule â€” it is a layout. A true molecule's identity depends on the cooperation of all its atoms.
 
 ## 2. Composition Rules
 
@@ -59,15 +60,14 @@ molecules and/or atoms into distinct interface sections.
    an ancestor with `position:relative` (or `position:absolute`/`fixed`) that is the
    INTENDED containing block. Without this, the element escapes to the nearest positioned
    ancestor (or viewport), and percentage-based `width`/`height`/`inset` values compute
-   against an unintended container — causing the element to render at wrong size/position.
+   against an unintended container â€” causing the element to render at wrong size/position.
    Common violation: slider thumbs, toggle indicators, or decorative elements placed
    `position:absolute` inside a parent that lacks `position:relative`.
 7. **Gallery/masonry image containment:** Images in CSS-columns masonry or grid layouts
    MUST have both `object-fit:cover` AND a `max-height` constraint (e.g. 420px or 50vh)
-   on their container. Without this, portrait-oriented images (e.g. 800×1000) render at
+   on their container. Without this, portrait-oriented images (e.g. 800Ã—1000) render at
    full natural height, creating excessively tall stretched cards that break visual rhythm.
    The container clips the overflow; the image fills via object-fit:cover.
-
 ## 3. Token Binding Rules
 
 All visual values MUST come from Design_Token references. No raw values allowed.
@@ -113,6 +113,13 @@ Parent state affects children predictably:
 2. Disabled parent = all children disabled. No exceptions.
 3. Error state targets specific children (field-level), not blanket application.
 4. Focus state is NEVER inherited; each component manages its own focus independently.
+5. **Paired surface/foreground ownership is mandatory.** Any component root that sets
+   `background` or `background-color` MUST also set its own semantic `color` in the same
+   rule. Never rely on an ancestor's inherited foreground for buttons, menu items,
+   popovers, selected tabs, pricing CTAs, badges, or cards that change surface. Cascade
+   that foreground deliberately to descendants (`.component * { color: inherit }`) unless
+   a child has a tested semantic role of its own. Validate the browser's computed
+   foreground against the component's computed background in every state and parent.
 5. Hover state is local to the hovered element unless the component is designed as
    a single interactive unit (e.g., Card as a clickable link).
 

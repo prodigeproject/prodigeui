@@ -44,20 +44,20 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.tertiary",
-      "color.action.primary",
-      "color.text.primary",
-      "color.text.secondary",
-      "color.text.on-action",
-      "border.default",
+      "color.background",
+      "color.muted",
+      "color.primary",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.primary-foreground",
+      "border.width.default",
       "space.lg",
       "space.xl",
-      "space.2xl",
+      "space.x2l",
       "radius.lg",
-      "typography.heading.xl",
-      "typography.display.md",
-      "typography.body.md"
+      "typography.size.h2",
+      "typography.size.h1",
+      "typography.size.body"
     ],
     "components": [
       "Card",
@@ -66,7 +66,7 @@
       "Text",
       "Toggle",
       "Table",
-      "Heading"
+      "Text"
     ],
     "designRules": [
       "typography.rules.json",
@@ -76,8 +76,8 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "state-transition",
-      "enter-exit"
+      "button-press",
+      "fade-in"
     ]
   }
 }

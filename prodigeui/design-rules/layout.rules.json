@@ -1,12 +1,7 @@
 {
   "layout": {
     "gridColumns": { "desktop": 12, "tablet": 8, "mobile": 4 },
-    "breakpoints": {
-      "mobile": { "max": "639px" },
-      "tablet": { "min": "640px", "max": "1023px" },
-      "desktop": { "min": "1024px" },
-      "large": { "min": "1440px" }
-    },
+    "breakpointsCanonical": "responsive.rules.json#/responsive/breakpoints",
     "spacingBaseUnit": "4px",
     "primarySpacingStep": "8px",
     "gutters": { "desktop": "24px", "tablet": "20px", "mobile": "16px" },

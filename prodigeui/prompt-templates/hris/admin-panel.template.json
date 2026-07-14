@@ -44,22 +44,22 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.secondary",
-      "color.surface.elevated",
-      "color.surface.hover",
-      "color.feedback.success-subtle",
-      "color.feedback.error",
-      "color.feedback.warning-subtle",
-      "color.text.primary",
-      "color.text.secondary",
-      "border.default",
+      "color.background",
+      "color.surface",
+      "color.surface",
+      "color.accent",
+      "color.success",
+      "color.destructive",
+      "color.warning",
+      "color.foreground",
+      "color.muted-foreground",
+      "border.width.default",
       "space.sm",
       "space.md",
       "space.lg",
       "radius.md",
-      "typography.heading.lg",
-      "typography.body.sm"
+      "typography.size.h3",
+      "typography.size.body-sm"
     ],
     "components": [
       "Table",
@@ -79,9 +79,9 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "state-transition",
-      "enter-exit",
-      "hover-focus"
+      "button-press",
+      "fade-in",
+      "hover-lift"
     ]
   }
 }

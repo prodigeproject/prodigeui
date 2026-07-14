@@ -42,10 +42,35 @@
     }
   ],
   "references": {
-    "tokens": ["color.surface.primary", "color.text.primary", "color.text.secondary", "color.feedback.error", "space.lg", "space.xl", "radius.full", "typography.heading.md", "typography.body.sm"],
-    "components": ["Card", "Button", "Input", "Form", "Modal", "Text"],
-    "designRules": ["typography.rules.json", "color.rules.json", "layout.rules.json", "structure.rules.json"],
+    "tokens": [
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.destructive",
+      "space.lg",
+      "space.xl",
+      "radius.full",
+      "typography.size.h4",
+      "typography.size.body-sm"
+    ],
+    "components": [
+      "Card",
+      "Button",
+      "Input",
+      "Form",
+      "Modal",
+      "Text"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
     "theme": "light",
-    "motionPresets": ["state-transition", "enter-exit"]
+    "motionPresets": [
+      "button-press",
+      "fade-in"
+    ]
   }
 }

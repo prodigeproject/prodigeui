@@ -1,21 +1,56 @@
 {
   "schemaVersion": 1,
   "description": "ProdigeUI Component Library manifest. Each component references only Design Tokens (no raw values). Organized by Atomic Design levels.",
-  "categories": ["input", "navigation", "feedback", "data-display", "layout", "overlay"],
+  "categories": [
+    "input",
+    "navigation",
+    "feedback",
+    "data-display",
+    "layout",
+    "overlay"
+  ],
   "components": [
     {
       "name": "Button",
       "level": "atom",
       "category": "input",
       "interactive": true,
-      "variants": ["primary", "secondary", "ghost", "destructive", "link"],
-      "props": ["size", "disabled", "loading", "iconLeft", "iconRight", "fullWidth"],
-      "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+      "variants": [
+        "primary",
+        "secondary",
+        "ghost",
+        "destructive",
+        "link"
+      ],
+      "props": [
+        "size",
+        "disabled",
+        "loading",
+        "iconLeft",
+        "iconRight",
+        "fullWidth"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "loading",
+        "pressed"
+      ],
       "a11y": {
         "role": "button",
-        "keyboard": ["Enter", "Space"],
+        "keyboard": [
+          "Enter",
+          "Space"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-disabled", "aria-busy", "aria-label"]
+        "ariaAttributes": [
+          "aria-disabled",
+          "aria-busy",
+          "aria-label"
+        ]
       },
       "tokens": [
         "button.primary.bg",
@@ -40,14 +75,44 @@
       "level": "atom",
       "category": "input",
       "interactive": true,
-      "variants": ["default", "filled", "outlined"],
-      "props": ["type", "placeholder", "disabled", "required", "value", "size", "error", "clearable"],
-      "states": ["default", "hover", "focus", "active", "disabled", "error", "readonly"],
+      "variants": [
+        "default",
+        "filled",
+        "outlined"
+      ],
+      "props": [
+        "type",
+        "placeholder",
+        "disabled",
+        "required",
+        "value",
+        "size",
+        "error",
+        "clearable"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "error",
+        "readonly",
+        "pressed"
+      ],
       "a11y": {
         "role": "textbox",
-        "keyboard": ["Tab", "Shift+Tab"],
+        "keyboard": [
+          "Tab",
+          "Shift+Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-invalid", "aria-required", "aria-describedby", "aria-disabled"]
+        "ariaAttributes": [
+          "aria-invalid",
+          "aria-required",
+          "aria-describedby",
+          "aria-disabled"
+        ]
       },
       "tokens": [
         "input.bg",
@@ -67,14 +132,28 @@
       "level": "atom",
       "category": "data-display",
       "interactive": false,
-      "variants": ["default", "filled", "outlined"],
-      "props": ["name", "size", "color", "ariaLabel"],
-      "states": ["default"],
+      "variants": [
+        "default",
+        "filled",
+        "outlined"
+      ],
+      "props": [
+        "name",
+        "size",
+        "color",
+        "ariaLabel"
+      ],
+      "states": [
+        "default"
+      ],
       "a11y": {
         "role": "img",
         "keyboard": [],
         "focusVisible": false,
-        "ariaAttributes": ["aria-label", "aria-hidden"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-hidden"
+        ]
       },
       "tokens": [
         "color.foreground",
@@ -87,14 +166,31 @@
       "level": "atom",
       "category": "data-display",
       "interactive": false,
-      "variants": ["body", "heading", "caption", "display", "code"],
-      "props": ["as", "size", "weight", "color", "truncate", "align"],
-      "states": ["default"],
+      "variants": [
+        "body",
+        "heading",
+        "caption",
+        "display",
+        "code"
+      ],
+      "props": [
+        "as",
+        "size",
+        "weight",
+        "color",
+        "truncate",
+        "align"
+      ],
+      "states": [
+        "default"
+      ],
       "a11y": {
         "role": "none",
         "keyboard": [],
         "focusVisible": false,
-        "ariaAttributes": ["aria-level"]
+        "ariaAttributes": [
+          "aria-level"
+        ]
       },
       "tokens": [
         "color.foreground",
@@ -125,14 +221,30 @@
       "level": "atom",
       "category": "feedback",
       "interactive": false,
-      "variants": ["default", "primary", "secondary", "success", "warning", "destructive", "outline"],
-      "props": ["variant", "size", "removable"],
-      "states": ["default"],
+      "variants": [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "destructive",
+        "outline"
+      ],
+      "props": [
+        "variant",
+        "size",
+        "removable"
+      ],
+      "states": [
+        "default"
+      ],
       "a11y": {
         "role": "status",
         "keyboard": [],
         "focusVisible": false,
-        "ariaAttributes": ["aria-label"]
+        "ariaAttributes": [
+          "aria-label"
+        ]
       },
       "tokens": [
         "badge.bg",
@@ -155,14 +267,37 @@
       "level": "atom",
       "category": "input",
       "interactive": true,
-      "variants": ["default", "small", "large"],
-      "props": ["checked", "disabled", "onChange", "label"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "default",
+        "small",
+        "large"
+      ],
+      "props": [
+        "checked",
+        "disabled",
+        "onChange",
+        "label"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "switch",
-        "keyboard": ["Space", "Enter"],
+        "keyboard": [
+          "Space",
+          "Enter"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-checked", "aria-disabled", "aria-label"]
+        "ariaAttributes": [
+          "aria-checked",
+          "aria-disabled",
+          "aria-label"
+        ]
       },
       "tokens": [
         "toggle.bg",
@@ -177,14 +312,39 @@
       "level": "atom",
       "category": "input",
       "interactive": true,
-      "variants": ["default", "indeterminate"],
-      "props": ["checked", "disabled", "indeterminate", "onChange", "label", "error"],
-      "states": ["default", "hover", "focus", "active", "disabled", "error"],
+      "variants": [
+        "default",
+        "indeterminate"
+      ],
+      "props": [
+        "checked",
+        "disabled",
+        "indeterminate",
+        "onChange",
+        "label",
+        "error"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "error",
+        "pressed"
+      ],
       "a11y": {
         "role": "checkbox",
-        "keyboard": ["Space"],
+        "keyboard": [
+          "Space"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-checked", "aria-disabled", "aria-invalid", "aria-describedby"]
+        "ariaAttributes": [
+          "aria-checked",
+          "aria-disabled",
+          "aria-invalid",
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "input.bg",
@@ -202,14 +362,42 @@
       "level": "atom",
       "category": "input",
       "interactive": true,
-      "variants": ["default"],
-      "props": ["checked", "disabled", "value", "name", "onChange", "label", "error"],
-      "states": ["default", "hover", "focus", "active", "disabled", "error"],
+      "variants": [
+        "default"
+      ],
+      "props": [
+        "checked",
+        "disabled",
+        "value",
+        "name",
+        "onChange",
+        "label",
+        "error"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "error",
+        "pressed"
+      ],
       "a11y": {
         "role": "radio",
-        "keyboard": ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"],
+        "keyboard": [
+          "Space",
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-checked", "aria-disabled", "aria-invalid"]
+        "ariaAttributes": [
+          "aria-checked",
+          "aria-disabled",
+          "aria-invalid"
+        ]
       },
       "tokens": [
         "input.bg",
@@ -227,14 +415,31 @@
       "level": "atom",
       "category": "data-display",
       "interactive": false,
-      "variants": ["circle", "square", "with-status"],
-      "props": ["src", "alt", "size", "fallback", "status", "initials"],
-      "states": ["default", "loading"],
+      "variants": [
+        "circle",
+        "square",
+        "with-status"
+      ],
+      "props": [
+        "src",
+        "alt",
+        "size",
+        "fallback",
+        "status",
+        "initials"
+      ],
+      "states": [
+        "default",
+        "loading"
+      ],
       "a11y": {
         "role": "img",
         "keyboard": [],
         "focusVisible": false,
-        "ariaAttributes": ["aria-label", "aria-hidden"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-hidden"
+        ]
       },
       "tokens": [
         "avatar.bg",
@@ -255,14 +460,27 @@
       "level": "atom",
       "category": "layout",
       "interactive": false,
-      "variants": ["horizontal", "vertical", "with-label"],
-      "props": ["orientation", "label", "variant", "spacing"],
-      "states": ["default"],
+      "variants": [
+        "horizontal",
+        "vertical",
+        "with-label"
+      ],
+      "props": [
+        "orientation",
+        "label",
+        "variant",
+        "spacing"
+      ],
+      "states": [
+        "default"
+      ],
       "a11y": {
         "role": "separator",
         "keyboard": [],
         "focusVisible": false,
-        "ariaAttributes": ["aria-orientation"]
+        "ariaAttributes": [
+          "aria-orientation"
+        ]
       },
       "tokens": [
         "divider.color",
@@ -278,14 +496,31 @@
       "level": "atom",
       "category": "feedback",
       "interactive": false,
-      "variants": ["text", "circle", "rectangle", "card"],
-      "props": ["width", "height", "variant", "animate", "count"],
-      "states": ["animating"],
+      "variants": [
+        "text",
+        "circle",
+        "rectangle",
+        "card"
+      ],
+      "props": [
+        "width",
+        "height",
+        "variant",
+        "animate",
+        "count"
+      ],
+      "states": [
+        "animating"
+      ],
       "a11y": {
         "role": "progressbar",
         "keyboard": [],
         "focusVisible": false,
-        "ariaAttributes": ["aria-busy", "aria-label", "aria-valuetext"]
+        "ariaAttributes": [
+          "aria-busy",
+          "aria-label",
+          "aria-valuetext"
+        ]
       },
       "tokens": [
         "skeleton.bg",
@@ -302,14 +537,28 @@
       "level": "atom",
       "category": "feedback",
       "interactive": false,
-      "variants": ["sm", "md", "lg"],
-      "props": ["size", "color", "label"],
-      "states": ["spinning"],
+      "variants": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "props": [
+        "size",
+        "color",
+        "label"
+      ],
+      "states": [
+        "spinning"
+      ],
       "a11y": {
         "role": "progressbar",
         "keyboard": [],
         "focusVisible": false,
-        "ariaAttributes": ["aria-busy", "aria-label", "aria-valuetext"]
+        "ariaAttributes": [
+          "aria-busy",
+          "aria-label",
+          "aria-valuetext"
+        ]
       },
       "tokens": [
         "spinner.color",
@@ -326,14 +575,42 @@
       "level": "atom",
       "category": "data-display",
       "interactive": true,
-      "variants": ["default", "removable", "clickable"],
-      "props": ["label", "variant", "color", "size", "onRemove", "onClick", "disabled"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "default",
+        "removable",
+        "clickable"
+      ],
+      "props": [
+        "label",
+        "variant",
+        "color",
+        "size",
+        "onRemove",
+        "onClick",
+        "disabled"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "listitem",
-        "keyboard": ["Enter", "Space", "Backspace", "Delete"],
+        "keyboard": [
+          "Enter",
+          "Space",
+          "Backspace",
+          "Delete"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-disabled", "aria-selected"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-disabled",
+          "aria-selected"
+        ]
       },
       "tokens": [
         "tag.bg",
@@ -355,14 +632,40 @@
       "level": "molecule",
       "category": "input",
       "interactive": true,
-      "variants": ["vertical", "horizontal", "inline"],
-      "props": ["label", "helperText", "error", "required", "disabled", "children"],
-      "states": ["default", "hover", "focus", "active", "disabled", "error"],
+      "variants": [
+        "vertical",
+        "horizontal",
+        "inline"
+      ],
+      "props": [
+        "label",
+        "helperText",
+        "error",
+        "required",
+        "disabled",
+        "children"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "error",
+        "pressed"
+      ],
       "a11y": {
         "role": "group",
-        "keyboard": ["Tab", "Shift+Tab"],
-        "focusVisible": false,
-        "ariaAttributes": ["aria-describedby", "aria-invalid", "aria-required"]
+        "keyboard": [
+          "Tab",
+          "Shift+Tab"
+        ],
+        "focusVisible": true,
+        "ariaAttributes": [
+          "aria-describedby",
+          "aria-invalid",
+          "aria-required"
+        ]
       },
       "tokens": [
         "color.foreground",
@@ -380,14 +683,34 @@
       "level": "molecule",
       "category": "data-display",
       "interactive": false,
-      "variants": ["default", "outlined", "elevated", "interactive"],
-      "props": ["header", "footer", "media", "padding", "onClick"],
-      "states": ["default", "hover"],
+      "variants": [
+        "default",
+        "outlined",
+        "elevated",
+        "interactive"
+      ],
+      "props": [
+        "header",
+        "footer",
+        "media",
+        "padding",
+        "onClick"
+      ],
+      "states": [
+        "default",
+        "hover"
+      ],
       "a11y": {
         "role": "article",
-        "keyboard": ["Enter", "Space"],
+        "keyboard": [
+          "Enter",
+          "Space"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-describedby"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "card.bg",
@@ -404,14 +727,43 @@
       "level": "molecule",
       "category": "navigation",
       "interactive": true,
-      "variants": ["default", "active", "destructive", "with-icon"],
-      "props": ["label", "icon", "shortcut", "disabled", "active", "onClick", "href"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "default",
+        "active",
+        "destructive",
+        "with-icon"
+      ],
+      "props": [
+        "label",
+        "icon",
+        "shortcut",
+        "disabled",
+        "active",
+        "onClick",
+        "href"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "menuitem",
-        "keyboard": ["Enter", "Space", "ArrowUp", "ArrowDown"],
+        "keyboard": [
+          "Enter",
+          "Space",
+          "ArrowUp",
+          "ArrowDown"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-disabled", "aria-current", "aria-haspopup"]
+        "ariaAttributes": [
+          "aria-disabled",
+          "aria-current",
+          "aria-haspopup"
+        ]
       },
       "tokens": [
         "color.foreground",
@@ -431,14 +783,43 @@
       "level": "molecule",
       "category": "input",
       "interactive": true,
-      "variants": ["default", "expanded", "compact"],
-      "props": ["value", "placeholder", "onChange", "onSubmit", "disabled", "loading", "clearable"],
-      "states": ["default", "hover", "focus", "active", "disabled", "loading"],
+      "variants": [
+        "default",
+        "expanded",
+        "compact"
+      ],
+      "props": [
+        "value",
+        "placeholder",
+        "onChange",
+        "onSubmit",
+        "disabled",
+        "loading",
+        "clearable"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "loading",
+        "pressed"
+      ],
       "a11y": {
         "role": "search",
-        "keyboard": ["Enter", "Escape", "Tab"],
+        "keyboard": [
+          "Enter",
+          "Escape",
+          "Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-expanded", "aria-controls", "aria-activedescendant"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-expanded",
+          "aria-controls",
+          "aria-activedescendant"
+        ]
       },
       "tokens": [
         "input.bg",
@@ -459,14 +840,29 @@
       "level": "molecule",
       "category": "overlay",
       "interactive": false,
-      "variants": ["default", "rich"],
-      "props": ["content", "placement", "delay", "trigger"],
-      "states": ["default", "visible"],
+      "variants": [
+        "default",
+        "rich"
+      ],
+      "props": [
+        "content",
+        "placement",
+        "delay",
+        "trigger"
+      ],
+      "states": [
+        "default",
+        "visible"
+      ],
       "a11y": {
         "role": "tooltip",
-        "keyboard": ["Escape"],
+        "keyboard": [
+          "Escape"
+        ],
         "focusVisible": false,
-        "ariaAttributes": ["aria-describedby"]
+        "ariaAttributes": [
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "color.foreground",
@@ -485,14 +881,41 @@
       "level": "molecule",
       "category": "feedback",
       "interactive": true,
-      "variants": ["info", "success", "warning", "error", "with-action"],
-      "props": ["variant", "title", "description", "icon", "dismissible", "action", "onDismiss"],
-      "states": ["default", "dismissing"],
+      "variants": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "with-action"
+      ],
+      "props": [
+        "variant",
+        "title",
+        "description",
+        "icon",
+        "dismissible",
+        "action",
+        "onDismiss"
+      ],
+      "states": [
+        "default",
+        "dismissing",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "alert",
-        "keyboard": ["Escape", "Tab"],
+        "keyboard": [
+          "Escape",
+          "Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-live", "aria-atomic", "aria-label", "aria-describedby"]
+        "ariaAttributes": [
+          "aria-live",
+          "aria-atomic",
+          "aria-label",
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "alert.bg.info",
@@ -518,14 +941,41 @@
       "level": "molecule",
       "category": "feedback",
       "interactive": true,
-      "variants": ["info", "success", "warning", "error"],
-      "props": ["variant", "title", "description", "duration", "action", "onDismiss", "position"],
-      "states": ["entering", "visible", "exiting"],
+      "variants": [
+        "info",
+        "success",
+        "warning",
+        "error"
+      ],
+      "props": [
+        "variant",
+        "title",
+        "description",
+        "duration",
+        "action",
+        "onDismiss",
+        "position"
+      ],
+      "states": [
+        "entering",
+        "visible",
+        "exiting",
+        "default",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "status",
-        "keyboard": ["Escape", "Tab"],
+        "keyboard": [
+          "Escape",
+          "Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-live", "aria-atomic", "aria-label"]
+        "ariaAttributes": [
+          "aria-live",
+          "aria-atomic",
+          "aria-label"
+        ]
       },
       "tokens": [
         "toast.bg",
@@ -540,7 +990,7 @@
         "color.warning",
         "color.destructive",
         "motion.duration.fast",
-        "motion.easing.decelerate"
+        "motion.easing.exit"
       ]
     },
     {
@@ -548,14 +998,43 @@
       "level": "molecule",
       "category": "navigation",
       "interactive": true,
-      "variants": ["line", "pill", "bordered"],
-      "props": ["items", "activeKey", "onChange", "disabled", "size", "orientation"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "line",
+        "pill",
+        "bordered"
+      ],
+      "props": [
+        "items",
+        "activeKey",
+        "onChange",
+        "disabled",
+        "size",
+        "orientation"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "tablist",
-        "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End", "Tab"],
+        "keyboard": [
+          "ArrowLeft",
+          "ArrowRight",
+          "Home",
+          "End",
+          "Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-selected", "aria-controls", "aria-labelledby", "aria-orientation"]
+        "ariaAttributes": [
+          "aria-selected",
+          "aria-controls",
+          "aria-labelledby",
+          "aria-orientation"
+        ]
       },
       "tokens": [
         "tabs.bg",
@@ -575,14 +1054,41 @@
       "level": "molecule",
       "category": "data-display",
       "interactive": true,
-      "variants": ["single", "multiple"],
-      "props": ["items", "defaultOpen", "allowMultiple", "disabled", "onChange"],
-      "states": ["collapsed", "expanded"],
+      "variants": [
+        "single",
+        "multiple"
+      ],
+      "props": [
+        "items",
+        "defaultOpen",
+        "allowMultiple",
+        "disabled",
+        "onChange"
+      ],
+      "states": [
+        "collapsed",
+        "expanded",
+        "default",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "region",
-        "keyboard": ["Enter", "Space", "ArrowUp", "ArrowDown", "Home", "End"],
+        "keyboard": [
+          "Enter",
+          "Space",
+          "ArrowUp",
+          "ArrowDown",
+          "Home",
+          "End"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-labelledby", "aria-disabled"]
+        "ariaAttributes": [
+          "aria-expanded",
+          "aria-controls",
+          "aria-labelledby",
+          "aria-disabled"
+        ]
       },
       "tokens": [
         "accordion.bg",
@@ -595,7 +1101,7 @@
         "color.muted-foreground",
         "color.border",
         "motion.duration.normal",
-        "motion.easing.decelerate"
+        "motion.easing.exit"
       ]
     },
     {
@@ -603,14 +1109,30 @@
       "level": "molecule",
       "category": "navigation",
       "interactive": false,
-      "variants": ["default", "with-icon"],
-      "props": ["items", "separator", "maxItems", "onNavigate"],
-      "states": ["default"],
+      "variants": [
+        "default",
+        "with-icon"
+      ],
+      "props": [
+        "items",
+        "separator",
+        "maxItems",
+        "onNavigate"
+      ],
+      "states": [
+        "default"
+      ],
       "a11y": {
         "role": "navigation",
-        "keyboard": ["Tab", "Shift+Tab"],
+        "keyboard": [
+          "Tab",
+          "Shift+Tab"
+        ],
         "focusVisible": false,
-        "ariaAttributes": ["aria-label", "aria-current"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-current"
+        ]
       },
       "tokens": [
         "breadcrumb.fg",
@@ -628,14 +1150,43 @@
       "level": "molecule",
       "category": "navigation",
       "interactive": true,
-      "variants": ["default", "compact", "with-jump"],
-      "props": ["total", "current", "pageSize", "onChange", "disabled", "showQuickJump"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "default",
+        "compact",
+        "with-jump"
+      ],
+      "props": [
+        "total",
+        "current",
+        "pageSize",
+        "onChange",
+        "disabled",
+        "showQuickJump"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "navigation",
-        "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End", "Tab", "Enter"],
+        "keyboard": [
+          "ArrowLeft",
+          "ArrowRight",
+          "Home",
+          "End",
+          "Tab",
+          "Enter"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-current", "aria-disabled"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-current",
+          "aria-disabled"
+        ]
       },
       "tokens": [
         "pagination.bg",
@@ -656,14 +1207,53 @@
       "level": "molecule",
       "category": "input",
       "interactive": true,
-      "variants": ["default", "multi", "searchable", "grouped"],
-      "props": ["options", "value", "placeholder", "disabled", "required", "error", "onChange", "multiple", "searchable"],
-      "states": ["default", "hover", "focus", "active", "disabled", "error", "open"],
+      "variants": [
+        "default",
+        "multi",
+        "searchable",
+        "grouped"
+      ],
+      "props": [
+        "options",
+        "value",
+        "placeholder",
+        "disabled",
+        "required",
+        "error",
+        "onChange",
+        "multiple",
+        "searchable"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "error",
+        "open",
+        "pressed"
+      ],
       "a11y": {
         "role": "combobox",
-        "keyboard": ["ArrowUp", "ArrowDown", "Enter", "Escape", "Home", "End", "Tab"],
+        "keyboard": [
+          "ArrowUp",
+          "ArrowDown",
+          "Enter",
+          "Escape",
+          "Home",
+          "End",
+          "Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-invalid", "aria-required", "aria-multiselectable"]
+        "ariaAttributes": [
+          "aria-expanded",
+          "aria-controls",
+          "aria-activedescendant",
+          "aria-invalid",
+          "aria-required",
+          "aria-multiselectable"
+        ]
       },
       "tokens": [
         "select.bg",
@@ -687,14 +1277,56 @@
       "level": "molecule",
       "category": "input",
       "interactive": true,
-      "variants": ["single", "range", "with-time"],
-      "props": ["value", "onChange", "min", "max", "disabled", "required", "error", "placeholder", "format", "locale"],
-      "states": ["default", "hover", "focus", "active", "disabled", "error", "open"],
+      "variants": [
+        "single",
+        "range",
+        "with-time"
+      ],
+      "props": [
+        "value",
+        "onChange",
+        "min",
+        "max",
+        "disabled",
+        "required",
+        "error",
+        "placeholder",
+        "format",
+        "locale"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "error",
+        "open",
+        "pressed"
+      ],
       "a11y": {
         "role": "combobox",
-        "keyboard": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter", "Escape", "Home", "End", "PageUp", "PageDown"],
+        "keyboard": [
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "Enter",
+          "Escape",
+          "Home",
+          "End",
+          "PageUp",
+          "PageDown"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-invalid", "aria-required", "aria-label"]
+        "ariaAttributes": [
+          "aria-expanded",
+          "aria-controls",
+          "aria-activedescendant",
+          "aria-invalid",
+          "aria-required",
+          "aria-label"
+        ]
       },
       "tokens": [
         "datepicker.bg",
@@ -723,14 +1355,42 @@
       "level": "organism",
       "category": "input",
       "interactive": true,
-      "variants": ["vertical", "horizontal", "inline", "multi-step"],
-      "props": ["onSubmit", "onReset", "disabled", "loading", "validationMode"],
-      "states": ["default", "hover", "focus", "active", "disabled", "error", "submitting"],
+      "variants": [
+        "vertical",
+        "horizontal",
+        "inline",
+        "multi-step"
+      ],
+      "props": [
+        "onSubmit",
+        "onReset",
+        "disabled",
+        "loading",
+        "validationMode"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "error",
+        "submitting",
+        "pressed"
+      ],
       "a11y": {
         "role": "form",
-        "keyboard": ["Tab", "Shift+Tab", "Enter"],
-        "focusVisible": false,
-        "ariaAttributes": ["aria-label", "aria-describedby", "aria-busy"]
+        "keyboard": [
+          "Tab",
+          "Shift+Tab",
+          "Enter"
+        ],
+        "focusVisible": true,
+        "ariaAttributes": [
+          "aria-label",
+          "aria-describedby",
+          "aria-busy"
+        ]
       },
       "tokens": [
         "space.md",
@@ -747,14 +1407,42 @@
       "level": "organism",
       "category": "navigation",
       "interactive": true,
-      "variants": ["fixed", "sticky", "static", "transparent"],
-      "props": ["brand", "items", "actions", "mobileMenuOpen", "onToggleMobile"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "fixed",
+        "sticky",
+        "static",
+        "transparent"
+      ],
+      "props": [
+        "brand",
+        "items",
+        "actions",
+        "mobileMenuOpen",
+        "onToggleMobile"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "navigation",
-        "keyboard": ["Tab", "Shift+Tab", "ArrowLeft", "ArrowRight", "Escape"],
+        "keyboard": [
+          "Tab",
+          "Shift+Tab",
+          "ArrowLeft",
+          "ArrowRight",
+          "Escape"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-expanded", "aria-controls"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-expanded",
+          "aria-controls"
+        ]
       },
       "tokens": [
         "navbar.bg",
@@ -774,14 +1462,48 @@
       "level": "organism",
       "category": "data-display",
       "interactive": true,
-      "variants": ["default", "striped", "bordered", "compact"],
-      "props": ["columns", "data", "sortable", "selectable", "pagination", "loading", "emptyState"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "default",
+        "striped",
+        "bordered",
+        "compact"
+      ],
+      "props": [
+        "columns",
+        "data",
+        "sortable",
+        "selectable",
+        "pagination",
+        "loading",
+        "emptyState"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "table",
-        "keyboard": ["Tab", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space", "Enter"],
+        "keyboard": [
+          "Tab",
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "Space",
+          "Enter"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-sort", "aria-selected", "aria-rowcount", "aria-colcount", "aria-label"]
+        "ariaAttributes": [
+          "aria-sort",
+          "aria-selected",
+          "aria-rowcount",
+          "aria-colcount",
+          "aria-label"
+        ]
       },
       "tokens": [
         "table.header-bg",
@@ -801,14 +1523,42 @@
       "level": "organism",
       "category": "overlay",
       "interactive": true,
-      "variants": ["default", "fullscreen", "side-panel", "alert"],
-      "props": ["open", "onClose", "title", "description", "size", "closeOnOverlay", "closeOnEscape"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "default",
+        "fullscreen",
+        "side-panel",
+        "alert"
+      ],
+      "props": [
+        "open",
+        "onClose",
+        "title",
+        "description",
+        "size",
+        "closeOnOverlay",
+        "closeOnEscape"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "dialog",
-        "keyboard": ["Escape", "Tab", "Shift+Tab"],
+        "keyboard": [
+          "Escape",
+          "Tab",
+          "Shift+Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-modal", "aria-labelledby", "aria-describedby"]
+        "ariaAttributes": [
+          "aria-modal",
+          "aria-labelledby",
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "modal.bg",
@@ -826,14 +1576,43 @@
       "level": "organism",
       "category": "layout",
       "interactive": true,
-      "variants": ["default", "collapsed", "overlay", "mini"],
-      "props": ["open", "collapsed", "position", "onToggle", "items", "width"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "default",
+        "collapsed",
+        "overlay",
+        "mini"
+      ],
+      "props": [
+        "open",
+        "collapsed",
+        "position",
+        "onToggle",
+        "items",
+        "width"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "complementary",
-        "keyboard": ["Tab", "Shift+Tab", "ArrowUp", "ArrowDown", "Escape"],
+        "keyboard": [
+          "Tab",
+          "Shift+Tab",
+          "ArrowUp",
+          "ArrowDown",
+          "Escape"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-expanded", "aria-hidden"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-expanded",
+          "aria-hidden"
+        ]
       },
       "tokens": [
         "color.background",
@@ -854,14 +1633,30 @@
       "level": "organism",
       "category": "layout",
       "interactive": false,
-      "variants": ["simple", "multi-column", "minimal"],
-      "props": ["columns", "copyright", "socialLinks", "newsletter"],
-      "states": ["default"],
+      "variants": [
+        "simple",
+        "multi-column",
+        "minimal"
+      ],
+      "props": [
+        "columns",
+        "copyright",
+        "socialLinks",
+        "newsletter"
+      ],
+      "states": [
+        "default"
+      ],
       "a11y": {
         "role": "contentinfo",
-        "keyboard": ["Tab", "Shift+Tab"],
+        "keyboard": [
+          "Tab",
+          "Shift+Tab"
+        ],
         "focusVisible": false,
-        "ariaAttributes": ["aria-label"]
+        "ariaAttributes": [
+          "aria-label"
+        ]
       },
       "tokens": [
         "color.muted",
@@ -881,14 +1676,43 @@
       "level": "organism",
       "category": "overlay",
       "interactive": true,
-      "variants": ["default", "confirm", "prompt", "fullscreen"],
-      "props": ["open", "onClose", "title", "description", "confirmLabel", "cancelLabel", "onConfirm", "size"],
-      "states": ["open", "closing"],
+      "variants": [
+        "default",
+        "confirm",
+        "prompt",
+        "fullscreen"
+      ],
+      "props": [
+        "open",
+        "onClose",
+        "title",
+        "description",
+        "confirmLabel",
+        "cancelLabel",
+        "onConfirm",
+        "size"
+      ],
+      "states": [
+        "open",
+        "closing",
+        "default",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "alertdialog",
-        "keyboard": ["Escape", "Tab", "Shift+Tab", "Enter"],
+        "keyboard": [
+          "Escape",
+          "Tab",
+          "Shift+Tab",
+          "Enter"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-modal", "aria-labelledby", "aria-describedby"]
+        "ariaAttributes": [
+          "aria-modal",
+          "aria-labelledby",
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "dialog.bg",
@@ -900,7 +1724,7 @@
         "dialog.overlay-bg",
         "dialog.z",
         "motion.duration.normal",
-        "motion.easing.decelerate"
+        "motion.easing.exit"
       ]
     },
     {
@@ -908,14 +1732,40 @@
       "level": "organism",
       "category": "overlay",
       "interactive": true,
-      "variants": ["left", "right", "bottom"],
-      "props": ["open", "onClose", "position", "size", "title", "closeOnOverlay", "closeOnEscape"],
-      "states": ["open", "closing"],
+      "variants": [
+        "left",
+        "right",
+        "bottom"
+      ],
+      "props": [
+        "open",
+        "onClose",
+        "position",
+        "size",
+        "title",
+        "closeOnOverlay",
+        "closeOnEscape"
+      ],
+      "states": [
+        "open",
+        "closing",
+        "default",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "dialog",
-        "keyboard": ["Escape", "Tab", "Shift+Tab"],
+        "keyboard": [
+          "Escape",
+          "Tab",
+          "Shift+Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-modal", "aria-labelledby", "aria-hidden"]
+        "ariaAttributes": [
+          "aria-modal",
+          "aria-labelledby",
+          "aria-hidden"
+        ]
       },
       "tokens": [
         "drawer.bg",
@@ -927,7 +1777,7 @@
         "drawer.width",
         "drawer.padding",
         "motion.duration.normal",
-        "motion.easing.decelerate"
+        "motion.easing.exit"
       ]
     },
     {
@@ -935,14 +1785,40 @@
       "level": "organism",
       "category": "overlay",
       "interactive": true,
-      "variants": ["default", "with-arrow", "rich"],
-      "props": ["open", "onClose", "trigger", "placement", "content", "closeOnOutside"],
-      "states": ["open", "closing"],
+      "variants": [
+        "default",
+        "with-arrow",
+        "rich"
+      ],
+      "props": [
+        "open",
+        "onClose",
+        "trigger",
+        "placement",
+        "content",
+        "closeOnOutside"
+      ],
+      "states": [
+        "open",
+        "closing",
+        "default",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "dialog",
-        "keyboard": ["Escape", "Tab", "Shift+Tab"],
+        "keyboard": [
+          "Escape",
+          "Tab",
+          "Shift+Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-haspopup", "aria-labelledby"]
+        "ariaAttributes": [
+          "aria-expanded",
+          "aria-controls",
+          "aria-haspopup",
+          "aria-labelledby"
+        ]
       },
       "tokens": [
         "popover.bg",
@@ -954,7 +1830,7 @@
         "popover.z",
         "popover.arrow-size",
         "motion.duration.fast",
-        "motion.easing.decelerate"
+        "motion.easing.exit"
       ]
     },
     {
@@ -962,14 +1838,47 @@
       "level": "organism",
       "category": "navigation",
       "interactive": true,
-      "variants": ["default", "with-sections", "with-search"],
-      "props": ["items", "trigger", "open", "onSelect", "onClose", "placement", "searchable"],
-      "states": ["open", "closing"],
+      "variants": [
+        "default",
+        "with-sections",
+        "with-search"
+      ],
+      "props": [
+        "items",
+        "trigger",
+        "open",
+        "onSelect",
+        "onClose",
+        "placement",
+        "searchable"
+      ],
+      "states": [
+        "open",
+        "closing",
+        "default",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "menu",
-        "keyboard": ["ArrowUp", "ArrowDown", "Enter", "Space", "Escape", "Home", "End", "Tab"],
+        "keyboard": [
+          "ArrowUp",
+          "ArrowDown",
+          "Enter",
+          "Space",
+          "Escape",
+          "Home",
+          "End",
+          "Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-haspopup", "aria-activedescendant", "aria-labelledby"]
+        "ariaAttributes": [
+          "aria-expanded",
+          "aria-controls",
+          "aria-haspopup",
+          "aria-activedescendant",
+          "aria-labelledby"
+        ]
       },
       "tokens": [
         "dropdown.bg",
@@ -992,14 +1901,44 @@
       "level": "organism",
       "category": "navigation",
       "interactive": true,
-      "variants": ["horizontal", "vertical"],
-      "props": ["steps", "current", "onChange", "disabled", "orientation", "clickable"],
-      "states": ["default", "active", "completed", "error"],
+      "variants": [
+        "horizontal",
+        "vertical"
+      ],
+      "props": [
+        "steps",
+        "current",
+        "onChange",
+        "disabled",
+        "orientation",
+        "clickable"
+      ],
+      "states": [
+        "default",
+        "active",
+        "completed",
+        "error",
+        "focus-visible",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "navigation",
-        "keyboard": ["Tab", "Shift+Tab", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"],
+        "keyboard": [
+          "Tab",
+          "Shift+Tab",
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowUp",
+          "ArrowDown"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-current", "aria-disabled", "aria-describedby"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-current",
+          "aria-disabled",
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "stepper.bg",
@@ -1026,14 +1965,46 @@
       "level": "organism",
       "category": "input",
       "interactive": true,
-      "variants": ["dropzone", "button", "inline"],
-      "props": ["accept", "maxSize", "multiple", "disabled", "onUpload", "onRemove", "value", "maxFiles"],
-      "states": ["idle", "dragging", "uploading", "complete", "error"],
+      "variants": [
+        "dropzone",
+        "button",
+        "inline"
+      ],
+      "props": [
+        "accept",
+        "maxSize",
+        "multiple",
+        "disabled",
+        "onUpload",
+        "onRemove",
+        "value",
+        "maxFiles"
+      ],
+      "states": [
+        "idle",
+        "dragging",
+        "uploading",
+        "complete",
+        "error",
+        "default",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "button",
-        "keyboard": ["Enter", "Space", "Tab"],
+        "keyboard": [
+          "Enter",
+          "Space",
+          "Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-describedby", "aria-disabled", "aria-busy", "aria-invalid"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-describedby",
+          "aria-disabled",
+          "aria-busy",
+          "aria-invalid"
+        ]
       },
       "tokens": [
         "fileupload.bg",
@@ -1055,14 +2026,57 @@
       "level": "organism",
       "category": "data-display",
       "interactive": true,
-      "variants": ["default", "editable", "virtualized"],
-      "props": ["columns", "rows", "sortable", "filterable", "selectable", "editable", "pagination", "loading", "onCellEdit", "onSort", "onFilter"],
-      "states": ["default", "hover", "editing", "loading"],
+      "variants": [
+        "default",
+        "editable",
+        "virtualized"
+      ],
+      "props": [
+        "columns",
+        "rows",
+        "sortable",
+        "filterable",
+        "selectable",
+        "editable",
+        "pagination",
+        "loading",
+        "onCellEdit",
+        "onSort",
+        "onFilter"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "editing",
+        "loading",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "grid",
-        "keyboard": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter", "Escape", "Tab", "Home", "End", "PageUp", "PageDown"],
+        "keyboard": [
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "Enter",
+          "Escape",
+          "Tab",
+          "Home",
+          "End",
+          "PageUp",
+          "PageDown"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-rowcount", "aria-colcount", "aria-sort", "aria-selected", "aria-readonly", "aria-label", "aria-activedescendant"]
+        "ariaAttributes": [
+          "aria-rowcount",
+          "aria-colcount",
+          "aria-sort",
+          "aria-selected",
+          "aria-readonly",
+          "aria-label",
+          "aria-activedescendant"
+        ]
       },
       "tokens": [
         "datagrid.header-bg",
@@ -1086,14 +2100,47 @@
       "level": "organism",
       "category": "navigation",
       "interactive": true,
-      "variants": ["default", "with-categories"],
-      "props": ["open", "onClose", "commands", "placeholder", "onSelect", "recentCommands", "emptyMessage"],
-      "states": ["open", "searching", "empty"],
+      "variants": [
+        "default",
+        "with-categories"
+      ],
+      "props": [
+        "open",
+        "onClose",
+        "commands",
+        "placeholder",
+        "onSelect",
+        "recentCommands",
+        "emptyMessage"
+      ],
+      "states": [
+        "open",
+        "searching",
+        "empty",
+        "default",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "combobox",
-        "keyboard": ["ArrowUp", "ArrowDown", "Enter", "Escape", "Tab", "Ctrl+K", "Home", "End"],
+        "keyboard": [
+          "ArrowUp",
+          "ArrowDown",
+          "Enter",
+          "Escape",
+          "Tab",
+          "Ctrl+K",
+          "Home",
+          "End"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-expanded", "aria-controls", "aria-activedescendant", "aria-label", "aria-modal"]
+        "ariaAttributes": [
+          "aria-expanded",
+          "aria-controls",
+          "aria-activedescendant",
+          "aria-label",
+          "aria-modal"
+        ]
       },
       "tokens": [
         "command.bg",
@@ -1120,14 +2167,34 @@
       "level": "atom",
       "category": "feedback",
       "interactive": false,
-      "variants": ["default", "circular", "striped", "indeterminate"],
-      "props": ["value", "max", "label", "size", "color"],
-      "states": ["idle", "filling", "complete"],
+      "variants": [
+        "default",
+        "circular",
+        "striped",
+        "indeterminate"
+      ],
+      "props": [
+        "value",
+        "max",
+        "label",
+        "size",
+        "color"
+      ],
+      "states": [
+        "idle",
+        "filling",
+        "complete"
+      ],
       "a11y": {
         "role": "progressbar",
         "keyboard": [],
         "focusVisible": false,
-        "ariaAttributes": ["aria-valuenow", "aria-valuemax", "aria-valuemin", "aria-label"]
+        "ariaAttributes": [
+          "aria-valuenow",
+          "aria-valuemax",
+          "aria-valuemin",
+          "aria-label"
+        ]
       },
       "tokens": [
         "progressbar.bg",
@@ -1140,7 +2207,7 @@
         "color.warning",
         "color.destructive",
         "motion.duration.normal",
-        "motion.easing.decelerate"
+        "motion.easing.exit"
       ]
     },
     {
@@ -1148,14 +2215,41 @@
       "level": "atom",
       "category": "input",
       "interactive": true,
-      "variants": ["star", "heart", "numeric"],
-      "props": ["value", "max", "readOnly", "size", "onChange"],
-      "states": ["default", "hover", "focus", "disabled", "readonly"],
+      "variants": [
+        "star",
+        "heart",
+        "numeric"
+      ],
+      "props": [
+        "value",
+        "max",
+        "readOnly",
+        "size",
+        "onChange"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "disabled",
+        "readonly"
+      ],
       "a11y": {
         "role": "radiogroup",
-        "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End"],
+        "keyboard": [
+          "ArrowLeft",
+          "ArrowRight",
+          "Home",
+          "End"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-valuenow", "aria-valuemax", "aria-disabled", "aria-readonly"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-valuenow",
+          "aria-valuemax",
+          "aria-disabled",
+          "aria-readonly"
+        ]
       },
       "tokens": [
         "rating.color.filled",
@@ -1175,14 +2269,31 @@
       "level": "atom",
       "category": "feedback",
       "interactive": false,
-      "variants": ["success", "warning", "error", "info", "neutral", "pulse"],
-      "props": ["status", "size", "label"],
-      "states": ["default", "pulsing"],
+      "variants": [
+        "success",
+        "warning",
+        "error",
+        "info",
+        "neutral",
+        "pulse"
+      ],
+      "props": [
+        "status",
+        "size",
+        "label"
+      ],
+      "states": [
+        "default",
+        "pulsing"
+      ],
       "a11y": {
         "role": "status",
         "keyboard": [],
         "focusVisible": false,
-        "ariaAttributes": ["aria-label", "aria-live"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-live"
+        ]
       },
       "tokens": [
         "statusdot.color.success",
@@ -1206,14 +2317,38 @@
       "level": "molecule",
       "category": "data-display",
       "interactive": true,
-      "variants": ["vertical", "horizontal", "compact"],
-      "props": ["items", "activeStep", "clickable"],
-      "states": ["default", "active", "completed", "disabled"],
+      "variants": [
+        "vertical",
+        "horizontal",
+        "compact"
+      ],
+      "props": [
+        "items",
+        "activeStep",
+        "clickable"
+      ],
+      "states": [
+        "default",
+        "active",
+        "completed",
+        "disabled",
+        "focus-visible",
+        "pressed"
+      ],
       "a11y": {
         "role": "list",
-        "keyboard": ["ArrowUp", "ArrowDown", "Tab", "Enter"],
+        "keyboard": [
+          "ArrowUp",
+          "ArrowDown",
+          "Tab",
+          "Enter"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-current", "aria-disabled"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-current",
+          "aria-disabled"
+        ]
       },
       "tokens": [
         "timeline.connector-color",
@@ -1237,14 +2372,31 @@
       "level": "molecule",
       "category": "feedback",
       "interactive": false,
-      "variants": ["default", "error", "search", "permission"],
-      "props": ["icon", "title", "description", "action"],
-      "states": ["default"],
+      "variants": [
+        "default",
+        "error",
+        "search",
+        "permission"
+      ],
+      "props": [
+        "icon",
+        "title",
+        "description",
+        "action"
+      ],
+      "states": [
+        "default"
+      ],
       "a11y": {
         "role": "region",
-        "keyboard": ["Tab"],
+        "keyboard": [
+          "Tab"
+        ],
         "focusVisible": false,
-        "ariaAttributes": ["aria-label", "aria-describedby"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "emptystate.icon-color",
@@ -1265,14 +2417,39 @@
       "level": "molecule",
       "category": "feedback",
       "interactive": true,
-      "variants": ["info", "success", "warning", "error", "neutral"],
-      "props": ["title", "description", "dismissible", "action"],
-      "states": ["default", "dismissing"],
+      "variants": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "neutral"
+      ],
+      "props": [
+        "title",
+        "description",
+        "dismissible",
+        "action"
+      ],
+      "states": [
+        "default",
+        "dismissing",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "alert",
-        "keyboard": ["Escape", "Tab", "Enter"],
+        "keyboard": [
+          "Escape",
+          "Tab",
+          "Enter"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-live", "aria-atomic", "aria-label", "aria-describedby"]
+        "ariaAttributes": [
+          "aria-live",
+          "aria-atomic",
+          "aria-label",
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "banner.bg.info",
@@ -1300,14 +2477,42 @@
       "level": "molecule",
       "category": "input",
       "interactive": true,
-      "variants": ["default", "primary", "destructive"],
-      "props": ["label", "options", "disabled", "onSelect"],
-      "states": ["default", "hover", "focus", "active", "disabled", "open"],
+      "variants": [
+        "default",
+        "primary",
+        "destructive"
+      ],
+      "props": [
+        "label",
+        "options",
+        "disabled",
+        "onSelect"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "open",
+        "pressed"
+      ],
       "a11y": {
         "role": "group",
-        "keyboard": ["Enter", "Space", "ArrowDown", "Escape", "Tab"],
+        "keyboard": [
+          "Enter",
+          "Space",
+          "ArrowDown",
+          "Escape",
+          "Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-haspopup", "aria-expanded", "aria-disabled"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-haspopup",
+          "aria-expanded",
+          "aria-disabled"
+        ]
       },
       "tokens": [
         "button.primary.bg",
@@ -1333,14 +2538,40 @@
       "level": "molecule",
       "category": "input",
       "interactive": true,
-      "variants": ["single", "multiple", "outline"],
-      "props": ["items", "value", "onChange", "disabled"],
-      "states": ["default", "hover", "focus", "active", "disabled"],
+      "variants": [
+        "single",
+        "multiple",
+        "outline"
+      ],
+      "props": [
+        "items",
+        "value",
+        "onChange",
+        "disabled"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "group",
-        "keyboard": ["ArrowLeft", "ArrowRight", "Tab", "Space", "Enter"],
+        "keyboard": [
+          "ArrowLeft",
+          "ArrowRight",
+          "Tab",
+          "Space",
+          "Enter"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-pressed", "aria-disabled"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-pressed",
+          "aria-disabled"
+        ]
       },
       "tokens": [
         "togglegroup.bg",
@@ -1362,14 +2593,40 @@
       "level": "organism",
       "category": "overlay",
       "interactive": true,
-      "variants": ["default", "fullscreen", "resizable"],
-      "props": ["open", "onClose", "snapPoints", "title"],
-      "states": ["open", "closing", "dragging", "snapped"],
+      "variants": [
+        "default",
+        "fullscreen",
+        "resizable"
+      ],
+      "props": [
+        "open",
+        "onClose",
+        "snapPoints",
+        "title"
+      ],
+      "states": [
+        "open",
+        "closing",
+        "dragging",
+        "snapped",
+        "default",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "dialog",
-        "keyboard": ["Escape", "Tab", "Shift+Tab"],
+        "keyboard": [
+          "Escape",
+          "Tab",
+          "Shift+Tab"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-modal", "aria-labelledby", "aria-describedby", "aria-hidden"]
+        "ariaAttributes": [
+          "aria-modal",
+          "aria-labelledby",
+          "aria-describedby",
+          "aria-hidden"
+        ]
       },
       "tokens": [
         "bottomsheet.bg",
@@ -1383,7 +2640,7 @@
         "bottomsheet.handle-color",
         "bottomsheet.handle-width",
         "motion.duration.normal",
-        "motion.easing.decelerate"
+        "motion.easing.exit"
       ]
     },
     {
@@ -1391,14 +2648,39 @@
       "level": "organism",
       "category": "navigation",
       "interactive": true,
-      "variants": ["default", "with-labels", "fab-center"],
-      "props": ["items", "activeKey", "onChange"],
-      "states": ["default", "hover", "focus", "active"],
+      "variants": [
+        "default",
+        "with-labels",
+        "fab-center"
+      ],
+      "props": [
+        "items",
+        "activeKey",
+        "onChange"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "active",
+        "disabled",
+        "pressed"
+      ],
       "a11y": {
         "role": "navigation",
-        "keyboard": ["ArrowLeft", "ArrowRight", "Tab", "Enter", "Space"],
+        "keyboard": [
+          "ArrowLeft",
+          "ArrowRight",
+          "Tab",
+          "Enter",
+          "Space"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-current", "aria-selected"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-current",
+          "aria-selected"
+        ]
       },
       "tokens": [
         "mobilenavbar.bg",
@@ -1421,14 +2703,44 @@
       "level": "organism",
       "category": "data-display",
       "interactive": true,
-      "variants": ["default", "compact", "swimlane"],
-      "props": ["columns", "cards", "onDragEnd", "onCardClick"],
-      "states": ["default", "dragging", "dropping"],
+      "variants": [
+        "default",
+        "compact",
+        "swimlane"
+      ],
+      "props": [
+        "columns",
+        "cards",
+        "onDragEnd",
+        "onCardClick"
+      ],
+      "states": [
+        "default",
+        "dragging",
+        "dropping",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "region",
-        "keyboard": ["Tab", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Space", "Enter", "Escape"],
+        "keyboard": [
+          "Tab",
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowUp",
+          "ArrowDown",
+          "Space",
+          "Enter",
+          "Escape"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-grabbed", "aria-dropeffect", "aria-describedby", "aria-roledescription"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-grabbed",
+          "aria-dropeffect",
+          "aria-describedby",
+          "aria-roledescription"
+        ]
       },
       "tokens": [
         "kanban.bg",
@@ -1453,14 +2765,47 @@
       "level": "organism",
       "category": "data-display",
       "interactive": true,
-      "variants": ["month", "week", "day", "agenda"],
-      "props": ["events", "selectedDate", "onDateSelect", "onEventClick"],
-      "states": ["default", "hover", "focus", "loading"],
+      "variants": [
+        "month",
+        "week",
+        "day",
+        "agenda"
+      ],
+      "props": [
+        "events",
+        "selectedDate",
+        "onDateSelect",
+        "onEventClick"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "loading",
+        "disabled"
+      ],
       "a11y": {
         "role": "grid",
-        "keyboard": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter", "Space", "Home", "End", "PageUp", "PageDown"],
+        "keyboard": [
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "Enter",
+          "Space",
+          "Home",
+          "End",
+          "PageUp",
+          "PageDown"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-selected", "aria-current", "aria-describedby", "aria-activedescendant"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-selected",
+          "aria-current",
+          "aria-describedby",
+          "aria-activedescendant"
+        ]
       },
       "tokens": [
         "calendar.bg",
@@ -1486,14 +2831,45 @@
       "level": "organism",
       "category": "input",
       "interactive": true,
-      "variants": ["minimal", "standard", "full"],
-      "props": ["value", "onChange", "toolbar", "placeholder", "disabled"],
-      "states": ["default", "hover", "focus", "disabled", "readonly"],
+      "variants": [
+        "minimal",
+        "standard",
+        "full"
+      ],
+      "props": [
+        "value",
+        "onChange",
+        "toolbar",
+        "placeholder",
+        "disabled"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "disabled",
+        "readonly"
+      ],
       "a11y": {
         "role": "textbox",
-        "keyboard": ["Tab", "Shift+Tab", "Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Z", "Ctrl+Y", "Enter"],
+        "keyboard": [
+          "Tab",
+          "Shift+Tab",
+          "Ctrl+B",
+          "Ctrl+I",
+          "Ctrl+U",
+          "Ctrl+Z",
+          "Ctrl+Y",
+          "Enter"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-multiline", "aria-disabled", "aria-readonly", "aria-describedby"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-multiline",
+          "aria-disabled",
+          "aria-readonly",
+          "aria-describedby"
+        ]
       },
       "tokens": [
         "richtexteditor.bg",
@@ -1518,14 +2894,48 @@
       "level": "organism",
       "category": "data-display",
       "interactive": true,
-      "variants": ["default", "checkbox", "draggable"],
-      "props": ["data", "expandedKeys", "selectedKeys", "onSelect"],
-      "states": ["default", "hover", "focus", "expanded", "selected", "dragging"],
+      "variants": [
+        "default",
+        "checkbox",
+        "draggable"
+      ],
+      "props": [
+        "data",
+        "expandedKeys",
+        "selectedKeys",
+        "onSelect"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus-visible",
+        "expanded",
+        "selected",
+        "dragging",
+        "disabled"
+      ],
       "a11y": {
         "role": "tree",
-        "keyboard": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter", "Space", "Home", "End", "*"],
+        "keyboard": [
+          "ArrowUp",
+          "ArrowDown",
+          "ArrowLeft",
+          "ArrowRight",
+          "Enter",
+          "Space",
+          "Home",
+          "End",
+          "*"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-expanded", "aria-selected", "aria-level", "aria-setsize", "aria-posinset", "aria-label"]
+        "ariaAttributes": [
+          "aria-expanded",
+          "aria-selected",
+          "aria-level",
+          "aria-setsize",
+          "aria-posinset",
+          "aria-label"
+        ]
       },
       "tokens": [
         "treeview.bg",
@@ -1548,14 +2958,45 @@
       "level": "organism",
       "category": "data-display",
       "interactive": true,
-      "variants": ["line", "bar", "pie", "area", "scatter"],
-      "props": ["data", "series", "xAxis", "yAxis", "legend", "tooltip"],
-      "states": ["default", "hover", "loading", "empty"],
+      "variants": [
+        "line",
+        "bar",
+        "pie",
+        "area",
+        "scatter"
+      ],
+      "props": [
+        "data",
+        "series",
+        "xAxis",
+        "yAxis",
+        "legend",
+        "tooltip"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "loading",
+        "empty",
+        "focus-visible",
+        "disabled"
+      ],
       "a11y": {
         "role": "img",
-        "keyboard": ["Tab", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Enter"],
+        "keyboard": [
+          "Tab",
+          "ArrowLeft",
+          "ArrowRight",
+          "ArrowUp",
+          "ArrowDown",
+          "Enter"
+        ],
         "focusVisible": true,
-        "ariaAttributes": ["aria-label", "aria-describedby", "aria-roledescription"]
+        "ariaAttributes": [
+          "aria-label",
+          "aria-describedby",
+          "aria-roledescription"
+        ]
       },
       "tokens": [
         "chart.bg",

@@ -4,12 +4,12 @@
   "extends": "_default",
   "overrides": {
     "color.background": "palette.white",
-    "color.foreground": "palette.black",
+    "color.foreground": "palette.neutral.s950",
     "color.muted": "palette.neutral.s100",
-    "color.muted-foreground": "palette.neutral.s700",
+    "color.muted-foreground": "palette.neutral.s950",
     "color.surface": "palette.white",
-    "color.surface-foreground": "palette.black",
-    "color.border": "palette.neutral.s400",
+    "color.surface-foreground": "palette.neutral.s950",
+    "color.border": "palette.neutral.s500",
     "color.input": "palette.neutral.s400",
     "color.ring": "palette.primary.s800",
     "color.primary": "palette.primary.s800",
@@ -17,14 +17,14 @@
     "color.secondary": "palette.neutral.s800",
     "color.secondary-foreground": "palette.white",
     "color.accent": "palette.neutral.s100",
-    "color.accent-foreground": "palette.black",
+    "color.accent-foreground": "palette.neutral.s950",
     "color.destructive": "palette.error.s700",
     "color.destructive-foreground": "palette.white",
     "color.success": "palette.success.s700",
     "color.success-foreground": "palette.white",
     "color.warning": "palette.warning.s700",
-    "color.warning-foreground": "palette.black",
+    "color.warning-foreground": "palette.white",
     "color.info": "palette.info.s600",
-    "color.info-foreground": "palette.white"
+    "color.info-foreground": "palette.neutral.s950"
   }
 }

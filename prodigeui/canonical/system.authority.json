@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "description": "Canonical executable authority for ProdigeUI vocabulary, state coverage, responsive ownership, validation policy, and normative precedence.",
+  "sources": {
+    "primitiveTokens": "tokens/primitive.tokens.json",
+    "semanticTokens": "tokens/semantic.tokens.json",
+    "componentTokens": "tokens/component.tokens.json",
+    "themes": "themes/*.theme.json",
+    "components": "components/components.manifest.json",
+    "motionTokens": "motion/motion.tokens.json",
+    "motionPresets": "motion/presets/*.json",
+    "breakpoints": "design-rules/responsive.rules.json#/responsive/breakpoints",
+    "assets": "assets/assets.manifest.json",
+    "templates": "prompt-templates/**/*.template.json",
+    "generationContract": "canonical/generation.contract.json",
+    "modelRobustGuidance": "craft/model-robust-generation.md",
+    "typographyRules": "design-rules/typography.rules.json",
+    "colorRules": "design-rules/color.rules.json",
+    "qualityCriteria": "quality-gate/criteria.json"
+  },
+  "legacyAliases": {
+    "tokens": {},
+    "components": {},
+    "motionPresets": {}
+  },
+  "componentStates": {
+    "canonical": ["default", "hover", "focus-visible", "pressed", "selected", "disabled", "loading", "empty", "error", "success"],
+    "interactiveRequired": ["default", "focus-visible", "disabled"],
+    "asyncRequiredWhenApplicable": ["loading", "empty", "error", "success"],
+    "webPointerExtension": "hover",
+    "touchExtension": "pressed",
+    "selectionExtension": "selected"
+  },
+  "contrastPairs": [
+    {"foreground": "color.foreground", "background": "color.background", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.primary-foreground", "background": "color.primary", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.secondary-foreground", "background": "color.secondary", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.destructive-foreground", "background": "color.destructive", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.success-foreground", "background": "color.success", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.warning-foreground", "background": "color.warning", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.info-foreground", "background": "color.info", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.accent-foreground", "background": "color.accent", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.muted-foreground", "background": "color.muted", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.surface-foreground", "background": "color.surface", "minimum": 4.5, "kind": "text"},
+    {"foreground": "color.ring", "background": "color.background", "minimum": 3, "kind": "focus"},
+    {"foreground": "color.border", "background": "color.background", "minimum": 3, "kind": "non-text"}
+  ],
+  "responsive": {
+    "owner": "design-rules/responsive.rules.json",
+    "pointer": "responsive.breakpoints",
+    "gridProgression": {"sm": 4, "md": 8, "lg": 12},
+    "containers": {"content": "1200px", "wideData": "1440px", "prose": "720px"}
+  },
+  "manifestPolicy": {
+    "includeFiles": ["AGENTS.md", "CLAUDE.md", "PHILOSOPHY.md", "README.md", "manifest.json"],
+    "includeRoots": ["assets", "canonical", "components", "craft", "design-rules", "design-system", "hooks", "installers", "motion", "prompt-templates", "quality-gate", "research", "skills", "themes", "tokens", "use-cases"],
+    "excludeBasenames": [".gitkeep"],
+    "excludePrefixes": ["tokens/build/"],
+    "generated": ["tokens/build/tokens.css"],
+    "requireBidirectional": true
+  },
+  "normativePrecedence": [
+    "explicit-user-direction",
+    "enhancement-mode-do-no-harm",
+    "platform-accessibility-and-safety",
+    "lane-specific-product-or-expressive-rules",
+    "canonical-machine-authority",
+    "narrative-guidance",
+    "examples-and-research"
+  ],
+  "lanes": {
+    "product": {"sequenceCapMs": 600, "heroPaddingMax": "96px", "motionDefault": "Motion or native CSS"},
+    "expressive": {"sequenceCapMs": 1500, "heroPaddingMax": "160px", "motionDefault": "Motion; GSAP only after product/legal clearance"}
+  },
+  "motionPrecedence": {
+    "uiExitEasing": "motion.easing.accelerate",
+    "uiExitRule": "Committed accelerating custom curve; CSS keyword ease-in is not allowed.",
+    "layoutCollapse": "Prefer grid-template-rows or clip-path; measured height animation is an explicit exception.",
+    "defaultProductionLibrary": "Motion",
+    "restrictedLibraries": ["GSAP", "ScrollTrigger"]
+  },
+  "assetAccessibility": {
+    "svgConsumptionRule": "Every SVG instance must provide an accessible name or aria-hidden=true; embedded title/desc is optional for decorative reusable assets.",
+    "remoteAssetRule": "Every remote asset entry requires source URL, author/provider, license, and retrieval date."
+  }
+}

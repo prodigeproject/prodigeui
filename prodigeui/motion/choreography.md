@@ -95,7 +95,7 @@ From `motion-design-skill` — every scene has three layers; give each a differe
 | Situation | Easing | Why |
 |-----------|--------|-----|
 | Element entering | ease-out `[0.16,1,0.3,1]` | settles into view |
-| Element leaving | ease-in | launches away |
+| Element leaving | semantic `motion.easing.exit` custom curve | accelerates away without the CSS `ease-in` keyword |
 | On-screen move | ease-in-out `cubic-bezier(0.4,0,0.2,1)` | natural travel |
 | Choreographed reveal | ease-out + slight overshoot | physical, alive |
 | Marquee / continuous | `linear` | constant speed, no easing |

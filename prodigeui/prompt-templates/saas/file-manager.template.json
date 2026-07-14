@@ -42,10 +42,39 @@
     }
   ],
   "references": {
-    "tokens": ["color.surface.primary", "color.surface.secondary", "color.surface.selected", "color.text.primary", "color.text.tertiary", "color.primary", "space.xs", "space.sm", "radius.md", "shadow.sm", "typography.body.sm", "typography.body.xs"],
-    "components": ["Card", "Button", "Text", "Table", "Badge", "SearchBar", "Modal"],
-    "designRules": ["typography.rules.json", "color.rules.json", "layout.rules.json"],
+    "tokens": [
+      "color.background",
+      "color.surface",
+      "color.primary",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.primary",
+      "space.xs",
+      "space.sm",
+      "radius.md",
+      "shadow.sm",
+      "typography.size.body-sm",
+      "typography.size.caption"
+    ],
+    "components": [
+      "Card",
+      "Button",
+      "Text",
+      "Table",
+      "Badge",
+      "SearchBar",
+      "Modal"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json"
+    ],
     "theme": "light",
-    "motionPresets": ["state-transition", "enter-exit", "drag-drop"]
+    "motionPresets": [
+      "button-press",
+      "fade-in",
+      "scale-in"
+    ]
   }
 }

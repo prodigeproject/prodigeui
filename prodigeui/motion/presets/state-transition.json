@@ -22,7 +22,7 @@
       "name": "collapse",
       "duration": "motion.duration.normal",
       "easing": "motion.easing.standard",
-      "properties": { "height": { "from": "auto", "to": "0" }, "opacity": { "from": 1, "to": 0 } },
+      "properties": { "gridTemplateRows": { "from": "1fr", "to": "0fr" }, "opacity": { "from": 1, "to": 0 } },
       "principle": "Spatial changes need motion to maintain mental model",
       "reduceMotion": { "duration": "0ms", "properties": { "opacity": { "from": 1, "to": 0 } } }
     }

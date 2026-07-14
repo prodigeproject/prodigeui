@@ -17,10 +17,30 @@
     "allowedWeights": [400, 500, 600, 700],
     "maxWeightsPerPage": 3,
     "allowedPairings": [
-      { "heading": "Inter", "body": "Inter" },
-      { "heading": "Geist", "body": "Inter" }
+      {
+        "id": "single-family-ui",
+        "heading": "disciplined UI sans",
+        "body": "same UI sans",
+        "useCase": "dense functional application surfaces"
+      },
+      {
+        "id": "operational-product",
+        "heading": "distinctive editorial or variable grotesk",
+        "body": "neutral UI sans",
+        "annotation": "optional mono or tabular voice",
+        "useCase": "technical products and product-led landing pages"
+      },
+      {
+        "id": "expressive-editorial",
+        "heading": "identity/display face",
+        "body": "editorial reading face",
+        "annotation": "optional UI/control face",
+        "useCase": "studio, portfolio, campaign, and editorial work"
+      }
     ],
-    "maxFontsPerProject": 2,
+    "maxPrimaryFontsPerProject": 2,
+    "allowOneAnnotationFont": true,
+    "maxFontsPerProject": 3,
     "minFontSizePx": 14,
     "minCaptionSizePx": 12,
     "optimalMeasure": { "min": 45, "max": 75, "ideal": 66, "unit": "ch" },
@@ -29,6 +49,19 @@
       "headingsSmall": "-0.01em",
       "bodyNormal": "0em",
       "smallText": "0.01em"
+    },
+    "roleIntegrity": {
+      "authority": "canonical/generation.contract.json#/typography",
+      "declareJobsBeforeSelection": true,
+      "displayFallbackMustPreserveVoice": true,
+      "operationalProductDisplayTrackingRangeEm": { "min": -0.06, "max": -0.015 },
+      "requireRenderedHeadlineTest": true,
+      "requireComputedFontVerification": true
+    },
+    "fontDelivery": {
+      "standalone": "bundle licensed fonts or select a verified system stack",
+      "waitForDocumentFontsReady": true,
+      "recordSourceAndLicense": true
     },
     "typeScalePresets": {
       "dense": {

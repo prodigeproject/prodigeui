@@ -60,7 +60,7 @@ Every rule in this document is backed by established design theory, cognitive ps
 
 ### Contrast: 4.5:1 Normal Text, 3:1 Large Text
 
-**Rule:** Every text/background pair must achieve 4.5:1 contrast for normal text (<18pt) and 3:1 for large text (>=18pt or >=14pt bold). Non-text UI elements and focus indicators require 3:1.
+**Rule:** Every text/background pair must achieve 4.5:1 contrast for normal text (<18pt) and 3:1 for large text (>=18pt or >=14pt bold). Non-text UI elements and focus indicators require 3:1. Validate the browser-computed pair after CSS inheritance: whenever a component sets a background, it must explicitly set its matching semantic foreground instead of inheriting color from its parent.
 
 **Source:** WCAG 2.1 AA (W3C); Laws of UX (Jon Yablonski); 100 Things Every Designer Needs to Know about People (Susan Weinschenk).
 

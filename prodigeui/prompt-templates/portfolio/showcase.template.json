@@ -43,20 +43,20 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.overlay",
-      "color.text.primary",
-      "color.text-on-dark",
+      "color.background",
+      "color.foreground",
+      "color.foreground",
+      "color.primary-foreground",
       "space.md",
       "space.lg",
       "radius.md",
-      "typography.heading.md",
-      "typography.body.sm",
-      "typography.display.lg"
+      "typography.size.h4",
+      "typography.size.body-sm",
+      "typography.size.display"
     ],
     "components": [
       "Card",
-      "Image",
+      "Avatar",
       "Text",
       "Modal",
       "Button"
@@ -69,9 +69,9 @@
     ],
     "theme": "dark",
     "motionPresets": [
-      "hover-focus",
-      "state-transition",
-      "enter-exit"
+      "hover-lift",
+      "button-press",
+      "fade-in"
     ]
   }
 }

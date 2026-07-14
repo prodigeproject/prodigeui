@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ../scripts/check-output-encoding.mjs flowai-post-canonical-repair.html nova-post-canonical-repair.html post-canonical-repair-report.html post-canonical-repair-report.md && node post-repair-harness.mjs && node post-repair-evidence.mjs"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,9 @@
   "type": "commonjs",
   "devDependencies": {
     "playwright": "^1.61.1"
+  },
+  "dependencies": {
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.24.0"
   }
 }

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "description": "Executable creative-decision contract used by model-robust generation and its quality gate.",
+  "requiredDecisions": [
+    "productIntent",
+    "visualThesis",
+    "typeJobs",
+    "focalHierarchy",
+    "rhythmArgument",
+    "closingSurface"
+  ],
+  "typography": {
+    "maxPrimaryFaces": 2,
+    "allowOneAnnotationFace": true,
+    "roles": {
+      "display": {
+        "job": "identity, major hierarchy, and the product's emotional register",
+        "selectionTest": "Render the real hero and one section heading before committing; reject a face whose fallback changes the voice."
+      },
+      "body": {
+        "job": "reading, explanation, actions, and repeated product communication",
+        "selectionTest": "Must remain calm and legible at 14-18px with deliberate 45-75ch measure."
+      },
+      "annotation": {
+        "job": "operational metadata, timestamps, status, labels, and numeric evidence",
+        "selectionTest": "Use a mono or tabular voice only where scanning structured data benefits."
+      }
+    },
+    "profiles": {
+      "operationalProduct": {
+        "displayVoice": "distinctive editorial or variable grotesk with a technical but human register",
+        "bodyVoice": "neutral, readable UI sans",
+        "annotationVoice": "restrained mono or tabular UI voice",
+        "displayTrackingRangeEm": [-0.06, -0.015],
+        "bodyMeasureCh": { "min": 45, "max": 65 },
+        "avoid": [
+          "condensed system fallback used as the final display voice",
+          "one undifferentiated family carrying display, body, and operational metadata",
+          "aggressive compression that damages word shape or mobile wrapping"
+        ]
+      },
+      "expressiveStudio": {
+        "displayVoice": "identity face with enough character to own repeated display moments",
+        "bodyVoice": "editorial reading voice selected for the concept",
+        "annotationVoice": "UI/control voice kept out of expressive prose",
+        "avoid": [
+          "fashionable agency pairing without repeated functional roles",
+          "decorative font switching inside one semantic role"
+        ]
+      }
+    },
+    "fontDelivery": {
+      "standaloneRule": "Bundle properly licensed font files or use a verified system stack; never depend on a silent fallback.",
+      "waitForFontsReady": true,
+      "verifyComputedFamily": true,
+      "recordLicenseAndSource": true
+    }
+  },
+  "closingCta": {
+    "reuseEstablishedSignalToken": true,
+    "allowNewHueAtClose": false,
+    "surfaceOwnsForeground": true,
+    "rule": "The closing CTA resolves the established palette story. Reuse the page's signal/accent or a primary surface; do not introduce a muddy near-match or a new campaign color at the final section.",
+    "largeAccentSurfaceCondition": "A full accent field is allowed only when the accent was restrained earlier and text/button contrast is verified on the rendered surface."
+  },
+  "requiredQualityCriteria": [
+    "type-role-integrity",
+    "font-render-truth",
+    "closing-cta-color-continuity"
+  ]
+}

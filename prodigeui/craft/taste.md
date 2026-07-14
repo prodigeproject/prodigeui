@@ -281,9 +281,9 @@ production AI-tell. Failing any is shipping broken work.
   have content for (3 items → 3 cells; 5 → 5). No empty middle/end tile; re-shape the grid
   instead of pasting a blank cell. ≥2–3 cells need real visual variation (image/tint/pattern),
   never all cream-on-cream typography.
-- **Split-header ban.** "Big headline left + small explainer paragraph right" as a section
-  header is banned by default. Stack headline over body (≤65ch) unless the right column
-  carries a real visual/interactive element (not filler text).
+- **Split-header reflex ban.** "Big headline left + small explainer paragraph right" is
+  rejected when it is repeated scaffolding. It is allowed as one intentional rhythm change
+  when alignment, measure, and surrounding sections make the split specific rather than filler.
 - **Hero top-padding cap.** Hero top padding ≤ `pt-24` (~6rem) at desktop. More = content
   floats halfway down and reads as a bug. Need more air? Increase font/asset scale, not padding.
 - **Consistency locks (audit every component before shipping):**

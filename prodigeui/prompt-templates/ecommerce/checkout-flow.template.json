@@ -44,21 +44,21 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.secondary",
-      "color.action.primary",
-      "color.feedback.success",
-      "color.feedback.error",
-      "color.text.primary",
-      "color.text.tertiary",
-      "border.subtle",
+      "color.background",
+      "color.surface",
+      "color.primary",
+      "color.success",
+      "color.destructive",
+      "color.foreground",
+      "color.muted-foreground",
+      "border.width.default",
       "space.md",
       "space.lg",
       "space.xl",
       "radius.lg",
-      "typography.heading.md",
-      "typography.body.md",
-      "typography.body.sm"
+      "typography.size.h4",
+      "typography.size.body",
+      "typography.size.body-sm"
     ],
     "components": [
       "Input",
@@ -67,7 +67,7 @@
       "Text",
       "Divider",
       "Badge",
-      "ProgressSteps"
+      "Stepper"
     ],
     "designRules": [
       "typography.rules.json",
@@ -77,9 +77,9 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "state-transition",
-      "page-transition",
-      "enter-exit"
+      "button-press",
+      "slide-up",
+      "fade-in"
     ]
   }
 }

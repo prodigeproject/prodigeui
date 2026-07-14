@@ -1,0 +1,665 @@
+{
+  "generatedAt": "2026-07-14T17:07:35.591Z",
+  "rows": [
+    {
+      "target": "flowai-post-repair",
+      "viewport": "desktop",
+      "height": 4374,
+      "overflow": 0,
+      "nodes": 176,
+      "depth": 9,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 0
+      },
+      "fixedSticky": 0,
+      "hiddenMeaningful": 0,
+      "targets": [
+        [
+          73,
+          44
+        ],
+        [
+          63,
+          44
+        ],
+        [
+          57,
+          44
+        ],
+        [
+          70,
+          44
+        ],
+        [
+          44,
+          44
+        ],
+        [
+          100,
+          46
+        ],
+        [
+          176,
+          46
+        ],
+        [
+          184,
+          46
+        ],
+        [
+          120,
+          46
+        ],
+        [
+          156,
+          46
+        ],
+        [
+          131,
+          46
+        ],
+        [
+          176,
+          46
+        ],
+        [
+          58,
+          44
+        ],
+        [
+          44,
+          44
+        ],
+        [
+          44,
+          44
+        ],
+        [
+          44,
+          44
+        ]
+      ],
+      "smallTargets": 0,
+      "fonts": [
+        "Recursive Local:loaded",
+        "Manrope Local:loaded",
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "displays": [
+        {
+          "text": "The plan should follow the work.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "90.72px",
+          "line": "84.3696px",
+          "box": [
+            120,
+            206.4,
+            595.8,
+            253.1
+          ],
+          "clipped": true
+        },
+        {
+          "text": "Less reporting. More shared reality.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "64.8px",
+          "line": "63.504px",
+          "box": [
+            120,
+            947,
+            505.4,
+            190.5
+          ],
+          "clipped": true
+        },
+        {
+          "text": "Start with one workstream.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "64.8px",
+          "line": "63.504px",
+          "box": [
+            120,
+            2313.6,
+            505.4,
+            127
+          ],
+          "clipped": true
+        },
+        {
+          "text": "Questions, without the pitch.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "64.8px",
+          "line": "63.504px",
+          "box": [
+            120,
+            3266.1,
+            440,
+            241
+          ],
+          "clipped": false
+        },
+        {
+          "text": "See what the work already knows.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "64.8px",
+          "line": "63.504px",
+          "box": [
+            174,
+            3832.6,
+            505.4,
+            190.5
+          ],
+          "clipped": true
+        }
+      ],
+      "colors": [
+        [
+          "rgba(0, 0, 0, 0)",
+          25568493.14111328
+        ],
+        [
+          "rgb(245, 241, 232)",
+          6298425
+        ],
+        [
+          "rgb(255, 253, 248)",
+          1880555.8823242188
+        ],
+        [
+          "rgb(255, 115, 93)",
+          490387.5
+        ],
+        [
+          "rgb(24, 36, 31)",
+          460737.34375
+        ],
+        [
+          "rgb(36, 94, 74)",
+          423570.36767578125
+        ],
+        [
+          "rgb(220, 231, 223)",
+          195765.1875
+        ],
+        [
+          "rgb(244, 234, 209)",
+          24384.621337890625
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          159
+        ],
+        [
+          "6px",
+          11
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "n/a",
+      "errors": []
+    },
+    {
+      "target": "flowai-post-repair",
+      "viewport": "mobile",
+      "height": 6414,
+      "overflow": 0,
+      "nodes": 176,
+      "depth": 9,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 0
+      },
+      "fixedSticky": 0,
+      "hiddenMeaningful": 0,
+      "targets": [
+        [
+          73,
+          44
+        ],
+        [
+          100,
+          46
+        ],
+        [
+          170,
+          55
+        ],
+        [
+          178,
+          55
+        ],
+        [
+          120,
+          46
+        ],
+        [
+          156,
+          46
+        ],
+        [
+          131,
+          46
+        ],
+        [
+          288,
+          46
+        ],
+        [
+          58,
+          44
+        ]
+      ],
+      "smallTargets": 0,
+      "fonts": [
+        "Recursive Local:loaded",
+        "Manrope Local:loaded",
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "displays": [
+        {
+          "text": "The plan should follow the work.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "56.55px",
+          "line": "52.5915px",
+          "box": [
+            15,
+            160,
+            360,
+            157.7
+          ],
+          "clipped": true
+        },
+        {
+          "text": "Less reporting. More shared reality.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "42px",
+          "line": "41.16px",
+          "box": [
+            15,
+            1266.3,
+            327.6,
+            123.5
+          ],
+          "clipped": true
+        },
+        {
+          "text": "Start with one workstream.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "42px",
+          "line": "41.16px",
+          "box": [
+            15,
+            3453.8,
+            327.6,
+            82.3
+          ],
+          "clipped": true
+        },
+        {
+          "text": "Questions, without the pitch.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "42px",
+          "line": "41.16px",
+          "box": [
+            15,
+            5309.1,
+            327.6,
+            123.5
+          ],
+          "clipped": true
+        },
+        {
+          "text": "See what the work already knows.",
+          "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+          "size": "42px",
+          "line": "41.16px",
+          "box": [
+            51,
+            5905.3,
+            288,
+            123.5
+          ],
+          "clipped": true
+        }
+      ],
+      "colors": [
+        [
+          "rgba(0, 0, 0, 0)",
+          11860468.287353516
+        ],
+        [
+          "rgb(245, 241, 232)",
+          2501283.28125
+        ],
+        [
+          "rgb(255, 253, 248)",
+          1121554.7294921875
+        ],
+        [
+          "rgb(24, 36, 31)",
+          225767.53125
+        ],
+        [
+          "rgb(36, 94, 74)",
+          219718.9892578125
+        ],
+        [
+          "rgb(220, 231, 223)",
+          173102.375
+        ],
+        [
+          "rgb(255, 115, 93)",
+          136980
+        ],
+        [
+          "rgb(244, 234, 209)",
+          21765.1875
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          148
+        ],
+        [
+          "6px",
+          11
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "n/a",
+      "errors": []
+    },
+    {
+      "target": "nova-post-repair",
+      "viewport": "desktop",
+      "height": 4377,
+      "overflow": 0,
+      "nodes": 89,
+      "depth": 7,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 1
+      },
+      "fixedSticky": 0,
+      "hiddenMeaningful": 0,
+      "targets": [
+        [
+          80,
+          44
+        ],
+        [
+          66,
+          44
+        ],
+        [
+          53,
+          44
+        ],
+        [
+          79,
+          44
+        ],
+        [
+          73,
+          44
+        ],
+        [
+          150,
+          150
+        ]
+      ],
+      "smallTargets": 0,
+      "fonts": [],
+      "displays": [
+        {
+          "text": "Makeimpact.",
+          "font": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+          "size": "227.52px",
+          "line": "179.741px",
+          "box": [
+            57.6,
+            191.1,
+            1324.8,
+            359.5
+          ],
+          "clipped": true
+        },
+        {
+          "text": "THE WORK",
+          "font": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+          "size": "151px",
+          "line": "123.82px",
+          "box": [
+            57.6,
+            1883,
+            1266.8,
+            123.8
+          ],
+          "clipped": true
+        },
+        {
+          "text": "From first spark to full release.",
+          "font": "Georgia, \"Times New Roman\", serif",
+          "size": "86.4px",
+          "line": "80.352px",
+          "box": [
+            57.6,
+            2960.8,
+            477.3,
+            241
+          ],
+          "clipped": true
+        },
+        {
+          "text": "MAKE A dent.",
+          "font": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+          "size": "172.8px",
+          "line": "141.696px",
+          "box": [
+            57.6,
+            3640.8,
+            806.8,
+            254
+          ],
+          "clipped": true
+        }
+      ],
+      "colors": [
+        [
+          "rgba(0, 0, 0, 0)",
+          19483001.294151727
+        ],
+        [
+          "rgb(241, 234, 223)",
+          8607638.833007812
+        ],
+        [
+          "rgb(18, 18, 18)",
+          1766601.4921875
+        ],
+        [
+          "rgb(31, 66, 216)",
+          1186560
+        ],
+        [
+          "rgb(242, 83, 53)",
+          958788.0000710641
+        ],
+        [
+          "rgb(255, 210, 74)",
+          126720
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          79
+        ],
+        [
+          "50%",
+          2
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "true",
+      "errors": []
+    },
+    {
+      "target": "nova-post-repair",
+      "viewport": "mobile",
+      "height": 4211,
+      "overflow": 0,
+      "nodes": 89,
+      "depth": 7,
+      "brokenImages": 0,
+      "media": {
+        "images": 0,
+        "videos": 0,
+        "canvas": 1
+      },
+      "fixedSticky": 0,
+      "hiddenMeaningful": 0,
+      "targets": [
+        [
+          80,
+          44
+        ],
+        [
+          73,
+          44
+        ],
+        [
+          150,
+          150
+        ]
+      ],
+      "smallTargets": 0,
+      "fonts": [],
+      "displays": [
+        {
+          "text": "Makeimpact.",
+          "font": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+          "size": "72.15px",
+          "line": "56.9985px",
+          "box": [
+            20,
+            255.7,
+            350,
+            114
+          ],
+          "clipped": true
+        },
+        {
+          "text": "THE WORK",
+          "font": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+          "size": "67px",
+          "line": "54.94px",
+          "box": [
+            20,
+            1469,
+            292,
+            109.9
+          ],
+          "clipped": true
+        },
+        {
+          "text": "From first spark to full release.",
+          "font": "Georgia, \"Times New Roman\", serif",
+          "size": "55px",
+          "line": "51.15px",
+          "box": [
+            20,
+            2710.9,
+            303.8,
+            153.4
+          ],
+          "clipped": true
+        },
+        {
+          "text": "MAKE A dent.",
+          "font": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+          "size": "78px",
+          "line": "63.96px",
+          "box": [
+            20,
+            3571.3,
+            350,
+            114.7
+          ],
+          "clipped": false
+        }
+      ],
+      "colors": [
+        [
+          "rgba(0, 0, 0, 0)",
+          5427985.0639010025
+        ],
+        [
+          "rgb(241, 234, 223)",
+          2096425.576171875
+        ],
+        [
+          "rgb(18, 18, 18)",
+          573782.7421875
+        ],
+        [
+          "rgb(242, 83, 53)",
+          344702.53128869535
+        ],
+        [
+          "rgb(31, 66, 216)",
+          299520
+        ],
+        [
+          "rgb(255, 210, 74)",
+          34320
+        ]
+      ],
+      "radii": [
+        [
+          "0px",
+          68
+        ],
+        [
+          "50%",
+          2
+        ]
+      ],
+      "libraries": {
+        "gsap": false,
+        "three": false,
+        "lenis": false,
+        "motion": false
+      },
+      "engineReady": "true",
+      "errors": []
+    }
+  ]
+}

@@ -57,6 +57,14 @@ frontmatter (name, description, triggers) and step-by-step workflow instructions
 
 ## General Workflow (8-Step Process)
 
+### Model-robust baseline (mandatory for every agent, including smaller models)
+
+Before implementing, read `craft/model-robust-generation.md`. It converts the creative
+workflow into a short deterministic contract: derive a product-specific palette family,
+choose one hero signature, cap effect complexity, build the first viewport around a real
+product/story artifact, and run a rendered-state contrast plus encoding check. Do not copy
+an older benchmark HTML as a starting point. Re-derive from the current brief.
+
 Every UI/UX design task follows this sequence:
 
 ```

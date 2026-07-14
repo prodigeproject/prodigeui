@@ -44,18 +44,18 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.secondary",
-      "color.action.primary",
-      "color.text.primary",
-      "color.text.secondary",
-      "color.border.subtle",
+      "color.background",
+      "color.surface",
+      "color.primary",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.border",
       "space.lg",
-      "space.2xl",
+      "space.x2l",
       "radius.xl",
       "shadow.lg",
-      "typography.heading.lg",
-      "typography.body.md"
+      "typography.size.h3",
+      "typography.size.body"
     ],
     "components": [
       "Button",
@@ -63,7 +63,7 @@
       "Input",
       "ProgressBar",
       "Card",
-      "Heading"
+      "Text"
     ],
     "designRules": [
       "typography.rules.json",
@@ -73,9 +73,9 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "enter-exit",
-      "state-transition",
-      "page-transition"
+      "fade-in",
+      "button-press",
+      "slide-up"
     ]
   }
 }

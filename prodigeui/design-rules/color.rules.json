@@ -5,6 +5,13 @@
     "roles": ["primary", "secondary", "neutral", "success", "warning", "error", "info"],
     "neverRelySoleyOnColor": true,
     "primaryCtaDistinction": 3.0,
+    "closingCtaContinuity": {
+      "authority": "canonical/generation.contract.json#/closingCta",
+      "reuseEstablishedSignalToken": true,
+      "allowNewHueAtClose": false,
+      "surfaceOwnsForeground": true,
+      "largeAccentSurfaceRequiresRenderedContrast": true
+    },
     "darkMode": {
       "neverPureBlack": true,
       "elevatedSurfacesLighter": true,

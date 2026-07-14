@@ -44,21 +44,21 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.active",
-      "color.data.1",
-      "color.data.2",
-      "color.data.3",
-      "color.text.primary",
-      "color.text.tertiary",
-      "color.border.subtle",
-      "border.default",
+      "color.background",
+      "color.accent",
+      "color.primary",
+      "color.success",
+      "color.warning",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.border",
+      "border.width.default",
       "space.md",
       "space.lg",
       "radius.lg",
       "radius.md",
-      "typography.heading.sm",
-      "typography.body.xs"
+      "typography.size.h5",
+      "typography.size.caption"
     ],
     "components": [
       "Card",
@@ -77,9 +77,9 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "state-transition",
-      "enter-exit",
-      "loading-shimmer"
+      "button-press",
+      "fade-in",
+      "progress-bar"
     ]
   }
 }

@@ -37,13 +37,15 @@ Key rules:
 
 | Breakpoint | Behavior |
 |------------|----------|
-| **base** | Single column stack. Heading clamp min (~2.5rem). Image below text, full-width, aspect-ratio constrained. Padding-top: 120px (accounts for fixed nav). |
+| **base** | Single column stack. Heading clamp min (~2.5rem). Image below text, full-width, aspect-ratio constrained. Product lane padding is at most 96px; expressive media-led heroes may use up to 120px when the focal subject activates the space. |
 | **md** | Heading scales up. Increase side padding. Image may gain border-radius. |
 | **lg+** | Split layout (grid 1fr 1fr) OR full-width centered. Heading at clamp max (~6rem). Parallax active. Hero shot with larger border-radius + shadow. |
 
 Key rules:
 - Heading ALWAYS uses `font-size: clamp(min, preferred, max)` — no breakpoint-specific font sizes.
-- Hero padding-top must account for fixed nav height + breathing room (min 120px mobile, 160px desktop).
+- Hero padding must account for fixed nav height. Product/UI lane caps it at 96px. Expressive
+  media-led heroes may reach 120px mobile / 160px desktop only when type or media visibly
+  occupies the added space; empty padding is never a compositional device.
 - `overflow:hidden` on hero container at all breakpoints.
 - Video background: full cover at all sizes, no aspect-ratio change.
 

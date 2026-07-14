@@ -44,21 +44,21 @@
   ],
   "references": {
     "tokens": [
-      "color.surface.primary",
-      "color.surface.secondary",
-      "color.action.primary",
-      "color.feedback.error",
-      "color.feedback.success",
-      "color.text.primary",
-      "color.text.secondary",
-      "color.border.subtle",
+      "color.background",
+      "color.surface",
+      "color.primary",
+      "color.destructive",
+      "color.success",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.border",
       "space.md",
       "space.xl",
-      "space.2xl",
+      "space.x2l",
       "radius.xl",
       "shadow.lg",
-      "typography.heading.lg",
-      "typography.body.sm"
+      "typography.size.h3",
+      "typography.size.body-sm"
     ],
     "components": [
       "Input",
@@ -67,7 +67,7 @@
       "Text",
       "Divider",
       "Icon",
-      "TextLink"
+      "Text"
     ],
     "designRules": [
       "typography.rules.json",
@@ -77,9 +77,9 @@
     ],
     "theme": "light",
     "motionPresets": [
-      "state-transition",
-      "page-transition",
-      "enter-exit"
+      "button-press",
+      "slide-up",
+      "fade-in"
     ]
   }
 }
