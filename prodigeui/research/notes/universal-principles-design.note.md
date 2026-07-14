@@ -38,10 +38,10 @@ appliedTo: []
 | Hierarchy | Size ratio between levels: ≥1.25; weight diff: ≥200 | `tokens/primitive.tokens.json` → typography scale ratio |
 | Proximity | Intra-group spacing < inter-group spacing (2:1 ratio) | `tokens/primitive.tokens.json` → spacing scale design |
 | 80/20 | Primary variant gets 80% optimization attention | `components/` → variant priority |
-| Consistency | Internal token references never bypassed | `quality-gate/criteria.json` → `token-adherence` |
+| Consistency | Internal token references never bypassed | `quality-gate/criteria.json` → `token-coverage` |
 | Progressive Disclosure | Max 3 info levels visible simultaneously | `design-rules/structure.rules.json` → `maxVisibleLevels` |
 | Aesthetic-Usability | All states styled (not just default) | `quality-gate/criteria.json` → `state-coverage` |
-| Signal-to-Noise | Every visual element must have documented purpose | `quality-gate/criteria.json` → `purposeful-elements` |
+| Signal-to-Noise | Every visual element must have documented purpose | `quality-gate/criteria.json` → `anti-slop-patterns` |
 
 ## Modern Context Application
 
@@ -75,8 +75,8 @@ appliedTo: []
 | Visual hierarchy ratios | `tokens/primitive.tokens.json` | Typography scale with ratio ≥1.25 between steps | Enforces perceivable hierarchy through mathematical relationship |
 | Proximity principle | `tokens/primitive.tokens.json` | Spacing scale: `4, 8, 12, 16, 24, 32, 48, 64, 96` | Supports 2:1 ratio between intra-group and inter-group spacing |
 | Aesthetic-usability effect | `quality-gate/criteria.json` | `state-coverage` criterion: all interactive states must be styled | Visual completeness = perceived usability |
-| Signal-to-noise ratio | `quality-gate/criteria.json` | `purposeful-elements` criterion: no decoration without documented purpose | Prevents AI-generated visual noise |
-| Consistency enforcement | `quality-gate/criteria.json` | `token-adherence` criterion: 0 raw values in component specs | Tokens are the consistency mechanism |
+| Signal-to-noise ratio | `quality-gate/criteria.json` | `anti-slop-patterns` criterion: no decoration without documented purpose | Prevents AI-generated visual noise |
+| Consistency enforcement | `quality-gate/criteria.json` | `token-coverage` criterion: 0 raw values in component specs | Tokens are the consistency mechanism |
 | Progressive disclosure | `components/` manifest | States specify `disclosure-level` for content visibility progression | Components implement progressive revelation |
 | 80/20 Rule | `components/` manifest | `priority: "primary" | "secondary" | "tertiary"` per variant | Resource allocation follows usage frequency |
 

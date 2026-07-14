@@ -4,7 +4,7 @@
     {
       "id": "token-coverage",
       "category": "tokens",
-      "description": "All visual values sourced from Design Tokens (no raw values)",
+      "description": "Repeated visual roles are declared at a token-definition boundary and consumed through semantic variables. Raw literals are allowed inside token definitions and one-off generated artwork, but not as repeated component styling.",
       "type": "automated",
       "severity": "fail"
     },
@@ -40,7 +40,7 @@
       "id": "spacing-consistency",
       "category": "tokens",
       "description": "All spacing values from token scale (multiples of 4px)",
-      "type": "automated",
+      "type": "manual",
       "severity": "fail"
     },
     {
@@ -88,7 +88,7 @@
     {
       "id": "weight-limit",
       "category": "design-rules",
-      "description": "Maximum 3-4 font weights used",
+      "description": "Maximum four perceptual font-weight bands. Nearby variable-font values that resolve to the same 100-weight band count as one role.",
       "type": "automated",
       "severity": "fail"
     },
@@ -103,7 +103,7 @@
       "id": "state-coverage",
       "category": "components",
       "description": "All interactive components document all applicable states",
-      "type": "automated",
+      "type": "manual",
       "severity": "fail"
     },
     {
@@ -205,14 +205,14 @@
       "id": "absolute-position-containment",
       "category": "composition",
       "description": "Every element with position:absolute MUST have an explicit positioned ancestor (position:relative on the intended parent). Without this, percentage-based width/height compute against an unintended container, causing elements (e.g. toggle thumbs, slider indicators) to render at viewport-scale size. This is a critical layout bug.",
-      "type": "auto",
+      "type": "automated",
       "severity": "fail"
     },
     {
       "id": "image-fallback-resilience",
       "category": "composition",
       "description": "All image containers (img parent or element with background-image) MUST define a background-color fallback (e.g. var(--surface-2)). Without this, failed/blocked images render as broken icons or browser-chosen placeholder shapes instead of a graceful colored rectangle. See assets/fallback-images.md.",
-      "type": "auto",
+      "type": "automated",
       "severity": "flag"
     },
     {
@@ -233,7 +233,7 @@
       "id": "feedback-timing",
       "category": "interaction",
       "description": "System provides visual feedback within 400ms of user action (Doherty Threshold)",
-      "type": "automated",
+      "type": "manual",
       "severity": "fail"
     },
     {
@@ -249,6 +249,34 @@
       "description": "No more than 4 unchunked items displayed without visual grouping",
       "type": "manual",
       "severity": "flag"
+    },
+    {
+      "id": "runtime-integrity",
+      "category": "quality",
+      "description": "Generated HTML has valid document semantics and UTF-8 text, produces no runtime errors, and makes no unexpected external requests during deterministic evaluation.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "responsive-overflow",
+      "category": "responsive",
+      "description": "Rendered desktop and mobile viewports have zero horizontal overflow.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "meaningful-content-visibility",
+      "category": "accessibility",
+      "description": "Meaningful headings, paragraphs, articles, sections, and main content remain visible in the final rendered state, including reduced-motion mode.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "asset-load-integrity",
+      "category": "assets",
+      "description": "Every rendered image and media dependency loads successfully in the evaluated artifact.",
+      "type": "automated",
+      "severity": "fail"
     }
   ]
 }

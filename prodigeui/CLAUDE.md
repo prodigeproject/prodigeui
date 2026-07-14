@@ -17,16 +17,22 @@ Use these artifacts as the foundation for every visual decision.
 
 ## How It Works
 
-ProdigeUI lives entirely within this `prodigeui/` folder. When a user asks for UI/UX work, you:
+ProdigeUI's knowledge authority lives within `prodigeui/`; executable integrity and artifact
+gates live in the sibling root `scripts/` and `package.json`. When a user asks for UI/UX work,
+you:
 
-1. Identify the use-case from the brief → reference `use-cases/<category>/guide.md`
-2. Choose a theme from `themes/`
-3. Find the relevant skill via `skills/AGENTS.md` (Skill Registry)
-4. Reference tokens and rules for every visual decision
-5. Compose components following atomic design → `components/`
-6. Add motion from presets → `motion/`
-7. Validate output with the Quality Gate → `quality-gate/`
-8. Deliver output that passes the Quality Gate
+1. Read `craft/model-robust-generation.md` before design or implementation.
+2. Read `canonical/accepted-quality.profile.json`, select the applicable profile from product
+   intent, and never use benchmark HTML as generation context.
+3. Execute `canonical/generation.contract.json#oneBuildPreflight` before emitting code; the
+   first implementation is the acceptance candidate, not a knowingly broken draft.
+4. Identify the use-case from the brief → reference `use-cases/<category>/guide.md`.
+5. Find and run `skills/prodige-ui-end-to-end/SKILL.md`; use `skills/AGENTS.md` as registry.
+6. Derive a project-local theme and token boundary, then compose from component specifications.
+7. Add motion from canonical tokens/presets with the Three Dials on a `0.0–1.0` scale.
+8. Complete manual quality evidence and execute
+   `npm run quality-gate -- <artifact.html> --review <manual-review.json>`.
+9. Deliver only when the artifact report is `overall: pass`.
 
 ## Folder Structure
 
@@ -60,11 +66,15 @@ Current skills are listed in `skills/AGENTS.md`.
 
 ## Key Rules
 
-- **Token-first**: All visual values MUST come from Design Tokens (`tokens/`). Never use hardcoded or raw values.
+- **Token-first**: Repeated visual roles use semantic variables. Concrete values are allowed
+  at the token-definition boundary and for one-off generated artwork, not repeated directly
+  across component declarations.
 - **Rule-backed**: Every design decision must be supported by measurable Design Rules (`design-rules/`).
 - **Accessible**: WCAG 2.1 AA is the minimum standard (4.5:1 contrast for normal text, 3:1 for large text, keyboard navigation, ARIA roles).
 - **Anti-AI-slop**: Validate with the Quality Gate (`quality-gate/`) before delivering any output.
-- **Motion from presets**: Use motion presets from `motion/` — never create custom animations outside the system.
+- **Motion from authority**: Start from motion tokens/presets; a custom animation is allowed
+  only when no preset fits, its purpose is documented, and canonical duration/reduced-motion
+  constraints still pass.
 - **Theme-driven**: Apply themes from `themes/` for visual identity. Components render from the active theme only.
 - **Traceable**: Design decisions can be traced to research sources in `research/`.
 
@@ -96,7 +106,8 @@ When writing CSS or style output, use semantic or component token names. Never r
 
 ## Important Constraints
 
-1. **Never hardcode visual values** — always reference a Design Token by its semantic name.
+1. **Never repeat raw visual values in component declarations** — declare project-specific
+   values once as tokens, then consume semantic variables.
 2. **Never skip the Quality Gate** — every deliverable must pass before being presented to the user.
 3. **Respect reduce-motion** — when the user has `prefers-reduced-motion`, disable non-essential animations and limit essential ones to 100ms maximum.
 4. **Follow atomic design** — compose atoms into molecules, molecules into organisms.

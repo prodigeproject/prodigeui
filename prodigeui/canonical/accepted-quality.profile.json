@@ -16,7 +16,7 @@
       "productIntent": "Make the value mechanism explicit in the first viewport: real work evidence changes a current plan or operating record without manual status reporting.",
       "artifactSemantics": {
         "required": "One legible domain-specific product state with real nouns, timestamps or ownership, a meaningful risk, and a next decision.",
-        "rule": "The artifact proves the headline; it is not a decorative dashboard shell or a stack of generic cards."
+        "rule": "The artifact proves the headline as one cohesive operating record; it is not a decorative dashboard shell, a KPI mosaic, or a stack of generic cards."
       },
       "typeRoles": {
         "display": "Technical-human editorial authority for identity and major hierarchy.",
@@ -31,6 +31,7 @@
         "poetic AI metaphor that obscures the product mechanism",
         "generic kanban or analytics chrome without domain evidence",
         "equal-card repetition across sections",
+        "dark dev-tool palette chosen by category reflex rather than product evidence",
         "agency-scale typography or theatrical effects that compete with trust",
         "new or muddy campaign hue introduced only at the final CTA"
       ]
@@ -47,14 +48,16 @@
         "annotation": "A controlled UI voice for navigation, captions, and project metadata."
       },
       "paletteCommitment": "Choose a committed product-derived color family with named structural roles. Saturated fields may carry composition; accents must recur with the same meaning and captions must own a stable contrasting backdrop.",
-      "focalHierarchy": "The proposition dominates, the concept graphic amplifies it, and compact studio copy explains it. No secondary element may compete for first read.",
-      "rhythmArgument": "Alternate high-volume identity moments with editorial breathing room, then increase density around work and capability before a large closing afterimage. Avoid one repeated agency section pattern.",
+      "focalHierarchy": "A specific proposition—not the studio name alone—dominates at poster scale; the concept graphic amplifies it, and compact studio copy explains it. No secondary element may compete for first read.",
+      "rhythmArgument": "Alternate high-volume identity moments with editorial breathing room, then increase density around work and capability before a large closing afterimage. Let each work subject earn its own scale, crop, and field relationship; avoid one repeated agency section pattern or forced equal project frames.",
       "closingBehavior": "Return to an established primary surface and reuse existing signal roles. The final action is conceptually tied to the studio voice and remains keyboard-safe.",
       "reject": [
         "black-orange AI agency template used by reflex",
         "cream editorial template with fashionable serif switching but no concept",
+        "studio wordmark used as the entire proposition without a memorable point of view",
         "generic WebGL particles unrelated to the proposition",
         "captions placed directly over uncontrolled artwork pixels",
+        "project imagery forced into matching card frames when varied scale would produce a stronger editorial sequence",
         "shrinking expressive display type until the page becomes competent but forgettable"
       ]
     }

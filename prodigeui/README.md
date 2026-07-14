@@ -9,7 +9,8 @@ ProdigeUI is a comprehensive UI/UX knowledge kit that equips AI coding agents wi
 - **Semantic Design Tokens** — A three-layer token system (primitive → semantic → component) serving as the single source of truth for all visual decisions.
 - **Theme Catalog** — Ready-to-use themes (light, dark, brand) with WCAG AA contrast compliance.
 - **Motion Presets** — Parameterized animation/transition presets with reduce-motion support and documented motion principles.
-- **Component Specs** — Atomic design component library with full state, variant, accessibility, and token-binding documentation.
+- **Component Specs** — Agent-consumable Atomic Design specification catalog with complete
+  state, variant, accessibility, and token-binding metadata; it is not an importable framework package.
 - **Design Rules** — Measurable, verifiable rules for typography, color, layout, structure, forms, responsive behavior, data-visualization, and advanced methodology, backed by research and design theory.
 - **Quality Gate** — Objective quality criteria and an anti-AI-slop checklist to ensure expert-level output.
 - **Prompt Templates** — Professional prompt templates per use-case (SaaS, landing page, ecommerce, portfolio, HRIS, agentic app) that reference the token system, rules, and components.

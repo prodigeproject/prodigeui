@@ -79,7 +79,7 @@ The designer perspective system is adapted as named presets in `motion/presets/`
 | Finding | ProdigeUI artifact | Field/section affected | Rationale |
 |---|---|---|---|
 | Frequency Gate principle | `design-rules/structure.rules.json` | `motion.frequencyGate` rule with multiplier table | Prevents over-animation of repeated elements; measurable criterion |
-| Golden Rule | `quality-gate/criteria.json` | `motion-subtlety-ratio` criterion | Ensures motion enhances rather than dominates UX |
+| Golden Rule | `quality-gate/criteria.json` | `motion-duration` criterion | Ensures motion enhances rather than dominates UX |
 | Anti-checklist patterns | `quality-gate/criteria.json` | `motion-anti-patterns` array of checkable rules | Automated AI slop detection for motion |
 | Context-to-Perspective mapping | `prompt-templates/*/metadata.json` | `motionPersonality` field per template | Each use-case template knows its motion voice |
 | Create/Audit modes | `skills/prodige-ui-end-to-end/SKILL.md` | Separate creation and review steps | Workflow separation ensures motion is both designed AND validated |

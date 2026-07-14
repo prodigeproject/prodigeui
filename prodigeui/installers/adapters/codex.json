@@ -1,7 +1,10 @@
 {
+  "schemaVersion": 2,
   "tool": "codex",
-  "entryPointFile": "AGENTS.md",
-  "configLocation": "<project-root>/AGENTS.md",
-  "supportedFormats": ["AGENTS.md", "skills/"],
-  "notes": "Codex reads AGENTS.md from project root. Place ProdigeUI skills in the skills/ directory for discovery."
+  "entryPoint": "AGENTS.md",
+  "installGuide": "installers/install.codex.md",
+  "nativeSkillPath": null,
+  "qualityGateCommand": "npm run quality-gate -- <artifact.html> --review <manual-review.json>",
+  "hookDefinition": "prodigeui/hooks/quality-gate-check.hook.json",
+  "notes": "AGENTS.md explicitly routes Codex to the ProdigeUI skill registry; nested skill auto-discovery is not assumed."
 }

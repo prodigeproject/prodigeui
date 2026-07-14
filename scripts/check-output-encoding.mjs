@@ -1,28 +1,41 @@
 /** Fail generated text artifacts that contain common UTF-8 mojibake fragments. */
-import { readFileSync, statSync } from 'node:fs';
-import { extname, resolve } from 'node:path';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { dirname, extname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const paths = process.argv.slice(2);
-if (!paths.length) {
-  console.error('Usage: node scripts/check-output-encoding.mjs <generated-file> [...]');
-  process.exit(2);
-}
+const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const paths = process.argv.slice(2).length ? process.argv.slice(2) : [join(repo, 'prodigeui')];
 
 const textExt = new Set(['.html', '.css', '.js', '.mjs', '.ts', '.tsx', '.md', '.txt']);
-const markers = ['Ã¢', 'Ãƒ', 'Ã‚', 'Ã°Å¸', 'Ã¯Â¸', 'Î“'];
+const markerCodePoints = [
+  [0x00e2],
+  [0x00c3],
+  [0x00c2],
+  [0x00f0, 0x0178],
+  [0x00ef, 0x00b8],
+  [0xfffd],
+];
+const markers = markerCodePoints.map(points => String.fromCodePoint(...points));
 let failed = false;
 
-for (const input of paths) {
+const files = [];
+const collect = input => {
   const file = resolve(input);
-  if (!statSync(file).isFile() || !textExt.has(extname(file).toLowerCase())) continue;
+  const stat = statSync(file);
+  if (stat.isDirectory()) for (const child of readdirSync(file)) collect(join(file, child));
+  else if (stat.isFile() && textExt.has(extname(file).toLowerCase())) files.push(file);
+};
+paths.forEach(collect);
+
+for (const file of files) {
   const text = readFileSync(file, 'utf8');
   const hits = markers.filter(marker => text.includes(marker));
   if (hits.length) {
     failed = true;
-    console.error(`FAIL ${input}: mojibake marker(s) ${hits.join(', ')}`);
-  } else {
-    console.log(`PASS ${input}: UTF-8 text is clean`);
+    console.error(`FAIL ${file}: mojibake marker(s) ${hits.join(', ')}`);
   }
 }
+
+if (!failed) console.log(`PASS output encoding: ${files.length} UTF-8 text file(s) are clean`);
 
 process.exit(failed ? 1 : 0);

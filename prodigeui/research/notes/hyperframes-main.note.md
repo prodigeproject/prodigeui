@@ -96,7 +96,7 @@ The motion-graphics skill may yield timing principles applicable to UI, but the 
 | Multi-adapter delivery (.claude/, .codex/, .cursor-plugin/) | `installers/adapters/` | Per-tool adapter files | Solves portability: one source, many delivery formats |
 | Block registry pattern | `components/components.manifest.json` | Component registration with metadata | Reusable, composable elements with machine-readable specs |
 | DESIGN.md architecture documentation | `design-system/design-system.md` | Dependency graph, rationale sections | Architectural clarity for both humans and AI agents |
-| Deterministic rendering principle | `quality-gate/criteria.json` | `motion-determinism` criterion | Same tokens → same visual result; enables automated validation |
+| Deterministic rendering principle | `quality-gate/criteria.json` | `runtime-integrity` criterion | Same tokens → same visual result; enables automated validation |
 | Frame adapter (seekable state) | `motion/presets/*.json` | `keyframes` field with percentage states | Presets decomposed into inspectable/previewable states |
 
 ## Points Copied

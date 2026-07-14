@@ -39,7 +39,7 @@ fallbacks, and validates all motion against ProdigeUI's motion principles.
    - Feedback: confirms user action (click ripple, submit success)
    - Attention: draws eye to important change (notification, error)
 3. Determine which motions are essential (convey meaning) vs decorative.
-4. Reference `motion/motion-principles.md` for guiding constraints.
+4. Reference `motion/principles.md` for guiding constraints.
 5. Map motion to specific user interactions or page events.
 
 ### Step 2 — Select Personality Archetype
@@ -64,7 +64,7 @@ fallbacks, and validates all motion against ProdigeUI's motion principles.
    - Feedback: ripple, pulse, check-mark
 3. For each preset, configure:
    - Duration (from personality archetype range)
-   - Easing curve (from `motion/easing.tokens.json`)
+   - Easing curve (from `motion/motion.tokens.json`)
    - Transform origin and direction
 4. If no preset fits: define a custom motion and document it.
 
@@ -72,7 +72,8 @@ fallbacks, and validates all motion against ProdigeUI's motion principles.
 
 1. For grouped elements (lists, grids, navigation items):
    - Define stagger delay between each element (typically 30-80ms).
-   - Set maximum total sequence duration (avoid > 800ms total).
+   - Set the lane-specific sequence cap: product/UI ≤ 600ms; expressive storytelling
+     ≤ 1500ms with primary meaning visible by 600ms.
    - Choose stagger direction: top-to-bottom, left-to-right, center-out.
 2. Apply diminishing delays for long lists (first items slower, rest faster).
 3. Define the trigger: viewport entry, page load, user interaction.
@@ -84,7 +85,7 @@ fallbacks, and validates all motion against ProdigeUI's motion principles.
 1. For every animation, define the reduced-motion alternative:
    - Decorative motion: remove entirely (instant state change).
    - Essential motion (progress, loading): replace with minimal alternative.
-   - Entrance animations: replace with simple opacity fade (150ms max).
+   - Essential entrance/state communication: replace with opacity-only transition capped at 100ms.
 2. Use `prefers-reduced-motion: reduce` media query check.
 3. Verify that no information is lost when motion is removed.
 4. Ensure transitions still feel responsive (instant but not jarring).
@@ -92,13 +93,14 @@ fallbacks, and validates all motion against ProdigeUI's motion principles.
 
 ### Step 6 — Validate Against Motion Principles
 
-1. Check against `motion/motion-principles.md`:
+1. Check against `motion/principles.md`:
    - Purpose: every animation has a clear functional reason
    - Duration: nothing exceeds personality archetype maximum
    - Easing: uses system-defined curves (no linear for UI motion)
    - Performance: transforms and opacity only (no layout-triggering properties)
    - Interruptibility: animations can be interrupted by user action
-2. Verify total page motion budget is not exceeded (max 3 simultaneous animations).
+2. Verify the 1/3 visibility budget: no more than one third of visible elements move
+   simultaneously; three concurrent motion paths are an attention warning, not a separate scale.
 3. Check that motion direction matches content flow (LTR, top-to-bottom).
 4. Ensure no animation loops infinitely without user control.
 5. Report: elements animated, presets used, stagger timing, a11y fallbacks, any violations.

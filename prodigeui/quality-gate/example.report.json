@@ -1,0 +1,18 @@
+{
+  "artifact": "example.html",
+  "generatedAt": "2026-07-15T00:00:00.000Z",
+  "overall": "pass",
+  "summary": {
+    "pass": 1,
+    "fail": 0,
+    "flag": 0,
+    "notEvaluable": 0
+  },
+  "criteria": [
+    {
+      "id": "runtime-integrity",
+      "status": "pass",
+      "evidence": ["No runtime or encoding errors detected."]
+    }
+  ]
+}

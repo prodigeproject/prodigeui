@@ -34,36 +34,36 @@ Examples:
 
 ## Step 3: Set the Three Dials
 
-After the Design Read, set numeric values (1-10):
+After the Design Read, set numeric values on the canonical `0.0–1.0` scale:
 
 | Dial | What it controls |
 |------|-----------------|
-| **DESIGN_VARIANCE** | 1 = Perfect symmetry, 10 = Artsy chaos |
-| **MOTION_INTENSITY** | 1 = Static, 10 = Cinematic / physics |
-| **VISUAL_DENSITY** | 1 = Art gallery / airy, 10 = Cockpit / packed |
+| **DESIGN_VARIANCE** | 0.0 = conservative symmetry, 1.0 = intentionally experimental |
+| **MOTION_INTENSITY** | 0.0 = static, 1.0 = cinematic / physics |
+| **VISUAL_DENSITY** | 0.0 = art gallery / airy, 1.0 = cockpit / packed |
 
 ### Dial Inference Table
 
 | Signal | VARIANCE | MOTION | DENSITY |
 |--------|----------|--------|---------|
-| Minimalist / calm / Linear-style | 5-6 | 3-4 | 2-3 |
-| Premium consumer / Apple-y / luxury | 7-8 | 5-7 | 3-4 |
-| Playful / wild / Awwwards / experimental | 9-10 | 8-10 | 3-4 |
-| Landing page / marketing (default) | 7-9 | 6-8 | 3-5 |
-| Trust-first / public-sector / regulated | 3-4 | 2-3 | 4-5 |
-| Dark-tech / dev-tool / B2B SaaS | 6-7 | 5-6 | 4-5 |
-| Editorial / blog / magazine | 6-7 | 4-5 | 3 |
-| E-commerce / product-forward | 6-7 | 5-6 | 5-6 |
+| Minimalist / calm / Linear-style | 0.5–0.6 | 0.3–0.4 | 0.2–0.3 |
+| Premium consumer / Apple-y / luxury | 0.7–0.8 | 0.5–0.7 | 0.3–0.4 |
+| Playful / wild / Awwwards / experimental | 0.9–1.0 | 0.8–1.0 | 0.3–0.4 |
+| Landing page / marketing (default) | 0.7–0.9 | 0.6–0.8 | 0.3–0.5 |
+| Trust-first / public-sector / regulated | 0.3–0.4 | 0.2–0.3 | 0.4–0.5 |
+| Dark-tech / dev-tool / B2B SaaS | 0.6–0.7 | 0.5–0.6 | 0.4–0.5 |
+| Editorial / blog / magazine | 0.6–0.7 | 0.4–0.5 | 0.3 |
+| E-commerce / product-forward | 0.6–0.7 | 0.5–0.6 | 0.5–0.6 |
 
 ### How Dials Drive Output
 
-- **VARIANCE < 5:** Symmetric grids, consistent spacing, no layout surprises.
-- **VARIANCE 7+:** Asymmetric compositions, mixed-density sections, visual tension.
-- **MOTION < 4:** Simple fade-in reveals, no ambient animation.
-- **MOTION 6+:** Staggered choreography, secondary motion layer, one ambient signature.
-- **MOTION 8+:** Scroll-driven effects, cursor interactions, clip-path reveals.
-- **DENSITY < 4:** Generous whitespace, max 3-4 elements per viewport.
-- **DENSITY 5+:** Tighter sections, bento grids, more content per viewport.
+- **VARIANCE < 0.5:** Symmetric grids, consistent spacing, no layout surprises.
+- **VARIANCE ≥ 0.7:** Asymmetric compositions, mixed-density sections, visual tension.
+- **MOTION < 0.4:** Simple fade-in reveals, no ambient animation.
+- **MOTION ≥ 0.6:** Staggered choreography, secondary motion layer, one ambient signature.
+- **MOTION ≥ 0.8:** Scroll-driven effects, cursor interactions, clip-path reveals.
+- **DENSITY < 0.4:** Generous whitespace, max 3-4 elements per viewport.
+- **DENSITY ≥ 0.5:** Tighter sections, bento grids, more content per viewport.
 
 ---
 
@@ -76,11 +76,11 @@ Every output MUST include at least ONE element from each category:
 1. **One bold visual move** — a typography choice, an unexpected color ratio, a dramatic proportion, a unique layout break.
 2. **One memorable micro-interaction** — a button press that feels physical, a number that counts up, a card that tilts toward the cursor, a reveal that wipes geometrically instead of fading.
 3. **One product-specific detail** — something that could only exist for THIS product. A status badge with domain-specific phrasing, a metric that references the product's actual value prop, a visual metaphor drawn from the product's domain.
-4. **One engine-grade interactive moment (when MOTION_INTENSITY ≥ 7)** — scroll-driven
+4. **One engine-grade interactive moment (when MOTION_INTENSITY ≥ 0.7)** — scroll-driven
    storytelling (GSAP ScrollTrigger pin/scrub), a real-time WebGL/Three.js/canvas anchor, or
    Lenis smooth scroll + a pinned narrative section. For agency/portfolio/premium/experimental
    briefs, a fully static page (only CSS fade-ins) is a FAIL — see
-   `craft/patterns/engine-interactivity.md`. Do NOT over-engineer trust-first B2B/dashboards (MOTION ≤ 6).
+   `craft/patterns/engine-interactivity.md`. Do NOT over-engineer trust-first B2B/dashboards (MOTION ≤ 0.6).
 
 ### Soul Test
 

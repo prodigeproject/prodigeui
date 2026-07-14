@@ -71,11 +71,11 @@ appliedTo: []
 
 | Finding | ProdigeUI Artifact | Field/Section | Rationale |
 |---------|-------------------|---------------|-----------|
-| Harm prevention rules | `quality-gate/criteria.json` | `harm-prevention` category: color-only check, confirmation check, a11y check | Catches dangerous design patterns before deployment |
+| Harm prevention rules | `quality-gate/criteria.json` | `aria-roles` category: color-only check, confirmation check, a11y check | Catches dangerous design patterns before deployment |
 | Error state requirement | `components/` manifest | Every interactive component: `states.error` defined (required field) | No component ships without error handling |
 | Error message pattern | `design-rules/structure.rules.json` | `errorMessagePattern: { what, why, action }` | Consistent, helpful error communication |
-| Inclusivity enforcement | `quality-gate/criteria.json` | `inclusivity` category: contrast, targets, keyboard, screen-reader checks | Non-negotiable accessibility standards |
-| Dark pattern detection | `quality-gate/criteria.json` | `ethical-design` category: equal option weight, visible costs, honest language | Prevents manipulation by AI agents |
+| Inclusivity enforcement | `quality-gate/criteria.json` | `contrast-normal` category: contrast, targets, keyboard, screen-reader checks | Non-negotiable accessibility standards |
+| Dark pattern detection | `quality-gate/criteria.json` | `anti-slop-patterns` category: equal option weight, visible costs, honest language | Prevents manipulation by AI agents |
 | Trust-building patterns | `design-rules/structure.rules.json` | `feedbackTimings`, `loadingStateRequirements`, `statePreservation` rules | Systematic trust building through consistency |
 | Context-aware tokens | `tokens/semantic.tokens.json` | Contextual token variations (mobile/high-contrast/reduced-motion) | Adaptation to degraded contexts |
 | Multi-channel communication | `design-rules/structure.rules.json` | `statusCommunication: "color+icon+text"` (never color-only) | Ensures information accessible regardless of ability |

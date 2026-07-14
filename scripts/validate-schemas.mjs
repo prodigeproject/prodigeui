@@ -1,150 +1,94 @@
-/**
- * validate-schemas.mjs
- * Validates JSON files against their expected schema structure.
- * Uses native Node.js modules only (no external dependencies).
- * Exit code 0 = all pass, 1 = any failure.
- */
-import { readFileSync, readdirSync } from 'fs';
-import { join, resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { readFileSync, readdirSync } from 'node:fs';
+import { basename, dirname, join, relative, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { validateJsonSchema } from './lib/json-schema.mjs';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const BASE = resolve(__dirname, '../prodigeui');
+const scriptsDir = dirname(fileURLToPath(import.meta.url));
+const root = resolve(scriptsDir, '../prodigeui');
+const read = path => JSON.parse(readFileSync(path, 'utf8'));
+const walk = directory => readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
+  const path = join(directory, entry.name);
+  return entry.isDirectory() ? walk(path) : [path];
+});
+const failures = [];
+const pass = message => console.log(`  PASS: ${message}`);
+const fail = message => { failures.push(message); console.error(`  FAIL: ${message}`); };
 
-let failures = 0;
+const allJson = walk(root).filter(path => path.endsWith('.json'));
+for (const path of allJson) {
+  try { read(path); } catch (error) { fail(`${relative(root, path)}: invalid JSON (${error.message})`); }
+}
+if (!failures.length) pass(`all ${allJson.length} JSON artifacts parse`);
 
-function pass(msg) { console.log(`  PASS: ${msg}`); }
-function fail(msg) { failures++; console.error(`  FAIL: ${msg}`); }
-
-/**
- * Validate a token file against tokens.schema.json structure.
- */
-function validateTokenFile(filePath) {
-  const data = JSON.parse(readFileSync(filePath, 'utf-8'));
-  const name = filePath.replace(BASE, '');
-
-  // Required fields
-  if (typeof data.schemaVersion !== 'number' || data.schemaVersion < 1) {
-    fail(`${name} — missing or invalid "schemaVersion"`);
-  } else {
-    pass(`${name} — schemaVersion is valid`);
+const validateFamily = (label, schemaPath, files) => {
+  const schema = read(join(root, schemaPath));
+  for (const path of files) {
+    const errors = validateJsonSchema(read(path), schema);
+    if (errors.length) errors.slice(0, 12).forEach(error => fail(`${relative(root, path)} ${error}`));
+    else pass(`${relative(root, path)} conforms to ${schemaPath}`);
   }
+};
 
-  const validLayers = ['primitive', 'semantic', 'component'];
-  if (!validLayers.includes(data.layer)) {
-    fail(`${name} — "layer" must be one of: ${validLayers.join(', ')}`);
-  } else {
-    pass(`${name} — layer "${data.layer}" is valid`);
+validateFamily('tokens', 'tokens/tokens.schema.json', [
+  join(root, 'tokens/primitive.tokens.json'),
+  join(root, 'tokens/semantic.tokens.json'),
+  join(root, 'tokens/component.tokens.json'),
+]);
+validateFamily('themes', 'themes/theme.schema.json', readdirSync(join(root, 'themes')).filter(name => name.endsWith('.theme.json')).map(name => join(root, 'themes', name)));
+validateFamily('templates', 'prompt-templates/template.schema.json', walk(join(root, 'prompt-templates')).filter(path => path.endsWith('.template.json')));
+validateFamily('reports', 'quality-gate/report.schema.json', [join(root, 'quality-gate/example.report.json')]);
+validateFamily('criteria', 'quality-gate/criteria.schema.json', [join(root, 'quality-gate/criteria.json')]);
+
+const components = read(join(root, 'components/components.manifest.json'));
+if (!Array.isArray(components.components) || !components.components.length) fail('components manifest has no components');
+else {
+  for (const component of components.components) {
+    if (!component.name || !component.level || !component.category || !Array.isArray(component.tokens)) fail(`component structural error: ${component.name || 'unnamed'}`);
   }
-
-  if (!data.tokens || typeof data.tokens !== 'object' || Object.keys(data.tokens).length === 0) {
-    fail(`${name} — "tokens" must be a non-empty object`);
-    return;
-  }
-
-  const validTypes = ['color', 'typography', 'spacing', 'radius', 'shadow', 'border', 'z-index', 'motion'];
-  let tokenErrors = 0;
-
-  for (const [key, entry] of Object.entries(data.tokens)) {
-    if (!validTypes.includes(entry.type)) {
-      fail(`${name} — token "${key}" has invalid type "${entry.type}"`);
-      tokenErrors++;
-      continue;
-    }
-    // Primitive tokens must have value, not ref
-    if (data.layer === 'primitive') {
-      if (entry.value === undefined) {
-        fail(`${name} — primitive token "${key}" missing "value"`);
-        tokenErrors++;
-      }
-      if (entry.ref !== undefined) {
-        fail(`${name} — primitive token "${key}" should not have "ref"`);
-        tokenErrors++;
-      }
-    }
-    // Semantic/component tokens must have ref, not value
-    if (data.layer === 'semantic' || data.layer === 'component') {
-      if (entry.ref === undefined) {
-        fail(`${name} — ${data.layer} token "${key}" missing "ref"`);
-        tokenErrors++;
-      }
-      if (entry.value !== undefined) {
-        fail(`${name} — ${data.layer} token "${key}" should not have "value"`);
-        tokenErrors++;
-      }
-    }
-  }
-
-  if (tokenErrors === 0) {
-    pass(`${name} — all ${Object.keys(data.tokens).length} tokens structurally valid`);
-  }
+  pass(`${components.components.length} component specifications structurally valid`);
 }
 
-/**
- * Validate a theme file against theme.schema.json structure.
- */
-function validateThemeFile(filePath) {
-  const data = JSON.parse(readFileSync(filePath, 'utf-8'));
-  const name = filePath.replace(BASE, '');
+const assets = read(join(root, 'assets/assets.manifest.json'));
+if (!Array.isArray(assets.assets) || assets.assets.some(asset => !asset.id || !asset.category || !asset.license)) fail('asset manifest structural error');
+else pass(`${assets.assets.length} assets structurally valid`);
 
-  if (!data.name || typeof data.name !== 'string') {
-    fail(`${name} — missing or invalid "name"`);
-  } else {
-    pass(`${name} — name "${data.name}" is valid`);
-  }
-
-  const validModes = ['light', 'dark'];
-  if (!validModes.includes(data.mode)) {
-    fail(`${name} — "mode" must be "light" or "dark", got "${data.mode}"`);
-  } else {
-    pass(`${name} — mode "${data.mode}" is valid`);
-  }
-
-  if (data.overrides !== undefined) {
-    if (typeof data.overrides !== 'object' || Array.isArray(data.overrides)) {
-      fail(`${name} — "overrides" must be an object`);
-    } else {
-      const badValues = Object.entries(data.overrides)
-        .filter(([, v]) => typeof v !== 'string');
-      if (badValues.length > 0) {
-        fail(`${name} — overrides has non-string values: ${badValues.map(([k]) => k).join(', ')}`);
-      } else {
-        pass(`${name} — overrides (${Object.keys(data.overrides).length} entries) structurally valid`);
-      }
-    }
-  }
+const motion = read(join(root, 'motion/motion.tokens.json'));
+if (!motion.tokens?.duration || !motion.tokens?.easing) fail('motion token structure is incomplete');
+for (const path of walk(join(root, 'motion/presets')).filter(path => path.endsWith('.json'))) {
+  const document = read(path);
+  if (!document.category || !Array.isArray(document.presets)) fail(`${relative(root, path)}: invalid motion preset document`);
 }
+if (!failures.some(item => item.includes('motion'))) pass('motion tokens and preset documents structurally valid');
 
-// --- Run validation ---
-console.log('\n=== Token File Validation ===\n');
-const tokenFiles = ['primitive.tokens.json', 'semantic.tokens.json', 'component.tokens.json'];
-for (const f of tokenFiles) {
-  const path = join(BASE, 'tokens', f);
-  try {
-    validateTokenFile(path);
-  } catch (e) {
-    fail(`${f} — could not parse: ${e.message}`);
-  }
+for (const path of readdirSync(join(root, 'design-rules')).filter(name => name.endsWith('.rules.json')).map(name => join(root, 'design-rules', name))) {
+  const document = read(path);
+  if (!document || typeof document !== 'object' || Array.isArray(document) || !Object.keys(document).length) fail(`${relative(root, path)}: empty design-rule document`);
 }
+pass('design-rule JSON documents structurally valid');
 
-console.log('\n=== Theme File Validation ===\n');
-const themeDir = join(BASE, 'themes');
-const themeFiles = readdirSync(themeDir).filter(f => f.endsWith('.theme.json'));
-for (const f of themeFiles) {
-  const path = join(themeDir, f);
-  try {
-    validateThemeFile(path);
-  } catch (e) {
-    fail(`${f} — could not parse: ${e.message}`);
-  }
+const authority = read(join(root, 'canonical/system.authority.json'));
+const contract = read(join(root, 'canonical/generation.contract.json'));
+const profile = read(join(root, 'canonical/accepted-quality.profile.json'));
+if (!authority.sources || !authority.manifestPolicy || !authority.normativePrecedence) fail('canonical authority structure is incomplete');
+if (!Array.isArray(contract.requiredDecisions) || !contract.typography || !contract.closingCta) fail('generation contract structure is incomplete');
+if (profile.benchmarkGeometryAllowed !== false || !profile.profiles?.operationalProduct || !profile.profiles?.expressiveStudio) fail('accepted quality profile structure is incomplete');
+if (!failures.some(item => item.includes('canonical') || item.includes('contract') || item.includes('quality profile'))) pass('canonical JSON documents structurally valid');
+
+for (const path of readdirSync(join(root, 'installers/adapters')).filter(name => name.endsWith('.json')).map(name => join(root, 'installers/adapters', name))) {
+  const adapter = read(path);
+  if (!adapter.tool || !adapter.entryPoint || !adapter.installGuide || !adapter.qualityGateCommand) fail(`${relative(root, path)}: disconnected adapter contract`);
 }
+const hook = read(join(root, 'hooks/quality-gate-check.hook.json'));
+if (!hook.hooks?.[0]?.action?.command) fail('quality hook has no executable command');
+if (!failures.some(item => item.includes('adapter') || item.includes('hook'))) pass('adapter and hook JSON documents structurally valid');
 
-// --- Summary ---
-console.log(`\n=== Summary ===`);
-if (failures === 0) {
-  console.log('All schema validations passed.\n');
-  process.exit(0);
-} else {
-  console.error(`${failures} failure(s) detected.\n`);
+const ids = read(join(root, 'quality-gate/criteria.json')).criteria.map(item => item.id);
+if (new Set(ids).size !== ids.length) fail('quality criteria IDs are not unique');
+else pass(`${ids.length} unique quality criteria`);
+
+console.log('\n=== Schema and Structural Validation Summary ===');
+if (failures.length) {
+  console.error(`${failures.length} failure(s) detected.`);
   process.exit(1);
 }
+console.log('All schema-backed and domain-structural validations passed.');

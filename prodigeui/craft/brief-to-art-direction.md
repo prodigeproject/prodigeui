@@ -110,10 +110,10 @@ Choose ONE lane and commit; do not blend three. Tie it to the metaphor.
 - **Imagery**: real photography/3D for products where the *thing* matters; crafted
   placeholders only when honesty demands (open-design lane) — never a stock CDN as a crutch.
   Treat imagery as content, full-bleed or duotone, not decoration.
-- **Motion**: read `MOTION_INTENSITY`. Expressive/agency/portfolio (MOTION ≥ 7) MUST have one
+- **Motion**: read `MOTION_INTENSITY`. Expressive/agency/portfolio (MOTION ≥ 0.7) MUST have one
   engine-grade moment (GSAP pin/scrub, WebGL, canvas, Lenis) — a CSS-only page is a FAIL for
   that register (`craft/patterns/engine-interactivity.md`). B2B/trust-first: restraint,
-  MOTION ≤ 6, no ambient loops.
+  MOTION ≤ 0.6, no ambient loops.
   - **From the audit** (`craft/reference-audit-2026.md`): ease-out custom cubic-beziers, UI
     durations 0.15–0.5s, one occasional ~3s ambient loop. Expressive pages earn a **multi-screen
     scroll story** (references run 10–57× viewport height), not a single fold. **Add Lenis
@@ -162,4 +162,4 @@ Before shipping, run three altitudes:
 - `craft/design-read.md` — runs this as its Step 3.5 (the derivation feeds the dials + soul)
 - `craft/design-system-routing.md` — invent-vs-official decision (run first)
 - `craft/taste.md` — the hex/scale/pairing discipline applied *inside* the derived family
-- `craft/patterns/engine-interactivity.md` — the engine moment for MOTION ≥ 7
+- `craft/patterns/engine-interactivity.md` — the engine moment for MOTION ≥ 0.7

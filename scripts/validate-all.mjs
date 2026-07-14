@@ -2,7 +2,8 @@
  * validate-all.mjs
  * Single entry point that runs the full ProdigeUI integrity gate:
  * schemas, cross-references, token naming, WCAG contrast (all themes),
- * manifest completeness, research log, and derived-CSS freshness.
+ * manifest completeness, research log, system connections, encoding, and
+ * derived-CSS freshness.
  * Exit code 0 = everything passed, 1 = at least one check failed.
  */
 import { spawnSync } from 'child_process';
@@ -22,6 +23,8 @@ const checks = [
   ['Manifest completeness', 'check-manifest.mjs', []],
   ['Research log', 'check-research-log.mjs', []],
   ['Rule consistency', 'check-consistency.mjs', []],
+  ['Output encoding', 'check-output-encoding.mjs', []],
+  ['System connections', 'check-system-connections.mjs', []],
   ['Derived tokens.css freshness', 'build-tokens.mjs', ['--check']],
 ];
 

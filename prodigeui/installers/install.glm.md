@@ -1,43 +1,23 @@
 # Installing ProdigeUI for GLM
 
-## Prerequisites
+Run from the ProdigeUI distribution root:
 
-- GLM installed and configured on your machine
-- A project directory initialized (any language/framework)
-- Terminal access to the project root
+```sh
+node scripts/install-prodigeui.mjs glm <project-root>
+```
 
-## Installation Steps
+This installs `prodigeui/`, executable `scripts/`, root `package.json`, and root `AGENTS.md`.
+The entry point explicitly routes GLM to the skill registry and model-robust generation
+contract; nested skill auto-discovery is not assumed.
 
-1. Copy the `prodigeui/` folder into your project root:
-   ```
-   your-project/
-   ├── prodigeui/        <-- paste here
-   ├── src/
-   └── ...
-   ```
+In the target project run:
 
-2. Copy the entry-point file `AGENTS.md` to your project root:
-   ```
-   your-project/
-   ├── AGENTS.md         <-- entry point for GLM
-   ├── prodigeui/
-   └── ...
-   ```
-   > `AGENTS.md` is provided in `prodigeui/` root. Copy it one level up.
+```sh
+npm install
+npx playwright install chromium
+npm test
+npm run quality-gate -- output.html --review manual-review.json
+```
 
-3. GLM will automatically discover skills via the `prodigeui/skills/` directory
-   structure. No additional configuration is needed.
-
-## Verification
-
-- Open GLM in your project directory.
-- GLM should now reference ProdigeUI artifacts via `AGENTS.md`.
-- Try triggering: "design ui" to verify skill discovery.
-- Ask GLM to "list available design skills" — it should enumerate ProdigeUI skills.
-
-## Troubleshooting
-
-- **Skills not detected**: Ensure `AGENTS.md` is at the project root (same level as `prodigeui/`).
-- **Tokens not found**: Verify `prodigeui/` folder structure is intact with `tokens/`, `themes/`, etc.
-- **Partial artifacts**: Check `prodigeui/manifest.json` lists all expected artifacts.
-- **Conflicts with existing AGENTS.md**: Merge ProdigeUI directives into your existing file, or rename the original and include a reference.
+Use the command in `prodigeui/hooks/quality-gate-check.hook.json` for supported automation.
+See `installers/README.md` for the portable distribution contract.

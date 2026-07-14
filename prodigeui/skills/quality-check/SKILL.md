@@ -68,8 +68,14 @@ a machine-readable report conforming to `quality-gate/report.schema.json`.
 
 ### Step 7 — Produce Report
 
-1. Generate a report object conforming to `quality-gate/report.schema.json`.
-2. For each criterion: record status (pass/fail/flag), evidence, and location.
-3. Summarize: total criteria evaluated, passed, failed, flagged.
-4. If any FAIL exists: output specific remediation steps with token/rule references.
-5. Present the report to the user with a clear pass/fail verdict.
+1. Run `npm run quality-gate -- <artifact.html> --review <manual-review.json>` from the
+   installed ProdigeUI distribution root. A missing artifact or missing manual evidence must
+   fail/incomplete; system-integrity success alone is never artifact approval.
+2. Generate a report object conforming to `quality-gate/report.schema.json`.
+3. For each criterion record `pass`, `fail`, `flag`, or `not-evaluable`, plus a non-empty
+   `evidence[]`; include location and remediation when relevant.
+4. Summarize exact `pass`, `fail`, `flag`, and `notEvaluable` counts. `overall: pass` is
+   allowed only when fail and notEvaluable are both zero; unresolved manual criteria produce
+   `overall: incomplete`.
+5. If any FAIL exists, repair it and rerun the executable artifact gate. Present the final
+   report with a clear pass/fail/incomplete verdict.

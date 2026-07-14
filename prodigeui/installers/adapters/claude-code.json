@@ -1,7 +1,10 @@
 {
+  "schemaVersion": 2,
   "tool": "claude-code",
-  "entryPointFile": "CLAUDE.md",
-  "configLocation": "<project-root>/CLAUDE.md",
-  "supportedFormats": ["CLAUDE.md", "skills/", ".claude/"],
-  "notes": "Claude Code reads CLAUDE.md from project root. Skills can be installed via .claude/ directory."
+  "entryPoint": "CLAUDE.md",
+  "installGuide": "installers/install.claude-code.md",
+  "nativeSkillPath": ".claude/skills",
+  "qualityGateCommand": "npm run quality-gate -- <artifact.html> --review <manual-review.json>",
+  "hookDefinition": "prodigeui/hooks/quality-gate-check.hook.json",
+  "notes": "CLAUDE.md and native .claude/skills receive the same model-robust authority."
 }

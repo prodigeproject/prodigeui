@@ -17,7 +17,11 @@
     "modelRobustGuidance": "craft/model-robust-generation.md",
     "typographyRules": "design-rules/typography.rules.json",
     "colorRules": "design-rules/color.rules.json",
-    "qualityCriteria": "quality-gate/criteria.json"
+    "qualityCriteria": "quality-gate/criteria.json",
+    "qualityCriteriaSchema": "quality-gate/criteria.schema.json",
+    "qualityReportSchema": "quality-gate/report.schema.json",
+    "qualityHook": "hooks/quality-gate-check.hook.json",
+    "installerAdapters": "installers/adapters/*.json"
   },
   "legacyAliases": {
     "tokens": {},
@@ -53,7 +57,7 @@
     "containers": {"content": "1200px", "wideData": "1440px", "prose": "720px"}
   },
   "manifestPolicy": {
-    "includeFiles": ["AGENTS.md", "CLAUDE.md", "PHILOSOPHY.md", "README.md", "manifest.json"],
+    "includeFiles": ["AGENTS.md", "CLAUDE.md", "PHILOSOPHY.md", "README.md", "NOTICE.md", "manifest.json"],
     "includeRoots": ["assets", "canonical", "components", "craft", "design-rules", "design-system", "hooks", "installers", "motion", "prompt-templates", "quality-gate", "research", "skills", "themes", "tokens", "use-cases"],
     "excludeBasenames": [".gitkeep"],
     "excludePrefixes": ["tokens/build/"],

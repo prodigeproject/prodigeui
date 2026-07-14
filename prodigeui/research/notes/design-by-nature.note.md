@@ -72,7 +72,7 @@ appliedTo: []
 | Golden Ratio proportions | `design-rules/layout.rules.json` | `sidebarToContentRatio: "1:2.618"`, `goldenRatio: 1.618` | Natural proportions for layout splits |
 | Fibonacci-informed spacing | `tokens/primitive.tokens.json` | Spacing scale design influenced by fibonacci-like growth | Natural-feeling spacing progression |
 | Self-similarity across scales | `tokens/primitive.tokens.json` | `borderRadius` scale: small=4, medium=8, large=12, xl=16 (consistent ratio) | Same mathematical relationship at every component size |
-| Economy of means | `quality-gate/criteria.json` | `element-economy` criterion: max decorative elements per section | Prevents gratuitous decoration |
+| Economy of means | `quality-gate/criteria.json` | `mechanical-taste` criterion: max decorative elements per section | Prevents gratuitous decoration |
 | Shape language | `design-rules/structure.rules.json` | `shapeVocabulary` mapping shapes to semantic meanings | Consistent subconscious communication |
 | Natural proportions | `design-rules/layout.rules.json` | `aspectRatios: ["1:1", "4:3", "3:2", "16:9"]` allowed ratios | Prevents arbitrary aspect ratios |
 | Contrast tiers | `tokens/semantic.tokens.json` | Three foreground levels: `default`, `muted`, `subtle` | Nature-inspired hierarchy through contrast |

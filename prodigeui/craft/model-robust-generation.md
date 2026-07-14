@@ -25,6 +25,27 @@ habits but not an explicit user direction.
    clipped text, horizontal overflow, dead space, and computed foreground/background for
    every interactive state. Scan for mojibake before delivery.
 
+## One-build preflight (before emitting code)
+
+The executable authority is `canonical/generation.contract.json#oneBuildPreflight`. Complete
+it in working context before writing the first implementation. The Quality Gate is proof,
+not a design-discovery loop for defects that can be predicted from the brief and CSS.
+
+- Resolve every background/foreground pair up front, including captions, emphasized words,
+  ticker text, buttons, and interaction states. Normal text requires 4.5:1 and large text 3:1.
+- Budget typography before selecting individual weights: two primary faces plus one
+  annotation face, with no more than four perceptual 100-weight bands in the rendered page.
+- Give every link and control a rendered box of at least 44px in both dimensions. Short text
+  labels need `min-width` as well as `min-height`.
+- Decide the focal subject and the relative scale/crop of expressive work before drawing a
+  grid. A tidy equal-card layout is not a neutral default.
+- Author desktop, mobile, reduced-motion, final content visibility, local font delivery,
+  and deterministic asset behavior in the first build.
+
+Do not intentionally emit a known-failing draft and plan to repair it. Internally rethink a
+risky color pair, weight set, target box, crop, or responsive rule before code reaches the
+artifact.
+
 ## Accepted v2 quality-profile transfer
 
 Read `canonical/accepted-quality.profile.json` before making the six required generation
@@ -46,6 +67,13 @@ template is not.
 
 - Use 4-5 distinct layout families across a full landing page. Never repeat equal cards for
   every section.
+- For expressive work showcases, let subject importance and crop determine scale. Do not
+  force every project into aligned picture cards merely to make the grid look tidy.
+- In an expressive-studio hero, the proposition must do more work than the studio wordmark.
+  Make a concept-specific claim the poster-scale first read; let the name sign the claim.
+- Artwork fields may be geometric or code-authored when the concept justifies them, but they
+  must read as finished campaign matter. Place titles and captions on owned surfaces, vary
+  subject scale deliberately, and alternate high-volume art with editorial breathing room.
 - Keep the hero to one headline, one supporting paragraph, one primary intent, and one
   artifact. Secondary CTA is allowed only when its intent differs.
 - Product artifact copy must contain domain nouns from the brief. Decorative fake UI fails.
@@ -90,8 +118,9 @@ contrast.
   semantic text color in that same rule. Labels and icons inherit from the component root.
 - Test computed styles inside both light and dark parents. Token-pair validation alone is
   insufficient because CSS inheritance can change the rendered pair.
-- Write UTF-8. Reject output containing common mojibake fragments (`ÃƒÂ¢`, `ÃƒÆ’`, `Ãƒâ€š`, `ÃƒÂ°Ã…Â¸`,
-  `ÃƒÂ¯Ã‚Â¸`, `ÃŽâ€œ`). Prefer ASCII punctuation. Encode intentional HTML symbols as entities such
+- Write UTF-8. Reject output containing the mojibake marker families identified by escaped
+  code points `U+00E2`, `U+00C3`, `U+00C2`, `U+00F0/U+0178`, and `U+FFFD`. Do not paste the
+  corrupt fragments into active guidance. Prefer ASCII punctuation. Encode intentional HTML symbols as entities such
   as `&bull;`, `&copy;`, `&rarr;`, `&ldquo;`, and `&rdquo;`.
 
 ## Anti-imitation check
@@ -110,7 +139,7 @@ Treat typography as product communication, not a fashionable font pairing.
   Tighten tracking only enough to create authority; do not force aggressive compression.
   Build a mature hierarchy: display, lead, body, action, and operational annotation have
   visibly different jobs. Keep paragraph measure deliberate (roughly 45-65 characters).
-- **NOVA / creative studios:** reject the clichÃ©d "AI agency template" combination. Display,
+- **NOVA / creative studios:** reject the clichéd "AI agency template" combination. Display,
   editorial serif, and UI typography must each own a different repeated function: identity,
   reading/editorial voice, and navigation/control respectively. Do not mix them decoratively.
 - **Artwork captions:** captions over artwork or photography require an owned backdrop,

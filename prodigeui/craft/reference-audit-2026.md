@@ -116,7 +116,7 @@ neither, so it read generic.
   spade 15.7×, bevel 14.9×, eternal 13.2×, plasma 12.8×, stateofaidesign 12.5×, webflow 12.1×,
   luffu 11.3×, tokens 10.6×, hill 10.1×. An expressive page earns a **multi-screen** scroll story,
   not a single fold.
-- **Engine stack** for MOTION ≥ 7: GSAP + ScrollTrigger + **Lenis smooth-scroll** (bevel, luffu,
+- **Engine stack** for MOTION ≥ 0.7: GSAP + ScrollTrigger + **Lenis smooth-scroll** (bevel, luffu,
   webflow all ship Lenis), plus canvas/WebGL where the *thing* matters (getmilana mesh, webflow
   three.js, spade/hill/ondo/shopify/okapa canvas). Framer Motion is the React-side equivalent
   (tokens, eternal, stateofaidesign, auto.inc). **Add Lenis** to ProdigeUI engine builds for the
@@ -160,9 +160,9 @@ one the concept is closest to and match its *discipline*, not its look.
 - [ ] Display line-height ≥ 0.86; no glyph clipping — gradient headings verified `scrollH===clientH` (C6).
 - [ ] Pill radius on controls/tags; card radius 8–32px; one radius system.
 - [ ] Ease-out curves, UI durations 0.15–0.5s.
-- [ ] MOTION ≥ 7 ships a real engine moment + Lenis smooth-scroll + a multi-screen scroll story.
+- [ ] MOTION ≥ 0.7 ships a real engine moment + Lenis smooth-scroll + a multi-screen scroll story.
 - [ ] Reveal integrity: no element double-bound to IO `.reveal` AND `gsap.from(opacity)` (C7).
-- [ ] Micro-motion signature present on MOTION ≥ 7 (cursor-glow + magnetic), pointer-fine + reduced-motion gated.
+- [ ] Micro-motion signature present on MOTION ≥ 0.7 (cursor-glow + magnetic), pointer-fine + reduced-motion gated.
 - [ ] Imagery is art-directed/cohesive (one duotone); feature sections + testimonials ship real images (C8).
 
 ## Now embodied in the kit (not just prose)

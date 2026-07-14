@@ -6,7 +6,7 @@
  *
  * Usage: node scripts/build-tokens.mjs   (add --check to fail if the file is stale)
  */
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync } from 'fs';
 import { join, resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -18,6 +18,13 @@ const OUT = join(tokensDir, 'build', 'tokens.css');
 const primitive = JSON.parse(readFileSync(join(tokensDir, 'primitive.tokens.json'), 'utf-8')).tokens;
 const semantic = JSON.parse(readFileSync(join(tokensDir, 'semantic.tokens.json'), 'utf-8')).tokens;
 const component = JSON.parse(readFileSync(join(tokensDir, 'component.tokens.json'), 'utf-8')).tokens;
+const themesDir = join(BASE, 'themes');
+const themes = new Map(readdirSync(themesDir)
+  .filter(name => name.endsWith('.theme.json'))
+  .map(name => {
+    const document = JSON.parse(readFileSync(join(themesDir, name), 'utf8'));
+    return [document.name, document];
+  }));
 
 const ALL = { ...primitive, ...semantic, ...component };
 
@@ -133,6 +140,31 @@ while (lines[lines.length - 1] === '') lines.pop();
 lines.push('}');
 lines.push('');
 
+const resolvedThemes = new Map();
+function resolveTheme(name, stack = new Set()) {
+  if (resolvedThemes.has(name)) return resolvedThemes.get(name);
+  if (stack.has(name)) throw new Error(`Theme inheritance cycle: ${[...stack, name].join(' -> ')}`);
+  const theme = themes.get(name);
+  if (!theme) throw new Error(`Unknown theme: ${name}`);
+  const next = new Set(stack).add(name);
+  const inherited = theme.extends ? resolveTheme(theme.extends, next).overrides : {};
+  const resolved = { ...theme, overrides: { ...inherited, ...(theme.overrides || {}) } };
+  resolvedThemes.set(name, resolved);
+  return resolved;
+}
+
+for (const name of [...themes.keys()].sort()) {
+  const theme = resolveTheme(name);
+  lines.push(`[data-prodigeui-theme="${name}"] {`);
+  lines.push(`  color-scheme: ${theme.mode};`);
+  for (const [semanticKey, primitiveRef] of Object.entries(theme.overrides).sort(([a], [b]) => a.localeCompare(b))) {
+    const value = primitive[primitiveRef]?.value ?? primitiveRef;
+    lines.push(cssVar(semanticVarName(semanticKey), formatValue(value)));
+  }
+  lines.push('}');
+  lines.push('');
+}
+
 const css = lines.join('\n');
 
 if (process.argv.includes('--check')) {
@@ -146,4 +178,4 @@ if (process.argv.includes('--check')) {
 }
 
 writeFileSync(OUT, css);
-console.log(`Generated ${OUT} (${Object.keys(semantic).length} semantic + ${Object.keys(component).length} component tokens).`);
+console.log(`Generated ${OUT} (${Object.keys(semantic).length} semantic + ${Object.keys(component).length} component tokens + ${themes.size} theme selectors).`);

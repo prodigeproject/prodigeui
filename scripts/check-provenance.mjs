@@ -1,1 +1,27 @@
-import{readFileSync,existsSync}from'node:fs';const read=p=>readFileSync(p,'utf8');const d=JSON.parse(read('prodigeui/assets/assets.manifest.json'));const bad=[];for(const a of d.assets){if(!a.license?.name||!a.license?.source||typeof a.license?.commercialUse!=='boolean')bad.push(`${a.id}: incomplete license metadata`);if(a.path?.endsWith('.svg')&&!a.accessibility?.consumption)bad.push(`${a.id}: missing SVG consumption accessibility rule`);if(a.category==='fonts'&&a.bundled===false&&!a.fallbackRequired)bad.push(`${a.id}: unbundled font missing fallback requirement`)}for(const p of ['prodigeui/NOTICE.md','prodigeui/research/PROVENANCE.md'])if(!existsSync(p))bad.push(`missing ${p}`);const auth=JSON.parse(read('prodigeui/canonical/system.authority.json'));if(!auth.motionPrecedence.restrictedLibraries.includes('GSAP'))bad.push('GSAP is not restricted in authority');const engine=read('prodigeui/craft/patterns/engine-interactivity.md');if(!/legal clearance/i.test(engine)||!/default production\s+recommendation/i.test(engine))bad.push('engine guide lacks explicit GSAP product/legal boundary');if(bad.length){console.error(`[FAIL] provenance: ${bad.length} issue(s)`);bad.forEach(x=>console.error(`  - ${x}`));process.exit(1)}console.log(`[PASS] provenance: ${d.assets.length} assets classified; unknown corpus licensing and GSAP risk remain explicitly blocked.`);
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const systemRoot = join(repo, 'prodigeui');
+const read = path => readFileSync(join(systemRoot, path), 'utf8');
+const bad = [];
+const data = JSON.parse(read('assets/assets.manifest.json'));
+
+for (const asset of data.assets) {
+  if (!asset.license?.name || !asset.license?.source || typeof asset.license?.commercialUse !== 'boolean') bad.push(`${asset.id}: incomplete license metadata`);
+  if (asset.path?.endsWith('.svg') && !asset.accessibility?.consumption) bad.push(`${asset.id}: missing SVG consumption accessibility rule`);
+  if (asset.category === 'fonts' && asset.bundled === false && !asset.fallbackRequired) bad.push(`${asset.id}: unbundled font missing fallback requirement`);
+}
+for (const path of ['NOTICE.md', 'research/PROVENANCE.md']) if (!existsSync(join(systemRoot, path))) bad.push(`missing prodigeui/${path}`);
+const authority = JSON.parse(read('canonical/system.authority.json'));
+if (!authority.motionPrecedence.restrictedLibraries.includes('GSAP')) bad.push('GSAP is not restricted in authority');
+const engine = read('craft/patterns/engine-interactivity.md');
+if (!/legal clearance/i.test(engine) || !/default production\s+recommendation/i.test(engine)) bad.push('engine guide lacks explicit GSAP product/legal boundary');
+
+if (bad.length) {
+  console.error(`[FAIL] provenance: ${bad.length} issue(s)`);
+  bad.forEach(issue => console.error(`  - ${issue}`));
+  process.exit(1);
+}
+console.log(`[PASS] provenance: ${data.assets.length} assets classified; unknown corpus licensing and GSAP risk remain explicitly blocked.`);

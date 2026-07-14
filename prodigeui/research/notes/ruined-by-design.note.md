@@ -72,7 +72,7 @@ appliedTo: []
 | Finding | ProdigeUI Artifact | Field/Section | Rationale |
 |---------|-------------------|---------------|-----------|
 | Ethical defaults principle | `components/` manifest | Button `destructive` variant distinct from `primary`; defaults are ethical | Makes responsible design the path of least resistance |
-| Dark pattern detection | `quality-gate/criteria.json` | `ethical-patterns` category: option symmetry, honest language, no confirmshaming | Automated detection of manipulation |
+| Dark pattern detection | `quality-gate/criteria.json` | `anti-slop-patterns` category: option symmetry, honest language, no confirmshaming | Automated detection of manipulation |
 | Accessibility enforcement | `tokens/semantic.tokens.json` | All color pairs pre-validated for WCAG AA; no opt-out | Accessibility at token level = non-negotiable |
 | Transparency requirement | `components/` manifest | All async components: `loadingState` and `errorState` required fields | No hidden operations |
 | Diversity support | `tokens/primitive.tokens.json` | Logical properties; RTL-compatible spacing; scalable values | Works for diverse users by default |

@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { resolve, join, relative, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { runtimeCriterionIds } from './check-generated-artifact.mjs';
 
 const ROOT = resolve(fileURLToPath(new URL('../prodigeui/', import.meta.url)));
 const authority = JSON.parse(readFileSync(join(ROOT, 'canonical/system.authority.json'), 'utf8'));
@@ -9,11 +10,16 @@ const primitive = read(authority.sources.primitiveTokens).tokens;
 const semantic = read(authority.sources.semanticTokens).tokens;
 const componentTokens = read(authority.sources.componentTokens).tokens;
 const components = read(authority.sources.components).components;
+const componentDocument = read(authority.sources.components);
 const assetsDoc = read(authority.sources.assets);
 const tokenNames = new Set([...Object.keys(semantic), ...Object.keys(componentTokens)]);
 const componentNames = new Set(components.map(c => c.name));
 const assetIds = new Set((assetsDoc.assets || []).map(a => a.id));
 const failures = [];
+
+if (componentDocument.deliveryModel !== 'specification' || componentDocument.implementationRequired !== false) {
+  failures.push('component-delivery-model must disclose specification-only catalog');
+}
 
 for (const [name, source] of Object.entries(authority.sources)) {
   if (typeof source !== 'string' || source.includes('*')) continue;
@@ -31,6 +37,10 @@ else if (existsSync(join(ROOT, generationContractPath))) {
   for (const role of ['display', 'body', 'annotation']) {
     if (!contract.typography?.roles?.[role]) failures.push(`generation-type-role missing ${role}`);
   }
+  if (!Array.isArray(contract.oneBuildPreflight?.beforeCode) || contract.oneBuildPreflight.beforeCode.length < 7) failures.push('generation-one-build-preflight missing beforeCode checks');
+  if (!Array.isArray(contract.oneBuildPreflight?.firstBuildAcceptance) || contract.oneBuildPreflight.firstBuildAcceptance.length < 5) failures.push('generation-one-build-preflight missing acceptance checks');
+  if (!/44/.test(contract.oneBuildPreflight?.beforeCode?.join(' ') || '')) failures.push('generation-one-build-preflight missing target-size budget');
+  if (!/4\.5/.test(contract.oneBuildPreflight?.beforeCode?.join(' ') || '')) failures.push('generation-one-build-preflight missing contrast budget');
   if (contract.typography?.fontDelivery?.verifyComputedFamily !== true) failures.push('generation-font-delivery missing computed-family verification');
   if (contract.closingCta?.reuseEstablishedSignalToken !== true) failures.push('generation-closing-cta missing signal continuity');
   const qualityPath = authority.sources.qualityCriteria;
@@ -58,8 +68,10 @@ else if (existsSync(join(ROOT, acceptedQualityProfilePath))) {
   }
   const robustGuidance = readFileSync(join(ROOT, authority.sources.modelRobustGuidance), 'utf8');
   if (!robustGuidance.includes('canonical/accepted-quality.profile.json')) failures.push('model-robust-guidance does not consume accepted quality profile');
+  if (!robustGuidance.includes('generation.contract.json#oneBuildPreflight')) failures.push('model-robust-guidance does not consume one-build preflight');
   const endToEndSkill = readFileSync(join(ROOT, 'skills/prodige-ui-end-to-end/SKILL.md'), 'utf8');
   if (!endToEndSkill.includes('canonical/accepted-quality.profile.json')) failures.push('end-to-end-skill does not consume accepted quality profile');
+  if (!endToEndSkill.includes('generation.contract.json#oneBuildPreflight')) failures.push('end-to-end-skill does not consume one-build preflight');
   const qualityPath = authority.sources.qualityCriteria;
   if (qualityPath && existsSync(join(ROOT, qualityPath))) {
     const ids = new Set((read(qualityPath).criteria || []).map(item => item.id));
@@ -93,6 +105,21 @@ for (const c of components.filter(c=>c.interactive)) {
   const states = new Set(c.states || []);
   for (const s of required) if (!states.has(s)) failures.push(`component-state ${c.name} missing ${s}`);
   if (c.a11y?.focusVisible !== true) failures.push(`component-a11y ${c.name} missing focusVisible=true`);
+}
+
+const qualityCriteria = read(authority.sources.qualityCriteria).criteria || [];
+for (const criterion of qualityCriteria) {
+  if (!['automated', 'manual'].includes(criterion.type)) failures.push(`quality-criterion-type ${criterion.id} -> ${criterion.type}`);
+  if (criterion.type === 'automated' && !runtimeCriterionIds.has(criterion.id)) failures.push(`quality-criterion-disconnected ${criterion.id}`);
+}
+
+const hook = read(authority.sources.qualityHook);
+if (!hook.hooks?.[0]?.action?.command?.includes('npm run quality-gate')) failures.push('quality-hook missing executable command');
+const adapters = walk(join(ROOT, 'installers/adapters')).filter(file => file.endsWith('.json')).map(file => JSON.parse(readFileSync(file, 'utf8')));
+for (const tool of ['antigravity', 'claude-code', 'codex', 'cursor', 'glm', 'hermes', 'kiro']) {
+  const adapter = adapters.find(item => item.tool === tool);
+  if (!adapter) failures.push(`installer-adapter missing ${tool}`);
+  else if (!adapter.entryPoint || !adapter.installGuide || !adapter.qualityGateCommand) failures.push(`installer-adapter disconnected ${tool}`);
 }
 
 const layout = read('design-rules/layout.rules.json').layout;

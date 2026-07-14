@@ -1,6 +1,26 @@
 {
   "schemaVersion": 1,
   "description": "Executable creative-decision contract used by model-robust generation and its quality gate.",
+  "oneBuildPreflight": {
+    "goal": "The first emitted implementation must satisfy every automated quality criterion; do not rely on a later visual repair pass for predictable defects.",
+    "beforeCode": [
+      "name the selected quality profile, product intent, visual thesis, type jobs, focal hierarchy, rhythm argument, and closing surface",
+      "assign every repeated surface an owned foreground pair and reject normal-text pairs below 4.5:1 or large-text pairs below 3:1 before choosing decorative combinations",
+      "limit rendered typography to two primary faces plus one annotation face and no more than four perceptual 100-weight bands",
+      "reserve at least 44 by 44 CSS pixels for every rendered interactive target, including short text links where height alone is insufficient",
+      "choose the hero focal subject and expressive work-subject scale before laying out cards or frames",
+      "write desktop and mobile containment rules, final visible content states, font delivery, and reduced-motion behavior into the first implementation",
+      "use local deterministic assets, UTF-8 text, and encoded HTML symbols; do not depend on remote runtime requests"
+    ],
+    "surfacePairRule": "Any selector that changes a surface background also assigns or inherits a verified foreground role for text, icons, captions, hover, focus, and active states.",
+    "firstBuildAcceptance": [
+      "no runtime errors, external requests, broken assets, mojibake, hidden meaningful content, or horizontal overflow",
+      "zero normal-text and large-text contrast failures at desktop and mobile",
+      "zero interactive targets below 44 by 44 CSS pixels",
+      "intended display font rendered, no more than three functional font families, and no more than four perceptual weight bands",
+      "reduced-motion leaves all content visible and caps essential transitions at 100ms"
+    ]
+  },
   "requiredDecisions": [
     "productIntent",
     "visualThesis",
@@ -43,9 +63,15 @@
         "displayVoice": "identity face with enough character to own repeated display moments",
         "bodyVoice": "editorial reading voice selected for the concept",
         "annotationVoice": "UI/control voice kept out of expressive prose",
+        "compositionTests": [
+          "the first viewport states a concept-specific proposition at identity scale rather than presenting the studio name alone",
+          "work subjects use authored artwork, variable scale, deliberate crop, and owned text backdrops instead of equal picture cards",
+          "poster-volume moments alternate with editorial breathing room and utility lists so the whole page does not shout at one volume"
+        ],
         "avoid": [
           "fashionable agency pairing without repeated functional roles",
-          "decorative font switching inside one semantic role"
+          "decorative font switching inside one semantic role",
+          "equalized project cards that suppress the focal subject, crop logic, or editorial rhythm"
         ]
       }
     },

@@ -78,8 +78,8 @@ appliedTo: []
 | Color role limitation | `tokens/semantic.tokens.json` | Max 5 semantic color roles + neutral scale | Prevents color proliferation and maintains meaning |
 | Alignment rules | `design-rules/layout.rules.json` | `alignmentPerGroup: 1`, `defaultAlignment: "start"` | Prevents mixed alignment chaos |
 | Scale ratios | `tokens/primitive.tokens.json` | `scaleRatio` field used to compute type + spacing scales | Mathematical relationships prevent arbitrary values |
-| Rhythm consistency | `quality-gate/criteria.json` | `spacing-rhythm` criterion: consistent gaps between sibling elements | Detects broken rhythm patterns |
-| Form/Space balance | `quality-gate/criteria.json` | `whitespace-intention` criterion: padding/margin values use tokens | Ensures space is designed, not accidental |
+| Rhythm consistency | `quality-gate/criteria.json` | `spacing-consistency` criterion: consistent gaps between sibling elements | Detects broken rhythm patterns |
+| Form/Space balance | `quality-gate/criteria.json` | `spacing-consistency` criterion: padding/margin values use tokens | Ensures space is designed, not accidental |
 | Contrast for hierarchy | `tokens/semantic.tokens.json` | `foreground`, `foreground-muted`, `foreground-subtle` progressive contrast levels | Multiple contrast tiers for hierarchy |
 | Unity/Variety balance | `quality-gate/criteria.json` | Component variants: max variety within system constraints | Prevents monotony while maintaining system integrity |
 
