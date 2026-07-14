@@ -1,0 +1,75 @@
+{
+  "name": "portfolio-case-study",
+  "useCase": "portfolio",
+  "context": "Design a detailed case study page for a portfolio website. The audience is potential clients and hiring managers evaluating design or development work. Must showcase project context, process, deliverables, and outcomes with rich media. Target platforms: desktop and mobile responsive with emphasis on visual storytelling.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for case study heading hierarchy and body prose",
+    "Apply color.rules.json for section dividers, pull quotes, and metric highlights",
+    "Use layout.rules.json for full-width media sections alternating with contained text",
+    "Images must include alt text and lazy loading for performance",
+    "Metric/outcome numbers should use heading scale for visual prominence",
+    "Page structure must use semantic sections with heading hierarchy",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Page layout spec with narrative sections, media blocks, and outcome metrics",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens",
+      "Typography establishes clear narrative hierarchy",
+      "Media sections handle various aspect ratios gracefully",
+      "Metric displays use consistent formatting",
+      "No raw/hardcoded visual values present"
+    ],
+    "accessibilityRequirements": [
+      "All images have descriptive alt text",
+      "Heading hierarchy is sequential without gaps",
+      "Metrics have proper text equivalents, not just large numbers",
+      "Navigation between sections via skip links",
+      "Video content includes captions or transcript link"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Case study outcome metrics section",
+      "output": "Organism: OutcomeMetrics\n  Layout: grid(columns: repeat(3, 1fr), gap: var(--space-xl))\n  padding: var(--space-2xl) 0\n  border-top: var(--border-subtle)\n  Children:\n    - Molecule: MetricBlock\n        Layout: flex(direction: column, align: center, gap: var(--space-xs))\n        Content:\n          - Atom: Text(token=typography.heading.xl, color=color.primary, content='metric-value')\n          - Atom: Text(token=typography.body.sm, color=color.text.secondary, content='metric-label')\n        aria-label: 'metric-value metric-label'\n  Responsive: 1 column on mobile, 3 columns on desktop",
+      "acceptanceCriteria": [
+        "Uses semantic tokens for all styling",
+        "Metrics are screen-reader accessible with full context",
+        "Grid responds to viewport with proper breakpoints",
+        "Visual hierarchy emphasizes numbers over labels"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.primary",
+      "space.xs",
+      "space.xl",
+      "space.x2l",
+      "border.width.default",
+      "typography.size.h2",
+      "typography.size.body-sm"
+    ],
+    "components": [
+      "Card",
+      "Text",
+      "Button",
+      "Badge",
+      "Navbar"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "fade-in",
+      "reveal-on-scroll"
+    ]
+  }
+}

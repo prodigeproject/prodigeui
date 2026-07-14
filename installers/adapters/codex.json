@@ -1,0 +1,7 @@
+{
+  "tool": "codex",
+  "entryPointFile": "AGENTS.md",
+  "configLocation": "<project-root>/AGENTS.md",
+  "supportedFormats": ["AGENTS.md", "skills/"],
+  "notes": "Codex reads AGENTS.md from project root. Place ProdigeUI skills in the skills/ directory for discovery."
+}

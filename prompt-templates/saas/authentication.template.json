@@ -1,0 +1,85 @@
+{
+  "name": "saas-authentication",
+  "useCase": "saas",
+  "context": "Design a complete authentication flow including login, signup, and password reset screens for a SaaS application. The audience is new and returning users who need frictionless account access with proper security indicators. Target platforms: mobile (primary) and desktop. The flow must support email/password, social OAuth providers, and magic link options while maintaining trust through clear error handling and security feedback.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for form labels, headings, and helper/error text",
+    "Apply color.rules.json feedback tokens for validation (error, success, info)",
+    "Auth card must be centered with max-width and proper spacing from layout.rules.json",
+    "Password fields must include show/hide toggle with proper ARIA state",
+    "Social login buttons must follow each provider brand guidelines for icon usage",
+    "Error messages must be specific (not generic) and positioned below the relevant field",
+    "Comply with Quality_Gate: no password rules hidden until error, clear state transitions"
+  ],
+  "outputCriteria": {
+    "format": "Authentication flow spec with login, signup, and password-reset views, inline validation, social auth buttons, and transition choreography",
+    "qualityChecks": [
+      "Form validation shows inline errors immediately below relevant inputs",
+      "Password strength indicator uses feedback token gradient (error to success)",
+      "Social auth buttons are visually grouped and separated from email form",
+      "View transitions (login to signup) use Motion_Library page-transition presets",
+      "Loading state on submit button prevents double-submission"
+    ],
+    "accessibilityRequirements": [
+      "All inputs have visible labels (not placeholder-only)",
+      "Error messages linked to inputs via aria-describedby with aria-invalid=true",
+      "Password visibility toggle announces state change to assistive technology",
+      "Form submission errors summarized at top with links to offending fields",
+      "Auto-focus set to first input on page load for efficient keyboard flow"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Login view with email/password form, social login options, and error state",
+      "output": "Page: AuthPage\n  Layout: flex(align=center, justify=center, min-height=100vh)\n  bg: var(--color-surface-secondary)\n  Children:\n    - Organism: AuthCard(max-width: 420px, width=100%)\n        bg: var(--color-surface-primary)\n        radius: var(--radius-xl)\n        shadow: var(--shadow-lg)\n        padding: var(--space-2xl)\n        Children:\n          - Atom: Logo(asset=logo.mark, height=32px, margin-bottom=space.xl)\n          - Atom: Heading(level=h1, token=typography.heading.lg, text='Sign in')\n          - Molecule: AuthForm\n              - Atom: Input(type=email, label='Email', autoComplete='email', required)\n              - Molecule: PasswordInput\n                  - Atom: Input(type=password, label='Password', autoComplete='current-password')\n                  - Atom: IconButton(icon=eye, ariaLabel='Show password', aria-pressed=false)\n              - Atom: TextLink(text='Forgot password?', color=color.action.primary)\n              - Atom: Button(variant=primary, label='Sign in', width=full, type=submit)\n          - Atom: Divider(text='or', color=color.border.subtle)\n          - Molecule: SocialAuth\n              - Atom: Button(variant=outline, icon=google, label='Continue with Google')\n              - Atom: Button(variant=outline, icon=github, label='Continue with GitHub')\n          - Molecule: AuthFooter\n              - Atom: Text(token=typography.body.sm, text='No account?')\n              - Atom: TextLink(text='Sign up', color=color.action.primary)",
+      "acceptanceCriteria": [
+        "Auth card centered with shadow and radius tokens from Token_System",
+        "Password field includes visibility toggle with ARIA pressed state",
+        "Social auth separated by divider with proper visual grouping",
+        "All form inputs use visible labels with autocomplete attributes",
+        "Action links use action.primary color token"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.surface",
+      "color.primary",
+      "color.destructive",
+      "color.success",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.border",
+      "space.md",
+      "space.xl",
+      "space.x2l",
+      "radius.xl",
+      "shadow.lg",
+      "typography.size.h3",
+      "typography.size.body-sm"
+    ],
+    "components": [
+      "Input",
+      "Button",
+      "Card",
+      "Text",
+      "Divider",
+      "Icon",
+      "Text"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "button-press",
+      "slide-up",
+      "fade-in"
+    ]
+  }
+}

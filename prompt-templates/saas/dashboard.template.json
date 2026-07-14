@@ -1,0 +1,79 @@
+{
+  "name": "saas-dashboard",
+  "useCase": "saas",
+  "context": "Design a SaaS analytics dashboard for enterprise teams. The audience is business analysts and managers who need real-time KPI monitoring, data visualization, and quick actions. Target platforms: desktop (primary), tablet, and mobile responsive. The interface must handle dense data while maintaining clarity and scanability.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json scale ratio and allowed font pairings",
+    "Apply color.rules.json role assignments and contrast thresholds (4.5:1 normal text, 3:1 large text)",
+    "Use layout.rules.json grid system with defined breakpoints (mobile/tablet/desktop)",
+    "Ensure spacing derives from Token_System spacing scale only",
+    "All interactive elements must meet WCAG 2.1 AA: keyboard operable, ARIA roles, visible focus indicators",
+    "Data visualizations must not rely solely on color to convey meaning",
+    "Comply with Quality_Gate anti-AI-slop checklist: no hardcoded values, proper visual hierarchy, token-only styling"
+  ],
+  "outputCriteria": {
+    "format": "Component composition spec with token references, layout grid definition, and interaction states",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens from Token_System",
+      "Typography follows defined scale ratio from typography.rules.json",
+      "Layout uses grid columns and breakpoints from layout.rules.json",
+      "Every interactive component documents hover, focus, active, and disabled states",
+      "No raw/hardcoded visual values present in output"
+    ],
+    "accessibilityRequirements": [
+      "All text meets 4.5:1 contrast ratio against background",
+      "Large text and UI components meet 3:1 contrast ratio",
+      "All interactive elements are keyboard accessible with no keyboard traps",
+      "Focus indicators visible with 3:1 contrast against surrounding area",
+      "Data charts include text alternatives or accessible descriptions"
+    ]
+  },
+  "examples": [
+    {
+      "description": "KPI card organism using token-based styling and responsive grid",
+      "output": "Organism: KPICardGrid\n  Layout: grid(columns: var(--grid-columns), gap: var(--space-md))\n  Children:\n    - Molecule: KPICard\n        bg: var(--color-surface-primary)\n        border: var(--border-default)\n        radius: var(--radius-lg)\n        padding: var(--space-lg)\n        Content:\n          - Atom: Text(role=label, token=typography.body.sm, color=color.text.secondary)\n          - Atom: Text(role=value, token=typography.heading.lg, color=color.text.primary)\n          - Atom: TrendIndicator(color=color.feedback.success | color.feedback.error)\n        States: default, hover(shadow: var(--shadow-md)), focus-within(outline: var(--color-focus-ring))",
+      "acceptanceCriteria": [
+        "Uses only semantic token references for all visual properties",
+        "Grid layout references layout.rules.json column system",
+        "Hover and focus states are explicitly defined",
+        "Component hierarchy follows atomic design (atoms inside molecules inside organisms)"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.success",
+      "color.destructive",
+      "space.md",
+      "space.lg",
+      "radius.lg",
+      "shadow.md",
+      "typography.size.h3",
+      "typography.size.body-sm"
+    ],
+    "components": [
+      "Card",
+      "Text",
+      "Button",
+      "Table",
+      "Chart",
+      "Navbar",
+      "Sidebar"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "button-press",
+      "fade-in"
+    ]
+  }
+}

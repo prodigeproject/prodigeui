@@ -1,0 +1,30 @@
+{
+  "name": "social-vibrant",
+  "mode": "light",
+  "extends": "_default",
+  "overrides": {
+    "color.background": "palette.white",
+    "color.foreground": "palette.neutral.s950",
+    "color.muted": "palette.error.s50",
+    "color.muted-foreground": "palette.neutral.s950",
+    "color.surface": "palette.white",
+    "color.surface-foreground": "palette.neutral.s950",
+    "color.border": "palette.neutral.s500",
+    "color.input": "palette.neutral.s200",
+    "color.ring": "palette.error.s500",
+    "color.primary": "palette.error.s500",
+    "color.primary-foreground": "palette.neutral.s950",
+    "color.secondary": "palette.secondary.s500",
+    "color.secondary-foreground": "palette.neutral.s950",
+    "color.accent": "palette.error.s50",
+    "color.accent-foreground": "palette.neutral.s950",
+    "color.destructive": "palette.error.s700",
+    "color.destructive-foreground": "palette.white",
+    "color.success": "palette.success.s500",
+    "color.success-foreground": "palette.neutral.s950",
+    "color.warning": "palette.warning.s500",
+    "color.warning-foreground": "palette.neutral.s950",
+    "color.info": "palette.info.s500",
+    "color.info-foreground": "palette.neutral.s950"
+  }
+}

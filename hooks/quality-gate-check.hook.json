@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "ProdigeUI Quality Gate",
+      "trigger": "Stop",
+      "action": {
+        "type": "agent",
+        "prompt": "A ProdigeUI design generation turn just finished. Before considering the work done: (1) run `npm run quality-gate` and require canonical authority, provenance boundaries, normative precedence, schema/semantic references, all-theme contrast, bidirectional manifest, rule consistency, and generated freshness to pass; (2) load quality-gate/criteria.json and anti-ai-slop.checklist.md; (3) validate the generated artifact's UTF-8 encoding, runtime, reduced-motion final state, keyboard/focus basics, target sizes, assets, and responsive overflow; (4) emit a report conforming to report.schema.json; (5) fix and rerun every failure before completion."
+      }
+    }
+  ]
+}

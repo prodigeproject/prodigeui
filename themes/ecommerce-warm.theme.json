@@ -1,0 +1,30 @@
+{
+  "name": "ecommerce-warm",
+  "mode": "light",
+  "extends": "_default",
+  "overrides": {
+    "color.background": "palette.neutral.s50",
+    "color.foreground": "palette.neutral.s950",
+    "color.muted": "palette.neutral.s100",
+    "color.muted-foreground": "palette.neutral.s950",
+    "color.surface": "palette.white",
+    "color.surface-foreground": "palette.neutral.s950",
+    "color.border": "palette.neutral.s500",
+    "color.input": "palette.neutral.s200",
+    "color.ring": "palette.warning.s600",
+    "color.primary": "palette.warning.s600",
+    "color.primary-foreground": "palette.neutral.s950",
+    "color.secondary": "palette.neutral.s800",
+    "color.secondary-foreground": "palette.white",
+    "color.accent": "palette.warning.s50",
+    "color.accent-foreground": "palette.neutral.s950",
+    "color.destructive": "palette.error.s600",
+    "color.destructive-foreground": "palette.white",
+    "color.success": "palette.success.s600",
+    "color.success-foreground": "palette.neutral.s950",
+    "color.warning": "palette.warning.s500",
+    "color.warning-foreground": "palette.neutral.s950",
+    "color.info": "palette.info.s500",
+    "color.info-foreground": "palette.neutral.s950"
+  }
+}

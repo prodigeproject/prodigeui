@@ -1,0 +1,85 @@
+{
+  "name": "ecommerce-checkout-flow",
+  "useCase": "ecommerce",
+  "context": "Design a checkout process for an e-commerce platform. The audience is customers ready to purchase, who need to provide shipping info, select delivery method, enter payment details, and confirm their order. Target platforms: mobile (primary) and desktop. The flow must minimize cart abandonment through clear progress, inline validation, trusted payment patterns, and order summary visibility throughout.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for form labels, totals, and confirmation headings",
+    "Apply color.rules.json feedback tokens for validation states (success, error, warning)",
+    "Layout must keep order summary visible (sidebar on desktop, collapsible on mobile)",
+    "Payment form inputs must follow PCI-compliant visual patterns (card number masking)",
+    "Progress steps must be linear with back-navigation support",
+    "CTA text must be action-specific per step ('Continue to payment', 'Place order')",
+    "Comply with Quality_Gate: no surprise costs, clear totals, secure payment indicators"
+  ],
+  "outputCriteria": {
+    "format": "Checkout flow spec with step progression, form sections, order summary, validation states, and trust indicators",
+    "qualityChecks": [
+      "Order total visible at every step without scrolling on mobile",
+      "Form validation uses inline error messages with feedback tokens",
+      "Payment section displays trust/security indicators",
+      "CTA button text is contextual to the current step",
+      "Progress indicator shows completed and remaining steps clearly"
+    ],
+    "accessibilityRequirements": [
+      "Form errors announced via aria-live and linked with aria-describedby",
+      "Required fields indicated both visually and with aria-required",
+      "Order summary accessible as a landmark region",
+      "Auto-complete attributes set on address and payment fields",
+      "Focus management moves to first error field on failed submission"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Shipping step with address form, order summary sidebar, and progress indicator",
+      "output": "Page: CheckoutPage\n  Layout: grid(columns: 1fr 380px @desktop | 1fr @mobile, gap: var(--space-xl))\n  bg: var(--color-surface-secondary)\n  padding: var(--space-lg)\n  Children:\n    - Organism: CheckoutMain\n        - Molecule: ProgressSteps(current=1, steps=['Shipping','Payment','Review'])\n            active: var(--color-action-primary)\n            completed: var(--color-feedback-success)\n            upcoming: var(--color-text-tertiary)\n        - Organism: ShippingForm(bg=color.surface.primary, radius=radius.lg, padding=space.xl)\n            - Atom: Heading(level=h2, token=typography.heading.md, text='Shipping address')\n            - Molecule: FormRow(columns: 2)\n                - Atom: Input(label='First name', autoComplete='given-name', required)\n                - Atom: Input(label='Last name', autoComplete='family-name', required)\n            - Atom: Input(label='Address', autoComplete='street-address', required)\n            - Atom: Button(variant=primary, label='Continue to payment', width=full)\n    - Organism: OrderSummary(sticky, top=space.lg)\n        bg: var(--color-surface-primary)\n        radius: var(--radius-lg)\n        role: complementary\n        aria-label: 'Order summary'\n        - Molecule: LineItem(name, quantity, price)\n        - Atom: Divider(color=border.subtle)\n        - Molecule: TotalRow(token=typography.heading.md)",
+      "acceptanceCriteria": [
+        "Grid layout separates form and summary per layout.rules.json",
+        "Progress steps use action and feedback tokens for state colors",
+        "Address inputs include autocomplete attributes for browser fill",
+        "Order summary uses landmark role for assistive technology",
+        "All form inputs have visible labels and required indication"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.surface",
+      "color.primary",
+      "color.success",
+      "color.destructive",
+      "color.foreground",
+      "color.muted-foreground",
+      "border.width.default",
+      "space.md",
+      "space.lg",
+      "space.xl",
+      "radius.lg",
+      "typography.size.h4",
+      "typography.size.body",
+      "typography.size.body-sm"
+    ],
+    "components": [
+      "Input",
+      "Button",
+      "Card",
+      "Text",
+      "Divider",
+      "Badge",
+      "Stepper"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "button-press",
+      "slide-up",
+      "fade-in"
+    ]
+  }
+}

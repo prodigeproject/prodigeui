@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- Under Construction: Tools/wrench concept -->
+  <rect x="60" y="70" width="80" height="60" rx="6" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6 4"/>
+  <path d="M85 90 L85 110 L90 115 L95 110 L95 90 Z" stroke="#64748B" stroke-width="1.5" fill="none"/>
+  <path d="M105 115 L115 105" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M115 105 L120 100 C122 98 126 98 128 100 C130 102 130 106 128 108 L123 113" stroke="#64748B" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M105 115 L110 120 C112 122 112 126 110 128 C108 130 104 130 102 128 L97 123" stroke="#64748B" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <circle cx="75" cy="60" r="2" fill="#F59E0B"/>
+  <circle cx="130" cy="65" r="2" fill="#F59E0B"/>
+  <rect x="60" y="150" width="80" height="6" rx="3" fill="#E2E8F0"/>
+  <rect x="75" y="162" width="50" height="5" rx="2.5" fill="#F1F5F9"/>
+</svg>

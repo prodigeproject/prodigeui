@@ -1,0 +1,81 @@
+{
+  "name": "saas-onboarding-flow",
+  "useCase": "saas",
+  "context": "Design a multi-step onboarding wizard for a SaaS product. The audience is new users who just signed up and need guided setup of their workspace, team invitations, and preference configuration. Target platforms: desktop and mobile. The flow must minimize drop-off by showing clear progress, allowing step skipping, and providing contextual help at each stage.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for step titles, descriptions, and helper text",
+    "Apply color.rules.json action tokens for primary CTA and progress indicators",
+    "Layout must center the wizard with max-width constraint from layout.rules.json",
+    "Progress indicator must show completed, current, and upcoming steps distinctly",
+    "Motion must use Motion_Library presets for step transitions (no custom keyframes)",
+    "Each step must be completable independently (no hard dependencies unless noted)",
+    "Comply with Quality_Gate: clear progress communication, no dead-end states, token-only values"
+  ],
+  "outputCriteria": {
+    "format": "Multi-step wizard spec with progress indicator, step content areas, navigation controls, and transition choreography",
+    "qualityChecks": [
+      "Progress indicator clearly shows current position in total steps",
+      "Step transitions use consistent Motion_Library page-transition presets",
+      "Primary CTA is visually dominant using action token hierarchy",
+      "Skip and back actions are accessible but visually secondary",
+      "Each step content area maintains consistent height to prevent layout shift"
+    ],
+    "accessibilityRequirements": [
+      "Progress communicated via aria-current='step' and aria-label with step count",
+      "Step transitions do not disorient: focus moves to new step heading",
+      "Skip links allow bypassing optional steps without confusion",
+      "Error messages in form steps use aria-describedby and aria-invalid",
+      "Respects prefers-reduced-motion for step transition animations"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Three-step onboarding wizard with progress bar, workspace creation step, and navigation",
+      "output": "Page: OnboardingWizard\n  Layout: flex(direction=column, align=center, justify=center, min-height=100vh)\n  bg: var(--color-surface-secondary)\n  Children:\n    - Molecule: ProgressBar(steps=3, current=1)\n        bg: var(--color-surface-primary)\n        track: var(--color-border-subtle)\n        fill: var(--color-action-primary)\n        aria-label: 'Step 1 of 3: Create workspace'\n    - Organism: StepCard(max-width: 600px, width: 100%)\n        bg: var(--color-surface-primary)\n        radius: var(--radius-xl)\n        shadow: var(--shadow-lg)\n        padding: var(--space-2xl)\n        motion: enter-exit.fade-slide(direction=left)\n        Children:\n          - Atom: Heading(level=h2, token=typography.heading.lg)\n          - Atom: Text(token=typography.body.md, color=color.text.secondary)\n          - Molecule: FormGroup(step-specific inputs)\n          - Molecule: StepActions(flex, justify=space-between)\n              - Atom: Button(variant=ghost, label='Back')\n              - Atom: Button(variant=ghost, label='Skip')\n              - Atom: Button(variant=primary, label='Continue')",
+      "acceptanceCriteria": [
+        "Progress bar uses action token for fill and border token for track",
+        "Step card is width-constrained and centered per layout.rules.json",
+        "Step transitions use Motion_Library enter-exit presets",
+        "Navigation buttons have clear visual hierarchy (primary vs ghost)",
+        "ARIA attributes communicate current step position"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.surface",
+      "color.primary",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.border",
+      "space.lg",
+      "space.x2l",
+      "radius.xl",
+      "shadow.lg",
+      "typography.size.h3",
+      "typography.size.body"
+    ],
+    "components": [
+      "Button",
+      "Text",
+      "Input",
+      "ProgressBar",
+      "Card",
+      "Text"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "fade-in",
+      "button-press",
+      "slide-up"
+    ]
+  }
+}

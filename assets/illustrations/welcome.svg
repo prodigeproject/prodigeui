@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- Welcome: Waving hand gesture concept -->
+  <circle cx="100" cy="90" r="40" stroke="#3B82F6" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M90 80 C90 72 95 68 100 68 C105 68 110 72 110 80 L110 100" stroke="#64748B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M110 78 C110 72 115 69 119 72" stroke="#64748B" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M82 85 C80 80 84 76 88 78" stroke="#64748B" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <circle cx="75" cy="65" r="2" fill="#3B82F6"/>
+  <circle cx="130" cy="72" r="1.5" fill="#3B82F6"/>
+  <circle cx="120" cy="58" r="2.5" fill="#93C5FD"/>
+  <rect x="65" y="148" width="70" height="7" rx="3.5" fill="#E2E8F0"/>
+  <rect x="80" y="161" width="40" height="5" rx="2.5" fill="#F1F5F9"/>
+</svg>

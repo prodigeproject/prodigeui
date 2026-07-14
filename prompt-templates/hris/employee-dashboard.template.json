@@ -1,0 +1,81 @@
+{
+  "name": "hris-employee-dashboard",
+  "useCase": "hris",
+  "context": "Design an HRIS (Human Resource Information System) employee dashboard for HR managers and employees. The audience includes HR staff managing workforce data and employees viewing personal records, leave balances, and approvals. Target platforms: desktop (primary) and tablet. The interface handles sensitive personal data and must balance data density with clear navigation and privacy considerations.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for data-dense table and form readability",
+    "Apply color.rules.json: use feedback tokens for status indicators (approved, pending, rejected)",
+    "Layout must support sidebar navigation + content area per layout.rules.json grid",
+    "Sensitive data fields must support masked/revealed toggle pattern",
+    "All form components must follow Component_Library input & form patterns",
+    "Comply with Quality_Gate: proper data hierarchy, consistent status colors, full token adherence"
+  ],
+  "outputCriteria": {
+    "format": "Dashboard layout spec with navigation, data tables, status cards, and form sections using token references",
+    "qualityChecks": [
+      "Status indicators use semantic feedback tokens consistently",
+      "Table typography maintains readability at data-dense layouts",
+      "Navigation follows structure.rules.json patterns",
+      "All form inputs document validation states (default, error, disabled)",
+      "Spacing between sections follows Token_System spacing scale"
+    ],
+    "accessibilityRequirements": [
+      "Data tables use proper table markup with headers and scope",
+      "Status indicators do not rely on color alone (include text labels or icons)",
+      "Form inputs have associated labels and error descriptions via aria-describedby",
+      "Navigation landmarks defined (nav, main, complementary)",
+      "Sensitive data toggle is keyboard accessible and announces state changes"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Employee leave balance card with status indicator and action button",
+      "output": "Organism: LeaveBalanceSection\n  Layout: grid(columns: 3 @desktop, 2 @tablet, 1 @mobile, gap: var(--space-md))\n  Children:\n    - Molecule: LeaveCard\n        bg: var(--color-surface-primary)\n        border: var(--border-default)\n        radius: var(--radius-md)\n        padding: var(--space-md)\n        Children:\n          - Atom: Text(token=typography.body.sm, color=color.text.secondary) -> leave.type\n          - Atom: Text(token=typography.heading.md, color=color.text.primary) -> leave.balance\n          - Molecule: StatusBadge\n              bg: var(--color-feedback-{status}-subtle)\n              color: var(--color-feedback-{status})\n              token: typography.body.xs\n              content: '{status icon} {status label}'\n          - Atom: Button(variant=secondary, size=sm) -> 'Request leave'\n        States:\n          default: standard card appearance\n          focus-within: outline(var(--color-focus-ring))\n  Accessibility: role=region, aria-label='Leave balances'",
+      "acceptanceCriteria": [
+        "Status badges use both color and text label (not color-only)",
+        "All visual values reference Token_System",
+        "Card grid is responsive across breakpoints",
+        "Section has proper ARIA landmark and label",
+        "Button action is clear and descriptive"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.success",
+      "color.warning",
+      "color.destructive",
+      "space.md",
+      "space.sm",
+      "radius.md",
+      "border.width.default",
+      "typography.size.h4",
+      "typography.size.body-sm",
+      "typography.size.caption"
+    ],
+    "components": [
+      "Card",
+      "Table",
+      "Button",
+      "Input",
+      "Badge",
+      "Sidebar",
+      "Navbar"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "button-press",
+      "fade-in"
+    ]
+  }
+}

@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 1,
+  "layer": "semantic",
+  "tokens": {
+    "color.background": {
+      "type": "color",
+      "ref": "palette.white",
+      "description": "Page background"
+    },
+    "color.foreground": {
+      "type": "color",
+      "ref": "palette.neutral.s950",
+      "description": "Primary text"
+    },
+    "color.muted": {
+      "type": "color",
+      "ref": "palette.neutral.s100",
+      "description": "Muted background"
+    },
+    "color.muted-foreground": {
+      "type": "color",
+      "ref": "palette.neutral.s500",
+      "description": "Muted/secondary text"
+    },
+    "color.surface": {
+      "type": "color",
+      "ref": "palette.white",
+      "description": "Card/panel surface"
+    },
+    "color.surface-foreground": {
+      "type": "color",
+      "ref": "palette.neutral.s950",
+      "description": "Text on surface"
+    },
+    "color.border": {
+      "type": "color",
+      "ref": "palette.neutral.s200",
+      "description": "Default border"
+    },
+    "color.input": {
+      "type": "color",
+      "ref": "palette.neutral.s200",
+      "description": "Input border"
+    },
+    "color.ring": {
+      "type": "color",
+      "ref": "palette.primary.s500",
+      "description": "Focus ring"
+    },
+    "color.primary": {
+      "type": "color",
+      "ref": "palette.primary.s500",
+      "description": "Primary brand action"
+    },
+    "color.primary-foreground": {
+      "type": "color",
+      "ref": "palette.white",
+      "description": "Text on primary"
+    },
+    "color.secondary": {
+      "type": "color",
+      "ref": "palette.secondary.s500",
+      "description": "Secondary action"
+    },
+    "color.secondary-foreground": {
+      "type": "color",
+      "ref": "palette.white",
+      "description": "Text on secondary"
+    },
+    "color.accent": {
+      "type": "color",
+      "ref": "palette.neutral.s100",
+      "description": "Accent/highlight background"
+    },
+    "color.accent-foreground": {
+      "type": "color",
+      "ref": "palette.neutral.s900",
+      "description": "Text on accent"
+    },
+    "color.destructive": {
+      "type": "color",
+      "ref": "palette.error.s600",
+      "description": "Destructive action"
+    },
+    "color.destructive-foreground": {
+      "type": "color",
+      "ref": "palette.white",
+      "description": "Text on destructive"
+    },
+    "color.success": {
+      "type": "color",
+      "ref": "palette.success.s600",
+      "description": "Success state"
+    },
+    "color.success-foreground": {
+      "type": "color",
+      "ref": "palette.white",
+      "description": "Text on success"
+    },
+    "color.warning": {
+      "type": "color",
+      "ref": "palette.warning.s500",
+      "description": "Warning state"
+    },
+    "color.warning-foreground": {
+      "type": "color",
+      "ref": "palette.neutral.s900",
+      "description": "Text on warning"
+    },
+    "color.info": {
+      "type": "color",
+      "ref": "palette.info.s500",
+      "description": "Info state"
+    },
+    "color.info-foreground": {
+      "type": "color",
+      "ref": "palette.white",
+      "description": "Text on info"
+    },
+    "typography.font-family.body": {
+      "type": "typography",
+      "ref": "scale.font-family.sans",
+      "description": "Body text font"
+    },
+    "typography.font-family.heading": {
+      "type": "typography",
+      "ref": "scale.font-family.sans",
+      "description": "Heading font"
+    },
+    "typography.font-family.code": {
+      "type": "typography",
+      "ref": "scale.font-family.mono",
+      "description": "Code/mono font"
+    },
+    "typography.size.body": {
+      "type": "typography",
+      "ref": "scale.font.base",
+      "description": "Standard body text"
+    },
+    "typography.size.body-sm": {
+      "type": "typography",
+      "ref": "scale.font.sm",
+      "description": "Small body text"
+    },
+    "typography.size.body-lg": {
+      "type": "typography",
+      "ref": "scale.font.lg",
+      "description": "Large body text"
+    },
+    "typography.size.caption": {
+      "type": "typography",
+      "ref": "scale.font.xs",
+      "description": "Captions and labels"
+    },
+    "typography.size.h6": {
+      "type": "typography",
+      "ref": "scale.font.lg",
+      "description": "Heading 6"
+    },
+    "typography.size.h5": {
+      "type": "typography",
+      "ref": "scale.font.xl",
+      "description": "Heading 5"
+    },
+    "typography.size.h4": {
+      "type": "typography",
+      "ref": "scale.font.x2l",
+      "description": "Heading 4"
+    },
+    "typography.size.h3": {
+      "type": "typography",
+      "ref": "scale.font.x3l",
+      "description": "Heading 3"
+    },
+    "typography.size.h2": {
+      "type": "typography",
+      "ref": "scale.font.x4l",
+      "description": "Heading 2"
+    },
+    "typography.size.h1": {
+      "type": "typography",
+      "ref": "scale.font.x5l",
+      "description": "Heading 1"
+    },
+    "typography.size.display": {
+      "type": "typography",
+      "ref": "scale.font.x6l",
+      "description": "Display text"
+    },
+    "typography.weight.body": {
+      "type": "typography",
+      "ref": "scale.weight.regular",
+      "description": "Body weight"
+    },
+    "typography.weight.heading": {
+      "type": "typography",
+      "ref": "scale.weight.semibold",
+      "description": "Heading weight"
+    },
+    "typography.weight.strong": {
+      "type": "typography",
+      "ref": "scale.weight.bold",
+      "description": "Emphasis weight"
+    },
+    "typography.leading.body": {
+      "type": "typography",
+      "ref": "scale.leading.normal",
+      "description": "Body line-height"
+    },
+    "typography.leading.heading": {
+      "type": "typography",
+      "ref": "scale.leading.tight",
+      "description": "Heading line-height"
+    },
+    "space.xs": {
+      "type": "spacing",
+      "ref": "scale.space.n1",
+      "description": "Extra small spacing (4px)"
+    },
+    "space.sm": {
+      "type": "spacing",
+      "ref": "scale.space.n2",
+      "description": "Small spacing (8px)"
+    },
+    "space.md": {
+      "type": "spacing",
+      "ref": "scale.space.n4",
+      "description": "Medium spacing (16px)"
+    },
+    "space.lg": {
+      "type": "spacing",
+      "ref": "scale.space.n6",
+      "description": "Large spacing (24px)"
+    },
+    "space.xl": {
+      "type": "spacing",
+      "ref": "scale.space.n8",
+      "description": "Extra large (32px)"
+    },
+    "space.x2l": {
+      "type": "spacing",
+      "ref": "scale.space.n12",
+      "description": "Double XL (48px)"
+    },
+    "space.x3l": {
+      "type": "spacing",
+      "ref": "scale.space.n16",
+      "description": "Triple XL (64px)"
+    },
+    "space.x4l": {
+      "type": "spacing",
+      "ref": "scale.space.n24",
+      "description": "Quad XL (96px)"
+    },
+    "space.component-padding": {
+      "type": "spacing",
+      "ref": "scale.space.n4",
+      "description": "Default component internal padding"
+    },
+    "space.component-gap": {
+      "type": "spacing",
+      "ref": "scale.space.n3",
+      "description": "Gap between elements in a component"
+    },
+    "space.section-gap": {
+      "type": "spacing",
+      "ref": "scale.space.n16",
+      "description": "Gap between page sections"
+    },
+    "space.page-margin": {
+      "type": "spacing",
+      "ref": "scale.space.n6",
+      "description": "Page outer margin"
+    },
+    "radius.sm": {
+      "type": "radius",
+      "ref": "scale.radius.sm",
+      "description": "Small radius (badges, chips)"
+    },
+    "radius.md": {
+      "type": "radius",
+      "ref": "scale.radius.md",
+      "description": "Medium radius (buttons, inputs)"
+    },
+    "radius.lg": {
+      "type": "radius",
+      "ref": "scale.radius.lg",
+      "description": "Large radius (cards)"
+    },
+    "radius.xl": {
+      "type": "radius",
+      "ref": "scale.radius.xl",
+      "description": "XL radius (modals, panels)"
+    },
+    "radius.full": {
+      "type": "radius",
+      "ref": "scale.radius.full",
+      "description": "Full radius (pills, avatars)"
+    },
+    "shadow.sm": {
+      "type": "shadow",
+      "ref": "scale.shadow.sm",
+      "description": "Subtle elevation"
+    },
+    "shadow.md": {
+      "type": "shadow",
+      "ref": "scale.shadow.md",
+      "description": "Default card elevation"
+    },
+    "shadow.lg": {
+      "type": "shadow",
+      "ref": "scale.shadow.lg",
+      "description": "Dropdown/popover elevation"
+    },
+    "shadow.xl": {
+      "type": "shadow",
+      "ref": "scale.shadow.xl",
+      "description": "Modal elevation"
+    },
+    "border.width.default": {
+      "type": "border",
+      "ref": "scale.border.n1",
+      "description": "Standard border"
+    },
+    "border.width.thick": {
+      "type": "border",
+      "ref": "scale.border.n2",
+      "description": "Emphasis border"
+    },
+    "z.sticky": {
+      "type": "z-index",
+      "ref": "scale.z.sticky",
+      "description": "Sticky headers/nav"
+    },
+    "z.dropdown": {
+      "type": "z-index",
+      "ref": "scale.z.dropdown",
+      "description": "Dropdown menus"
+    },
+    "z.overlay": {
+      "type": "z-index",
+      "ref": "scale.z.overlay",
+      "description": "Overlay backgrounds"
+    },
+    "z.modal": {
+      "type": "z-index",
+      "ref": "scale.z.modal",
+      "description": "Modal dialogs"
+    },
+    "z.toast": {
+      "type": "z-index",
+      "ref": "scale.z.toast",
+      "description": "Toast notifications"
+    },
+    "z.tooltip": {
+      "type": "z-index",
+      "ref": "scale.z.tooltip",
+      "description": "Tooltips (top layer)"
+    },
+    "motion.duration.instant": {
+      "type": "motion",
+      "ref": "scale.duration.instant",
+      "description": "Tooltip, micro-feedback"
+    },
+    "motion.duration.fast": {
+      "type": "motion",
+      "ref": "scale.duration.fast",
+      "description": "Button, toggle"
+    },
+    "motion.duration.normal": {
+      "type": "motion",
+      "ref": "scale.duration.normal",
+      "description": "Card, icon, standard"
+    },
+    "motion.duration.slow": {
+      "type": "motion",
+      "ref": "scale.duration.slow",
+      "description": "Modal, panel"
+    },
+    "motion.duration.emphasis": {
+      "type": "motion",
+      "ref": "scale.duration.slower",
+      "description": "Page transition"
+    },
+    "motion.easing.entrance": {
+      "type": "motion",
+      "ref": "scale.easing.ease-out",
+      "description": "Element appearing"
+    },
+    "motion.easing.exit": {
+      "type": "motion",
+      "ref": "scale.easing.ease-in",
+      "description": "Element leaving"
+    },
+    "motion.easing.standard": {
+      "type": "motion",
+      "ref": "scale.easing.ease-in-out",
+      "description": "On-screen movement"
+    },
+    "motion.easing.playful": {
+      "type": "motion",
+      "ref": "scale.easing.spring",
+      "description": "Bouncy/playful"
+    },
+    "motion.easing.emphasized": {
+      "type": "motion",
+      "ref": "scale.easing.emphasized",
+      "description": "Draw attention"
+    },
+
+    "opacity.overlay-light": {
+      "type": "color",
+      "ref": "scale.opacity.s20",
+      "description": "Light overlay — secondary backdrops, hover states"
+    },
+    "opacity.overlay-heavy": {
+      "type": "color",
+      "ref": "scale.opacity.s60",
+      "description": "Heavy overlay — modal backdrops, focus traps"
+    },
+    "opacity.disabled": {
+      "type": "color",
+      "ref": "scale.opacity.s40",
+      "description": "Disabled element opacity"
+    },
+
+    "container.prose": {
+      "type": "spacing",
+      "ref": "scale.container.prose",
+      "description": "Reading content — optimal line length (65ch)"
+    },
+    "container.content": {
+      "type": "spacing",
+      "ref": "scale.container.lg",
+      "description": "Standard page content container"
+    },
+    "container.wide": {
+      "type": "spacing",
+      "ref": "scale.container.xl",
+      "description": "Wide layout — dashboards, data tables"
+    },
+
+    "shadow.xs": {
+      "type": "shadow",
+      "ref": "scale.shadow.xs",
+      "description": "Minimal elevation — subtle card outlines"
+    },
+    "shadow.xxl": {
+      "type": "shadow",
+      "ref": "scale.shadow.xxl",
+      "description": "Maximum elevation — command palettes, floating panels"
+    },
+    "shadow.inner": {
+      "type": "shadow",
+      "ref": "scale.shadow.inner",
+      "description": "Inset shadow — pressed buttons, input fields"
+    }
+  }
+}

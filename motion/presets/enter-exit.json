@@ -1,0 +1,38 @@
+{
+  "category": "enter-exit",
+  "description": "Animations for elements entering or leaving the viewport/DOM.",
+  "presets": [
+    {
+      "name": "fade-in",
+      "duration": "motion.duration.normal",
+      "easing": "motion.easing.entrance",
+      "properties": { "opacity": { "from": 0, "to": 1 } },
+      "principle": "Meaningful transitions signal change",
+      "reduceMotion": { "duration": "0ms", "properties": { "opacity": { "from": 0, "to": 1 } } }
+    },
+    {
+      "name": "slide-up",
+      "duration": "motion.duration.normal",
+      "easing": "motion.easing.entrance",
+      "properties": { "opacity": { "from": 0, "to": 1 }, "translateY": { "from": "8px", "to": "0px" } },
+      "principle": "Direction indicates origin",
+      "reduceMotion": { "duration": "0ms", "properties": { "opacity": { "from": 0, "to": 1 } } }
+    },
+    {
+      "name": "scale-in",
+      "duration": "motion.duration.normal",
+      "easing": "motion.easing.entrance",
+      "properties": { "opacity": { "from": 0, "to": 1 }, "scale": { "from": 0.95, "to": 1 } },
+      "principle": "Scale communicates depth/importance",
+      "reduceMotion": { "duration": "0ms", "properties": { "opacity": { "from": 0, "to": 1 } } }
+    },
+    {
+      "name": "fade-out",
+      "duration": "motion.duration.fast",
+      "easing": "motion.easing.exit",
+      "properties": { "opacity": { "from": 1, "to": 0 } },
+      "principle": "Exits are faster than entrances",
+      "reduceMotion": { "duration": "0ms", "properties": { "opacity": { "from": 1, "to": 0 } } }
+    }
+  ]
+}

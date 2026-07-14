@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- Data Analysis: Bar chart with magnifying glass -->
+  <rect x="50" y="110" width="16" height="30" rx="2" fill="#93C5FD"/>
+  <rect x="72" y="90" width="16" height="50" rx="2" fill="#3B82F6"/>
+  <rect x="94" y="75" width="16" height="65" rx="2" fill="#93C5FD"/>
+  <rect x="116" y="60" width="16" height="80" rx="2" fill="#3B82F6"/>
+  <line x1="45" y1="140" x2="140" y2="140" stroke="#94A3B8" stroke-width="1.5"/>
+  <circle cx="140" cy="72" r="18" stroke="#F59E0B" stroke-width="2"/>
+  <line x1="153" y1="85" x2="163" y2="95" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="55" y="155" width="90" height="6" rx="3" fill="#E2E8F0"/>
+  <rect x="72" y="167" width="56" height="5" rx="2.5" fill="#F1F5F9"/>
+</svg>

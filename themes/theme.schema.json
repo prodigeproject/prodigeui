@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://prodigeui.dev/schemas/theme.schema.json",
+  "title": "ProdigeUI Theme",
+  "description": "Schema for ProdigeUI theme files. A theme maps semantic tokens to override values without changing token names.",
+  "type": "object",
+  "required": [
+    "name",
+    "mode"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique theme name (e.g., dark, light, brand-acme).",
+      "minLength": 1
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "light",
+        "dark"
+      ],
+      "description": "Theme luminance classification: light (background luminance > text luminance) or dark (opposite)."
+    },
+    "extends": {
+      "type": ["string", "null"],
+      "description": "Name of the theme to inherit from (fallback source). Defaults to _default if not specified. Set to null for the root theme.",
+      "default": "_default"
+    },
+    "overrides": {
+      "type": "object",
+      "description": "Mapping of semantic token names to override values (primitive token reference or concrete value).",
+      "additionalProperties": {
+        "type": "string",
+        "description": "Override value: reference to a primitive token (dot-notation) or a direct value."
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "name": "landing-blog-article",
+  "useCase": "landing",
+  "context": "Design a blog post article layout for a marketing or company website. The audience is readers consuming long-form content including text, images, code snippets, and embedded media. Target platforms: desktop and mobile responsive. Must prioritize readability with optimal line length and vertical rhythm.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for article heading hierarchy (h1-h4) and body prose",
+    "Apply color.rules.json for link styling, code block backgrounds, and blockquotes",
+    "Use layout.rules.json max-width constraint for readable content column (65-75ch)",
+    "Images must include alt text and responsive srcset considerations",
+    "Code blocks must use monospace font token with proper contrast",
+    "Article structure must use semantic HTML heading hierarchy",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Article page layout spec with content blocks, typography hierarchy, and reading metrics",
+    "qualityChecks": [
+      "Typography follows defined scale ratio with proper vertical rhythm",
+      "Content column width constrains to readable line length",
+      "Heading hierarchy is sequential without skipping levels",
+      "Code blocks maintain contrast and use monospace tokens",
+      "No raw/hardcoded visual values present"
+    ],
+    "accessibilityRequirements": [
+      "Heading hierarchy is sequential (h1 > h2 > h3)",
+      "Images have descriptive alt text",
+      "Links are distinguishable by more than color alone",
+      "Reading time and metadata accessible to screen readers",
+      "Skip-to-content link provided for navigation"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Article header with title, metadata, and featured image",
+      "output": "Organism: ArticleHeader\n  Layout: flex(direction: column, gap: var(--space-lg))\n  max-width: var(--content-max-width)\n  margin: 0 auto\n  padding: var(--space-2xl) var(--space-md)\n  Children:\n    - Molecule: ArticleMeta\n        - Atom: Badge(label=category, variant=subtle)\n        - Atom: Text(token=typography.body.sm, color=color.text.secondary, content='reading-time')\n    - Atom: Text(role=h1, token=typography.heading.xl, color=color.text.primary)\n    - Molecule: AuthorRow(layout=flex, gap=var(--space-sm), align=center)\n        - Atom: Avatar(size=sm)\n        - Atom: Text(token=typography.body.sm, color=color.text.secondary)\n    - Atom: Image(width=full, radius=var(--radius-lg), alt=featured-description)",
+      "acceptanceCriteria": [
+        "Uses semantic tokens for all values",
+        "Heading uses largest scale token for article title",
+        "Metadata is secondary in visual hierarchy",
+        "Featured image has rounded corners and alt text"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "space.lg",
+      "space.x2l",
+      "space.md",
+      "radius.lg",
+      "typography.size.h2",
+      "typography.size.body-sm",
+      "typography.size.body"
+    ],
+    "components": [
+      "Card",
+      "Badge",
+      "Text",
+      "Button",
+      "Navbar"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "fade-in"
+    ]
+  }
+}

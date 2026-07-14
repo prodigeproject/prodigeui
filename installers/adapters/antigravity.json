@@ -1,0 +1,7 @@
+{
+  "tool": "antigravity",
+  "entryPointFile": "AGENTS.md",
+  "configLocation": "<project-root>/AGENTS.md",
+  "supportedFormats": ["AGENTS.md", "skills/"],
+  "notes": "Antigravity reads AGENTS.md from project root. Skills are loaded from the skills/ directory."
+}

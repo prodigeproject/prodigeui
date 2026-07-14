@@ -1,0 +1,254 @@
+{
+  "description": "ProdigeUI Quality Gate criteria. Every design output is evaluated against these. Overall passes only when ALL criteria pass.",
+  "criteria": [
+    {
+      "id": "token-coverage",
+      "category": "tokens",
+      "description": "All visual values sourced from Design Tokens (no raw values)",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "contrast-normal",
+      "category": "accessibility",
+      "description": "Normal text contrast ratio >= 4.5:1",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "contrast-large",
+      "category": "accessibility",
+      "description": "Large text and non-text UI contrast >= 3:1",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "focus-visible",
+      "category": "accessibility",
+      "description": "All interactive elements have visible focus indicator (3:1 contrast)",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "keyboard-operable",
+      "category": "accessibility",
+      "description": "All interactive elements fully operable via keyboard",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "spacing-consistency",
+      "category": "tokens",
+      "description": "All spacing values from token scale (multiples of 4px)",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "typography-scale",
+      "category": "design-rules",
+      "description": "Font sizes follow a coherent scale — a modular ratio (e.g. 1.25) for UI text, OR a fluid clamp() display ramp for expressive headlines. Arbitrary unrelated sizes fail; systematic fluid display type does not.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "font-limit",
+      "category": "design-rules",
+      "description": "Maximum 2 typefaces + monospace",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "type-role-integrity",
+      "category": "design-rules",
+      "description": "Display, body, and optional annotation typography have declared, distinct, repeated jobs appropriate to the product; font switching is functional rather than decorative.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "font-render-truth",
+      "category": "design-rules",
+      "description": "Custom fonts are loaded before visual evaluation and the computed family on display text matches the declared display face; silent fallback is a failure.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "closing-cta-color-continuity",
+      "category": "design-rules",
+      "description": "The closing CTA reuses an established semantic signal/accent or primary surface, owns its foreground, and does not introduce a new or muddy near-match hue.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "quality-profile-transfer",
+      "category": "quality",
+      "description": "When a canonical accepted quality profile applies, the output transfers its semantic product intent, artifact credibility, type roles, palette commitment, focal hierarchy, rhythm, and closing behavior without copying benchmark copy or geometry.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "weight-limit",
+      "category": "design-rules",
+      "description": "Maximum 3-4 font weights used",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "grid-adherence",
+      "category": "design-rules",
+      "description": "Layout follows 12/8/4 column grid system",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "state-coverage",
+      "category": "components",
+      "description": "All interactive components document all applicable states",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "theme-consistency",
+      "category": "themes",
+      "description": "Components render using active theme tokens only",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "reduce-motion",
+      "category": "accessibility",
+      "description": "All motion respects prefers-reduced-motion",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "motion-duration",
+      "category": "motion",
+      "description": "Discrete UI transitions (hover, state change, entrance, modal) do not exceed ~1000ms. Continuous/ambient/looping decorative motion (marquee, background video loop, scroll-linked parallax, grain) is EXEMPT — it is continuous, not a discrete transition.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "visual-hierarchy",
+      "category": "design-rules",
+      "description": "Clear size/weight differentiation between heading levels",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "nav-item-limit",
+      "category": "design-rules",
+      "description": "Navigation has <= 7 items per level",
+      "type": "automated",
+      "severity": "flag"
+    },
+    {
+      "id": "touch-targets",
+      "category": "accessibility",
+      "description": "Interactive elements >= 44px on mobile, >= 32px on desktop",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "anti-slop-patterns",
+      "category": "quality",
+      "description": "No AI-slop patterns in their SLOP form. FLAG techniques (glass, parallax, gradients, big type, decorative motion) pass in their CRAFT form per anti-ai-slop.checklist.md discriminators.",
+      "type": "manual",
+      "severity": "flag"
+    },
+    {
+      "id": "craft-presence",
+      "category": "quality",
+      "description": "For expressive use-cases (DESIGN_VARIANCE >= 0.6 or MOTION_INTENSITY >= 0.5): output demonstrates craft — a hero signature technique, choreographed motion, texture/depth, distinctive display typography, real media, and a clear focal point. Passing the negative slop gate alone is NOT sufficient. See quality-gate/positive-patterns.md and craft/.",
+      "type": "manual",
+      "severity": "fail",
+      "appliesWhen": "DESIGN_VARIANCE >= 0.6 || MOTION_INTENSITY >= 0.5"
+    },
+    {
+      "id": "hero-real-focal-subject",
+      "category": "composition",
+      "description": "Expressive hero is anchored by a REAL focal subject (video, photo, product/UI, 3D render, or deliberate oversized display type). A blurry CSS gradient/mesh as the hero subject FAILS (the NOVA regression). Gradient may be textural behind real media/type, never the empty subject. See craft/compositions/.",
+      "type": "manual",
+      "severity": "fail",
+      "appliesWhen": "DESIGN_VARIANCE >= 0.6 || MOTION_INTENSITY >= 0.5"
+    },
+    {
+      "id": "real-media-not-placeholder",
+      "category": "composition",
+      "description": "No gray placeholder boxes, div-based fake screenshots, or 'image here' stand-ins on expressive work. Real media required where the brief implies it. See assets/asset-sourcing.guide.md.",
+      "type": "manual",
+      "severity": "fail",
+      "appliesWhen": "DESIGN_VARIANCE >= 0.6 || MOTION_INTENSITY >= 0.5"
+    },
+    {
+      "id": "display-type-deliberate",
+      "category": "design-rules",
+      "description": "Hero-scale display type uses a deliberate display face (reflex-reject procedure in craft/taste.md) with negative tracking and tight leading — not untouched system/Inter at hero scale.",
+      "type": "manual",
+      "severity": "flag",
+      "appliesWhen": "DESIGN_VARIANCE >= 0.6"
+    },
+    {
+      "id": "mechanical-taste",
+      "category": "quality",
+      "description": "Binary taste checks pass (craft/taste.md): no em-dash in copy; no reflex cream/beige body bg; eyebrow count <= ceil(sections/3); no <img> hover-scale; no default gradient text; no hero-metric template; outcome-specific CTA copy; two-altitude slop test passes.",
+      "type": "manual",
+      "severity": "flag"
+    },
+    {
+      "id": "decorative-glow-containment",
+      "category": "composition",
+      "description": "Decorative glow/radial elements must dissolve into atmosphere (never visible as a distinct geometric shape). Constraints: gradient inner rgba alpha <= 0.16; size <= 50vw or 560px; filter:blur >= 20px; gradient terminates to transparent by 70% radius. A glow that reads as a solid circle/ellipse is a FAIL. See effects-catalog.md 'Ambient glow bloom'.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "absolute-position-containment",
+      "category": "composition",
+      "description": "Every element with position:absolute MUST have an explicit positioned ancestor (position:relative on the intended parent). Without this, percentage-based width/height compute against an unintended container, causing elements (e.g. toggle thumbs, slider indicators) to render at viewport-scale size. This is a critical layout bug.",
+      "type": "auto",
+      "severity": "fail"
+    },
+    {
+      "id": "image-fallback-resilience",
+      "category": "composition",
+      "description": "All image containers (img parent or element with background-image) MUST define a background-color fallback (e.g. var(--surface-2)). Without this, failed/blocked images render as broken icons or browser-chosen placeholder shapes instead of a graceful colored rectangle. See assets/fallback-images.md.",
+      "type": "auto",
+      "severity": "flag"
+    },
+    {
+      "id": "progressive-disclosure",
+      "category": "design-rules",
+      "description": "Complex interfaces use progressive disclosure (<= 5 decisions/screen)",
+      "type": "manual",
+      "severity": "flag"
+    },
+    {
+      "id": "aria-roles",
+      "category": "accessibility",
+      "description": "All components use appropriate ARIA roles",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "feedback-timing",
+      "category": "interaction",
+      "description": "System provides visual feedback within 400ms of user action (Doherty Threshold)",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "proximity-grouping",
+      "category": "design-rules",
+      "description": "Related elements grouped by proximity (whitespace) not borders/boxes",
+      "type": "manual",
+      "severity": "flag"
+    },
+    {
+      "id": "working-memory-limit",
+      "category": "design-rules",
+      "description": "No more than 4 unchunked items displayed without visual grouping",
+      "type": "manual",
+      "severity": "flag"
+    }
+  ]
+}

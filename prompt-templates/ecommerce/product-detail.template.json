@@ -1,0 +1,74 @@
+{
+  "name": "ecommerce-product-detail",
+  "useCase": "ecommerce",
+  "context": "Design a single product detail page (PDP) for an ecommerce store. The audience is shoppers evaluating a product before purchase, needing high-quality imagery, variant selection, pricing, reviews, and add-to-cart actions. Target platforms: desktop and mobile responsive with touch-friendly interactions.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for price display hierarchy and product descriptions",
+    "Apply color.rules.json for sale price highlighting and stock status indicators",
+    "Use layout.rules.json two-column grid (media left, details right) on desktop",
+    "Image gallery must include alt text and keyboard navigation between slides",
+    "Add-to-cart button must be minimum 44px touch target on mobile",
+    "Variant selectors must use radio group semantics with clear selected state",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Page layout spec with component hierarchy, token references, and responsive breakpoints",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens",
+      "Price typography uses weight.strong token for prominence",
+      "Image gallery documents loading, loaded, and error states",
+      "Add-to-cart documents all button states including loading",
+      "No raw/hardcoded visual values present"
+    ],
+    "accessibilityRequirements": [
+      "Product images have descriptive alt text",
+      "Price changes announced via aria-live on variant selection",
+      "Star ratings have text equivalent (e.g., 4 out of 5 stars)",
+      "Form controls for variants have associated labels",
+      "Quantity input has min/max constraints and aria-valuenow"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Product info section with price and variant selector",
+      "output": "Organism: ProductInfo\n  Layout: flex(direction: column, gap: var(--space-md))\n  Children:\n    - Atom: Text(role=heading, token=typography.heading.lg, color=color.text.primary)\n    - Molecule: PriceDisplay\n        - Atom: Text(token=typography.heading.md, color=color.text.primary, weight=strong)\n        - Atom: Text(token=typography.body.sm, color=color.text.tertiary, decoration=line-through)\n    - Molecule: VariantSelector(role=radiogroup)\n        - Atom: VariantOption(role=radio, border=var(--border-default))\n        States: unselected, selected(border-color: var(--color-primary), bg: var(--color-surface-selected))\n    - Atom: Button(variant=primary, size=lg, label='Add to Cart', width=full)\n        States: default, hover, loading(spinner), disabled(out-of-stock)",
+      "acceptanceCriteria": [
+        "Uses semantic tokens exclusively",
+        "Price display hierarchy is clear",
+        "Variant selector uses proper radio semantics",
+        "All states documented for interactive elements"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.primary",
+      "color.primary",
+      "space.md",
+      "typography.size.h3",
+      "typography.size.h4",
+      "typography.size.body-sm"
+    ],
+    "components": [
+      "Card",
+      "Button",
+      "Badge",
+      "Text",
+      "Input"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "button-press",
+      "button-press"
+    ]
+  }
+}

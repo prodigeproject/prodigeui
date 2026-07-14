@@ -1,0 +1,76 @@
+{
+  "name": "saas-user-profile",
+  "useCase": "saas",
+  "context": "Design a user profile and account settings page for a SaaS application. The audience is end-users managing their personal information, avatar, preferences, and security settings. Target platforms: desktop and mobile responsive. The page must handle form editing, avatar upload, and account danger zone actions.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for section headings and form labels",
+    "Apply color.rules.json role assignments for danger zone actions (destructive color tokens)",
+    "Use layout.rules.json grid for two-column form layout on desktop",
+    "Form inputs must have associated labels and error messages with aria-describedby",
+    "All interactive elements meet WCAG 2.1 AA: keyboard operable, visible focus",
+    "Avatar upload must provide alt text input and file type restrictions",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Page layout spec with form sections, token references, and interaction states",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens",
+      "Form sections use consistent spacing from Token_System",
+      "Danger zone uses destructive color tokens exclusively",
+      "Every form input documents valid, invalid, and disabled states",
+      "No raw/hardcoded visual values present"
+    ],
+    "accessibilityRequirements": [
+      "All form inputs have programmatic labels",
+      "Error messages are linked via aria-describedby",
+      "Destructive actions require confirmation dialog",
+      "Avatar image has meaningful alt text",
+      "Focus order follows visual reading order"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Profile header section with avatar and name display",
+      "output": "Organism: ProfileHeader\n  Layout: flex(direction: row, gap: var(--space-lg), align: center)\n  padding: var(--space-xl)\n  Children:\n    - Atom: Avatar(size=xl, radius=var(--radius-full), border=var(--border-default))\n    - Molecule: UserInfo\n        - Atom: Text(role=heading, token=typography.heading.md, color=color.text.primary)\n        - Atom: Text(role=subtitle, token=typography.body.sm, color=color.text.secondary)\n        - Atom: Button(variant=outline, size=sm, label='Edit Profile')\n  States: default, editing(border: var(--color-primary))",
+      "acceptanceCriteria": [
+        "Uses semantic tokens for all styling",
+        "Avatar has accessible alt text",
+        "Edit action is keyboard accessible",
+        "Responsive: stacks vertically on mobile"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.destructive",
+      "space.lg",
+      "space.xl",
+      "radius.full",
+      "typography.size.h4",
+      "typography.size.body-sm"
+    ],
+    "components": [
+      "Card",
+      "Button",
+      "Input",
+      "Form",
+      "Modal",
+      "Text"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "button-press",
+      "fade-in"
+    ]
+  }
+}

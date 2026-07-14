@@ -1,0 +1,492 @@
+{
+  "methodology": "Advanced design methodology rules extracted from comprehensive book research. Each rule includes its exact source and the specific page/chapter where the principle originates.",
+
+  "bringhurst": {
+    "source": "The Elements of Typographic Style, 4th Ed. (Robert Bringhurst)",
+    "rules": {
+      "verticalRhythm": {
+        "rule": "All vertical spacing must be a multiple of the baseline grid unit (body line-height x body font-size)",
+        "baselineUnit": "24px (16px body x 1.5 line-height)",
+        "derivation": "Every margin, padding, and gap should equal N x 24px (or N x 12px for half-line adjustments)",
+        "source": "Ch. 2.2 'Choose a basic leading that suits the typeface, text, and measure'"
+      },
+      "opticalMarginAlignment": {
+        "rule": "Hanging punctuation and optical margin alignment: punctuation marks, bullets, and quote marks should hang outside the text margin for visual alignment",
+        "source": "Ch. 2.3 'Add and delete vertical space in measured intervals'"
+      },
+      "paragraphIndent": {
+        "rule": "First paragraph after heading: no indent. Subsequent paragraphs: indent 1em OR use paragraph spacing (not both)",
+        "source": "Ch. 2.3"
+      },
+      "smallCaps": {
+        "rule": "Acronyms and abbreviations in running text should use small caps (not full caps) at approximately 1.1em letter-spacing",
+        "source": "Ch. 3.2 'Use titling figures with full caps and small caps with text figures'"
+      },
+      "figureTypes": {
+        "rule": "Body text uses oldstyle (text) figures. Tabular data uses lining (titling) figures for column alignment",
+        "source": "Ch. 3.2"
+      },
+      "widowsOrphans": {
+        "rule": "Never leave fewer than 2 lines of a paragraph at the bottom (orphan) or top (widow) of a column/page",
+        "source": "Ch. 2.4"
+      },
+      "measureFormula": {
+        "rule": "Optimal measure = font-size x 2.5 x alphabet-length-ratio. For 16px body: 40-75 characters. For multi-column: shorter measure (40-50 characters)",
+        "source": "Ch. 2.1 'Choose a comfortable measure'"
+      },
+      "typographicColor": {
+        "rule": "Consistent 'color' (visual density) across text blocks. Avoid rivers of white space in justified text. Prefer ragged-right for narrow measures (<50ch)",
+        "source": "Ch. 2.1"
+      }
+    }
+  },
+
+  "yablonski": {
+    "source": "Laws of UX (Jon Yablonski)",
+    "rules": {
+      "hicksLaw": {
+        "formula": "RT = a + b x log2(n+1) where n = number of choices",
+        "practicalLimit": "Navigation: max 7 items. Actions per screen: max 5. Choices requiring decision: max 3 prominently displayed",
+        "reducingComplexity": "Group related items. Use progressive disclosure. Provide defaults for common choices.",
+        "source": "Ch. 'Hick's Law'"
+      },
+      "fittsLaw": {
+        "formula": "MT = a + b x log2(2D/W) where D=distance to target, W=target width",
+        "practicalApplication": "Primary CTA: large (min 44px), close to cursor rest position. Destructive actions: smaller, farther from primary flow.",
+        "cornerAndEdgeTargets": "Buttons at screen edges are effectively infinite-width targets on desktop (Fitts's principle of infinite edges)",
+        "source": "Ch. 'Fitts's Law'"
+      },
+      "jakobsLaw": {
+        "rule": "Users spend most time on OTHER sites. They expect your site to work the same way. Use familiar patterns unless there's strong reason not to.",
+        "implications": "Primary nav: top or left. Close button: top-right. Form submit: bottom of form. Logo: top-left links to home.",
+        "source": "Ch. 'Jakob's Law'"
+      },
+      "millerLaw": {
+        "rule": "Average person can hold 7 plus-or-minus 2 items in working memory. ORGANIZE into chunks of 5-9 items maximum.",
+        "chunkingStrategy": "Phone numbers: 3-3-4. Credit cards: 4-4-4-4. Long lists: groups of 5. Tab bars: max 5 items.",
+        "source": "Ch. 'Miller's Law'"
+      },
+      "dohertyThreshold": {
+        "rule": "System responses under 400ms maintain user flow state. Above 400ms: user attention wavers. Above 1000ms: user feels system is unresponsive.",
+        "uiImplication": "Loading feedback appears at 200ms. Skeleton screens at 300ms. Full spinner at 1000ms.",
+        "source": "Ch. 'Doherty Threshold'"
+      },
+      "aestheticUsability": {
+        "rule": "Users perceive aesthetically pleasing designs as MORE USABLE than they actually are. Visual polish directly impacts perceived performance.",
+        "implication": "Invest in visual consistency, spacing precision, and typographic quality — they measurably improve user satisfaction scores.",
+        "source": "Ch. 'Aesthetic-Usability Effect'"
+      },
+      "vonRestorff": {
+        "rule": "An item that visually stands out from a group is more likely to be remembered and acted upon.",
+        "implication": "One primary CTA per viewport. One highlighted navigation item. One feature card with emphasis.",
+        "danger": "If everything is emphasized, nothing is. Von Restorff requires restraint — the contrast must be singular.",
+        "source": "Ch. 'Von Restorff Effect'"
+      },
+      "teslersLaw": {
+        "rule": "Every system has inherent complexity that cannot be eliminated — only moved. If you hide it from the user, the developer must absorb it.",
+        "implication": "Progressive disclosure: show complexity only when needed. Smart defaults reduce visible complexity without removing capability.",
+        "source": "Ch. 'Tesler's Law'"
+      },
+      "postelLaw": {
+        "rule": "Be liberal in what you accept (inputs) and conservative in what you produce (outputs).",
+        "formImplication": "Accept multiple date formats. Trim whitespace silently. Auto-format phone numbers. Don't reject input for trivial formatting differences.",
+        "source": "Ch. 'Postel's Law'"
+      },
+      "peakEndRule": {
+        "rule": "Users judge an experience by its peak (most intense moment) and its end (final impression), not by average of all moments.",
+        "implication": "Invest in: (1) the peak moment (e.g., first-value delivery, 'aha' moment), and (2) the ending (e.g., success state, confirmation, graceful close).",
+        "source": "Ch. 'Peak-End Rule'"
+      },
+      "zeigarnikEffect": {
+        "rule": "People remember incomplete tasks better than completed ones. A visible progress indicator creates psychological commitment to finish.",
+        "implication": "Multi-step forms: always show progress. Onboarding: show completion percentage. Gamification: use progress bars for engagement.",
+        "source": "Ch. 'Zeigarnik Effect'"
+      },
+      "serialPositionEffect": {
+        "rule": "Items at the beginning (primacy) and end (recency) of a sequence are remembered better than middle items.",
+        "implication": "Place critical navigation items first and last. Most important features in first and last positions of a list. CTAs at beginning or end of content blocks.",
+        "source": "Ch. 'Serial Position Effect'"
+      }
+    }
+  },
+
+  "weinschenk": {
+    "source": "100 Things Every Designer Needs to Know about People (Susan Weinschenk)",
+    "rules": {
+      "peripheralVision": {
+        "rule": "People are drawn to movement and contrast in peripheral vision. Animations outside the focus area are MORE distracting than those at center of attention.",
+        "implication": "Notification badges: use color change, not animation. Avoid decorative motion in sidebars while user focuses on content.",
+        "source": "#6 'People Identify Objects by Recognizing Patterns'"
+      },
+      "scanningNotReading": {
+        "rule": "Users scan in F-pattern (left-to-right cultures): top-left gets most attention, left edge of each line gets second-most, rest is scanned.",
+        "implication": "Key information and CTAs: top-left quadrant. Labels: left-aligned. Navigation: left column or top.",
+        "source": "#10 'People Scan Screens Based on Past Experience and Expectations'"
+      },
+      "attentionSpan": {
+        "rule": "Average sustained attention on a single task: 7-8 minutes before needing a break or change. Micro-task attention: 8 seconds before evaluation.",
+        "implication": "Content sections: max 7-8 scrolls/screens before natural break point. First impression: must communicate value in under 8 seconds.",
+        "source": "#55 'Attention Is Selective'"
+      },
+      "groupingSuperior": {
+        "rule": "People remember grouped information 40% better than ungrouped. Spatial proximity creates perceived relationships.",
+        "implication": "Use whitespace to group related form fields. Use cards to group related content. Use dividers between unrelated sections.",
+        "source": "#42 'Short-Term Memory Is Limited'"
+      },
+      "progressiveDisclosure": {
+        "rule": "Present only the minimum information needed for the current decision. Reveal additional options only when requested.",
+        "levels": "Level 1: Primary action visible. Level 2: Secondary actions in dropdown/menu. Level 3: Advanced options in settings/modal.",
+        "source": "#48 'Progressive Disclosure'"
+      },
+      "trustIndicators": {
+        "rule": "Users decide trust within 50ms based on visual design. Professional aesthetics = trustworthy. Inconsistency = suspicious.",
+        "implication": "Spacing must be pixel-perfect. Colors must be from the token system. Typography must follow the scale. No raw values.",
+        "source": "#89 'People Can Be Influenced by Aesthetics'"
+      },
+      "emotionalProcessing": {
+        "rule": "Emotional reactions to design happen BEFORE cognitive processing. Users feel before they think.",
+        "implication": "First impression matters more than feature completeness. Loading states should feel calm, not jarring. Error states should feel empathetic, not punitive.",
+        "source": "#96 'People Process Information Better If It Is in a Story'"
+      }
+    }
+  },
+
+  "krug": {
+    "source": "Don't Make Me Think, Revisited (Steve Krug)",
+    "rules": {
+      "trunkTest": {
+        "rule": "On any page, within 5 seconds a user should be able to answer: (1) What site is this? (2) What page am I on? (3) What are the major sections? (4) Where am I in the hierarchy? (5) How can I search?",
+        "implication": "Every page needs: visible site ID (logo), page title, navigation with current indicator, breadcrumb or hierarchy cue.",
+        "source": "Ch. 6 'Street Signs and Breadcrumbs'"
+      },
+      "noExplanationNeeded": {
+        "rule": "If something requires explanation, it is too complex. Self-evident > intuitive > requires explanation.",
+        "priorityOrder": "Self-evident (no thought needed) then Intuitive (minimal thought) then Documented (requires reading)",
+        "source": "Ch. 1 'Don't Make Me Think'"
+      },
+      "scannable": {
+        "rule": "Design for scanning, not reading. Users do not read — they scan for keywords that match their goal.",
+        "techniques": "Bold keywords. Use bullet lists. Short paragraphs (2-3 lines max). Clear headings that describe content below.",
+        "source": "Ch. 2 'How We Really Use the Web'"
+      },
+      "clicksVsThinking": {
+        "rule": "Number of clicks matters less than thinking-per-click. 3 mindless clicks > 1 click requiring thought.",
+        "implication": "Guided flows with obvious next steps beat single-screen complexity. Wizards > mega-forms.",
+        "source": "Ch. 3 'Billboard Design 101'"
+      },
+      "conventionsOverInnovation": {
+        "rule": "Consistency with conventions reduces cognitive load. Only innovate where it solves a real problem, not for novelty.",
+        "source": "Ch. 3"
+      }
+    }
+  },
+
+  "norman": {
+    "source": "The Design of Everyday Things (Don Norman)",
+    "rules": {
+      "affordances": {
+        "rule": "The perceived and actual properties of an object that determine how it could be used. A button should look pressable. A slider should look draggable.",
+        "digitalImplication": "Buttons: raised appearance, cursor:pointer, label as verb. Links: underline + color. Inputs: recessed/bordered region. Sliders: track + thumb.",
+        "source": "Ch. 1 'The Psychopathology of Everyday Things'"
+      },
+      "signifiers": {
+        "rule": "Affordances define what CAN be done. Signifiers communicate what SHOULD be done and WHERE. Signifiers are more important than affordances.",
+        "digitalImplication": "Arrow icons on carousels. Dots for pagination. Drag handles. Placeholder text in inputs. Required asterisks.",
+        "source": "Ch. 1"
+      },
+      "feedback": {
+        "rule": "Every action must have immediate, obvious feedback. Without feedback, users do not know if their action succeeded.",
+        "timingThresholds": "Immediate (<100ms): visual state change (press effect). Soon (<1000ms): progress indication. Long (>1000ms): explicit loading state with ability to cancel.",
+        "source": "Ch. 1"
+      },
+      "constraints": {
+        "rule": "Limit possible actions to prevent errors. Physical, semantic, cultural, and logical constraints.",
+        "digitalImplication": "Disabled states for invalid actions. Input masks for format constraints. Confirmation dialogs for destructive actions. Max-length on text fields.",
+        "source": "Ch. 4 'Knowing What to Do: Constraints, Discoverability, and Feedback'"
+      },
+      "mappings": {
+        "rule": "The relationship between controls and their effects should be clear and natural. Spatial layout of controls should match spatial layout of output.",
+        "digitalImplication": "Vertical slider = vertical scroll. Horizontal slider = horizontal property. Left arrow = go back. Right arrow = go forward. Top = more/bigger.",
+        "source": "Ch. 1"
+      },
+      "errorRecovery": {
+        "rule": "Design for errors. Make errors reversible. Support undo. Present clear recovery paths. Never punish users for mistakes.",
+        "levels": "Prevention (constraints, confirmation) > Detection (validation, feedback) > Recovery (undo, reset, clear guidance)",
+        "source": "Ch. 5 'Human Error? No, Bad Design'"
+      },
+      "conceptualModels": {
+        "rule": "Users form mental models of how a system works. Design must match the user's model, not the implementation model.",
+        "implication": "File system: folders and documents (not inodes). Email: inbox, sent, trash (not database tables). Shopping: cart, checkout (not order pipeline).",
+        "source": "Ch. 1"
+      }
+    }
+  },
+
+  "dannaway": {
+    "source": "Practical UI (Adham Dannaway, 1st + 2nd Ed.)",
+    "rules": {
+      "threePxRule": {
+        "rule": "If a visual difference is less than 3px, make it exactly 0 (align perfectly) or make it clearly different (8px+). Nothing in between — it looks like a mistake.",
+        "implication": "Alignment must be pixel-perfect or deliberately offset. Near-misses are worse than large intentional differences.",
+        "source": "Ch. 'Alignment'"
+      },
+      "squintTest": {
+        "rule": "Blur your eyes or squint at the design. If the hierarchy disappears, it is too weak. You should still see 3 distinct levels of visual weight.",
+        "source": "Ch. 'Visual Hierarchy'"
+      },
+      "colorHierarchy": {
+        "rule": "Start with grayscale. Add color LAST. If the hierarchy works in grayscale, color only enhances it. If it fails without color, the structure is broken.",
+        "source": "Ch. 'Color'"
+      },
+      "shadowHierarchy": {
+        "rule": "Shadow size communicates distance from the surface. Subtle (1-2px blur): slightly raised. Medium (4-8px): floating. Large (16-32px): far above (overlays).",
+        "implication": "Never use identical shadows on elements at different conceptual elevations.",
+        "source": "Ch. 'Depth & Shadow'"
+      },
+      "borderVsShadow": {
+        "rule": "Borders define boundaries (same elevation). Shadows communicate elevation (different depth). Do not use both on the same element unless intentional.",
+        "source": "Ch. 'Depth & Shadow'"
+      },
+      "densityControl": {
+        "rule": "Density = amount of content per viewport. High density: compact, less whitespace, smaller text. Low density: spacious, generous whitespace, larger text. Match density to context.",
+        "contextMapping": "Dashboard/data: high density. Landing page/marketing: low density. Settings/forms: medium density.",
+        "source": "Ch. 'Spacing & Density'"
+      }
+    }
+  },
+
+  "wathanSchoger": {
+    "source": "Refactoring UI (Adam Wathan & Steve Schoger)",
+    "rules": {
+      "semanticColorMethod": {
+        "rule": "Define colors by use (primary, secondary, accent) not by hue (blue, green). Generate each as a palette of 8-10 shades. Darker shades for text, lighter for backgrounds.",
+        "shadeSystem": "50 (lightest bg), 100, 200, 300, 400, 500 (base), 600, 700, 800, 900 (darkest text)",
+        "source": "Ch. 'Designing with Color'"
+      },
+      "opacityForConsistency": {
+        "rule": "Instead of adding many gray shades, use opacity on a single dark color to create consistent text hierarchy on any background.",
+        "application": "Primary text: 87% opacity. Secondary text: 60% opacity. Disabled: 38% opacity. Hint: 12% opacity.",
+        "source": "Ch. 'Designing with Color'"
+      },
+      "dontDesignEveryState": {
+        "rule": "Design the ideal state first. Then design the edge cases: empty, loading, error, overflow, minimal content.",
+        "stateOrder": "Ideal then Empty then Loading then Error then Overflow then Single item then Many items",
+        "source": "Ch. 'Designing Text'"
+      },
+      "sizeDontWeight": {
+        "rule": "To de-emphasize text, make it smaller or lighter (gray), not lighter weight. Light font-weight (300) looks weak and is harder to read than small regular-weight text.",
+        "source": "Ch. 'Designing Text'"
+      },
+      "overlappingElements": {
+        "rule": "Overlap elements to create visual interest and depth without adding decoration. Images breaking grid lines, cards overlapping hero sections.",
+        "constraint": "Only overlap when both elements have clear visual boundaries (shadow, solid background, clear contrast).",
+        "source": "Ch. 'Adding Visual Flair'"
+      },
+      "emptyStateDesign": {
+        "rule": "Empty states are not errors — they are opportunities. Show what WILL be here, how to get started, and preview the value of populating the content.",
+        "source": "Ch. 'Working with States'"
+      }
+    }
+  },
+
+  "valHead": {
+    "source": "Designing Interface Animation (Val Head) + Animation for the Web",
+    "rules": {
+      "twelvePrinciplesAdapted": {
+        "applicableToUI": ["anticipation", "follow-through", "easing", "timing", "staging"],
+        "notApplicableToUI": ["squash-and-stretch", "secondary-action (different meaning in UI)", "exaggeration (must be subtle)", "arcs (only for physical metaphors)"],
+        "source": "Ch. 3 'Disney Animation Principles for UI'"
+      },
+      "anticipation": {
+        "rule": "Brief preparation before the main action. A button scales down slightly (95%) before launching the action. A drawer appears at edge before sliding in.",
+        "duration": "Anticipation phase: 50-100ms. Total including recovery: 200-400ms.",
+        "source": "Ch. 3"
+      },
+      "followThrough": {
+        "rule": "Elements settle after arriving at their destination. Slight overshoot + correction creates natural feel. Spring physics achieve this automatically.",
+        "amount": "Overshoot 3-5% for subtle. 8-12% for playful. >15% for cartoon-like (rarely appropriate in UI).",
+        "source": "Ch. 3"
+      },
+      "choreography": {
+        "rule": "When multiple elements move, they must be coordinated. Same direction = parallel. Stagger = sequential reveal. Opposing directions = contrast/attention.",
+        "constraint": "Max 3 simultaneous animations visible. More than 3 creates cognitive overload.",
+        "source": "Ch. 7 'Choreography'"
+      },
+      "meaningfulTransitions": {
+        "rule": "Transitions should maintain context: show where content came from and where it went. Spatial transitions preserve mental model of information architecture.",
+        "pattern": "Drill-down: slide left (deeper). Back: slide right (shallower). Open: expand from trigger. Close: collapse to trigger.",
+        "source": "Ch. 5 'Transitions'"
+      },
+      "motionBudget": {
+        "rule": "Total animation time per user interaction should not exceed 500ms. Total animation time on page load should not exceed 1000ms for all elements combined.",
+        "source": "Ch. 8 'Performance Considerations'"
+      }
+    }
+  },
+
+  "frost": {
+    "source": "Atomic Design (Brad Frost)",
+    "rules": {
+      "compositionIntegrity": {
+        "rule": "A molecule is a MEANINGFUL combination of atoms — not just atoms sitting next to each other. The combination must create a distinct functional unit.",
+        "test": "If removing one atom does not change the component's purpose, it is not a true molecule — it is a layout.",
+        "source": "Ch. 2 'Atomic Design Methodology'"
+      },
+      "contextIndependence": {
+        "rule": "Atoms and molecules must be context-independent. They work anywhere. Context is provided by organisms and templates.",
+        "implication": "A Button atom works in a form, a card, a toolbar, or a modal. It does not know or care about its parent.",
+        "source": "Ch. 2"
+      },
+      "interfaceInventory": {
+        "rule": "Before designing new components, inventory all existing ones. Capture: every button variant, every heading style, every card pattern, every form layout.",
+        "purpose": "Identify inconsistencies, redundancies, and true system boundaries before introducing new patterns.",
+        "source": "Ch. 4 'Interface Inventory'"
+      },
+      "patternVariation": {
+        "rule": "Variations must be intentional, not accidental. If two buttons look different, they should BEHAVE differently. Same behavior = same appearance.",
+        "source": "Ch. 3 'Organisms'"
+      }
+    }
+  },
+
+  "muellerBrockmann": {
+    "source": "Grid Systems in Graphic Design (Josef Mueller-Brockmann)",
+    "rules": {
+      "gridAsInfrastructure": {
+        "rule": "The grid is not a constraint — it is infrastructure that enables creative freedom within order. Every element should relate to the grid.",
+        "source": "Introduction"
+      },
+      "moduleProportion": {
+        "rule": "Grid modules should have aesthetically pleasing proportions. Common ratios: 1:1 (square), 2:3 (golden approximation), 3:4 (photographic), 5:8 (golden).",
+        "applicationInUI": "Card aspect ratios: 3:4 for portrait, 16:9 for landscape, 1:1 for avatar. Image containers: match content orientation.",
+        "source": "Ch. 'The Grid System'"
+      },
+      "marginProportion": {
+        "rule": "Page margins should relate proportionally to columns and gutters. Classical proportion: margin >= gutter. Top margin < bottom margin (content floats upward visually).",
+        "source": "Ch. 'The Grid System'"
+      },
+      "gridBreaking": {
+        "rule": "Strategic grid-breaking creates emphasis. An element that intentionally breaks the grid draws more attention than one that follows it. Use sparingly — max 1 break per viewport.",
+        "source": "Ch. 'Breaking the Grid'"
+      }
+    }
+  },
+
+  "bookVerifiedCorrections": {
+    "description": "Corrections and enhancements based on actual extracted book text (PDF->markdown verified readings)",
+
+    "workingMemoryUpdate": {
+      "previousRule": "Miller's Law: 7±2 items in working memory",
+      "correctedRule": "Working memory holds 3-4 items, not 7. Miller's original 7±2 applies to SHORT-TERM memory, but working memory (active manipulation) is limited to 3-4 items.",
+      "exactQuote": "Recent research now shows that the 'magical' number is four. People can hold three or four things in working memory as long as they aren't distracted.",
+      "source": "100 Things Every Designer Needs to Know about People, Ch.20 'People Remember Only Four Items at Once' (Susan Weinschenk)",
+      "designImplication": "Navigation groups: max 4 items per visual cluster (not 7). Tab bars: max 5 items (4 + home). Form field groups: max 4-5 fields before a visual break. Card grids: show 3-4 items per row for comparison.",
+      "confidenceLevel": "HIGH - direct book quote, supersedes traditional 7±2 for UI design contexts"
+    },
+
+    "chunkingStrategy": {
+      "rule": "You can use more pieces of information as long as you group and chunk. Grouping with visual proximity enables processing beyond the 4-item limit.",
+      "exactQuote": "If you could limit the information you give people to four items, that would actually be a great idea, but you don't have to be that drastic. You can use more pieces of information as long as you group and chunk.",
+      "source": "100 Things, Ch.20",
+      "designImplication": "Display more than 4 items only when they are clearly chunked into groups of 3-4 with visual separators (whitespace, dividers, headers). Unchunked lists should max at 4 visible items."
+    },
+
+    "labelPlacementVerified": {
+      "rule": "Labels above fields are optimal for mobile. On desktop, labels can be left-aligned when form density matters, but above-field is always safe.",
+      "exactQuote": "We could avoid this problem by always putting the labels above the fields... On mobile, labels are positioned above the fields so they're visible when you need them.",
+      "source": "Designing UX Forms (Jessica Enders), Ch.4-51 to 4-53",
+      "designImplication": "Mobile: ALWAYS labels above fields. Desktop: labels above by default, left-aligned only when density justifies it and testing confirms no usability regression."
+    },
+
+    "atomicDesignBoundaries": {
+      "atomDefinition": "Atoms are the smallest functional unit that cannot be broken further without losing their meaning.",
+      "moleculeDefinition": "Molecules are groups of two or more atoms held together — they function as a unit.",
+      "organismDefinition": "Organisms are relatively complex UI components composed of groups of molecules and/or atoms that form distinct sections of an interface.",
+      "exactQuotes": [
+        "atoms are the smallest functional unit",
+        "Organisms form distinct sections of an interface"
+      ],
+      "source": "Atomic Design (Brad Frost), Ch.2",
+      "designImplication": "Test: if removing one child doesn't change the component's identity/purpose, it's not a true molecule. Organisms must own a 'distinct section' — they represent identifiable regions of the page."
+    },
+
+    "dohertyThresholdVerified": {
+      "rule": "System response must be under 400ms to maintain productivity and user flow state.",
+      "exactQuote": "Productivity soars when a computer and its users interact at a pace (<400 ms) that ensures that neither has to wait on the other.",
+      "source": "Laws of UX (Jon Yablonski), Ch.10 'Doherty Threshold'",
+      "keyTakeaway": "Provide system feedback within 400 ms in order to keep users' attention and increase productivity.",
+      "designImplication": "Any interaction without visual feedback at 400ms needs a loading indicator. Transitions > 400ms feel sluggish. Skeleton screens should appear at 200-300ms, full loading states at 400ms."
+    },
+
+    "formCompletionResearch": {
+      "rule": "Every additional form question reduces completion rate and data quality while increasing error rates.",
+      "exactQuote": "Every additional question on a form reduces the completion rate and data quality, while also increasing the rate of errors. So we must have justification for each and every question.",
+      "source": "Designing UX Forms (Jessica Enders), early chapter on form length",
+      "designImplication": "Every form field must be justified. Default: remove fields unless there's explicit business requirement. Progressive disclosure: only show fields when preceding answers indicate they're needed."
+    },
+
+    "scanningBehavior": {
+      "rule": "Break text into chunks. Use bullets, short paragraphs, and pictures to facilitate scanning.",
+      "exactQuote": "Break text up into chunks. Use bullets, short paragraphs, and pictures.",
+      "source": "100 Things (Weinschenk)",
+      "designImplication": "Body text: max 2-3 sentences per paragraph. Lists: use bullet points for 3+ related items. Content blocks: separate with visual breaks every 4-5 items."
+    },
+
+    "astryxTieredLineHeight": {
+      "rule": "Line-height varies by font size tier, not as a single fixed value. Larger text needs tighter leading; smaller text needs looser.",
+      "tiers": {
+        "smallText": { "range": "below 20px", "lineHeight": 1.5, "rationale": "Small text needs generous leading for readability" },
+        "mediumText": { "range": "20-31px", "lineHeight": 1.4, "rationale": "Medium headings transitional — still readable, slightly tighter" },
+        "largeText": { "range": "32px and above", "lineHeight": 1.25, "rationale": "Large display text has enough internal whitespace; tight leading looks intentional" }
+      },
+      "gridSnap": "Computed line-height is snapped to nearest 4px increment (minimum: fontSize + 4px)",
+      "source": "astryx-main/packages/core/src/theme/expandTypeScale.ts (Meta production code, verified via code audit)",
+      "designImplication": "Replace the single lineHeightBody value with a tiered function. ProdigeUI tokens should compute line-height from font-size, not store a single ratio."
+    },
+
+    "astryxRadiusSemantics": {
+      "rule": "Border radius should use semantic naming based on element role, not arbitrary size labels.",
+      "scale": {
+        "none": "0px — sharp corners, intentional brutalism",
+        "inner": "base×1 (4px) — internal corners within a component (chips, tags, nested elements)",
+        "element": "base×2 (8px) — interactive elements (buttons, inputs, toggles)",
+        "container": "base×3 (12px) — containment surfaces (cards, panels, sections)",
+        "page": "base×7 (28px) — page-level containers (modals, drawers, full-width banners)",
+        "full": "9999px — pill shapes (badges, avatars, rounded buttons)"
+      },
+      "multiplierSystem": "All scalable values use: base × step × multiplier. Multiplier=0 produces brutalist. Multiplier=1.5 produces extra-rounded.",
+      "source": "astryx-main/packages/core/src/theme/expandRadiusScale.ts (Meta production code)",
+      "designImplication": "Migrate ProdigeUI from radius.sm/md/lg/xl to radius.inner/element/container/page. Semantic names communicate the USE not the SIZE, enabling themes to scale radii proportionally."
+    },
+
+    "astryxMotionRatio": {
+      "rule": "Animation durations use a ratio system that generates min/base/max from a single value, ensuring proportional relationships.",
+      "formula": "min = base × ratio, max = base / ratio",
+      "defaults": {
+        "fast": { "min": "130ms", "base": "175ms", "max": "235ms", "use": "Micro-interactions (hover, toggle, checkbox)" },
+        "medium": { "min": "310ms", "base": "410ms", "max": "545ms", "use": "Entrance/exit (dialog, drawer, panel)" },
+        "slow": { "min": "730ms", "base": "975ms", "max": "1300ms", "use": "Continuous (spinner, progress)" }
+      },
+      "presets": {
+        "snappy": { "fast": 100, "medium": 250, "ratio": 0.75, "use": "Productivity tools, data-heavy interfaces" },
+        "default": { "fast": 175, "medium": 410, "slow": 975, "ratio": 0.75, "use": "General purpose" },
+        "cinematic": { "fast": 200, "medium": 500, "slow": 1200, "ratio": 0.7, "use": "Marketing, portfolio, storytelling" }
+      },
+      "source": "astryx-main/packages/core/src/theme/expandMotionScale.ts (Meta production code)",
+      "designImplication": "Replace fixed duration tokens with ratio-computed min/base/max. Map motion presets to Three Dials system: MOTION_INTENSITY low → snappy, medium → default, high → cinematic."
+    },
+
+    "astryxHCTColorModel": {
+      "rule": "Color palette generation uses HCT (Hue-Chroma-Tone) perceptual color space instead of HSL. HCT guarantees perceptually uniform lightness across hues.",
+      "advantage": "In HSL, 'same lightness' produces visually different brightness (yellow appears brighter than blue at same L). HCT's Tone dimension ensures equal perceptual brightness regardless of hue.",
+      "paletteGeneration": {
+        "tones": [0, 5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 99, 100],
+        "neutralChroma": { "warm": 7, "cool": 5, "neutral": 3 },
+        "minPrimaryChroma": 48,
+        "gamutMapping": "Binary search reducing chroma until color is within sRGB gamut"
+      },
+      "source": "astryx-main/packages/core/src/theme/hct.ts + expandColorScale.ts (Meta production code)",
+      "designImplication": "ProdigeUI color-palette-generation skill should recommend HCT-based generation. All tone values in the palette are perceptually equivalent in lightness — critical for consistent UI."
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "dataVisualization": {
+    "maxSeriesColors": 7,
+    "maxSeriesColorsSource": "Miller's Law — 7±2 distinguishable items in working memory (Laws of UX; Color Works Ch.3)",
+    "minContrastBetweenSeries": 3.0,
+    "minContrastBetweenSeriesSource": "WCAG non-text UI element contrast minimum (Color Works; accessibility research)",
+    "neverRelyOnColorAlone": true,
+    "neverRelyOnColorAloneSource": "8% male color blindness prevalence; use patterns/shapes/labels as secondary cue (100 Things #34; WCAG 1.4.1)",
+    "labelDirectly": true,
+    "labelDirectlySource": "Direct labeling eliminates legend lookup — reduces cognitive load (Refactoring UI; Edward Tufte principle)",
+    "axisTypography": "typography.size.caption",
+    "axisTypographySource": "Smallest readable size for supplementary info (The Elements of Typographic Style, Bringhurst)",
+    "gridLineStyle": {
+      "color": "color.border",
+      "opacity": 0.3,
+      "style": "dashed-or-dotted"
+    },
+    "gridLineStyleSource": "Grid lines must recede visually — opacity + dashed reduces competition with data (Practical UI; Tufte 'data-ink ratio')",
+    "chartTitleRequired": true,
+    "chartTitleRequiredSource": "Every visualization must announce what it shows — cognitive orientation (Don't Make Me Think, Ch.6)",
+    "emptyStateRequired": true,
+    "loadingSkeletonRequired": true,
+    "tooltipOnHover": true,
+    "tooltipFormat": "value-first-then-label",
+    "aspectRatio": {
+      "line": "16:9",
+      "bar": "4:3",
+      "pie": "1:1"
+    },
+    "responsiveBehavior": "simplify-not-shrink",
+    "responsiveBehaviorSource": "On mobile, reduce data points or switch chart type rather than shrinking (Practical UI; responsive data viz methodology)"
+  }
+}

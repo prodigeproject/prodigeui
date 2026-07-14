@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "description": "Semantic quality invariants distilled from the accepted ProdigeUI v2 standard. This is a reasoning profile, never a page template.",
+  "benchmarkGeometryAllowed": false,
+  "application": {
+    "rule": "Select a profile from the current brief and record why it applies before choosing colors, fonts, or layout. Transfer its product logic and quality threshold, then derive fresh copy and composition.",
+    "never": [
+      "load benchmark HTML as generation context",
+      "copy benchmark headlines, section order, class names, dimensions, or color values",
+      "treat visual similarity as a substitute for product-specific reasoning"
+    ],
+    "proof": "A no-reference generation must visibly retain the applicable intent, artifact credibility, type-role discipline, palette commitment, focal hierarchy, rhythm, and closing behavior."
+  },
+  "profiles": {
+    "operationalProduct": {
+      "productIntent": "Make the value mechanism explicit in the first viewport: real work evidence changes a current plan or operating record without manual status reporting.",
+      "artifactSemantics": {
+        "required": "One legible domain-specific product state with real nouns, timestamps or ownership, a meaningful risk, and a next decision.",
+        "rule": "The artifact proves the headline; it is not a decorative dashboard shell or a stack of generic cards."
+      },
+      "typeRoles": {
+        "display": "Technical-human editorial authority for identity and major hierarchy.",
+        "body": "Calm UI reading voice for explanation and actions.",
+        "annotation": "Restrained mono or tabular voice only for operational evidence."
+      },
+      "paletteCommitment": "Prefer a quiet, high-legibility surface family with one product-derived signal and one deep operational anchor. Use accent as evidence or decision state before resolving it at the close.",
+      "focalHierarchy": "Headline and credible product state share the first viewport; assurance, navigation, and secondary actions remain subordinate.",
+      "rhythmArgument": "Move between calm explanation, dense evidence, structured choice, and a decisive close. Change layout family and surface role when the information job changes; do not turn the page into repeated bordered modules.",
+      "closingBehavior": "Resolve with the established signal or primary operational surface, explicit foreground ownership, and one outcome-specific action.",
+      "reject": [
+        "poetic AI metaphor that obscures the product mechanism",
+        "generic kanban or analytics chrome without domain evidence",
+        "equal-card repetition across sections",
+        "agency-scale typography or theatrical effects that compete with trust",
+        "new or muddy campaign hue introduced only at the final CTA"
+      ]
+    },
+    "expressiveStudio": {
+      "productIntent": "Make the studio feel capable of turning a small strategic idea into a visible cultural event before asking the visitor to inspect services.",
+      "artifactSemantics": {
+        "required": "The studio name, proposition, and one concept-tied graphic or engine form a single first-viewport statement.",
+        "rule": "Artwork is authored as a visual idea with owned captions, not a fake app UI, random gradient mesh, or stock agency decoration."
+      },
+      "typeRoles": {
+        "display": "A committed identity voice that owns repeated poster-scale moments.",
+        "body": "An editorial countervoice for belief, explanation, and cultural tone.",
+        "annotation": "A controlled UI voice for navigation, captions, and project metadata."
+      },
+      "paletteCommitment": "Choose a committed product-derived color family with named structural roles. Saturated fields may carry composition; accents must recur with the same meaning and captions must own a stable contrasting backdrop.",
+      "focalHierarchy": "The proposition dominates, the concept graphic amplifies it, and compact studio copy explains it. No secondary element may compete for first read.",
+      "rhythmArgument": "Alternate high-volume identity moments with editorial breathing room, then increase density around work and capability before a large closing afterimage. Avoid one repeated agency section pattern.",
+      "closingBehavior": "Return to an established primary surface and reuse existing signal roles. The final action is conceptually tied to the studio voice and remains keyboard-safe.",
+      "reject": [
+        "black-orange AI agency template used by reflex",
+        "cream editorial template with fashionable serif switching but no concept",
+        "generic WebGL particles unrelated to the proposition",
+        "captions placed directly over uncontrolled artwork pixels",
+        "shrinking expressive display type until the page becomes competent but forgettable"
+      ]
+    }
+  },
+  "requiredQualityCriteria": [
+    "quality-profile-transfer",
+    "type-role-integrity",
+    "font-render-truth",
+    "closing-cta-color-continuity"
+  ]
+}

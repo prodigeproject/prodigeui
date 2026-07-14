@@ -1,0 +1,75 @@
+{
+  "name": "landing-hero-page",
+  "useCase": "landing",
+  "context": "Design a high-impact landing page hero section for a product or service launch. The audience is potential customers arriving from ads, search, or social media who need to understand the value proposition within 5 seconds. Target platforms: desktop, tablet, and mobile. The hero must balance visual impact with fast load time and clear call-to-action hierarchy.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json heading scale for clear visual hierarchy",
+    "Apply color.rules.json accent color usage and contrast requirements",
+    "Layout must be fully responsive across layout.rules.json breakpoints",
+    "CTA buttons must have minimum 44x44px touch target on mobile",
+    "Images and illustrations must reference Design_Asset_Package by asset ID",
+    "Motion must use Motion_Library presets for entrance animations",
+    "Comply with Quality_Gate: proper heading hierarchy (h1 first), no decorative-only content without alt text"
+  ],
+  "outputCriteria": {
+    "format": "Page section spec with component tree, token mappings, responsive behavior, and motion choreography",
+    "qualityChecks": [
+      "Single h1 heading present with clear value proposition",
+      "All colors reference semantic tokens",
+      "CTA has sufficient contrast and prominent visual weight",
+      "Responsive layout adapts gracefully at all defined breakpoints",
+      "Motion uses declared presets from Motion_Library, not custom durations"
+    ],
+    "accessibilityRequirements": [
+      "Hero heading is h1 and conveys the primary message",
+      "All images have meaningful alt text or are marked decorative",
+      "CTA button text describes the action (not generic 'Click here')",
+      "Focus order follows visual reading order",
+      "Animations respect prefers-reduced-motion via Motion_Library reduce-motion mode"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Product launch hero section with headline, subtext, CTA, and hero illustration",
+      "output": "Section: HeroSection\n  Layout: flex(direction=column @mobile, row @desktop), gap: var(--space-xl)\n  bg: var(--color-surface-primary)\n  padding: var(--space-2xl) var(--space-lg)\n  Children:\n    - Organism: HeroContent\n        - Atom: Heading(level=h1, token=typography.display.lg, color=color.text.primary)\n            text: 'Ship faster with confidence'\n        - Atom: Text(token=typography.body.lg, color=color.text.secondary)\n            text: 'The design system that scales with your product.'\n        - Atom: Button(variant=primary, size=lg)\n            bg: var(--color-action-primary)\n            label: 'Get started free'\n            motion: enter-exit.fade-up(delay: 200ms)\n    - Atom: Image(assetId=illustration.hero-product, alt='Product dashboard preview')\n  Motion: enter-exit.fade-in(stagger: 100ms)",
+      "acceptanceCriteria": [
+        "Uses semantic tokens for all visual properties",
+        "Heading hierarchy starts with h1",
+        "CTA uses action color token for prominence",
+        "Motion references Motion_Library presets with valid durations",
+        "Image references asset by ID from Design_Asset_Package"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.primary",
+      "space.lg",
+      "space.xl",
+      "space.x2l",
+      "typography.size.display",
+      "typography.size.body-lg"
+    ],
+    "components": [
+      "Button",
+      "Text",
+      "Avatar",
+      "Text"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "fade-in",
+      "parallax-subtle"
+    ]
+  }
+}

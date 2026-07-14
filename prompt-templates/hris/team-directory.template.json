@@ -1,0 +1,77 @@
+{
+  "name": "hris-team-directory",
+  "useCase": "hris",
+  "context": "Design an employee directory interface for an HRIS application. The audience is HR managers and employees searching for team members, viewing org charts, and accessing contact information. Target platforms: desktop and mobile responsive. Must support grid and list view, search/filter by department, and employee profile quick view.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json for employee names, titles, and department labels",
+    "Apply color.rules.json for department color coding and status indicators",
+    "Use layout.rules.json responsive grid (3-4 columns desktop, 2 tablet, 1 mobile)",
+    "Employee cards must show avatar, name, role, and department at minimum",
+    "Search and filter controls must have proper form semantics",
+    "Grid items must be keyboard navigable with clear focus indicators",
+    "Comply with Quality_Gate anti-AI-slop checklist"
+  ],
+  "outputCriteria": {
+    "format": "Page layout spec with directory grid, search/filter bar, and employee card design",
+    "qualityChecks": [
+      "All color values resolve to semantic tokens",
+      "Employee cards use consistent spacing and alignment",
+      "Search results update with clear count announcement",
+      "Grid adapts to responsive breakpoints properly",
+      "No raw/hardcoded visual values present"
+    ],
+    "accessibilityRequirements": [
+      "Employee cards are keyboard navigable as a grid",
+      "Avatar images have alt text with employee name",
+      "Search results count announced via aria-live",
+      "Department filter uses proper combobox or listbox role",
+      "Quick view modal manages focus correctly"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Employee directory card with avatar and contact info",
+      "output": "Molecule: EmployeeCard\n  Layout: flex(direction: column, align: center, gap: var(--space-sm))\n  bg: var(--color-surface-primary)\n  border: var(--border-default)\n  radius: var(--radius-lg)\n  padding: var(--space-lg)\n  Children:\n    - Atom: Avatar(size=lg, radius=var(--radius-full), alt='Employee Name')\n    - Atom: Text(role=heading, level=3, token=typography.body.md, weight=medium, color=color.text.primary)\n    - Atom: Text(token=typography.body.sm, color=color.text.secondary, content='Job Title')\n    - Atom: Badge(label='Department', variant=subtle, color=department-semantic)\n    - Molecule: ContactActions(layout=flex, gap=var(--space-xs))\n        - Atom: Button(icon=mail, variant=ghost, size=sm, aria-label='Email Employee Name')\n        - Atom: Button(icon=phone, variant=ghost, size=sm, aria-label='Call Employee Name')\n  States: default, hover(shadow: var(--shadow-md)), focus(outline: var(--color-focus-ring))",
+      "acceptanceCriteria": [
+        "Uses semantic tokens for all styling",
+        "Avatar has meaningful alt text",
+        "Action buttons have descriptive aria-labels",
+        "Department badge uses semantic color variant"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.foreground",
+      "color.muted-foreground",
+      "space.sm",
+      "space.lg",
+      "space.xs",
+      "radius.lg",
+      "radius.full",
+      "shadow.md",
+      "typography.size.body",
+      "typography.size.body-sm"
+    ],
+    "components": [
+      "Card",
+      "Button",
+      "Badge",
+      "Text",
+      "SearchBar",
+      "Modal"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "button-press",
+      "fade-in"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "category": "state-transition",
+  "description": "Animations for component state changes (success, error, loading completion).",
+  "presets": [
+    {
+      "name": "success-pop",
+      "duration": "motion.duration.normal",
+      "easing": "motion.easing.spring",
+      "properties": { "scale": { "from": 0.9, "to": 1 }, "opacity": { "from": 0, "to": 1 } },
+      "principle": "Positive outcomes feel expansive",
+      "reduceMotion": { "duration": "100ms", "properties": { "opacity": { "from": 0, "to": 1 } } }
+    },
+    {
+      "name": "error-shake",
+      "duration": "motion.duration.normal",
+      "easing": "motion.easing.standard",
+      "properties": { "translateX": { "keyframes": ["0px", "-6px", "6px", "-4px", "4px", "0px"] } },
+      "principle": "Errors need firm, attention-grabbing feedback",
+      "reduceMotion": { "duration": "100ms", "properties": { "opacity": { "keyframes": [1, 0.7, 1] } } }
+    },
+    {
+      "name": "collapse",
+      "duration": "motion.duration.normal",
+      "easing": "motion.easing.standard",
+      "properties": { "gridTemplateRows": { "from": "1fr", "to": "0fr" }, "opacity": { "from": 1, "to": 0 } },
+      "principle": "Spatial changes need motion to maintain mental model",
+      "reduceMotion": { "duration": "0ms", "properties": { "opacity": { "from": 1, "to": 0 } } }
+    }
+  ]
+}

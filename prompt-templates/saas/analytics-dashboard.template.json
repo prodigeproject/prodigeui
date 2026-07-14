@@ -1,0 +1,85 @@
+{
+  "name": "saas-analytics-dashboard",
+  "useCase": "saas",
+  "context": "Design a data analytics dashboard with interactive charts, filterable date ranges, and exportable reports. The audience is product managers and growth teams who need to track user engagement, conversion funnels, and revenue metrics over time. Target platforms: desktop (primary) and tablet landscape. The interface must handle large datasets gracefully, support chart type switching, and provide meaningful empty/loading states.",
+  "constraints": [
+    "All visual values must reference Design_Token (no raw hex, px, or rem values)",
+    "Follow typography.rules.json scale for metric labels, values, and axis text",
+    "Apply color.rules.json data visualization palette (min 5 distinguishable colors with 3:1 contrast between adjacent series)",
+    "Charts must not rely solely on color: use patterns, labels, or shapes as secondary differentiators",
+    "Layout must use layout.rules.json grid with responsive card placement",
+    "Loading states must use skeleton patterns with Motion_Library shimmer preset",
+    "Date range picker must support presets (7d, 30d, 90d) and custom range",
+    "Comply with Quality_Gate: meaningful chart titles, no orphaned legends, proper data density"
+  ],
+  "outputCriteria": {
+    "format": "Analytics dashboard spec with chart components, filter controls, metric cards, data tables, and responsive grid layout",
+    "qualityChecks": [
+      "Chart colors use data visualization token palette with sufficient contrast",
+      "Every chart has a descriptive title and optional subtitle for context",
+      "Loading skeletons match final layout dimensions to prevent CLS",
+      "Filter controls persist selection state visually using action tokens",
+      "Export actions are accessible but visually secondary to primary data"
+    ],
+    "accessibilityRequirements": [
+      "All charts include accessible descriptions via aria-label or structured data table fallback",
+      "Data series distinguishable without color via patterns or direct labels",
+      "Date picker is keyboard operable with proper ARIA calendar role",
+      "Metric changes announced via aria-live when filters update",
+      "Chart tooltips are accessible to keyboard and screen readers"
+    ]
+  },
+  "examples": [
+    {
+      "description": "Revenue chart card with date filter, line chart, and legend",
+      "output": "Organism: ChartCard\n  bg: var(--color-surface-primary)\n  border: var(--border-default)\n  radius: var(--radius-lg)\n  padding: var(--space-lg)\n  Children:\n    - Molecule: ChartHeader(flex, justify=space-between)\n        - Atom: Heading(level=h3, token=typography.heading.sm, text='Revenue over time')\n        - Molecule: DateRangeFilter\n            - Atom: Button(variant=ghost, label='7d')\n            - Atom: Button(variant=ghost, label='30d', aria-pressed=true, bg=color.surface.active)\n            - Atom: Button(variant=ghost, label='90d')\n    - Molecule: LineChart(height: 280px, aria-label='Revenue trend line chart')\n        series: [{ color: var(--color-data-1), pattern: solid }]\n        axis-y: token=typography.body.xs, color=color.text.tertiary\n        axis-x: token=typography.body.xs, color=color.text.tertiary\n        gridLines: var(--color-border-subtle)\n    - Molecule: Legend(flex, gap=space.md)\n        - Atom: LegendItem(color=color.data.1, pattern=solid, label='Total Revenue')\n  LoadingState:\n    - Atom: Skeleton(height=280px, radius=radius.md, motion=shimmer)",
+      "acceptanceCriteria": [
+        "Chart uses data visualization token palette (color.data.x)",
+        "Date filter buttons indicate active state with surface.active token",
+        "Chart includes aria-label for screen reader identification",
+        "Loading state uses skeleton with Motion_Library shimmer preset",
+        "Axis text uses smallest typography scale token"
+      ]
+    }
+  ],
+  "references": {
+    "tokens": [
+      "color.background",
+      "color.accent",
+      "color.primary",
+      "color.success",
+      "color.warning",
+      "color.foreground",
+      "color.muted-foreground",
+      "color.border",
+      "border.width.default",
+      "space.md",
+      "space.lg",
+      "radius.lg",
+      "radius.md",
+      "typography.size.h5",
+      "typography.size.caption"
+    ],
+    "components": [
+      "Card",
+      "Button",
+      "Chart",
+      "Skeleton",
+      "DatePicker",
+      "Table",
+      "Text"
+    ],
+    "designRules": [
+      "typography.rules.json",
+      "color.rules.json",
+      "layout.rules.json",
+      "structure.rules.json"
+    ],
+    "theme": "light",
+    "motionPresets": [
+      "button-press",
+      "fade-in",
+      "progress-bar"
+    ]
+  }
+}

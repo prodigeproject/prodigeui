@@ -1,0 +1,21 @@
+{
+  "description": "Motion tokens for duration and easing. All motion presets reference these tokens.",
+  "tokens": {
+    "duration": {
+      "instant": { "value": "100ms", "description": "Tooltip, micro-feedback (80-120ms)" },
+      "fast": { "value": "150ms", "description": "Button press, toggle (120-180ms)" },
+      "normal": { "value": "250ms", "description": "Icon, card standard (200-350ms)" },
+      "slow": { "value": "350ms", "description": "Modal, panel (300-400ms)" },
+      "emphasis": { "value": "500ms", "description": "Page transition (400-600ms)" },
+      "dramatic": { "value": "700ms", "description": "Hero reveals, max UI duration" }
+    },
+    "easing": {
+      "entrance": { "value": "cubic-bezier(0.33, 1, 0.68, 1)", "description": "Decelerate — elements appearing" },
+      "exit": { "value": "cubic-bezier(0.32, 0, 0.67, 0)", "description": "Accelerate — elements leaving" },
+      "standard": { "value": "cubic-bezier(0.65, 0, 0.35, 1)", "description": "On-screen movement" },
+      "spring": { "value": "cubic-bezier(0.175, 0.885, 0.32, 1.275)", "description": "Spring overshoot — playful" },
+      "emphasized": { "value": "cubic-bezier(0.05, 0.7, 0.1, 1)", "description": "Emphasized decelerate — attention" },
+      "linear": { "value": "linear", "description": "Linear — spinners, progress bars only" }
+    }
+  }
+}
