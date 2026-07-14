@@ -1,0 +1,345 @@
+{
+  "generatedAt": "2026-07-14T17:50:28.132Z",
+  "rows": [
+    {
+      "target": "flowai-approved",
+      "family": "flowai",
+      "viewport": "desktop",
+      "pageHeight": 4374,
+      "overflow": 0,
+      "hiddenMeaningful": 0,
+      "brokenMedia": 0,
+      "smallTargets": 0,
+      "contrastFailures": [],
+      "h1": {
+        "text": "The plan should follow the work.",
+        "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+        "size": "90.72px",
+        "lineHeight": "84.3696px",
+        "box": [
+          120,
+          206.4,
+          595.8,
+          253.1
+        ],
+        "clipped": false
+      },
+      "bodyBackground": "rgb(245, 241, 232)",
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "sectionCount": 6,
+      "fontFaces": [
+        "Recursive Local:loaded",
+        "Manrope Local:loaded",
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "closingContinuity": true,
+      "engineReady": "n/a",
+      "intendedDisplay": true,
+      "disclosureKeyboard": true,
+      "keyboardFocus": true,
+      "external": [],
+      "errors": []
+    },
+    {
+      "target": "flowai-approved",
+      "family": "flowai",
+      "viewport": "mobile",
+      "pageHeight": 6414,
+      "overflow": 0,
+      "hiddenMeaningful": 0,
+      "brokenMedia": 0,
+      "smallTargets": 0,
+      "contrastFailures": [],
+      "h1": {
+        "text": "The plan should follow the work.",
+        "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+        "size": "56.55px",
+        "lineHeight": "52.5915px",
+        "box": [
+          15,
+          160,
+          360,
+          157.7
+        ],
+        "clipped": false
+      },
+      "bodyBackground": "rgb(245, 241, 232)",
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "sectionCount": 6,
+      "fontFaces": [
+        "Recursive Local:loaded",
+        "Manrope Local:loaded",
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "closingContinuity": true,
+      "engineReady": "n/a",
+      "intendedDisplay": true,
+      "disclosureKeyboard": true,
+      "keyboardFocus": true,
+      "external": [],
+      "errors": []
+    },
+    {
+      "target": "flowai-anchored",
+      "family": "flowai",
+      "viewport": "desktop",
+      "pageHeight": 4502,
+      "overflow": 0,
+      "hiddenMeaningful": 0,
+      "brokenMedia": 0,
+      "smallTargets": 0,
+      "contrastFailures": [],
+      "h1": {
+        "text": "A plan that reads the work.",
+        "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+        "size": "92px",
+        "lineHeight": "85.56px",
+        "box": [
+          120,
+          192.6,
+          525.3,
+          256.6
+        ],
+        "clipped": false
+      },
+      "bodyBackground": "rgb(243, 240, 232)",
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "sectionCount": 6,
+      "fontFaces": [
+        "Recursive Local:loaded",
+        "Manrope Local:loaded",
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "closingContinuity": true,
+      "engineReady": "n/a",
+      "intendedDisplay": true,
+      "disclosureKeyboard": true,
+      "keyboardFocus": true,
+      "external": [],
+      "errors": []
+    },
+    {
+      "target": "flowai-anchored",
+      "family": "flowai",
+      "viewport": "mobile",
+      "pageHeight": 6654,
+      "overflow": 0,
+      "hiddenMeaningful": 0,
+      "brokenMedia": 0,
+      "smallTargets": 0,
+      "contrastFailures": [],
+      "h1": {
+        "text": "A plan that reads the work.",
+        "font": "\"Recursive Local\", \"Segoe UI\", sans-serif",
+        "size": "56.55px",
+        "lineHeight": "52.5915px",
+        "box": [
+          15,
+          160,
+          360,
+          157.7
+        ],
+        "clipped": false
+      },
+      "bodyBackground": "rgb(243, 240, 232)",
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "sectionCount": 6,
+      "fontFaces": [
+        "Recursive Local:loaded",
+        "Manrope Local:loaded",
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "closingContinuity": true,
+      "engineReady": "n/a",
+      "intendedDisplay": true,
+      "disclosureKeyboard": true,
+      "keyboardFocus": true,
+      "external": [],
+      "errors": []
+    },
+    {
+      "target": "nova-approved",
+      "family": "nova",
+      "viewport": "desktop",
+      "pageHeight": 4377,
+      "overflow": 0,
+      "hiddenMeaningful": 0,
+      "brokenMedia": 0,
+      "smallTargets": 0,
+      "contrastFailures": [],
+      "h1": {
+        "text": "Makeimpact.",
+        "font": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+        "size": "227.52px",
+        "lineHeight": "179.741px",
+        "box": [
+          57.6,
+          191.1,
+          1324.8,
+          359.5
+        ],
+        "clipped": false
+      },
+      "bodyBackground": "rgb(241, 234, 223)",
+      "heroBackground": "rgb(31, 66, 216)",
+      "sectionCount": 5,
+      "fontFaces": [],
+      "closingContinuity": true,
+      "engineReady": "true",
+      "intendedDisplay": true,
+      "disclosureKeyboard": "n/a",
+      "keyboardFocus": true,
+      "external": [],
+      "errors": []
+    },
+    {
+      "target": "nova-approved",
+      "family": "nova",
+      "viewport": "mobile",
+      "pageHeight": 4211,
+      "overflow": 0,
+      "hiddenMeaningful": 0,
+      "brokenMedia": 0,
+      "smallTargets": 0,
+      "contrastFailures": [],
+      "h1": {
+        "text": "Makeimpact.",
+        "font": "\"Arial Black\", \"Segoe UI Black\", \"Arial Narrow\", sans-serif",
+        "size": "72.15px",
+        "lineHeight": "56.9985px",
+        "box": [
+          20,
+          255.7,
+          350,
+          114
+        ],
+        "clipped": false
+      },
+      "bodyBackground": "rgb(241, 234, 223)",
+      "heroBackground": "rgb(31, 66, 216)",
+      "sectionCount": 5,
+      "fontFaces": [],
+      "closingContinuity": true,
+      "engineReady": "true",
+      "intendedDisplay": true,
+      "disclosureKeyboard": "n/a",
+      "keyboardFocus": true,
+      "external": [],
+      "errors": []
+    },
+    {
+      "target": "nova-anchored",
+      "family": "nova",
+      "viewport": "desktop",
+      "pageHeight": 4456,
+      "overflow": 0,
+      "hiddenMeaningful": 0,
+      "brokenMedia": 0,
+      "smallTargets": 0,
+      "contrastFailures": [],
+      "h1": {
+        "text": "Make itmatter.",
+        "font": "\"Arial Black\", \"Segoe UI Black\", Impact, sans-serif",
+        "size": "223.2px",
+        "lineHeight": "176.328px",
+        "box": [
+          57.6,
+          226.3,
+          1042.1,
+          352.7
+        ],
+        "clipped": false
+      },
+      "bodyBackground": "rgb(241, 234, 223)",
+      "heroBackground": "rgb(33, 68, 216)",
+      "sectionCount": 5,
+      "fontFaces": [
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "closingContinuity": true,
+      "engineReady": "true",
+      "intendedDisplay": true,
+      "disclosureKeyboard": "n/a",
+      "keyboardFocus": true,
+      "external": [],
+      "errors": []
+    },
+    {
+      "target": "nova-anchored",
+      "family": "nova",
+      "viewport": "mobile",
+      "pageHeight": 4300,
+      "overflow": 0,
+      "hiddenMeaningful": 0,
+      "brokenMedia": 0,
+      "smallTargets": 0,
+      "contrastFailures": [],
+      "h1": {
+        "text": "Make itmatter.",
+        "font": "\"Arial Black\", \"Segoe UI Black\", Impact, sans-serif",
+        "size": "70.98px",
+        "lineHeight": "56.0742px",
+        "box": [
+          20,
+          278,
+          331.4,
+          112.1
+        ],
+        "clipped": false
+      },
+      "bodyBackground": "rgb(241, 234, 223)",
+      "heroBackground": "rgb(33, 68, 216)",
+      "sectionCount": 5,
+      "fontFaces": [
+        "DM Mono Local:loaded",
+        "DM Mono Local:loaded"
+      ],
+      "closingContinuity": true,
+      "engineReady": "true",
+      "intendedDisplay": true,
+      "disclosureKeyboard": "n/a",
+      "keyboardFocus": true,
+      "external": [],
+      "errors": []
+    }
+  ],
+  "comparisons": {
+    "flowai": {
+      "desktop": {
+        "heightRatio": 1.029,
+        "sameDisplayFamily": true,
+        "sameBodyBackground": false,
+        "sameHeroBackground": true,
+        "sectionDelta": 0
+      },
+      "mobile": {
+        "heightRatio": 1.037,
+        "sameDisplayFamily": true,
+        "sameBodyBackground": false,
+        "sameHeroBackground": true,
+        "sectionDelta": 0
+      }
+    },
+    "nova": {
+      "desktop": {
+        "heightRatio": 1.018,
+        "sameDisplayFamily": false,
+        "sameBodyBackground": true,
+        "sameHeroBackground": false,
+        "sectionDelta": 0
+      },
+      "mobile": {
+        "heightRatio": 1.021,
+        "sameDisplayFamily": false,
+        "sameBodyBackground": true,
+        "sameHeroBackground": false,
+        "sectionDelta": 0
+      }
+    }
+  }
+}
