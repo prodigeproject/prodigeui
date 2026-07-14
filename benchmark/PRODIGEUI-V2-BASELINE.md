@@ -1,6 +1,11 @@
-# ProdigeUI v2 Baseline Lock
+# ProdigeUI v2 Reference-Anchored Baseline (Preserved Comparator)
 
 Status: **accepted by the user on 2026-07-15 (Asia/Jakarta)**
+
+This restore point is preserved unchanged as the reference-anchored comparator. The newer
+full ProdigeUI system state accepted by the user is the active baseline and is documented in
+`PRODIGEUI-V2-SYSTEM-BASELINE.md`. Keeping both checkpoints prevents the active system
+baseline from being confused with a reference-assisted benchmark lock.
 
 This checkpoint locks the current ProdigeUI v2 system and its last accepted benchmark
 outputs. It intentionally does not promote benchmark geometry into the canonical generation
@@ -52,4 +57,3 @@ the accepted regeneration.
 The rejected `*-v2-fresh-regeneration.html` outputs and their review/evidence are not part of
 this baseline. Historical benchmark experiments, recovery patches, and unrelated dirty
 worktree changes are also excluded.
-
