@@ -57,6 +57,15 @@ must clearly outrank everything else by SIZE, CONTRAST, or MOTION:
 - Bento → one hero cell dominates by span + media richness.
 If two things compete for "most important," the composition is flat. Cut or demote one.
 
+### Visual-mass audit
+
+After the first viewport exists, squint or temporarily remove imagery and motion. Compare
+the apparent mass of the headline, artifact/media, navigation, CTA, and empty field. Balance
+does not mean equal columns or mirrored geometry: a large quiet field can counter a compact
+dark artifact, and a small high-contrast action can counter a broad low-contrast headline.
+Name the counterweight in the Design Read. If the page feels heavy on one side, adjust scale,
+anchoring, crop, or contrast before adding another visual treatment.
+
 ## Type scale relationships across the page (not just the hero)
 
 Pick a fluid display ramp and a modular UI scale, and keep them consistent page-wide:

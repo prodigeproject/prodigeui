@@ -368,6 +368,9 @@ for the full rubric):
 - [ ] **Real media** where the concept calls for it (video/image), not gray placeholder
       boxes — see `assets/asset-sourcing.guide.md`.
 - [ ] **A clear focal point** per viewport (one dominant element), not uniform weight.
+- [ ] **Visual mass is intentional.** The first viewport has a named counterweight for its
+      dominant text/artifact; asymmetry is deliberate and quiet space is doing framing or
+      pacing work rather than leaving an accidental heavy side.
 
 Reference the `craft/` library to implement these. Output that fails the craft presence
 check should loop back to Step 6 (Motion) / craft selection, not ship.

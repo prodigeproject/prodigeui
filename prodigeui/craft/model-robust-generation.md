@@ -71,6 +71,12 @@ beyond fixed viewport presets.
    clipped text, horizontal overflow, dead space, and computed foreground/background for
    every interactive state. Scan for mojibake before delivery.
 
+7. **Balance visual mass, not just boxes.** Compare the apparent weight of the headline,
+   product/art artifact, chrome, and empty field in the first viewport. A balanced layout
+   may be asymmetrical, but it should have a deliberate counterweight: scale, alignment,
+   crop, color area, or a quiet field. Fix imbalance by changing hierarchy or anchoring,
+   never by sprinkling badges, gradients, shadows, or extra cards.
+
 ## One-build preflight (before emitting code)
 
 The executable authority is `canonical/generation.contract.json#oneBuildPreflight`. Complete
@@ -209,6 +215,10 @@ Before coding, write five short decisions in working context:
 4. **Focal hierarchy:** name the single dominant subject and what must remain subordinate.
 5. **Rhythm argument:** describe how the page changes pace across sections without naming a
    reusable template or forcing a fixed sequence.
+
+Add a visual-weight note: state what counterweights the focal subject and where the quietest
+field is doing work. The first viewport should make its hierarchy legible even when imagery,
+motion, transparency, and custom fonts are temporarily disabled.
 
 Reject and rethink the direction when any answer could be pasted unchanged onto an unrelated
 SaaS, agency, portfolio, or store. Smaller or imitation-prone models must spend their effort

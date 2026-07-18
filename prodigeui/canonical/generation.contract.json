@@ -11,6 +11,7 @@
       "limit rendered typography to two primary faces plus one annotation face and no more than four perceptual 100-weight bands",
       "reserve platform-appropriate target geometry and spacing; on touch web use at least 44 by 44 CSS pixels, while pointer-dense interfaces may use the canonical 32px desktop target",
       "choose the hero focal subject and expressive work-subject scale before laying out cards or frames",
+      "audit visual mass at the first viewport: compare the dominant text block, artifact/media, and intentional empty field; rebalance scale, alignment, or anchoring when one side feels heavier without inventing decoration",
       "write desktop and mobile containment rules, final visible content states, font delivery, and reduced-motion behavior into the first implementation",
       "use local deterministic assets, UTF-8 text, and encoded HTML symbols; do not depend on remote runtime requests"
     ],
