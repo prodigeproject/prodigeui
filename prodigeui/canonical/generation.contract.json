@@ -11,13 +11,22 @@
       "limit rendered typography to two primary faces plus one annotation face and no more than four perceptual 100-weight bands",
       "reserve platform-appropriate target geometry and spacing; on touch web use at least 44 by 44 CSS pixels, while pointer-dense interfaces may use the canonical 32px desktop target",
       "choose the hero focal subject and expressive work-subject scale before laying out cards or frames",
+      "make an asset decision before composition: prefer user and project assets, then relevant official or license-cleared real media discovered online and downloaded locally; generate original imagery only when no authentic source fits or the concept specifically requires new artwork",
+      "integrate generated media into the art direction: its crop, palette, scale, surface transition, and neighboring type must feel authored as one composition; reject a generated image merely dropped into a generic card",
+      "for every sourced or generated asset, verify subject relevance and usage rights, record source/license/provenance, store the selected file locally, and consume that local file without remote runtime dependency",
       "audit visual mass at the first viewport: compare the dominant text block, artifact/media, and intentional empty field; rebalance scale, alignment, or anchoring when one side feels heavier without inventing decoration",
+      "size cards from content and composition rather than equal-height convenience; if a large card has unused area, add meaningful product evidence or media, reduce its span or height, or change the layout",
+      "choose pricing topology from comparison complexity: use cards only when each plan contains enough differentiated evidence; otherwise use a compact comparison table, segmented matrix, or one featured plan with concise alternatives",
+      "keep design rationale private: never render audit notes, counterweight explanations, placeholder instructions, or system terminology as user-facing copy",
+      "verify section adjacency at desktop and mobile; reject empty vertical bands that do not frame a focal subject, separate a meaningful chapter, or support comprehension",
       "write desktop and mobile containment rules, final visible content states, font delivery, and reduced-motion behavior into the first implementation",
       "use local deterministic assets, UTF-8 text, and encoded HTML symbols; do not depend on remote runtime requests"
     ],
     "surfacePairRule": "Any selector that changes a surface background also assigns or inherits a verified foreground role for text, icons, captions, hover, focus, and active states.",
+    "contextualLabelRule": "Labels, eyebrows, metadata, and subdued text require their own verified foreground on every dark, accent, image, and tinted surface; never reuse a same-hue label token merely because it works on the page background.",
     "firstBuildAcceptance": [
       "no runtime errors, external requests, broken assets, mojibake, hidden meaningful content, or horizontal overflow",
+      "no conspicuously empty card whose size is unsupported by content, evidence, interaction, or concept-specific media",
       "zero normal-text and large-text contrast failures at desktop and mobile",
       "zero touch targets below 44 by 44 CSS pixels and zero pointer-only desktop targets below the canonical 32px geometry",
       "intended display font rendered, no more than three functional font families, and no more than four perceptual weight bands",
@@ -89,7 +98,7 @@
     "reuseEstablishedSignalToken": true,
     "allowNewHueAtClose": false,
     "surfaceOwnsForeground": true,
-    "rule": "The closing CTA resolves the established palette story. Reuse the page's signal/accent or a primary surface; do not introduce a muddy near-match or a new campaign color at the final section.",
+    "rule": "The closing CTA resolves the established palette story and feels like a decisive destination, not a thin utility bar. Reuse the page's signal/accent or a primary surface; do not introduce a muddy near-match or a new campaign color at the final section.",
     "largeAccentSurfaceCondition": "A full accent field is allowed only when the accent was restrained earlier and text/button contrast is verified on the rendered surface."
   },
   "requiredQualityCriteria": [

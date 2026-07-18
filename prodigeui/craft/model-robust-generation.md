@@ -77,6 +77,26 @@ beyond fixed viewport presets.
    crop, color area, or a quiet field. Fix imbalance by changing hierarchy or anchoring,
    never by sprinkling badges, gradients, shadows, or extra cards.
 
+8. **Keep the critique out of the interface.** Counterweight notes, research labels,
+   placeholder instructions, and reasoning vocabulary belong in working context or the
+   quality report, never in visible product or campaign copy. Let composition demonstrate
+   balance instead of explaining it to the visitor.
+
+9. **Use the most authentic relevant media.** Start with user-provided and project assets.
+   When they do not satisfy the art direction and web discovery is available, find relevant
+   official, editorial, or license-cleared real imagery; verify rights and subject fit,
+   download the selected file locally, record its source/license, and consume the local copy.
+   Use image generation only when no authentic source fits, licensing blocks reuse, or the
+   concept specifically requires original artwork. A real product state, photograph, object,
+   place, or authored work is normally stronger evidence than a synthetic approximation.
+   Never settle for an empty oversized card or generic CSS blob because imagery was omitted.
+
+10. **Any media must be integrated.** Reject an otherwise attractive sourced or generated
+    asset when it
+    reads as a rectangular insert inside a generic card. Rework crop, palette, edge treatment,
+    scale, and adjacent typography until media and layout share one art direction. If that
+    cannot be achieved, remove the asset and choose a more truthful product proof.
+
 ## One-build preflight (before emitting code)
 
 The executable authority is `canonical/generation.contract.json#oneBuildPreflight`. Complete
@@ -168,6 +188,9 @@ contrast.
 
 - **Surface owns foreground:** any rule that sets a component background also sets its
   semantic text color in that same rule. Labels and icons inherit from the component root.
+- **Subdued text is still text:** eyebrows, metadata, helper labels, and annotations need a
+  context-specific foreground pair. A green label token that passes on paper must not be
+  inherited by a green surface; choose a light neutral or verified lighter tint instead.
 - Test computed styles inside both light and dark parents. Token-pair validation alone is
   insufficient because CSS inheritance can change the rendered pair.
 - Write UTF-8. Reject output containing the mojibake marker families identified by escaped
@@ -219,6 +242,19 @@ Before coding, write five short decisions in working context:
 Add a visual-weight note: state what counterweights the focal subject and where the quietest
 field is doing work. The first viewport should make its hierarchy legible even when imagery,
 motion, transparency, and custom fonts are temporarily disabled.
+
+Then remove that note from the rendered artifact. Inspect the full-page silhouette at desktop
+and mobile: consecutive sections must not create accidental blank bands. A large quiet field
+passes only when a focal subject visibly occupies, terminates, or is framed by it.
+
+Audit every repeated surface at the same time. Equal heights are not inherently coherent. A
+card that contains two short sentences must not inherit the height of a neighboring evidence
+panel unless its remaining field holds meaningful media, interaction, or a deliberate visual
+subject. Otherwise reduce its height/span or restructure the group.
+
+Apply the same density test to pricing. Three tiers do not automatically require three equal
+cards. When plan differences are sparse, use a compact matrix or one emphasized plan with
+short alternatives. Pricing should help comparison, not manufacture visual volume.
 
 Reject and rethink the direction when any answer could be pasted unchanged onto an unrelated
 SaaS, agency, portfolio, or store. Smaller or imitation-prone models must spend their effort

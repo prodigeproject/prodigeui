@@ -31,15 +31,41 @@ mesh with intent, CSS art, SVG). "Image goes here" is a failure state.
    (Enhancement Mode). This is always first choice.
 2. **Project asset directory.** Check `assets/` and the project's own `public/` or
    `src/assets/` before reaching outward.
-3. **Reputable free stock (attribution-aware).** For placeholders that must look real:
+3. **Relevant real media discovered online.** Search official product/brand press kits,
+   institutional archives, manufacturer galleries, credible editorial sources, and reputable
+   license-cleared libraries. Prefer the real subject over a synthetic approximation. Verify
+   the page, creator, license, commercial-use constraints, and retrieval date; download the
+   selected file locally and make the build consume the local copy.
+4. **Reputable free stock (attribution-aware).** When the exact real subject is unavailable:
    - Photography: Unsplash Source, Pexels, Picsum (`https://picsum.photos/1280/720`).
    - Video: Coverr, Mixkit, Pexels Video (free-to-use loops).
    - Verify license before shipping to production; note it in the delivery.
-4. **Generated visuals.** When no real asset fits, generate intent-driven visuals rather
-   than gray boxes: a concept-derived gradient, a duotone-treated photo, CSS/SVG shapes,
-   an animated gradient mesh. These read as designed.
-5. **Never** invent broken URLs or link to assets you can't verify resolve. A broken image
-   is worse than a tasteful placeholder gradient.
+5. **Tool-generated original media.** Generate only when no authentic source fits, usage
+   rights prevent reuse, or the art direction specifically needs original imagery. Derive the
+   prompt from product intent, inspect the result, store it locally, and record provenance.
+6. **Code-native visuals.** When raster generation is unavailable or the idea is better as
+   interface evidence, data, or geometry, build an intent-driven SVG/CSS/canvas visual.
+7. **Never** invent broken URLs or link to assets you can't verify resolve. A broken image
+is worse than a tasteful placeholder gradient.
+
+### Media acquisition and generation routing contract
+
+Do not merely write “an image could go here.” First search available user/project assets and,
+when permitted, discover authentic relevant media online. Call image generation only when all
+conditions below are true:
+
+- imagery has a named semantic job in the Design Read;
+- no user/project asset or license-cleared real online media satisfies that job;
+- a raster image is more truthful or expressive than CSS/SVG/product UI;
+- the tool can return an asset that can be stored and referenced locally.
+
+The generated file must be inspected before use. Reject visible text corruption, watermarks,
+generic stock composition, irrelevant subjects, and style mismatch. Generated provenance is
+delivery metadata, not visible marketing copy.
+
+For online media, a URL alone is not an asset. Download the chosen file into the project,
+verify it opens, preserve creator/source/license/retrieval metadata, and use the local path.
+Hotlinking is not a production or offline-benchmark strategy.
 
 ## Referencing media in generated code
 

@@ -212,7 +212,13 @@ Actions:
 3. Apply component states and interactions per manifest specification
 4. Include accessibility attributes: roles, aria-labels, keyboard handlers, focus management
 5. Reference assets via unique IDs from `assets/assets.manifest.json` where needed
-6. **Build interactive parts with the modern patterns** in `craft/patterns/interaction-patterns.md`:
+6. When raster imagery has a semantic job, prefer user/project assets, then discover relevant
+   official or license-cleared real media online when web access is available. Verify rights,
+   download the selected asset locally, record source/license/retrieval metadata, and consume
+   the local file. Invoke image generation only when no authentic source fits or the concept
+   requires original artwork. Do not leave an image suggestion, gray placeholder, generic
+   blob, or empty oversized card in its place.
+7. **Build interactive parts with the modern patterns** in `craft/patterns/interaction-patterns.md`:
    native `<dialog>`/`inert` for modals, Popover API / anchor positioning / portal for
    dropdowns (escape overflow clipping), `:focus-visible` rings, roving tabindex for groups,
    skip links, visible form labels + validate-on-blur + `aria-live` errors, undo-toast over

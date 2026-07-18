@@ -371,6 +371,25 @@ for the full rubric):
 - [ ] **Visual mass is intentional.** The first viewport has a named counterweight for its
       dominant text/artifact; asymmetry is deliberate and quiet space is doing framing or
       pacing work rather than leaving an accidental heavy side.
+- [ ] **Internal reasoning stays internal.** No visible audit note, design rationale,
+      counterweight explanation, placeholder instruction, or system vocabulary leaks into
+      user-facing copy.
+- [ ] **No dead vertical bands.** Section padding and minimum heights do not create large
+      empty areas without a visible subject, transition, or comprehension purpose.
+- [ ] **Card volume is earned.** Large or equal-height cards use their area for meaningful
+      evidence, interaction, or concept-specific media; otherwise their height/span is reduced.
+- [ ] **Asset opportunity was resolved in authenticity order.** User/project media, relevant
+      license-cleared real online media, generated originals, and code-native visuals were
+      considered in that order; the selected asset is local, inspected, provenance-recorded,
+      and actually consumed—not deferred as a suggestion or replaced by generic slop.
+- [ ] **Generated media is compositionally integrated.** Crop, palette, scale, edge treatment,
+      and neighboring typography form one art direction; the image is not a rectangular insert
+      dropped into a generic card.
+- [ ] **Contextual labels remain legible.** Eyebrows, metadata, helper copy, and annotations
+      use verified foregrounds on dark, accent, image, and tinted surfaces; no same-hue
+      green-on-green or equivalent low-contrast inheritance remains.
+- [ ] **Pricing topology matches information volume.** Sparse plan differences do not occupy
+      three oversized equal cards; comparison structure is compact and decision-oriented.
 
 Reference the `craft/` library to implement these. Output that fails the craft presence
 check should loop back to Step 6 (Motion) / craft selection, not ship.
