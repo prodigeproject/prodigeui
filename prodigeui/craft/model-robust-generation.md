@@ -4,6 +4,52 @@ Use this compact contract when the executing model is likely to imitate nearby e
 overbuild effects, or skip abstract taste guidance. The contract overrides benchmark-house
 habits but not an explicit user direction.
 
+## Cross-model convergence boundary
+
+Every model must converge on product intent, one product-specific focal artifact, visual
+thesis, functional type jobs, one committed palette family with owned foreground pairs,
+rhythm argument, closing-surface continuity, honest evidence status, accessibility, font
+delivery, responsive containment, and encoding. These are semantic acceptance invariants,
+not coordinates, class names, copy, section counts, or a benchmark silhouette.
+
+Headline wording, section order, grid proportions, artwork, crop, spacing expression,
+component selection, and motion details remain generative when the invariants and quality
+gate pass. Never feed approved HTML back as a visual template or judge a fresh result by
+pixel similarity.
+
+Use five passes: **read** the audience, route, intent, and quality profile; **thesis** the
+product-to-feeling-to-metaphor logic and required decisions; **compose** one credible focal
+artifact with one signature and no more than two supporting techniques; **harden** surfaces,
+fonts, targets, motion fallback, containment, evidence, and encoding; then **prove** desktop
+and mobile render truth. Repair semantic failures, not screenshot differences.
+
+## Research interpretation boundary
+
+Treat research as evidence, not scripture. Before a research-derived prescription affects
+generation, classify it using `canonical/system.authority.json#researchInterpretation` as
+evergreen, contextual, dated, or rejected. Prefer replicated cognition, perception,
+accessibility, and interaction findings over taste recipes; separate the principle from the
+historical visual example used to teach it; and cross-check platform claims against current
+standards.
+
+Keep discoverability, signifiers, constraints, mapping, feedback, reversibility,
+recognition-over-recall, meaningful hierarchy, content-first language, purposeful motion,
+and governed reuse as evergreen. Interpret whitespace as active framing or pacing rather
+than empty acreage; grids as alignment and rhythm rather than a universal 12-column page;
+minimalism as removal of cognitive noise rather than removal of identity or context; and
+consistency as conceptual and behavioral coherence rather than visual sameness.
+
+Reject universal landing-page sequences, cards for every grouping, viewport breakpoints as
+the only responsive strategy, decorative glass/grain/glow/parallax/particles/3D without a
+semantic job, universal timing tables, inversion-only dark mode, invented proof, and copied
+platform fashion. A contemporary technique still needs a product-specific reason,
+performance budget, and accessible fallback.
+
+Before code, identify the first-viewport product subject, the negative space that actively
+frames or paces it, the concept-bound technique, the no-motion/no-transparency/no-custom-font
+fallback, consequence and reversal for consequential actions, and content/container behavior
+beyond fixed viewport presets.
+
 ## Six lines to keep in working context
 
 1. **Derive, do not retrieve.** Write `product -> feeling -> physical metaphor`; every

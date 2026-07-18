@@ -360,8 +360,9 @@ for the full rubric):
       centered headline on a color.
 - [ ] **Choreographed motion** exists (staggered/scroll-linked entrance, not just fade-in),
       with a reduced-motion fallback.
-- [ ] **Texture / depth** is present (grain overlay, liquid glass, real shadows, layered
-      z-index) — the page is not a flat color field.
+- [ ] **Material treatment is intentional.** Flatness or depth may be correct; grain,
+      glass, blur, and shadow only pass when they support hierarchy, feedback, spatial
+      understanding, or brand meaning.
 - [ ] **Distinctive typography** — a display face at real scale with intentional tracking,
       not the untouched system/Inter default.
 - [ ] **Real media** where the concept calls for it (video/image), not gray placeholder

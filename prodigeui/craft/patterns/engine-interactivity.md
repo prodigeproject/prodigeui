@@ -23,10 +23,12 @@ From `craft/design-read.md`, use MOTION_INTENSITY to decide:
 | 0.7–0.8 (premium/agency) | ScrollTrigger timeline storytelling + ONE WebGL/canvas hero element + cursor interaction |
 | 0.9–1.0 (experimental/Awwwards) | Full scroll-choreographed 3D/shader scene, audio-reactive optional, view transitions |
 
-**Mandatory rule:** For an agency/portfolio/premium/experimental brief (MOTION ≥ 0.7), a fully
-static page (only CSS fade-ins) is a **FAIL** — it needs at least one engine-grade interactive
-moment. At MOTION ≤ 0.6 (a plain B2B/SaaS/dashboard/trust-first surface) CSS craft + Lenis + ONE
-scroll-driven moment is enough. BUT this is a floor, not a cap: a B2B product **positioned as
+**Context rule:** For an agency/portfolio/premium/experimental brief (MOTION ≥ 0.7), test whether
+one engine-grade interaction materially improves narrative, product understanding, or brand
+meaning. A static or lightly animated page is valid when reading, trust, performance, or the
+content itself is the concept; a dial value alone never makes an engine mandatory. At MOTION ≤
+0.6 (a plain B2B/SaaS/dashboard/trust-first surface), CSS craft is normally sufficient; smooth
+scroll and a scroll-driven moment are optional, not a floor. A B2B product **positioned as
 a premium launch** legitimately earns agency-grade motion (MOTION 0.8–0.9) — a concept-tied
 particle/constellation field (e.g. "the network we observe"), pinned feature sequencing,
 scrubbed product reveals. The caution is against RANDOM decoration and jank on a

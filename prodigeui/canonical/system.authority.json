@@ -73,6 +73,18 @@
     "narrative-guidance",
     "examples-and-research"
   ],
+  "researchInterpretation": {
+    "purpose": "Classify research as evergreen, contextual, dated, or rejected before it influences generation.",
+    "classifications": {
+      "evergreen": "Replicated cognition, perception, accessibility, interaction, language, and governance principles that survive visual-fashion changes.",
+      "contextual": "Advice whose validity depends on product, audience, content, platform, input method, frequency, performance budget, or brand meaning.",
+      "dated": "Fixed pixels, device assumptions, fashionable components, named aesthetics, or historical examples retained only as context.",
+      "rejected": "Universal recipes, fabricated evidence, decorative effects without a semantic job, and benchmark pixel imitation."
+    },
+    "mayOverride": ["narrative-guidance", "examples-and-research"],
+    "mustNotOverride": ["explicit-user-direction", "enhancement-mode-do-no-harm", "platform-accessibility-and-safety", "lane-specific-product-or-expressive-rules", "canonical-machine-authority"],
+    "conflictRule": "When research-derived advice conflicts, keep the user goal, accessibility, semantic clarity, and canonical machine rules; prefer the more context-specific evidence and do not average incompatible prescriptions."
+  },
   "lanes": {
     "product": {"sequenceCapMs": 600, "heroPaddingMax": "96px", "motionDefault": "Motion or native CSS"},
     "expressive": {"sequenceCapMs": 1500, "heroPaddingMax": "160px", "motionDefault": "Motion; GSAP only after product/legal clearance"}

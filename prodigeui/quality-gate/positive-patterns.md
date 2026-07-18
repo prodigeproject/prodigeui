@@ -210,7 +210,7 @@ expressive work.
 | 1 | **Hero signature** | Centered text on a flat color | Crossfading video / cursor spotlight / magnetic hero / giant ghost type | `craft/patterns/video-hero-crossfade.md`, `cursor-spotlight-mask.md`, `magnetic-hover.md` |
 | 2 | **Typography** | Untouched system/Inter, default tracking | Display face at fluid `clamp()` scale, tight negative tracking | `craft/patterns/fluid-display-type.md` |
 | 3 | **Motion choreography** | Uniform fade-in, or none | Staggered word/char reveal, scroll-linked sweep, sequenced entrance | `craft/patterns/text-reveal.md`, `motion/choreography.md` |
-| 4 | **Texture / depth** | Flat color/gradient field | Grain overlay, liquid glass, real shadow, layered z-index | `craft/patterns/grain-noise-overlay.md`, `liquid-glass.md` |
+| 4 | **Material coherence** | Arbitrary effects or unresolved flatness | Surface treatment—flat or dimensional—supports hierarchy, feedback, and the concept | `craft/model-robust-generation.md` |
 | 5 | **Real media** | Gray placeholder boxes | Real video/image/illustration integral to the concept | `assets/asset-sourcing.guide.md` |
 | 6 | **Focal hierarchy** | Everything equal weight | One dominant element per viewport; bento over equal cards | `craft/patterns/bento-grid.md` |
 

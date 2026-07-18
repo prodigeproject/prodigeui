@@ -66,6 +66,11 @@ choose one hero signature, cap effect complexity, build the first viewport aroun
 product/story artifact, and run a rendered-state contrast plus encoding check. Do not copy
 an older benchmark HTML as a starting point. Re-derive from the current brief.
 
+That same contract separates semantic invariants that should converge across models from
+layout, copy, artwork, and motion details that must remain generative. It also routes
+research-derived guidance through the canonical evergreen/contextual/dated/rejected policy,
+so historical examples never become aesthetic defaults.
+
 Immediately after it, read `canonical/accepted-quality.profile.json`. Select the applicable
 semantic profile from product intent and transfer its reasoning standard without copying
 benchmark copy, section geometry, class names, dimensions, or color values.

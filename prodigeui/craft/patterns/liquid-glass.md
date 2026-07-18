@@ -1,15 +1,15 @@
 # Craft Pattern — Liquid Glass
 
 ## What it delivers
-The Apple-style translucent "liquid glass" surface: a barely-there fill, a real backdrop
+An optional translucent material: a barely-there fill, a real backdrop
 blur, and a **gradient border rendered via a mask trick** (not a flat 1px border). This
-is the single most reused chrome technique on modern video-hero landing pages — nav bars,
-pills, chips, cards, and CTAs all sit on it. It gives contrast over busy backgrounds
-without dimming them.
+can preserve contrast over busy backgrounds without fully obscuring them. It is not a
+general modernity signal and should not be repeated across every card, pill, and CTA.
 
 ## When to use
-Over photography, video, or rich gradients where a solid panel would look heavy. Nav
-bars, badges, stat cards, CTAs, tag pills. Pairs perfectly with the video-hero pattern.
+Use for navigation or controls over photography, video, or rich gradients when the
+material clarifies hierarchy and remains legible. Prefer solid or minimally translucent
+surfaces for content-heavy cards, long text, dense tools, and unsupported browsers.
 
 ## The recipe (pure CSS — portable to any framework)
 
