@@ -183,6 +183,12 @@ Fully GPU-composited, no extra DOM.
 30–80ms between items; first reveal only (never re-stagger on scroll). Stagger is decorative
 — never block interaction while it plays.
 
+## 15. Canvas & Hero Layer Isolation (No Obscured Titles)
+
+- **Canvas Pointer Events & Z-Index**: WebGL/Canvas elements (`#nova-core`, particle fields) MUST always have `pointer-events: none; z-index: 1;` so they never trap clicks or obscure foreground content.
+- **Hero Title Isolation**: Hero titles and text content MUST be explicitly layered with `position: relative; z-index: 10; isolation: isolate;` to guarantee readability over 3D backgrounds under all network and rendering conditions.
+- **Graceful Text Visibility**: Headline text must remain 100% visible even if JS/GSAP text reveals fail or take time to load — never permanently hide text in static CSS without an active JS animation callback.
+
 ## Review your work
 Watch animations in slow motion (2–5×) and with fresh eyes the next day. Colors that flash
 two overlapping states, wrong origin, and out-of-sync properties are invisible at full speed.
@@ -192,3 +198,4 @@ two overlapping states, wrong origin, and out-of-sync properties are invisible a
 - `craft/patterns/animation-vocabulary.md` — name an effect before you build it
 - `skills/motion-review/SKILL.md` — the review lens that enforces this file
 - `craft/patterns/text-reveal.md`, `magnetic-hover.md`, `video-hero-crossfade.md`
+
