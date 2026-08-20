@@ -84,6 +84,42 @@
     <div class="canvas-tabs">
       <button class="tab-btn active">Visual Workflow</button>
       <button class="tab-btn">Live Code</button>
+
+### Pattern 3: Delve Tactile Paper Architectural Blueprint Floorplan Inspector
+<!-- Detailed SVG Architectural Blueprint Floorplan Canvas -->
+<svg class="architectural-floorplan-svg" viewBox="0 0 500 240" fill="none" stroke="#a64b2a" stroke-width="1.5">
+  <!-- Outer Monolith Wall Perimeter -->
+  <rect x="20" y="20" width="460" height="200" stroke="#f5f2eb" stroke-opacity="0.4" stroke-width="2"/>
+  <rect x="24" y="24" width="452" height="192" stroke="#f5f2eb" stroke-opacity="0.2"/>
+
+  <!-- Atrium Gallery (Room 01) -->
+  <g id="svg-room-1" class="room-group active">
+    <rect x="35" y="35" width="140" height="170" fill="rgba(166, 75, 42, 0.45)" stroke="#a64b2a" stroke-width="2"/>
+    <text x="50" y="65" fill="#f5f2eb" font-family="monospace" font-size="11" font-weight="700">01. ATRIUM GALLERY</text>
+    <text x="50" y="85" fill="#a64b2a" font-family="monospace" font-size="9">14.8m x 9.2m | CLEAR HEIGHT 4.5m</text>
+    <!-- Door Swing Arc -->
+    <path d="M 175 120 A 25 25 0 0 1 150 145" stroke="#f5f2eb" stroke-opacity="0.6" stroke-dasharray="3,3"/>
+  </g>
+
+  <!-- Granite Thermal Mass Core (Room 02) -->
+  <g id="svg-room-2" class="room-group">
+    <rect x="190" y="35" width="130" height="170" fill="none" stroke="#f5f2eb" stroke-opacity="0.3" stroke-width="1.5"/>
+    <text x="202" y="65" fill="#f5f2eb" font-family="monospace" font-size="11" font-weight="700">02. THERMAL MASS</text>
+    <text x="202" y="85" fill="#9ca3af" font-family="monospace" font-size="9">9.5m x 9.2m | GRANITE CORE</text>
+  </g>
+
+  <!-- European Larch Pavilion (Room 03) -->
+  <g id="svg-room-3" class="room-group">
+    <rect x="335" y="35" width="130" height="170" fill="none" stroke="#f5f2eb" stroke-opacity="0.3" stroke-width="1.5"/>
+    <text x="347" y="65" fill="#f5f2eb" font-family="monospace" font-size="11" font-weight="700">03. LARCH PAVILION</text>
+    <text x="347" y="85" fill="#9ca3af" font-family="monospace" font-size="9">11.2m x 9.2m | TIMBER DECK</text>
+  </g>
+
+  <!-- Solar Orientation Compass & Dimension Ticks -->
+  <circle cx="450" cy="50" r="16" stroke="#a64b2a" stroke-opacity="0.6"/>
+  <line x1="450" y1="30" x2="450" y2="70" stroke="#a64b2a" stroke-dasharray="2,2"/>
+  <text x="447" y="27" fill="#a64b2a" font-family="monospace" font-size="9">N</text>
+</svg>
       <button class="tab-btn">Trace Log</button>
     </div>
     <span class="status-indicator">● LIVE EXECUTION</span>
