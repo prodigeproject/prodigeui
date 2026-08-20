@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOVABLE FLOW (ProdigeUI v3.0.3 — Atomic Components &amp; Motion)</title>
+  <style>
+    /* PRODIGEUI v3.0.3 — Atomic component hierarchy (atoms, molecules, organisms), standard transitions */
+    :root {
+      --prodigeui-color-bg: #0b0f17;
+      --prodigeui-color-surface: #151c28;
+      --prodigeui-color-text: #f8fafc;
+      --prodigeui-color-muted: #94a3b8;
+      --prodigeui-color-primary: #10b981;
+      --prodigeui-color-border: rgba(255, 255, 255, 0.1);
+    }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); margin: 0; }
+    .atom-button { background: var(--prodigeui-color-primary); color: #000; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 700; border: none; cursor: pointer; transition: transform 0.2s ease; }
+    .atom-button:hover { transform: translateY(-2px); }
+    .molecule-card { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s ease; }
+    .organism-hero { padding: 6rem 2rem; text-align: center; max-width: 1000px; margin: 0 auto; }
+    .hero-h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; text-align: left; }
+  </style>
+</head>
+<body>
+  <nav style="padding: 1.25rem 2rem; border-bottom: 1px solid var(--prodigeui-color-border); display: flex; justify-content: space-between;">
+    <div style="font-weight: 800; font-size: 1.2rem; color: var(--prodigeui-color-primary);">LOVABLE FLOW v3.0.3</div>
+    <button class="atom-button">Get Started</button>
+  </nav>
+
+  <main class="organism-hero">
+    <h1 class="hero-h1">Turn intent into production software.</h1>
+    <p style="color: var(--prodigeui-color-muted); font-size: 1.15rem; max-width: 50ch; margin: 1.5rem auto 2.5rem;">LOVABLE FLOW compiles natural language prompts into React WebGL apps and n8n workflow DAGs.</p>
+    <button class="atom-button">Launch Engine</button>
+
+    <div class="grid-3">
+      <article class="molecule-card">
+        <h3 style="color: var(--prodigeui-color-primary); margin-top: 0;">01. Bi-directional Sync</h3>
+        <p style="color: var(--prodigeui-color-muted); font-size: 0.9rem;">Visual nodes &amp; TypeScript code sync.</p>
+      </article>
+      <article class="molecule-card">
+        <h3 style="color: var(--prodigeui-color-primary); margin-top: 0;">02. WebGL 3D Engine</h3>
+        <p style="color: var(--prodigeui-color-muted); font-size: 0.9rem;">Three.js shader canvasses embedded.</p>
+      </article>
+      <article class="molecule-card">
+        <h3 style="color: var(--prodigeui-color-primary); margin-top: 0;">03. Edge Deployment</h3>
+        <p style="color: var(--prodigeui-color-muted); font-size: 0.9rem;">Instant worldwide WebAssembly runtime.</p>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

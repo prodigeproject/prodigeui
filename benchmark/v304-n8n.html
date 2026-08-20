@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOVABLE FLOW (ProdigeUI v3.0.4 — Three Dials &amp; Recipe Crutch)</title>
+  <style>
+    /* PRODIGEUI v3.0.4 — Three Dials introduced, but suffers from deterministic recipe crutches (-1deg tilted card & timestamp watermark) */
+    :root {
+      --prodigeui-color-bg: #090a0f;
+      --prodigeui-color-surface: #12141d;
+      --prodigeui-color-text: #f8fafc;
+      --prodigeui-color-muted: #94a3b8;
+      --prodigeui-color-primary: #10b981;
+      --prodigeui-color-border: rgba(255, 255, 255, 0.1);
+    }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); margin: 0; position: relative; }
+    
+    /* CRUTCH WATERMARK FROM V3.0.4 LLM INERTIA */
+    body::after { content: "11:18 → 11:19"; position: fixed; right: 2rem; bottom: 2rem; opacity: 0.08; font-size: 5rem; font-family: monospace; pointer-events: none; }
+
+    .btn-pill { background: var(--prodigeui-color-primary); color: #000; padding: 0.75rem 1.75rem; border-radius: 9999px; font-weight: 700; border: none; cursor: pointer; transition: transform 0.2s; }
+    .btn-pill:hover { transform: translateY(-2px); }
+
+    /* DETERMINISTIC RECIPE CRUTCH FROM V3.0.4: Tilted -1deg Card */
+    .tilted-recipe-card {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: 16px; padding: 2.5rem; transform: rotate(-1deg); margin-top: 3rem; text-align: left;
+    }
+
+    .hero-section { padding: 7rem 2rem 4rem; text-align: center; max-width: 1040px; margin: 0 auto; }
+    .hero-h1 { font-size: 4rem; font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; text-align: left; }
+    .card { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); border-radius: 12px; padding: 1.75rem; }
+  </style>
+</head>
+<body>
+  <nav style="padding: 1.25rem 2rem; border-bottom: 1px solid var(--prodigeui-color-border); display: flex; justify-content: space-between; align-items: center;">
+    <div style="font-weight: 800; font-size: 1.3rem; color: var(--prodigeui-color-primary);">LOVABLE FLOW v3.0.4</div>
+    <button class="btn-pill">Launch Engine</button>
+  </nav>
+
+  <main class="hero-section">
+    <h1 class="hero-h1">Turn intent into <br><span style="color: var(--prodigeui-color-primary);">production software.</span></h1>
+    <p style="color: var(--prodigeui-color-muted); font-size: 1.2rem; max-width: 52ch; margin: 1.5rem auto 2.5rem;">LOVABLE FLOW compiles natural language prompts into React WebGL apps and n8n workflow DAGs.</p>
+
+    <!-- TILTED -1DEG CARD RECIPE CRUTCH -->
+    <div class="tilted-recipe-card">
+      <h3 style="color: var(--prodigeui-color-primary); margin-top: 0;">Interactive Workflow DAG Representation</h3>
+      <p style="color: var(--prodigeui-color-muted);">[Visual node card with -1deg rotation layout rule]</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <h4 style="color: var(--prodigeui-color-primary); margin-top: 0;">01. Bi-directional Sync</h4>
+        <p style="color: var(--prodigeui-color-muted); font-size: 0.9rem;">Visual nodes &amp; code stay synced.</p>
+      </div>
+      <div class="card">
+        <h4 style="color: var(--prodigeui-color-primary); margin-top: 0;">02. Native WebGL 3D</h4>
+        <p style="color: var(--prodigeui-color-muted); font-size: 0.9rem;">Three.js shader integration.</p>
+      </div>
+      <div class="card">
+        <h4 style="color: var(--prodigeui-color-primary); margin-top: 0;">03. Edge Deployment</h4>
+        <p style="color: var(--prodigeui-color-muted); font-size: 0.9rem;">Instant WebAssembly edge deploy.</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

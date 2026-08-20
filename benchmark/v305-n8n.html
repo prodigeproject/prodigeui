@@ -1,0 +1,105 @@
+<!-- Design Read: AI Prompt-to-App & n8n Workflow Platform for engineers, dark Linear obsidian & electric mint vibe, Zero inline styles, mandatory prefers-reduced-motion, and container isolation. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOVABLE FLOW (ProdigeUI v3.0.5 — Zero Inline Styles &amp; Reduced Motion)</title>
+  <meta name="description" content="LOVABLE FLOW compiles natural language prompts into production React WebGL applications and n8n workflow DAGs.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* PRODIGEUI v3.0.5 — Zero inline HTML style attributes, mandatory @media (prefers-reduced-motion: reduce), and stacking isolation: isolate */
+    :root {
+      --prodigeui-color-bg: #08090a;
+      --prodigeui-color-surface: #121316;
+      --prodigeui-color-text: #f9fafb;
+      --prodigeui-color-muted: #9ca3af;
+      --prodigeui-color-primary: #10b981;
+      --prodigeui-color-border: rgba(255, 255, 255, 0.08);
+
+      --prodigeui-font-body: 'Inter', system-ui, sans-serif;
+      --prodigeui-font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.6; isolation: isolate; }
+
+    .wrap { width: min(1200px, 92vw); margin-inline: auto; isolation: isolate; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .text-mint { color: var(--prodigeui-color-primary); }
+    .text-muted { color: var(--prodigeui-color-muted); }
+
+    .nav-bar { padding: 1.25rem 0; border-bottom: 1px solid var(--prodigeui-color-border); display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { font-weight: 800; font-size: 1.4rem; color: var(--prodigeui-color-text); text-decoration: none; }
+    
+    .btn-pill { background: var(--prodigeui-color-primary); color: #000; padding: 0.7rem 1.6rem; border-radius: 9999px; font-weight: 700; border: none; cursor: pointer; text-decoration: none; transition: transform 0.2s; position: relative; z-index: 2; display: inline-block; }
+    .btn-pill:hover { transform: translateY(-2px); }
+
+    .hero-wrap { padding: 7rem 0 4rem; text-align: center; }
+    .hero-h1 { font-size: 4rem; font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+    .hero-lead { font-size: 1.2rem; color: var(--prodigeui-color-muted); max-width: 52ch; margin: 0 auto 2.5rem; }
+
+    .basic-canvas-box { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); border-radius: 16px; padding: 2.5rem; margin-top: 3rem; text-align: left; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; text-align: left; }
+    .card { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); border-radius: 12px; padding: 2rem; }
+
+    @media (max-width: 850px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* MANDATORY V3.0.5 REDUCED MOTION RULE */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .btn-pill:hover { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav-bar">
+      <a class="brand-title" href="#">LOVABLE<span class="text-mint">/FLOW v3.0.5</span></a>
+      <a href="#canvas" class="btn-pill">Launch Engine</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero-wrap">
+      <div class="mono text-mint">Prompt-to-App Workflow DAG</div>
+      <h1 class="hero-h1">Turn intent into <br><span class="text-mint">production software.</span></h1>
+      <p class="hero-lead">LOVABLE FLOW compiles natural language prompts into React WebGL apps and n8n workflow DAGs.</p>
+      
+      <a href="#canvas" class="btn-pill">Launch Visual Canvas</a>
+
+      <div class="basic-canvas-box" id="canvas">
+        <div class="mono text-mint">● BASIC CSS CONTAINER (V3.0.5 STANDARD)</div>
+        <p class="text-muted">Node 01 Ingest ➔ Node 02 Compiler ➔ Node 03 Edge Deploy</p>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="grid-3">
+        <article class="card">
+          <h3 style="margin-top: 0; color: var(--prodigeui-color-primary);">Bi-directional Sync</h3>
+          <p class="text-muted">Visual nodes &amp; TypeScript code stay synced.</p>
+        </article>
+
+        <article class="card">
+          <h3 style="margin-top: 0; color: var(--prodigeui-color-primary);">Native WebGL &amp; 3D</h3>
+          <p class="text-muted">Embed Three.js shader canvasses directly.</p>
+        </article>
+
+        <article class="card">
+          <h3 style="margin-top: 0; color: var(--prodigeui-color-primary);">Zero-Latency Deploy</h3>
+          <p class="text-muted">Worldwide WebAssembly edge deployment.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
