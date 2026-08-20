@@ -52,8 +52,9 @@ These patterns indicate fundamental quality failures. Presence of ANY = automati
 - **FAIL:** Containers housing absolute or fixed background overlays omit `isolation: isolate;`, creating stacking context collisions that obscure interactive CTA elements.
 - **FAIL:** Generated output omits the mandatory one-line `Design Read:` header preceding the code block.
 - **FAIL:** Cards or containers are rendered as flat, low-depth boxes with basic 1px solid borders lacking material depth (e.g. missing subtle inset top highlights `box-shadow: inset 0 1px 0 rgba(255,255,255,0.1)` or backdrop blur elevation).
-- **FAIL:** The page relies entirely on generic system fonts or default sans-serif pairings without an authentic display typeface (e.g., Syne, Instrument Serif, Bodoni Moda, Space Grotesk, Cabinet Grotesk).
-- **FAIL:** Hero section is purely static text and static image boxes, lacking an interactive product canvas or live demonstration anchor (e.g., node workflow, prompt preview tab, interactive risk slider).
+- **FAIL C0.11:** The page relies entirely on generic system fonts or default sans-serif pairings without an authentic display typeface (e.g., Syne, Instrument Serif, Bodoni Moda, Space Grotesk, Cabinet Grotesk).
+- **FAIL C0.12:** Hero section is purely static text and static image boxes, lacking an interactive product canvas or live demonstration anchor (e.g., node workflow, prompt preview tab, interactive risk slider).
+- **FAIL C0.13:** Hero interactive product canvas consists solely of static CSS elements without a functional inline `<script>` interactive engine (e.g. live interactive node canvas, active WebGL particle shader backdrop, or live room inspector state engine).
 
 > **Craft exception for FAIL #1, #5, and typography-scale:** Fluid and computed values
 > that are *systematic* are NOT raw-value violations. `clamp(2.5rem, 14vw, 17.5rem)` for a

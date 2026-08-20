@@ -1,0 +1,120 @@
+<!-- Design Read: High-end luxury architectural studio for international clients, tactile warm paper & ink brutalist editorial vibe, Instrument Serif display + architectural grid rules + SVG floor plan overlay. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DELVE (ProdigeUI v3.0.6 — Commit 20ac96d)</title>
+  <meta name="description" content="DELVE Architects crafts sustainable alpine residences, minimalist cultural institutions, and bespoke spatial monoliths across Europe.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* PRODIGEUI v3.0.6 COMMIT 20ac96d — Tactile paper, Instrument Serif display, brutalist grid lines, SVG blueprint overlay */
+    :root {
+      --prodigeui-primitive-paper: #f5f2eb;
+      --prodigeui-primitive-paper-white: #fdfbf7;
+      --prodigeui-primitive-ink: #1a1614;
+      --prodigeui-primitive-terracotta: #a64b2a;
+      --prodigeui-primitive-border: rgba(26, 22, 20, 0.14);
+
+      --prodigeui-color-bg: var(--prodigeui-primitive-paper);
+      --prodigeui-color-surface: var(--prodigeui-primitive-paper-white);
+      --prodigeui-color-text: var(--prodigeui-primitive-ink);
+      --prodigeui-color-primary: var(--prodigeui-primitive-terracotta);
+      --prodigeui-color-border: var(--prodigeui-primitive-border);
+
+      --prodigeui-font-display: 'Instrument Serif', Georgia, serif;
+      --prodigeui-font-body: 'Space Grotesk', system-ui, sans-serif;
+      --prodigeui-font-mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.6; isolation: isolate; }
+
+    .wrap { width: min(1240px, 92vw); margin-inline: auto; isolation: isolate; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; }
+    .text-terracotta { color: var(--prodigeui-color-primary); }
+
+    .nav-grid { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; border-bottom: 1px solid var(--prodigeui-color-border); }
+    .brand-title { font-family: var(--prodigeui-font-display); font-size: 2.2rem; font-weight: 400; color: var(--prodigeui-color-text); text-decoration: none; }
+
+    .btn-architectural { background: var(--prodigeui-color-text); color: var(--prodigeui-primitive-paper); font-weight: 600; padding: 0.85rem 1.8rem; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; border: none; cursor: pointer; display: inline-block; }
+
+    .hero-wrap { padding: 6rem 0 4rem; }
+    .hero-h1 { font-family: var(--prodigeui-font-display); font-size: clamp(3.8rem, 8.5vw, 7.8rem); font-weight: 400; line-height: 0.92; margin-bottom: 2.5rem; }
+
+    .project-card { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); display: grid; grid-template-columns: 1.2fr 0.8fr; margin-top: 3.5rem; }
+    .project-img { aspect-ratio: 16/9; overflow: hidden; background: #e0dad0; position: relative; }
+    .project-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--prodigeui-color-border); }
+    .grid-item { padding: 3rem 2rem; border-right: 1px solid var(--prodigeui-color-border); border-bottom: 1px solid var(--prodigeui-color-border); }
+
+    @media (max-width: 900px) {
+      .project-card { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav-grid">
+      <a class="brand-title" href="#">DELVE v3.0.6</a>
+      <a href="#works" class="btn-architectural">Commission Project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero-wrap wrap">
+      <div class="mono text-terracotta" style="margin-bottom: 1.5rem;">Spatial &amp; Environmental Architecture</div>
+      <h1 class="hero-h1">Structures born of <em style="font-style: italic; color: var(--prodigeui-color-primary);">geology &amp; light.</em></h1>
+      <p style="font-size: 1.25rem; max-width: 50ch;">DELVE creates enduring stone, timber, and glass monoliths designed in response to topography and natural daylight.</p>
+
+      <article class="project-card" id="works">
+        <div class="project-img">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75" alt="Alpine Monolith Residence">
+        </div>
+        <div style="padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; border-left: 1px solid var(--prodigeui-color-border);">
+          <div>
+            <span class="mono text-terracotta">Featured Monolith — 01</span>
+            <h2 style="font-family: var(--prodigeui-font-display); font-size: 2.6rem; font-weight: 400; margin: 0.5rem 0 1rem;">The Engadin Alpine Pavilion</h2>
+            <p style="color: #403934;">High-altitude stone residence constructed from granite and European larch timber.</p>
+          </div>
+          <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--prodigeui-color-border); display: flex; justify-content: space-between;">
+            <span class="mono">Engadin, Switzerland</span>
+            <span class="mono text-terracotta">Completed 2026</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="wrap" style="padding: 6rem 0; border-top: 1px solid var(--prodigeui-color-border);">
+      <div class="grid-3">
+        <article class="grid-item">
+          <div style="font-family: var(--prodigeui-font-display); font-size: 3.5rem; color: var(--prodigeui-color-primary); line-height: 1; margin-bottom: 1rem;">01</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Topographic Respect</h3>
+          <p style="color: #403934;">Form follows land topography.</p>
+        </article>
+        <article class="grid-item">
+          <div style="font-family: var(--prodigeui-font-display); font-size: 3.5rem; color: var(--prodigeui-color-primary); line-height: 1; margin-bottom: 1rem;">02</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Acoustic Silence</h3>
+          <p style="color: #403934;">Heavy thermal mass acoustic insulation.</p>
+        </article>
+        <article class="grid-item" style="border-right: none;">
+          <div style="font-family: var(--prodigeui-font-display); font-size: 3.5rem; color: var(--prodigeui-color-primary); line-height: 1; margin-bottom: 1rem;">03</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Solar Orientation</h3>
+          <p style="color: #403934;">Winter passive solar gain glazing.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

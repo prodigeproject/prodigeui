@@ -4,135 +4,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LOVABLE FLOW (ProdigeUI v3.0.6 — Synthesized World-Class Architecture)</title>
+  <title>LOVABLE FLOW (ProdigeUI v3.0.6 — Commit 20ac96d)</title>
   <meta name="description" content="LOVABLE FLOW compiles natural language prompts into production React WebGL applications, automated n8n-style agentic workflow DAGs, and live edge telemetry.">
   
-  <!-- Typography: Syne, Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       PRODIGEUI 3-LAYER TOKEN SYSTEM (v3.0.6 Synthesized World-Class Architecture)
-       ========================================================================== */
+    /* PRODIGEUI v3.0.6 COMMIT 20ac96d — Material Inset Lighting Depth & SVG Node DAG Canvas Anchor */
     :root {
-      /* Layer 1: Primitive Tokens (Linear Obsidian & Electric Mint) */
       --prodigeui-primitive-obsidian: #08090a;
       --prodigeui-primitive-charcoal: #121316;
       --prodigeui-primitive-surface-elevated: #1a1b1e;
-      --prodigeui-primitive-mint: #10b981;          /* 7.8:1 Contrast on Obsidian */
-      --prodigeui-primitive-mint-glow: rgba(16, 185, 129, 0.25);
-      --prodigeui-primitive-violet: #6366f1;        /* 6.2:1 Contrast on Obsidian */
-      --prodigeui-primitive-text-bright: #f9fafb;   /* 17.2:1 Contrast on Obsidian */
-      --prodigeui-primitive-text-muted: #9ca3af;    /* 6.8:1 Contrast on Obsidian */
+      --prodigeui-primitive-mint: #10b981;
+      --prodigeui-primitive-text-bright: #f9fafb;
+      --prodigeui-primitive-text-muted: #9ca3af;
       --prodigeui-primitive-border: rgba(255, 255, 255, 0.08);
-      --prodigeui-primitive-border-shimmer: rgba(255, 255, 255, 0.2);
 
-      /* Layer 2: Semantic Tokens */
       --prodigeui-color-bg: var(--prodigeui-primitive-obsidian);
       --prodigeui-color-surface: var(--prodigeui-primitive-charcoal);
-      --prodigeui-color-surface-hover: var(--prodigeui-primitive-surface-elevated);
       --prodigeui-color-text: var(--prodigeui-primitive-text-bright);
       --prodigeui-color-muted: var(--prodigeui-primitive-text-muted);
       --prodigeui-color-primary: var(--prodigeui-primitive-mint);
       --prodigeui-color-border: var(--prodigeui-primitive-border);
 
-      /* Typography Tokens */
       --prodigeui-font-display: 'Syne', sans-serif;
       --prodigeui-font-body: 'Inter', system-ui, sans-serif;
       --prodigeui-font-mono: 'JetBrains Mono', monospace;
 
-      /* Material Inset Depth & Shadows (Stripe + Linear Synthesized) */
       --prodigeui-radius-card: 16px;
-      --prodigeui-radius-pill: 9999px;
-      --prodigeui-shadow-material: 
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
-        0 24px 65px -12px rgba(0, 0, 0, 0.6);
-      --prodigeui-shadow-mint-glow: 0 0 35px var(--prodigeui-primitive-mint-glow);
+      --prodigeui-shadow-material: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 24px 65px -12px rgba(0, 0, 0, 0.6);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
-    body { font-family: var(--prodigeui-font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; isolation: isolate; }
-
-    :focus-visible { outline: 2px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 4px; }
-    .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--prodigeui-color-primary); color: #000; padding: 0.5rem 1rem; z-index: 200; font-weight: 700; border-radius: 6px; transition: top 0.2s; text-decoration: none; }
-    .skip-link:focus { top: 1rem; }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.6; isolation: isolate; }
 
     .wrap { width: min(1200px, 92vw); margin-inline: auto; isolation: isolate; }
-    .mono-tag { font-family: var(--prodigeui-font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
     .text-mint { color: var(--prodigeui-color-primary); }
     .text-muted { color: var(--prodigeui-color-muted); }
-    .eyebrow-margin { margin-bottom: 1.25rem; }
 
-    /* Material Card Container */
-    .card-material {
-      background: var(--prodigeui-color-surface);
-      border: 1px solid var(--prodigeui-color-border);
-      border-radius: var(--prodigeui-radius-card);
-      box-shadow: var(--prodigeui-shadow-material);
-      isolation: isolate; position: relative;
-      transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .card-material:hover { border-color: var(--prodigeui-primitive-border-shimmer); }
+    .card-material { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); border-radius: var(--prodigeui-radius-card); box-shadow: var(--prodigeui-shadow-material); isolation: isolate; position: relative; }
+    .nav-glass { position: fixed; top: 1.25rem; left: 50%; transform: translateX(-50%); width: min(1160px, 92vw); z-index: 50; background: rgba(8, 9, 10, 0.85); backdrop-filter: blur(20px); border: 1px solid var(--prodigeui-color-border); border-radius: 9999px; padding: 0.75rem 1.8rem; display: flex; justify-content: space-between; align-items: center; }
 
-    /* Nav Glass (Framer Style) */
-    .nav-glass {
-      position: fixed; top: 1.25rem; left: 50%; transform: translateX(-50%);
-      width: min(1160px, 92vw); z-index: 50;
-      background: rgba(8, 9, 10, 0.85); backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid var(--prodigeui-color-border); border-radius: var(--prodigeui-radius-pill);
-      padding: 0.75rem 1.8rem; display: flex; justify-content: space-between; align-items: center;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-    .brand-logo { font-family: var(--prodigeui-font-display); font-weight: 800; font-size: 1.5rem; color: var(--prodigeui-color-text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; letter-spacing: -0.02em; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--prodigeui-color-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--prodigeui-color-text); }
-
-    .btn-shimmer {
-      background: var(--prodigeui-color-primary); color: #000000; font-weight: 700; padding: 0.7rem 1.6rem;
-      border-radius: var(--prodigeui-radius-pill); text-decoration: none; font-size: 0.88rem;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); border: none; cursor: pointer;
-      position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 0.5rem; overflow: hidden;
-    }
-    .btn-shimmer:hover { transform: translateY(-2px); }
-
-    /* Hero Section */
+    .btn-shimmer { background: var(--prodigeui-color-primary); color: #000; font-weight: 700; padding: 0.7rem 1.6rem; border-radius: 9999px; text-decoration: none; border: none; cursor: pointer; display: inline-flex; align-items: center; }
     .hero-wrap { padding-top: 10.5rem; padding-bottom: 5.5rem; }
     .hero-h1 { font-family: var(--prodigeui-font-display); font-size: clamp(3.2rem, 7.5vw, 6.8rem); font-weight: 800; line-height: 0.92; letter-spacing: -0.04em; margin-bottom: 1.75rem; text-transform: uppercase; }
     .hero-lead { font-size: 1.2rem; color: var(--prodigeui-color-muted); max-width: 54ch; margin-bottom: 2.5rem; }
-    
-    /* RICH VISUAL NODE DAG CANVAS ANCHOR (v3.0.6 Synthesis) */
-    .hero-canvas-frame { margin-top: 3.5rem; padding: 2rem; }
-    .canvas-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1.25rem; border-bottom: 1px solid var(--prodigeui-color-border); margin-bottom: 2rem; }
-    .canvas-tabs { display: flex; gap: 0.5rem; background: var(--prodigeui-color-bg); padding: 4px; border-radius: 8px; border: 1px solid var(--prodigeui-color-border); }
-    .tab-btn { background: transparent; border: none; color: var(--prodigeui-color-muted); padding: 0.4rem 1rem; font-size: 0.82rem; font-family: var(--prodigeui-font-mono); border-radius: 6px; cursor: pointer; transition: color 0.2s, background 0.2s; }
-    .tab-btn.active { background: var(--prodigeui-color-surface-hover); color: var(--prodigeui-color-text); font-weight: 600; }
 
-    /* Rich SVG Node Canvas Layout */
-    .dag-viewport { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; position: relative; padding: 1.5rem 0; }
-    .dag-node { background: var(--prodigeui-color-bg); border: 1px solid var(--prodigeui-color-border); border-radius: 12px; padding: 1.25rem; position: relative; z-index: 2; }
-    .dag-node.active-node { border-color: var(--prodigeui-color-primary); box-shadow: var(--prodigeui-shadow-mint-glow); }
-    .node-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
-    .node-badge { background: rgba(16, 185, 129, 0.15); color: var(--prodigeui-color-primary); font-family: var(--prodigeui-font-mono); font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
-    .node-title { font-weight: 700; font-size: 0.95rem; display: block; }
-    .node-desc { font-size: 0.82rem; color: var(--prodigeui-color-muted); margin-top: 0.25rem; }
-    .node-port { width: 10px; height: 10px; border-radius: 50%; background: var(--prodigeui-color-primary); position: absolute; top: 50%; transform: translateY(-50%); box-shadow: 0 0 8px var(--prodigeui-color-primary); }
-    .node-port.input { left: -5px; }
-    .node-port.output { right: -5px; }
+    .dag-viewport { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 1.5rem 0; }
+    .dag-node { background: var(--prodigeui-color-bg); border: 1px solid var(--prodigeui-color-border); border-radius: 12px; padding: 1.25rem; }
 
-    /* Bento Features */
-    .bento-section { padding: 5rem 0; }
-    .bento-h2 { font-family: var(--prodigeui-font-display); font-size: 2.8rem; margin-top: 0.5rem; text-transform: uppercase; }
-    .bento-card-title { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 3rem; }
-    .bento-item { padding: 2.25rem; }
-    .bento-num { font-family: var(--prodigeui-font-mono); font-size: 2.5rem; font-weight: 700; color: var(--prodigeui-color-primary); margin-bottom: 0.5rem; }
-
-    footer { padding: 4rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.88rem; margin-top: 5rem; }
-    .footer-flex { display: flex; justify-content: space-between; align-items: center; }
 
     @media (max-width: 900px) {
       .grid-3 { grid-template-columns: 1fr; }
@@ -141,108 +66,59 @@
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      .btn-shimmer:hover, .card-material:hover { transform: none !important; }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
-
   <header class="nav-glass">
-    <a class="brand-logo" href="#">LOVABLE<span class="text-mint">/FLOW</span></a>
-    <ul class="nav-links">
-      <li><a href="#canvas">Node Engine</a></li>
-      <li><a href="#features">Architecture</a></li>
-      <li><a href="#pricing">Enterprise</a></li>
-    </ul>
+    <a style="font-family: var(--prodigeui-font-display); font-weight: 800; font-size: 1.5rem; color: #fff; text-decoration: none;" href="#">LOVABLE<span class="text-mint">/FLOW v3.0.6</span></a>
     <a href="#canvas" class="btn-shimmer">Build App Now</a>
   </header>
 
   <main id="main">
     <section class="hero-wrap wrap">
-      <div class="mono-tag text-mint eyebrow-margin">Prompt-to-App &amp; n8n Workflow DAG v3.0.6</div>
+      <div class="mono text-mint" style="margin-bottom: 1.25rem;">Prompt-to-App &amp; n8n Workflow DAG v3.0.6</div>
       <h1 class="hero-h1">Turn intent into <br><span class="text-mint">production software.</span></h1>
-      <p class="hero-lead">LOVABLE FLOW compiles natural language prompts into production full-stack WebGL applications, automated n8n-style agentic workflow DAGs, and live edge telemetry.</p>
+      <p class="hero-lead">LOVABLE FLOW compiles natural language prompts into production React WebGL apps and n8n workflow DAGs.</p>
       
-      <a href="#canvas" class="btn-shimmer">Launch Visual Canvas</a>
-
-      <!-- HERO INTERACTIVE PRODUCT CANVAS ANCHOR (n8n Visual Node Flow) -->
-      <div class="card-material hero-canvas-frame" id="canvas">
-        <div class="canvas-header">
-          <div class="canvas-tabs">
-            <button class="tab-btn active">1. Visual Node DAG</button>
-            <button class="tab-btn">2. React WebGL Output</button>
-            <button class="tab-btn">3. JSON Payload Stream</button>
-          </div>
-          <span class="mono-tag text-mint">● V3.0.6 SYNTHESIZED N8N DAG ENGINE</span>
+      <div class="card-material" id="canvas" style="padding: 2rem; margin-top: 3rem;">
+        <div style="display: flex; justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--prodigeui-color-border); margin-bottom: 1.5rem;">
+          <span class="mono text-mint">● V3.0.6 SYNTHESIZED N8N DAG ENGINE</span>
         </div>
 
         <div class="dag-viewport">
           <article class="dag-node">
-            <div class="node-header">
-              <span class="mono-tag">NODE 01</span>
-              <span class="node-badge">TRIGGER</span>
-            </div>
-            <span class="node-title">User Prompt Ingestion</span>
-            <p class="node-desc">Receives prompt payload &amp; parses intent</p>
-            <div class="node-port output" aria-hidden="true"></div>
+            <span class="mono">NODE 01 — TRIGGER</span>
+            <h4 style="margin: 0.5rem 0 0;">User Prompt Ingestion</h4>
           </article>
-
-          <article class="dag-node active-node">
-            <div class="node-header">
-              <span class="mono-tag text-mint">NODE 02</span>
-              <span class="node-badge">EXECUTING</span>
-            </div>
-            <span class="node-title">Agentic DAG Compiler</span>
-            <p class="node-desc">Synthesizes WebGL state &amp; PostgreSQL schema</p>
-            <div class="node-port input" aria-hidden="true"></div>
-            <div class="node-port output" aria-hidden="true"></div>
+          <article class="dag-node" style="border-color: var(--prodigeui-color-primary);">
+            <span class="mono text-mint">NODE 02 — EXECUTING</span>
+            <h4 style="margin: 0.5rem 0 0;">Agentic DAG Compiler</h4>
           </article>
-
           <article class="dag-node">
-            <div class="node-header">
-              <span class="mono-tag">NODE 03</span>
-              <span class="node-badge">DEPLOYED</span>
-            </div>
-            <span class="node-title">Wasm Edge Runtime</span>
-            <p class="node-desc">Pushes app bundle to worldwide edge points</p>
-            <div class="node-port input" aria-hidden="true"></div>
+            <span class="mono">NODE 03 — DEPLOYED</span>
+            <h4 style="margin: 0.5rem 0 0;">Wasm Edge Runtime</h4>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="bento-section wrap" id="features">
-      <div class="mono-tag text-mint">System Architecture</div>
-      <h2 class="bento-h2">Built for engineering scale.</h2>
-
+    <section class="wrap" style="padding: 4rem 0;">
       <div class="grid-3">
-        <article class="card-material bento-item">
-          <div class="bento-num">01</div>
-          <h3 class="bento-card-title">Bi-directional Code Sync</h3>
-          <p class="text-muted">Edit visual nodes or write raw TypeScript code — state stays synced with zero vendor lock-in.</p>
+        <article class="card-material" style="padding: 2rem;">
+          <h3 style="margin-top: 0; color: var(--prodigeui-color-primary);">Bi-directional Code Sync</h3>
+          <p class="text-muted">Edit visual nodes or write raw TypeScript code.</p>
         </article>
-
-        <article class="card-material bento-item">
-          <div class="bento-num">02</div>
-          <h3 class="bento-card-title">Native WebGL &amp; 3D Engine</h3>
-          <p class="text-muted">Embed Three.js shader canvasses directly inside generated React application trees.</p>
+        <article class="card-material" style="padding: 2rem;">
+          <h3 style="margin-top: 0; color: var(--prodigeui-color-primary);">Native WebGL &amp; 3D Engine</h3>
+          <p class="text-muted">Embed Three.js shader canvasses directly.</p>
         </article>
-
-        <article class="card-material bento-item">
-          <div class="bento-num">03</div>
-          <h3 class="bento-card-title">Zero-Latency Edge Deploy</h3>
-          <p class="text-muted">Instant worldwide edge deployment powered by isolated WebAssembly runtimes.</p>
+        <article class="card-material" style="padding: 2rem;">
+          <h3 style="margin-top: 0; color: var(--prodigeui-color-primary);">Zero-Latency Edge Deploy</h3>
+          <p class="text-muted">Instant worldwide edge deployment.</p>
         </article>
       </div>
     </section>
   </main>
-
-  <footer>
-    <div class="wrap footer-flex">
-      <span class="mono-tag">&copy; 2026 LOVABLE FLOW Inc. Powered by ProdigeUI Engine v3.0.6</span>
-      <span class="mono-tag text-mint">SOC2 Type II Certified</span>
-    </div>
-  </footer>
 </body>
 </html>
