@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProdigeUI v3.0.5 — BEFORE vs AFTER Benchmark Suite (n8n &amp; Delve Architects Featured)</title>
+  <title>ProdigeUI v3.0.5 — BEFORE vs AFTER Benchmark Suite (n8n &amp; Delve Architects)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -18,8 +18,6 @@
       --muted: #9ca3af;
       --green: #10b981;
       --red: #ef4444;
-      --amber: #f59e0b;
-      --terracotta: #a64b2a;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-font-smoothing: antialiased; }
@@ -30,9 +28,8 @@
 
     /* Primary Featured Controls Bar */
     .controls-bar { padding: 1rem 2rem; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .tabs-group { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-    .tab-btn { background: var(--surface); color: var(--muted); border: 1px solid var(--border); padding: 0.65rem 1.3rem; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 0.5rem; }
-    .tab-btn.featured { border-color: rgba(16, 185, 129, 0.4); color: #fff; }
+    .tabs-group { display: flex; gap: 0.8rem; }
+    .tab-btn { background: var(--surface); color: var(--muted); border: 1px solid var(--border); padding: 0.7rem 1.5rem; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 0.5rem; }
     .tab-btn.active { background: var(--surface-elevated); color: var(--text); border-color: var(--green); box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 0 20px rgba(16, 185, 129, 0.2); }
 
     /* Comparative Metrics Matrix Header */
@@ -55,21 +52,17 @@
 <body>
   <header class="top-header">
     <div class="brand">
-      ProdigeUI v3.0.5 <span class="badge-live">● FEATURED BEFORE vs AFTER BENCHMARK</span>
+      ProdigeUI v3.0.5 <span class="badge-live">● BEFORE vs AFTER BENCHMARK SUITE</span>
     </div>
     <div style="font-size: 0.85rem; color: var(--muted);">
-      Direct Visual &amp; UX Difference Analysis: n8n Workflow Platform &amp; Delve Architects
+      Direct Visual &amp; Architectural Comparison: n8n Workflow DAG &amp; Delve Architects
     </div>
   </header>
 
   <nav class="controls-bar">
     <div class="tabs-group">
-      <button class="tab-btn featured active" onclick="loadPair(0)">⚡ 1. FEATURED: n8n / Lovable (Workflow DAG)</button>
-      <button class="tab-btn featured" onclick="loadPair(1)">🏛️ 2. FEATURED: Delve Architects (Paper Studio)</button>
-      <button class="tab-btn" onclick="loadPair(2)">3. NestJS Enterprise</button>
-      <button class="tab-btn" onclick="loadPair(3)">4. yoyoyo.ai Voice OS</button>
-      <button class="tab-btn" onclick="loadPair(4)">5. Aura Luxury Atelier</button>
-      <button class="tab-btn" onclick="loadPair(5)">6. FlowAI Telemetry</button>
+      <button class="tab-btn active" onclick="loadPair(0)">⚡ 1. n8n / Lovable Flow (Workflow DAG)</button>
+      <button class="tab-btn" onclick="loadPair(1)">🏛️ 2. Delve Architects (Paper Studio)</button>
     </div>
   </nav>
 
@@ -163,82 +156,6 @@
           "Brutalist architectural grid lines & oversized numbers",
           "Interactive spatial project inspector hero anchor",
           "0 inline HTML style attributes (100% tokenized CSS classes)"
-        ]
-      },
-      {
-        beforeUrl: "before-nestjs-untuned.html",
-        afterUrl: "fresh-nestjs-ruby-tuned.html",
-        beforeScore: "5.0 / 10 — CRITICAL FAILS",
-        afterScore: "9.9 / 10 — AWARD GRADE PASS",
-        beforeList: [
-          "Flat dark card containers lacking inset lighting",
-          "Generic Arial font without monospace code styling",
-          "Static code preview box without CLI animation",
-          "Inline HTML style attribute leaks",
-          "Missing prefers-reduced-motion rules"
-        ],
-        afterList: [
-          "NestJS Ruby Tech branding (#e0234e)",
-          "JetBrains Mono + Inter typography pairing",
-          "Interactive CLI terminal hero canvas anchor",
-          "0 inline style attributes (100% tokenized CSS)",
-          "Full WCAG 2.1 AA contrast compliance (6.9:1)"
-        ]
-      },
-      {
-        beforeUrl: "before-yoyoyo-untuned.html",
-        afterUrl: "fresh-yoyoyo-voice-tuned.html",
-        beforeScore: "5.2 / 10 — CRITICAL FAILS",
-        afterScore: "9.9 / 10 — AWARD GRADE PASS",
-        beforeList: [
-          "Flat dark box without cyan ambient glow",
-          "Generic Arial sans-serif typography",
-          "Static text representing audio visualizer",
-          "Inline HTML style attribute leaks",
-          "Missing prefers-reduced-motion rules"
-        ],
-        afterList: [
-          "yoyoyo.ai cyan-neon spatial theme (#00f0ff)",
-          "Syne display typography + tight tracking (-0.04em)",
-          "Interactive AI voice waveform canvas hero anchor",
-          "0 inline style attributes (100% tokenized CSS)",
-          "Full WCAG 2.1 AA contrast compliance (12.4:1)"
-        ]
-      },
-      {
-        beforeUrl: "beauty-without-prodigeui.html",
-        afterUrl: "fresh-aura-beauty-tuned.html",
-        beforeScore: "5.6 / 10 — FAILS GATE",
-        afterScore: "9.8 / 10 — AWARD GRADE PASS",
-        beforeList: [
-          "Low primary button contrast ratio (4.2:1)",
-          "Inline style attribute leaks",
-          "Un-isolated background grain overlay",
-          "Missing prefers-reduced-motion rules"
-        ],
-        afterList: [
-          "5.4:1 Terracotta contrast ratio & 7.1:1 taupe contrast",
-          "Complete stacking isolation (isolation: isolate)",
-          "Full prefers-reduced-motion media query",
-          "Zero inline style attributes"
-        ]
-      },
-      {
-        beforeUrl: "flowai-without-prodigeui.html",
-        afterUrl: "bench-01-saas-agentpulse.html",
-        beforeScore: "5.0 / 10 — FAILS GATE",
-        afterScore: "9.9 / 10 — AWARD GRADE PASS",
-        beforeList: [
-          "Generic Tailwind blue template",
-          "Primitive token reference leakage",
-          "Inline HTML style attributes",
-          "No telemetry terminal component"
-        ],
-        afterList: [
-          "Cyber Emerald dark-tech obsidian identity",
-          "JetBrains Mono code telemetry terminal hero",
-          "100% tokenized CSS classes (0 inline styles)",
-          "Full WCAG 2.1 AA contrast compliance (7.8:1)"
         ]
       }
     ];
