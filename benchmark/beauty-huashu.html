@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — Huashu Enterprise Fashion Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f0f2f5;
+      --panel: #ffffff;
+      --teal: #00b96b;
+      --text: #1f1f1f;
+      --muted: #8c8c8c;
+      --border: #d9d9d9;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.5; }
+    .wrap { width: min(1180px, 94vw); margin-inline: auto; }
+
+    header { background: #001529; color: white; height: 64px; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 1.25rem; font-weight: 700; color: var(--teal); }
+
+    .hero { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 3rem; margin: 2rem 0; }
+    .hero h1 { font-size: 2.2rem; font-weight: 700; color: #000; margin-bottom: 1rem; }
+    .hero p { color: var(--muted); max-width: 600px; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; margin-bottom: 1rem; }
+
+    footer { background: var(--panel); border-top: 1px solid var(--border); padding: 1.5rem 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">AURA 华数设计</div>
+    <span style="font-size: 0.85rem; color: #a6adb4;">[HUASHU-DESIGN-MASTER]</span>
+  </header>
+
+  <div class="wrap">
+    <section class="hero">
+      <h1>AURA Women's Apparel Catalog Management</h1>
+      <p>Enterprise high-density fashion lookbook management and botanical skincare inventory ledger.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=70" alt="Silk Dress">
+        <h3 style="font-size: 1.1rem; color: var(--teal);">Silk Solstice Dress</h3>
+        <p style="color: var(--muted); font-size: 0.85rem;">100% Mulberry silk inventory.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=70" alt="Rosehip Skincare">
+        <h3 style="font-size: 1.1rem; color: var(--teal);">Rosehip &amp; Camellia</h3>
+        <p style="color: var(--muted); font-size: 0.85rem;">Damask rose extract ledger.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=70" alt="Linen Trench">
+        <h3 style="font-size: 1.1rem; color: var(--teal);">Linen Trench Coat</h3>
+        <p style="color: var(--muted); font-size: 0.85rem;">European flax coat stock.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 AURA (huashu-design-master execution)</p>
+  </footer>
+</body>
+</html>

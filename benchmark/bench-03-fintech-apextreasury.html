@@ -1,0 +1,203 @@
+<!-- Design Read: Institutional treasury SaaS for CFOs & quantitative traders, trust-first navy & sapphire vibe, leaning high-density ledger + risk telemetry card. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexTreasury — Institutional Liquidity &amp; Quantitative Risk Management</title>
+  <meta name="description" content="ApexTreasury provides real-time multi-currency liquidity aggregation, automated cash sweep protocols, and cross-border risk hedging for institutional CFOs.">
+  
+  <!-- Typography: Plus Jakarta Sans & DM Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       PRODIGEUI 3-LAYER TOKEN SYSTEM (Fintech Institutional Navy Domain)
+       ========================================================================== */
+    :root {
+      /* Layer 1: Primitive Tokens */
+      --prodigeui-primitive-navy-bg: #070d18;
+      --prodigeui-primitive-navy-card: #0e1726;
+      --prodigeui-primitive-navy-border: rgba(30, 58, 107, 0.45);
+      --prodigeui-primitive-sapphire: #2563eb;       /* 5.2:1 Contrast on Dark Navy */
+      --prodigeui-primitive-sapphire-hover: #1d4ed8;
+      --prodigeui-primitive-emerald: #10b981;        /* 7.6:1 Contrast on Navy */
+      --prodigeui-primitive-amber: #f59e0b;
+      --prodigeui-primitive-text-main: #f8fafc;
+      --prodigeui-primitive-text-muted: #94a3b8;      /* 6.9:1 Contrast on Navy */
+
+      /* Layer 2: Semantic Tokens */
+      --prodigeui-color-bg: var(--prodigeui-primitive-navy-bg);
+      --prodigeui-color-surface: var(--prodigeui-primitive-navy-card);
+      --prodigeui-color-text: var(--prodigeui-primitive-text-main);
+      --prodigeui-color-muted: var(--prodigeui-primitive-text-muted);
+      --prodigeui-color-primary: var(--prodigeui-primitive-sapphire);
+      --prodigeui-color-primary-hover: var(--prodigeui-primitive-sapphire-hover);
+      --prodigeui-color-accent: var(--prodigeui-primitive-emerald);
+      --prodigeui-color-border: var(--prodigeui-primitive-navy-border);
+
+      /* Typography Tokens */
+      --prodigeui-font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --prodigeui-font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --prodigeui-font-mono: 'DM Mono', monospace;
+
+      --prodigeui-radius-card: 10px;
+      --prodigeui-radius-pill: 9999px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.55; -webkit-font-smoothing: antialiased; isolation: isolate; }
+
+    :focus-visible { outline: 3px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--prodigeui-color-primary); color: #fff; padding: 0.5rem 1rem; z-index: 200; font-weight: 700; border-radius: 6px; transition: top 0.2s; text-decoration: none; }
+    .skip-link:focus { top: 1rem; }
+
+    .wrap { width: min(1200px, 92vw); margin-inline: auto; isolation: isolate; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.78rem; letter-spacing: 0.05em; }
+    .text-muted { color: var(--prodigeui-color-muted); }
+    .text-emerald { color: var(--prodigeui-primitive-emerald); }
+    .eyebrow-margin { margin-bottom: 1rem; }
+    .lead-margin { font-size: 1.1rem; max-width: 46ch; margin-bottom: 2rem; }
+
+    /* Nav Bar */
+    .nav-bar {
+      position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+      width: min(1160px, 92vw); z-index: 50;
+      background: rgba(7, 13, 24, 0.9); backdrop-filter: blur(16px);
+      border: 1px solid var(--prodigeui-color-border); border-radius: var(--prodigeui-radius-pill);
+      padding: 0.75rem 1.75rem; display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand-logo { font-weight: 800; font-size: 1.3rem; color: var(--prodigeui-color-text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--prodigeui-color-muted); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--prodigeui-color-text); }
+
+    .btn-sapphire {
+      background: var(--prodigeui-color-primary); color: #ffffff; font-weight: 700; padding: 0.65rem 1.4rem;
+      border-radius: var(--prodigeui-radius-pill); text-decoration: none; font-size: 0.88rem; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer;
+      position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-sapphire:hover { background: var(--prodigeui-color-primary-hover); transform: translateY(-2px); }
+
+    /* Hero Section */
+    .hero-wrap { padding-top: 10rem; padding-bottom: 5rem; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-h1 { font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+    .hero-h1 span { color: var(--prodigeui-primitive-sapphire); }
+
+    /* Ledger Risk Table Component */
+    .ledger-card {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: var(--prodigeui-radius-card); padding: 1.5rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .ledger-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .ledger-row {
+      display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-family: var(--prodigeui-font-mono); font-size: 0.85rem;
+    }
+    .ledger-row:last-child { border-bottom: none; }
+    .chip-status { padding: 3px 8px; border-radius: 4px; font-weight: 700; font-size: 0.72rem; }
+    .chip-status.active { background: rgba(16, 185, 129, 0.15); color: var(--prodigeui-primitive-emerald); }
+
+    /* Metrics Strip */
+    .metric-section { padding: 4rem 0; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .metric-box { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); border-radius: var(--prodigeui-radius-card); padding: 1.75rem; }
+    .metric-num { font-family: var(--prodigeui-font-mono); font-size: 2.2rem; font-weight: 700; color: var(--prodigeui-color-text); margin-top: 0.25rem; }
+
+    footer { padding: 3rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.88rem; margin-top: 4rem; }
+    .footer-flex { display: flex; justify-content: space-between; align-items: center; }
+
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .btn-sapphire:hover { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="nav-bar">
+    <a class="brand-logo" href="#">APEX<span>TREASURY</span></a>
+    <ul class="nav-links">
+      <li><a href="#liquidity">Liquidity Engine</a></li>
+      <li><a href="#hedging">Risk Hedging</a></li>
+      <li><a href="#compliance">SOC2 Compliance</a></li>
+    </ul>
+    <a href="#start" class="btn-sapphire">Connect Treasury</a>
+  </header>
+
+  <main id="main">
+    <section class="hero-wrap wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="mono text-emerald eyebrow-margin">Institutional Treasury OS</div>
+          <h1 class="hero-h1">Command cash flow with <span>quant accuracy.</span></h1>
+          <p class="text-muted lead-margin">Real-time automated multi-currency liquidity pooling, instant FX risk hedging, and automated yield sweeps for balance sheets above $50M.</p>
+          <a href="#start" class="btn-sapphire">Request Institutional Demo</a>
+        </div>
+
+        <div class="ledger-card">
+          <div class="ledger-head">
+            <strong class="mono">LIVE TREASURY POSITION</strong>
+            <span class="chip-status active">● SWEEP ACTIVE</span>
+          </div>
+
+          <div class="ledger-row">
+            <span>USD Cash Sweep / FedReserve</span>
+            <strong class="text-emerald">$142,500,000.00</strong>
+          </div>
+          <div class="ledger-row">
+            <span>EUR Liquidity Pool / Frankfurt</span>
+            <strong>&euro;48,210,400.00</strong>
+          </div>
+          <div class="ledger-row">
+            <span>GBP Hedging Contract / London</span>
+            <strong>&pound;22,100,000.00</strong>
+          </div>
+          <div class="ledger-row">
+            <span>90-Day VaR Risk Exposure</span>
+            <span class="text-emerald">0.042% (Optimal)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="metric-section wrap" id="liquidity">
+      <div class="grid-4">
+        <article class="metric-box">
+          <span class="mono text-muted">Daily Settled Volume</span>
+          <div class="metric-num">$4.8B+</div>
+        </article>
+        <article class="metric-box">
+          <span class="mono text-muted">Settlement Latency</span>
+          <div class="metric-num text-emerald">180ms</div>
+        </article>
+        <article class="metric-box">
+          <span class="mono text-muted">Supported Currencies</span>
+          <div class="metric-num">42 Pairs</div>
+        </article>
+        <article class="metric-box">
+          <span class="mono text-muted">Audit Standard</span>
+          <div class="metric-num">SOC2 Type II</div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-flex">
+      <span class="mono">&copy; 2026 ApexTreasury Technologies. Powered by ProdigeUI Engine v3.0.5</span>
+      <span class="mono text-emerald">FINRA &amp; SEC Compliant Gateway</span>
+    </div>
+  </footer>
+</body>
+</html>

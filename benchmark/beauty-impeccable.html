@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — Impeccable Drenched Cobalt Fashion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cobalt: #0f1c3f;
+      --amber: #f59e0b;
+      --text: #f4f7fc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--cobalt); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+    .wrap { width: min(1180px, 92vw); margin-inline: auto; }
+    
+    header { height: 80px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .logo { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--amber); }
+
+    .hero { padding: 7rem 0; text-align: center; }
+    .hero h1 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 800; line-height: 1.02; margin-bottom: 1.5rem; }
+    .hero p { color: var(--muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 4rem 0; }
+    .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; }
+    .card img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
+
+    footer { padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: var(--muted); font-size: 0.88rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">AURA / OKLCH</div>
+      <span style="font-size: 0.85rem; color: var(--muted);">Seed-166 Drenched Cobalt</span>
+    </header>
+
+    <section class="hero">
+      <h1>Poise &amp; Pure Line</h1>
+      <p>Silk garments, damask rose skincare, and tailored outerwear in seed-driven OKLCH color spaces.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=70" alt="Silk Dress">
+        <h3 style="color: var(--amber);">Solstice Silk Gown</h3>
+        <p>Mulberry silk tailored in cobalt glow.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=70" alt="Rosehip Skincare">
+        <h3 style="color: var(--amber);">Rosehip Elixir</h3>
+        <p>Cold-pressed organic damask rose oil.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=70" alt="Linen Trench">
+        <h3 style="color: var(--amber);">Linen Trench Coat</h3>
+        <p>European flax coat with horn buttons.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 AURA (impeccable-main execution)</p>
+    </footer>
+  </div>
+</body>
+</html>

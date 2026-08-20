@@ -183,10 +183,11 @@ Fully GPU-composited, no extra DOM.
 30–80ms between items; first reveal only (never re-stagger on scroll). Stagger is decorative
 — never block interaction while it plays.
 
-## 15. Canvas & Hero Layer Isolation (No Obscured Titles)
+## 15. Canvas & Hero Layer Isolation (No Obscured Titles & Controls)
 
 - **Canvas Pointer Events & Z-Index**: WebGL/Canvas elements (`#nova-core`, particle fields) MUST always have `pointer-events: none; z-index: 1;` so they never trap clicks or obscure foreground content.
 - **Hero Title Isolation**: Hero titles and text content MUST be explicitly layered with `position: relative; z-index: 10; isolation: isolate;` to guarantee readability over 3D backgrounds under all network and rendering conditions.
+- **Watermark & Background Text Isolation**: Decorative background text (`::after` watermarks, giant background timestamps/numbers) MUST have `z-index: 0; pointer-events: none;` and the parent container MUST have `isolation: isolate;`. All interactive CTA buttons (`.btn`, `.button`, `a`) MUST have `position: relative; z-index: 2;` so decorative text NEVER covers or obscures interactive controls under any screen resolution.
 - **Graceful Text Visibility**: Headline text must remain 100% visible even if JS/GSAP text reveals fail or take time to load — never permanently hide text in static CSS without an active JS animation callback.
 
 ## Review your work

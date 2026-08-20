@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA (01) — Nothing Phone Aesthetic Women's Fashion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #ffffff;
+      --red: #ff0000;
+      --gray: #333333;
+      --mono: 'Space Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--mono); line-height: 1.5; }
+    .wrap { width: min(1180px, 92vw); margin-inline: auto; }
+
+    header { height: 80px; border-bottom: 1px solid var(--gray); display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 1.4rem; font-weight: 700; color: var(--text); }
+    .logo span { color: var(--red); }
+
+    .hero { padding: 6rem 0; border-bottom: 1px solid var(--gray); }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); text-transform: uppercase; font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero h1 span { color: var(--red); }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 4rem 0; }
+    .card { border: 1px solid var(--gray); padding: 1.5rem; background: #080808; }
+    .card img { width: 100%; height: 220px; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s; }
+    .card:hover img { filter: grayscale(0%); }
+
+    footer { border-top: 1px solid var(--gray); padding: 2rem 0; font-size: 0.8rem; color: #666; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">AURA <span>(01)</span></div>
+      <div>[NOTHING-DESIGN-SKILL]</div>
+    </header>
+
+    <section class="hero">
+      <h1>PURE FORM. <span>SILK &amp; ROSE.</span></h1>
+      <p style="color: #aaa; max-width: 500px;">100% Mulberry silk &amp; botanical rosehip skincare engineered in industrial monochrome minimalism.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=70" alt="Silk Dress">
+        <h3 style="margin: 1rem 0 0.5rem; font-size: 1.1rem;">(01) SILK DRESS</h3>
+        <p style="color: #888; font-size: 0.85rem;">Mulberry silk form.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=70" alt="Rosehip Skincare">
+        <h3 style="margin: 1rem 0 0.5rem; font-size: 1.1rem;">(02) ROSE ELIXIR</h3>
+        <p style="color: #888; font-size: 0.85rem;">Damask rose extract.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=70" alt="Linen Trench">
+        <h3 style="margin: 1rem 0 0.5rem; font-size: 1.1rem;">(03) LINEN COAT</h3>
+        <p style="color: #888; font-size: 0.85rem;">European flax coat.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 AURA (01) — Nothing Industrial System</p>
+    </footer>
+  </div>
+</body>
+</html>

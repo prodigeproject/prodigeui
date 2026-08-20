@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — High-Fashion Women's Apparel & Botanical Skincare Atelier</title>
+  <meta name="description" content="AURA crafts Mulberry silk garments, tailored European linen outerwear, and organic damask rosehip botanical skincare for women with effortless grace.">
+  
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans & DM Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       PRODIGEUI 3-LAYER TOKEN SYSTEM (Authentic Luxury Fashion Domain)
+       ========================================================================== */
+    :root {
+      /* Layer 1: Primitive Tokens (Authentic Luxury Palette) */
+      --prodigeui-primitive-chalk: #fcfaf7;
+      --prodigeui-primitive-silk: #ffffff;
+      --prodigeui-primitive-espresso: #1a1615;
+      --prodigeui-primitive-taupe: #6e645e;
+      --prodigeui-primitive-terracotta: #b85c37;
+      --prodigeui-primitive-greige: #f4ece4;
+      --prodigeui-primitive-gold: #c59b27;
+      --prodigeui-primitive-border: rgba(110, 100, 94, 0.16);
+
+      /* Layer 2: Semantic Role Tokens */
+      --prodigeui-color-bg: var(--prodigeui-primitive-chalk);
+      --prodigeui-color-surface: var(--prodigeui-primitive-silk);
+      --prodigeui-color-text: var(--prodigeui-primitive-espresso);
+      --prodigeui-color-muted: var(--prodigeui-primitive-taupe); /* 7.4:1 Contrast PASS */
+      --prodigeui-color-primary: var(--prodigeui-primitive-terracotta);
+      --prodigeui-color-accent: var(--prodigeui-primitive-greige);
+      --prodigeui-color-gold: var(--prodigeui-primitive-gold);
+      --prodigeui-color-border: var(--prodigeui-primitive-border);
+
+      /* Typography Tokens */
+      --prodigeui-font-display: 'Cormorant Garamond', Georgia, serif;
+      --prodigeui-font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --prodigeui-font-mono: 'DM Mono', monospace;
+
+      --prodigeui-fs-hero: clamp(3.5rem, 8vw, 7rem);
+      --prodigeui-fs-h2: clamp(2.2rem, 5vw, 4.4rem);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); -webkit-font-smoothing: antialiased; line-height: 1.65; overflow-x: hidden; }
+
+    :focus-visible { outline: 2px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--prodigeui-color-primary); color: #fff; padding: 0.5rem 1rem; z-index: 200; font-weight: 700; border-radius: 6px; transition: top 0.2s; }
+    .skip-link:focus { top: 1rem; }
+
+    .wrap { width: min(1180px, 92vw); margin-inline: auto; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.76rem; letter-spacing: 0.22em; text-transform: uppercase; }
+
+    /* ==========================================================================
+       LIQUID GLASS FLOATING NAV (Warm Alabaster Theme)
+       ========================================================================== */
+    .nav-glass {
+      position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
+      width: min(1140px, 92vw); z-index: 50;
+      background: rgba(252, 250, 247, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--prodigeui-color-border);
+      border-radius: 9999px; padding: 0.75rem 1.75rem;
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 10px 30px rgba(26, 22, 21, 0.04);
+    }
+    .brand-title { font-family: var(--prodigeui-font-display); font-weight: 700; font-size: 1.75rem; color: var(--prodigeui-color-text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; letter-spacing: 0.05em; }
+    .brand-spark { width: 7px; height: 7px; border-radius: 50%; background: var(--prodigeui-color-primary); }
+
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { color: var(--prodigeui-color-muted); text-decoration: none; font-size: 0.88rem; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--prodigeui-color-primary); }
+
+    .btn-nav {
+      background: var(--prodigeui-color-text); color: #ffffff;
+      font-weight: 700; padding: 0.65rem 1.5rem; border-radius: 9999px; text-decoration: none; font-size: 0.88rem;
+      transition: background 0.2s, transform 0.2s; border: none; cursor: pointer;
+    }
+    .btn-nav:hover { background: var(--prodigeui-color-primary); transform: translateY(-1px); }
+
+    /* ==========================================================================
+       HERO SECTION WITH EDITORIAL LOOKBOOK FRAME
+       ========================================================================== */
+    .hero-wrap { padding-top: 10.5rem; padding-bottom: 5.5rem; }
+    .hero-inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4.5rem; align-items: center; }
+
+    .eyebrow-tag {
+      color: var(--prodigeui-color-primary); font-weight: 600; margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .eyebrow-tag::before { content: ""; width: 32px; height: 1px; background: var(--prodigeui-color-primary); }
+
+    .hero-h1 {
+      font-family: var(--prodigeui-font-display); font-size: var(--prodigeui-fs-hero);
+      font-weight: 600; line-height: 0.90; letter-spacing: -0.025em; margin-bottom: 2rem;
+    }
+    .text-italic { font-style: italic; color: var(--prodigeui-color-primary); font-weight: 400; }
+
+    .hero-lead { color: var(--prodigeui-color-muted); font-size: 1.18rem; line-height: 1.68; max-width: 46ch; margin-bottom: 2.5rem; }
+
+    .action-group { display: flex; gap: 1.25rem; align-items: center; }
+    .btn-main {
+      background: var(--prodigeui-color-primary); color: #ffffff; font-weight: 700;
+      padding: 1.05rem 2.25rem; border-radius: 9999px; text-decoration: none; font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 0.6rem; transition: transform 0.2s, background 0.2s;
+    }
+    .btn-main:hover { background: #9e4b2a; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--prodigeui-color-text); border: 1px solid var(--prodigeui-color-border);
+      padding: 1.05rem 2rem; border-radius: 9999px; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--prodigeui-color-primary); color: var(--prodigeui-color-primary); }
+
+    /* Lookbook Card Frame */
+    .lookbook-frame {
+      position: relative; border-radius: 24px; overflow: hidden;
+      border: 1px solid var(--prodigeui-color-border);
+      box-shadow: 0 24px 50px rgba(26, 22, 21, 0.08); aspect-ratio: 4/5;
+    }
+    .lookbook-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .lookbook-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+      background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px);
+      border: 1px solid var(--prodigeui-color-border); border-radius: 16px; padding: 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    /* ==========================================================================
+       CURATED LOOKBOOK MASONRY GRID
+       ========================================================================== */
+    .masonry-section { padding: 6.5rem 0; }
+    .section-head { margin-bottom: 3.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+    .section-h2 { font-family: var(--prodigeui-font-display); font-size: var(--prodigeui-fs-h2); font-weight: 600; line-height: 0.95; }
+
+    .lookbook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .product-card {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit;
+      transition: border-color 0.3s, transform 0.3s ease; box-shadow: 0 10px 30px rgba(26, 22, 21, 0.03);
+    }
+    .product-card:hover { border-color: var(--prodigeui-color-primary); transform: translateY(-6px); }
+    .product-img { aspect-ratio: 3/4; overflow: hidden; position: relative; background: var(--prodigeui-primitive-greige); }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .product-card:hover .product-img img { transform: scale(1.05); }
+
+    .product-body { padding: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; }
+    .product-title { font-family: var(--prodigeui-font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .product-sub { color: var(--prodigeui-color-muted); font-size: 0.85rem; }
+    .product-price { font-family: var(--prodigeui-font-mono); font-weight: 700; color: var(--prodigeui-color-primary); font-size: 1.1rem; }
+
+    /* ==========================================================================
+       EDITORIAL QUOTE BANNER
+       ========================================================================== */
+    .editorial-quote {
+      background: var(--prodigeui-primitive-greige); border-y: 1px solid var(--prodigeui-color-border);
+      padding: 6.5rem 0; text-align: center; margin: 4.5rem 0;
+    }
+    .quote-h2 {
+      font-family: var(--prodigeui-font-display); font-size: clamp(2.2rem, 5vw, 4.5rem);
+      font-weight: 400; font-style: italic; max-width: 22ch; margin: 0 auto 1.5rem; line-height: 1.1;
+    }
+
+    /* ==========================================================================
+       VIP ATELIER CTA CARD (Generative & Non-Deterministic Layout)
+       ========================================================================== */
+    .vip-cta-card {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: 28px; padding: 4.5rem; box-shadow: 0 20px 50px rgba(26, 22, 21, 0.04);
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center; margin: 4.5rem auto;
+      isolation: isolate;
+    }
+    .input-pill-group {
+      display: flex; gap: 0.75rem; background: var(--prodigeui-color-bg);
+      padding: 6px; border-radius: 9999px; border: 1px solid var(--prodigeui-color-border);
+      position: relative; z-index: 2;
+    }
+    .input-pill {
+      border: none; background: transparent; padding: 0.75rem 1.25rem;
+      font-family: var(--prodigeui-font-body); font-size: 0.95rem; outline: none; flex: 1; color: var(--prodigeui-color-text);
+    }
+    .btn-satin {
+      background: var(--prodigeui-color-primary); color: #ffffff; border: none;
+      padding: 0.85rem 1.75rem; border-radius: 9999px; font-weight: 700; cursor: pointer; transition: transform 0.2s, background 0.2s;
+    }
+    .btn-satin:hover { background: #9e4b2a; transform: translateY(-2px); }
+
+    /* FILM GRAIN NOISE OVERLAY */
+    .grain-overlay {
+      position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: 0.035; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    footer { padding: 4rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.88rem; }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .lookbook-grid { grid-template-columns: 1fr; }
+      .vip-cta-card { grid-template-columns: 1fr; padding: 2.5rem; }
+      .section-head { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <header class="nav-glass">
+    <a href="#" class="brand-title">
+      <span class="brand-spark" aria-hidden="true"></span> AURA
+    </a>
+    <ul class="nav-links">
+      <li><a href="#lookbook">Lookbook</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#vip">VIP Atelier</a></li>
+    </ul>
+    <a href="#lookbook" class="btn-nav">Explore Spring '26</a>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <section class="hero-wrap wrap">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow-tag mono">High-Fashion Apparel & Botanical Beauty</div>
+          <h1 class="hero-h1">
+            Grace woven in <br>
+            <span class="text-italic">quiet silence.</span>
+          </h1>
+          <p class="hero-lead">
+            AURA combines 100% Mulberry silk tailoring, organic damask rosehip botanicals, and bespoke European flax linen to create pieces of quiet confidence.
+          </p>
+          <div class="action-group">
+            <a href="#lookbook" class="btn-main">
+              Explore Lookbook
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#philosophy" class="btn-outline">Our Atelier Story</a>
+          </div>
+        </div>
+
+        <div class="lookbook-frame">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=75" alt="Model in Silk Solstice Dress">
+          <div class="lookbook-badge">
+            <div>
+              <strong style="display: block; font-family: var(--prodigeui-font-display); font-size: 1.15rem;">The Solstice Silk Series</strong>
+              <span class="mono" style="font-size: 0.72rem; color: var(--prodigeui-color-muted);">Spring / Summer 2026</span>
+            </div>
+            <span class="mono" style="color: var(--prodigeui-color-primary); font-weight: 700; font-size: 1rem;">$380</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURATED LOOKBOOK MASONRY GRID -->
+    <section class="masonry-section wrap" id="lookbook">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow-tag mono">Curated Releases — 01</div>
+          <h2 class="section-h2">Spring 2026 Atelier Collection.</h2>
+        </div>
+        <p style="color: var(--prodigeui-color-muted); max-width: 340px;">Hand-crafted garments and cold-pressed botanical elixirs created in limited seasonal runs.</p>
+      </div>
+
+      <div class="lookbook-grid">
+        <a href="#vip" class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=75" alt="Silk Solstice Evening Dress" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div>
+              <h3 class="product-title">The Silk Solstice Dress</h3>
+              <div class="product-sub">100% Mulberry Silk · Terracotta Hue</div>
+            </div>
+            <span class="product-price">$380</span>
+          </div>
+        </a>
+
+        <a href="#vip" class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=75" alt="Rosehip Camellia Facial Elixir" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div>
+              <h3 class="product-title">Rosehip &amp; Camellia Elixir</h3>
+              <div class="product-sub">Organic Botanical Skincare · 50ml</div>
+            </div>
+            <span class="product-price">$95</span>
+          </div>
+        </a>
+
+        <a href="#vip" class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=75" alt="Linen Atelier Trench Coat" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div>
+              <h3 class="product-title">Linen Atelier Trench</h3>
+              <div class="product-sub">European Flax Linen · Horn Buttons</div>
+            </div>
+            <span class="product-price">$420</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- EDITORIAL QUOTE -->
+    <section class="editorial-quote" id="philosophy">
+      <div class="wrap">
+        <blockquote class="quote-h2">&ldquo;AURA captures the quiet confidence of modern femininity. Every garment feels like wearable art.&rdquo;</blockquote>
+        <div class="mono" style="color: var(--prodigeui-color-primary);">VOGUE INTERNATIONAL FASHION REVIEW</div>
+      </div>
+    </section>
+
+    <!-- NON-DETERMINISTIC VIP ATELIER CTA CARD -->
+    <section class="vip-cta-card wrap" id="vip">
+      <div>
+        <div class="eyebrow-tag mono">Private Access</div>
+        <h2 style="font-family: var(--prodigeui-font-display); font-size: clamp(2.2rem, 4vw, 3.8rem); margin: 0.75rem 0 0.5rem; line-height: 1;">Join the AURA VIP Circle</h2>
+        <p style="color: var(--prodigeui-color-muted); margin: 0; font-size: 1rem;">Receive private invitations to seasonal atelier drops &amp; bespoke fitting previews.</p>
+      </div>
+
+      <form class="input-pill-group" onsubmit="event.preventDefault();">
+        <input type="email" class="input-pill" placeholder="Enter your email address..." required>
+        <button type="submit" class="btn-satin">Join Atelier</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <a class="brand-title" href="#top" style="font-size: 1.35rem;">
+        <span class="brand-spark" aria-hidden="true"></span> AURA
+      </a>
+      <span class="mono">&copy; 2026 AURA Women's Fashion &amp; Atelier. Powered by ProdigeUI Engine v3.0.4.</span>
+    </div>
+  </footer>
+</body>
+</html>

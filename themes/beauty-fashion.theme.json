@@ -1,0 +1,30 @@
+{
+  "name": "beauty-fashion",
+  "mode": "light",
+  "extends": "_default",
+  "overrides": {
+    "color.background": "#fdf2f8",
+    "color.foreground": "#2a0a16",
+    "color.muted": "#fbcfe8",
+    "color.muted-foreground": "#701a3c",
+    "color.surface": "#ffffff",
+    "color.surface-foreground": "#2a0a16",
+    "color.border": "rgba(244, 114, 182, 0.25)",
+    "color.input": "rgba(251, 207, 232, 0.5)",
+    "color.ring": "#e11d48",
+    "color.primary": "#e11d48",
+    "color.primary-foreground": "#ffffff",
+    "color.secondary": "#f472b6",
+    "color.secondary-foreground": "#2a0a16",
+    "color.accent": "#fbcfe8",
+    "color.accent-foreground": "#701a3c",
+    "color.destructive": "#be123c",
+    "color.destructive-foreground": "#ffffff",
+    "color.success": "#10b981",
+    "color.success-foreground": "#ffffff",
+    "color.warning": "#f59e0b",
+    "color.warning-foreground": "#ffffff",
+    "color.info": "#0284c7",
+    "color.info-foreground": "#ffffff"
+  }
+}

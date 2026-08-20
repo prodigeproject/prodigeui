@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — Creative Agency Fashion & Beauty (ui-ux-pro-max)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Playfair+Display:ital,wght@1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #fdf2f8;
+      --pink: #ec4899;
+      --cyan: #0891b2;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --font-display: 'Inter', sans-serif;
+      --font-serif: 'Playfair Display', serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-display); line-height: 1.6; }
+    .wrap { width: min(1180px, 92vw); margin-inline: auto; }
+    
+    header { height: 80px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(236,72,153,0.2); }
+    .logo { font-size: 1.5rem; font-weight: 800; color: var(--pink); }
+    
+    .hero { padding: 6rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .hero h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; margin-bottom: 1.5rem; }
+    .hero h1 em { font-family: var(--font-serif); font-style: italic; color: var(--cyan); font-weight: 600; }
+    .hero p { color: var(--muted); font-size: 1.15rem; max-width: 480px; }
+
+    .btn { display: inline-block; background: var(--pink); color: white; padding: 0.8rem 1.8rem; border-radius: 99px; text-decoration: none; font-weight: 700; margin-top: 2rem; }
+    
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 4rem 0; }
+    .card { background: white; padding: 1.5rem; border-radius: 16px; border: 1px solid rgba(8,145,178,0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    .card img { width: 100%; height: 240px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
+
+    footer { padding: 3rem 0; border-top: 1px solid rgba(236,72,153,0.2); text-align: center; color: var(--muted); font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">AURA.agency</div>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--cyan);">CREATIVE-AGENCY PALETTE</span>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Modern Grace <em>&amp; Silk Motion.</em></h1>
+        <p>AURA combines Mulberry silk garments, botanical rosehip skincare, and bespoke tailoring for modern women.</p>
+        <a href="#collection" class="btn">Explore Atelier</a>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=70" alt="Silk Dress" style="width: 100%; border-radius: 24px; box-shadow: 0 20px 40px rgba(236,72,153,0.2);">
+      </div>
+    </section>
+
+    <section id="collection">
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=70" alt="Silk Dress">
+          <h3 style="color: var(--pink);">The Silk Solstice</h3>
+          <p>Mulberry silk evening dress in agency pink.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=70" alt="Botanical Elixir">
+          <h3 style="color: var(--cyan);">Rosehip &amp; Camellia</h3>
+          <p>Cold-pressed organic damask rose oil.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=70" alt="Linen Trench">
+          <h3 style="color: var(--pink);">Linen Atelier Trench</h3>
+          <p>European flax coat with tailored tie.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 AURA Creative Agency (ui-ux-pro-max-skill)</p>
+    </footer>
+  </div>
+</body>
+</html>

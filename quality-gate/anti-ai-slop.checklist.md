@@ -46,8 +46,11 @@ These patterns indicate fundamental quality failures. Presence of ANY = automati
   or animation-disabled review.
 - **FAIL:** Artwork text or an interactive surface relies on inherited foreground or arbitrary
   image pixels instead of owning a verified foreground/background treatment.
-- **FAIL:** An output imitates benchmark geometry or uses a fixed topology recipe to satisfy
-  this gate. The gate protects product-specific reasoning, not visual sameness.
+- **FAIL:** An output imitates benchmark geometry or uses a fixed topology recipe (e.g. tilted `rotate(1deg)` cards or copied timestamp watermarks `11:18 → 11:19`) to satisfy this gate. The gate protects product-specific reasoning, not visual sameness.
+- **FAIL:** Component markup contains raw inline HTML `style="..."` attributes instead of using CSS classes tied to design system tokens.
+- **FAIL:** The generated stylesheet omits `@media (prefers-reduced-motion: reduce)` accessibility rules to pause or simplify animations and transforms.
+- **FAIL:** Containers housing absolute or fixed background overlays omit `isolation: isolate;`, creating stacking context collisions that obscure interactive CTA elements.
+- **FAIL:** Generated output omits the mandatory one-line `Design Read:` header preceding the code block.
 
 > **Craft exception for FAIL #1, #5, and typography-scale:** Fluid and computed values
 > that are *systematic* are NOT raw-value violations. `clamp(2.5rem, 14vw, 17.5rem)` for a

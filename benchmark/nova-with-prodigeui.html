@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA — Independent Creative Studio & Art Direction</title>
+  <meta name="description" content="NOVA is an independent creative studio crafting brand identities, digital products, and motion for companies with something to prove.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       PRODIGEUI 3-LAYER TOKEN SYSTEM (NOVA - Creative Studio Theme)
+       ========================================================================== */
+    :root {
+      /* Layer 1: Primitive Tokens */
+      --prodigeui-primitive-obsidian: #0a0a0c;
+      --prodigeui-primitive-surface: #121216;
+      --prodigeui-primitive-vermilion: #ff4d15; /* Stellar Heat Accent */
+      --prodigeui-primitive-offwhite: #f4f1ea;
+
+      /* Layer 2: Semantic Tokens */
+      --prodigeui-color-bg: var(--prodigeui-primitive-obsidian);
+      --prodigeui-color-surface: var(--prodigeui-primitive-surface);
+      --prodigeui-color-text: var(--prodigeui-primitive-offwhite);
+      --prodigeui-color-text-muted: #a6a29a; /* 6.3:1 contrast on obsidian (PASS) */
+      --prodigeui-color-primary: var(--prodigeui-primitive-vermilion);
+      --prodigeui-color-border: rgba(244, 241, 234, 0.12);
+
+      /* Typography Tokens */
+      --prodigeui-font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+      --prodigeui-font-body: 'Inter', system-ui, sans-serif;
+      --prodigeui-font-mono: 'JetBrains Mono', monospace;
+      
+      --prodigeui-fs-hero: clamp(3rem, 11vw, 8.5rem);
+      --prodigeui-fs-h2: clamp(2rem, 5vw, 4rem);
+
+      /* Layer & Z-Index Tokens (Section 15 Isolation Contract) */
+      --prodigeui-z-canvas: 1;
+      --prodigeui-z-content: 10;
+      --prodigeui-z-nav: 50;
+      --prodigeui-z-grain: 100;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    :focus-visible { outline: 2px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--prodigeui-color-primary); color: #000; padding: 0.5rem 1rem; z-index: 200; font-weight: 700; border-radius: 6px; transition: top 0.2s; }
+    .skip-link:focus { top: 1rem; }
+
+    /* ==========================================================================
+       LIQUID GLASS FLOATING NAV
+       ========================================================================== */
+    .nav-glass {
+      position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
+      width: min(1140px, 92vw); z-index: var(--prodigeui-z-nav);
+      background: rgba(18, 18, 22, 0.6);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--prodigeui-color-border);
+      border-radius: 9999px; padding: 0.75rem 1.75rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand-title { font-family: var(--prodigeui-font-display); font-weight: 800; font-size: 1.35rem; color: var(--prodigeui-color-text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--prodigeui-color-primary); box-shadow: 0 0 14px var(--prodigeui-color-primary); }
+    
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--prodigeui-color-text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--prodigeui-color-text); }
+
+    .btn-nav {
+      background: var(--prodigeui-color-text); color: var(--prodigeui-color-bg);
+      font-weight: 700; padding: 0.6rem 1.4rem; border-radius: 9999px; text-decoration: none; font-size: 0.88rem;
+      transition: background 0.2s, transform 0.2s; border: none; cursor: pointer;
+    }
+    .btn-nav:hover { background: var(--prodigeui-color-primary); }
+
+    /* ==========================================================================
+       HERO SECTION WITH REAL-TIME THREE.JS CANVAS & ISOLATED HEADLINE
+       ========================================================================== */
+    .hero-wrap {
+      position: relative; min-height: 100vh; padding-top: 10rem; padding-bottom: 5rem;
+      display: flex; align-items: center; overflow: hidden;
+    }
+    
+    /* SECTION 15 RULE: Canvas pointer-events none & z-index 1 */
+    #nova-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      z-index: var(--prodigeui-z-canvas); pointer-events: none;
+    }
+
+    /* SECTION 15 RULE: Isolated Content Container (Z-Index 10 + Isolation) */
+    .hero-inner {
+      position: relative; z-index: var(--prodigeui-z-content); isolation: isolate;
+      width: min(1140px, 92vw); margin: 0 auto;
+    }
+
+    .eyebrow-tag {
+      font-family: var(--prodigeui-font-mono); font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--prodigeui-color-primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;
+    }
+    .eyebrow-tag::before { content: ""; width: 28px; height: 1px; background: var(--prodigeui-color-primary); }
+
+    .hero-h1 {
+      font-family: var(--prodigeui-font-display); font-size: var(--prodigeui-fs-hero);
+      font-weight: 800; line-height: 0.88; letter-spacing: -0.04em;
+      max-width: 14ch; margin-bottom: 2rem; position: relative; z-index: 10;
+    }
+    .text-accent { color: var(--prodigeui-color-primary); font-style: italic; }
+
+    .hero-lead {
+      color: var(--prodigeui-color-text-muted); font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+      max-width: 44ch; line-height: 1.55; margin-bottom: 2.5rem; position: relative; z-index: 10;
+    }
+
+    .action-group { display: flex; gap: 1rem; align-items: center; position: relative; z-index: 10; }
+    .btn-main {
+      background: var(--prodigeui-color-primary); color: #000; font-weight: 700;
+      padding: 1rem 2rem; border-radius: 9999px; text-decoration: none; font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 0.6rem; transition: transform 0.2s, background 0.2s;
+    }
+    .btn-main:hover { background: #ff6a38; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--prodigeui-color-text); border: 1px solid var(--prodigeui-color-border);
+      padding: 1rem 2rem; border-radius: 9999px; text-decoration: none; font-size: 0.95rem; transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--prodigeui-color-text); }
+
+    /* ==========================================================================
+       SELECTED WORK GALLERY (Horizontal Pin Scroll)
+       ========================================================================== */
+    .work-section { padding: 8rem 0; border-top: 1px solid var(--prodigeui-color-border); }
+    .work-header { width: min(1140px, 92vw); margin: 0 auto 3rem; display: flex; justify-content: space-between; align-items: flex-end; }
+    .work-grid {
+      width: min(1140px, 92vw); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    }
+    .work-card-item {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .work-card-item:hover { border-color: var(--prodigeui-color-primary); transform: translateY(-6px); }
+    .work-media { aspect-ratio: 4/3; background: #1a1a22; position: relative; overflow: hidden; }
+    .work-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.3); transition: filter 0.4s; }
+    .work-card-item:hover .work-media img { filter: grayscale(0); }
+    .work-info { padding: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; }
+    .work-info h3 { font-family: var(--prodigeui-font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .work-cat { font-family: var(--prodigeui-font-mono); font-size: 0.75rem; color: var(--prodigeui-color-text-muted); text-transform: uppercase; }
+
+    /* ==========================================================================
+       FILM GRAIN NOISE OVERLAY
+       ========================================================================== */
+    .grain-overlay {
+      position: fixed; inset: 0; z-index: var(--prodigeui-z-grain); pointer-events: none; opacity: 0.04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    footer { padding: 4rem 0; border-top: 1px solid var(--prodigeui-color-border); text-align: center; color: var(--prodigeui-color-text-muted); font-size: 0.88rem; }
+
+    @media (max-width: 860px) {
+      .work-grid { grid-template-columns: 1fr; }
+      .work-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <header class="nav-glass">
+    <a href="#" class="brand-title">
+      <span class="brand-dot" aria-hidden="true"></span> NOVA
+    </a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#studio">Studio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn-nav">Start a project</a>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <section class="hero-wrap" aria-labelledby="hero-h1">
+      <!-- Section 15 Rule: WebGL Canvas pointer-events none & z-index 1 -->
+      <canvas id="nova-canvas" aria-hidden="true"></canvas>
+
+      <!-- Section 15 Rule: Isolated Content (Z-Index 10) -->
+      <div class="hero-inner">
+        <div class="eyebrow-tag">Independent Creative Studio · Booking Q3 2026</div>
+        <h1 id="hero-h1" class="hero-h1">
+          We design brands <br>
+          that <span class="text-accent">go nova.</span>
+        </h1>
+        <p class="hero-lead">
+          NOVA is a creative studio crafting visual identities, digital products, and motion systems for ambitious teams with something to prove.
+        </p>
+        <div class="action-group">
+          <a href="#contact" class="btn-main">
+            Start a project
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#work" class="btn-outline">See selected work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section class="work-section" id="work" aria-labelledby="work-h2">
+      <div class="work-header">
+        <div>
+          <div class="eyebrow-tag" style="margin-bottom: 0.5rem;">Selected Work — 01</div>
+          <h2 id="work-h2" style="font-family: var(--prodigeui-font-display); font-size: var(--prodigeui-fs-h2); font-weight: 800;">Recent work we're proud of.</h2>
+        </div>
+        <p style="color: var(--prodigeui-color-text-muted); max-width: 320px;">Brand identity, WebGL digital products, and kinetic launch campaigns.</p>
+      </div>
+
+      <div class="work-grid">
+        <a href="#contact" class="work-card-item">
+          <div class="work-media">
+            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&q=70" alt="Halo Space Tourism visual identity" loading="lazy">
+          </div>
+          <div class="work-info">
+            <div>
+              <h3>Halo</h3>
+              <div class="work-cat">Brand Identity · Space Tech</div>
+            </div>
+            <span style="font-family: var(--prodigeui-font-mono); color: var(--prodigeui-color-text-muted); font-size: 0.85rem;">'25</span>
+          </div>
+        </a>
+
+        <a href="#contact" class="work-card-item">
+          <div class="work-media">
+            <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=70" alt="Meridian Editorial site design" loading="lazy">
+          </div>
+          <div class="work-info">
+            <div>
+              <h3>Meridian</h3>
+              <div class="work-cat">Digital Product · Architecture</div>
+            </div>
+            <span style="font-family: var(--prodigeui-font-mono); color: var(--prodigeui-color-text-muted); font-size: 0.85rem;">'25</span>
+          </div>
+        </a>
+
+        <a href="#contact" class="work-card-item">
+          <div class="work-media">
+            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=70" alt="Pulse Music App motion system" loading="lazy">
+          </div>
+          <div class="work-info">
+            <div>
+              <h3>Pulse</h3>
+              <div class="work-cat">Motion System · Music App</div>
+            </div>
+            <span style="font-family: var(--prodigeui-font-mono); color: var(--prodigeui-color-text-muted); font-size: 0.85rem;">'24</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div style="width: min(1140px, 92vw); margin: 0 auto;">
+      <h2 style="font-family: var(--prodigeui-font-display); font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 1.5rem;">Have a project in mind?</h2>
+      <a href="mailto:hello@nova.studio" style="font-family: var(--prodigeui-font-mono); color: var(--prodigeui-color-primary); font-size: 1.2rem; text-decoration: none; border-bottom: 1px solid var(--prodigeui-color-primary);">hello@nova.studio ↗</a>
+      <p style="margin-top: 3rem; font-size: 0.85rem; color: var(--prodigeui-color-text-muted);">&copy; 2026 NOVA Studio. Built with ProdigeUI Token Engine.</p>
+    </div>
+  </footer>
+
+  <!-- ENGINE SCRIPT (Three.js WebGL Nova Core Canvas) -->
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module">
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches && window.innerWidth > 768) {
+      import('three').then((THREE) => {
+        const canvas = document.getElementById('nova-canvas');
+        if (!canvas) return;
+
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.z = 6;
+
+        const vermilion = new THREE.Color(0xff4d15);
+        const mesh = new THREE.Mesh(
+          new THREE.IcosahedronGeometry(1.6, 1),
+          new THREE.MeshStandardMaterial({ color: 0x120a08, emissive: vermilion, emissiveIntensity: 0.5, roughness: 0.3, flatShading: true })
+        );
+        const wireframe = new THREE.LineSegments(
+          new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(2.1, 1)),
+          new THREE.LineBasicMaterial({ color: vermilion, transparent: true, opacity: 0.3 })
+        );
+
+        const group = new THREE.Group();
+        group.add(mesh, wireframe);
+        group.position.x = 1.8;
+        scene.add(group);
+
+        scene.add(new THREE.HemisphereLight(0xffffff, 0x0a0a0c, 1.5));
+        const pointLight = new THREE.PointLight(0xff4d15, 30, 20);
+        pointLight.position.set(3, 2, 4);
+        scene.add(pointLight);
+
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+          mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+          mouseY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+        });
+
+        function animate() {
+          requestAnimationFrame(animate);
+          group.rotation.y += 0.003;
+          mesh.rotation.x += 0.002;
+          group.rotation.x += (mouseY - group.rotation.x) * 0.05;
+          group.rotation.y += (mouseX - group.rotation.y) * 0.05;
+          renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          group.position.x = window.innerWidth < 900 ? 0 : 1.8;
+        });
+      });
+    }
+  </script>
+</body>
+</html>

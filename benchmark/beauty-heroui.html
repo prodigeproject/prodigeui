@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — HeroUI Modern Component Fashion & Beauty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --blue: #3b82f6;
+      --text: #f0f6fc;
+      --muted: #8b949e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+    .wrap { width: min(1180px, 92vw); margin-inline: auto; }
+
+    header { height: 76px; border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 1.4rem; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; }
+    .badge { background: rgba(59,130,246,0.15); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); padding: 4px 10px; border-radius: 99px; font-size: 0.75rem; font-weight: 600; }
+
+    .hero { padding: 6rem 0; text-align: center; }
+    .hero h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero p { color: var(--muted); font-size: 1.15rem; max-width: 520px; margin: 0 auto 2rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 4rem 0; }
+    .card { background: var(--card-bg); border: 1px solid #30363d; border-radius: 16px; padding: 1.5rem; }
+    .card img { width: 100%; height: 240px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
+
+    footer { padding: 3rem 0; border-top: 1px solid #30363d; text-align: center; color: var(--muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">AURA <span class="badge">HeroUI v3</span></div>
+      <span style="font-size: 0.85rem; color: var(--muted);">Modern Component System</span>
+    </header>
+
+    <section class="hero">
+      <h1>Modern Beauty &amp; Apparel</h1>
+      <p>Silk evening wear, damask rose skincare, and European flax linen trench coats in HeroUI component structure.</p>
+    </section>
+
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=70" alt="Silk Dress">
+        <h3 style="margin-bottom: 0.5rem;">Silk Solstice Gown</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">100% Mulberry silk dress.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=70" alt="Rosehip Skincare">
+        <h3 style="margin-bottom: 0.5rem;">Rosehip &amp; Camellia</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">Organic damask rose extract.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=70" alt="Linen Trench">
+        <h3 style="margin-bottom: 0.5rem;">Linen Atelier Trench</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">European flax coat with tie.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 AURA (heroui-3 execution)</p>
+    </footer>
+  </div>
+</body>
+</html>

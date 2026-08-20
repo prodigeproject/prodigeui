@@ -33,11 +33,12 @@ business users and power users who spend extended time in the interface.
 - Responsive breakpoints: collapse sidebar on tablet, stack on mobile
 - Card grid for dashboard widgets (2-4 columns desktop)
 
-## Special Considerations
-- Prioritize keyboard navigation for power users (Tab, Shift+Tab flows)
-- Use `motion/presets/` enter/exit for panel transitions only
-- Table pagination and infinite scroll patterns for large datasets
-- Prefer outlined Card variant for dashboard widget containers
+## Operational & Engineering SaaS Craft
+For engineering tools, DevOps, and operational decision software (e.g. FlowAI):
+- **Avoid Flat Generic Slate**: Do not slip into generic slate `#0f172a` boxes. Use warm paper/editorial operational surfaces (`--paper: #f4f1e8`, `--ink: #12221d`, `--forest: #173f34`, `--signal: #ff654a`) or deep technical obsidian with vibrant signal highlights.
+- **Hero Anchor**: Use a **Live Decision Record Card** (`craft/recipes/operational-saas-hero.recipe.md`) featuring tilted card geometry (`transform: rotate(1deg)`), live status badges (`● Live evidence`), confidence metrics (`94%`), and actionable sequence proposals.
+- **Typography**: Combine variable display faces (`Recursive` with casual axis `"CASL" .2` or `Manrope`) with monospace metadata tags (`DM Mono`).
 
 ## Related Artifacts
+- `craft/recipes/operational-saas-hero.recipe.md`
 - tokens/, themes/, motion/, components/, design-rules/, quality-gate/

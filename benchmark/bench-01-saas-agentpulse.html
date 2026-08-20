@@ -1,0 +1,213 @@
+<!-- Design Read: B2B SaaS landing for platform engineers, dark-tech obsidian & cyber emerald vibe, leaning DM Mono telemetry + Linear-style bento grid + restrained motion craft. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentPulse — Autonomous AI Agent Telemetry &amp; Orchestration Engine</title>
+  <meta name="description" content="AgentPulse monitors LLM agent trajectories, evaluates tool call latency, and auto-heals agentic pipeline failures in real time.">
+  
+  <!-- Typography: JetBrains Mono & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       PRODIGEUI 3-LAYER TOKEN SYSTEM (Dark-Tech DevTool Domain)
+       ========================================================================== */
+    :root {
+      /* Layer 1: Primitive Tokens */
+      --prodigeui-primitive-obsidian: #0b0f14;
+      --prodigeui-primitive-charcoal: #121820;
+      --prodigeui-primitive-surface-dark: #1a222d;
+      --prodigeui-primitive-emerald: #10b981;        /* 7.8:1 Contrast on Obsidian */
+      --prodigeui-primitive-emerald-hover: #059669;
+      --prodigeui-primitive-cyan: #06b6d4;
+      --prodigeui-primitive-text-light: #f3f4f6;      /* 15.6:1 Contrast on Obsidian */
+      --prodigeui-primitive-text-muted: #9ca3af;      /* 6.8:1 Contrast on Obsidian */
+      --prodigeui-primitive-border: rgba(255, 255, 255, 0.12);
+
+      /* Layer 2: Semantic Tokens */
+      --prodigeui-color-bg: var(--prodigeui-primitive-obsidian);
+      --prodigeui-color-surface: var(--prodigeui-primitive-charcoal);
+      --prodigeui-color-surface-hover: var(--prodigeui-primitive-surface-dark);
+      --prodigeui-color-text: var(--prodigeui-primitive-text-light);
+      --prodigeui-color-muted: var(--prodigeui-primitive-text-muted);
+      --prodigeui-color-primary: var(--prodigeui-primitive-emerald);
+      --prodigeui-color-primary-hover: var(--prodigeui-primitive-emerald-hover);
+      --prodigeui-color-accent: var(--prodigeui-primitive-cyan);
+      --prodigeui-color-border: var(--prodigeui-primitive-border);
+
+      /* Typography Tokens */
+      --prodigeui-font-display: 'Inter', system-ui, sans-serif;
+      --prodigeui-font-body: 'Inter', system-ui, sans-serif;
+      --prodigeui-font-mono: 'JetBrains Mono', monospace;
+
+      /* Radii & Shadows */
+      --prodigeui-radius-card: 12px;
+      --prodigeui-radius-pill: 9999px;
+      --prodigeui-shadow-glow: 0 0 30px rgba(16, 185, 129, 0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; isolation: isolate; }
+
+    :focus-visible { outline: 2px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--prodigeui-color-primary); color: #000; padding: 0.5rem 1rem; z-index: 200; font-weight: 700; border-radius: 6px; transition: top 0.2s; text-decoration: none; }
+    .skip-link:focus { top: 1rem; }
+
+    .wrap { width: min(1200px, 92vw); margin-inline: auto; isolation: isolate; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.8rem; letter-spacing: 0.05em; }
+    .text-emerald { color: var(--prodigeui-color-primary); }
+    .text-muted { color: var(--prodigeui-color-muted); }
+
+    /* Nav Bar */
+    .nav-bar {
+      position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+      width: min(1160px, 92vw); z-index: 50;
+      background: rgba(11, 15, 20, 0.85); backdrop-filter: blur(16px);
+      border: 1px solid var(--prodigeui-color-border); border-radius: var(--prodigeui-radius-pill);
+      padding: 0.75rem 1.75rem; display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand-logo { font-family: var(--prodigeui-font-mono); font-weight: 700; font-size: 1.25rem; color: var(--prodigeui-color-text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--prodigeui-color-primary); box-shadow: 0 0 10px var(--prodigeui-color-primary); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--prodigeui-color-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--prodigeui-color-text); }
+
+    .btn-action {
+      background: var(--prodigeui-color-primary); color: #000000; font-weight: 700; padding: 0.65rem 1.4rem;
+      border-radius: var(--prodigeui-radius-pill); text-decoration: none; font-size: 0.88rem; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer;
+      position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-action:hover { background: var(--prodigeui-color-primary-hover); transform: translateY(-2px); }
+
+    /* Hero Section */
+    .hero-section { padding-top: 10rem; padding-bottom: 5rem; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--prodigeui-radius-pill); margin-bottom: 1.5rem; }
+    
+    .hero-h1 { font-family: var(--prodigeui-font-display); font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+    .hero-lead { font-size: 1.125rem; color: var(--prodigeui-color-muted); max-width: 48ch; margin-bottom: 2rem; }
+    .cta-row { display: flex; gap: 1rem; align-items: center; }
+
+    /* Code Terminal Display */
+    .terminal-card {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: var(--prodigeui-radius-card); overflow: hidden; box-shadow: var(--prodigeui-shadow-glow); isolation: isolate;
+    }
+    .terminal-header { background: rgba(0, 0, 0, 0.3); padding: 0.75rem 1.25rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--prodigeui-color-border); }
+    .terminal-dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #374151; }
+    .terminal-body { padding: 1.5rem; font-family: var(--prodigeui-font-mono); font-size: 0.85rem; line-height: 1.7; color: #d1d5db; overflow-x: auto; }
+
+    /* Telemetry Grid (Bento) */
+    .bento-section { padding: 5rem 0; }
+    .bento-title { font-size: 2.2rem; font-weight: 700; margin-top: 0.5rem; }
+    .card-title { font-size: 1.25rem; }
+    .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .bento-card {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: var(--prodigeui-radius-card); padding: 2rem; transition: border-color 0.2s;
+    }
+    .bento-card:hover { border-color: var(--prodigeui-color-primary); }
+    .metric-value { font-family: var(--prodigeui-font-mono); font-size: 2.5rem; font-weight: 700; color: var(--prodigeui-color-primary); margin: 0.5rem 0; }
+
+    footer { padding: 3rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.88rem; margin-top: 4rem; }
+    .footer-flex { display: flex; justify-content: space-between; align-items: center; }
+
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .bento-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Accessibility Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .btn-action:hover { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="nav-bar">
+    <a class="brand-logo" href="#">
+      <span class="status-dot" aria-hidden="true"></span> AgentPulse
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Telemetry</a></li>
+      <li><a href="#benchmarks">Benchmarks</a></li>
+      <li><a href="#docs">Docs</a></li>
+    </ul>
+    <a href="#start" class="btn-action">Start Telemetry</a>
+  </header>
+
+  <main id="main">
+    <section class="hero-section wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tag mono text-emerald">
+            <span class="status-dot" aria-hidden="true"></span> Agent Health Status: 99.98%
+          </div>
+          <h1 class="hero-h1">Real-time telemetry for <span class="text-emerald">agentic loops.</span></h1>
+          <p class="hero-lead">Inspect token trajectory, intercept rogue tool calls, and auto-recover state transitions across distributed AI agents.</p>
+          <div class="cta-row">
+            <a href="#start" class="btn-action">Deploy SDK</a>
+          </div>
+        </div>
+
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <span class="mono text-muted">trajectory_observer.py</span>
+          </div>
+          <pre class="terminal-body"><code><span class="text-muted"># Initialize AgentPulse Observer</span>
+<span class="text-emerald">from</span> agentpulse <span class="text-emerald">import</span> TraceObserver
+
+observer = TraceObserver(session_id=<span class="text-emerald">"sess_99a"</span>)
+@observer.observe(auto_retry=<span class="text-emerald">True</span>)
+<span class="text-emerald">async def</span> run_step(step_context):
+    result = <span class="text-emerald">await</span> agent.execute(step_context)
+    <span class="text-emerald">return</span> result.metrics</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="bento-section wrap" id="features">
+      <div class="mono text-emerald">Engine Capability</div>
+      <h2 class="bento-title">Infrastructure built for autonomous agents.</h2>
+      
+      <div class="bento-grid">
+        <article class="bento-card">
+          <h3 class="card-title">Latency Inspection</h3>
+          <div class="metric-value">4.2ms</div>
+          <p class="text-muted">Average overhead introduced per tool call trace.</p>
+        </article>
+
+        <article class="bento-card">
+          <h3 class="card-title">Auto-State Recovery</h3>
+          <div class="metric-value">99.4%</div>
+          <p class="text-muted">Interception and correction rate of invalid JSON schema outputs.</p>
+        </article>
+
+        <article class="bento-card">
+          <h3 class="card-title">Context Leak Prevention</h3>
+          <div class="metric-value">0 Bytes</div>
+          <p class="text-muted">Zero unencrypted PII leaves your secure boundary.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-flex">
+      <span class="mono">&copy; 2026 AgentPulse Inc. Powered by ProdigeUI Engine v3.0.5</span>
+      <span class="mono text-emerald">● Systems Operational</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -116,60 +116,23 @@ See `skills/prodige-ui-end-to-end/SKILL.md` for the detailed version of each ste
 
 ## Core Principles
 
-1. **Token-first**: Repeated visual roles MUST be declared at a token-definition boundary and
-   consumed through semantic/component variables. Concrete hex, px, or rem values are valid
-   inside token definitions and one-off generated artwork; repeating them directly across
-   component declarations is a failure.
+1. **Token-first**: Repeated visual roles MUST be declared at a token-definition boundary and consumed through semantic/component variables. Concrete hex, px, or rem values are valid inside token definitions and one-off generated artwork; repeating them directly across component declarations is a failure.
 2. **Rule-backed**: Every design decision is supported by measurable Design Rules with rationale traced to research sources.
 3. **Three Dials calibration**: Every project sets `DESIGN_VARIANCE`, `MOTION_INTENSITY`, and `VISUAL_DENSITY` (0.0-1.0 each) to calibrate output appropriately for the use-case.
 4. **Accessible**: WCAG 2.1 AA minimum — 4.5:1 contrast (normal text), 3:1 (large text), keyboard navigation, ARIA roles, focus indicators.
 5. **Anti-AI-slop**: Use the Quality Gate (`quality-gate/anti-ai-slop.checklist.md`) to ensure expert-quality output. This is ProdigeUI's key differentiator — it detects and prevents generic, purposeless, inconsistent design output.
 6. **Traceable**: Design decisions trace back to specific research sources in `research/`.
 7. **Atomic composition**: Components follow atoms → molecules → organisms hierarchy.
-8. **Route before you invent**: for functional product UI (dashboard, admin, enterprise, regulated), consider an official design system (Fluent/Carbon/Material/Radix/shadcn/govuk/uswds) per `craft/design-system-routing.md` before building a bespoke token layer. Invent for expressive/brand work.
-9. **Motion & interaction craft**: for any interactive build, apply `craft/patterns/motion-craft.md` (committed easing, entrance physics, interruptibility, GPU-only) and `craft/patterns/interaction-patterns.md` (native dialog/popover, focus, forms, undo-over-confirm). Keyboard/high-frequency actions get no animation.
+8. **Route before you invent**: For functional product UI, consider an official design system per `craft/design-system-routing.md` before building a bespoke token layer.
+9. **Motion & interaction craft**: For any interactive build, apply `craft/patterns/motion-craft.md` and `craft/patterns/interaction-patterns.md`.
+10. **Zero Inline HTML Styles**: Never emit inline `style="..."` attributes in HTML markup. All component styles must be declared via CSS classes consuming custom properties (`var(--prodigeui-*)`).
+11. **Mandatory Reduced Motion**: Every generated stylesheet must include `@media (prefers-reduced-motion: reduce)` to disable/simplify layout transforms and animations for sensitive users.
+12. **Stacking Layer Safety**: Section wrappers containing pseudo-elements or absolute overlays MUST declare `isolation: isolate;`. Interactive CTA elements MUST explicitly own `position: relative; z-index: 2;`.
+13. **Dynamic Recipe Derivation**: Do NOT copy hardcoded recipe artifacts (e.g. `rotate(1deg)` cards or `11:18 → 11:19` watermarks) verbatim across unrelated briefs. Layouts must be organically synthesized for the specific product domain.
 
 ---
-
-## Folder Structure
-
-| Folder | Contents | When to Use |
-|--------|----------|-------------|
-| `craft/` | Reference implementations — recipes for advanced techniques (video hero, liquid glass, magnetic hover, text reveal, parallax, bento, fluid type, grain) PLUS interaction-level craft: `patterns/motion-craft.md` (easing/physics/perf), `patterns/interaction-patterns.md` (dialog/popover/a11y), `patterns/animation-vocabulary.md`, `taste.md`, `composition.md`, and `design-system-routing.md` (invent vs reach for an official system). **NEW:** `design-read.md` (brief inference + Design Read + Three Dials + Soul Formula), `patterns/motion-personality.md` (4 archetypes + 3 motion layers), `patterns/advanced-effects.md` (11 high-impact CSS/JS effects), `patterns/engine-interactivity.md` (GSAP/ScrollTrigger/Lenis/Three.js/WebGL/canvas/AudioContext/ViewTransitions/skeletons/charts/dev-tool), `patterns/responsive-patterns.md`, `recipes/*.recipe.md` (6 copy-paste component recipes) | **Every expressive build AND every interactive build. Rules prevent bad output, craft produces great output.** |
-| `tokens/` | Design tokens (primitive, semantic, component) + CSS build | Every visual value decision |
-| `themes/` | Ready-to-use themes (default, light, dark, saas-professional) | Choosing a visual identity |
-| `motion/` | Animation presets + motion principles | Adding transitions/animations |
-| `components/` | Component specifications (atomic design) + composition guide | Building interfaces |
-| `assets/` | Icons, fonts, illustrations + license metadata | Selecting visual assets |
-| `design-system/` | Cohesion document + entry point | Understanding artifact relationships |
-| `design-rules/` | Typography, color, layout, structure rules (JSON + narrative) | Validating design decisions |
-| `prompt-templates/` | Prompt templates per use-case | Generating UI/UX artifacts |
-| `use-cases/` | Per-category guides (saas, landing, ecommerce, portfolio, hris, agentic-app) | Referencing use-case specific patterns |
-| `quality-gate/` | Quality criteria + anti-AI-slop checklist + report schema | Final output evaluation |
-| `skills/` | Structured capability units (14 skills) | Running workflows |
-| `hooks/` | Automation and plugin definitions | Automatic triggers |
-| `installers/` | Installer + adapters per agentic tool | Installing to AI tools |
-| `research/` | Research notes, synthesis, and log | Tracing design decision origins |
-
----
-
-## Completed Artifacts
-
-### Core Configuration
-- `manifest.json` — complete artifact registry with types and statuses
-
-### Token System (3 layers)
-- `tokens/primitive.tokens.json` — raw palette, spacing scale, type scale, radii, shadows
-- `tokens/semantic.tokens.json` — role-based tokens referencing primitives
-- `tokens/component.tokens.json` — per-component tokens referencing semantics
-- `tokens/build/tokens.css` — resolved CSS custom properties
 
 ### Theme Catalog (15 themes)
-- `themes/_default.theme.json` — fallback baseline
-- `themes/light.theme.json` — light mode (verified contrast >= 4.5:1)
-- `themes/dark.theme.json`, `themes/dark-premium.theme.json`, `themes/creative-dark.theme.json` — dark modes (verified contrast >= 4.5:1)
-- `themes/saas-professional.theme.json`, `themes/startup-bold.theme.json`, `themes/enterprise-neutral.theme.json` — SaaS/product brand themes
-- `themes/fintech-blue.theme.json`, `themes/healthcare-green.theme.json`, `themes/education-warm.theme.json`, `themes/ecommerce-warm.theme.json`, `themes/government-accessible.theme.json` — sector brand themes
 - `themes/portfolio-minimal.theme.json`, `themes/social-vibrant.theme.json` — expressive brand themes
 - See `themes/creating-a-theme.md` for the authoring guide
 

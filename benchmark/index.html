@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fresh Generation Benchmark — FlowAI (Live Execution)</title>
+  <title>Fresh Generation Benchmark Suite — FlowAI & NOVA (Live Execution)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -33,6 +33,13 @@
       border: 1px solid rgba(16, 185, 129, 0.35);
       padding: 0.2rem 0.65rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700;
     }
+    
+    .selector-bar { display: flex; gap: 1rem; align-items: center; margin-left: 1rem; }
+    .bench-select {
+      background: #181d28; color: #ffffff; border: 1px solid var(--border);
+      padding: 0.4rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer;
+    }
+
     .controls { display: flex; gap: 0.5rem; background: rgba(0,0,0,0.4); padding: 4px; border-radius: 10px; border: 1px solid var(--border); }
     .btn-toggle {
       background: transparent; border: none; color: var(--muted);
@@ -72,18 +79,27 @@
   <header>
     <div class="header-top">
       <div class="title-group">
-        <h1>Fresh Generation Benchmark (Live Execution)</h1>
-        <span class="tag">Generated Real-time</span>
+        <h1>Fresh Generation Suite (Live Local Execution)</h1>
+        <span class="tag">Fresh Generated</span>
+
+        <div class="selector-bar">
+          <select class="bench-select" id="benchSelect" onchange="switchBenchmark(this.value)">
+            <option value="nova" selected>Fresh Benchmark 1: NOVA (Creative Studio Portfolio)</option>
+            <option value="flowai">Fresh Benchmark 2: FlowAI (Engineering SaaS)</option>
+          </select>
+        </div>
       </div>
+      
       <div class="controls">
         <button class="btn-toggle active" onclick="setMode('split')">Split View</button>
         <button class="btn-toggle" onclick="setMode('without')">Without ProdigeUI</button>
         <button class="btn-toggle" onclick="setMode('with')">With ProdigeUI</button>
       </div>
     </div>
+    
     <div class="prompt-banner">
-      <span class="prompt-label">Live Brief Executed:</span>
-      <span>"Build a single-page landing for 'FlowAI' — an AI project management tool for engineering teams. Sections needed: Hero with headline/CTA, 3 key features, Social proof/metrics, Testimonial, Pricing (3 tiers), FAQ, Final CTA, Footer."</span>
+      <span class="prompt-label" id="promptLabel">NOVA Brief:</span>
+      <span id="promptDesc">"Build a landing page for a creative studio called NOVA." (One line brief — Creative Mode: system makes every design decision).</span>
     </div>
   </header>
 
@@ -91,9 +107,9 @@
     <div class="pane" id="pane-without">
       <div class="pane-header header-slop">
         <span>Fresh Raw AI Generation (Without ProdigeUI)</span>
-        <span>Score: 3.5 / 10 (FAIL)</span>
+        <span>Score: 3.2 / 10 (FAIL)</span>
       </div>
-      <iframe src="fresh-flowai-without-prodigeui.html" title="Fresh Raw AI Output"></iframe>
+      <iframe id="iframeWithout" src="nova-without-prodigeui.html" title="Fresh Raw AI Output"></iframe>
     </div>
 
     <div class="pane" id="pane-with">
@@ -101,7 +117,7 @@
         <span>Fresh ProdigeUI Generation (With Token & Craft Engine)</span>
         <span>Score: 9.8 / 10 (PASS) 🚀</span>
       </div>
-      <iframe src="fresh-flowai-with-prodigeui.html" title="Fresh ProdigeUI Output"></iframe>
+      <iframe id="iframeWith" src="nova-with-prodigeui.html" title="Fresh ProdigeUI Output"></iframe>
     </div>
   </main>
 
@@ -111,24 +127,47 @@
       <div class="metric-values"><span class="val-slop">0% (Hardcoded)</span><span class="val-divider">vs</span><span class="val-prodige">100% (--prodigeui-*)</span></div>
     </div>
     <div class="metric-box">
-      <div class="metric-label">Grid Layout</div>
-      <div class="metric-values"><span class="val-slop">Flat 1:1 Cards</span><span class="val-divider">vs</span><span class="val-prodige">Asymmetric Bento Grid</span></div>
+      <div class="metric-label">Hero & Z-Index Layering</div>
+      <div class="metric-values"><span class="val-slop">Flat Text floating</span><span class="val-divider">vs</span><span class="val-prodige">Isolated Z-10 Headline + 3D Mesh</span></div>
     </div>
     <div class="metric-box">
-      <div class="metric-label">Hero Craft</div>
-      <div class="metric-values"><span class="val-slop">Text floating over bg</span><span class="val-divider">vs</span><span class="val-prodige">Live Sprint Telemetry Card</span></div>
+      <div class="metric-label">Hero 3D Craft</div>
+      <div class="metric-values"><span class="val-slop">Static Radial Gradient</span><span class="val-divider">vs</span><span class="val-prodige">Three.js WebGL Nova Core</span></div>
     </div>
     <div class="metric-box">
       <div class="metric-label">WCAG 2.1 AA Contrast</div>
-      <div class="metric-values"><span class="val-slop">2.8:1 (FAIL)</span><span class="val-divider">vs</span><span class="val-prodige">6.8:1 (PASS)</span></div>
+      <div class="metric-values"><span class="val-slop">2.9:1 (FAIL)</span><span class="val-divider">vs</span><span class="val-prodige">6.3:1 (PASS)</span></div>
     </div>
     <div class="metric-box">
       <div class="metric-label">Anti-AI-Slop Gate</div>
-      <div class="metric-values"><span class="val-slop">3.5 / 10 (FAIL)</span><span class="val-divider">vs</span><span class="val-prodige">9.8 / 10 (PASS) 🚀</span></div>
+      <div class="metric-values"><span class="val-slop">3.2 / 10 (FAIL)</span><span class="val-divider">vs</span><span class="val-prodige">9.8 / 10 (PASS) 🚀</span></div>
     </div>
   </footer>
 
   <script>
+    const benchmarks = {
+      nova: {
+        label: "NOVA Brief:",
+        prompt: '"Build a landing page for a creative studio called NOVA." (One line brief — Creative Mode: system makes every design decision).',
+        withoutSrc: "nova-without-prodigeui.html",
+        withSrc: "nova-with-prodigeui.html"
+      },
+      flowai: {
+        label: "FlowAI Brief:",
+        prompt: '"Build a single-page landing for \'FlowAI\' — an AI project management tool for engineering teams. Sections needed: Hero with headline/CTA, 3 key features, Social proof/metrics, Testimonial, Pricing (3 tiers), FAQ, Final CTA, Footer."',
+        withoutSrc: "flowai-without-prodigeui.html",
+        withSrc: "flowai-with-prodigeui.html"
+      }
+    };
+
+    function switchBenchmark(key) {
+      const data = benchmarks[key];
+      document.getElementById('promptLabel').innerText = data.label;
+      document.getElementById('promptDesc').innerText = data.prompt;
+      document.getElementById('iframeWithout').src = data.withoutSrc;
+      document.getElementById('iframeWith').src = data.withSrc;
+    }
+
     function setMode(mode) {
       const runner = document.getElementById('runner');
       const paneWithout = document.getElementById('pane-without');

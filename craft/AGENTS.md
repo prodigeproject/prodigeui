@@ -73,7 +73,7 @@ does NOT get a crossfading video hero. A portfolio absolutely does.
 | **Engine interactivity** | `patterns/engine-interactivity.md` | **Optional engine techniques for concept-bound narrative or product understanding: GSAP ScrollTrigger, smooth scroll, Three.js, WebGL/GLSL, canvas, View Transitions, and interactive charts. MOTION is a prompt to evaluate the technique, never proof that the page needs it.** |
 | **Modern product baseline** | `patterns/modern-product-baseline.md` | **The positive 2025–2026 taste target distilled from shipped award-grade sites (Antimetal, Plasma, Tokens Studio, Infinite Machine, Eternal…): restrained mono + ONE refined accent (anti-neon), confident mid-size variable-font display, scroll-driven narrative + repeating-wordmark marquee, real product anchors, modern stack table (Lenis/GSAP/Framer/R3F/WAAPI/View-Transitions). Read for any product/SaaS/agency/fintech/dev-tool/studio brief.** |
 | Responsive patterns | `patterns/responsive-patterns.md` | Exact breakpoint behavior per component (nav, hero, bento, carousel, masonry, pricing, footer) + universal responsive rules |
-| Component recipes | `recipes/*.recipe.md` | Copy-paste bug-free component recipes: segmented-toggle, horizontal-carousel, masonry-gallery, pricing-table, testimonial, mobile-nav (full HTML/CSS/JS + a11y + common mistakes) |
+| Component recipes | `recipes/*.recipe.md` | Copy-paste bug-free component recipes: operational-saas-hero (warm paper/editorial operational SaaS landing with tilted live decision record & variable Recursive typography), segmented-toggle, horizontal-carousel, masonry-gallery, pricing-table, testimonial, mobile-nav (full HTML/CSS/JS + a11y + common mistakes) |
 
 ## Must-read companions
 | Doc | Purpose |

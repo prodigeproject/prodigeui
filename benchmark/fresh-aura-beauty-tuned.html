@@ -1,0 +1,346 @@
+<!-- Design Read: High-Fashion Luxury Atelier & Botanical Skincare landing page for design-conscious buyers, warm alabaster & terracotta editorial vibe, leaning Garamond serif + Jakarta sans + restrained motion craft. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — High-Fashion Women's Apparel &amp; Botanical Skincare Atelier</title>
+  <meta name="description" content="AURA crafts Mulberry silk garments, European flax trench coats, and organic damask rosehip botanical skincare for women of quiet confidence.">
+  
+  <!-- Typography Delivery: Cormorant Garamond & Plus Jakarta Sans & DM Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       PRODIGEUI 3-LAYER TOKEN SYSTEM (Tuned Luxury Atelier & Skincare Domain)
+       ========================================================================== */
+    :root {
+      /* Layer 1: Primitive Tokens (Authentic High-Fashion Palette) */
+      --prodigeui-primitive-chalk: #fcfaf7;
+      --prodigeui-primitive-silk: #ffffff;
+      --prodigeui-primitive-espresso: #1a1615;
+      --prodigeui-primitive-taupe: #544b46;       /* Verified 7.1:1 Contrast on Chalk */
+      --prodigeui-primitive-terracotta: #a84c28;  /* Verified 5.4:1 Contrast with White Text */
+      --prodigeui-primitive-terracotta-dark: #87391b;
+      --prodigeui-primitive-greige: #f4ece4;
+      --prodigeui-primitive-greige-dark: #e8dcd0;
+      --prodigeui-primitive-border: rgba(84, 75, 70, 0.18);
+
+      /* Layer 2: Semantic Role Tokens */
+      --prodigeui-color-bg: var(--prodigeui-primitive-chalk);
+      --prodigeui-color-surface: var(--prodigeui-primitive-silk);
+      --prodigeui-color-surface-muted: var(--prodigeui-primitive-greige);
+      --prodigeui-color-text: var(--prodigeui-primitive-espresso);
+      --prodigeui-color-muted: var(--prodigeui-primitive-taupe);
+      --prodigeui-color-primary: var(--prodigeui-primitive-terracotta);
+      --prodigeui-color-primary-hover: var(--prodigeui-primitive-terracotta-dark);
+      --prodigeui-color-border: var(--prodigeui-primitive-border);
+
+      /* Typography Tokens */
+      --prodigeui-font-display: 'Cormorant Garamond', Georgia, serif;
+      --prodigeui-font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --prodigeui-font-mono: 'DM Mono', monospace;
+
+      /* Fluid Scale Tokens */
+      --prodigeui-fs-hero: clamp(3.2rem, 7.5vw, 6.8rem);
+      --prodigeui-fs-h2: clamp(2.1rem, 4.5vw, 4.2rem);
+      --prodigeui-fs-h3: clamp(1.35rem, 2.5vw, 1.85rem);
+      --prodigeui-fs-body: clamp(0.98rem, 1.2vw, 1.12rem);
+      
+      --prodigeui-radius-card: 20px;
+      --prodigeui-radius-pill: 9999px;
+      --prodigeui-shadow-subtle: 0 16px 40px rgba(26, 22, 21, 0.05);
+      --prodigeui-shadow-floating: 0 24px 60px rgba(26, 22, 21, 0.09);
+    }
+
+    /* Reset & Base System */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); font-size: var(--prodigeui-fs-body); line-height: 1.68; -webkit-font-smoothing: antialiased; isolation: isolate; }
+
+    /* Accessibility Focus & Skip Link */
+    :focus-visible { outline: 3px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100px; left: 1.5rem; background: var(--prodigeui-color-primary); color: var(--prodigeui-primitive-silk); padding: 0.6rem 1.2rem; z-index: 200; font-weight: 700; border-radius: 8px; transition: top 0.2s ease; text-decoration: none; }
+    .skip-link:focus { top: 1.5rem; }
+
+    /* Utility Classes */
+    .wrap { width: min(1200px, 92vw); margin-inline: auto; isolation: isolate; }
+    .mono-tag { font-family: var(--prodigeui-font-mono); font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .text-italic { font-style: italic; color: var(--prodigeui-color-primary); font-weight: 400; }
+    .text-muted { color: var(--prodigeui-color-muted); }
+    
+    /* Noise Grain Overlay Layer Safety */
+    .grain-overlay {
+      position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: 0.03; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Navigation Bar */
+    .nav-glass {
+      position: fixed; top: 1.5rem; left: 50%; transform: translateX(-50%);
+      width: min(1140px, 92vw); z-index: 50;
+      background: rgba(252, 250, 247, 0.88);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--prodigeui-color-border);
+      border-radius: var(--prodigeui-radius-pill); padding: 0.75rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 10px 30px rgba(26, 22, 21, 0.04);
+    }
+    .brand-title { font-family: var(--prodigeui-font-display); font-weight: 700; font-size: 1.8rem; color: var(--prodigeui-color-text); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; letter-spacing: 0.06em; }
+    .brand-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--prodigeui-color-primary); }
+    
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a { color: var(--prodigeui-color-muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--prodigeui-color-primary); }
+
+    .btn-pill {
+      background: var(--prodigeui-color-text); color: var(--prodigeui-primitive-silk);
+      font-weight: 700; padding: 0.7rem 1.6rem; border-radius: var(--prodigeui-radius-pill); text-decoration: none; font-size: 0.88rem;
+      transition: background 0.2s ease, transform 0.2s ease; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;
+      position: relative; z-index: 2;
+    }
+    .btn-pill:hover { background: var(--prodigeui-color-primary-hover); transform: translateY(-2px); }
+    .btn-pill.primary { background: var(--prodigeui-color-primary); color: var(--prodigeui-primitive-silk); }
+    .btn-pill.primary:hover { background: var(--prodigeui-color-primary-hover); }
+    
+    .btn-outline {
+      background: transparent; color: var(--prodigeui-color-text); border: 1px solid var(--prodigeui-color-border);
+      padding: 0.95rem 2rem; border-radius: var(--prodigeui-radius-pill); text-decoration: none; font-size: 0.92rem; font-weight: 600;
+      transition: border-color 0.2s ease, color 0.2s ease; display: inline-flex; align-items: center; gap: 0.5rem; position: relative; z-index: 2;
+    }
+    .btn-outline:hover { border-color: var(--prodigeui-color-primary); color: var(--prodigeui-color-primary); }
+
+    /* Hero Section */
+    .hero-wrap { padding-top: 10.5rem; padding-bottom: 5.5rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4.5rem; align-items: center; }
+    .eyebrow { color: var(--prodigeui-color-primary); font-weight: 600; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--prodigeui-color-primary); }
+    
+    .hero-title { font-family: var(--prodigeui-font-display); font-size: var(--prodigeui-fs-hero); font-weight: 600; line-height: 0.92; letter-spacing: -0.025em; margin-bottom: 2rem; }
+    .hero-lead { color: var(--prodigeui-color-muted); font-size: 1.18rem; max-width: 46ch; margin-bottom: 2.5rem; }
+    .cta-group { display: flex; gap: 1.25rem; align-items: center; }
+
+    /* Lookbook Hero Frame */
+    .lookbook-frame {
+      position: relative; border-radius: var(--prodigeui-radius-card); overflow: hidden;
+      border: 1px solid var(--prodigeui-color-border); box-shadow: var(--prodigeui-shadow-floating); aspect-ratio: 4/5; isolation: isolate;
+    }
+    .lookbook-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .lookbook-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; z-index: 2;
+      background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(14px);
+      border: 1px solid var(--prodigeui-color-border); border-radius: 16px; padding: 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .badge-title { font-family: var(--prodigeui-font-display); font-size: 1.25rem; font-weight: 600; color: var(--prodigeui-color-text); display: block; }
+    .badge-price { font-family: var(--prodigeui-font-mono); color: var(--prodigeui-color-primary); font-weight: 700; font-size: 1.05rem; }
+
+    /* Collection Grid */
+    .collection-section { padding: 6rem 0; }
+    .section-head { margin-bottom: 3.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+    .section-h2 { font-family: var(--prodigeui-font-display); font-size: var(--prodigeui-fs-h2); font-weight: 600; line-height: 0.95; }
+    
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .product-card {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: var(--prodigeui-radius-card); overflow: hidden; text-decoration: none; color: inherit;
+      transition: border-color 0.3s ease, transform 0.3s ease; box-shadow: var(--prodigeui-shadow-subtle); display: flex; flex-direction: column;
+    }
+    .product-card:hover { border-color: var(--prodigeui-color-primary); transform: translateY(-6px); }
+    .product-card:hover .product-img img { transform: scale(1.05); }
+    
+    .product-img { aspect-ratio: 3/4; overflow: hidden; position: relative; background: var(--prodigeui-color-surface-muted); }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .product-body { padding: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex: 1; }
+    .product-title { font-family: var(--prodigeui-font-display); font-size: 1.45rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .product-sub { color: var(--prodigeui-color-muted); font-size: 0.86rem; }
+    .product-price { font-family: var(--prodigeui-font-mono); font-weight: 700; color: var(--prodigeui-color-primary); font-size: 1.1rem; }
+
+    /* Quote Banner */
+    .quote-section {
+      background: var(--prodigeui-color-surface-muted); border-y: 1px solid var(--prodigeui-color-border);
+      padding: 6.5rem 0; text-align: center; margin: 4.5rem 0;
+    }
+    .quote-body { font-family: var(--prodigeui-font-display); font-size: clamp(2.2rem, 4.8vw, 4.2rem); font-weight: 400; font-style: italic; max-width: 24ch; margin: 0 auto 1.5rem; line-height: 1.1; }
+
+    /* VIP Access Form */
+    .vip-card {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: 28px; padding: 4.5rem; box-shadow: var(--prodigeui-shadow-subtle);
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3.5rem; align-items: center; margin: 4.5rem auto; isolation: isolate;
+    }
+    .form-group {
+      display: flex; gap: 0.75rem; background: var(--prodigeui-color-bg);
+      padding: 6px; border-radius: var(--prodigeui-radius-pill); border: 1px solid var(--prodigeui-color-border);
+      position: relative; z-index: 2;
+    }
+    .input-field {
+      border: none; background: transparent; padding: 0.85rem 1.35rem;
+      font-family: var(--prodigeui-font-body); font-size: 0.95rem; outline: none; flex: 1; color: var(--prodigeui-color-text);
+    }
+    
+    footer { padding: 4rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.88rem; }
+    .footer-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .vip-card { grid-template-columns: 1fr; padding: 2.5rem; }
+      .section-head { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+
+    /* ==========================================================================
+       REDUCED MOTION ACCESSIBILITY COMPLIANCE (ProdigeUI Section 15)
+       ========================================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .product-card:hover, .btn-pill:hover { transform: none !important; }
+      .product-card:hover .product-img img { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- FLOATING NAVIGATION BAR -->
+  <header class="nav-glass">
+    <a href="#" class="brand-title">
+      <span class="brand-dot" aria-hidden="true"></span> AURA
+    </a>
+    <ul class="nav-links">
+      <li><a href="#lookbook">Lookbook</a></li>
+      <li><a href="#atelier">Philosophy</a></li>
+      <li><a href="#vip">VIP Circle</a></li>
+    </ul>
+    <a href="#lookbook" class="btn-pill">Spring '26 Collection</a>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <section class="hero-wrap wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow mono-tag">High-Fashion Apparel &amp; Botanical Beauty</div>
+          <h1 class="hero-title">
+            Grace woven in <br>
+            <span class="text-italic">quiet silence.</span>
+          </h1>
+          <p class="hero-lead">
+            AURA combines 100% Mulberry silk tailoring, organic damask rosehip botanicals, and European flax linen to create garments of quiet confidence.
+          </p>
+          <div class="cta-group">
+            <a href="#lookbook" class="btn-pill primary">
+              Explore Lookbook
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#atelier" class="btn-outline">Our Atelier Story</a>
+          </div>
+        </div>
+
+        <div class="lookbook-frame">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=75" alt="Model in Mulberry Silk Evening Gown">
+          <div class="lookbook-badge">
+            <div>
+              <span class="badge-title">The Solstice Silk Series</span>
+              <span class="mono-tag text-muted">Spring / Summer 2026</span>
+            </div>
+            <span class="badge-price">$380</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURATED LOOKBOOK MASONRY GRID -->
+    <section class="collection-section wrap" id="lookbook">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow mono-tag">Curated Releases — 01</div>
+          <h2 class="section-h2">Spring 2026 Atelier Collection.</h2>
+        </div>
+        <p class="text-muted" style="max-width: 340px;">Hand-crafted silk garments and cold-pressed botanical elixirs created in limited seasonal runs.</p>
+      </div>
+
+      <div class="grid-3">
+        <a href="#vip" class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=75" alt="Silk Solstice Evening Dress" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div>
+              <h3 class="product-title">The Silk Solstice Dress</h3>
+              <p class="product-sub">100% Mulberry Silk · Terracotta Hue</p>
+            </div>
+            <span class="product-price">$380</span>
+          </div>
+        </a>
+
+        <a href="#vip" class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=75" alt="Rosehip Camellia Facial Elixir" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div>
+              <h3 class="product-title">Rosehip &amp; Camellia Elixir</h3>
+              <p class="product-sub">Organic Botanical Skincare · 50ml</p>
+            </div>
+            <span class="product-price">$95</span>
+          </div>
+        </a>
+
+        <a href="#vip" class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=75" alt="Linen Atelier Trench Coat" loading="lazy">
+          </div>
+          <div class="product-body">
+            <div>
+              <h3 class="product-title">Linen Atelier Trench</h3>
+              <p class="product-sub">European Flax Linen · Horn Buttons</p>
+            </div>
+            <span class="product-price">$420</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- EDITORIAL QUOTE -->
+    <section class="quote-section" id="atelier">
+      <div class="wrap">
+        <blockquote class="quote-body">&ldquo;AURA captures the quiet confidence of modern femininity. Every garment feels like wearable art.&rdquo;</blockquote>
+        <div class="mono-tag" style="color: var(--prodigeui-color-primary);">VOGUE INTERNATIONAL FASHION REVIEW</div>
+      </div>
+    </section>
+
+    <!-- VIP ATELIER MEMBERSHIP CARD -->
+    <section class="vip-card wrap" id="vip">
+      <div>
+        <div class="eyebrow mono-tag">Private Access</div>
+        <h2 class="section-h2" style="margin-top: 0.5rem;">Join the AURA VIP Circle</h2>
+        <p class="text-muted" style="margin-top: 0.5rem;">Receive private invitations to seasonal atelier drops &amp; bespoke fitting previews.</p>
+      </div>
+
+      <form class="form-group" onsubmit="event.preventDefault();">
+        <input type="email" class="input-field" placeholder="Enter your email address..." aria-label="Email address for VIP Circle" required>
+        <button type="submit" class="btn-pill primary">Join Atelier</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-flex">
+      <a class="brand-title" href="#top" style="font-size: 1.4rem;">
+        <span class="brand-dot" aria-hidden="true"></span> AURA
+      </a>
+      <span class="mono-tag">&copy; 2026 AURA Women's Fashion &amp; Atelier. Powered by ProdigeUI Engine v3.0.5.</span>
+    </div>
+  </footer>
+</body>
+</html>
