@@ -46,6 +46,47 @@ frontmatter (name, description, triggers) and step-by-step workflow instructions
 | **motion-review** | "review animations", "review motion", "check animations" | Review motion code against a high craft bar (easing, frequency, origin, interruptibility, GPU, a11y) |
 | **design-lens** | "make it bolder", "tone it down", "fix the spacing", "colors feel flat", "polish this" | Apply a focused adjustment lens to existing output instead of rebuilding (`craft/design-lenses.md`) |
 
+# ProdigeUI — Agent Entry Point
+
+> ⚠️ **Read `PHILOSOPHY.md` first.** ProdigeUI has two modes. In **Creative Mode** (vague
+> brief) you ARE the designer — produce cinematic, craft-rich output using the `craft/`
+> library; it must look visibly BETTER than raw AI, never merely "safe." In **Enhancement
+> Mode** (specific brief) honor the designer's intent, execute their chosen techniques at
+> reference quality, and DO NO HARM (never break assets, slow interaction, or add jank).
+>
+> ⚠️ **Rules prevent bad output; craft produces great output. You need BOTH.** The tokens,
+> rules, and anti-slop gate below are the floor. For any expressive build, start at
+> `craft/AGENTS.md` and pick a signature — otherwise output will be competent but
+> forgettable, which is a FAILURE for expressive work.
+
+> This document is the canonical entry point for AI agents using ProdigeUI.
+> Read this file first. It tells you what ProdigeUI is, where things live, and how to work.
+
+## System Purpose
+
+ProdigeUI is a **Generative UI/UX Knowledge Engine** that equips AI agents to synthesize world-class interfaces driven by 4 core pillars:
+
+1. **Intent & Product Read**: Deeply analyzing product domain, user persona, and emotional positioning.
+2. **Dynamic Taste Engine**: Deriving custom HSL color harmonies (`themes/generative-theme-synthesis.md`), font pairings, material depth, and spatial rhythms dynamically for ANY brief.
+3. **High-Craft Copywriting System**: Writing authentic domain storytelling copy (`craft/high-craft-copywriting.md`) while strictly prohibiting prompt instruction leaks (e.g. `(CLICK TO...)`).
+4. **Non-Negotiable Guardrails**: Enforcing WCAG AA contrast (>=4.5:1 / 7.0:1+), 0 inline HTML styles, `prefers-reduced-motion`, and strict container boundary containment (`overflow: hidden;`).
+
+---
+
+## Available Skills
+
+Skills are structured capability units stored in `skills/`. Each has a `SKILL.md` with
+frontmatter (name, description, triggers) and step-by-step workflow instructions.
+
+| Skill | Triggers | Purpose |
+|-------|----------|---------|
+| **prodige-ui-end-to-end** | "design ui", "create interface", "build component", "ui end to end", "design from brief" | Full workflow from brief to implementation with Quality Gate validation |
+| **quality-check** | "check quality", "run quality gate", "audit design", "anti slop check" | Evaluate output against criteria.json and anti-AI-slop checklist |
+| **token-management** | "manage tokens", "add token", "update token", "validate tokens" | Add, modify, and validate tokens across primitive/semantic/component layers |
+| **theme-creation** | "create theme", "new theme", "custom theme", "brand theme" | Create a new theme with palette selection, token mapping, and contrast verification |
+| **motion-review** | "review animations", "review motion", "check animations" | Review motion code against a high craft bar (easing, frequency, origin, interruptibility, GPU, a11y) |
+| **design-lens** | "make it bolder", "tone it down", "fix the spacing", "colors feel flat", "polish this" | Apply a focused adjustment lens to existing output instead of rebuilding (`craft/design-lenses.md`) |
+
 > The registry above is a subset. See `skills/AGENTS.md` for the full skill list (14 skills).
 
 **How to find and run a skill:**
@@ -56,52 +97,16 @@ frontmatter (name, description, triggers) and step-by-step workflow instructions
 
 ---
 
-## General Workflow (8-Step Process)
+## Generative Workflow (4-Pillar Pipeline)
 
-### Model-robust baseline (mandatory for every agent, including smaller models)
-
-Before implementing, read `craft/model-robust-generation.md`. It converts the creative
-workflow into a short deterministic contract: derive a product-specific palette family,
-choose one hero signature, cap effect complexity, build the first viewport around a real
-product/story artifact, and run a rendered-state contrast plus encoding check. Do not copy
-an older benchmark HTML as a starting point. Re-derive from the current brief.
-
-That same contract separates semantic invariants that should converge across models from
-layout, copy, artwork, and motion details that must remain generative. It also routes
-research-derived guidance through the canonical evergreen/contextual/dated/rejected policy,
-so historical examples never become aesthetic defaults.
-
-Immediately after it, read `canonical/accepted-quality.profile.json`. Select the applicable
-semantic profile from product intent and transfer its reasoning standard without copying
-benchmark copy, section geometry, class names, dimensions, or color values.
-
-Before emitting implementation code, execute
-`canonical/generation.contract.json#oneBuildPreflight` in working context. Treat the first
-build as the acceptance candidate: pre-resolve surface contrast, type/weight budgets, 44x44
-targets, focal-subject scale, mobile containment, reduced motion, font delivery, and encoding.
-The rendered Quality Gate verifies that work; it must not be used as permission to emit a
-predictably broken draft.
-
-Every UI/UX design task follows this sequence:
+Every UI/UX design task follows this dynamic sequence:
 
 ```
-1. Brief Analysis        — Understand the request, identify use-case and constraints
-2. Design Read           — Set aesthetic direction, calibrate Three Dials.
-                           MANDATORY: read `craft/design-read.md` — declare the one-line
-                           Design Read, set dials, set the Soul Formula (80/20 + engine
-                           moment when MOTION_INTENSITY ≥ 0.7).
-3. Craft Selection       — For expressive work (VARIANCE>=0.6 / MOTION>=0.5), pick a
-                           hero signature + motion signature + texture from craft/.
-                           MOTION ≥ 0.7: also pick an engine element from
-                           `craft/patterns/engine-interactivity.md` (ScrollTrigger,
-                           Three.js, particles, Lenis, etc) — static page = FAIL here.
-4. Token Selection       — Choose/customize theme from Theme_Catalog
-5. Component Selection   — Map features to Component_Library (atomic design)
-6. Layout Design         — Apply grid system and structural rules
-7. Motion Design         — Choreograph per motion/choreography.md + MOTION_INTENSITY dial
-8. Implementation        — Generate code from craft/ recipes + tokens, components, rules
-9. Quality Gate          — Validate against criteria + anti-AI-slop (negative gate) AND
-                           the craft-presence rubric (positive gate) for expressive work
+1. INTENT & PRODUCT READ   — Infer domain stance, user emotion, and visual ambition.
+2. DYNAMIC TASTE SYNTHESIS — Synthesize custom HSL palette, Google Font pairing, and material depth.
+3. GENERATIVE ENGINE CRAFT — Build dynamic layout geometries and JS interactive anchors (craft/generative-craft-engine.md).
+4. HIGH-CRAFT COPYWRITING — Write authentic domain storytelling copy (0 prompt leaks / hints).
+5. QUALITY GATE CHECK     — Validate against WCAG AA, 0 inline styles, overflow containment, & anti-slop rules.
 ```
 
 If an unforeseen Quality Gate failure remains, loop back to the step that produced the

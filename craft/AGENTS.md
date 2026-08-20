@@ -1,52 +1,22 @@
 # ProdigeUI Craft Library — Reference Implementations
 
 > **This is the missing half of ProdigeUI.** The rest of the kit tells you what NOT
+# ProdigeUI Craft Library — Reference Implementations
+
+> **This is the missing half of ProdigeUI.** The rest of the kit tells you what NOT
 > to do (constraints, tokens, anti-slop). This folder shows you what TO do — the
 > actual advanced techniques that separate a cinematic, memorable interface from a
 > competent-but-forgettable one.
 >
 > **Rules and tokens prevent bad output. Craft produces great output. You need both.**
 
-## Why this exists
+## How to use this library (Generative Synthesis Engine)
 
-ProdigeUI was originally built as a constraint system: measurable rules, a token
-architecture, and an anti-slop checklist. That prevents ugliness but does not produce
-beauty. Real reference sites (video-hero landing pages, figma-site portfolios,
-award-style microsites) are great not because they avoid purple gradients, but because
-they use concrete, well-executed techniques: crossfading video backgrounds, liquid-glass
-chrome, magnetic hover, choreographed text reveals, cursor-spotlight masks, sticky card
-stacks, scroll-linked parallax.
-
-None of those are reducible to a JSON rule. They are **recipes** — real code you adapt.
-That is what lives here.
-
-## How to use this library
-
-1. **Read the brief and pick the aesthetic ambition.** Expressive use-cases
-   (landing, portfolio, product launch, agency, creative tool) should reach for craft
-   patterns by default — not just tokens.
-2. **Select one signature pattern and at most two supporting techniques** that fit the
-   concept. Every technique must improve hierarchy, affordance, feedback, spatial
-   understanding, or brand meaning; decoration is not a quota.
-3. **Copy the recipe, then adapt** the tokens, colors, timing, and content to the
-   project. Every recipe is written to be self-contained and pastable.
-4. **Always keep the reduced-motion fallback** included in each recipe.
-5. **Run the quality gate** — but note the gate now rewards intentional craft (see
-   `quality-gate/positive-patterns.md`), it does not punish it.
-
-## When craft applies vs when it doesn't
-
-| Use-case | Craft ambition | Typical patterns |
-|----------|---------------|------------------|
-| Landing / product launch | HIGH | video-hero, text-reveal, magnetic-hover, marquee, bento |
-| Portfolio / agency | HIGH | cursor-spotlight, sticky-stack, parallax, fluid-display-type |
-| Creative tool / brand site | HIGH | concept-bound signature interaction, authored media, choreographed entrances |
-| SaaS marketing page | MEDIUM | one signature motion + restrained texture |
-| SaaS app / dashboard | LOW | micro-interactions only (hover, state transitions) |
-| HRIS / data-dense admin | MINIMAL | no decorative craft; clarity first |
-
-Craft ambition tracks the `DESIGN_VARIANCE` and `MOTION_INTENSITY` dials. A dashboard
-does NOT get a crossfading video hero. A portfolio absolutely does.
+1. **Read the brief and execute Intent & Product Read.** Derive the emotional brand stance, user intent, and domain requirements.
+2. **Dynamic Taste & Theme Synthesis.** Synthesize custom color tokens (`--prodigeui-*`), font pairings, and material depth on the fly using `themes/generative-theme-synthesis.md` — do NOT rely on hardcoded JSON presets.
+3. **Generative Layout & Engine Craft.** Organically synthesize layout geometries, asymmetric bento grids, and JavaScript interactive engines using `craft/generative-craft-engine.md` — do NOT copy hardcoded HTML recipes verbatim across unrelated briefs.
+4. **Authentic Domain Copywriting.** Write compelling, brand-specific storytelling copy using `craft/high-craft-copywriting.md`. Zero prompt instruction leaks or debug text allowed (`(CLICK TO...)`).
+5. **Enforce Non-Negotiable Guardrails.** Verify 0 inline HTML styles, 100% WCAG AA contrast (4.5:1 / 7.0:1+), `prefers-reduced-motion`, and strict container boundary containment (`overflow: hidden;`).
 
 ## Pattern index
 

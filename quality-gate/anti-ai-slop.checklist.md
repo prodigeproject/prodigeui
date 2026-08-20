@@ -62,6 +62,7 @@ These patterns indicate fundamental quality failures. Presence of ANY = automati
 - **FAIL C0.18:** Hero cards or section columns are over-crammed with more than 4 vertically stacked sub-component boxes, destroying visual breathing room and architectural restraint.
 - **FAIL C0.19:** Parent card containers with rounded borders (`border-radius`) housing image viewports, media grids, or canvas anchors omit `overflow: hidden;`, causing child background images to bleed past the parent card's rounded corners.
 - **FAIL C0.20:** Interactive tabs or mode toggles cause container height jumping, aspect-ratio grid conflicts, or layout boundary overflow when switching between state items.
+- **FAIL C0.21:** Output copies hardcoded recipe boilerplate or static JSON theme values verbatim instead of dynamically synthesizing layout geometries, HSL color harmonies, and authentic domain copywriting per user brief.
 
 > **Craft exception for FAIL #1, #5, and typography-scale:** Fluid and computed values
 > that are *systematic* are NOT raw-value violations. `clamp(2.5rem, 14vw, 17.5rem)` for a
