@@ -1,84 +1,33 @@
-> **Grade Target:** Awwwards Site of the Day / FWA (9.5+/10)  
-> **Core Requirement:** Combine domain-specific interactive anchors with rich editorial storytelling.  
-> ⚠️ **Strict Anti-Slop Rule:** NEVER leak prompt instructions in micro-copy (e.g. `(CLICK TO SWITCH...)`). Maintain visual restraint, generous whitespace, and un-crammed column structures.
+# Generative World-Class Hero Canvas Guide (ProdigeUI)
+
+> **Grade Target**: Awwwards Site of the Day / FWA (9.5+/10)  
+> ⚠️ **Strict Anti-Slop Rule**: Do NOT copy hardcoded HTML code blocks or fixed project titles. Synthesize component structures dynamically based on domain intent.
 
 ---
 
-## 1. Material Inset Lighting Depth Styles
+## 1. Intent & Brand Stance
 
-```css
-/* Generalized Material Inset Surface & Depth Lighting */
-:root {
-  --prodigeui-material-inset: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 24px 65px -12px rgba(0, 0, 0, 0.6);
-  --prodigeui-radius-card: 16px;
-}
-
-.card-material {
-  background: var(--prodigeui-color-surface);
-  border: 1px solid var(--prodigeui-color-border);
-  border-radius: var(--prodigeui-radius-card);
-  box-shadow: var(--prodigeui-material-inset);
-  position: relative;
-  isolation: isolate;
-}
-```
+- **Use-Cases**: Luxury Architectural Studios, Creative Digital Agencies, High-Concept Product Launches.
+- **Palette Synthesis**: Warm Linen (`#f5f2eb`) + Terracotta (`#a64b2a`) OR Obsidian (`#08090a`) + Incandescent Vermilion (`#ff4d15`).
+- **Typography Pairing**: `Instrument Serif` (Display) + `Space Grotesk` (Subhead) + `DM Mono` (Telemetry).
 
 ---
 
-## 2. Interactive Product Node Canvas Pattern (n8n & Lovable Workflow)
+## 2. Generative Grid & Layout Architecture
 
-```html
-<div class="card-material canvas-frame">
-  <div class="canvas-header">
-    <div class="canvas-tabs">
-      <button class="tab-btn active">{Tab 01}</button>
-      <button class="tab-btn">{Tab 02}</button>
-    </div>
-    <span class="status-indicator">● {LIVE STATUS}</span>
-  </div>
-
-  <div class="dag-grid">
-    <article class="dag-node">
-      <span class="mono-tag">{NODE 01}</span>
-      <h4 class="node-title">{Node Title 1}</h4>
-    </article>
-    <article class="dag-node active-node">
-      <span class="mono-tag">{NODE 02}</span>
-      <h4 class="node-title">{Node Title 2}</h4>
-    </article>
-  </div>
-</div>
-```
+- **Spacious Architectural Monolith Layout**: `1.1fr 0.9fr` grid ratio with generous padding (min 3.5rem) and un-crammed column density (max 3-4 elements per column).
+- **Dynamic Media Viewport**:
+  - High-resolution architectural photography or WebGL canvas backdrop.
+  - Height-locked grid cell (`height: 100%; min-height: 420px;`).
+  - Mandatory `overflow: hidden;` on parent card container (`border-radius: 16px;`).
+- **Dynamic Spatial Inspector Engine**:
+  - Sleek minimal tab buttons (`01. Atrium`, `02. Granite Core`, `03. Larch Deck`).
+  - Dynamic photo transition JS script (`opacity` fade + image source update).
+  - Crisp HTML typography metadata (`58dB Acoustic Mass`, `+4.2kW Winter Solar Gain`).
 
 ---
 
-## 4. Interactive Spatial Photo & Material Telemetry Inspector Pattern
+## 3. High-Craft Copywriting Rules
 
-```html
-<div class="spatial-photo-inspector-frame">
-  <!-- Interactive Section Toggle Buttons -->
-  <div class="spatial-controls">
-    <button class="room-btn active" onclick="inspectRoom(1)">{Section 01}</button>
-    <button class="room-btn" onclick="inspectRoom(2)">{Section 02}</button>
-  </div>
-
-  <!-- High-Res Dynamic Architectural Photo Viewport -->
-  <div class="photo-viewport">
-    <img id="active-photo" src="{Photo URL}" alt="{Section Alt}">
-  </div>
-
-  <!-- Crisp 100% Legible Material & Telemetry Card -->
-  <div class="material-telemetry-card">
-    <div class="telemetry-grid">
-      <div class="metric-item">
-        <span class="mono-tag">{PRIMARY MATERIAL}</span>
-        <span class="metric-value">{Granite / Timber}</span>
-      </div>
-      <div class="metric-item">
-        <span class="mono-tag">{ACOUSTIC RATING}</span>
-        <span class="metric-value">{58dB}</span>
-      </div>
-    </div>
-  </div>
-</div>
-```
+- **Zero Prompt Leaks**: Prohibit debug text or click hints like `(CLICK TO SWITCH PHOTO)`.
+- **Authentic Domain Copywriting**: "High-altitude stone residence constructed from locally quarried granite and European larch timber."
