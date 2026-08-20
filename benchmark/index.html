@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProdigeUI v3.0.5 — BEFORE vs AFTER Multi-Benchmark Suite</title>
+  <title>ProdigeUI v3.0.5 — BEFORE vs AFTER Benchmark Suite (n8n &amp; Delve Architects Featured)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -19,52 +19,53 @@
       --green: #10b981;
       --red: #ef4444;
       --amber: #f59e0b;
-      --blue: #3b82f6;
+      --terracotta: #a64b2a;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-font-smoothing: antialiased; }
     
-    .top-header { padding: 1.5rem 2rem; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.2rem; color: var(--text); display: flex; align-items: center; gap: 0.5rem; }
-    .badge-live { padding: 4px 10px; background: rgba(16, 185, 129, 0.15); color: var(--green); border-radius: 999px; font-size: 0.75rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .top-header { padding: 1.25rem 2rem; background: var(--surface); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.2rem; color: var(--text); display: flex; align-items: center; gap: 0.6rem; }
+    .badge-live { padding: 4px 12px; background: rgba(16, 185, 129, 0.15); color: var(--green); border-radius: 999px; font-size: 0.78rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.3); }
 
-    /* Test Case Suite Tabs */
-    .controls-bar { padding: 1rem 2rem; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
-    .tabs-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .tab-btn { background: var(--surface); color: var(--muted); border: 1px solid var(--border); padding: 0.55rem 1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-    .tab-btn.active { background: var(--surface-elevated); color: var(--text); border-color: var(--green); }
+    /* Primary Featured Controls Bar */
+    .controls-bar { padding: 1rem 2rem; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .tabs-group { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .tab-btn { background: var(--surface); color: var(--muted); border: 1px solid var(--border); padding: 0.65rem 1.3rem; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 0.5rem; }
+    .tab-btn.featured { border-color: rgba(16, 185, 129, 0.4); color: #fff; }
+    .tab-btn.active { background: var(--surface-elevated); color: var(--text); border-color: var(--green); box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 0 20px rgba(16, 185, 129, 0.2); }
 
     /* Comparative Metrics Matrix Header */
     .metrics-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding: 1rem 2rem; background: var(--surface); border-bottom: 1px solid var(--border); }
-    .metric-card { padding: 1rem; border-radius: 8px; border: 1px solid var(--border); }
-    .metric-card.before { background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.3); }
-    .metric-card.after { background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.3); }
+    .metric-card { padding: 1.1rem; border-radius: 10px; border: 1px solid var(--border); }
+    .metric-card.before { background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.35); }
+    .metric-card.after { background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.35); box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
     .metric-title { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; display: flex; justify-content: space-between; }
-    .score-badge { font-weight: 800; font-size: 1.25rem; margin-top: 0.25rem; display: block; }
+    .score-badge { font-weight: 800; font-size: 1.35rem; margin-top: 0.25rem; display: block; }
     .score-before { color: var(--red); }
     .score-after { color: var(--green); }
 
     /* Side-by-Side Split View Iframe Container */
     .split-view-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; height: calc(100vh - 230px); padding: 1rem; }
-    .iframe-wrapper { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff; position: relative; }
-    .iframe-header { padding: 0.5rem 1rem; background: var(--surface); border-bottom: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: var(--text); }
-    iframe { width: 100%; height: calc(100% - 35px); border: none; }
+    .iframe-wrapper { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff; position: relative; box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
+    .iframe-header { padding: 0.6rem 1.2rem; background: var(--surface); border-bottom: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: var(--text); }
+    iframe { width: 100%; height: calc(100% - 38px); border: none; }
   </style>
 </head>
 <body>
   <header class="top-header">
     <div class="brand">
-      ProdigeUI v3.0.5 <span class="badge-live">● BEFORE vs AFTER BENCHMARK SUITE</span>
+      ProdigeUI v3.0.5 <span class="badge-live">● FEATURED BEFORE vs AFTER BENCHMARK</span>
     </div>
     <div style="font-size: 0.85rem; color: var(--muted);">
-      Evaluating Untuned LLM Baseline Output against Tuned ProdigeUI v3.0.5 Architecture (8-Site Audit Synthesis)
+      Direct Visual &amp; UX Difference Analysis: n8n Workflow Platform &amp; Delve Architects
     </div>
   </header>
 
   <nav class="controls-bar">
     <div class="tabs-group">
-      <button class="tab-btn active" onclick="loadPair(0)">1. Lovable x n8n</button>
-      <button class="tab-btn" onclick="loadPair(1)">2. Delve Architects</button>
+      <button class="tab-btn featured active" onclick="loadPair(0)">⚡ 1. FEATURED: n8n / Lovable (Workflow DAG)</button>
+      <button class="tab-btn featured" onclick="loadPair(1)">🏛️ 2. FEATURED: Delve Architects (Paper Studio)</button>
       <button class="tab-btn" onclick="loadPair(2)">3. NestJS Enterprise</button>
       <button class="tab-btn" onclick="loadPair(3)">4. yoyoyo.ai Voice OS</button>
       <button class="tab-btn" onclick="loadPair(4)">5. Aura Luxury Atelier</button>
@@ -79,12 +80,12 @@
         <span id="before-status" class="score-before">SLOP FAIL</span>
       </div>
       <span class="score-badge score-before" id="before-score">5.1 / 10 — CRITICAL FAILS</span>
-      <ul style="font-size: 0.78rem; color: #fca5a5; margin-top: 0.5rem; padding-left: 1.2rem;" id="before-list">
-        <li>Flat non-depth cards lacking inset lighting</li>
-        <li>Generic system sans-serif typography</li>
-        <li>Static hero section (no interactive canvas anchor)</li>
+      <ul style="font-size: 0.8rem; color: #fca5a5; margin-top: 0.5rem; padding-left: 1.2rem;" id="before-list">
+        <li>Flat dark box without inset lighting depth</li>
+        <li>Generic system Arial sans-serif typography</li>
+        <li>Static text box (no interactive node DAG canvas)</li>
         <li>Raw inline HTML style attributes leak</li>
-        <li>Missing prefers-reduced-motion media query</li>
+        <li>Missing prefers-reduced-motion accessibility</li>
       </ul>
     </div>
 
@@ -94,10 +95,10 @@
         <span id="after-status" class="score-after">100% PASS</span>
       </div>
       <span class="score-badge score-after" id="after-score">9.9 / 10 — AWARD GRADE</span>
-      <ul style="font-size: 0.78rem; color: #6ee7b7; margin-top: 0.5rem; padding-left: 1.2rem;" id="after-list">
+      <ul style="font-size: 0.8rem; color: #6ee7b7; margin-top: 0.5rem; padding-left: 1.2rem;" id="after-list">
         <li>Inset material depth (box-shadow: inset 0 1px 0 rgba(255,255,255,0.12))</li>
-        <li>Syne display typography + tight tracking</li>
-        <li>Interactive visual node DAG canvas hero anchor</li>
+        <li>Syne display typography + tight tracking (-0.04em)</li>
+        <li>Interactive visual node DAG workflow canvas hero anchor</li>
         <li>0 inline HTML style attributes (100% tokenized CSS classes)</li>
         <li>Full @media (prefers-reduced-motion: reduce) compliance</li>
       </ul>
@@ -130,16 +131,16 @@
         beforeScore: "5.1 / 10 — CRITICAL FAILS",
         afterScore: "9.9 / 10 — AWARD GRADE PASS",
         beforeList: [
-          "Flat non-depth cards lacking inset lighting",
-          "Generic system sans-serif typography",
-          "Static hero section (no interactive canvas anchor)",
+          "Flat dark box without inset lighting depth",
+          "Generic system Arial sans-serif typography",
+          "Static text box (no interactive node DAG canvas)",
           "Raw inline HTML style attributes leak",
-          "Missing prefers-reduced-motion media query"
+          "Missing prefers-reduced-motion accessibility"
         ],
         afterList: [
           "Inset material depth (box-shadow: inset 0 1px 0 rgba(255,255,255,0.12))",
-          "Syne display typography + tight tracking",
-          "Interactive visual node DAG canvas hero anchor",
+          "Syne display typography + tight tracking (-0.04em)",
+          "Interactive visual node DAG workflow canvas hero anchor",
           "0 inline HTML style attributes (100% tokenized CSS classes)",
           "Full @media (prefers-reduced-motion: reduce) compliance"
         ]
