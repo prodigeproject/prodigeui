@@ -1,4 +1,4 @@
-<!-- Design Read: High-end luxury architectural studio for international clients, tactile warm paper & ink brutalist editorial vibe, Instrument Serif display + brutalist grid rules + RICH DETAILED SVG FLOORPLAN BLUEPRINT INSPECTOR ENGINE. -->
+<!-- Design Read: High-end luxury architectural studio for international clients, tactile warm paper & ink brutalist editorial vibe, Instrument Serif display + brutalist grid rules + HIGH-RES MONOLITH PHOTOGRAPHY + ALWAYS-VISIBLE INTERACTIVE SVG FLOORPLAN BLUEPRINT INSPECTOR ENGINE. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* PRODIGEUI v3.0.7 — Tactile paper, Instrument Serif display, brutalist grid lines, RICH ARCHITECTURAL SVG BLUEPRINT & LIVE JS ROOM INSPECTOR */
+    /* PRODIGEUI v3.0.7 — Tactile paper, Instrument Serif display, brutalist grid rules, ALWAYS-VISIBLE SVG BLUEPRINT & LIVE JS ROOM INSPECTOR */
     :root {
       --prodigeui-primitive-paper: #f5f2eb;
       --prodigeui-primitive-paper-white: #fdfbf7;
@@ -55,32 +55,36 @@
     .hero-wrap { padding: 6rem 0 4rem; }
     .hero-h1 { font-family: var(--prodigeui-font-display); font-size: clamp(3.8rem, 8.5vw, 7.8rem); font-weight: 400; line-height: 0.92; margin-bottom: 2.5rem; }
 
-    /* LIVE INTERACTIVE FLOORPLAN INSPECTOR & PHOTOGRAPHY HERO ANCHOR */
-    .project-card-interactive { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); display: grid; grid-template-columns: 1.25fr 0.75fr; margin-top: 3.5rem; isolation: isolate; }
-    .project-media-viewport { aspect-ratio: 16/9; overflow: hidden; background: #e0dad0; position: relative; }
-    .project-media-viewport img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: opacity 0.3s ease; }
-
-    /* Rich Interactive Blueprint Overlay Panel (ProdigeUI v3.0.7 Spec) */
-    .blueprint-overlay-panel {
-      position: absolute; inset: 0; background: rgba(26, 22, 20, 0.88); backdrop-filter: blur(12px) saturate(160%);
-      display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; color: #f5f2eb; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    /* FEATURED HERO MONOLITH CARD (PHOTOGRAPHY + ALWAYS-VISIBLE BLUEPRINT INSPECTOR) */
+    .hero-monolith-grid {
+      background: var(--prodigeui-color-surface);
+      border: 1px solid var(--prodigeui-color-border);
+      display: grid; grid-template-columns: 1.1fr 0.9fr; margin-top: 3.5rem; isolation: isolate;
     }
-    .blueprint-overlay-panel.active-blueprint { opacity: 1; pointer-events: auto; }
+    .photo-pane { aspect-ratio: 16/10; overflow: hidden; background: #e0dad0; position: relative; border-right: 1px solid var(--prodigeui-color-border); }
+    .photo-pane img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); }
+    
+    .photo-badge {
+      position: absolute; bottom: 1rem; left: 1rem; background: var(--prodigeui-color-text); color: var(--prodigeui-primitive-paper);
+      padding: 0.4rem 0.9rem; font-family: var(--prodigeui-font-mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    }
 
-    .view-toggle-bar { position: absolute; bottom: 1.25rem; right: 1.25rem; z-index: 10; display: flex; gap: 0.5rem; }
-    .toggle-btn { background: rgba(26, 22, 20, 0.9); border: 1px solid rgba(245, 242, 235, 0.3); color: #f5f2eb; padding: 0.45rem 0.9rem; font-family: var(--prodigeui-font-mono); font-size: 0.78rem; cursor: pointer; transition: all 0.2s; }
-    .toggle-btn.active { background: var(--prodigeui-color-primary); border-color: var(--prodigeui-color-primary); font-weight: bold; }
-
-    .room-btn { background: rgba(245, 242, 235, 0.1); border: 1px solid rgba(245, 242, 235, 0.25); color: #f5f2eb; padding: 0.45rem 0.85rem; font-family: var(--prodigeui-font-mono); font-size: 0.78rem; cursor: pointer; transition: all 0.2s; margin-right: 0.4rem; }
-    .room-btn.active { background: var(--prodigeui-color-primary); border-color: var(--prodigeui-color-primary); font-weight: bold; }
+    /* Architectural Blueprint Canvas Pane */
+    .blueprint-pane { padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; background: var(--prodigeui-color-surface); }
+    .room-btn {
+      background: transparent; border: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-text);
+      padding: 0.5rem 0.9rem; font-family: var(--prodigeui-font-mono); font-size: 0.78rem; cursor: pointer; transition: all 0.2s; margin-right: 0.4rem; margin-bottom: 0.5rem;
+    }
+    .room-btn.active { background: var(--prodigeui-color-primary); color: #fff; border-color: var(--prodigeui-color-primary); font-weight: bold; }
 
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--prodigeui-color-border); }
     .grid-item { padding: 3rem 2rem; border-right: 1px solid var(--prodigeui-color-border); border-bottom: 1px solid var(--prodigeui-color-border); }
 
     footer { padding: 4rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.85rem; }
 
-    @media (max-width: 900px) {
-      .project-card-interactive { grid-template-columns: 1fr; }
+    @media (max-width: 960px) {
+      .hero-monolith-grid { grid-template-columns: 1fr; }
+      .photo-pane { border-right: none; border-bottom: 1px solid var(--prodigeui-color-border); }
       .grid-3 { grid-template-columns: 1fr; }
     }
 
@@ -106,83 +110,70 @@
       <h1 class="hero-h1">Structures born of <em style="font-style: italic; color: var(--prodigeui-color-primary);">geology &amp; light.</em></h1>
       <p style="font-size: 1.25rem; max-width: 50ch;">DELVE creates enduring stone, timber, and glass monoliths designed in response to topography, silence, and natural daylight.</p>
 
-      <!-- HERO HIGH-RES ARCHITECTURAL PHOTO & RICH DETAILED SVG BLUEPRINT ENGINE -->
-      <article class="project-card-interactive" id="works">
-        <div class="project-media-viewport">
-          <!-- High-Res Monolith Architectural Photography -->
-          <img id="hero-photo" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75" alt="Alpine Monolith Residence in Engadin Switzerland">
-
-          <!-- Rich Interactive SVG Architectural Floorplan Blueprint Overlay (ProdigeUI v3.0.7 Standard) -->
-          <div class="blueprint-overlay-panel" id="blueprint-panel">
-            <div>
-              <div style="margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
-                <div>
-                  <button class="room-btn active" onclick="inspectRoom(1)">01. Atrium</button>
-                  <button class="room-btn" onclick="inspectRoom(2)">02. Thermal Mass</button>
-                  <button class="room-btn" onclick="inspectRoom(3)">03. Larch Pavilion</button>
-                </div>
-                <span class="mono text-terracotta" style="font-size: 0.7rem;">ENGADIN SITE PLAN — 1:100</span>
-              </div>
-              
-              <!-- DETAILED ARCHITECTURAL SVG BLUEPRINT -->
-              <svg viewBox="0 0 500 210" fill="none" stroke="#a64b2a" stroke-width="1.5" style="width: 100%; max-width: 480px; margin-top: 0.5rem;">
-                <!-- Outer Perimeter Monolith Walls -->
-                <rect x="15" y="15" width="470" height="180" stroke="#f5f2eb" stroke-opacity="0.4" stroke-width="2"/>
-                <rect x="19" y="19" width="462" height="172" stroke="#f5f2eb" stroke-opacity="0.15"/>
-
-                <!-- Room 01: Atrium Gallery -->
-                <g id="svg-room-1">
-                  <rect x="30" y="30" width="145" height="150" fill="rgba(166, 75, 42, 0.45)" stroke="#a64b2a" stroke-width="2"/>
-                  <text x="45" y="60" fill="#f5f2eb" font-family="monospace" font-size="10" font-weight="700">01. ATRIUM GALLERY</text>
-                  <text x="45" y="80" fill="#a64b2a" font-family="monospace" font-size="8">14.8m x 9.2m | H: 4.5m</text>
-                  <text x="45" y="95" fill="#f5f2eb" font-family="monospace" font-size="8" opacity="0.7">PASSIVE SOLAR GLAZING</text>
-                  <path d="M 175 105 A 20 20 0 0 1 155 125" stroke="#f5f2eb" stroke-opacity="0.6" stroke-dasharray="3,3"/>
-                </g>
-
-                <!-- Room 02: Thermal Mass Wall -->
-                <g id="svg-room-2">
-                  <rect x="185" y="30" width="135" height="150" fill="none" stroke="#f5f2eb" stroke-opacity="0.3" stroke-width="1.5"/>
-                  <text x="198" y="60" fill="#f5f2eb" font-family="monospace" font-size="10" font-weight="700">02. THERMAL MASS</text>
-                  <text x="198" y="80" fill="#9ca3af" font-family="monospace" font-size="8">9.5m x 9.2m | GRANITE CORE</text>
-                  <text x="198" y="95" fill="#f5f2eb" font-family="monospace" font-size="8" opacity="0.5">ACOUSTIC INSULATION</text>
-                </g>
-
-                <!-- Room 03: Larch Timber Pavilion -->
-                <g id="svg-room-3">
-                  <rect x="330" y="30" width="140" height="150" fill="none" stroke="#f5f2eb" stroke-opacity="0.3" stroke-width="1.5"/>
-                  <text x="342" y="60" fill="#f5f2eb" font-family="monospace" font-size="10" font-weight="700">03. LARCH PAVILION</text>
-                  <text x="342" y="80" fill="#9ca3af" font-family="monospace" font-size="8">11.2m x 9.2m | TIMBER DECK</text>
-                  <text x="342" y="95" fill="#f5f2eb" font-family="monospace" font-size="8" opacity="0.5">EMBODIED CARBON -18t</text>
-                </g>
-
-                <!-- Solar Compass & Dimension Ticks -->
-                <circle cx="455" cy="45" r="14" stroke="#a64b2a" stroke-opacity="0.7"/>
-                <line x1="455" y1="28" x2="455" y2="62" stroke="#a64b2a" stroke-dasharray="2,2"/>
-                <text x="452" y="24" fill="#a64b2a" font-family="monospace" font-size="8" font-weight="700">N</text>
-              </svg>
-            </div>
-
-            <div class="mono text-terracotta" id="room-telemetry" style="margin-top: 0.75rem;">
-              TELEMETRY: ATRIUM GALLERY (PASSIVE SOLAR GAIN +4.2kW | CLEAR HEIGHT 4.5m)
-            </div>
-          </div>
-
-          <!-- View Mode Toggle Bar (Photography vs Blueprint Inspector) -->
-          <div class="view-toggle-bar">
-            <button class="toggle-btn active" onclick="setMode('photo')">📷 Monolith Photo</button>
-            <button class="toggle-btn" onclick="setMode('blueprint')">📐 Blueprint Inspector</button>
-          </div>
+      <!-- HERO MONOLITH GRID: PHOTOGRAPHY (LEFT) + ALWAYS-VISIBLE BLUEPRINT INSPECTOR (RIGHT) -->
+      <article class="hero-monolith-grid" id="works">
+        <!-- Left: High-Res Monolith Architectural Photography -->
+        <div class="photo-pane">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75" alt="Alpine Monolith Residence in Engadin Switzerland">
+          <div class="photo-badge">MONOLITH 01 — ENGADIN PAVILION</div>
         </div>
 
-        <div style="padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; border-left: 1px solid var(--prodigeui-color-border);">
+        <!-- Right: Always-Visible Interactive SVG Blueprint Inspector Engine -->
+        <div class="blueprint-pane">
           <div>
-            <span class="mono text-terracotta">Featured Monolith — 01</span>
-            <h2 style="font-family: var(--prodigeui-font-display); font-size: 2.6rem; font-weight: 400; margin: 0.5rem 0 1rem;">The Engadin Alpine Pavilion</h2>
-            <p style="color: #403934;">High-altitude stone residence constructed from locally quarried granite and recycled European larch timber.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <span class="mono text-terracotta">● BLUEPRINT INSPECTOR ENGINE</span>
+              <span class="mono" style="font-size: 0.7rem;">SCALE 1:100</span>
+            </div>
+
+            <div style="margin-bottom: 1.25rem;">
+              <button class="room-btn active" onclick="inspectRoom(1)">01. Atrium Gallery</button>
+              <button class="room-btn" onclick="inspectRoom(2)">02. Thermal Mass</button>
+              <button class="room-btn" onclick="inspectRoom(3)">03. Larch Pavilion</button>
+            </div>
+            
+            <!-- DETAILED ARCHITECTURAL SVG FLOORPLAN BLUEPRINT -->
+            <svg viewBox="0 0 500 220" fill="none" stroke="#a64b2a" stroke-width="1.5" style="width: 100%; border: 1px solid var(--prodigeui-color-border); background: var(--prodigeui-primitive-paper-white); padding: 0.5rem;">
+              <!-- Outer Perimeter Walls -->
+              <rect x="15" y="15" width="470" height="190" stroke="#1a1614" stroke-opacity="0.6" stroke-width="2"/>
+              <rect x="19" y="19" width="462" height="182" stroke="#1a1614" stroke-opacity="0.2"/>
+
+              <!-- Room 01: Atrium Gallery -->
+              <g id="svg-room-1">
+                <rect x="30" y="30" width="145" height="160" fill="rgba(166, 75, 42, 0.25)" stroke="#a64b2a" stroke-width="2"/>
+                <text x="42" y="60" fill="#1a1614" font-family="monospace" font-size="10" font-weight="700">01. ATRIUM GALLERY</text>
+                <text x="42" y="80" fill="#a64b2a" font-family="monospace" font-size="8">14.8m x 9.2m | H: 4.5m</text>
+                <text x="42" y="95" fill="#403934" font-family="monospace" font-size="8">SOLAR GLAZING</text>
+                <path d="M 175 110 A 20 20 0 0 1 155 130" stroke="#a64b2a" stroke-dasharray="3,3"/>
+              </g>
+
+              <!-- Room 02: Thermal Mass Core -->
+              <g id="svg-room-2">
+                <rect x="185" y="30" width="135" height="160" fill="none" stroke="#1a1614" stroke-opacity="0.3" stroke-width="1.5"/>
+                <text x="195" y="60" fill="#1a1614" font-family="monospace" font-size="10" font-weight="700">02. THERMAL MASS</text>
+                <text x="195" y="80" fill="#403934" font-family="monospace" font-size="8">9.5m x 9.2m | GRANITE</text>
+                <text x="195" y="95" fill="#403934" font-family="monospace" font-size="8">ACOUSTIC CORE</text>
+              </g>
+
+              <!-- Room 03: Larch Timber Pavilion -->
+              <g id="svg-room-3">
+                <rect x="330" y="30" width="140" height="160" fill="none" stroke="#1a1614" stroke-opacity="0.3" stroke-width="1.5"/>
+                <text x="340" y="60" fill="#1a1614" font-family="monospace" font-size="10" font-weight="700">03. LARCH PAVILION</text>
+                <text x="340" y="80" fill="#403934" font-family="monospace" font-size="8">11.2m x 9.2m | DECK</text>
+                <text x="340" y="95" fill="#403934" font-family="monospace" font-size="8">EMBODIED -18t</text>
+              </g>
+
+              <!-- Compass -->
+              <circle cx="455" cy="45" r="12" stroke="#a64b2a"/>
+              <line x1="455" y1="30" x2="455" y2="60" stroke="#a64b2a" stroke-dasharray="2,2"/>
+              <text x="452" y="27" fill="#a64b2a" font-family="monospace" font-size="8" font-weight="700">N</text>
+            </svg>
           </div>
-          <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--prodigeui-color-border); display: flex; justify-content: space-between;">
-            <span class="mono">Engadin, Switzerland</span>
-            <span class="mono text-terracotta">Completed 2026</span>
+
+          <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--prodigeui-color-border);">
+            <div class="mono text-terracotta" id="room-telemetry">
+              TELEMETRY: ATRIUM GALLERY (PASSIVE SOLAR GAIN +4.2kW | CLEAR HEIGHT 4.5m)
+            </div>
           </div>
         </div>
       </article>
@@ -216,20 +207,8 @@
     </div>
   </footer>
 
-  <!-- LIVE FLOORPLAN ROOM INSPECTION & VIEW TOGGLE JS ENGINE SCRIPTS -->
+  <!-- LIVE FLOORPLAN ROOM INSPECTION JS ENGINE SCRIPT -->
   <script>
-    function setMode(mode) {
-      document.querySelectorAll('.toggle-btn').forEach((btn, idx) => {
-        btn.classList.toggle('active', (mode === 'photo' && idx === 0) || (mode === 'blueprint' && idx === 1));
-      });
-      const panel = document.getElementById('blueprint-panel');
-      if (mode === 'blueprint') {
-        panel.classList.add('active-blueprint');
-      } else {
-        panel.classList.remove('active-blueprint');
-      }
-    }
-
     function inspectRoom(id) {
       document.querySelectorAll('.room-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', idx + 1 === id);
@@ -239,9 +218,9 @@
       const r2 = document.getElementById('svg-room-2').querySelector('rect');
       const r3 = document.getElementById('svg-room-3').querySelector('rect');
 
-      r1.setAttribute('fill', id === 1 ? 'rgba(166, 75, 42, 0.45)' : 'none');
-      r2.setAttribute('fill', id === 2 ? 'rgba(166, 75, 42, 0.45)' : 'none');
-      r3.setAttribute('fill', id === 3 ? 'rgba(166, 75, 42, 0.45)' : 'none');
+      r1.setAttribute('fill', id === 1 ? 'rgba(166, 75, 42, 0.25)' : 'none');
+      r2.setAttribute('fill', id === 2 ? 'rgba(166, 75, 42, 0.25)' : 'none');
+      r3.setAttribute('fill', id === 3 ? 'rgba(166, 75, 42, 0.25)' : 'none');
 
       const telemetry = [
         "TELEMETRY: ATRIUM GALLERY (PASSIVE SOLAR GAIN +4.2kW | CLEAR HEIGHT 4.5m)",
