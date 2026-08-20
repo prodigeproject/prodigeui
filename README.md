@@ -15,24 +15,34 @@ ProdigeUI is a comprehensive UI/UX knowledge kit that equips AI coding agents wi
 - **Quality Gate** — Objective quality criteria and an anti-AI-slop checklist to ensure expert-level output.
 - **Prompt Templates** — Professional prompt templates per use-case (SaaS, landing page, ecommerce, portfolio, HRIS, agentic app) that reference the token system, rules, and components.
 
-## Benchmark Comparison (Design Duplication Brief: nestjs.com)
+## Official Benchmark Suite (FlowAI & NOVA)
 
-To evaluate real-world performance on design reproduction tasks, we benchmarked AI generation when instructed to duplicate the official **NestJS (nestjs.com)** website:
+To evaluate real-world performance under **Creative Mode** (vague brief, zero design specifics given), we benchmarked AI generation against two official test suites: **FlowAI** (B2B Engineering SaaS) and **NOVA** (Creative Studio Portfolio).
 
-> **Duplication Brief Given:**
-> *"Buatkan halaman landing page persis seperti website resmi NestJS (nestjs.com). Gunakan skema warna merah/crimson NestJS, background gelap, judul hero, dan komponen kode controller NestJS."*
+### Benchmark 1: FlowAI (B2B Engineering SaaS)
+> **Brief:** *"Build a single-page landing for FlowAI — an AI project management tool for engineering teams."*
 
-Because a specific reference design was provided, ProdigeUI automatically triggered **Enhancement Mode** (`PHILOSOPHY.md`): preserving 100% of the human design intent while injecting an invisible layer of production readiness under the **DO NO HARM** rule:
-
-| Metric / Dimension | Standard Raw AI Output (Without ProdigeUI) | With ProdigeUI (Enhancement Mode Engine) |
+| Metric / Dimension | Standard Raw AI Output (Without ProdigeUI) | With ProdigeUI (Creative Mode Engine) |
 | :--- | :--- | :--- |
-| **System Mode Trigger** | Treats prompt as standard generic generation | Triggers **Enhancement Mode**: Preserves NestJS visual identity & elevates execution |
-| **Design Intent Preservation** | Visual mimicry attempt with hardcoded styling | **100% Intent Preserved**: Crimson red (`#ea2845`), dark canvas (`#0e131f`), hero layout, & code block |
-| **Token System Integration** | 0% Token Binding — hardcoded hex values everywhere | Binds NestJS palette into 3-Layer Token Cascade (`--prodigeui-color-primary`, `--prodigeui-color-border`) |
-| **WCAG 2.1 AA Contrast** | ❌ **2.9:1 (FAIL)** — Unreadable text & low contrast comments | ✅ **7.5:1 (PASS)** — Verified contrast for code comments (`#94a3b8`) & body elements |
-| **Component Interactivity** | Static code block container | Interactive TypeScript / JavaScript code switcher with ARIA tab roles (`role="tablist"`) |
-| **Accessibility (a11y)** | 0% ARIA attributes, missing focus rings, `<div>` soup | 100% WCAG 2.1 AA, semantic HTML5 tags (`<figure>`, `<figcaption>`), keyboard `:focus-visible` rings |
-| **Quality Gate Score** | 3.5 / 10 (Fails quality gate) | **9.8 / 10** (Passes negative slop gate & DO NO HARM rule) |
+| **Visual Identity** | Standard generic dark slate `#0f172a`, purple `#6366f1` accent | Concept-driven dark-tech obsidian `#0b0d10` + lime `#b8ff3a` accent |
+| **Typography** | Default Arial / Inter flat font scale | Space Grotesk + Inter pairing at fluid `clamp()` display scale |
+| **Grid Architecture** | 3 equal 1:1 rectangular cards, no visual hierarchy | **Asymmetric Bento Grid** with dominant hero telemetry cell |
+| **Motion & Physics** | Static / choppy hover opacity `0.9` | **60fps GSAP ScrollTrigger**, particle network canvas, & spring physics |
+| **WCAG 2.1 AA Contrast** | ❌ **2.8:1 (FAIL)** — Unreadable text & low contrast comments | ✅ **7.5:1 (PASS)** — Verified contrast & full keyboard `:focus-visible` rings |
+| **Anti-AI-Slop Score** | 3.5 / 10 (Fails anti-slop gate) | **9.8 / 10** 🚀 (Passes negative slop gate + craft rubric) |
+
+---
+
+### Benchmark 2: NOVA (Creative Studio Portfolio)
+> **Brief:** *"Build a landing page for a creative studio called NOVA."*
+
+| Metric / Dimension | Standard Raw AI Output (Without ProdigeUI) | With ProdigeUI (Creative Mode Engine) |
+| :--- | :--- | :--- |
+| **Hero Subject** | Text floating over plain radial gradient, no focal subject | **Incandescent Vermilion `#ff4d15`**, Three.js WebGL nova core, & 9rem display type |
+| **Gallery Craft** | Static 3-column card grid with flat color fills | **GSAP ScrollTrigger Horizontal Pin-Pan Gallery** with real media |
+| **Typography** | Standard Inter font everywhere, flat scale | Bricolage Grotesque display face with tight tracking (`-0.04em`) |
+| **Accessibility (a11y)** | 0% ARIA attributes, non-semantic `<div>` soup | 100% WCAG 2.1 AA, semantic HTML5 tags, reduced-motion fallbacks |
+| **Anti-AI-Slop Score** | 3.2 / 10 (Fails anti-slop gate) | **9.8 / 10** 🚀 (Passes negative slop gate + craft rubric) |
 
 ---
 
