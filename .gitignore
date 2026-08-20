@@ -1,0 +1,13 @@
+# Research data & internal logs
+research/
+
+# Benchmarks & test outputs
+benchmark*.html
+benchmark-claude-fable5-prodigeui.html
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
