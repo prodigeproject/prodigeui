@@ -1,0 +1,222 @@
+<!-- Design Read: High-end luxury architectural studio, warm stone linen & dark alpine granite HSL visual stance, Instrument Serif display + brutalist grid rules + ARCHITECTURAL RESTRAINT. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DELVE — Spatial Architecture &amp; Alpine Monoliths (ProdigeUI v3.0.8 Generative)</title>
+  <meta name="description" content="DELVE Architects crafts sustainable alpine residences, minimalist cultural institutions, and bespoke spatial monoliths across Europe.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* PRODIGEUI v3.0.8 GENERATIVE FRAMEWORK SYNTHESIS */
+    :root {
+      --prodigeui-primitive-linen: #f7f4ee;
+      --prodigeui-primitive-surface: #fdfbf7;
+      --prodigeui-primitive-ink: #18191a;
+      --prodigeui-primitive-charcoal: #423d38;        /* 7.6:1 Contrast on Linen */
+      --prodigeui-primitive-terracotta: #b84a28;     /* 5.4:1 Contrast on Linen */
+      --prodigeui-primitive-border: rgba(24, 25, 26, 0.14);
+
+      --prodigeui-color-bg: var(--prodigeui-primitive-linen);
+      --prodigeui-color-surface: var(--prodigeui-primitive-surface);
+      --prodigeui-color-text: var(--prodigeui-primitive-ink);
+      --prodigeui-color-muted: var(--prodigeui-primitive-charcoal);
+      --prodigeui-color-primary: var(--prodigeui-primitive-terracotta);
+      --prodigeui-color-border: var(--prodigeui-primitive-border);
+
+      --prodigeui-font-display: 'Instrument Serif', Georgia, serif;
+      --prodigeui-font-body: 'Space Grotesk', system-ui, sans-serif;
+      --prodigeui-font-mono: 'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.6; isolation: isolate; }
+
+    :focus-visible { outline: 2px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 2px; }
+    .skip-link { position: absolute; top: -100px; left: 1.5rem; background: var(--prodigeui-color-primary); color: #fff; padding: 0.6rem 1.2rem; z-index: 200; font-weight: 700; transition: top 0.2s; text-decoration: none; }
+    .skip-link:focus { top: 1.5rem; }
+
+    .wrap { width: min(1240px, 92vw); margin-inline: auto; isolation: isolate; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; }
+    .text-terracotta { color: var(--prodigeui-color-primary); }
+    .text-muted { color: var(--prodigeui-color-muted); }
+
+    .nav-grid { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; border-bottom: 1px solid var(--prodigeui-color-border); }
+    .brand-title { font-family: var(--prodigeui-font-display); font-size: 2.2rem; font-weight: 400; color: var(--prodigeui-color-text); text-decoration: none; }
+
+    .btn-architectural { background: var(--prodigeui-color-text); color: var(--prodigeui-primitive-linen); font-weight: 600; padding: 0.85rem 1.8rem; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; border: none; cursor: pointer; display: inline-block; transition: background 0.2s; }
+    .btn-architectural:hover { background: var(--prodigeui-color-primary); }
+
+    .hero-wrap { padding: 6rem 0 4rem; }
+    .hero-h1 { font-family: var(--prodigeui-font-display); font-size: clamp(3.8rem, 8.5vw, 7.8rem); font-weight: 400; line-height: 0.92; margin-bottom: 2.5rem; }
+
+    /* ELEGANT UN-CRAMMED MONOLITH CARD */
+    .hero-monolith-card {
+      background: var(--prodigeui-color-surface);
+      border: 1px solid var(--prodigeui-color-border);
+      display: grid; grid-template-columns: 1.1fr 0.9fr; margin-top: 3.5rem; isolation: isolate;
+      overflow: hidden; align-items: stretch;
+    }
+    .photo-viewport { width: 100%; height: 100%; min-height: 420px; overflow: hidden; background: #e0dad0; position: relative; border-right: 1px solid var(--prodigeui-color-border); }
+    .photo-viewport img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%); transition: opacity 0.4s ease; }
+    .photo-caption-tag { position: absolute; bottom: 1.25rem; left: 1.25rem; background: var(--prodigeui-color-text); color: var(--prodigeui-primitive-linen); padding: 0.4rem 0.9rem; font-family: var(--prodigeui-font-mono); font-size: 0.72rem; letter-spacing: 0.1em; }
+
+    .editorial-pane { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 420px; }
+    
+    .room-selector-group { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 1rem; }
+    .room-btn {
+      background: transparent; border: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-text);
+      padding: 0.55rem 1rem; font-family: var(--prodigeui-font-mono); font-size: 0.78rem; cursor: pointer; transition: all 0.2s;
+    }
+    .room-btn.active { background: var(--prodigeui-color-primary); color: #fff; border-color: var(--prodigeui-color-primary); font-weight: bold; }
+
+    .telemetry-spec-bar {
+      padding-top: 1.25rem; border-top: 1px solid var(--prodigeui-color-border);
+      display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;
+    }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--prodigeui-color-border); }
+    .grid-item { padding: 3rem 2rem; border-right: 1px solid var(--prodigeui-color-border); border-bottom: 1px solid var(--prodigeui-color-border); }
+
+    footer { padding: 4rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.85rem; }
+
+    @media (max-width: 900px) {
+      .hero-monolith-card { grid-template-columns: 1fr; }
+      .photo-viewport { border-right: none; border-bottom: 1px solid var(--prodigeui-color-border); }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="wrap">
+    <nav class="nav-grid">
+      <a class="brand-title" href="#">DELVE v3.0.8</a>
+      <a href="#works" class="btn-architectural">Commission Project</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero-wrap wrap">
+      <div class="mono text-terracotta" style="margin-bottom: 1.5rem;">Spatial &amp; Environmental Architecture</div>
+      <h1 class="hero-h1">Structures born of <em style="font-style: italic; color: var(--prodigeui-color-primary);">geology &amp; light.</em></h1>
+      <p style="font-size: 1.25rem; max-width: 50ch;">DELVE creates enduring stone, timber, and glass monoliths designed in response to topography, silence, and natural daylight.</p>
+
+      <!-- ELEGANT ARCHITECTURAL HERO SHOWCASE -->
+      <article class="hero-monolith-card" id="works">
+        <!-- Left: High-Res Monolith Architectural Photography Viewport -->
+        <div class="photo-viewport">
+          <img id="active-room-photo" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75" alt="Alpine Monolith Residence in Engadin Switzerland">
+          <div class="photo-caption-tag" id="active-photo-tag">01. ATRIUM GALLERY VIEW</div>
+        </div>
+
+        <!-- Right: Spacious Editorial Content + Minimal Spatial Selector -->
+        <div class="editorial-pane">
+          <div>
+            <span class="mono text-terracotta">Engadin, Switzerland</span>
+            <h2 style="font-family: var(--prodigeui-font-display); font-size: 2.8rem; font-weight: 400; margin: 0.4rem 0 1rem; line-height: 1;">The Engadin Alpine Pavilion</h2>
+            <p style="color: #423d38; font-size: 1rem; line-height: 1.6;">High-altitude stone residence constructed from locally quarried granite and European larch timber, oriented for passive solar gain.</p>
+
+            <div class="room-selector-group">
+              <button class="room-btn active" onclick="inspectRoom(1)">01. Atrium Gallery</button>
+              <button class="room-btn" onclick="inspectRoom(2)">02. Granite Core</button>
+              <button class="room-btn" onclick="inspectRoom(3)">03. Larch Deck</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="telemetry-spec-bar">
+              <span class="mono text-terracotta" id="spec-material">QUARRIED ALPINE GRANITE</span>
+              <span class="mono text-muted" id="spec-solar">+4.2kW SOLAR GAIN</span>
+            </div>
+
+            <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;" class="mono text-muted">
+              <span>DELVE MONOLITH 01</span>
+              <span>COMPLETED 2026</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="wrap" style="padding: 6rem 0; border-top: 1px solid var(--prodigeui-color-border);">
+      <div class="grid-3">
+        <article class="grid-item">
+          <div style="font-family: var(--prodigeui-font-display); font-size: 3.5rem; color: var(--prodigeui-color-primary); line-height: 1; margin-bottom: 1rem;">01</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Topographic Respect</h3>
+          <p style="color: #423d38;">Form follows land topography.</p>
+        </article>
+        <article class="grid-item">
+          <div style="font-family: var(--prodigeui-font-display); font-size: 3.5rem; color: var(--prodigeui-color-primary); line-height: 1; margin-bottom: 1rem;">02</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Acoustic Silence</h3>
+          <p style="color: #423d38;">Heavy thermal mass acoustic insulation.</p>
+        </article>
+        <article class="grid-item" style="border-right: none;">
+          <div style="font-family: var(--prodigeui-font-display); font-size: 3.5rem; color: var(--prodigeui-color-primary); line-height: 1; margin-bottom: 1rem;">03</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Solar Orientation</h3>
+          <p style="color: #423d38;">Winter passive solar gain glazing.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display: flex; justify-content: space-between; align-items: center;">
+      <a class="brand-title" href="#" style="font-size: 1.6rem;">DELVE</a>
+      <span class="mono">&copy; 2026 DELVE Architects Geneva. Powered by ProdigeUI Generative Framework v3.0.8</span>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC SPATIAL PHOTO INSPECTOR SCRIPT -->
+  <script>
+    const roomData = [
+      {
+        tag: "01. ATRIUM GALLERY VIEW",
+        photo: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75",
+        material: "QUARRIED ALPINE GRANITE",
+        solar: "+4.2kW WINTER SOLAR GAIN"
+      },
+      {
+        tag: "02. GRANITE THERMAL CORE VIEW",
+        photo: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=75",
+        material: "SOLID SWISS GRANITE CORE",
+        solar: "64dB ACOUSTIC MASS"
+      },
+      {
+        tag: "03. LARCH TIMBER DECK VIEW",
+        photo: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=75",
+        material: "RECYCLED EUROPEAN LARCH",
+        solar: "EMBODIED CARBON -18.4t"
+      }
+    ];
+
+    function inspectRoom(id) {
+      document.querySelectorAll('.room-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === id);
+      });
+
+      const data = roomData[id - 1];
+      const img = document.getElementById('active-room-photo');
+      img.style.opacity = '0.3';
+
+      setTimeout(() => {
+        img.src = data.photo;
+        img.style.opacity = '1';
+        document.getElementById('active-photo-tag').innerText = data.tag;
+        document.getElementById('spec-material').innerText = data.material;
+        document.getElementById('spec-solar').innerText = data.solar;
+      }, 150);
+    }
+  </script>
+</body>
+</html>
