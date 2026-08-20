@@ -58,6 +58,8 @@ These patterns indicate fundamental quality failures. Presence of ANY = automati
 - **FAIL C0.14:** Architectural floorplan or spatial blueprint SVGs consist of empty wireframe rectangles without rich architectural details (outer perimeter walls, room labels, room dimensions e.g. 14.8m x 9.2m, door swing arcs, or solar orientation compass).
 - **FAIL C0.15:** Interactive canvas anchors or live JS widgets strip away essential editorial storytelling elements (e.g. project display titles, editorial descriptions, location/author metadata), creating an unbalanced, purely technical UI without domain context.
 - **FAIL C0.16:** SVG text elements inside small viewBox scale render as unreadable, pixelated, or illegible text blobs without proper font sizing, vector legibility, or card background contrast.
+- **FAIL C0.17:** UI micro-copy contains explicit prompt instructions, button usage hints, or click directives (e.g., `(CLICK TO SWITCH...)`, `(PRESS BUTTON TO...)`). Micro-copy must consist strictly of authentic domain text.
+- **FAIL C0.18:** Hero cards or section columns are over-crammed with more than 4 vertically stacked sub-component boxes, destroying visual breathing room and architectural restraint.
 
 > **Craft exception for FAIL #1, #5, and typography-scale:** Fluid and computed values
 > that are *systematic* are NOT raw-value violations. `clamp(2.5rem, 14vw, 17.5rem)` for a

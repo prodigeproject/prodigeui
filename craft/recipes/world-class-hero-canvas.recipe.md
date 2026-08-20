@@ -1,7 +1,6 @@
-# World-Class Interactive Hero Canvas Recipe (ProdigeUI)
-
 > **Grade Target:** Awwwards Site of the Day / FWA (9.5+/10)  
-> **Core Requirement:** Combine domain-specific interactive anchors (node DAG, spatial blueprint, WebGL canvas) with rich editorial storytelling. Do NOT copy hardcoded text verbatim across briefs. Synthesize dynamically per domain.
+> **Core Requirement:** Combine domain-specific interactive anchors with rich editorial storytelling.  
+> ⚠️ **Strict Anti-Slop Rule:** NEVER leak prompt instructions in micro-copy (e.g. `(CLICK TO SWITCH...)`). Maintain visual restraint, generous whitespace, and un-crammed column structures.
 
 ---
 
