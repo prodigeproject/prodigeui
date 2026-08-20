@@ -57,6 +57,7 @@ These patterns indicate fundamental quality failures. Presence of ANY = automati
 - **FAIL C0.13:** Hero interactive product canvas consists solely of static CSS elements without a functional inline `<script>` interactive engine (e.g. live interactive node canvas, active WebGL particle shader backdrop, or live room inspector state engine).
 - **FAIL C0.14:** Architectural floorplan or spatial blueprint SVGs consist of empty wireframe rectangles without rich architectural details (outer perimeter walls, room labels, room dimensions e.g. 14.8m x 9.2m, door swing arcs, or solar orientation compass).
 - **FAIL C0.15:** Interactive canvas anchors or live JS widgets strip away essential editorial storytelling elements (e.g. project display titles, editorial descriptions, location/author metadata), creating an unbalanced, purely technical UI without domain context.
+- **FAIL C0.16:** SVG text elements inside small viewBox scale render as unreadable, pixelated, or illegible text blobs without proper font sizing, vector legibility, or card background contrast.
 
 > **Craft exception for FAIL #1, #5, and typography-scale:** Fluid and computed values
 > that are *systematic* are NOT raw-value violations. `clamp(2.5rem, 14vw, 17.5rem)` for a

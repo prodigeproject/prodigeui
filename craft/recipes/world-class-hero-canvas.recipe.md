@@ -53,27 +53,33 @@
 
 ---
 
-## 3. Spatial Architectural Blueprint Floorplan Inspector Pattern
+## 4. Interactive Spatial Photo & Material Telemetry Inspector Pattern
 
 ```html
-<div class="spatial-inspector-frame">
-  <div class="inspector-controls">
-    <button class="room-btn active">{Section 01}</button>
-    <button class="room-btn">{Section 02}</button>
+<div class="spatial-photo-inspector-frame">
+  <!-- Interactive Section Toggle Buttons -->
+  <div class="spatial-controls">
+    <button class="room-btn active" onclick="inspectRoom(1)">{Section 01}</button>
+    <button class="room-btn" onclick="inspectRoom(2)">{Section 02}</button>
   </div>
 
-  <svg class="architectural-floorplan-svg" viewBox="0 0 500 220" fill="none" stroke="currentColor">
-    <!-- Perimeter Walls & Room Polygons -->
-    <rect x="15" y="15" width="470" height="190" stroke="currentColor" stroke-opacity="0.5" stroke-width="2"/>
-    <g class="room-group active">
-      <rect x="30" y="30" width="145" height="160" fill="currentColor" fill-opacity="0.25"/>
-      <text x="42" y="60" fill="currentColor" font-family="monospace" font-size="10" font-weight="700">{ROOM 01}</text>
-      <text x="42" y="80" fill="currentColor" font-family="monospace" font-size="8">{DIMENSIONS | SPECS}</text>
-    </g>
-  </svg>
+  <!-- High-Res Dynamic Architectural Photo Viewport -->
+  <div class="photo-viewport">
+    <img id="active-photo" src="{Photo URL}" alt="{Section Alt}">
+  </div>
 
-  <div class="telemetry-readout">
-    <span class="mono-tag">{LIVE SPATIAL TELEMETRY READOUT}</span>
+  <!-- Crisp 100% Legible Material & Telemetry Card -->
+  <div class="material-telemetry-card">
+    <div class="telemetry-grid">
+      <div class="metric-item">
+        <span class="mono-tag">{PRIMARY MATERIAL}</span>
+        <span class="metric-value">{Granite / Timber}</span>
+      </div>
+      <div class="metric-item">
+        <span class="mono-tag">{ACOUSTIC RATING}</span>
+        <span class="metric-value">{58dB}</span>
+      </div>
+    </div>
   </div>
 </div>
 ```

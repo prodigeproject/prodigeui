@@ -1,10 +1,10 @@
-<!-- Design Read: High-end luxury architectural studio for international clients, tactile warm paper & ink brutalist editorial vibe, Instrument Serif display + brutalist grid rules + HIGH-RES PHOTOGRAPHY & ELEGANT UN-CLUTTERED INTERACTIVE BLUEPRINT ENGINE. -->
+<!-- Design Read: High-end luxury architectural studio for international clients, tactile warm paper & ink brutalist editorial vibe, Instrument Serif display + brutalist grid rules + DYNAMIC SPATIAL PHOTO & MATERIAL INSPECTOR ENGINE. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DELVE — Spatial Architecture, Bespoke Monoliths (ProdigeUI v3.0.7 Clean)</title>
+  <title>DELVE — Spatial Architecture, Bespoke Monoliths (ProdigeUI v3.0.7 Inspector)</title>
   <meta name="description" content="DELVE Architects crafts sustainable alpine residences, minimalist cultural institutions, and bespoke spatial monoliths across Europe.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* PRODIGEUI v3.0.7 CLEAN — Tactile paper, Instrument Serif display, brutalist grid rules, ELEGANT UN-CLUTTERED INTERACTIVE BLUEPRINT ENGINE */
+    /* PRODIGEUI v3.0.7 — Tactile paper, Instrument Serif display, DYNAMIC SPATIAL PHOTO & MATERIAL INSPECTOR ENGINE */
     :root {
       --prodigeui-primitive-paper: #f5f2eb;
       --prodigeui-primitive-paper-white: #fdfbf7;
@@ -55,26 +55,33 @@
     .hero-wrap { padding: 6rem 0 4rem; }
     .hero-h1 { font-family: var(--prodigeui-font-display); font-size: clamp(3.8rem, 8.5vw, 7.8rem); font-weight: 400; line-height: 0.92; margin-bottom: 2.5rem; }
 
-    /* CLEAN ELEGANT MONOLITH CARD GRID */
-    .project-card {
+    /* DYNAMIC SPATIAL PHOTO & MATERIAL TELEMETRY INSPECTOR HERO GRID */
+    .hero-monolith-card {
       background: var(--prodigeui-color-surface);
       border: 1px solid var(--prodigeui-color-border);
-      display: grid; grid-template-columns: 1.15fr 0.85fr; margin-top: 3.5rem; isolation: isolate;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; margin-top: 3.5rem; isolation: isolate;
     }
-    .project-img-pane { aspect-ratio: 16/10; overflow: hidden; background: #e0dad0; position: relative; border-right: 1px solid var(--prodigeui-color-border); }
-    .project-img-pane img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); }
-    .project-badge { position: absolute; bottom: 1rem; left: 1rem; background: var(--prodigeui-color-text); color: var(--prodigeui-primitive-paper); padding: 0.4rem 0.9rem; font-family: var(--prodigeui-font-mono); font-size: 0.72rem; letter-spacing: 0.1em; }
+    .photo-viewport { aspect-ratio: 16/10; overflow: hidden; background: #e0dad0; position: relative; border-right: 1px solid var(--prodigeui-color-border); }
+    .photo-viewport img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(10%); transition: opacity 0.4s ease; }
+    .photo-caption-tag { position: absolute; bottom: 1rem; left: 1rem; background: var(--prodigeui-color-text); color: var(--prodigeui-primitive-paper); padding: 0.4rem 0.9rem; font-family: var(--prodigeui-font-mono); font-size: 0.72rem; letter-spacing: 0.1em; }
 
-    .project-body { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; }
+    .editorial-pane { padding: 3rem; display: flex; flex-direction: column; justify-content: space-between; }
+    
+    .room-selector-group { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 1rem 0; }
     .room-btn {
       background: transparent; border: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-text);
-      padding: 0.4rem 0.8rem; font-family: var(--prodigeui-font-mono); font-size: 0.75rem; cursor: pointer; transition: all 0.2s; margin-right: 0.4rem; margin-bottom: 0.4rem;
+      padding: 0.5rem 0.95rem; font-family: var(--prodigeui-font-mono); font-size: 0.78rem; cursor: pointer; transition: all 0.2s;
     }
     .room-btn.active { background: var(--prodigeui-color-primary); color: #fff; border-color: var(--prodigeui-color-primary); font-weight: bold; }
 
-    .blueprint-box {
-      margin: 1.25rem 0; border: 1px solid var(--prodigeui-color-border); background: var(--prodigeui-primitive-paper); padding: 0.75rem;
+    /* CRISP 100% LEGIBLE SPATIAL TELEMETRY CARD */
+    .telemetry-card {
+      background: var(--prodigeui-primitive-paper); border: 1px solid var(--prodigeui-color-border);
+      padding: 1.5rem; margin-top: 1.25rem; border-left: 3px solid var(--prodigeui-color-primary);
     }
+    .telemetry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1rem; }
+    .metric-label { font-family: var(--prodigeui-font-mono); font-size: 0.7rem; color: var(--prodigeui-color-primary); text-transform: uppercase; display: block; }
+    .metric-val { font-size: 1rem; font-weight: 700; color: var(--prodigeui-color-text); margin-top: 0.2rem; display: block; }
 
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--prodigeui-color-border); }
     .grid-item { padding: 3rem 2rem; border-right: 1px solid var(--prodigeui-color-border); border-bottom: 1px solid var(--prodigeui-color-border); }
@@ -82,8 +89,9 @@
     footer { padding: 4rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.85rem; }
 
     @media (max-width: 900px) {
-      .project-card { grid-template-columns: 1fr; }
-      .project-img-pane { border-right: none; border-bottom: 1px solid var(--prodigeui-color-border); }
+      .hero-monolith-card { grid-template-columns: 1fr; }
+      .photo-viewport { border-right: none; border-bottom: 1px solid var(--prodigeui-color-border); }
+      .telemetry-grid { grid-template-columns: 1fr; }
       .grid-3 { grid-template-columns: 1fr; }
     }
 
@@ -109,56 +117,57 @@
       <h1 class="hero-h1">Structures born of <em style="font-style: italic; color: var(--prodigeui-color-primary);">geology &amp; light.</em></h1>
       <p style="font-size: 1.25rem; max-width: 50ch;">DELVE creates enduring stone, timber, and glass monoliths designed in response to topography, silence, and natural daylight.</p>
 
-      <!-- CLEAN ELEGANT MONOLITH SHOWCASE CARD (PHOTOGRAPHY + INTERACTIVE BLUEPRINT ENGINE) -->
-      <article class="project-card" id="works">
-        <!-- Left: High-Res Monolith Architectural Photography -->
-        <div class="project-img-pane">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75" alt="Alpine Monolith Residence in Engadin Switzerland">
-          <div class="project-badge">FEATURED MONOLITH — 01</div>
+      <!-- HERO MONOLITH SHOWCASE: DYNAMIC PHOTO VIEWPORT (LEFT) + CRISP MATERIAL INSPECTOR (RIGHT) -->
+      <article class="hero-monolith-card" id="works">
+        <!-- Left: High-Res Monolith Architectural Photography Viewport -->
+        <div class="photo-viewport">
+          <img id="active-room-photo" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75" alt="Alpine Monolith Residence in Engadin Switzerland">
+          <div class="photo-caption-tag" id="active-photo-tag">01. ATRIUM GALLERY VIEW</div>
         </div>
 
-        <!-- Right: Editorial Content + Interactive SVG Floorplan Blueprint Engine -->
-        <div class="project-body">
+        <!-- Right: Editorial Narrative + Dynamic Spatial Inspector -->
+        <div class="editorial-pane">
           <div>
             <span class="mono text-terracotta">Engadin, Switzerland</span>
             <h2 style="font-family: var(--prodigeui-font-display); font-size: 2.6rem; font-weight: 400; margin: 0.4rem 0 0.8rem; line-height: 1;">The Engadin Alpine Pavilion</h2>
             <p style="color: #403934; font-size: 0.95rem;">High-altitude stone residence constructed from locally quarried granite and European larch timber.</p>
 
-            <!-- Interactive Blueprint Room Inspector Controls -->
-            <div style="margin-top: 1.25rem;">
-              <span class="mono text-terracotta" style="font-size: 0.7rem; display: block; margin-bottom: 0.5rem;">● BLUEPRINT ROOM INSPECTOR</span>
-              <div>
-                <button class="room-btn active" onclick="inspectRoom(1)">01. Atrium</button>
-                <button class="room-btn" onclick="inspectRoom(2)">02. Thermal Core</button>
+            <!-- Room Selector Controls -->
+            <div style="margin-top: 1.5rem;">
+              <span class="mono text-terracotta" style="font-size: 0.72rem; display: block; margin-bottom: 0.5rem;">● DYNAMIC SPATIAL INSPECTOR (CLICK TO SWITCH ROOM PHOTO)</span>
+              <div class="room-selector-group">
+                <button class="room-btn active" onclick="inspectRoom(1)">01. Atrium Gallery</button>
+                <button class="room-btn" onclick="inspectRoom(2)">02. Granite Core</button>
                 <button class="room-btn" onclick="inspectRoom(3)">03. Larch Deck</button>
               </div>
             </div>
 
-            <!-- Crisp Interactive SVG Blueprint Floorplan Wireframe -->
-            <div class="blueprint-box">
-              <svg viewBox="0 0 400 150" fill="none" stroke="#a64b2a" stroke-width="1.5" style="width: 100%;">
-                <rect x="10" y="10" width="380" height="130" stroke="#1a1614" stroke-opacity="0.4" stroke-width="1.5"/>
-                <g id="svg-room-1">
-                  <rect x="20" y="20" width="110" height="110" fill="rgba(166, 75, 42, 0.25)" stroke="#a64b2a" stroke-width="2"/>
-                  <text x="30" y="45" fill="#1a1614" font-family="monospace" font-size="9" font-weight="700">01. ATRIUM</text>
-                  <text x="30" y="62" fill="#a64b2a" font-family="monospace" font-size="7.5">14.8m x 9.2m</text>
-                </g>
-                <g id="svg-room-2">
-                  <rect x="140" y="20" width="110" height="110" fill="none" stroke="#1a1614" stroke-opacity="0.3" stroke-width="1.5"/>
-                  <text x="150" y="45" fill="#1a1614" font-family="monospace" font-size="9" font-weight="700">02. THERMAL CORE</text>
-                  <text x="150" y="62" fill="#403934" font-family="monospace" font-size="7.5">9.5m x 9.2m</text>
-                </g>
-                <g id="svg-room-3">
-                  <rect x="260" y="20" width="110" height="110" fill="none" stroke="#1a1614" stroke-opacity="0.3" stroke-width="1.5"/>
-                  <text x="270" y="45" fill="#1a1614" font-family="monospace" font-size="9" font-weight="700">03. LARCH DECK</text>
-                  <text x="270" y="62" fill="#403934" font-family="monospace" font-size="7.5">11.2m x 9.2m</text>
-                </g>
-              </svg>
+            <!-- Crisp 100% Legible Material & Telemetry Card -->
+            <div class="telemetry-card">
+              <span class="mono text-terracotta" style="font-size: 0.7rem; font-weight: 700;" id="room-name-header">SPATIAL SPECIFICATION — ATRIUM GALLERY</span>
+              <div class="telemetry-grid">
+                <div>
+                  <span class="metric-label">Primary Material</span>
+                  <span class="metric-val" id="spec-material">Quarried Alpine Granite</span>
+                </div>
+                <div>
+                  <span class="metric-label">Dimensions / Height</span>
+                  <span class="metric-val" id="spec-dimensions">14.8m x 9.2m (H: 4.5m)</span>
+                </div>
+                <div>
+                  <span class="metric-label">Acoustic Rating</span>
+                  <span class="metric-val" id="spec-acoustic">58dB Silent Mass</span>
+                </div>
+                <div>
+                  <span class="metric-label">Solar Orientation</span>
+                  <span class="metric-val" id="spec-solar">+4.2kW Winter Solar Gain</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div style="padding-top: 1rem; border-top: 1px solid var(--prodigeui-color-border); display: flex; justify-content: space-between; align-items: center;">
-            <span class="mono text-terracotta" id="room-telemetry">TELEMETRY: ATRIUM GALLERY (SOLAR GAIN +4.2kW)</span>
+          <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--prodigeui-color-border); display: flex; justify-content: space-between; align-items: center;">
+            <span class="mono text-terracotta">DELVE MONOLITH 01</span>
             <span class="mono text-muted">COMPLETED 2026</span>
           </div>
         </div>
@@ -193,27 +202,57 @@
     </div>
   </footer>
 
-  <!-- LIVE FLOORPLAN ROOM INSPECTION JS ENGINE SCRIPT -->
+  <!-- DYNAMIC SPATIAL PHOTO & TELEMETRY ENGINE SCRIPT -->
   <script>
+    const roomData = [
+      {
+        tag: "01. ATRIUM GALLERY VIEW",
+        photo: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75",
+        header: "SPATIAL SPECIFICATION — ATRIUM GALLERY",
+        material: "Quarried Alpine Granite",
+        dimensions: "14.8m x 9.2m (H: 4.5m)",
+        acoustic: "58dB Silent Mass",
+        solar: "+4.2kW Winter Solar Gain"
+      },
+      {
+        tag: "02. GRANITE THERMAL CORE VIEW",
+        photo: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=75",
+        header: "SPATIAL SPECIFICATION — GRANITE CORE",
+        material: "Solid Swiss Granite Monolith",
+        dimensions: "9.5m x 9.2m (H: 3.8m)",
+        acoustic: "64dB Structural Acoustic Mass",
+        solar: "Thermal Mass Storage System"
+      },
+      {
+        tag: "03. LARCH TIMBER DECK VIEW",
+        photo: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=75",
+        header: "SPATIAL SPECIFICATION — LARCH TIMBER DECK",
+        material: "Recycled European Larch",
+        dimensions: "11.2m x 9.2m (Open Deck)",
+        acoustic: "Diffused Alpine Acoustic Deck",
+        solar: "Embodied Carbon -18.4t CO₂e"
+      }
+    ];
+
     function inspectRoom(id) {
       document.querySelectorAll('.room-btn').forEach((btn, idx) => {
         btn.classList.toggle('active', idx + 1 === id);
       });
 
-      const r1 = document.getElementById('svg-room-1').querySelector('rect');
-      const r2 = document.getElementById('svg-room-2').querySelector('rect');
-      const r3 = document.getElementById('svg-room-3').querySelector('rect');
+      const data = roomData[id - 1];
+      const img = document.getElementById('active-room-photo');
+      img.style.opacity = '0.3';
 
-      r1.setAttribute('fill', id === 1 ? 'rgba(166, 75, 42, 0.25)' : 'none');
-      r2.setAttribute('fill', id === 2 ? 'rgba(166, 75, 42, 0.25)' : 'none');
-      r3.setAttribute('fill', id === 3 ? 'rgba(166, 75, 42, 0.25)' : 'none');
-
-      const telemetry = [
-        "TELEMETRY: ATRIUM GALLERY (SOLAR GAIN +4.2kW)",
-        "TELEMETRY: THERMAL CORE (ACOUSTIC STABILITY 58dB)",
-        "TELEMETRY: LARCH DECK (EMBODIED CARBON -18t)"
-      ];
-      document.getElementById('room-telemetry').innerText = telemetry[id - 1];
+      setTimeout(() => {
+        img.src = data.photo;
+        img.style.opacity = '1';
+        document.getElementById('active-photo-tag').innerText = data.tag;
+        document.getElementById('room-name-header').innerText = data.header;
+        document.getElementById('spec-material').innerText = data.material;
+        document.getElementById('spec-dimensions').innerText = data.dimensions;
+        document.getElementById('spec-acoustic').innerText = data.acoustic;
+        document.getElementById('spec-solar').innerText = data.solar;
+      }, 150);
     }
   </script>
 </body>
