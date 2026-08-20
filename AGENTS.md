@@ -129,6 +129,8 @@ See `skills/prodige-ui-end-to-end/SKILL.md` for the detailed version of each ste
 11. **Mandatory Reduced Motion**: Every generated stylesheet must include `@media (prefers-reduced-motion: reduce)` to disable/simplify layout transforms and animations for sensitive users.
 12. **Stacking Layer Safety**: Section wrappers containing pseudo-elements or absolute overlays MUST declare `isolation: isolate;`. Interactive CTA elements MUST explicitly own `position: relative; z-index: 2;`.
 13. **Dynamic Recipe Derivation**: Do NOT copy hardcoded recipe artifacts (e.g. `rotate(1deg)` cards or `11:18 → 11:19` watermarks) verbatim across unrelated briefs. Layouts must be organically synthesized for the specific product domain.
+14. **Material Depth & Inset Lighting**: Avoid flat, generic cards. Elevate surfaces with subtle top inset highlights (`box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.1)`), backdrop blur (`backdrop-filter: blur(12px) saturate(160%)`), and atmospheric light sweeps.
+15. **Interactive Hero Product Canvas**: Hero sections must feature a domain-specific interactive product canvas or live demonstration anchor (e.g. node graph builder, prompt preview tab, interactive risk slider) rather than static text and static images.
 
 ---
 
