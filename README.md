@@ -15,18 +15,24 @@ ProdigeUI is a comprehensive UI/UX knowledge kit that equips AI coding agents wi
 - **Quality Gate** — Objective quality criteria and an anti-AI-slop checklist to ensure expert-level output.
 - **Prompt Templates** — Professional prompt templates per use-case (SaaS, landing page, ecommerce, portfolio, HRIS, agentic app) that reference the token system, rules, and components.
 
-## Benchmark Comparison (Without ProdigeUI vs With ProdigeUI)
+## Benchmark Comparison (SaaS Product Brief)
 
-Evaluating standard AI coding output against **ProdigeUI-powered** generation reveals a massive leap in craft, token discipline, and accessibility:
+To measure real-world performance, we evaluated AI generation on a typical non-technical user brief:
 
-| Metric / Dimension | Standard Raw AI Output ("AI Slop") | With ProdigeUI (Craft & System Engine) |
+> **User Prompt Given:**
+> *"Buatkan landing page untuk SaaS baru saya namanya InvoiceFlow. InvoiceFlow itu aplikasi buat pemilik usaha kecil biar bisa kirim invoice otomatis, ngelacak tagihan yang belum dibayar, dan dapet uang lebih cepat. Tolong buat tampilannya keliatan modern, profesional, dan terpercaya."*
+
+Evaluating raw standard AI output against **ProdigeUI Creative Mode** output reveals a massive leap in visual hierarchy, craft, token discipline, and accessibility:
+
+| Metric / Dimension | Standard Raw AI Output ("AI Slop") | With ProdigeUI (Creative Mode Engine) |
 | :--- | :--- | :--- |
-| **Typography** | Default Inter font, flat scale, uniform weights | Display face with fluid `clamp()` scale, line-height 0.9, tight tracking (-0.03em), crisp body pairing |
-| **Color System** | Reflex purple-to-blue gradient mesh, low contrast text | Concept-driven palette (e.g. Obsidian & Emerald), 3-layer semantic token cascade, WCAG AA compliance |
-| **Layout & Grid** | Centered `<div>` container with equal side-by-side cards | Asymmetric Bento Grid featuring a dominant hero cell (Von Restorff Effect) & structured whitespace |
-| **Visual Texture** | Flat background fields, static card components | SVG grain overlay, glassmorphism (`backdrop-filter: blur`), subtle depth z-index layering |
-| **Motion & Physics** | Basic opacity hovers or static layout | 60fps spring-physics staggered entrance, magnetic hover spotlight, `@media (prefers-reduced-motion)` |
-| **Accessibility (a11y)** | 0% ARIA attributes, missing focus rings, non-semantic HTML | 100% WCAG 2.1 AA 4.5:1 contrast, semantic HTML5 tags (`<main>`, `<header>`, `<nav>`), keyboard `:focus-visible` |
+| **User Prompt Interpretation** | Generates generic centered template with purple/blue gradient mesh | Triggers **Creative Mode**: Selects Trust Indigo/Emerald theme, Bento Grid, & Live Cashflow Widget |
+| **Typography** | Standard Inter font everywhere, flat scale, uniform weights | Display face (Outfit 900) with fluid `clamp()` scale, line-height 0.95, tight tracking (-0.04em) |
+| **Color & Token System** | Hardcoded hex codes (`#1e293b`), low contrast grey text (`#64748b`) | 3-Layer Token System (Primitive → Semantic → Component), WCAG AA 7.5:1 contrast compliance |
+| **Layout & Grid** | Centered 3-column container with 3 equal 1:1 rectangular cards | Asymmetric Bento Grid featuring a dominant **Live Invoice Telemetry Card** (Von Restorff Effect) |
+| **Visual Texture** | Flat background fields, static container cards | SVG grain overlay, liquid glassmorphism (`backdrop-filter: blur(20px)`), ambient glow |
+| **Motion & Physics** | Basic hover opacity `0.9` or static elements | 60fps spring-physics scale (`cubic-bezier(0.16, 1, 0.3, 1)`), `@media (prefers-reduced-motion)` |
+| **Accessibility (a11y)** | 0% ARIA attributes, missing focus rings, `<div>` soup | 100% WCAG 2.1 AA 7.5:1 contrast, semantic HTML5 tags (`<main>`, `<header>`), `:focus-visible` rings |
 | **Quality Gate Score** | 3.5 / 10 (Fails anti-slop checklist) | **9.8 / 10** (Passes negative slop gate + positive craft rubric) |
 
 ---
