@@ -63,6 +63,7 @@ These patterns indicate fundamental quality failures. Presence of ANY = automati
 - **FAIL C0.19:** Parent card containers with rounded borders (`border-radius`) housing image viewports, media grids, or canvas anchors omit `overflow: hidden;`, causing child background images to bleed past the parent card's rounded corners.
 - **FAIL C0.20:** Interactive tabs or mode toggles cause container height jumping, aspect-ratio grid conflicts, or layout boundary overflow when switching between state items.
 - **FAIL C0.21:** Output copies hardcoded recipe boilerplate or static JSON theme values verbatim instead of dynamically synthesizing layout geometries, HSL color harmonies, and authentic domain copywriting per user brief.
+- **FAIL C0.22:** Output references or copies hardcoded hex codes from static JSON theme files (e.g. `#fdf2f8`, `#e11d48`) instead of dynamically synthesizing brand-tailored HSL color harmonies and Google Fonts pairings per prompt brief.
 
 > **Craft exception for FAIL #1, #5, and typography-scale:** Fluid and computed values
 > that are *systematic* are NOT raw-value violations. `clamp(2.5rem, 14vw, 17.5rem)` for a
