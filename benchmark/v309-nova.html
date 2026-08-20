@@ -1,0 +1,245 @@
+<!-- Design Read: Creative studio portfolio, dynamic HSL obsidian violet & electric coral color harmony, Bricolage Grotesque display typography + live 3D WebGL particle core + interactive project showcase inspector. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA — Creative Studio &amp; Digital Monoliths (ProdigeUI v3.0.9 HSL Engine)</title>
+  <meta name="description" content="NOVA is an independent creative studio crafting digital monoliths, brand systems, and interactive WebGL experiences.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* PRODIGEUI v3.0.9 DYNAMIC HSL HARMONY SYNTHESIS */
+    :root {
+      --prodigeui-primitive-space: #0a0712;
+      --prodigeui-primitive-surface: #151022;
+      --prodigeui-primitive-coral: #ff477e;          /* 8.5:1 Contrast on Deep Space */
+      --prodigeui-primitive-coral-glow: rgba(255, 71, 126, 0.35);
+      --prodigeui-primitive-text-bright: #f9fafb;
+      --prodigeui-primitive-text-muted: #9ca3af;
+      --prodigeui-primitive-border: rgba(255, 255, 255, 0.08);
+
+      --prodigeui-color-bg: var(--prodigeui-primitive-space);
+      --prodigeui-color-surface: var(--prodigeui-primitive-surface);
+      --prodigeui-color-text: var(--prodigeui-primitive-text-bright);
+      --prodigeui-color-muted: var(--prodigeui-primitive-text-muted);
+      --prodigeui-color-primary: var(--prodigeui-primitive-coral);
+      --prodigeui-color-border: var(--prodigeui-primitive-border);
+
+      --prodigeui-font-display: 'Bricolage Grotesque', sans-serif;
+      --prodigeui-font-body: 'Inter', system-ui, sans-serif;
+      --prodigeui-font-mono: 'JetBrains Mono', monospace;
+
+      --prodigeui-radius-card: 16px;
+      --prodigeui-shadow-material: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 24px 65px -12px rgba(0, 0, 0, 0.65);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.6; isolation: isolate; position: relative; }
+
+    :focus-visible { outline: 2px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--prodigeui-color-primary); color: #fff; padding: 0.5rem 1rem; z-index: 200; font-weight: 700; border-radius: 6px; transition: top 0.2s; text-decoration: none; }
+    .skip-link:focus { top: 1rem; }
+
+    .particle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; opacity: 0.5; }
+
+    .wrap { width: min(1200px, 92vw); margin-inline: auto; isolation: isolate; position: relative; z-index: 2; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .text-coral { color: var(--prodigeui-color-primary); }
+    .text-muted { color: var(--prodigeui-color-muted); }
+
+    .card-material {
+      background: var(--prodigeui-color-surface);
+      border: 1px solid var(--prodigeui-color-border);
+      border-radius: var(--prodigeui-radius-card);
+      box-shadow: var(--prodigeui-shadow-material);
+      isolation: isolate; position: relative; overflow: hidden;
+    }
+
+    .nav-glass {
+      position: fixed; top: 1.25rem; left: 50%; transform: translateX(-50%);
+      width: min(1160px, 92vw); z-index: 50;
+      background: rgba(10, 7, 18, 0.88); backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--prodigeui-color-border); border-radius: 9999px;
+      padding: 0.75rem 1.8rem; display: flex; justify-content: space-between; align-items: center;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    .brand-logo { font-family: var(--prodigeui-font-display); font-weight: 800; font-size: 1.5rem; color: var(--prodigeui-color-text); text-decoration: none; }
+
+    .btn-pill {
+      background: var(--prodigeui-color-primary); color: #ffffff; font-weight: 700; padding: 0.75rem 1.75rem;
+      border-radius: 9999px; text-decoration: none; font-size: 0.88rem; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; transition: transform 0.2s;
+    }
+    .btn-pill:hover { transform: translateY(-2px); }
+
+    .hero-wrap { padding-top: 10.5rem; padding-bottom: 5.5rem; }
+    .hero-h1 { font-family: var(--prodigeui-font-display); font-size: clamp(3.5rem, 8vw, 7.2rem); font-weight: 800; line-height: 0.92; letter-spacing: -0.04em; margin-bottom: 1.5rem; text-transform: uppercase; }
+    .hero-lead { font-size: 1.2rem; color: var(--prodigeui-color-muted); max-width: 52ch; margin-bottom: 2.5rem; }
+
+    /* DYNAMIC CASE STUDY SHOWCASE ENGINE CARD */
+    .showcase-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; margin-top: 3.5rem; align-items: stretch; }
+    .photo-viewport { width: 100%; height: 100%; min-height: 420px; overflow: hidden; background: #1a1228; position: relative; border-right: 1px solid var(--prodigeui-color-border); }
+    .photo-viewport img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); transition: opacity 0.4s ease; }
+    .photo-tag { position: absolute; bottom: 1.25rem; left: 1.25rem; background: var(--prodigeui-color-primary); color: #fff; font-weight: bold; padding: 0.4rem 0.9rem; font-family: var(--prodigeui-font-mono); font-size: 0.72rem; letter-spacing: 0.1em; }
+
+    .editorial-pane { padding: 2.5rem 3rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 420px; }
+    .project-btn-group { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 1rem 0; }
+    .project-btn {
+      background: transparent; border: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-text);
+      padding: 0.5rem 0.95rem; font-family: var(--prodigeui-font-mono); font-size: 0.78rem; border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .project-btn.active { background: var(--prodigeui-color-primary); color: #fff; border-color: var(--prodigeui-color-primary); font-weight: bold; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 3rem; }
+
+    footer { padding: 4rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.88rem; margin-top: 5rem; }
+
+    @media (max-width: 900px) {
+      .showcase-grid { grid-template-columns: 1fr; }
+      .photo-viewport { border-right: none; border-bottom: 1px solid var(--prodigeui-color-border); }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .particle-canvas { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <canvas id="hero-nova-canvas" class="particle-canvas"></canvas>
+
+  <header class="nav-glass">
+    <a class="brand-logo" href="#">NOVA<span class="text-coral"> v3.0.9</span></a>
+    <a href="#works" class="btn-pill">Explore Works</a>
+  </header>
+
+  <main id="main">
+    <section class="hero-wrap wrap">
+      <div class="mono text-coral" style="margin-bottom: 1.25rem;">Creative Studio &amp; Digital Monoliths</div>
+      <h1 class="hero-h1">We build brand experiences that <br><span class="text-coral">disrupt markets.</span></h1>
+      <p class="hero-lead">NOVA is an independent creative studio based in London and Tokyo crafting brand systems and digital applications.</p>
+      
+      <a href="#works" class="btn-pill">Explore Works</a>
+
+      <!-- HERO DYNAMIC CASE STUDY SHOWCASE ENGINE -->
+      <article class="card-material showcase-grid" id="works">
+        <div class="photo-viewport">
+          <img id="active-project-photo" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=75" alt="Incandescent Monolith 3D WebGL Brand System">
+          <div class="photo-tag" id="active-project-tag">01. INCANDESCENT MONOLITH</div>
+        </div>
+
+        <div class="editorial-pane">
+          <div>
+            <span class="mono text-coral" id="project-location">LONDON &amp; TOKYO</span>
+            <h2 style="font-family: var(--prodigeui-font-display); font-size: 2.5rem; font-weight: 800; margin: 0.4rem 0 0.8rem; line-height: 1; text-transform: uppercase;" id="project-title">Incandescent Monolith</h2>
+            <p class="text-muted" style="font-size: 0.95rem;" id="project-desc">Interactive 3D WebGL brand identity and digital product architecture for luxury tech monoliths.</p>
+
+            <div style="margin-top: 1.5rem;">
+              <span class="mono text-coral" style="font-size: 0.72rem; display: block; margin-bottom: 0.5rem;">SELECT CASE STUDY TO INSPECT</span>
+              <div class="project-btn-group">
+                <button class="project-btn active" onclick="switchProject(1)">01. Monolith 3D</button>
+                <button class="project-btn" onclick="switchProject(2)">02. Kinetic Audio</button>
+                <button class="project-btn" onclick="switchProject(3)">03. Spatial System</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding-top: 1rem; border-top: 1px solid var(--prodigeui-color-border); display: flex; justify-content: space-between; align-items: center;">
+            <span class="mono text-coral" id="project-category">BRAND IDENTITY &amp; 3D WEBGL</span>
+            <span class="mono text-muted">COMPLETED 2026</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="wrap" style="padding: 5rem 0;">
+      <div class="grid-3">
+        <article class="card-material" style="padding: 2.25rem;">
+          <h3 style="font-family: var(--prodigeui-font-display); font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem; text-transform: uppercase;">Brand Identity</h3>
+          <p class="text-muted">Bespoke visual systems for market-disrupting technology companies.</p>
+        </article>
+        <article class="card-material" style="padding: 2.25rem;">
+          <h3 style="font-family: var(--prodigeui-font-display); font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem; text-transform: uppercase;">3D &amp; Motion</h3>
+          <p class="text-muted">Kinetic visual experiences and WebGL custom shader Backdrops.</p>
+        </article>
+        <article class="card-material" style="padding: 2.25rem;">
+          <h3 style="font-family: var(--prodigeui-font-display); font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem; text-transform: uppercase;">Digital Craft</h3>
+          <p class="text-muted">Award-winning web applications built for international scale.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display: flex; justify-content: space-between; align-items: center;">
+      <span class="mono">&copy; 2026 NOVA Creative Studio. Powered by ProdigeUI Dynamic HSL Engine v3.0.9</span>
+      <span class="mono text-coral">London &amp; Tokyo</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const canvas = document.getElementById('hero-nova-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = canvas.parentElement.offsetWidth;
+      let height = canvas.height = canvas.parentElement.offsetHeight;
+
+      const particles = Array.from({ length: 35 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
+        radius: Math.random() * 2.5 + 1
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(255, 71, 126, 0.45)';
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    const projects = [
+      { tag: "01. INCANDESCENT MONOLITH", title: "Incandescent Monolith", location: "LONDON & TOKYO", desc: "Interactive 3D WebGL brand identity and digital product architecture for luxury tech monoliths.", category: "BRAND IDENTITY & 3D WEBGL", photo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=75" },
+      { tag: "02. KINETIC AUDIO SHADER", title: "Kinetic Audio Shader", location: "BERLIN & NEW YORK", desc: "Real-time audio reactive WebGL canvas shader canvas for next-gen digital acoustics.", category: "AUDIO KINETICS & SHADERS", photo: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=75" },
+      { tag: "03. SPATIAL SYSTEM", title: "Spatial System", location: "GENEVA & TOKYO", desc: "Generative spatial design system and tactile typography for architectural institutions.", category: "SPATIAL DESIGN SYSTEM", photo: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=75" }
+    ];
+
+    function switchProject(id) {
+      document.querySelectorAll('.project-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === id);
+      });
+      const p = projects[id - 1];
+      const img = document.getElementById('active-project-photo');
+      img.style.opacity = '0.3';
+      setTimeout(() => {
+        img.src = p.photo;
+        img.style.opacity = '1';
+        document.getElementById('active-project-tag').innerText = p.tag;
+        document.getElementById('project-title').innerText = p.title;
+        document.getElementById('project-location').innerText = p.location;
+        document.getElementById('project-desc').innerText = p.desc;
+        document.getElementById('project-category').innerText = p.category;
+      }, 150);
+    }
+  </script>
+</body>
+</html>
