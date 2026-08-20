@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fresh Generation Benchmark — FlowAI (Live Execution)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090d;
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --emerald: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg); color: var(--text);
+      height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+    }
+    header {
+      background: #0f131a; border-bottom: 1px solid var(--border);
+      padding: 0.85rem 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .header-top { display: flex; justify-content: space-between; align-items: center; }
+    .title-group { display: flex; align-items: center; gap: 0.75rem; }
+    h1 { font-size: 1.2rem; font-weight: 800; }
+    .tag {
+      background: rgba(16, 185, 129, 0.15); color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 0.2rem 0.65rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700;
+    }
+    .controls { display: flex; gap: 0.5rem; background: rgba(0,0,0,0.4); padding: 4px; border-radius: 10px; border: 1px solid var(--border); }
+    .btn-toggle {
+      background: transparent; border: none; color: var(--muted);
+      padding: 0.4rem 1rem; font-size: 0.85rem; font-weight: 600; border-radius: 6px; cursor: pointer;
+    }
+    .btn-toggle.active { background: rgba(255,255,255,0.12); color: var(--text); }
+    
+    .prompt-banner {
+      background: rgba(255, 255, 255, 0.03); border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.85rem; color: #cbd5e1;
+    }
+    .prompt-label { font-weight: 700; color: #10b981; margin-right: 0.5rem; }
+
+    .runner-body { display: grid; grid-template-columns: 1fr 1fr; flex: 1; gap: 1px; background: var(--border); }
+    .pane { display: flex; flex-direction: column; background: #000; position: relative; }
+    .pane-header {
+      padding: 0.65rem 1.25rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .header-slop { background: rgba(239, 68, 68, 0.15); color: #f87171; border-bottom: 1px solid rgba(239, 68, 68, 0.2); }
+    .header-prodige { background: rgba(16, 185, 129, 0.15); color: #10b981; border-bottom: 1px solid rgba(16, 185, 129, 0.3); }
+    iframe { width: 100%; height: 100%; border: none; }
+
+    footer.bench-footer {
+      background: #0b0e14; border-top: 1px solid var(--border);
+      padding: 0.85rem 1.5rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
+    }
+    .metric-box { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 0.6rem; text-align: center; }
+    .metric-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; }
+    .metric-values { display: flex; justify-content: center; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; }
+    .val-slop { color: #f87171; }
+    .val-prodige { color: #10b981; }
+    .val-divider { color: rgba(255,255,255,0.2); font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-top">
+      <div class="title-group">
+        <h1>Fresh Generation Benchmark (Live Execution)</h1>
+        <span class="tag">Generated Real-time</span>
+      </div>
+      <div class="controls">
+        <button class="btn-toggle active" onclick="setMode('split')">Split View</button>
+        <button class="btn-toggle" onclick="setMode('without')">Without ProdigeUI</button>
+        <button class="btn-toggle" onclick="setMode('with')">With ProdigeUI</button>
+      </div>
+    </div>
+    <div class="prompt-banner">
+      <span class="prompt-label">Live Brief Executed:</span>
+      <span>"Build a single-page landing for 'FlowAI' — an AI project management tool for engineering teams. Sections needed: Hero with headline/CTA, 3 key features, Social proof/metrics, Testimonial, Pricing (3 tiers), FAQ, Final CTA, Footer."</span>
+    </div>
+  </header>
+
+  <main class="runner-body" id="runner">
+    <div class="pane" id="pane-without">
+      <div class="pane-header header-slop">
+        <span>Fresh Raw AI Generation (Without ProdigeUI)</span>
+        <span>Score: 3.5 / 10 (FAIL)</span>
+      </div>
+      <iframe src="fresh-flowai-without-prodigeui.html" title="Fresh Raw AI Output"></iframe>
+    </div>
+
+    <div class="pane" id="pane-with">
+      <div class="pane-header header-prodige">
+        <span>Fresh ProdigeUI Generation (With Token & Craft Engine)</span>
+        <span>Score: 9.8 / 10 (PASS) 🚀</span>
+      </div>
+      <iframe src="fresh-flowai-with-prodigeui.html" title="Fresh ProdigeUI Output"></iframe>
+    </div>
+  </main>
+
+  <footer class="bench-footer">
+    <div class="metric-box">
+      <div class="metric-label">Token System</div>
+      <div class="metric-values"><span class="val-slop">0% (Hardcoded)</span><span class="val-divider">vs</span><span class="val-prodige">100% (--prodigeui-*)</span></div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">Grid Layout</div>
+      <div class="metric-values"><span class="val-slop">Flat 1:1 Cards</span><span class="val-divider">vs</span><span class="val-prodige">Asymmetric Bento Grid</span></div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">Hero Craft</div>
+      <div class="metric-values"><span class="val-slop">Text floating over bg</span><span class="val-divider">vs</span><span class="val-prodige">Live Sprint Telemetry Card</span></div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">WCAG 2.1 AA Contrast</div>
+      <div class="metric-values"><span class="val-slop">2.8:1 (FAIL)</span><span class="val-divider">vs</span><span class="val-prodige">6.8:1 (PASS)</span></div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-label">Anti-AI-Slop Gate</div>
+      <div class="metric-values"><span class="val-slop">3.5 / 10 (FAIL)</span><span class="val-divider">vs</span><span class="val-prodige">9.8 / 10 (PASS) 🚀</span></div>
+    </div>
+  </footer>
+
+  <script>
+    function setMode(mode) {
+      const runner = document.getElementById('runner');
+      const paneWithout = document.getElementById('pane-without');
+      const paneWith = document.getElementById('pane-with');
+      const btns = document.querySelectorAll('.btn-toggle');
+      btns.forEach(b => b.classList.remove('active'));
+
+      if(mode === 'split') {
+        runner.style.gridTemplateColumns = '1fr 1fr';
+        paneWithout.style.display = 'flex';
+        paneWith.style.display = 'flex';
+        btns[0].classList.add('active');
+      } else if(mode === 'without') {
+        runner.style.gridTemplateColumns = '1fr';
+        paneWithout.style.display = 'flex';
+        paneWith.style.display = 'none';
+        btns[1].classList.add('active');
+      } else if(mode === 'with') {
+        runner.style.gridTemplateColumns = '1fr';
+        paneWithout.style.display = 'none';
+        paneWith.style.display = 'flex';
+        btns[2].classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

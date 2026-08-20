@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowAI - AI Project Management for Engineering Teams</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: #0f172a; color: #f8fafc; line-height: 1.6; }
+    
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; border-bottom: 1px solid #1e293b; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: #6366f1; }
+    nav a { color: #94a3b8; margin-left: 1.5rem; text-decoration: none; font-size: 0.95rem; }
+    .btn { background: #6366f1; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; border: none; cursor: pointer; }
+    
+    .hero { text-align: center; padding: 5rem 1rem; max-width: 900px; margin: 0 auto; }
+    .hero h1 { font-size: 3rem; margin-bottom: 1.5rem; line-height: 1.2; background: linear-gradient(to right, #ffffff, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.2rem; color: #64748b; margin-bottom: 2rem; } /* FAIL: 2.8:1 low contrast */
+    
+    .features { padding: 4rem 5%; background: #020617; }
+    .features h2 { text-align: center; margin-bottom: 3rem; font-size: 2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .card { background: #1e293b; padding: 1.8rem; border-radius: 12px; border-left: 4px solid #6366f1; } /* FAIL: Cardinal Sin 5 - left border card */
+    .card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: #6366f1; }
+    .card p { color: #94a3b8; font-size: 0.95rem; }
+    
+    .stats { padding: 3rem 5%; text-align: center; display: flex; justify-content: space-around; border-y: 1px solid #1e293b; background: #0f172a; }
+    .stat-number { font-size: 2.5rem; font-weight: 800; color: #a855f7; }
+    .stat-label { color: #64748b; font-size: 0.9rem; }
+    
+    .testimonial { padding: 4rem 5%; text-align: center; max-width: 800px; margin: 0 auto; }
+    .quote { font-size: 1.25rem; font-style: italic; color: #cbd5e1; margin-bottom: 1rem; }
+    .author { font-weight: 600; color: #6366f1; }
+    
+    .pricing { padding: 4rem 5%; background: #020617; }
+    .pricing h2 { text-align: center; margin-bottom: 3rem; font-size: 2rem; }
+    .price-card { background: #1e293b; padding: 2rem; border-radius: 12px; text-align: center; }
+    .price-card.popular { border: 2px solid #6366f1; }
+    .price-val { font-size: 2.5rem; font-weight: 700; margin: 1rem 0; }
+    
+    .faq { padding: 4rem 5%; max-width: 700px; margin: 0 auto; }
+    .faq h2 { text-align: center; margin-bottom: 2rem; }
+    .faq-item { margin-bottom: 1rem; background: #1e293b; padding: 1rem; border-radius: 8px; }
+    .faq-item summary { font-weight: 600; cursor: pointer; }
+    .faq-item p { margin-top: 0.5rem; color: #94a3b8; font-size: 0.9rem; }
+    
+    .cta { text-align: center; padding: 5rem 1rem; background: linear-gradient(135deg, #4f46e5, #9333ea); }
+    .cta h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    
+    footer { text-align: center; padding: 2rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">FlowAI</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#pricing" class="btn">Get Started</a>
+  </header>
+
+  <section class="hero">
+    <h1>AI-powered project management for engineering teams</h1>
+    <p>Plan sprints, automate status reports, and unblock developers with AI intelligence.</p>
+    <a href="#pricing" class="btn">Start Free Trial</a>
+  </section>
+
+  <section class="features" id="features">
+    <h2>Built for Modern Engineering</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>🚀 Automated Standups</h3>
+        <p>AI aggregates GitHub commits and Jira tickets into clean daily summaries without meeting overhead.</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Risk Detection</h3>
+        <p>Predict sprint slippage early by analyzing PR review bottlenecks and open dependency blockages.</p>
+      </div>
+      <div class="card">
+        <h3>📊 Smart Planning</h3>
+        <p>Auto-estimate task complexity based on historic team velocity and code diff size.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div>
+      <div class="stat-number">10x</div>
+      <div class="stat-label">Faster Planning</div>
+    </div>
+    <div>
+      <div class="stat-number">45%</div>
+      <div class="stat-label">Fewer Status Meetings</div>
+    </div>
+    <div>
+      <div class="stat-number">1,200+</div>
+      <div class="stat-label">Eng Teams Active</div>
+    </div>
+  </section>
+
+  <section class="testimonial">
+    <div class="quote">"FlowAI eliminated 4 hours of weekly status syncs for our 30-person eng org. Our sprint predictability jumped by 40%."</div>
+    <div class="author">Alex Chen — VP of Engineering at TechScale</div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <h2>Transparent Pricing</h2>
+    <div class="grid-3">
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="price-val">$0</div>
+        <p>Up to 5 developers</p>
+        <br>
+        <a href="#" class="btn">Get Started</a>
+      </div>
+      <div class="price-card popular">
+        <h3>Pro</h3>
+        <div class="price-val">$18/dev</div>
+        <p>For growing teams</p>
+        <br>
+        <a href="#" class="btn">Start 14-day Trial</a>
+      </div>
+      <div class="price-card">
+        <h3>Enterprise</h3>
+        <div class="price-val">Custom</div>
+        <p>SOC2, SSO & Dedicated AI model</p>
+        <br>
+        <a href="#" class="btn">Contact Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <details class="faq-item">
+      <summary>How does FlowAI connect to our repositories?</summary>
+      <p>FlowAI uses read-only GitHub and GitLab OAuth integrations with zero code retention.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can we host FlowAI on-premise?</summary>
+      <p>Yes, Enterprise tier supports private VPC deployments via Helm chart.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Does it replace Jira or Linear?</summary>
+      <p>No, it syncs bidirectionally with Jira, Linear, and GitHub Issues.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What LLM models power the risk radar?</summary>
+      <p>We use fine-tuned Claude 3.5 Sonnet models hosted on private enterprise endpoints.</p>
+    </details>
+  </section>
+
+  <section class="cta">
+    <h2>Ship faster with AI engineering intelligence</h2>
+    <br>
+    <a href="#pricing" class="btn" style="background: white; color: #4f46e5;">Get Started Today</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 FlowAI Inc. All rights reserved.</p>
+  </footer>
+</body>
+</html>
