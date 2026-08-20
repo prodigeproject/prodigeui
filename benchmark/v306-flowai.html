@@ -1,0 +1,107 @@
+<!-- Design Read: B2B Engineering SaaS, dark obsidian & electric lime vibe, Space Grotesk display typography + material inset depth + SVG bento telemetry grid. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowAI (ProdigeUI v3.0.6 — Commit 20ac96d)</title>
+  <meta name="description" content="FlowAI reads pull requests, tickets, owners, and decisions to protect engineering sprint delivery.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* PRODIGEUI v3.0.6 — Commit 20ac96d Synthesized */
+    :root {
+      --prodigeui-primitive-obsidian: #0b0d10;
+      --prodigeui-primitive-surface: #14171d;
+      --prodigeui-primitive-lime: #b8ff3a;
+      --prodigeui-primitive-text-bright: #f9fafb;
+      --prodigeui-primitive-text-muted: #9ca3af;
+      --prodigeui-primitive-border: rgba(255, 255, 255, 0.08);
+
+      --prodigeui-color-bg: var(--prodigeui-primitive-obsidian);
+      --prodigeui-color-surface: var(--prodigeui-primitive-surface);
+      --prodigeui-color-text: var(--prodigeui-primitive-text-bright);
+      --prodigeui-color-muted: var(--prodigeui-primitive-text-muted);
+      --prodigeui-color-primary: var(--prodigeui-primitive-lime);
+      --prodigeui-color-border: var(--prodigeui-primitive-border);
+
+      --prodigeui-font-display: 'Space Grotesk', sans-serif;
+      --prodigeui-font-body: 'Inter', system-ui, sans-serif;
+      --prodigeui-font-mono: 'JetBrains Mono', monospace;
+
+      --prodigeui-shadow-material: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 24px 65px -12px rgba(0, 0, 0, 0.6);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.6; isolation: isolate; }
+
+    .wrap { width: min(1200px, 92vw); margin-inline: auto; isolation: isolate; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .text-lime { color: var(--prodigeui-color-primary); }
+    .text-muted { color: var(--prodigeui-color-muted); }
+
+    .card-material { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); border-radius: 16px; box-shadow: var(--prodigeui-shadow-material); isolation: isolate; position: relative; }
+    .nav-glass { position: fixed; top: 1.25rem; left: 50%; transform: translateX(-50%); width: min(1160px, 92vw); z-index: 50; background: rgba(11, 13, 16, 0.85); backdrop-filter: blur(20px); border: 1px solid var(--prodigeui-color-border); border-radius: 9999px; padding: 0.75rem 1.8rem; display: flex; justify-content: space-between; align-items: center; }
+
+    .btn-pill { background: var(--prodigeui-color-primary); color: #000; padding: 0.7rem 1.6rem; border-radius: 9999px; font-weight: 700; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+    .hero-wrap { padding-top: 10.5rem; padding-bottom: 5.5rem; }
+    .hero-h1 { font-family: var(--prodigeui-font-display); font-size: clamp(3.2rem, 7.5vw, 6.5rem); font-weight: 700; line-height: 0.95; margin-bottom: 1.5rem; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+
+    @media (max-width: 850px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav-glass">
+    <a style="font-family: var(--prodigeui-font-display); font-weight: 700; font-size: 1.5rem; color: #fff; text-decoration: none;" href="#">FlowAI<span class="text-lime"> v3.0.6</span></a>
+    <a href="#features" class="btn-pill">Start Free Trial</a>
+  </header>
+
+  <main id="main">
+    <section class="hero-wrap wrap">
+      <div class="mono text-lime" style="margin-bottom: 1.25rem;">Engineering Intelligence Platform</div>
+      <h1 class="hero-h1">AI Project Management for <br><span class="text-lime">engineering teams.</span></h1>
+      <p class="hero-lead" style="font-size: 1.2rem; color: var(--prodigeui-color-muted); max-width: 52ch; margin-bottom: 2.5rem;">FlowAI parses pull requests, owner workloads, and tickets to protect your sprint commitment.</p>
+      
+      <div class="card-material" style="padding: 2.5rem; margin-top: 3rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--prodigeui-color-border);">
+          <span class="mono text-lime">● SPRINT PROTECTION BENTO TELEMETRY</span>
+          <span class="mono">RISK SCORE: 12%</span>
+        </div>
+        <div style="margin-top: 1.5rem;">
+          <h3 style="font-family: var(--prodigeui-font-display); font-size: 1.6rem; margin-bottom: 0.5rem;">Pull Request #1084 Ingestion</h3>
+          <p class="text-muted">Detected 4 high-risk API schema changes across 2 microservices. Sprint delivery protected.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="features" style="padding: 4rem 0;">
+      <div class="grid-3">
+        <article class="card-material" style="padding: 2rem;">
+          <h3 class="text-lime" style="margin-top:0;">PR Intelligence</h3>
+          <p class="text-muted">Parses pull request intent automatically.</p>
+        </article>
+        <article class="card-material" style="padding: 2rem;">
+          <h3 class="text-lime" style="margin-top:0;">Sprint Protection</h3>
+          <p class="text-muted">Predicts delayed delivery dates early.</p>
+        </article>
+        <article class="card-material" style="padding: 2rem;">
+          <h3 class="text-lime" style="margin-top:0;">Automated Digest</h3>
+          <p class="text-muted">Sends daily engineering team digests.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

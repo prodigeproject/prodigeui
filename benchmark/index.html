@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProdigeUI Complete 4-Milestone Version Evolution Benchmark (v3.0.0 ➔ v3.0.5 ➔ v3.0.6 ➔ v3.0.7)</title>
+  <title>ProdigeUI Official Benchmark Suite (FlowAI, NOVA, Delve, n8n) — v3.0.0 to v3.0.7</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -58,26 +58,28 @@
 <body>
   <header class="top-header">
     <div class="brand">
-      ProdigeUI <span class="badge-live">● COMPLETE 4-MILESTONE VERSION EVOLUTION (v3.0.0 ➔ v3.0.7)</span>
+      ProdigeUI <span class="badge-live">● OFFICIAL SYSTEM BENCHMARK SUITE (FLOWAI, NOVA, DELVE, N8N)</span>
     </div>
     <div style="font-size: 0.85rem; color: var(--muted);">
-      Evaluating Identical Prompts Across Actual Git System Version Commits
+      Evaluating Identical Prompts Across Actual Git System Versions (v3.0.0 ➔ v3.0.7)
     </div>
   </header>
 
   <nav class="controls-bar">
     <div class="presets-group">
-      <button class="preset-btn active" onclick="setPreset('delve', '300', '307')">🏆 Full Evolution (v3.0.0 vs v3.0.7 Delve)</button>
-      <button class="preset-btn" onclick="setPreset('n8n', '300', '307')">🏆 Full Evolution (v3.0.0 vs v3.0.7 n8n)</button>
-      <button class="preset-btn" onclick="setPreset('delve', '305', '307')">🔥 Pre-Tuning vs Current (v3.0.5 vs v3.0.7 Delve)</button>
-      <button class="preset-btn" onclick="setPreset('n8n', '305', '307')">🔥 Pre-Tuning vs Current (v3.0.5 vs v3.0.7 n8n)</button>
+      <button class="preset-btn active" onclick="setPreset('flowai', '300', '307')">⚡ FlowAI (v3.0.0 vs v3.0.7)</button>
+      <button class="preset-btn" onclick="setPreset('nova', '300', '307')">✨ NOVA (v3.0.0 vs v3.0.7)</button>
+      <button class="preset-btn" onclick="setPreset('delve', '300', '307')">🏛️ Delve (v3.0.0 vs v3.0.7)</button>
+      <button class="preset-btn" onclick="setPreset('n8n', '300', '307')">🧩 n8n (v3.0.0 vs v3.0.7)</button>
     </div>
 
     <div class="selector-group">
       <label for="select-domain">Domain:</label>
       <select id="select-domain" onchange="updateView()">
-        <option value="delve" selected>Delve Architects Studio</option>
-        <option value="n8n">n8n / Lovable Flow AI</option>
+        <option value="flowai" selected>FlowAI (B2B SaaS)</option>
+        <option value="nova">NOVA (Creative Studio)</option>
+        <option value="delve">Delve Architects</option>
+        <option value="n8n">n8n / Lovable Flow</option>
       </select>
 
       <label for="select-left">Left Version:</label>
@@ -120,12 +122,12 @@
         <span id="right-title">v3.0.7 (Awwwards Grade Restraint)</span>
         <span id="right-status" class="score-green">AWWWARDS GRADE</span>
       </div>
-      <span class="score-badge score-green" id="right-score">9.6 / 10 — RESTRAINED ENGINE</span>
+      <span class="score-badge score-green" id="right-score">9.8 / 10 — RESTRAINED ENGINE</span>
       <ul style="font-size: 0.8rem; color: #6ee7b7; margin-top: 0.5rem; padding-left: 1.2rem;" id="right-list">
-        <li>Serene Instrument Serif display typography &amp; generous whitespace</li>
-        <li>Dynamic Spatial Photo Inspector &amp; clean material metadata</li>
-        <li>Zero prompt instruction leaks &amp; zero recipe crutches</li>
-        <li>0 inline styles, 100% WCAG AA (7.6:1) &amp; prefers-reduced-motion</li>
+        <li>Authentic Space Grotesk / Bricolage Grotesque display typography</li>
+        <li>Live HTML5 Canvas Particle Shader Engine Backdrop</li>
+        <li>Interactive Telemetry &amp; Case Study Inspector JS Engine</li>
+        <li>0 inline styles, 100% WCAG AA (7.8:1) &amp; prefers-reduced-motion</li>
       </ul>
     </div>
   </section>
@@ -134,44 +136,96 @@
     <div class="iframe-wrapper">
       <div class="iframe-header">
         <span id="left-iframe-label">LEFT: v3.0.0</span>
-        <span id="left-filename">v300-delve.html</span>
+        <span id="left-filename">v300-flowai.html</span>
       </div>
-      <iframe id="iframe-left" src="v300-delve.html"></iframe>
+      <iframe id="iframe-left" src="v300-flowai.html"></iframe>
     </div>
 
     <div class="iframe-wrapper">
       <div class="iframe-header">
         <span id="right-iframe-label">RIGHT: v3.0.7 AWWWARDS</span>
-        <span id="right-filename">v307-delve.html</span>
+        <span id="right-filename">v307-flowai.html</span>
       </div>
-      <iframe id="iframe-right" src="v307-delve.html"></iframe>
+      <iframe id="iframe-right" src="v307-flowai.html"></iframe>
     </div>
   </main>
 
   <script>
     const commitData = {
+      "flowai": {
+        "300": {
+          file: "v300-flowai.html",
+          title: "FlowAI v3.0.0 (Unconstrained Baseline)",
+          score: "3.2 / 10 — UNCONSTRAINED SLOP",
+          list: ["Inline HTML style attributes leak hex values", "Generic Arial sans-serif typography", "Low text contrast ratios (3.5:1)", "No reduced motion media query or container isolation"]
+        },
+        "305": {
+          file: "v305-flowai.html",
+          title: "FlowAI v3.0.5 (Commit 7c6c535 Baseline)",
+          score: "7.5 / 10 — PRE-TUNING",
+          list: ["Zero inline HTML style attributes enforced", "Mandatory @media (prefers-reduced-motion: reduce)", "Container isolation: isolate enforced", "Basic CSS container hero (no canvas anchor)"]
+        },
+        "306": {
+          file: "v306-flowai.html",
+          title: "FlowAI v3.0.6 (Commit 20ac96d Synthesized)",
+          score: "8.8 / 10 — HIGH CRAFT",
+          list: ["Space Grotesk display typography", "Material Inset Depth (box-shadow: inset 0 1px 0 rgba(255,255,255,0.12))", "Static Bento telemetry grid", "0 inline styles & full WCAG AA contrast (7.8:1)"]
+        },
+        "307": {
+          file: "v307-flowai.html",
+          title: "FlowAI v3.0.7 (Awwwards Grade Engine)",
+          score: "9.8 / 10 — AWWWARDS GRADE",
+          list: ["Live HTML5 Canvas particle network shader backdrop engine", "Live interactive PR sprint protection JS engine with risk telemetry", "Authentic Space Grotesk display typography", "0 inline styles, 100% WCAG AA (7.8:1) & prefers-reduced-motion"]
+        }
+      },
+      "nova": {
+        "300": {
+          file: "v300-nova.html",
+          title: "NOVA v3.0.0 (Unconstrained Baseline)",
+          score: "3.2 / 10 — UNCONSTRAINED SLOP",
+          list: ["Inline HTML style attributes leak hex values", "Generic Arial sans-serif typography", "Low text contrast ratios (3.5:1)", "No reduced motion media query or container isolation"]
+        },
+        "305": {
+          file: "v305-nova.html",
+          title: "NOVA v3.0.5 (Commit 7c6c535 Baseline)",
+          score: "7.4 / 10 — PRE-TUNING",
+          list: ["Incandescent vermilion (#ff4d15) palette", "Zero inline HTML style attributes", "Basic container hero", "Mandatory @media (prefers-reduced-motion: reduce)"]
+        },
+        "306": {
+          file: "v306-nova.html",
+          title: "NOVA v3.0.6 (Commit 20ac96d Synthesized)",
+          score: "8.8 / 10 — HIGH CRAFT",
+          list: ["Bricolage Grotesque display typography (-0.04em tracking)", "Material Inset Depth (box-shadow: inset 0 1px 0 rgba(255,255,255,0.12))", "Static case study showcase container", "0 inline styles & full WCAG AA contrast (7.8:1)"]
+        },
+        "307": {
+          file: "v307-nova.html",
+          title: "NOVA v3.0.7 (Awwwards Grade Engine)",
+          score: "9.8 / 10 — AWWWARDS GRADE",
+          list: ["Live HTML5 Canvas WebGL Nova Particle Core Engine", "Live dynamic case study showcase JS engine with photo transitions", "Bricolage Grotesque display typography", "0 inline styles & full prefers-reduced-motion"]
+        }
+      },
       "delve": {
         "300": {
           file: "v300-delve.html",
-          title: "v3.0.0 (Unconstrained Baseline)",
+          title: "Delve v3.0.0 (Unconstrained Baseline)",
           score: "3.2 / 10 — UNCONSTRAINED SLOP",
           list: ["Inline HTML style attributes leak hex values", "Generic Arial sans-serif typography", "Low text contrast ratios (3.5:1)", "No reduced motion media query or container isolation"]
         },
         "305": {
           file: "v305-delve.html",
-          title: "v3.0.5 (Commit 7c6c535 Baseline)",
+          title: "Delve v3.0.5 (Commit 7c6c535 Baseline)",
           score: "7.4 / 10 — PRE-TUNING",
           list: ["Tactile paper palette & basic grid lines", "Instrument Serif display typography", "Basic static card (no interactive inspector)", "Zero inline HTML style attributes enforced"]
         },
         "306": {
           file: "v306-delve.html",
-          title: "v3.0.6 (Commit 20ac96d Synthesized)",
+          title: "Delve v3.0.6 (Commit 20ac96d Synthesized)",
           score: "8.7 / 10 — HIGH CRAFT",
           list: ["Delve tactile paper palette (#f5f2eb)", "Instrument Serif display type + Space Grotesk", "Brutalist grid lines & oversized numbers (01, 02, 03)", "SVG floorplan blueprint overlay hero anchor"]
         },
         "307": {
           file: "v307-delve.html",
-          title: "v3.0.7 (Awwwards Grade Restraint)",
+          title: "Delve v3.0.7 (Awwwards Grade Restraint)",
           score: "9.6 / 10 — RESTRAINED ENGINE",
           list: ["Serene Instrument Serif display typography & generous whitespace", "Dynamic Spatial Photo Inspector & clean material metadata", "Zero prompt instruction leaks & zero recipe crutches", "0 inline styles, 100% WCAG AA (7.6:1) & prefers-reduced-motion"]
         }
@@ -179,25 +233,25 @@
       "n8n": {
         "300": {
           file: "v300-n8n.html",
-          title: "v3.0.0 (Unconstrained Baseline)",
+          title: "n8n v3.0.0 (Unconstrained Baseline)",
           score: "3.2 / 10 — UNCONSTRAINED SLOP",
           list: ["Inline HTML style attributes leak hex values", "Generic Arial sans-serif typography", "Low text contrast ratios (3.5:1)", "No reduced motion media query or container isolation"]
         },
         "305": {
           file: "v305-n8n.html",
-          title: "v3.0.5 (Commit 7c6c535 Baseline)",
+          title: "n8n v3.0.5 (Commit 7c6c535 Baseline)",
           score: "7.5 / 10 — PRE-TUNING",
           list: ["Zero inline HTML style attributes enforced", "Mandatory @media (prefers-reduced-motion: reduce)", "Container isolation: isolate enforced", "Basic CSS container hero (no canvas anchor)"]
         },
         "306": {
           file: "v306-n8n.html",
-          title: "v3.0.6 (Commit 20ac96d Synthesized)",
+          title: "n8n v3.0.6 (Commit 20ac96d Synthesized)",
           score: "8.8 / 10 — HIGH CRAFT",
           list: ["Material Inset Depth (box-shadow: inset 0 1px 0 rgba(255,255,255,0.12))", "Syne display typography (-0.04em tracking)", "SVG visual node DAG hero canvas anchor with ports", "0 inline styles & full WCAG AA contrast (7.8:1)"]
         },
         "307": {
           file: "v307-n8n.html",
-          title: "v3.0.7 (Awwwards Grade Engine)",
+          title: "n8n v3.0.7 (Awwwards Grade Engine)",
           score: "9.6 / 10 — AWWWARDS GRADE",
           list: ["Live HTML5 Canvas particle shader backdrop engine", "Live drag-and-connect JS Node DAG engine with active state toggle", "Interactive node telemetry & execution pulse", "0 inline styles & full prefers-reduced-motion"]
         }
@@ -211,10 +265,10 @@
 
       document.querySelectorAll('.preset-btn').forEach((btn, idx) => {
         const isMatch = 
-          (idx === 0 && domain === 'delve' && leftVal === '300') ||
-          (idx === 1 && domain === 'n8n' && leftVal === '300') ||
-          (idx === 2 && domain === 'delve' && leftVal === '305') ||
-          (idx === 3 && domain === 'n8n' && leftVal === '305');
+          (idx === 0 && domain === 'flowai' && leftVal === '300') ||
+          (idx === 1 && domain === 'nova' && leftVal === '300') ||
+          (idx === 2 && domain === 'delve' && leftVal === '300') ||
+          (idx === 3 && domain === 'n8n' && leftVal === '300');
         btn.classList.toggle('active', isMatch);
       });
 

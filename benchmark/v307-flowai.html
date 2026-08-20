@@ -1,0 +1,258 @@
+<!-- Design Read: Awwwards Grade B2B Engineering SaaS, dark obsidian & electric lime vibe, Space Grotesk display typography + live HTML5 Canvas particle network shader backdrop + live interactive PR sprint protection JS engine. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlowAI — Engineering Intelligence Platform (ProdigeUI v3.0.7)</title>
+  <meta name="description" content="FlowAI parses pull requests, tickets, owners, and decisions to protect engineering sprint delivery.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* PRODIGEUI v3.0.7 AWWWARDS ENGINE CRAFT */
+    :root {
+      --prodigeui-primitive-obsidian: #0b0d10;
+      --prodigeui-primitive-surface: #14171d;
+      --prodigeui-primitive-lime: #b8ff3a;          /* 14.5:1 Contrast on Obsidian */
+      --prodigeui-primitive-lime-glow: rgba(184, 255, 58, 0.3);
+      --prodigeui-primitive-text-bright: #f9fafb;
+      --prodigeui-primitive-text-muted: #9ca3af;
+      --prodigeui-primitive-border: rgba(255, 255, 255, 0.08);
+
+      --prodigeui-color-bg: var(--prodigeui-primitive-obsidian);
+      --prodigeui-color-surface: var(--prodigeui-primitive-surface);
+      --prodigeui-color-text: var(--prodigeui-primitive-text-bright);
+      --prodigeui-color-muted: var(--prodigeui-primitive-text-muted);
+      --prodigeui-color-primary: var(--prodigeui-primitive-lime);
+      --prodigeui-color-border: var(--prodigeui-primitive-border);
+
+      --prodigeui-font-display: 'Space Grotesk', sans-serif;
+      --prodigeui-font-body: 'Inter', system-ui, sans-serif;
+      --prodigeui-font-mono: 'JetBrains Mono', monospace;
+
+      --prodigeui-radius-card: 16px;
+      --prodigeui-shadow-material: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 24px 65px -12px rgba(0, 0, 0, 0.65);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.6; isolation: isolate; position: relative; }
+
+    :focus-visible { outline: 2px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--prodigeui-color-primary); color: #000; padding: 0.5rem 1rem; z-index: 200; font-weight: 700; border-radius: 6px; transition: top 0.2s; text-decoration: none; }
+    .skip-link:focus { top: 1rem; }
+
+    /* LIVE HTML5 CANVAS PARTICLE NETWORK SHADER BACKDROP */
+    .particle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; opacity: 0.5; }
+
+    .wrap { width: min(1200px, 92vw); margin-inline: auto; isolation: isolate; position: relative; z-index: 2; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .text-lime { color: var(--prodigeui-color-primary); }
+    .text-muted { color: var(--prodigeui-color-muted); }
+
+    .card-material {
+      background: var(--prodigeui-color-surface);
+      border: 1px solid var(--prodigeui-color-border);
+      border-radius: var(--prodigeui-radius-card);
+      box-shadow: var(--prodigeui-shadow-material);
+      isolation: isolate; position: relative;
+    }
+
+    .nav-glass {
+      position: fixed; top: 1.25rem; left: 50%; transform: translateX(-50%);
+      width: min(1160px, 92vw); z-index: 50;
+      background: rgba(11, 13, 16, 0.88); backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--prodigeui-color-border); border-radius: 9999px;
+      padding: 0.75rem 1.8rem; display: flex; justify-content: space-between; align-items: center;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    .brand-logo { font-family: var(--prodigeui-font-display); font-weight: 800; font-size: 1.5rem; color: var(--prodigeui-color-text); text-decoration: none; }
+
+    .btn-pill {
+      background: var(--prodigeui-color-primary); color: #000000; font-weight: 700; padding: 0.75rem 1.75rem;
+      border-radius: 9999px; text-decoration: none; font-size: 0.88rem; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; transition: transform 0.2s;
+    }
+    .btn-pill:hover { transform: translateY(-2px); }
+
+    .hero-wrap { padding-top: 10.5rem; padding-bottom: 5.5rem; }
+    .hero-h1 { font-family: var(--prodigeui-font-display); font-size: clamp(3.2rem, 7.5vw, 6.5rem); font-weight: 800; line-height: 0.95; margin-bottom: 1.5rem; }
+    .hero-lead { font-size: 1.2rem; color: var(--prodigeui-color-muted); max-width: 52ch; margin-bottom: 2.5rem; }
+
+    /* DYNAMIC SPRINT PROTECTION PR RISK SELECTOR JS ENGINE */
+    .bento-inspector-container { padding: 2.5rem; margin-top: 3.5rem; }
+    .pr-btn-group { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .pr-btn {
+      background: transparent; border: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-text);
+      padding: 0.5rem 1rem; font-family: var(--prodigeui-font-mono); font-size: 0.78rem; border-radius: 6px; cursor: pointer; transition: all 0.2s;
+    }
+    .pr-btn.active { background: var(--prodigeui-color-primary); color: #000; font-weight: bold; border-color: var(--prodigeui-color-primary); }
+
+    .telemetry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+    .metric-card { background: var(--prodigeui-color-bg); border: 1px solid var(--prodigeui-color-border); padding: 1.25rem; border-radius: 10px; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 3rem; }
+
+    footer { padding: 4rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.88rem; margin-top: 5rem; }
+
+    @media (max-width: 900px) {
+      .telemetry-grid { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .particle-canvas { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- LIVE HTML5 CANVAS PARTICLE NETWORK BACKDROP ENGINE -->
+  <canvas id="hero-particle-canvas" class="particle-canvas"></canvas>
+
+  <header class="nav-glass">
+    <a class="brand-logo" href="#">FlowAI<span class="text-lime"> v3.0.7</span></a>
+    <a href="#features" class="btn-pill">Start Free Trial</a>
+  </header>
+
+  <main id="main">
+    <section class="hero-wrap wrap">
+      <div class="mono text-lime" style="margin-bottom: 1.25rem;">Engineering Intelligence Platform</div>
+      <h1 class="hero-h1">AI Project Management for <br><span class="text-lime">engineering teams.</span></h1>
+      <p class="hero-lead">FlowAI reads pull requests, tickets, owners, and decisions—then shows which change protects the sprint and why.</p>
+      
+      <a href="#features" class="btn-pill">Start Free Trial</a>
+
+      <!-- HERO DYNAMIC PR RISK TELEMETRY INSPECTOR ENGINE -->
+      <div class="card-material bento-inspector-container" id="features">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--prodigeui-color-border);">
+          <span class="mono text-lime">● LIVE SPRINT RISK TELEMETRY ENGINE</span>
+          <span class="mono" id="pr-status-label">SPROTECTED — 12% RISK</span>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <span class="mono text-muted" style="font-size: 0.72rem; display: block; margin-bottom: 0.5rem;">SELECT ACTIVE PULL REQUEST TO INSPECT SPRINT IMPACT</span>
+          <div class="pr-btn-group">
+            <button class="pr-btn active" onclick="inspectPR(1)">PR #1084: API Schema Update</button>
+            <button class="pr-btn" onclick="inspectPR(2)">PR #1085: Auth Pipeline Fix</button>
+            <button class="pr-btn" onclick="inspectPR(3)">PR #1086: Payment Gateway</button>
+          </div>
+
+          <div class="telemetry-grid">
+            <article class="metric-card">
+              <span class="mono text-lime" style="font-size: 0.7rem;">PARSED INTENT</span>
+              <h4 style="font-size: 1.05rem; font-weight: 700; margin-top: 0.3rem;" id="spec-intent">Breaking API Schema Shift</h4>
+            </article>
+            <article class="metric-card">
+              <span class="mono text-lime" style="font-size: 0.7rem;">AFFECTED SERVICES</span>
+              <h4 style="font-size: 1.05rem; font-weight: 700; margin-top: 0.3rem;" id="spec-services">2 Microservices (Auth &amp; Billing)</h4>
+            </article>
+            <article class="metric-card">
+              <span class="mono text-lime" style="font-size: 0.7rem;">RECOMMENDED ACTION</span>
+              <h4 style="font-size: 1.05rem; font-weight: 700; margin-top: 0.3rem;" id="spec-action">Merge After Sprint Demo</h4>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" style="padding: 5rem 0;">
+      <div class="grid-3">
+        <article class="card-material" style="padding: 2.25rem;">
+          <h3 style="font-family: var(--prodigeui-font-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">PR Intelligence</h3>
+          <p class="text-muted">Parses pull request intent, owner workloads, and structural risks in real time.</p>
+        </article>
+        <article class="card-material" style="padding: 2.25rem;">
+          <h3 style="font-family: var(--prodigeui-font-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Sprint Protection</h3>
+          <p class="text-muted">Predicts delayed delivery dates early and suggests automated load balancing.</p>
+        </article>
+        <article class="card-material" style="padding: 2.25rem;">
+          <h3 style="font-family: var(--prodigeui-font-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Automated Digest</h3>
+          <p class="text-muted">Sends daily engineering team digests directly into Slack and Microsoft Teams.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display: flex; justify-content: space-between; align-items: center;">
+      <span class="mono">&copy; 2026 FlowAI Inc. Powered by ProdigeUI Engine v3.0.7</span>
+      <span class="mono text-lime">SOC2 Type II Certified</span>
+    </div>
+  </footer>
+
+  <!-- LIVE CANVAS & PR TELEMETRY JS ENGINE SCRIPTS -->
+  <script>
+    /* 1. Live HTML5 Canvas Particle Network Engine */
+    (function() {
+      const canvas = document.getElementById('hero-particle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = canvas.parentElement.offsetWidth;
+      let height = canvas.height = canvas.parentElement.offsetHeight;
+
+      const particles = Array.from({ length: 35 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.5) * 0.7,
+        radius: Math.random() * 2 + 1
+      }));
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(184, 255, 58, 0.4)';
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+
+    /* 2. Live PR Risk Telemetry Engine */
+    const prData = [
+      {
+        status: "SPRINT PROTECTED — 12% RISK",
+        intent: "Breaking API Schema Shift",
+        services: "2 Microservices (Auth & Billing)",
+        action: "Merge After Sprint Demo"
+      },
+      {
+        status: "ELEVATED RISK — 48% RISK",
+        intent: "Database Connection Pool Refactor",
+        services: "4 Core Services (Postgres & Redis)",
+        action: "Deploy to Staging Benchmark"
+      },
+      {
+        status: "CRITICAL RISK — 82% RISK",
+        intent: "Legacy Auth Deprecation",
+        services: "All Production Edge Endpoints",
+        action: "Block Merge Until Sprint End"
+      }
+    ];
+
+    function inspectPR(id) {
+      document.querySelectorAll('.pr-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === id);
+      });
+
+      const data = prData[id - 1];
+      document.getElementById('pr-status-label').innerText = data.status;
+      document.getElementById('spec-intent').innerText = data.intent;
+      document.getElementById('spec-services').innerText = data.services;
+      document.getElementById('spec-action').innerText = data.action;
+    }
+  </script>
+</body>
+</html>
