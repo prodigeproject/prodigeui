@@ -133,6 +133,7 @@ See `skills/prodige-ui-end-to-end/SKILL.md` for the detailed version of each ste
 15. **Interactive Hero Product Canvas**: Hero sections must feature a domain-specific interactive product canvas or live demonstration anchor (e.g. node graph builder, prompt preview tab, interactive risk slider) rather than static text and static images.
 16. **Interactive WebGL & JS Engine Craft**: When `MOTION_INTENSITY` ≥ 0.7 or `VARIANCE` ≥ 0.6, hero product anchors MUST include a functional inline JavaScript interactive canvas engine (e.g. HTML5 Canvas particle shader backdrop, dynamic drag-and-connect node DAG state engine, or interactive blueprint room inspector). Static visual representations without JS interactivity are prohibited.
 17. **Harmonized Storytelling & Interactive Anchors**: Interactive canvas anchors or live JS widgets MUST NOT displace core domain storytelling typography, editorial project titles, or contextual metadata. High-craft interfaces harmonize editorial storytelling WITH interactive technical anchors.
+18. **Strict Container Boundary Containment**: All container surfaces with rounded borders (`border-radius`) that enclose media viewports, image grids, or canvas anchors MUST declare `overflow: hidden;` to ensure 100% pixel-perfect containment without border bleeding.
 
 ---
 

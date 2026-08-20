@@ -60,6 +60,7 @@ These patterns indicate fundamental quality failures. Presence of ANY = automati
 - **FAIL C0.16:** SVG text elements inside small viewBox scale render as unreadable, pixelated, or illegible text blobs without proper font sizing, vector legibility, or card background contrast.
 - **FAIL C0.17:** UI micro-copy contains explicit prompt instructions, button usage hints, or click directives (e.g., `(CLICK TO SWITCH...)`, `(PRESS BUTTON TO...)`). Micro-copy must consist strictly of authentic domain text.
 - **FAIL C0.18:** Hero cards or section columns are over-crammed with more than 4 vertically stacked sub-component boxes, destroying visual breathing room and architectural restraint.
+- **FAIL C0.19:** Parent card containers with rounded borders (`border-radius`) housing image viewports, media grids, or canvas anchors omit `overflow: hidden;`, causing child background images to bleed past the parent card's rounded corners.
 
 > **Craft exception for FAIL #1, #5, and typography-scale:** Fluid and computed values
 > that are *systematic* are NOT raw-value violations. `clamp(2.5rem, 14vw, 17.5rem)` for a
