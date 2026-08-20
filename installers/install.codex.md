@@ -1,43 +1,24 @@
 # Installing ProdigeUI for Codex
 
-## Prerequisites
+Run from the ProdigeUI distribution root:
 
-- Codex (OpenAI) installed and configured on your machine
-- A project directory initialized (any language/framework)
-- Terminal access to the project root
+```sh
+node scripts/install-prodigeui.mjs codex <project-root>
+```
 
-## Installation Steps
+This installs `prodigeui/`, executable `scripts/`, root `package.json`, and root `AGENTS.md`.
+Codex is explicitly routed from `AGENTS.md` to `prodigeui/skills/AGENTS.md`; the installer does
+not claim that arbitrary nested skills are automatically advertised as native Codex skills.
 
-1. Copy the `prodigeui/` folder into your project root:
-   ```
-   your-project/
-   ├── prodigeui/        <-- paste here
-   ├── src/
-   └── ...
-   ```
+In the target project run:
 
-2. Copy the entry-point file `AGENTS.md` to your project root:
-   ```
-   your-project/
-   ├── AGENTS.md         <-- entry point for Codex
-   ├── prodigeui/
-   └── ...
-   ```
-   > `AGENTS.md` is provided in `prodigeui/` root. Copy it one level up.
+```sh
+npm install
+npx playwright install chromium
+npm test
+npm run quality-gate -- output.html --review manual-review.json
+```
 
-3. Codex discovers skills from the `prodigeui/skills/` directory. Ensure the
-   folder is placed at the correct relative path from `AGENTS.md`.
-
-## Verification
-
-- Open Codex in your project directory.
-- Codex should now reference ProdigeUI artifacts via `AGENTS.md`.
-- Try triggering: "design ui" to verify skill discovery.
-- Ask Codex to "list available design skills" — it should enumerate ProdigeUI skills.
-
-## Troubleshooting
-
-- **Skills not detected**: Ensure `AGENTS.md` is at the project root (same level as `prodigeui/`).
-- **Tokens not found**: Verify `prodigeui/` folder structure is intact with `tokens/`, `themes/`, etc.
-- **Partial artifacts**: Check `prodigeui/manifest.json` lists all expected artifacts.
-- **Conflicts with existing AGENTS.md**: Merge ProdigeUI directives into your existing file, or rename the original and include a reference.
+Use `prodigeui/hooks/quality-gate-check.hook.json` as the executable post-generation contract
+where the active Codex environment supports hook wiring. See `installers/README.md` for the
+portable distribution contract.

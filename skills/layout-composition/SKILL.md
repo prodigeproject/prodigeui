@@ -87,7 +87,8 @@ with ProdigeUI's structural design rules.
 
 ### Step 6 — Validate Against Structure Rules
 
-1. Check layout against `design-rules/structure-rules.md`:
+1. Check layout against `design-rules/structure.rules.json` and its prose companion
+   `design-rules/design-rules.md`:
    - No orphaned headings (heading must precede content)
    - No floating actions (CTAs must be near related content)
    - Consistent alignment axes throughout the page

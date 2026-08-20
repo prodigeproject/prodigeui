@@ -16,7 +16,9 @@ Personal portfolios, creative agencies, case-study-led sites. Multi-section scro
    ↑ often a rounded-top LIGHT section pulled up with negative margin (contrast beat)
 4. Services      — numbered list OR bento (not equal cards)
 5. Projects      — sticky card stack that scales as you scroll (patterns/sticky-card-stack.md)
-6. Contact/CTA   — giant type + email CTA; footer often a FLIPPED reprise of the hero video
+6. Contact/CTA   — closing chapter: giant proposition + specific action + useful context;
+                   one ambient visual system maximum, never stacked marquees/video/particles;
+                    footer may reprise the hero motif when it strengthens continuity
 ```
 
 ## Signature transitions
@@ -37,12 +39,19 @@ Personal portfolios, creative agencies, case-study-led sites. Multi-section scro
 ## Layout anti-repetition (taste.md)
 - Use ≥4 distinct layout families across the ~6–8 sections. Don't repeat the same
   image-left/text-right split more than twice consecutively.
+- Major work galleries combine a dominant subject with a second spatial signal: offset,
+  stagger, crop/height variation, overlap, or intentional negative space. Repeated 7/5 rows fail.
 - One eyebrow per ~3 sections. Real headings, no numbered-marker scaffolding by reflex.
 
 ## Craft checklist
 - [ ] Real work imagery/video throughout; no placeholder boxes.
 - [ ] Deliberate dark/light contrast rhythm; rounded-top overlap transitions.
 - [ ] Sticky project stack (or equivalent) for the work section.
+- [ ] Project title and primary metadata remain visible without hover; unequal project geometry
+      survives the final CSS instead of collapsing into one shared fixed height.
 - [ ] ≥4 layout families; restrained eyebrows; one accent across all sections.
 - [ ] First-reveal-only section entrances; one marquee max; full reduced-motion path.
-- [ ] Footer reprise (flipped hero video / echo) for cohesion.
+- [ ] Closing chapter carries proposition-scale type, one specific action, useful context,
+      and an earlier visual echo; utility metadata alone is not the close.
+- [ ] Closing chapter uses one proposition, one action, one compact context row, and at most one
+      ambient visual system.

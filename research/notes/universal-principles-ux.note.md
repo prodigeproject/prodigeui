@@ -77,7 +77,7 @@ appliedTo: []
 | Feedback timing | `motion/motion.tokens.json` | Duration categories aligned: `instant`, `quick`, `moderate`, `slow` | Feedback matches cognitive processing speed |
 | Mental model reference | `design-rules/structure.rules.json` | `platformConventions` reference section | Documents expected patterns per platform |
 | Recognition over recall | `design-rules/structure.rules.json` | `maxHiddenControls: 2`, `navLabelsRequired: true` | Forces visible, labeled navigation |
-| Accessibility enforcement | `quality-gate/criteria.json` | `wcag-aa-compliance` criterion with specific checks | Non-negotiable quality threshold |
+| Accessibility enforcement | `quality-gate/criteria.json` | `contrast-normal` criterion with specific checks | Non-negotiable quality threshold |
 | Progressive complexity | `components/` manifest | Components support `variant: "simple" | "advanced"` | Start simple, allow advancement |
 | Spatial consistency | `design-rules/layout.rules.json` | `fixedRegions` defining consistent element positions | Reduces spatial search cognitive cost |
 | Delight integration | `motion/presets/` | Success/completion animation presets | Meaningful delight without sacrificing efficiency |

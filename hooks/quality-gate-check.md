@@ -10,27 +10,33 @@ Evaluates the generated output against all Quality Gate criteria defined in `qua
 
 ## How to Activate
 
-1. After completing any design generation skill (e.g., `prodige-ui-end-to-end`), invoke this hook.
+1. After completing any design generation skill (e.g., `prodige-ui-end-to-end`), invoke this hook with the generated HTML path and a manual-review JSON path.
 2. The hook loads `quality-gate/criteria.json` and `quality-gate/anti-ai-slop.checklist.md`.
-3. Each criterion is evaluated against the generated output.
-4. A report is produced with overall pass/fail status.
-5. `npm run quality-gate` must also pass canonical authority, provenance, normative
+3. Execute `npm run quality-gate -- <artifact.html> --review <manual-review.json>` from the
+   installed distribution root. The command rejects a missing artifact and runs real desktop
+   and mobile browser evaluation.
+4. A report is produced with pass/fail/incomplete status. Missing manual evidence yields
+   `incomplete`, never a false pass.
+5. The command must also pass canonical authority, provenance, normative
    precedence, semantic references, all-theme contrast, bidirectional manifest, and
    generated-artifact freshness.
-6. Generated HTML is separately checked for UTF-8 integrity, runtime errors, reduced-motion
-   final visibility, focus/keyboard basics, target size, broken assets, and overflow.
+6. Generated HTML is checked for UTF-8 integrity, runtime errors, reduced-motion final
+   visibility, focus basics, target size, contrast, broken assets, and overflow.
 
 ## Integration
 
-- Can be invoked manually via the `quality-check` skill.
-- Can be configured to run automatically after any skill execution.
+- Is invoked manually via the `quality-check` skill on platforms without hooks.
+- Is wired as a shell command on platforms that support post-generation/Stop hooks.
+- Adapter-specific installation details live in `installers/`; the hook is no longer an
+  agent-prompt-only placeholder.
 - Returns results to the calling agent for iteration.
 
 ## Report Format
 
 Output follows `quality-gate/report.schema.json`:
-- `overall`: "pass" or "fail"
-- `criteria[]`: per-criterion status, issue description, location, and recommendation
+- `overall`: `pass`, `fail`, or `incomplete`
+- `summary`: exact pass/fail/flag/notEvaluable counts
+- `criteria[]`: per-criterion status, evidence, issue description, location, and recommendation
 
 ## Related Artifacts
 

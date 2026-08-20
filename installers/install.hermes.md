@@ -1,43 +1,23 @@
 # Installing ProdigeUI for Hermes
 
-## Prerequisites
+Run from the ProdigeUI distribution root:
 
-- Hermes installed and configured on your machine
-- A project directory initialized (any language/framework)
-- Terminal access to the project root
+```sh
+node scripts/install-prodigeui.mjs hermes <project-root>
+```
 
-## Installation Steps
+This installs `prodigeui/`, executable `scripts/`, root `package.json`, and root `AGENTS.md`.
+The entry point explicitly routes Hermes to the skill registry and model-robust contract;
+nested skill auto-registration is not assumed.
 
-1. Copy the `prodigeui/` folder into your project root:
-   ```
-   your-project/
-   ├── prodigeui/        <-- paste here
-   ├── src/
-   └── ...
-   ```
+In the target project run:
 
-2. Copy the entry-point file `AGENTS.md` to your project root:
-   ```
-   your-project/
-   ├── AGENTS.md         <-- entry point for Hermes
-   ├── prodigeui/
-   └── ...
-   ```
-   > `AGENTS.md` is provided in `prodigeui/` root. Copy it one level up.
+```sh
+npm install
+npx playwright install chromium
+npm test
+npm run quality-gate -- output.html --review manual-review.json
+```
 
-3. Hermes registers skills via the `prodigeui/skills/` directory. Skills are
-   discovered automatically when `AGENTS.md` points to the skill registry.
-
-## Verification
-
-- Open Hermes in your project directory.
-- Hermes should now reference ProdigeUI artifacts via `AGENTS.md`.
-- Try triggering: "design ui" to verify skill discovery.
-- Ask Hermes to "list available design skills" — it should enumerate ProdigeUI skills.
-
-## Troubleshooting
-
-- **Skills not detected**: Ensure `AGENTS.md` is at the project root (same level as `prodigeui/`).
-- **Tokens not found**: Verify `prodigeui/` folder structure is intact with `tokens/`, `themes/`, etc.
-- **Partial artifacts**: Check `prodigeui/manifest.json` lists all expected artifacts.
-- **Conflicts with existing AGENTS.md**: Merge ProdigeUI directives into your existing file, or rename the original and include a reference.
+Use the command in `prodigeui/hooks/quality-gate-check.hook.json` for supported automation.
+See `installers/README.md` for the portable distribution contract.

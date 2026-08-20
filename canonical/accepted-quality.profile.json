@@ -9,14 +9,14 @@
       "copy benchmark headlines, section order, class names, dimensions, or color values",
       "treat visual similarity as a substitute for product-specific reasoning"
     ],
-    "proof": "A no-reference generation must visibly retain the applicable intent, artifact credibility, type-role discipline, palette commitment, focal hierarchy, rhythm, and closing behavior."
+    "proof": "A no-reference generation must visibly retain the applicable intent, artifact credibility, type-role discipline, palette commitment, focal hierarchy, rhythm, and closing behavior. An explicit brief also requires a private fidelity ledger whose safe URLs, dependencies, content jobs, interactions, and literals are evidenced in source rather than silently flattened."
   },
   "profiles": {
     "operationalProduct": {
       "productIntent": "Make the value mechanism explicit in the first viewport: real work evidence changes a current plan or operating record without manual status reporting.",
       "artifactSemantics": {
         "required": "One legible domain-specific product state with real nouns, timestamps or ownership, a meaningful risk, and a next decision.",
-        "rule": "The artifact proves the headline; it is not a decorative dashboard shell or a stack of generic cards."
+        "rule": "The artifact proves the headline as one cohesive operating record; it is not a decorative dashboard shell, a KPI mosaic, or a stack of generic cards."
       },
       "typeRoles": {
         "display": "Technical-human editorial authority for identity and major hierarchy.",
@@ -31,6 +31,7 @@
         "poetic AI metaphor that obscures the product mechanism",
         "generic kanban or analytics chrome without domain evidence",
         "equal-card repetition across sections",
+        "dark dev-tool palette chosen by category reflex rather than product evidence",
         "agency-scale typography or theatrical effects that compete with trust",
         "new or muddy campaign hue introduced only at the final CTA"
       ]
@@ -47,14 +48,19 @@
         "annotation": "A controlled UI voice for navigation, captions, and project metadata."
       },
       "paletteCommitment": "Choose a committed product-derived color family with named structural roles. Saturated fields may carry composition; accents must recur with the same meaning and captions must own a stable contrasting backdrop.",
-      "focalHierarchy": "The proposition dominates, the concept graphic amplifies it, and compact studio copy explains it. No secondary element may compete for first read.",
-      "rhythmArgument": "Alternate high-volume identity moments with editorial breathing room, then increase density around work and capability before a large closing afterimage. Avoid one repeated agency section pattern.",
-      "closingBehavior": "Return to an established primary surface and reuse existing signal roles. The final action is conceptually tied to the studio voice and remains keyboard-safe.",
+      "focalHierarchy": "A specific proposition—not the studio name alone—dominates at poster scale; the concept graphic amplifies it, and compact studio copy explains it. No secondary element may compete for first read.",
+      "rhythmArgument": "Alternate high-volume identity moments with editorial breathing room, then increase density around work and capability before a large closing afterimage. Every major gallery combines dominance with at least one independent offset, stagger, crop or height variation, overlap, or intentional negative-space anchor. Let each work subject earn its own scale, crop, and field relationship; avoid repeated proportional rows, one repeated container topology, or forced equal project frames. Preserve that hierarchy in rendered CSS instead of canceling it with one shared fixed height or aspect ratio, and keep project identity plus primary metadata visible without hover or focus.",
+      "closingBehavior": "Return to an established primary surface and reuse existing signal roles. Build a restrained closing chapter with one proposition-scale statement, one specific action, one compact contact/navigation/availability row, one earlier visual echo, and no more than one ambient visual system; utility metadata alone is insufficient. If the brief explicitly supplies a closing video or asks for a footer reprise, that footage remains the single ambient system with poster, focal crop, reduced-motion fallback, and readable foreground ownership. The final action remains keyboard-safe.",
       "reject": [
         "black-orange AI agency template used by reflex",
         "cream editorial template with fashionable serif switching but no concept",
+        "studio wordmark used as the entire proposition without a memorable point of view",
         "generic WebGL particles unrelated to the proposition",
         "captions placed directly over uncontrolled artwork pixels",
+        "project imagery forced into matching card frames when varied scale would produce a stronger editorial sequence",
+        "project titles or primary metadata hidden until hover or focus",
+        "declared unequal project spans canceled by one shared fixed height, aspect ratio, or min-height",
+        "closing chapter overloaded with duplicate marquees, repeated slogans, or competing ambient systems",
         "shrinking expressive display type until the page becomes competent but forgettable"
       ]
     }
@@ -63,6 +69,13 @@
     "quality-profile-transfer",
     "type-role-integrity",
     "font-render-truth",
-    "closing-cta-color-continuity"
+    "closing-cta-color-continuity",
+    "expressive-spatial-rhythm",
+    "project-identity-visibility",
+    "authored-project-geometry",
+    "closing-chapter-completeness",
+    "closing-system-restraint",
+    "brief-intent-fidelity",
+    "scalar-utility-values"
   ]
 }

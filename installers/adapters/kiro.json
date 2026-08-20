@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "tool": "glm",
+  "tool": "kiro",
   "entryPoint": "AGENTS.md",
-  "installGuide": "installers/install.glm.md",
-  "nativeSkillPath": null,
+  "installGuide": "installers/install.kiro.md",
+  "nativeSkillPath": ".kiro/skills",
   "qualityGateCommand": "npm run quality-gate -- <artifact.html> --review <manual-review.json>",
   "hookDefinition": "prodigeui/hooks/quality-gate-check.hook.json",
-  "notes": "AGENTS.md loads the registry; executable gates remain at the distribution root."
+  "notes": "Kiro reads root AGENTS.md and discovers workspace skills from .kiro/skills."
 }

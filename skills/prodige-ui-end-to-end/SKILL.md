@@ -55,11 +55,16 @@ Actions:
    retrieval. A fresh no-reference run must still preserve the selected profile's value
    mechanism, credible artifact, type-role discipline, palette commitment, rhythm, and close.
 
+   Execute `canonical/generation.contract.json#oneBuildPreflight` before emitting any
+   implementation. Pre-resolve contrast pairs, type and weight budgets, 44x44 target boxes,
+   focal-subject scale, mobile containment, reduced motion, font delivery, and encoding so
+   the first artifact is the acceptance candidate rather than a knowingly failing draft.
+
 5. **Route: invent vs reach for a real system.** Read `craft/design-system-routing.md`.
    If design SERVES the product (dashboard, admin, enterprise, regulated), consider an
    official design system (Fluent/Carbon/Material/Radix/shadcn/govuk/uswds) before building
    a bespoke token layer. If design IS the product (landing, portfolio, brand), invent with
-   `craft/`. Record the decision; it changes Steps 3â€“4.
+   `craft/`. Record the decision; it changes Steps 3–4.
 
 ---
 
@@ -179,7 +184,7 @@ Actions:
 5. Each animation choice must link to a documented motion principle
 6. **Apply interaction-level motion craft** from `craft/patterns/motion-craft.md`: committed
    easing curves (not weak built-ins; `ease-in` banned on UI), entrance physics (never
-   `scale(0)` â†’ `scale(0.95)`+opacity), origin-aware popovers (modals exempt), interruptible
+   `scale(0)` → `scale(0.95)`+opacity), origin-aware popovers (modals exempt), interruptible
    transitions for rapid UI, asymmetric enter/exit, GPU-only properties. **No animation on
    keyboard-triggered or 100+/day actions.**
 
@@ -207,7 +212,13 @@ Actions:
 3. Apply component states and interactions per manifest specification
 4. Include accessibility attributes: roles, aria-labels, keyboard handlers, focus management
 5. Reference assets via unique IDs from `assets/assets.manifest.json` where needed
-6. **Build interactive parts with the modern patterns** in `craft/patterns/interaction-patterns.md`:
+6. When raster imagery has a semantic job, prefer user/project assets, then discover relevant
+   official or license-cleared real media online when web access is available. Verify rights,
+   download the selected asset locally, record source/license/retrieval metadata, and consume
+   the local file. Invoke image generation only when no authentic source fits or the concept
+   requires original artwork. Do not leave an image suggestion, gray placeholder, generic
+   blob, or empty oversized card in its place.
+7. **Build interactive parts with the modern patterns** in `craft/patterns/interaction-patterns.md`:
    native `<dialog>`/`inert` for modals, Popover API / anchor positioning / portal for
    dropdowns (escape overflow clipping), `:focus-visible` rings, roving tabindex for groups,
    skip links, visible form labels + validate-on-blur + `aria-live` errors, undo-toast over
@@ -228,7 +239,7 @@ Actions:
    - **Token compliance:** No raw/hardcoded values (hex, px, rem) outside token system
    - **Design Rules adherence:** Typography scale, grid alignment, contrast ratios
    - **Theme consistency:** All values sourced from active theme tokens
-   - **Accessibility:** WCAG 2.1 AA â€” contrast, keyboard, ARIA, focus indicators
+   - **Accessibility:** WCAG 2.1 AA — contrast, keyboard, ARIA, focus indicators
 2. Run `quality-gate/anti-ai-slop.checklist.md` indicators:
    - Consistent spacing rhythm (no arbitrary margins)
    - Intentional visual hierarchy (not random sizing)
@@ -254,8 +265,8 @@ Actions:
 ## Workflow Summary
 
 ```
-Brief Analysis â†’ Design Read â†’ Token Selection â†’ Component Selection
-     â†’ Layout Design â†’ Motion Design â†’ Implementation â†’ Quality Gate
+Brief Analysis → Design Read → Token Selection → Component Selection
+     → Layout Design → Motion Design → Implementation → Quality Gate
 ```
 
 If Quality Gate fails, loop back to the step that produced the violation and fix it.

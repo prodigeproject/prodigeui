@@ -4,6 +4,52 @@ Use this compact contract when the executing model is likely to imitate nearby e
 overbuild effects, or skip abstract taste guidance. The contract overrides benchmark-house
 habits but not an explicit user direction.
 
+## Cross-model convergence boundary
+
+Every model must converge on product intent, one product-specific focal artifact, visual
+thesis, functional type jobs, one committed palette family with owned foreground pairs,
+rhythm argument, closing-surface continuity, honest evidence status, accessibility, font
+delivery, responsive containment, and encoding. These are semantic acceptance invariants,
+not coordinates, class names, copy, section counts, or a benchmark silhouette.
+
+Headline wording, section order, grid proportions, artwork, crop, spacing expression,
+component selection, and motion details remain generative when the invariants and quality
+gate pass. Never feed approved HTML back as a visual template or judge a fresh result by
+pixel similarity.
+
+Use five passes: **read** the audience, route, intent, and quality profile; **thesis** the
+product-to-feeling-to-metaphor logic and required decisions; **compose** one credible focal
+artifact with one signature and no more than two supporting techniques; **harden** surfaces,
+fonts, targets, motion fallback, containment, evidence, and encoding; then **prove** desktop
+and mobile render truth. Repair semantic failures, not screenshot differences.
+
+## Research interpretation boundary
+
+Treat research as evidence, not scripture. Before a research-derived prescription affects
+generation, classify it using `canonical/system.authority.json#researchInterpretation` as
+evergreen, contextual, dated, or rejected. Prefer replicated cognition, perception,
+accessibility, and interaction findings over taste recipes; separate the principle from the
+historical visual example used to teach it; and cross-check platform claims against current
+standards.
+
+Keep discoverability, signifiers, constraints, mapping, feedback, reversibility,
+recognition-over-recall, meaningful hierarchy, content-first language, purposeful motion,
+and governed reuse as evergreen. Interpret whitespace as active framing or pacing rather
+than empty acreage; grids as alignment and rhythm rather than a universal 12-column page;
+minimalism as removal of cognitive noise rather than removal of identity or context; and
+consistency as conceptual and behavioral coherence rather than visual sameness.
+
+Reject universal landing-page sequences, cards for every grouping, viewport breakpoints as
+the only responsive strategy, decorative glass/grain/glow/parallax/particles/3D without a
+semantic job, universal timing tables, inversion-only dark mode, invented proof, and copied
+platform fashion. A contemporary technique still needs a product-specific reason,
+performance budget, and accessible fallback.
+
+Before code, identify the first-viewport product subject, the negative space that actively
+frames or paces it, the concept-bound technique, the no-motion/no-transparency/no-custom-font
+fallback, consequence and reversal for consequential actions, and content/container behavior
+beyond fixed viewport presets.
+
 ## Six lines to keep in working context
 
 1. **Derive, do not retrieve.** Write `product -> feeling -> physical metaphor`; every
@@ -21,9 +67,80 @@ habits but not an explicit user direction.
 5. **Prefer contrast and composition over effects.** Establish type scale, asymmetric
    balance, active negative space, and section rhythm before adding an engine. A clean
    CSS composition that communicates the product beats generic WebGL or video.
+   In expressive portfolio, studio, editorial, fashion, and creative-marketing work, every
+   major gallery needs two independent asymmetry signals: dominance plus offset, stagger,
+   crop/height variation, overlap, or an intentional negative-space anchor. A repeated 7/5
+   grid is proportional variation, not authored asymmetry. Do not repeat the same container
+   width and grid topology across consecutive expressive sections.
+   Keep each project's title and primary metadata visible without hover or focus. Confirm that
+   rendered CSS preserves the declared dominant/supporting geometry; a shared fixed height,
+   aspect ratio, or min-height must not flatten unequal spans into matching cards.
 6. **Inspect the rendered state.** At desktop and mobile, verify first viewport focal point,
    clipped text, horizontal overflow, dead space, and computed foreground/background for
    every interactive state. Scan for mojibake before delivery.
+
+7. **Balance visual mass, not just boxes.** Compare the apparent weight of the headline,
+   product/art artifact, chrome, and empty field in the first viewport. A balanced layout
+   may be asymmetrical, but it should have a deliberate counterweight: scale, alignment,
+   crop, color area, or a quiet field. Fix imbalance by changing hierarchy or anchoring,
+   never by sprinkling badges, gradients, shadows, or extra cards.
+
+8. **Keep the critique out of the interface.** Counterweight notes, research labels,
+   placeholder instructions, and reasoning vocabulary belong in working context or the
+   quality report, never in visible product or campaign copy. Let composition demonstrate
+   balance instead of explaining it to the visitor.
+
+9. **Use the most authentic relevant media.** Start with user-provided and project assets.
+   When they do not satisfy the art direction and web discovery is available, find relevant
+   official, editorial, or license-cleared real imagery; verify rights and subject fit,
+   download the selected file locally, record its source/license, and consume the local copy.
+   Use image generation only when no authentic source fits, licensing blocks reuse, or the
+   concept specifically requires original artwork. A real product state, photograph, object,
+   place, or authored work is normally stronger evidence than a synthetic approximation.
+   Never settle for an empty oversized card or generic CSS blob because imagery was omitted.
+
+10. **Any media must be integrated.** Reject an otherwise attractive sourced or generated
+    asset when it
+    reads as a rectangular insert inside a generic card. Rework crop, palette, edge treatment,
+    scale, and adjacent typography until media and layout share one art direction. If that
+    cannot be achieved, remove the asset and choose a more truthful product proof.
+
+11. **Prove fit at constrained desktop, not only wide desktop.** Render at 1280×800 as well
+    as mobile. The first viewport must preserve the proposition, primary action, and enough
+    of the focal artifact to identify it without an accidental below-fold void. This is a
+    hierarchy test, not a demand that every hero be exactly one viewport tall.
+
+12. **Harden intrinsically wide content.** In any grid track containing images, long display
+    copy, prices, or controls, use shrink-safe tracks such as `minmax(0, 1fr)`, put
+    `min-width: 0` on the child, and give display copy an intentional long-word wrap policy.
+    Keep action labels intact when wrapping would make the control ambiguous.
+
+13. **Choose navigation topology as part of art direction.** Do not reflexively emit
+    wordmark-left, links-right, pill-CTA chrome for every landing page. Choose centered,
+    split, indexed, utility-led, minimal, or conventional navigation because it supports
+    the product's voice and information architecture; preserve familiar semantics and
+    mobile operability whichever topology wins.
+
+## One-build preflight (before emitting code)
+
+The executable authority is `canonical/generation.contract.json#oneBuildPreflight`. Complete
+it in working context before writing the first implementation. The Quality Gate is proof,
+not a design-discovery loop for defects that can be predicted from the brief and CSS.
+
+- Resolve every background/foreground pair up front, including captions, emphasized words,
+  ticker text, buttons, and interaction states. Normal text requires 4.5:1 and large text 3:1.
+- Budget typography before selecting individual weights: two primary faces plus one
+  annotation face, with no more than four perceptual 100-weight bands in the rendered page.
+- Give every link and control a rendered box of at least 44px in both dimensions. Short text
+  labels need `min-width` as well as `min-height`.
+- Decide the focal subject and the relative scale/crop of expressive work before drawing a
+  grid. A tidy equal-card layout is not a neutral default.
+- Author desktop, mobile, reduced-motion, final content visibility, local font delivery,
+  and deterministic asset behavior in the first build.
+
+Do not intentionally emit a known-failing draft and plan to repair it. Internally rethink a
+risky color pair, weight set, target box, crop, or responsive rule before code reaches the
+artifact.
 
 ## Accepted v2 quality-profile transfer
 
@@ -46,6 +163,13 @@ template is not.
 
 - Use 4-5 distinct layout families across a full landing page. Never repeat equal cards for
   every section.
+- For expressive work showcases, let subject importance and crop determine scale. Do not
+  force every project into aligned picture cards merely to make the grid look tidy.
+- In an expressive-studio hero, the proposition must do more work than the studio wordmark.
+  Make a concept-specific claim the poster-scale first read; let the name sign the claim.
+- Artwork fields may be geometric or code-authored when the concept justifies them, but they
+  must read as finished campaign matter. Place titles and captions on owned surfaces, vary
+  subject scale deliberately, and alternate high-volume art with editorial breathing room.
 - Keep the hero to one headline, one supporting paragraph, one primary intent, and one
   artifact. Secondary CTA is allowed only when its intent differs.
 - Product artifact copy must contain domain nouns from the brief. Decorative fake UI fails.
@@ -84,14 +208,31 @@ new hue only for the final section. A full accent field is allowed when the acce
 sparingly earlier and the field owns explicit foreground and button colors with rendered
 contrast.
 
+For expressive pages, treat the close as a chapter rather than a utility footer. It needs
+proposition-scale type, one specific next action, useful contact/navigation/availability
+context, and a visual echo of an earlier motif. Copyright and social links may remain as
+metadata, but cannot carry the closing composition alone. There is no full-bleed quota:
+edge-to-edge media or color is optional and must be earned by the concept. Use no more than
+one ambient visual system in that chapter. Place it behind one proposition,
+one primary action, and one compact context row; remove duplicate marquees, repeated slogans,
+and competing video, particle, or scroll systems.
+
+When a CSS or Tailwind utility expects a scalar color, supply `currentColor` or a scalar
+semantic color token. Never interpolate gradient, shadow, or composite theme objects into
+scalar color utilities.
+
 ## Cascade and encoding locks
 
 - **Surface owns foreground:** any rule that sets a component background also sets its
   semantic text color in that same rule. Labels and icons inherit from the component root.
+- **Subdued text is still text:** eyebrows, metadata, helper labels, and annotations need a
+  context-specific foreground pair. A green label token that passes on paper must not be
+  inherited by a green surface; choose a light neutral or verified lighter tint instead.
 - Test computed styles inside both light and dark parents. Token-pair validation alone is
   insufficient because CSS inheritance can change the rendered pair.
-- Write UTF-8. Reject output containing common mojibake fragments (`ÃƒÂ¢`, `ÃƒÆ’`, `Ãƒâ€š`, `ÃƒÂ°Ã…Â¸`,
-  `ÃƒÂ¯Ã‚Â¸`, `ÃŽâ€œ`). Prefer ASCII punctuation. Encode intentional HTML symbols as entities such
+- Write UTF-8. Reject output containing the mojibake marker families identified by escaped
+  code points `U+00E2`, `U+00C3`, `U+00C2`, `U+00F0/U+0178`, and `U+FFFD`. Do not paste the
+  corrupt fragments into active guidance. Prefer ASCII punctuation. Encode intentional HTML symbols as entities such
   as `&bull;`, `&copy;`, `&rarr;`, `&ldquo;`, and `&rdquo;`.
 
 ## Anti-imitation check
@@ -110,7 +251,7 @@ Treat typography as product communication, not a fashionable font pairing.
   Tighten tracking only enough to create authority; do not force aggressive compression.
   Build a mature hierarchy: display, lead, body, action, and operational annotation have
   visibly different jobs. Keep paragraph measure deliberate (roughly 45-65 characters).
-- **NOVA / creative studios:** reject the clichÃ©d "AI agency template" combination. Display,
+- **NOVA / creative studios:** reject the clichéd "AI agency template" combination. Display,
   editorial serif, and UI typography must each own a different repeated function: identity,
   reading/editorial voice, and navigation/control respectively. Do not mix them decoratively.
 - **Artwork captions:** captions over artwork or photography require an owned backdrop,
@@ -134,6 +275,23 @@ Before coding, write five short decisions in working context:
 4. **Focal hierarchy:** name the single dominant subject and what must remain subordinate.
 5. **Rhythm argument:** describe how the page changes pace across sections without naming a
    reusable template or forcing a fixed sequence.
+
+Add a visual-weight note: state what counterweights the focal subject and where the quietest
+field is doing work. The first viewport should make its hierarchy legible even when imagery,
+motion, transparency, and custom fonts are temporarily disabled.
+
+Then remove that note from the rendered artifact. Inspect the full-page silhouette at desktop
+and mobile: consecutive sections must not create accidental blank bands. A large quiet field
+passes only when a focal subject visibly occupies, terminates, or is framed by it.
+
+Audit every repeated surface at the same time. Equal heights are not inherently coherent. A
+card that contains two short sentences must not inherit the height of a neighboring evidence
+panel unless its remaining field holds meaningful media, interaction, or a deliberate visual
+subject. Otherwise reduce its height/span or restructure the group.
+
+Apply the same density test to pricing. Three tiers do not automatically require three equal
+cards. When plan differences are sparse, use a compact matrix or one emphasized plan with
+short alternatives. Pricing should help comparison, not manufacture visual volume.
 
 Reject and rethink the direction when any answer could be pasted unchanged onto an unrelated
 SaaS, agency, portfolio, or store. Smaller or imitation-prone models must spend their effort

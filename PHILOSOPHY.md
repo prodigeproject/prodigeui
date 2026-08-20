@@ -104,7 +104,8 @@ Then implement it from the recipe, and only THEN layer the constraint discipline
 ### Spacing Rhythm (not arbitrary)
 - All values from a coherent scale (4px base: 8, 16, 24, 32, 48, 64, 80, 96)
 - Tighter within groups, wider between groups (Gestalt proximity)
-- Section padding: 64-96px between major sections (expressive heroes go full-viewport `100vh`)
+- Section padding: 64-96px between major sections. Expressive hero height follows the concept,
+  content, and focal subject; use `100vh` only when the first-view composition earns it.
 - Component padding: 16-32px inside cards/containers
 
 ### Color Intent (not AI defaults)
@@ -134,7 +135,7 @@ Then implement it from the recipe, and only THEN layer the constraint discipline
 ### Layout Intelligence (not centered-everything, but centered-with-depth is fine)
 - Asymmetric layouts create tension and guide the eye — use them
 - A centered hero is fine WHEN it has real media, texture, and motion (not a flat gradient)
-- Full-viewport cinematic composition for expressive heroes; `max-width: 1200px` for
+- Concept-led cinematic composition for expressive heroes; `max-width: 1200px` for
   content layouts, `720px` for reading text
 - Layered z-index (ghost type behind subject, glass chrome above media) creates depth
 - Whitespace as a design tool (generous, not filler)

@@ -97,6 +97,22 @@
 - Create visual hierarchy: one prominent card + two supporting. Use size or elevation to differentiate.
 - Apply a "recommended" badge or highlight to guide decision-making.
 - Consider a comparison table for feature-heavy content instead of card repetition.
+- In expressive galleries, combine dominance with a second independent signal: offset, stagger,
+  crop/height variation, overlap, or intentional negative space. Repeated 7/5 rows remain flat.
+- Rotate container width or topology between consecutive expressive chapters; changing images
+  inside the same frame does not create rhythm.
+- Keep project title, category/year, and the primary identity cue visible without hover or focus.
+- Verify the rendered CSS preserves intended dominance and varied geometry; a shared fixed height,
+  aspect ratio, or min-height must not turn unequal project spans back into matching cards.
+
+### 13a. Instead of a utility-only expressive footer
+
+- End with a closing chapter: proposition-scale type, one specific action, useful
+  contact/navigation/availability context, and a visual echo from earlier in the page.
+- Keep copyright and social links as metadata inside or below the chapter, not as the finale.
+- Full-bleed is optional. Scale, spacing, and hierarchy can resolve a contained close.
+- Use only one ambient visual system behind one proposition, one primary action, and one compact
+  context row. Remove duplicate marquees, repeated slogans, and competing video/particle layers.
 
 ### 14. Instead of unquestioned Inter + Slate-900
 
@@ -210,7 +226,7 @@ expressive work.
 | 1 | **Hero signature** | Centered text on a flat color | Crossfading video / cursor spotlight / magnetic hero / giant ghost type | `craft/patterns/video-hero-crossfade.md`, `cursor-spotlight-mask.md`, `magnetic-hover.md` |
 | 2 | **Typography** | Untouched system/Inter, default tracking | Display face at fluid `clamp()` scale, tight negative tracking | `craft/patterns/fluid-display-type.md` |
 | 3 | **Motion choreography** | Uniform fade-in, or none | Staggered word/char reveal, scroll-linked sweep, sequenced entrance | `craft/patterns/text-reveal.md`, `motion/choreography.md` |
-| 4 | **Texture / depth** | Flat color/gradient field | Grain overlay, liquid glass, real shadow, layered z-index | `craft/patterns/grain-noise-overlay.md`, `liquid-glass.md` |
+| 4 | **Material coherence** | Arbitrary effects or unresolved flatness | Surface treatment—flat or dimensional—supports hierarchy, feedback, and the concept | `craft/model-robust-generation.md` |
 | 5 | **Real media** | Gray placeholder boxes | Real video/image/illustration integral to the concept | `assets/asset-sourcing.guide.md` |
 | 6 | **Focal hierarchy** | Everything equal weight | One dominant element per viewport; bento over equal cards | `craft/patterns/bento-grid.md` |
 

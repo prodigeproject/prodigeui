@@ -1,6 +1,51 @@
 {
   "schemaVersion": 1,
   "description": "Executable creative-decision contract used by model-robust generation and its quality gate.",
+  "oneBuildPreflight": {
+    "goal": "The first emitted implementation must satisfy every automated quality criterion; do not rely on a later visual repair pass for predictable defects.",
+    "beforeCode": [
+      "name the selected quality profile, product intent, visual thesis, type jobs, focal hierarchy, rhythm argument, and closing surface",
+      "build a private brief-fidelity ledger of every supplied URL, explicitly requested dependency, named section or content job, named interaction, and literal content item; require concrete source evidence for every safe item and preserve visible intent when security, accessibility, reduced-motion, or collision safety requires a safer technique",
+      "classify each research-derived visual prescription as evergreen, contextual, dated, or rejected; record why it fits this product, audience, platform, and content",
+      "select one signature visual or interaction idea and at most two supporting techniques; every effect must improve hierarchy, affordance, feedback, spatial understanding, or brand meaning",
+      "assign every repeated surface an owned foreground pair and reject normal-text pairs below 4.5:1 or large-text pairs below 3:1 before choosing decorative combinations",
+      "limit rendered typography to two primary faces plus one annotation face and no more than four perceptual 100-weight bands",
+      "reserve platform-appropriate target geometry and spacing; on touch web use at least 44 by 44 CSS pixels, while pointer-dense interfaces may use the canonical 32px desktop target",
+      "choose the hero focal subject and expressive work-subject scale before laying out cards or frames",
+      "for expressive portfolio, studio, editorial, fashion, and creative-marketing galleries, require two independent asymmetry signals: dominance plus offset, stagger, crop or height variation, overlap, or an intentional negative-space anchor; reject repeated proportional grids and consecutive reuse of the same container topology",
+      "keep project identity and metadata visible without hover or focus; title, category, year, and the primary project cue must survive touch input, reduced motion, screenshots, and static preview",
+      "prove authored project geometry in the rendered layout: declared dominance, span, crop, and height variation must remain visibly different after CSS; reject one shared fixed height, aspect ratio, or min-height that cancels the intended hierarchy",
+      "make an asset decision before composition: prefer user and project assets, then relevant official or license-cleared real media discovered online and downloaded locally; generate original imagery only when no authentic source fits or the concept specifically requires new artwork",
+      "integrate generated media into the art direction: its crop, palette, scale, surface transition, and neighboring type must feel authored as one composition; reject a generated image merely dropped into a generic card",
+      "for every sourced or generated asset, verify subject relevance and usage rights, record source/license/provenance, store the selected file locally, and consume that local file without remote runtime dependency",
+      "audit visual mass at the first viewport: compare the dominant text block, artifact/media, and intentional empty field; rebalance scale, alignment, or anchoring when one side feels heavier without inventing decoration",
+      "size cards from content and composition rather than equal-height convenience; if a large card has unused area, add meaningful product evidence or media, reduce its span or height, or change the layout",
+      "choose pricing topology from comparison complexity: use cards only when each plan contains enough differentiated evidence; otherwise use a compact comparison table, segmented matrix, or one featured plan with concise alternatives",
+      "keep design rationale private: never render audit notes, counterweight explanations, placeholder instructions, or system terminology as user-facing copy",
+      "verify section adjacency at desktop and mobile; reject empty vertical bands that do not frame a focal subject, separate a meaningful chapter, or support comprehension",
+      "render at 1280 by 800 and verify that the proposition, primary action, and identifiable focal artifact form an intentional first viewport without an accidental hero-height void",
+      "use shrink-safe minmax grid tracks and min-width zero for image, long-display-copy, price, and control regions; define deliberate display wrapping and keep action labels intact",
+      "choose navigation topology from product voice and information architecture instead of reflexively emitting wordmark-left, links-right, and a pill CTA",
+      "limit the closing chapter to one ambient visual system behind one proposition, one primary action, and one compact context row; when the brief explicitly requests a closing video, preserve that footage as the one ambient system with a poster and readable scrim; remove duplicate marquees, repeated slogans, and competing video or particle layers",
+      "when a CSS or Tailwind utility expects a scalar color value, use a scalar color value such as currentColor or a named semantic color token; never interpolate a gradient object, shadow object, or composite theme namespace into a scalar utility",
+      "write desktop and mobile containment rules, final visible content states, font delivery, and reduced-motion behavior into the first implementation",
+      "use local deterministic assets, UTF-8 text, and encoded HTML symbols; do not depend on remote runtime requests"
+    ],
+    "surfacePairRule": "Any selector that changes a surface background also assigns or inherits a verified foreground role for text, icons, captions, hover, focus, and active states.",
+    "contextualLabelRule": "Labels, eyebrows, metadata, and subdued text require their own verified foreground on every dark, accent, image, and tinted surface; never reuse a same-hue label token merely because it works on the page background.",
+    "firstBuildAcceptance": [
+      "no runtime errors, external requests, broken assets, mojibake, hidden meaningful content, or horizontal overflow",
+      "no conspicuously empty card whose size is unsupported by content, evidence, interaction, or concept-specific media",
+      "project titles and primary metadata remain visible without hover or focus, and rendered project spans preserve their intended dominant and supporting hierarchy",
+      "the closing chapter contains no more than one ambient visual system, one proposition, one primary action, and one compact context row",
+      "every safe supplied URL, explicitly requested dependency, named section or content job, named interaction, and literal content item has concrete source evidence",
+      "all emitted scalar color utilities resolve to scalar color values rather than gradient, shadow, or composite theme objects",
+      "zero normal-text and large-text contrast failures at desktop and mobile",
+      "zero touch targets below 44 by 44 CSS pixels and zero pointer-only desktop targets below the canonical 32px geometry",
+      "intended display font rendered, no more than three functional font families, and no more than four perceptual weight bands",
+      "reduced-motion leaves all content visible and caps essential transitions at 100ms"
+    ]
+  },
   "requiredDecisions": [
     "productIntent",
     "visualThesis",
@@ -43,9 +88,15 @@
         "displayVoice": "identity face with enough character to own repeated display moments",
         "bodyVoice": "editorial reading voice selected for the concept",
         "annotationVoice": "UI/control voice kept out of expressive prose",
+        "compositionTests": [
+          "the first viewport states a concept-specific proposition at identity scale rather than presenting the studio name alone",
+          "work subjects use authored artwork, variable scale, deliberate crop, and owned text backdrops instead of equal picture cards",
+          "poster-volume moments alternate with editorial breathing room and utility lists so the whole page does not shout at one volume"
+        ],
         "avoid": [
           "fashionable agency pairing without repeated functional roles",
-          "decorative font switching inside one semantic role"
+          "decorative font switching inside one semantic role",
+          "equalized project cards that suppress the focal subject, crop logic, or editorial rhythm"
         ]
       }
     },
@@ -60,12 +111,19 @@
     "reuseEstablishedSignalToken": true,
     "allowNewHueAtClose": false,
     "surfaceOwnsForeground": true,
-    "rule": "The closing CTA resolves the established palette story. Reuse the page's signal/accent or a primary surface; do not introduce a muddy near-match or a new campaign color at the final section.",
+    "rule": "The closing CTA resolves the established palette story and feels like a decisive destination, not a thin utility bar. On expressive pages it forms a restrained closing chapter with one proposition-scale statement, one specific action, one compact contact/navigation/availability row, one earlier visual echo, and no more than one ambient visual system. When the brief explicitly requested a closing video or footer reprise, preserve that footage as the single ambient system with an owned poster, responsive focal crop, reduced-motion fallback, and a readable scrim no darker than 50% black; do not silently replace it with a flat surface, marquee, particles, or generic gradient. Reuse the page's signal/accent or a primary surface; do not introduce a muddy near-match or a new campaign color at the final section.",
     "largeAccentSurfaceCondition": "A full accent field is allowed only when the accent was restrained earlier and text/button contrast is verified on the rendered surface."
   },
   "requiredQualityCriteria": [
     "type-role-integrity",
     "font-render-truth",
-    "closing-cta-color-continuity"
+    "closing-cta-color-continuity",
+    "expressive-spatial-rhythm",
+    "project-identity-visibility",
+    "authored-project-geometry",
+    "closing-chapter-completeness",
+    "closing-system-restraint",
+    "brief-intent-fidelity",
+    "scalar-utility-values"
   ]
 }

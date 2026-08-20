@@ -1,6 +1,6 @@
 {
   "name": "ProdigeUI",
-  "version": "1.0.0",
+  "version": "3.0.4",
   "description": "A portable UI/UX knowledge system for AI coding agents",
   "artifacts": [
     {
@@ -11,6 +11,11 @@
     {
       "path": "CLAUDE.md",
       "type": "entry-point",
+      "status": "created"
+    },
+    {
+      "path": "NOTICE.md",
+      "type": "documentation",
       "status": "created"
     },
     {
@@ -281,6 +286,11 @@
     {
       "path": "canonical/system.authority.json",
       "type": "configuration",
+      "status": "created"
+    },
+    {
+      "path": "components/README.md",
+      "type": "documentation",
       "status": "created"
     },
     {
@@ -609,6 +619,11 @@
       "status": "created"
     },
     {
+      "path": "installers/README.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
       "path": "installers/adapters/antigravity.json",
       "type": "adapter",
       "status": "created"
@@ -639,6 +654,11 @@
       "status": "created"
     },
     {
+      "path": "installers/adapters/kiro.json",
+      "type": "configuration",
+      "status": "created"
+    },
+    {
       "path": "installers/install.antigravity.md",
       "type": "installer",
       "status": "created"
@@ -666,6 +686,11 @@
     {
       "path": "installers/install.hermes.md",
       "type": "installer",
+      "status": "created"
+    },
+    {
+      "path": "installers/install.kiro.md",
+      "type": "documentation",
       "status": "created"
     },
     {
@@ -846,6 +871,16 @@
     {
       "path": "quality-gate/criteria.json",
       "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "quality-gate/criteria.schema.json",
+      "type": "schema",
+      "status": "created"
+    },
+    {
+      "path": "quality-gate/example.report.json",
+      "type": "configuration",
       "status": "created"
     },
     {

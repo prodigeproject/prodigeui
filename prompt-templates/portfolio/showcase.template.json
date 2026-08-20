@@ -9,7 +9,9 @@
     "Layout must use full-width or wide-grid options from layout.rules.json",
     "Motion presets must enhance browsing without distracting from content",
     "Assets (project thumbnails) referenced via Design_Asset_Package IDs",
-    "Comply with Quality_Gate: visual hierarchy guides eye to work samples, proper semantic structure"
+    "Comply with Quality_Gate: visual hierarchy guides eye to work samples, proper semantic structure",
+    "If the brief explicitly requests closing footage, preserve it as the footer's single ambient system with poster, responsive focal crop, reduced-motion still, and readable scrim",
+    "Build a private brief-fidelity ledger and preserve every safe supplied URL, dependency, named content job, interaction, and literal with concrete source evidence"
   ],
   "outputCriteria": {
     "format": "Page layout spec with project grid, project detail overlay, and navigation using token references",
@@ -18,7 +20,9 @@
       "Typography scale creates clear hierarchy between project titles and metadata",
       "Transitions between states use Motion_Library presets",
       "Color palette is restrained, using surface and text tokens primarily",
-      "No raw visual values in the output"
+      "No raw visual values in the output",
+      "Explicitly requested cinematic closing footage is present and remains visibly legible",
+      "Every safe item in the brief-fidelity ledger has concrete source evidence"
     ],
     "accessibilityRequirements": [
       "All project images have descriptive alt text summarizing the work",

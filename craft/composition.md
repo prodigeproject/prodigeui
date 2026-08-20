@@ -41,8 +41,28 @@ Open the matching file in `craft/compositions/`. Copy its spine and z-index laye
 - Use ≥4 distinct layout families across ~6–8 sections (anti-repetition).
 - Alternate contrast beats (dark/light), use rounded-top negative-margin overlaps for premium
   transitions.
+- For expressive galleries, require two independent spatial signals: one dominant subject plus
+  offset, stagger, crop/height variation, overlap, or a negative-space anchor. A repeated
+  proportional split is one signal, not a complete composition.
+- Do not reuse the same container width and grid topology in consecutive expressive sections.
+- Keep project identity and primary metadata visible without hover or focus. Verify the final
+  CSS preserves intended unequal spans; shared fixed heights or aspect ratios may not flatten
+  dominant and supporting work into matching cards.
 - One eyebrow per ~3 sections. Real headings, not numbered-marker scaffolding.
 - Long lists (>5) switch UI component (grid/tabs/carousel), never a longer list.
+
+### 5a. Compose the closing chapter
+An expressive page does not end with a thin copyright row. Close with proposition-scale type,
+one specific action, useful contact/navigation/availability context, and a visual motif already
+introduced earlier. Utility metadata sits inside or below this chapter. Full-bleed is optional;
+the close may be contained when scale, spacing, and hierarchy create the resolution.
+Use one ambient visual system at most, behind one proposition, one primary action, and one
+compact context row. Duplicate marquees, repeated slogans, or competing video/particle layers
+turn the close into noise rather than resolution.
+If the brief explicitly requests a closing video or a mirrored reprise of hero footage, retain
+it as that one ambient system. Require a poster/static fallback, responsive focal crop,
+reduced-motion behavior, and a readable localized scrim (50% black maximum); never silently
+substitute a flat surface, generic gradient, or unrelated effect.
 
 ### 6. Plug technique detail, then validate
 Wire recipes from `patterns/` + `effects-catalog.md`. Then run the quality gate (negative slop
@@ -56,6 +76,15 @@ must clearly outrank everything else by SIZE, CONTRAST, or MOTION:
 - Giant-type hero → the headline (or the real subject overlapping ghost type) dominates.
 - Bento → one hero cell dominates by span + media richness.
 If two things compete for "most important," the composition is flat. Cut or demote one.
+
+### Visual-mass audit
+
+After the first viewport exists, squint or temporarily remove imagery and motion. Compare
+the apparent mass of the headline, artifact/media, navigation, CTA, and empty field. Balance
+does not mean equal columns or mirrored geometry: a large quiet field can counter a compact
+dark artifact, and a small high-contrast action can counter a broad low-contrast headline.
+Name the counterweight in the Design Read. If the page feels heavy on one side, adjust scale,
+anchoring, crop, or contrast before adding another visual treatment.
 
 ## Type scale relationships across the page (not just the hero)
 

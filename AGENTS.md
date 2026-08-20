@@ -26,8 +26,9 @@ ProdigeUI is a **portable UI/UX knowledge system** that equips you (AI agent) wi
 - A quality gate ensuring output is free of "AI slop"
 - The **Three Dials** system for calibrating aesthetic direction per project
 
-Use these artifacts as the foundation for every visual decision.
-**Never use raw values** — always reference Design Tokens.
+Use these artifacts as the foundation for every visual decision. Define concrete values once
+at a token boundary; repeated component styling must consume semantic variables rather than
+repeating raw literals.
 
 ---
 
@@ -65,6 +66,22 @@ choose one hero signature, cap effect complexity, build the first viewport aroun
 product/story artifact, and run a rendered-state contrast plus encoding check. Do not copy
 an older benchmark HTML as a starting point. Re-derive from the current brief.
 
+That same contract separates semantic invariants that should converge across models from
+layout, copy, artwork, and motion details that must remain generative. It also routes
+research-derived guidance through the canonical evergreen/contextual/dated/rejected policy,
+so historical examples never become aesthetic defaults.
+
+Immediately after it, read `canonical/accepted-quality.profile.json`. Select the applicable
+semantic profile from product intent and transfer its reasoning standard without copying
+benchmark copy, section geometry, class names, dimensions, or color values.
+
+Before emitting implementation code, execute
+`canonical/generation.contract.json#oneBuildPreflight` in working context. Treat the first
+build as the acceptance candidate: pre-resolve surface contrast, type/weight budgets, 44x44
+targets, focal-subject scale, mobile containment, reduced motion, font delivery, and encoding.
+The rendered Quality Gate verifies that work; it must not be used as permission to emit a
+predictably broken draft.
+
 Every UI/UX design task follows this sequence:
 
 ```
@@ -72,10 +89,10 @@ Every UI/UX design task follows this sequence:
 2. Design Read           — Set aesthetic direction, calibrate Three Dials.
                            MANDATORY: read `craft/design-read.md` — declare the one-line
                            Design Read, set dials, set the Soul Formula (80/20 + engine
-                           moment when MOTION_INTENSITY ≥ 7).
+                           moment when MOTION_INTENSITY ≥ 0.7).
 3. Craft Selection       — For expressive work (VARIANCE>=0.6 / MOTION>=0.5), pick a
                            hero signature + motion signature + texture from craft/.
-                           MOTION ≥ 7: also pick an engine element from
+                           MOTION ≥ 0.7: also pick an engine element from
                            `craft/patterns/engine-interactivity.md` (ScrollTrigger,
                            Three.js, particles, Lenis, etc) — static page = FAIL here.
 4. Token Selection       — Choose/customize theme from Theme_Catalog
@@ -87,7 +104,8 @@ Every UI/UX design task follows this sequence:
                            the craft-presence rubric (positive gate) for expressive work
 ```
 
-If Quality Gate fails, loop back to the step that produced the violation and fix.
+If an unforeseen Quality Gate failure remains, loop back to the step that produced the
+violation and fix it, then record why the preflight missed it so the contract can improve.
 For expressive output, "competent but forgettable" is a FAILURE — loop back to Craft
 Selection (Step 3). Only deliver once the negative gate passes AND (for expressive work)
 the craft-presence rubric scores >= 9/12.
@@ -98,7 +116,10 @@ See `skills/prodige-ui-end-to-end/SKILL.md` for the detailed version of each ste
 
 ## Core Principles
 
-1. **Token-first**: All visual values MUST come from Design Tokens. No hardcoded hex, px, or rem.
+1. **Token-first**: Repeated visual roles MUST be declared at a token-definition boundary and
+   consumed through semantic/component variables. Concrete hex, px, or rem values are valid
+   inside token definitions and one-off generated artwork; repeating them directly across
+   component declarations is a failure.
 2. **Rule-backed**: Every design decision is supported by measurable Design Rules with rationale traced to research sources.
 3. **Three Dials calibration**: Every project sets `DESIGN_VARIANCE`, `MOTION_INTENSITY`, and `VISUAL_DENSITY` (0.0-1.0 each) to calibrate output appropriately for the use-case.
 4. **Accessible**: WCAG 2.1 AA minimum — 4.5:1 contrast (normal text), 3:1 (large text), keyboard navigation, ARIA roles, focus indicators.

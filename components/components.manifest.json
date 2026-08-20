@@ -1,6 +1,9 @@
 {
   "schemaVersion": 1,
-  "description": "ProdigeUI Component Library manifest. Each component references only Design Tokens (no raw values). Organized by Atomic Design levels.",
+  "description": "ProdigeUI component specification catalog. It is agent-consumable metadata, not an importable runtime package. Each specification references Design Tokens and is organized by Atomic Design levels.",
+  "deliveryModel": "specification",
+  "implementationRequired": false,
+  "consumption": "Agents select specifications by name, then implement them in the target project's framework using the listed variants, states, accessibility contract, and token roles.",
   "categories": [
     "input",
     "navigation",

@@ -2,12 +2,13 @@
   "description": "Motion tokens for duration and easing. All motion presets reference these tokens.",
   "tokens": {
     "duration": {
-      "instant": { "value": "100ms", "description": "Tooltip, micro-feedback (80-120ms)" },
+      "instant": { "value": "0ms", "description": "Immediate focus and state visibility; no interpolation" },
+      "micro": { "value": "100ms", "description": "Tooltip and essential reduced-motion opacity feedback" },
       "fast": { "value": "150ms", "description": "Button press, toggle (120-180ms)" },
       "normal": { "value": "250ms", "description": "Icon, card standard (200-350ms)" },
       "slow": { "value": "350ms", "description": "Modal, panel (300-400ms)" },
       "emphasis": { "value": "500ms", "description": "Page transition (400-600ms)" },
-      "dramatic": { "value": "700ms", "description": "Hero reveals, max UI duration" }
+      "dramatic": { "value": "700ms", "description": "Expressive hero reveal only; product/UI sequences remain capped at 600ms" }
     },
     "easing": {
       "entrance": { "value": "cubic-bezier(0.33, 1, 0.68, 1)", "description": "Decelerate — elements appearing" },

@@ -595,6 +595,7 @@ This synthesis directly informs the following ProdigeUI artifacts:
 10. **`design-rules/color.rules.json`** — contrast ratios, palette limits, semantic roles
 11. **`design-rules/layout.rules.json`** — grid columns, breakpoints, spacing unit, gutter ratios
 12. **`design-rules/structure.rules.json`** — hierarchy rules, nav limits, touch targets, cognitive budget
-13. **`quality-gate/criteria.json`** — 25-point anti-slop checklist, measurable quality criteria
+13. **`quality-gate/criteria.json`** — schema-validated anti-slop and artifact-quality registry;
+    use the live array length rather than a hardcoded historical count
 14. **`prompt-templates/*/`** — template structure, Design Read, use-case dial presets
 15. **`skills/*/SKILL.md`** — frontmatter schema, 8-step workflow, validation integration

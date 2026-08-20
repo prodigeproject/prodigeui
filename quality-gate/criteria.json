@@ -4,7 +4,7 @@
     {
       "id": "token-coverage",
       "category": "tokens",
-      "description": "All visual values sourced from Design Tokens (no raw values)",
+      "description": "Repeated visual roles are declared at a token-definition boundary and consumed through semantic variables. Raw literals are allowed inside token definitions and one-off generated artwork, but not as repeated component styling.",
       "type": "automated",
       "severity": "fail"
     },
@@ -40,7 +40,7 @@
       "id": "spacing-consistency",
       "category": "tokens",
       "description": "All spacing values from token scale (multiples of 4px)",
-      "type": "automated",
+      "type": "manual",
       "severity": "fail"
     },
     {
@@ -79,6 +79,55 @@
       "severity": "fail"
     },
     {
+      "id": "expressive-spatial-rhythm",
+      "category": "composition",
+      "description": "Expressive portfolio, studio, editorial, fashion, and creative-marketing galleries use at least two independent asymmetry signals: dominance plus offset, stagger, crop or height variation, overlap, or intentional negative space. Repeated proportional grids and consecutive reuse of the same container topology fail.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "project-identity-visibility",
+      "category": "composition",
+      "description": "Project title, category, year, and primary identity cue remain visible without hover or focus. Touch, reduced-motion, screenshot, and static-preview states must not erase project meaning.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "authored-project-geometry",
+      "category": "composition",
+      "description": "Rendered project geometry preserves declared dominance, span, crop, and height variation. A shared fixed height, aspect ratio, or min-height that visually equalizes intended unequal items fails.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "closing-chapter-completeness",
+      "category": "composition",
+      "description": "Expressive pages resolve with proposition-scale type, one specific action, useful contact/navigation/availability context, and continuity with an earlier motif. A thin copyright or social row alone fails.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "closing-system-restraint",
+      "category": "composition",
+      "description": "The closing chapter uses no more than one ambient visual system behind one proposition, one primary action, and one compact context row. When the brief explicitly requires closing footage, the video must remain that ambient system with a poster, responsive crop, reduced-motion fallback, and readable scrim. Dropping it for a flat footer, duplicate marquees, repeated slogans, or competing video/particle systems fails.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "scalar-utility-values",
+      "category": "tokens",
+      "description": "Every CSS or Tailwind utility that expects a scalar color resolves to a scalar color value. Gradient objects, shadow objects, and composite theme namespaces interpolated into scalar utilities fail.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "brief-intent-fidelity",
+      "category": "quality",
+      "description": "Every safe supplied URL, explicitly requested dependency, named section or content job, named interaction, and literal content item has concrete source evidence. Security, accessibility, reduced-motion, and collision safety may replace an unsafe technique, but the requested visible intent must remain. Silent flattening into generic static sections fails.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
       "id": "quality-profile-transfer",
       "category": "quality",
       "description": "When a canonical accepted quality profile applies, the output transfers its semantic product intent, artifact credibility, type roles, palette commitment, focal hierarchy, rhythm, and closing behavior without copying benchmark copy or geometry.",
@@ -88,7 +137,7 @@
     {
       "id": "weight-limit",
       "category": "design-rules",
-      "description": "Maximum 3-4 font weights used",
+      "description": "Maximum four perceptual font-weight bands. Nearby variable-font values that resolve to the same 100-weight band count as one role.",
       "type": "automated",
       "severity": "fail"
     },
@@ -103,7 +152,7 @@
       "id": "state-coverage",
       "category": "components",
       "description": "All interactive components document all applicable states",
-      "type": "automated",
+      "type": "manual",
       "severity": "fail"
     },
     {
@@ -205,14 +254,14 @@
       "id": "absolute-position-containment",
       "category": "composition",
       "description": "Every element with position:absolute MUST have an explicit positioned ancestor (position:relative on the intended parent). Without this, percentage-based width/height compute against an unintended container, causing elements (e.g. toggle thumbs, slider indicators) to render at viewport-scale size. This is a critical layout bug.",
-      "type": "auto",
+      "type": "automated",
       "severity": "fail"
     },
     {
       "id": "image-fallback-resilience",
       "category": "composition",
       "description": "All image containers (img parent or element with background-image) MUST define a background-color fallback (e.g. var(--surface-2)). Without this, failed/blocked images render as broken icons or browser-chosen placeholder shapes instead of a graceful colored rectangle. See assets/fallback-images.md.",
-      "type": "auto",
+      "type": "automated",
       "severity": "flag"
     },
     {
@@ -233,7 +282,7 @@
       "id": "feedback-timing",
       "category": "interaction",
       "description": "System provides visual feedback within 400ms of user action (Doherty Threshold)",
-      "type": "automated",
+      "type": "manual",
       "severity": "fail"
     },
     {
@@ -249,6 +298,34 @@
       "description": "No more than 4 unchunked items displayed without visual grouping",
       "type": "manual",
       "severity": "flag"
+    },
+    {
+      "id": "runtime-integrity",
+      "category": "quality",
+      "description": "Generated HTML has valid document semantics and UTF-8 text, produces no runtime errors, and makes no unexpected external requests during deterministic evaluation.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "responsive-overflow",
+      "category": "responsive",
+      "description": "Rendered desktop and mobile viewports have zero horizontal overflow.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "meaningful-content-visibility",
+      "category": "accessibility",
+      "description": "Meaningful headings, paragraphs, articles, sections, and main content remain visible in the final rendered state, including reduced-motion mode.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "asset-load-integrity",
+      "category": "assets",
+      "description": "Every rendered image and media dependency loads successfully in the evaluated artifact.",
+      "type": "automated",
+      "severity": "fail"
     }
   ]
 }

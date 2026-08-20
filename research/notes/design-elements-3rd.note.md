@@ -70,7 +70,7 @@ appliedTo: []
 | Finding | ProdigeUI Artifact | Field/Section | Rationale |
 |---------|-------------------|---------------|-----------|
 | Active space principle | `tokens/primitive.tokens.json` | Spacing scale with intentional ratio progression | Space is designed, not default |
-| Color interaction awareness | `quality-gate/criteria.json` | `color-interaction` criterion: pairs validated in both modes | Adjacent color effects considered |
+| Color interaction awareness | `quality-gate/criteria.json` | `theme-consistency` criterion: pairs validated in both modes | Adjacent color effects considered |
 | Elevation hierarchy | `tokens/primitive.tokens.json` | `shadow` scale: 3 levels (low, medium, high) | Material hierarchy through elevation |
 | Typography personality | `tokens/primitive.tokens.json` | `fontFamily` limited to 2; `fontWeight` limited to 3-4 per face | Prevents type proliferation |
 | Modularity through tokens | Token architecture (primitive → semantic → component) | Three-layer token structure | Shared DNA across all components |

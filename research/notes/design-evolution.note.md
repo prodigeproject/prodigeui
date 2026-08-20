@@ -74,9 +74,9 @@ appliedTo: []
 | Form language spectrum | `tokens/primitive.tokens.json` | `borderRadius` scale: 0, 2, 4, 8, 12, 9999 (geometric → organic) | Encodable brand personality |
 | Layering/z-index | `tokens/primitive.tokens.json` | `zIndex` scale: base, dropdown, sticky, modal, popover, toast | Prevents arbitrary stacking |
 | Density adaptation | `tokens/primitive.tokens.json` | `density` multiplier system: compact(0.75), comfortable(1), spacious(1.25) | Cultural/preference accommodation |
-| Reduction principle | `quality-gate/criteria.json` | `element-necessity` criterion: each element must serve documented purpose | Prevents AI over-decoration |
+| Reduction principle | `quality-gate/criteria.json` | `anti-slop-patterns` criterion: each element must serve documented purpose | Prevents AI over-decoration |
 | Material honesty | `design-rules/structure.rules.json` | `materialHonesty` rules: no fake textures, consistent light source, physics-based motion | Digital-appropriate design |
-| Pattern consistency | `quality-gate/criteria.json` | `pattern-consistency` criterion: repeated elements maintain identical structure | Catches inconsistent repetition |
+| Pattern consistency | `quality-gate/criteria.json` | `state-coverage` criterion: repeated elements maintain identical structure | Catches inconsistent repetition |
 | Cultural context | `themes/` | Theme-level density override capability | Accommodates varied cultural preferences |
 | Composition context rules | `design-rules/layout.rules.json` | `compositionType` mapping: use-case → appropriate layout strategy | Context-appropriate compositions |
 

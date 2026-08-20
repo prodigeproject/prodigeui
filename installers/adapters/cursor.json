@@ -1,7 +1,10 @@
 {
+  "schemaVersion": 2,
   "tool": "cursor",
-  "entryPointFile": ".cursorrules",
-  "configLocation": "<project-root>/.cursorrules",
-  "supportedFormats": [".cursorrules", "AGENTS.md", "skills/"],
-  "notes": "Cursor reads .cursorrules from project root. ProdigeUI content is adapted into .cursorrules format. AGENTS.md is also supported as a fallback."
+  "entryPoint": "AGENTS.md",
+  "installGuide": "installers/install.cursor.md",
+  "nativeSkillPath": null,
+  "qualityGateCommand": "npm run quality-gate -- <artifact.html> --review <manual-review.json>",
+  "hookDefinition": "prodigeui/hooks/quality-gate-check.hook.json",
+  "notes": "Uses the shipped AGENTS.md; no nonexistent .cursorrules artifact is assumed."
 }

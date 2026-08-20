@@ -76,10 +76,10 @@ appliedTo: []
 | Grid adherence rule | `quality-gate/criteria.json` | `grid-adherence` criterion: 100% alignment for body content | Catches sloppy alignment |
 | White space requirement | `tokens/primitive.tokens.json` | Min spacing values per context (mobile: 16px, desktop: 24px) | Enforces breathing room |
 | Typography limits | `tokens/primitive.tokens.json` | `fontFamily` array max length: 2; `fontWeight` max entries: 4 | Structural variety limitation |
-| Alignment precision | `quality-gate/criteria.json` | `alignment-precision` criterion: 0px tolerance | No "close enough" alignment |
+| Alignment precision | `quality-gate/criteria.json` | `grid-adherence` criterion: 0px tolerance | No "close enough" alignment |
 | Multi-contrast hierarchy | `design-rules/typography.rules.json` | Hierarchy steps use ≥2 contrast types simultaneously | Clear, unmistakable hierarchy |
-| Element justification | `quality-gate/criteria.json` | `element-purpose` criterion: decorative elements flagged | Catches functionless decoration |
-| Consistency enforcement | `quality-gate/criteria.json` | `token-consistency` criterion: same token for same purpose | Prevents inconsistent styling |
+| Element justification | `quality-gate/criteria.json` | `anti-slop-patterns` criterion: decorative elements flagged | Catches functionless decoration |
+| Consistency enforcement | `quality-gate/criteria.json` | `token-coverage` criterion: same token for same purpose | Prevents inconsistent styling |
 | Size ratio minimum | `tokens/primitive.tokens.json` | Typography scale ratio ≥1.25 between steps | Perceivable hierarchy differences |
 | Hierarchy-first approach | `components/` manifest structure | Component specs define hierarchy before visual treatment | Structure before decoration |
 

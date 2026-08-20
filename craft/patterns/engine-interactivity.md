@@ -18,22 +18,24 @@ From `craft/design-read.md`, use MOTION_INTENSITY to decide:
 
 | MOTION_INTENSITY | Engine layer to add |
 |------------------|---------------------|
-| 1-3 (static/corporate) | CSS reveals only. No engine. |
-| 4-6 (standard landing) | Lenis smooth scroll + ONE scroll-driven moment (pin or scrub) + count-up |
-| 7-8 (premium/agency) | ScrollTrigger timeline storytelling + ONE WebGL/canvas hero element + cursor interaction |
-| 9-10 (experimental/Awwwards) | Full scroll-choreographed 3D/shader scene, audio-reactive optional, view transitions |
+| 0.0–0.3 (static/corporate) | CSS reveals only. No engine. |
+| 0.4–0.6 (standard landing) | Lenis smooth scroll + ONE scroll-driven moment (pin or scrub) + count-up |
+| 0.7–0.8 (premium/agency) | ScrollTrigger timeline storytelling + ONE WebGL/canvas hero element + cursor interaction |
+| 0.9–1.0 (experimental/Awwwards) | Full scroll-choreographed 3D/shader scene, audio-reactive optional, view transitions |
 
-**Mandatory rule:** For an agency/portfolio/premium/experimental brief (MOTION ≥ 7), a fully
-static page (only CSS fade-ins) is a **FAIL** — it needs at least one engine-grade interactive
-moment. At MOTION ≤ 6 (a plain B2B/SaaS/dashboard/trust-first surface) CSS craft + Lenis + ONE
-scroll-driven moment is enough. BUT this is a floor, not a cap: a B2B product **positioned as
-a premium launch** legitimately earns agency-grade motion (MOTION 8-9) — a concept-tied
+**Context rule:** For an agency/portfolio/premium/experimental brief (MOTION ≥ 0.7), test whether
+one engine-grade interaction materially improves narrative, product understanding, or brand
+meaning. A static or lightly animated page is valid when reading, trust, performance, or the
+content itself is the concept; a dial value alone never makes an engine mandatory. At MOTION ≤
+0.6 (a plain B2B/SaaS/dashboard/trust-first surface), CSS craft is normally sufficient; smooth
+scroll and a scroll-driven moment are optional, not a floor. A B2B product **positioned as
+a premium launch** legitimately earns agency-grade motion (MOTION 0.8–0.9) — a concept-tied
 particle/constellation field (e.g. "the network we observe"), pinned feature sequencing,
 scrubbed product reveals. The caution is against RANDOM decoration and jank on a
 working-tool surface, NOT against ambition on a marketing page. If the brief wants premium,
 go premium (the FlowAI high-motion build is the reference). What is genuinely wrong is
 bolting heavy WebGL onto the *in-app product UI* (dashboards, editors) where users work daily.
-Three.js, shader backgrounds, particles, and audio-reactivity are MOTION 7+ moves.
+Three.js, shader backgrounds, particles, and audio-reactivity are MOTION ≥ 0.7 moves.
 
 **Always:** feature-detect, lazy-init on visibility, disable/reduce under
 `prefers-reduced-motion`, and downgrade on mobile (no heavy WebGL on low-power devices).
@@ -203,7 +205,7 @@ vec3 pal(float t){return .5+.5*cos(6.28*(vec3(1)*t+vec3(0.0,0.33,0.67)));}
 void main(){vec2 uv=gl_FragCoord.xy/u_res;float n=fbm(uv*3.+u_time*0.05);o=vec4(pal(n+u_time*0.03)*0.12,1.);}`;
 ```
 **Rules:** the shader output stays behind content at low alpha. Provide a CSS `radial-gradient`
-fallback for no-WebGL. Pause when off-screen. Skip on reduced-motion. This is a MOTION 8+ move.
+fallback for no-WebGL. Pause when off-screen. Skip on reduced-motion. This is a MOTION ≥ 0.8 move.
 For a captured-HTML-through-shader treatment (chromatic warp, dissolve, holographic, CRT scanlines,
 pixel-sort), see the fragment-shader catalog in `craft/patterns/advanced-effects.md` and adapt any
 ShaderToy effect: swap `iResolution`→`u_res`, `iTime`→`u_time`.
@@ -378,9 +380,9 @@ Non-negotiable for every engine-grade element:
 ## Decision: does this page need the engine layer?
 
 Run this at the Design Read stage:
-- Is the brief agency / portfolio / premium / creative / experimental, OR MOTION_INTENSITY ≥ 7?
+- Is the brief agency / portfolio / premium / creative / experimental, OR MOTION_INTENSITY ≥ 0.7?
   → YES: pick at least ONE engine element (usually ScrollTrigger storytelling + one WebGL/canvas/3D anchor + Lenis). A static page here is a FAIL.
-  → NO (B2B SaaS / dashboard / trust-first, MOTION ≤ 6): CSS craft + Lenis + one scroll-driven moment is enough. Do NOT over-engineer.
+  → NO (B2B SaaS / dashboard / trust-first, MOTION ≤ 0.6): CSS craft + Lenis + one scroll-driven moment is enough. Do NOT over-engineer.
 - Always: the engine element must serve the concept (a 3D globe for "global infra," particles for "network," audio-viz for a music product) — never decoration for its own sake.
 
 ## Related

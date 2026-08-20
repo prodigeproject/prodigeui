@@ -93,7 +93,7 @@ This repo is a POINTER to valuable resources, not a resource itself. Its value i
 |---|---|---|---|
 | Material Design + Apple HIG + Windows motion (cross-platform consensus) | `motion/principles.md` | Core principles section (synthesized from all three) | Cross-platform consensus = high-confidence universal principles |
 | Easing curve reference (easings.net taxonomy) | `motion/motion.tokens.json` | `easing.*` token definitions with named curves | ProdigeUI needs finite, named easing set (not infinite cubic-bezier possibilities) |
-| CSS triggers performance tiers | `quality-gate/criteria.json` | `animation-performance-tier` criterion | Enforce: only animate composite-layer properties by default |
+| CSS triggers performance tiers | `quality-gate/criteria.json` | `motion-duration` criterion | Enforce: only animate composite-layer properties by default |
 | GreenSock timeline concept | `motion/presets/enter-exit.json` | Choreography/sequence specification | Timeline concept for multi-element orchestration |
 | GreenSock stagger concept | `motion/presets/enter-exit.json` | Stagger configuration | List animation timing via calculated delays |
 | Popmotion spring physics | `motion/motion.tokens.json` | `easing.spring.*` tokens | Spring-based easing for natural, physics-based feel |

@@ -15,7 +15,7 @@ The six core artifacts:
 | Token_System           | `tokens/`          | Single source of truth for all design values |
 | Theme_Catalog          | `themes/`          | Named value sets applied over tokens        |
 | Motion_Library         | `motion/`          | Parameterized animation/transition presets  |
-| Component_Library      | `components/`      | Reusable UI elements consuming tokens       |
+| Component_Spec_Catalog | `components/`      | Agent-consumable UI contracts; no bundled framework code |
 | Design_Asset_Package   | `assets/`          | Curated icons, fonts, illustrations         |
 | Design_Rules           | `design-rules/`    | Measurable rules for typography, color, layout, structure |
 
@@ -69,6 +69,10 @@ directly.
 - **Key files:** `motion.tokens.json`, `presets/*.json`, `principles.md`
 
 ### Component_Library
+
+This layer is a specification catalog. Agents implement its contracts in the target
+framework; ProdigeUI does not expose importable component source or pretend that the empty
+atomic taxonomy folders contain runtime implementations.
 
 - **Depends on:** Token_System (all visual values via component tokens), Theme_Catalog
   (resolved values come from active theme), Motion_Library (animation presets for
