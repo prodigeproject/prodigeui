@@ -116,10 +116,33 @@
   </g>
 
   <!-- Solar Orientation Compass & Dimension Ticks -->
-  <circle cx="450" cy="50" r="16" stroke="#a64b2a" stroke-opacity="0.6"/>
-  <line x1="450" y1="30" x2="450" y2="70" stroke="#a64b2a" stroke-dasharray="2,2"/>
+  <circle cx="455" cy="50" r="16" stroke="#a64b2a" stroke-opacity="0.6"/>
+  <line x1="455" y1="30" x2="455" y2="70" stroke="#a64b2a" stroke-dasharray="2,2"/>
   <text x="447" y="27" fill="#a64b2a" font-family="monospace" font-size="9">N</text>
 </svg>
+
+### Pattern 4: Harmonized Editorial Storytelling + Interactive Canvas Engine Anchor
+```html
+<article class="hero-monolith-harmonized">
+  <!-- Top: Media Grid (High-Res Monolith Photo + SVG Blueprint Canvas Engine) -->
+  <div class="hero-media-grid">
+    <div class="photo-pane"><img src="photo.jpg" alt="Monolith"></div>
+    <div class="blueprint-pane"><!-- Detailed SVG Floorplan Canvas --></div>
+  </div>
+
+  <!-- Bottom: Editorial Storytelling Container -->
+  <div class="hero-editorial-footer">
+    <div class="editorial-copy">
+      <span class="mono-tag text-terracotta">Featured Monolith — 01</span>
+      <h2 class="instrument-heading">The Engadin Alpine Pavilion</h2>
+      <p class="editorial-desc">High-altitude stone residence constructed from granite and European larch timber.</p>
+    </div>
+    <div class="telemetry-box">
+      <span class="mono-tag" id="live-telemetry">TELEMETRY: ATRIUM GALLERY (+4.2kW SOLAR GAIN)</span>
+    </div>
+  </div>
+</article>
+```
       <button class="tab-btn">Trace Log</button>
     </div>
     <span class="status-indicator">● LIVE EXECUTION</span>
