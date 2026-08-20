@@ -1,0 +1,197 @@
+<!-- Design Read: Enterprise Node.js Backend OS for platform engineers, dark charcoal & ruby tech accent vibe, leaning JetBrains Mono + interactive CLI terminal hero canvas + material inset lighting. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NestJS Enterprise — Progressive Node.js Microservices Framework</title>
+  <meta name="description" content="NestJS provides a progressive TypeScript framework for building scalable enterprise microservices, gRPC backends, and event-driven architectures.">
+  
+  <!-- Typography: JetBrains Mono & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       PRODIGEUI 3-LAYER TOKEN SYSTEM (NestJS Ruby Tech Domain)
+       ========================================================================== */
+    :root {
+      /* Layer 1: Primitive Tokens */
+      --prodigeui-primitive-charcoal: #0e1217;
+      --prodigeui-primitive-surface-dark: #181e25;
+      --prodigeui-primitive-ruby: #e0234e;           /* 6.9:1 Contrast on Charcoal */
+      --prodigeui-primitive-ruby-hover: #c41940;
+      --prodigeui-primitive-text-light: #f8fafc;
+      --prodigeui-primitive-text-muted: #94a3b8;     /* 6.8:1 Contrast on Charcoal */
+      --prodigeui-primitive-border: rgba(224, 35, 78, 0.22);
+
+      /* Layer 2: Semantic Tokens */
+      --prodigeui-color-bg: var(--prodigeui-primitive-charcoal);
+      --prodigeui-color-surface: var(--prodigeui-primitive-surface-dark);
+      --prodigeui-color-text: var(--prodigeui-primitive-text-light);
+      --prodigeui-color-muted: var(--prodigeui-primitive-text-muted);
+      --prodigeui-color-primary: var(--prodigeui-primitive-ruby);
+      --prodigeui-color-primary-hover: var(--prodigeui-primitive-ruby-hover);
+      --prodigeui-color-border: var(--prodigeui-primitive-border);
+
+      /* Typography Tokens */
+      --prodigeui-font-display: 'Inter', system-ui, sans-serif;
+      --prodigeui-font-body: 'Inter', system-ui, sans-serif;
+      --prodigeui-font-mono: 'JetBrains Mono', monospace;
+
+      --prodigeui-radius-card: 12px;
+      --prodigeui-radius-pill: 9999px;
+      --prodigeui-shadow-material: 
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+        0 24px 60px rgba(0, 0, 0, 0.6);
+      --prodigeui-shadow-ruby-glow: 0 0 35px rgba(224, 35, 78, 0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--prodigeui-color-bg); color: var(--prodigeui-color-text); }
+    body { font-family: var(--prodigeui-font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; isolation: isolate; }
+
+    :focus-visible { outline: 3px solid var(--prodigeui-color-primary); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--prodigeui-color-primary); color: #fff; padding: 0.5rem 1rem; z-index: 200; font-weight: 700; border-radius: 6px; transition: top 0.2s; text-decoration: none; }
+    .skip-link:focus { top: 1rem; }
+
+    .wrap { width: min(1200px, 92vw); margin-inline: auto; isolation: isolate; }
+    .mono { font-family: var(--prodigeui-font-mono); font-size: 0.8rem; letter-spacing: 0.05em; }
+    .text-ruby { color: var(--prodigeui-color-primary); }
+    .text-muted { color: var(--prodigeui-color-muted); }
+    .eyebrow-margin { margin-bottom: 1.25rem; }
+    .hero-lead-margin { font-size: 1.15rem; max-width: 50ch; margin-bottom: 2.25rem; }
+
+    /* Nav Glass */
+    .nav-bar {
+      position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+      width: min(1160px, 92vw); z-index: 50;
+      background: rgba(14, 18, 23, 0.88); backdrop-filter: blur(16px);
+      border: 1px solid var(--prodigeui-color-border); border-radius: var(--prodigeui-radius-pill);
+      padding: 0.75rem 1.75rem; display: flex; justify-content: space-between; align-items: center;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    .brand-logo { font-family: var(--prodigeui-font-mono); font-weight: 700; font-size: 1.25rem; color: var(--prodigeui-color-text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .ruby-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--prodigeui-color-primary); box-shadow: 0 0 10px var(--prodigeui-color-primary); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--prodigeui-color-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--prodigeui-color-text); }
+
+    .btn-ruby {
+      background: var(--prodigeui-color-primary); color: #ffffff; font-weight: 700; padding: 0.7rem 1.5rem;
+      border-radius: var(--prodigeui-radius-pill); text-decoration: none; font-size: 0.88rem; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer;
+      position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-ruby:hover { background: var(--prodigeui-color-primary-hover); transform: translateY(-2px); }
+
+    /* Hero Section */
+    .hero-wrap { padding-top: 10rem; padding-bottom: 5rem; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .hero-h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+
+    /* Material CLI Terminal Anchor */
+    .terminal-material {
+      background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border);
+      border-radius: var(--prodigeui-radius-card); overflow: hidden; box-shadow: var(--prodigeui-shadow-material), var(--prodigeui-shadow-ruby-glow);
+    }
+    .terminal-head { background: rgba(0, 0, 0, 0.4); padding: 0.75rem 1.25rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .terminal-dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #374151; }
+    .terminal-body { padding: 1.5rem; font-family: var(--prodigeui-font-mono); font-size: 0.85rem; line-height: 1.7; color: #e2e8f0; overflow-x: auto; margin: 0; }
+
+    /* Bento Section */
+    .bento-section { padding: 5rem 0; }
+    .bento-h2 { font-size: 2.2rem; font-weight: 800; margin-top: 0.5rem; }
+    .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .bento-card { background: var(--prodigeui-color-surface); border: 1px solid var(--prodigeui-color-border); border-radius: var(--prodigeui-radius-card); padding: 2rem; box-shadow: var(--prodigeui-shadow-material); }
+
+    footer { padding: 3.5rem 0; border-top: 1px solid var(--prodigeui-color-border); color: var(--prodigeui-color-muted); font-size: 0.88rem; margin-top: 4rem; }
+    .footer-flex { display: flex; justify-content: space-between; align-items: center; }
+
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .btn-ruby:hover { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="nav-bar">
+    <a class="brand-logo" href="#">
+      <span class="ruby-dot" aria-hidden="true"></span> NESTJS<span class="text-ruby">.OS</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#terminal">CLI Engine</a></li>
+      <li><a href="#features">Architecture</a></li>
+      <li><a href="#enterprise">Enterprise Support</a></li>
+    </ul>
+    <a href="#terminal" class="btn-ruby">Get Started</a>
+  </header>
+
+  <main id="main">
+    <section class="hero-wrap wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="mono text-ruby eyebrow-margin">Enterprise Node.js Architecture</div>
+          <h1 class="hero-h1">Build backend systems with <span class="text-ruby">ruby precision.</span></h1>
+          <p class="text-muted hero-lead-margin">NestJS provides an architecture out-of-the-box which allows developers to create highly testable, scalable, loosely coupled, and easily maintainable applications.</p>
+          <a href="#terminal" class="btn-ruby">Install NestJS CLI</a>
+        </div>
+
+        <!-- HERO INTERACTIVE CLI TERMINAL ANCHOR -->
+        <div class="terminal-material" id="terminal">
+          <div class="terminal-head">
+            <div class="terminal-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <span class="mono text-ruby">nest g module gateway</span>
+          </div>
+          <pre class="terminal-body"><code><span class="text-muted"># Install NestJS CLI &amp; Initialize Module</span>
+$ npm i -g @nestjs/cli
+$ nest new enterprise-api
+
+<span class="text-ruby">CREATE</span> src/app.module.ts (312 bytes)
+<span class="text-ruby">CREATE</span> src/app.controller.ts (219 bytes)
+<span class="text-ruby">STATUS</span> Nest application successfully bootstrapped!</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="bento-section wrap" id="features">
+      <div class="mono text-ruby">Core Infrastructure</div>
+      <h2 class="bento-h2">Architected for mission-critical microservices.</h2>
+
+      <div class="grid-3">
+        <article class="bento-card">
+          <h3 class="card-title">Dependency Injection</h3>
+          <p class="text-muted">Built-in IoC container managing service lifetimes, singletons, and test mocks seamlessly.</p>
+        </article>
+
+        <article class="bento-card">
+          <h3 class="card-title">Microservices Transports</h3>
+          <p class="text-muted">Native RPC transport layer supporting gRPC, NATS, Kafka, RabbitMQ, and Redis streams.</p>
+        </article>
+
+        <article class="bento-card">
+          <h3 class="card-title">GraphQL &amp; REST OpenAPI</h3>
+          <p class="text-muted">Automated schema generation for OpenAPI Swagger specifications and GraphQL code-first modules.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-flex">
+      <span class="mono">&copy; 2026 NestJS Framework. Powered by ProdigeUI Engine v3.0.5</span>
+      <span class="mono text-ruby">● Production Ready</span>
+    </div>
+  </footer>
+</body>
+</html>
