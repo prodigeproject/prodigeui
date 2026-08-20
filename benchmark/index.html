@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProdigeUI v3.0.7 — Real Commit Benchmark Runner (v3.0.5 vs v3.0.6 vs v3.0.7 Awwwards)</title>
+  <title>ProdigeUI Complete 4-Milestone Version Evolution Benchmark (v3.0.0 ➔ v3.0.5 ➔ v3.0.6 ➔ v3.0.7)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
       --green: #10b981;
       --red: #ef4444;
       --amber: #f59e0b;
+      --blue: #3b82f6;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-font-smoothing: antialiased; }
@@ -29,25 +30,26 @@
 
     /* Controls Bar & Domain Selectors */
     .controls-bar { padding: 1rem 2rem; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .presets-group { display: flex; gap: 0.6rem; }
-    .preset-btn { background: var(--surface); color: var(--muted); border: 1px solid var(--border); padding: 0.55rem 1.1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+    .presets-group { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .preset-btn { background: var(--surface); color: var(--muted); border: 1px solid var(--border); padding: 0.55rem 1.1rem; border-radius: 8px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
     .preset-btn.active { background: var(--surface-elevated); color: var(--text); border-color: var(--green); box-shadow: inset 0 1px 0 rgba(255,255,255,0.15); }
 
-    .selector-group { display: flex; align-items: center; gap: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
-    select { background: var(--surface-elevated); color: var(--text); border: 1px solid var(--border); padding: 0.5rem 1rem; border-radius: 6px; font-family: 'JetBrains Mono', monospace; }
+    .selector-group { display: flex; align-items: center; gap: 0.8rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; flex-wrap: wrap; }
+    select { background: var(--surface-elevated); color: var(--text); border: 1px solid var(--border); padding: 0.5rem 0.9rem; border-radius: 6px; font-family: 'JetBrains Mono', monospace; }
 
     /* Comparative Metrics Header */
     .metrics-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding: 1rem 2rem; background: var(--surface); border-bottom: 1px solid var(--border); }
     .metric-card { padding: 1.1rem; border-radius: 10px; border: 1px solid var(--border); }
-    .metric-card.left-card { background: rgba(245, 158, 11, 0.05); border-color: rgba(245, 158, 11, 0.35); }
+    .metric-card.left-card { background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.35); }
     .metric-card.right-card { background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.35); box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
     .metric-title { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; display: flex; justify-content: space-between; }
     .score-badge { font-weight: 800; font-size: 1.35rem; margin-top: 0.25rem; display: block; }
+    .score-red { color: var(--red); }
     .score-amber { color: var(--amber); }
     .score-green { color: var(--green); }
 
     /* Split View Container */
-    .split-view-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; height: calc(100vh - 240px); padding: 1rem; }
+    .split-view-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; height: calc(100vh - 245px); padding: 1rem; }
     .iframe-wrapper { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff; position: relative; box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
     .iframe-header { padding: 0.6rem 1.2rem; background: var(--surface); border-bottom: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; color: var(--text); }
     iframe { width: 100%; height: calc(100% - 38px); border: none; }
@@ -56,19 +58,19 @@
 <body>
   <header class="top-header">
     <div class="brand">
-      ProdigeUI <span class="badge-live">● REAL COMMIT BENCHMARK RUNNER (v3.0.5 ➔ v3.0.6 ➔ v3.0.7 AWWWARDS)</span>
+      ProdigeUI <span class="badge-live">● COMPLETE 4-MILESTONE VERSION EVOLUTION (v3.0.0 ➔ v3.0.7)</span>
     </div>
     <div style="font-size: 0.85rem; color: var(--muted);">
-      Evaluating Identical Prompts Across Real System Commits in Git
+      Evaluating Identical Prompts Across Actual Git System Version Commits
     </div>
   </header>
 
   <nav class="controls-bar">
     <div class="presets-group">
-      <button class="preset-btn active" onclick="setPreset('delve', '305', '307')">🏛️ Delve Architects (v3.0.5 vs v3.0.7 Awwwards)</button>
-      <button class="preset-btn" onclick="setPreset('n8n', '305', '307')">⚡ n8n / Lovable Flow (v3.0.5 vs v3.0.7 Awwwards)</button>
-      <button class="preset-btn" onclick="setPreset('delve', '306', '307')">🏛️ Delve (v3.0.6 vs v3.0.7 Awwwards)</button>
-      <button class="preset-btn" onclick="setPreset('n8n', '306', '307')">⚡ n8n (v3.0.6 vs v3.0.7 Awwwards)</button>
+      <button class="preset-btn active" onclick="setPreset('delve', '300', '307')">🏆 Full Evolution (v3.0.0 vs v3.0.7 Delve)</button>
+      <button class="preset-btn" onclick="setPreset('n8n', '300', '307')">🏆 Full Evolution (v3.0.0 vs v3.0.7 n8n)</button>
+      <button class="preset-btn" onclick="setPreset('delve', '305', '307')">🔥 Pre-Tuning vs Current (v3.0.5 vs v3.0.7 Delve)</button>
+      <button class="preset-btn" onclick="setPreset('n8n', '305', '307')">🔥 Pre-Tuning vs Current (v3.0.5 vs v3.0.7 n8n)</button>
     </div>
 
     <div class="selector-group">
@@ -80,18 +82,20 @@
 
       <label for="select-left">Left Version:</label>
       <select id="select-left" onchange="updateView()">
-        <option value="305" selected>Commit 7c6c535 (v3.0.5)</option>
-        <option value="306">Commit 20ac96d (v3.0.6)</option>
-        <option value="307">v3.0.7 (Awwwards Grade)</option>
+        <option value="300" selected>v3.0.0 (Unconstrained Baseline)</option>
+        <option value="305">v3.0.5 (Quality Gate Baseline)</option>
+        <option value="306">v3.0.6 (8-Reference Synthesized)</option>
+        <option value="307">v3.0.7 (Awwwards Grade Restraint)</option>
       </select>
 
       <span>VS</span>
 
       <label for="select-right">Right Version:</label>
       <select id="select-right" onchange="updateView()">
-        <option value="305">Commit 7c6c535 (v3.0.5)</option>
-        <option value="306">Commit 20ac96d (v3.0.6)</option>
-        <option value="307" selected>v3.0.7 (Awwwards Grade)</option>
+        <option value="300">v3.0.0 (Unconstrained Baseline)</option>
+        <option value="305">v3.0.5 (Quality Gate Baseline)</option>
+        <option value="306">v3.0.6 (8-Reference Synthesized)</option>
+        <option value="307" selected>v3.0.7 (Awwwards Grade Restraint)</option>
       </select>
     </div>
   </nav>
@@ -99,29 +103,29 @@
   <section class="metrics-bar">
     <div class="metric-card left-card">
       <div class="metric-title">
-        <span id="left-title">Commit 7c6c535 (v3.0.5)</span>
-        <span id="left-status" class="score-amber">BASELINE PRE-TUNING</span>
+        <span id="left-title">v3.0.0 Unconstrained Baseline</span>
+        <span id="left-status" class="score-red">CRITICAL SLOP</span>
       </div>
-      <span class="score-badge score-amber" id="left-score">7.4 / 10 — PRE-TUNING</span>
-      <ul style="font-size: 0.8rem; color: #fcd34d; margin-top: 0.5rem; padding-left: 1.2rem;" id="left-list">
-        <li>Tactile paper palette &amp; basic grid lines</li>
-        <li>Instrument Serif display typography</li>
-        <li>Basic static card (no interactive blueprint inspector)</li>
-        <li>Zero inline HTML style attributes</li>
+      <span class="score-badge score-red" id="left-score">3.2 / 10 — UNCONSTRAINED</span>
+      <ul style="font-size: 0.8rem; color: #fca5a5; margin-top: 0.5rem; padding-left: 1.2rem;" id="left-list">
+        <li>Inline HTML style attributes leak hex values</li>
+        <li>Generic Arial sans-serif typography</li>
+        <li>Low text contrast ratios (3.5:1)</li>
+        <li>No reduced motion media query or container isolation</li>
       </ul>
     </div>
 
     <div class="metric-card right-card">
       <div class="metric-title">
-        <span id="right-title">v3.0.7 (Awwwards Grade)</span>
+        <span id="right-title">v3.0.7 (Awwwards Grade Restraint)</span>
         <span id="right-status" class="score-green">AWWWARDS GRADE</span>
       </div>
-      <span class="score-badge score-green" id="right-score">9.5 / 10 — INTERACTIVE ENGINE</span>
+      <span class="score-badge score-green" id="right-score">9.6 / 10 — RESTRAINED ENGINE</span>
       <ul style="font-size: 0.8rem; color: #6ee7b7; margin-top: 0.5rem; padding-left: 1.2rem;" id="right-list">
-        <li>High-res Engadin Pavilion monolith photography</li>
-        <li>Always-visible interactive SVG blueprint floorplan inspector</li>
-        <li>Live interactive room selector (Atrium / Thermal Mass / Larch) &amp; solar/acoustic telemetry</li>
-        <li>0 inline styles &amp; 100% WCAG AA compliant</li>
+        <li>Serene Instrument Serif display typography &amp; generous whitespace</li>
+        <li>Dynamic Spatial Photo Inspector &amp; clean material metadata</li>
+        <li>Zero prompt instruction leaks &amp; zero recipe crutches</li>
+        <li>0 inline styles, 100% WCAG AA (7.6:1) &amp; prefers-reduced-motion</li>
       </ul>
     </div>
   </section>
@@ -129,10 +133,10 @@
   <main class="split-view-container">
     <div class="iframe-wrapper">
       <div class="iframe-header">
-        <span id="left-iframe-label">LEFT: v3.0.5</span>
-        <span id="left-filename">v305-delve.html</span>
+        <span id="left-iframe-label">LEFT: v3.0.0</span>
+        <span id="left-filename">v300-delve.html</span>
       </div>
-      <iframe id="iframe-left" src="v305-delve.html"></iframe>
+      <iframe id="iframe-left" src="v300-delve.html"></iframe>
     </div>
 
     <div class="iframe-wrapper">
@@ -146,16 +150,48 @@
 
   <script>
     const commitData = {
+      "delve": {
+        "300": {
+          file: "v300-delve.html",
+          title: "v3.0.0 (Unconstrained Baseline)",
+          score: "3.2 / 10 — UNCONSTRAINED SLOP",
+          list: ["Inline HTML style attributes leak hex values", "Generic Arial sans-serif typography", "Low text contrast ratios (3.5:1)", "No reduced motion media query or container isolation"]
+        },
+        "305": {
+          file: "v305-delve.html",
+          title: "v3.0.5 (Commit 7c6c535 Baseline)",
+          score: "7.4 / 10 — PRE-TUNING",
+          list: ["Tactile paper palette & basic grid lines", "Instrument Serif display typography", "Basic static card (no interactive inspector)", "Zero inline HTML style attributes enforced"]
+        },
+        "306": {
+          file: "v306-delve.html",
+          title: "v3.0.6 (Commit 20ac96d Synthesized)",
+          score: "8.7 / 10 — HIGH CRAFT",
+          list: ["Delve tactile paper palette (#f5f2eb)", "Instrument Serif display type + Space Grotesk", "Brutalist grid lines & oversized numbers (01, 02, 03)", "SVG floorplan blueprint overlay hero anchor"]
+        },
+        "307": {
+          file: "v307-delve.html",
+          title: "v3.0.7 (Awwwards Grade Restraint)",
+          score: "9.6 / 10 — RESTRAINED ENGINE",
+          list: ["Serene Instrument Serif display typography & generous whitespace", "Dynamic Spatial Photo Inspector & clean material metadata", "Zero prompt instruction leaks & zero recipe crutches", "0 inline styles, 100% WCAG AA (7.6:1) & prefers-reduced-motion"]
+        }
+      },
       "n8n": {
+        "300": {
+          file: "v300-n8n.html",
+          title: "v3.0.0 (Unconstrained Baseline)",
+          score: "3.2 / 10 — UNCONSTRAINED SLOP",
+          list: ["Inline HTML style attributes leak hex values", "Generic Arial sans-serif typography", "Low text contrast ratios (3.5:1)", "No reduced motion media query or container isolation"]
+        },
         "305": {
           file: "v305-n8n.html",
-          title: "Commit 7c6c535 (v3.0.5 Baseline)",
+          title: "v3.0.5 (Commit 7c6c535 Baseline)",
           score: "7.5 / 10 — PRE-TUNING",
           list: ["Zero inline HTML style attributes enforced", "Mandatory @media (prefers-reduced-motion: reduce)", "Container isolation: isolate enforced", "Basic CSS container hero (no canvas anchor)"]
         },
         "306": {
           file: "v306-n8n.html",
-          title: "Commit 20ac96d (v3.0.6 Synthesized)",
+          title: "v3.0.6 (Commit 20ac96d Synthesized)",
           score: "8.8 / 10 — HIGH CRAFT",
           list: ["Material Inset Depth (box-shadow: inset 0 1px 0 rgba(255,255,255,0.12))", "Syne display typography (-0.04em tracking)", "SVG visual node DAG hero canvas anchor with ports", "0 inline styles & full WCAG AA contrast (7.8:1)"]
         },
@@ -164,26 +200,6 @@
           title: "v3.0.7 (Awwwards Grade Engine)",
           score: "9.6 / 10 — AWWWARDS GRADE",
           list: ["Live HTML5 Canvas particle shader backdrop engine", "Live drag-and-connect JS Node DAG engine with active state toggle", "Interactive node telemetry & execution pulse", "0 inline styles & full prefers-reduced-motion"]
-        }
-      },
-      "delve": {
-        "305": {
-          file: "v305-delve.html",
-          title: "Commit 7c6c535 (v3.0.5 Baseline)",
-          score: "7.4 / 10 — PRE-TUNING",
-          list: ["Tactile paper palette & basic grid lines", "Instrument Serif display typography", "Basic static card (no interactive blueprint inspector)", "Zero inline HTML style attributes"]
-        },
-        "306": {
-          file: "v306-delve.html",
-          title: "Commit 20ac96d (v3.0.6 Synthesized)",
-          score: "8.7 / 10 — HIGH CRAFT",
-          list: ["Delve tactile paper palette (#f5f2eb)", "Instrument Serif display type + Space Grotesk", "Brutalist grid lines & oversized numbers (01, 02, 03)", "SVG floorplan blueprint overlay hero anchor"]
-        },
-        "307": {
-          file: "v307-delve.html",
-          title: "v3.0.7 (Awwwards Grade Engine)",
-          score: "9.5 / 10 — AWWWARDS GRADE",
-          list: ["High-res Engadin Pavilion monolith photography", "Always-visible interactive SVG blueprint floorplan inspector", "Live interactive room selector (Atrium / Thermal Mass / Larch) & solar/acoustic telemetry", "0 inline styles & 100% WCAG AA compliant"]
         }
       }
     };
@@ -195,10 +211,10 @@
 
       document.querySelectorAll('.preset-btn').forEach((btn, idx) => {
         const isMatch = 
-          (idx === 0 && domain === 'delve' && leftVal === '305') ||
-          (idx === 1 && domain === 'n8n' && leftVal === '305') ||
-          (idx === 2 && domain === 'delve' && leftVal === '306') ||
-          (idx === 3 && domain === 'n8n' && leftVal === '306');
+          (idx === 0 && domain === 'delve' && leftVal === '300') ||
+          (idx === 1 && domain === 'n8n' && leftVal === '300') ||
+          (idx === 2 && domain === 'delve' && leftVal === '305') ||
+          (idx === 3 && domain === 'n8n' && leftVal === '305');
         btn.classList.toggle('active', isMatch);
       });
 
