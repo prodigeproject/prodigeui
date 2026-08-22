@@ -1,14 +1,15 @@
 # NOVA - manual visual scorecard
 
-Tanggal review: 22 Agustus 2026. Scope: tujuh fresh-generation artifact dengan brief yang sama, ditambah dua candidate fresh setelah tuning `668418a` dan `1d85e7a`; bukan penilaian HTML benchmark historis.
+Tanggal review: 22 Agustus 2026. Scope: tujuh fresh-generation artifact dengan brief yang sama, ditambah tiga candidate fresh setelah tuning `668418a`, `1d85e7a`, dan `86c4f22`; bukan penilaian HTML benchmark historis.
 
 ## Metode
 
-Semua artifact sudah setara secara teknis: 26 pass dan 0 fail pada gate otomatis desktop/mobile. Skor ini adalah review visual manual dari render nyata. Bobot: art direction 20, hierarki/visual mass 20, tipografi 15, warna/material 15, ritme 15, artifak/media 10, technical proof 5. Dua tuning dibandingkan langsung dengan baseline pada [laporan quiet-evidence](./V3.0.8-QUIET-EVIDENCE-REFINEMENT.md).
+Semua artifact sudah setara secara teknis: 26 pass dan 0 fail pada gate otomatis desktop/mobile. Skor ini adalah review visual manual dari render nyata. Bobot: art direction 20, hierarki/visual mass 20, tipografi 15, warna/material 15, ritme 15, artifak/media 10, technical proof 5. Candidate terbaru dibandingkan langsung dengan baseline pada [laporan baseline-preserving](./V3.0.8-BASELINE-PRESERVING-COMPARISON.md).
 
 | Rank | Snapshot | AD | Mass | Type | Color | Rhythm | Artifact | Tech | Total |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
 | 1 | `1d85e7a` - quiet-evidence candidate | 19 | 19 | 14 | 14 | 15 | 9 | 5 | **95** |
+| 2= | `86c4f22` - baseline-preserving tuned candidate | 19 | 19 | 14 | 15 | 14 | 8 | 5 | **94** |
 | 2 | `668418a` - evidence-led tuned candidate | 19 | 18 | 14 | 14 | 15 | 9 | 5 | **94** |
 | 3 | `2ab4e19` - v3.0.8 baseline | 19 | 19 | 14 | 15 | 14 | 6 | 5 | **92** |
 | 4 | `e6c1acd` - v4 media | 18 | 18 | 14 | 14 | 13 | 8 | 5 | **90** |
@@ -27,6 +28,14 @@ Ini adalah koreksi langsung atas catatan v3.0.8: proof tetap nyata, tetapi satu 
 ### `668418a` - evidence-led tuned candidate - 94/100
 
 Tuning berhasil mengangkat yang sudah kamu sukai dari v3.0.8 tanpa menggantinya dengan visual yang ramai. Headline dan ruang putih masih terasa editorial, tetapi study hero lokal sekarang memberi alasan konkret pada kata-katanya. Tiga project panel menunjukkan identity, place, dan screen sebagai delivery mode yang berbeda; ini adalah peningkatan ritme sekaligus evidence paling bernilai. Catatan: monolith v3.0.8 masih sedikit lebih hening dan palet coral-lilac lebih mengejutkan, sehingga candidate sebaiknya tetap menjaga disiplin visual mass ini pada run berikutnya.
+
+### `86c4f22` - baseline-preserving tuned candidate - 94/100
+
+Ini tuning yang paling sesuai dengan preferensimu saat ini. Hero v3.0.8 dikunci; peningkatan
+dipindahkan ke dua project yang sekarang menyebut medium/use secara terlihat, satu cue kecil per
+project, copy manifesto yang lebih konkret, dan method rows yang lebih berorientasi output.
+Catatan: baseline masih lebih hening pada work chapter karena ruang kosongnya lebih besar;
+candidate ini menang pada kredibilitas bukti tanpa membuat first viewport lebih ramai.
 
 ### `2ab4e19` - v3.0.8 - 92/100
 
@@ -60,4 +69,4 @@ Dynamic HSL paling terasa pada relasi pink-cyan-ungu, dan signal engine memberi 
 
 Untuk brief NOVA ini, `1d85e7a` adalah candidate paling lengkap (95/100): ia mempertahankan keheningan dan impact editorial `2ab4e19` / v3.0.8 (92/100), sambil menambahkan evidence yang lebih kredibel. `e6c1acd` paling baik bila media dan provenance jadi prioritas. `51c04cf` paling cocok bila targetnya impact poster yang keras. Skor ini menjawab brief yang sama, bukan menyatakan snapshot dengan nilai lebih rendah universal lebih buruk.
 
-Keputusan tindak lanjut: pertahankan `2ab4e19` / v3.0.8 sebagai reference / regression baseline, gunakan aturan `1d85e7a` untuk fresh generation berikutnya, dan gunakan `668418a` sebagai counterexample evidence yang masih terlalu padat pada hero. [Lihat perbandingan langsung](./V3.0.8-QUIET-EVIDENCE-REFINEMENT.md) dan [backlog awal](./BASELINE.md).
+Keputusan tindak lanjut: pertahankan `2ab4e19` / v3.0.8 sebagai reference / regression baseline, gunakan aturan `86c4f22` / `baselinePreserving` untuk fresh generation yang harus tetap tenang, dan simpan `668418a`, `1d85e7a`, serta `653dfed` sebagai counterexamples untuk hero-evidence escalation. [Lihat perbandingan terbaru](./V3.0.8-BASELINE-PRESERVING-COMPARISON.md) dan [backlog awal](./BASELINE.md).
