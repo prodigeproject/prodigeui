@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 840" role="img" aria-labelledby="title desc">
+  <title id="title">NOVA public proof object</title>
+  <desc id="desc">An original studio concept study of a poster, place marker, and screen arranged as one public object.</desc>
+  <rect width="720" height="840" fill="#191b1e"/>
+  <rect x="54" y="58" width="612" height="724" fill="#fffdf5"/>
+  <text x="88" y="102" fill="#191b1e" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="5">NOVA / PUBLIC OBJECT</text>
+  <text x="88" y="738" fill="#191b1e" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3">ONE IDEA / IN USE</text>
+  <path d="M145 222 454 154 474 584 169 648Z" fill="#a13f2d"/>
+  <path d="M464 202 590 244 590 556 476 529Z" fill="#a99bd3"/>
+  <text x="184" y="268" fill="#fffdf5" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="4">01 / POSTER</text>
+  <text x="177" y="504" fill="#fffdf5" font-family="Georgia, serif" font-size="225" letter-spacing="-25">N</text>
+  <path d="M500 318h58v126h-58z" fill="#191b1e"/>
+  <text x="515" y="473" fill="#191b1e" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2" transform="rotate(-90 515 473)">02 / PLACE</text>
+  <rect x="432" y="590" width="152" height="84" fill="#191b1e"/>
+  <rect x="452" y="610" width="112" height="44" fill="#bdd0bd"/>
+  <path d="M470 634h76" stroke="#191b1e" stroke-width="8"/>
+  <text x="432" y="700" fill="#191b1e" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2">03 / SCREEN</text>
+  <path d="M169 675H590" stroke="#a13f2d" stroke-width="3"/>
+</svg>
