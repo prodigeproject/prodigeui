@@ -97,24 +97,26 @@ Actions:
 
 ---
 
-## Step 3: Token Selection
+## Step 3: Intent-driven token synthesis
 
-**Goal:** Choose or customize a theme from the Theme_Catalog.
+**Goal:** Derive semantic roles from the Intent & Art Direction Brief instead of
+selecting a sector theme or hidden preset.
 
 Actions:
-1. Review available themes in `themes/` directory
-2. Select the closest matching theme for the use-case:
-   - Check `themes/light.theme.json` or `themes/dark.theme.json` as base
-   - Check use-case-specific themes (e.g., `themes/saas-professional.theme.json`)
-3. If customization is needed, follow `themes/creating-a-theme.md`
+1. Read `craft/intent-driven-art-direction.md` and record the selected experience
+   route, proof/media strategy, layout family, type jobs, and rejected alternative.
+2. Read `themes/generative-theme-synthesis.md` and synthesize surface, content,
+   signal, border, focus, typography, and spatial roles for this product.
+3. Re-derive the values when product, target market, or user job changes; do not
+   copy a prior theme name, palette, or page geometry.
 4. **Verify contrast compliance:**
    - Normal text: ratio >= 4.5:1 against background
    - Large text (>=18pt or >=14pt bold): ratio >= 3:1
    - Interactive elements and focus indicators: ratio >= 3:1
 5. Validate all semantic tokens required by components are defined
-6. Reference `tokens/semantic.tokens.json` for available token roles
+6. Reference `tokens/semantic.tokens.json` for role names and the generated token boundary
 
-**Output:** Selected/customized theme file with verified contrast ratios.
+**Output:** Intent-linked semantic token record with verified contrast ratios.
 
 **References:** `themes/theme.schema.json`, `themes/creating-a-theme.md`, `tokens/semantic.tokens.json`
 

@@ -61,6 +61,27 @@ INTENT, executed correctly, accessible, performant, and never worse than the bri
 
 ---
 
+## Intent before taste
+
+Creative Mode does not mean “apply the most expressive recipe.” Before choosing a
+palette, font, hero, or layout, read `craft/intent-driven-art-direction.md` and
+write a private Intent & Art Direction Brief:
+
+- product and market context;
+- primary user and the decision they need to make;
+- anxiety/desire and the intended emotional shift;
+- evidence and media available to prove the promise;
+- platform, accessibility, performance, and content constraints;
+- selected experience route, rejected alternative, and the reason for both.
+
+The route determines information hierarchy and proof priority, not a reusable
+visual skin. A fashion product may need a photo-led fitting story, a utility-led
+shop, or a specification sheet. A SaaS product may need a live state, a workflow,
+or an editorial explanation. Theme synthesis must re-derive color, typography,
+spatial rhythm, and media treatment for that specific read.
+
+---
+
 ## The Core Principle: ENHANCE, NEVER REPLACE
 
 ProdigeUI is NOT a design replacement tool. It is an ENHANCEMENT layer.
@@ -87,13 +108,12 @@ When an AI agent receives a design brief or prompt:
 > `DESIGN_VARIANCE` / `MOTION_INTENSITY` / `VISUAL_DENSITY` dials.
 
 ### Step 0 for expressive work: reach for craft
-Before applying the constraint rules below, decide the **signature**. Every expressive
-page needs ONE hero technique + a motion signature + a texture layer. Select from
-`craft/AGENTS.md`:
-- Hero: crossfading video, cursor spotlight, magnetic hero element, or giant fluid ghost type
-- Motion signature: staggered word/char reveal, scroll-linked opacity sweep, sticky stack
-- Texture: grain overlay + liquid glass (kills the flat-AI look)
-Then implement it from the recipe, and only THEN layer the constraint discipline below.
+Before applying the constraint rules below, decide the **signature** from the
+product evidence. An expressive page needs one memorable focal decision, but that
+decision may be a product photograph, material close-up, work sample, live state,
+diagram, type construction, or interaction. Add motion and texture only when they
+improve hierarchy, feedback, comprehension, or brand meaning. A static image-led
+page is not unfinished when looking or material trust is the job.
 
 ### Visual Hierarchy (not flat)
 - ONE element dominates each viewport (Von Restorff Effect)
@@ -104,28 +124,29 @@ Then implement it from the recipe, and only THEN layer the constraint discipline
 ### Spacing Rhythm (not arbitrary)
 - All values from a coherent scale (4px base: 8, 16, 24, 32, 48, 64, 80, 96)
 - Tighter within groups, wider between groups (Gestalt proximity)
-- Section padding: 64-96px between major sections (expressive heroes go full-viewport `100vh`)
+- Section padding: 64-96px between major sections. Expressive hero height follows the concept,
+  content, and focal subject; use `100vh` only when the first-view composition earns it.
 - Component padding: 16-32px inside cards/containers
 
 ### Color Intent (not AI defaults)
-- Choose a concept-driven palette — a confident single accent, or a duotone/gradient that
-  derives from the brand or photography (NOT a reflex purple→blue gradient)
+- Derive surface and signal roles from the product, audience, market, and truthful media.
+  A confident accent, a duotone, a neutral system, or a restrained gradient can all be
+  correct when their job is explicit.
 - Dark text on light OR light text on dark (never muddy)
 - Contrast minimum 4.5:1 for body text, always (over video, verify against the actual frame)
 
 ### Typography System (personality first)
-- **Expressive (CRAFT lane):** pair a DISPLAY face (Anton, Instrument Serif, Kanit,
-  Playfair italic, Helvetica Now Display) with a clean body face. Headlines at fluid
-  `clamp()` scale (e.g. `clamp(2.5rem, 14vw, 17.5rem)`), line-height 0.85–1.0, negative
-  tracking `-0.02em` to `-0.05em`. See `craft/patterns/fluid-display-type.md`.
+- **Expressive (CRAFT lane):** select a display face for the product's voice and the
+  audience's reading context, then pair it with a calm body face. Fluid scale and tight
+  tracking are options, not a requirement. See `craft/patterns/fluid-display-type.md`.
 - **Restrained (functional lane):** one UI family (Inter/Geist/system), modular scale
   1.25 (14, 16, 20, 24, 30, 36, 48, 60px), line-height 1.5 body / 1.15 display.
 - Max 2 families (display + body) + mono. This is a discipline in BOTH lanes.
 
 ### Motion (choreography, not decoration — and not timidity)
-- **Expressive (CRAFT lane):** choreographed entrances (staggered word/char reveal,
-  scroll-linked sweeps), ambient motion (crossfading video, opposing marquees, gentle
-  parallax), magnetic hover. Motion sets mood and guides the eye. See `motion/choreography.md`.
+- **Expressive (CRAFT lane):** choose choreographed entrances, scroll-linked sweeps,
+  ambient motion, or no continuous motion according to the experience thesis. Motion sets
+  mood and guides the eye only when it serves the page. See `motion/choreography.md`.
 - **Restrained (functional lane):** hover 150ms ease-out (translateY -2px / scale 1.02),
   entrance scroll-reveal 20-30px / 500ms ease-out, no ambient decoration.
 - Reduce-motion ALWAYS respected in both lanes. Ambient/continuous motion is legitimate
@@ -133,20 +154,24 @@ Then implement it from the recipe, and only THEN layer the constraint discipline
 
 ### Layout Intelligence (not centered-everything, but centered-with-depth is fine)
 - Asymmetric layouts create tension and guide the eye — use them
-- A centered hero is fine WHEN it has real media, texture, and motion (not a flat gradient)
-- Full-viewport cinematic composition for expressive heroes; `max-width: 1200px` for
+- A centered hero is fine when it has a clear product-specific focal subject or proof; real
+  media is preferred for visual products, while product state, text, or diagrams can be the
+  more truthful anchor elsewhere.
+- Concept-led cinematic composition for expressive heroes; `max-width: 1200px` for
   content layouts, `720px` for reading text
 - Layered z-index (ghost type behind subject, glass chrome above media) creates depth
 - Whitespace as a design tool (generous, not filler)
 
 ### Anti-AI-Slop in Practice (Creative Mode)
 - Reflex purple gradient → concept-driven palette or confident single accent
-- Flat centered mesh hero → centered hero WITH crossfading video + grain + glass + entrance
+- Flat centered mesh hero → a product-specific proof treatment with the right medium,
+  crop, and hierarchy; use photography, product state, diagram, or type as the job requires
 - Three equal cards → bento grid with a dominant hero cell
 - "Get Started" → specific CTA describing outcome ("Start 14-day trial", "See the work")
 - Random bounce → choreographed entrances with a tasteful settle-overshoot
 - Untouched Inter → display face at fluid scale with intentional tracking
-- Flat color field → grain overlay + depth + real media
+- Flat color field → meaningful material depth or real media when it improves proof; do not
+  add grain, glass, or a generated image just to fill space
 
 ---
 

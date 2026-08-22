@@ -1,4 +1,4 @@
-# Fair fashion benchmark — v3.0.8 vs without ProdigeUI
+# Fair fashion benchmark — v3.0.8 intent route vs without ProdigeUI
 
 Tanggal run: 22 Agustus 2026
 
@@ -15,16 +15,19 @@ Tanggal run: 22 Agustus 2026
 - Product facts: overshirt, in-between shirt, and wide trouser; all designed for repeat wear.
 - Primary action: view the collection.
 - Secondary action: contact the atelier.
-- No external runtime dependency or stock media in either lane.
+- No external runtime dependency. Both lanes use the same local generated media set:
+  lookbook, product still-life, and material detail, with provenance recorded next to it.
 
 ## Lanes
 
-1. `fashion-with-prodigeui-v308.html` — generated with ProdigeUI v3.0.8 principles:
-   editorial hierarchy, one material proof object, deliberate palette, asymmetric collection
-   rhythm, visible metadata, semantic HTML, contrast, focus, and reduced-motion fallback.
-2. `fashion-without-prodigeui.html` — same brief and content, implemented as a raw generic
-   landing page without ProdigeUI guidance.
+1. `fashion-with-prodigeui-v308.html` — generated with the v3.0.8 quality baseline plus the
+   intent/media routing correction: read the shopper and material proof first, then choose a
+   photo-led editorial shop floor, a mineral palette, type roles, and an asymmetric product
+   hierarchy. It intentionally does not copy NOVA's palette or geometry.
+2. `fashion-without-prodigeui.html` — same brief, copy, facts, and exact local media set,
+   implemented as a raw generic landing page without ProdigeUI routing guidance.
 
-The comparison measures the design system's contribution, not copy or product scope. Both
-pages are self-contained and use code-authored clothing cues so neither lane receives a
-hidden external media advantage.
+The comparison measures the design system's transferable quality constraints and its ability to
+choose an intent-fit medium, not visual sameness, copy, or product scope. Both pages are
+self-contained and consume the same local media set, so neither lane receives a hidden
+media-access advantage.

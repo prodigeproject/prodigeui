@@ -1,6 +1,6 @@
 {
   "name": "ProdigeUI",
-  "version": "2.0.0",
+  "version": "3.0.4",
   "description": "A portable UI/UX knowledge system for AI coding agents",
   "artifacts": [
     {
@@ -309,6 +309,11 @@
       "status": "created"
     },
     {
+      "path": "craft/baseline-preserving-studio-tuning.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
       "path": "craft/brief-to-art-direction.md",
       "type": "documentation",
       "status": "created"
@@ -369,7 +374,27 @@
       "status": "created"
     },
     {
+      "path": "craft/intent-driven-art-direction.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
       "path": "craft/design-system-routing.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/evidence-led-studio-composition.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/generative-craft-engine.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/high-craft-copywriting.md",
       "type": "documentation",
       "status": "created"
     },
@@ -489,6 +514,26 @@
       "status": "created"
     },
     {
+      "path": "craft/quiet-evidence-mode.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/8-reference-visual-canvas.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/awwwards-interactive-canvas-engine.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/beauty-fashion-atelier.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
       "path": "craft/recipes/horizontal-carousel.recipe.md",
       "type": "documentation",
       "status": "created"
@@ -509,6 +554,11 @@
       "status": "created"
     },
     {
+      "path": "craft/recipes/operational-saas-hero.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
       "path": "craft/recipes/pricing-table.recipe.md",
       "type": "documentation",
       "status": "created"
@@ -520,6 +570,11 @@
     },
     {
       "path": "craft/recipes/testimonial.recipe.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/recipes/world-class-hero-canvas.recipe.md",
       "type": "documentation",
       "status": "created"
     },
@@ -1589,83 +1644,13 @@
       "status": "created"
     },
     {
-      "path": "themes/_default.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
       "path": "themes/creating-a-theme.md",
       "type": "documentation",
       "status": "created"
     },
     {
-      "path": "themes/creative-dark.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/dark-premium.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/dark.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/ecommerce-warm.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/education-warm.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/enterprise-neutral.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/fintech-blue.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/government-accessible.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/healthcare-green.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/light.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/portfolio-minimal.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/saas-professional.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/social-vibrant.theme.json",
-      "type": "theme",
-      "status": "created"
-    },
-    {
-      "path": "themes/startup-bold.theme.json",
-      "type": "theme",
+      "path": "themes/generative-theme-synthesis.md",
+      "type": "documentation",
       "status": "created"
     },
     {

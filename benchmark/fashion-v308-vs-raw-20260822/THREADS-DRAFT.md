@@ -1,49 +1,56 @@
 # Draft Threads — FOLD fashion benchmark
 
-**Post 1/6**
+**Post 1/7**
 
-Saya uji satu hal yang sering diklaim oleh design system: apakah ia benar-benar mengubah hasil ketika brief-nya sama-sama singkat?
+Saya audit ulang benchmark fashion FOLD karena versi sebelumnya memang gagal.
+Hasilnya lebih terasa seperti landing page dengan pakaian: headline besar, blok
+abstrak, dan placeholder CSS. Belum terasa seperti web fashion.
 
-Brief-nya: landing page untuk label pakaian independen FOLD yang meluncurkan wardrobe linen kecil untuk orang yang ingin lebih sedikit, tapi lebih baik.
+**Post 2/7**
 
-**Post 2/6**
+Saya validasi ulang ke situs fashion nyata. Fashion storefront perlu menjawab:
+produk apa, koleksinya apa, bagaimana bentuk/material/fit-nya, pilihan size/color,
+harga bila memang commerce, dan langkah berikutnya untuk melihat atau membeli.
 
-Saya buat dua lane dengan kontrak yang sama:
+**Post 3/7**
 
-1. Dengan ProdigeUI v3.0.8
-2. Tanpa ProdigeUI, implementasi raw/generic
+Run baru memakai brief dan media lokal yang sama di dua lane:
 
-Copy, product facts, CTA, dan batasan teknis sama. Keduanya self-contained dan tidak memakai stock image atau external runtime.
+1. ProdigeUI v3.0.8 + intent/media routing
+2. Raw generic tanpa ProdigeUI
 
-**Post 3/6**
+Media yang sama: lookbook, product still-life, dan material detail. Jadi sistem
+tidak menang hanya karena mendapat gambar yang tidak diberikan ke lane raw.
 
-Hasil review visual directional:
+**Post 4/7**
 
-• ProdigeUI v3.0.8: 93/100
-• Raw: 57/100
+Lane ProdigeUI sekarang dimulai dari lookbook: garment dipakai dalam konteks,
+bukan abstrak shape. Lalu masuk ke collection discovery dengan kategori, jumlah
+pieces, filters, product image, material, color, size range, price, dan `View piece`.
 
-Bukan karena lane raw dibuat rusak. Ia tetap readable, responsive, contrast-safe, dan keyboard-focusable. Bedanya muncul di arah visual dan hierarchy.
+**Post 5/7**
 
-**Post 4/6**
+Strukturnya mengikuti user job fashion: campaign/lookbook → shop → material detail
+→ fit/care/shipping → contact. Ini bukan NOVA dengan warna baru. Yang dipindahkan
+dari v3.0.8 adalah disiplin membaca intent dan hierarchy; bahasa visualnya diturunkan
+untuk FOLD.
 
-Dengan v3.0.8, satu overshirt menjadi material proof object. Tipografi punya peran display/body/metadata. Koleksi tidak berhenti di tiga kartu sama besar: ada dominant study, offset study, lalu supporting study.
+**Post 6/7**
 
-Hasilnya lebih tenang, lebih spesifik, dan terasa seperti keputusan art direction—bukan sekadar layout yang terisi.
+Skor manual directional:
 
-**Post 5/6**
+• ProdigeUI v3.0.8 + intent route: 94/100
+• Raw: 60/100
 
-Quality gate otomatis:
+Catatan penting: ini bukan conversion claim. Ini review atas fashion language,
+product proof, merchandising UX, hierarchy, dan authored structure.
 
-• v3.0.8: 26 pass / 0 fail
-• Raw: 24 pass / 2 fail
+**Post 7/7**
 
-Dua fail di lane raw adalah pemeriksaan authored spatial rhythm dan project geometry. Keduanya tidak gagal di runtime, contrast, focus, atau responsive overflow.
-
-**Post 6/6**
-
-Catatan jujur: ini bukan klaim conversion atau sales uplift. Ini benchmark satu brief untuk melihat apakah ProdigeUI membantu AI membuat identitas, focal hierarchy, material cue, dan rhythm yang lebih authored.
+Perbaikan yang masuk ke ProdigeUI bukan “tambah theme fashion”. Justru sebaliknya:
+theme tidak boleh menjadi preset. Sistem sekarang wajib membaca product, target
+market, user job, evidence/media, dan route. Kalau produk berubah, media, layout,
+typography, color, dan interaction harus ikut di-derive ulang.
 
 Viewer + source benchmark:
 https://github.com/prodigeproject/prodigeui/tree/master/benchmark/fashion-v308-vs-raw-20260822
-
-Baseline yang dipakai: ProdigeUI v3.0.8 (`2ab4e19`).

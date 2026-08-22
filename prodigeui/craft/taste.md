@@ -18,6 +18,19 @@ If you can name *why* this concept needs a display serif / glass / gradient — 
 to it consistently — it's craft. If it's just your default, it's slop. Deliberateness and
 commitment are the dividing line.
 
+## Taste is contextual, not a universal skin
+
+Read `intent-driven-art-direction.md` before applying any heuristic in this file.
+“Taste” means choosing a visual language that helps this product, this user, and
+this market make the next decision. It does not mean repeating a paper surface,
+dark field, oversized serif, mono label, catalogue rail, or expressive canvas.
+
+When a product changes, re-derive the medium, surface strategy, typography jobs,
+layout topology, density, and motion. Keep the craft bar and accessibility bar
+constant; let the visible language change. A real product image can be the most
+crafted answer, and a quiet static composition can be more intentional than a
+technical effect.
+
 ## Discipline must not flatten art direction (read this before "restraining" anything)
 
 There are TWO failure modes, not one. Slop (generic, purposeless) is the famous one. The
@@ -395,8 +408,10 @@ Result = visually flat, no tension, no eye movement.
 ### Rules
 1. **Not every section heading is centered.** Alternate: left-aligned heading + right-aligned subtitle on same line (split-header), or left-aligned heading above content.
 2. **Asymmetric grid is default** for features/bento: `1.4fr 1fr` or `2fr 1fr`, not `1fr 1fr 1fr`.
-3. **One section per page MUST break the container** — a full-bleed image, a marquee that touches edges, or a background color shift that spans viewport width.
+3. **No full-bleed quota.** Break the container only when the concept benefits from edge-to-edge media, motion, or a surface transition. A deliberate contained composition can be equally expressive.
 4. **Visual weight distribution:** at least 2 sections should have dominant-side weight (content heavier on left OR right, not centered).
 5. **Vertical rhythm variation:** alternate tight sections (metrics/logos: py-44) with breathing sections (hero/testimonial: py-96). Never uniform padding.
 6. **The "scan path" test:** trace where the eye moves section-to-section. If it stays on center-axis the entire page, add a section that pulls attention left or right.
+7. **Two-signal expressive asymmetry:** a major portfolio/gallery field must combine dominance with offset, stagger, crop/height variation, overlap, or an intentional negative-space anchor. `7fr 5fr` repeated in every row is still flat.
+8. **Topology rotation:** do not repeat the same max-width wrapper and grid topology across consecutive expressive sections. Change the spatial argument, not merely the content.
 

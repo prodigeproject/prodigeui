@@ -2,12 +2,12 @@
 
 **A Portable UI/UX Knowledge System for AI Coding Agents**
 
-ProdigeUI is a comprehensive UI/UX knowledge kit that equips AI coding agents with design rules, tokens, themes, components, motion presets, assets, and structured workflows — enabling agents to design and implement enterprise-grade, interactive, and "AI slop"-free user interfaces.
+ProdigeUI is a comprehensive UI/UX knowledge kit that equips AI coding agents with design rules, tokens, intent routing, components, motion guidance, assets, and structured workflows — enabling agents to design and implement product-specific, accessible, and "AI slop"-free user interfaces.
 
 ## Key Features
 
 - **Semantic Design Tokens** — A three-layer token system (primitive → semantic → component) serving as the single source of truth for all visual decisions.
-- **Theme Catalog** — Ready-to-use themes (light, dark, brand) with WCAG AA contrast compliance.
+- **Intent-Driven Art Direction** — Product, target market, user job, evidence, and media are read before layout and token synthesis; themes are derived, not reused as hidden presets.
 - **Motion Presets** — Parameterized animation/transition presets with reduce-motion support and documented motion principles.
 - **Component Specs** — Agent-consumable Atomic Design specification catalog with complete
   state, variant, accessibility, and token-binding metadata; it is not an importable framework package.
@@ -19,7 +19,7 @@ ProdigeUI is a comprehensive UI/UX knowledge kit that equips AI coding agents wi
 
 To evaluate real-world performance under **Creative Mode** (vague brief, zero design specifics given), we benchmark AI generation against three reference suites: **FlowAI** (B2B Engineering SaaS), **NOVA** (Creative Studio Portfolio), and **FOLD** (fashion product launch).
 
-**Active promotion baseline:** ProdigeUI **v3.0.8** / commit `2ab4e19`. Later tuning candidates remain historical comparisons; they are not promoted as the default because the v3.0.8 output has the calmer, more coherent visual balance.
+**Active promotion baseline:** ProdigeUI **v3.0.8** / commit `2ab4e19`. Later tuning candidates remain historical comparisons; they are not promoted as the default because the v3.0.8 output has the calmer, more coherent visual balance. The baseline is a quality contract, not a NOVA visual template; each product benchmark keeps an independent art direction.
 
 ### Benchmark 1: FlowAI (B2B Engineering SaaS)
 > **Brief:** *"Build a single-page landing for FlowAI — an AI project management tool for engineering teams."*
@@ -55,17 +55,17 @@ See the [NOVA v3.0.8 benchmark](../benchmark/nova-fresh-4way-20260822/index.html
 ### Benchmark 3: FOLD (Fashion Product Launch)
 > **Brief:** *"Build a landing page for an independent clothing label called FOLD. The label is launching a small linen wardrobe for people who want fewer, better layers. Show the new drop, explain the material point of view, and invite visitors to view the collection."*
 
-The two lanes use the same brief, copy, product facts, actions, and code-authored garment cues. The only intended difference is whether the implementation follows the selected ProdigeUI v3.0.8 principles.
+The two lanes use the same brief, copy, product facts, actions, and local generated fashion media. The intended difference is whether the implementation follows the selected ProdigeUI v3.0.8 quality baseline plus intent/media routing; the fashion lane deliberately keeps its own commerce/editorial art direction instead of copying NOVA's surface or geometry.
 
-| Metric / Dimension | Without ProdigeUI | With ProdigeUI v3.0.8 |
+| Metric / Dimension | Without ProdigeUI | With v3.0.8 principles |
 | :--- | :--- | :--- |
-| **Visual identity** | Generic white/gray ecommerce surface with a purple accent | Warm paper, ink, clay, and mauve editorial system |
-| **Hero proof** | Large `F` placeholder-like shape | Code-authored linen overshirt study with material, label, and construction cues |
-| **Collection rhythm** | Three equal rounded product cards | Dominant hero study, offset secondary study, and lower supporting study |
-| **Automatic quality gate** | **24 pass / 2 fail / 20 not evaluated**; both failures are visual-geometry criteria | **26 pass / 0 fail / 20 not evaluated** |
-| **Manual visual review** | **57 / 100** directional score | **93 / 100** directional score |
+| **Visual identity** | Generic white/gray ecommerce surface with a purple accent | Mineral/moss/tobacco fashion register derived from warm-climate linen and the shared media |
+| **Fashion proof** | Same media, but used inside a generic split hero and card grid | Worn lookbook hero, product still-life, construction detail, and material chapter |
+| **Merchandising UX** | Three equal cards with limited product decision context | Category cues, collection count, filters, product name/material/color/size/price, and `View piece` path |
+| **Automatic quality gate** | **24 pass / 2 fail / 0 flag / 20 not evaluated**; both failures are visual-geometry criteria | **26 pass / 0 fail / 0 flag / 20 not evaluated** |
+| **Manual visual review** | **60 / 100** directional score | **94 / 100** directional score |
 
-The result supports the v3.0.8 claim at the level of authored hierarchy and visual craft: the system creates a stronger focal object, clearer material story, and more varied collection rhythm under the same brief. It does not claim higher sales, conversion, or user preference without a separate user study.
+The previous fashion artifact did not meet this bar and was replaced. The new result supports the v3.0.8 claim at the level of transferable intent reading, product proof, merchandising hierarchy, and visual craft: the system produces a fashion storefront rather than a generic landing page, without forcing fashion to look like NOVA. It does not claim higher sales, conversion, or user preference without a separate user study.
 
 See the [FOLD benchmark viewer](../benchmark/fashion-v308-vs-raw-20260822/index.html) and [full comparison report](../benchmark/fashion-v308-vs-raw-20260822/REPORT.md).
 
