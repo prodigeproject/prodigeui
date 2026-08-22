@@ -119,6 +119,15 @@ See `skills/prodige-ui-end-to-end/SKILL.md` for the detailed version of each ste
 
 ---
 
+## Evidence-led expressive route
+
+When the selected quality profile is `expressiveStudio`, read
+`craft/evidence-led-studio-composition.md` after the Design Read and before implementation.
+It adds a claim-to-proof decision, a truthful local-media route, non-generic work evidence,
+and a closing invitation without prescribing a benchmark geometry.
+
+---
+
 ## Core Principles
 
 1. **Token-first**: Repeated visual roles MUST be declared at a token-definition boundary and consumed through semantic/component variables. Concrete hex, px, or rem values are valid inside token definitions and one-off generated artwork; repeating them directly across component declarations is a failure.

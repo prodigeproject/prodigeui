@@ -230,6 +230,15 @@ expressive work.
 | 5 | **Real media** | Gray placeholder boxes | Real video/image/illustration integral to the concept | `assets/asset-sourcing.guide.md` |
 | 6 | **Focal hierarchy** | Everything equal weight | One dominant element per viewport; bento over equal cards | `craft/patterns/bento-grid.md` |
 
+### Evidence-led studio review
+
+For an expressive studio, agency, portfolio, editorial, or cultural brief, review one extra
+relationship before calling the craft complete: proposition -> proof -> work evidence ->
+closing invitation. The proof may be a local real asset, original generated local media, or a
+code-authored deliverable, but it must make the claim more credible than a monogram, empty
+card, or generic geometric field would. Work subjects should expose distinct media or delivery
+roles when the brief supports them. See `craft/evidence-led-studio-composition.md`.
+
 Additional craft signals (bonus, not required): sticky card stacks, opposing-direction
 marquees, HLS adaptive video, animated gradient-border focal accents, scroll parallax
 with depth — each with a reduced-motion fallback.
