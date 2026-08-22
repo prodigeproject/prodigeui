@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1000" viewBox="0 0 1200 1000" role="img" aria-labelledby="title desc">
+  <title id="title">NOVA Fieldwork No. 04</title>
+  <desc id="desc">An original editorial artwork of a scarlet cut-paper sun, black ladders, and a cream field.</desc>
+  <rect width="1200" height="1000" fill="#efe6d2"/>
+  <rect x="54" y="54" width="1092" height="892" fill="none" stroke="#1c1721" stroke-width="10"/>
+  <circle cx="790" cy="410" r="276" fill="#d94d32"/>
+  <path d="M744 152c45 87 55 170 30 249-27 83-15 157 35 220 41 53 78 104 111 153" fill="none" stroke="#1c1721" stroke-width="26" stroke-linecap="square"/>
+  <path d="M355 800V205M355 325h248M355 486h188M355 647h288" fill="none" stroke="#1c1721" stroke-width="22"/>
+  <path d="M244 208h224v80H244zM504 759h232v80H504z" fill="#c4d7c1" stroke="#1c1721" stroke-width="10"/>
+  <path d="M905 717l150-205 68 49-150 205z" fill="#1c1721"/>
+  <path d="M926 302l134-47 30 87-134 47z" fill="#c4d7c1" stroke="#1c1721" stroke-width="10"/>
+  <text x="84" y="120" fill="#1c1721" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="6">NOVA / FIELDWORK 04</text>
+  <text x="84" y="904" fill="#1c1721" font-family="Arial, sans-serif" font-size="22" letter-spacing="4">ORIGINAL LOCAL ARTWORK / 2026</text>
+</svg>

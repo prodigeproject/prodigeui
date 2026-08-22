@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
+  <title id="title">NOVA Work in Public study</title>
+  <desc id="desc">An original local artwork showing a campaign poster, a street sign, and a digital invitation as three studio proof surfaces.</desc>
+  <rect width="1200" height="1040" fill="#efeadd"/>
+  <rect x="44" y="44" width="1112" height="952" fill="none" stroke="#1b1e21" stroke-width="10"/>
+  <rect x="114" y="164" width="410" height="630" fill="#9b3d2c"/>
+  <rect x="156" y="208" width="326" height="546" fill="#efeadd"/>
+  <path d="M190 656V302h254v354z" fill="#1b1e21"/>
+  <path d="M204 630l214-280M204 454l156-116" stroke="#b7cbb6" stroke-width="28"/>
+  <rect x="612" y="234" width="402" height="180" fill="#1b1e21"/>
+  <rect x="642" y="264" width="342" height="120" fill="#b7cbb6"/>
+  <path d="M678 324h268" stroke="#1b1e21" stroke-width="18"/>
+  <rect x="648" y="526" width="404" height="306" fill="#afa2d2" stroke="#1b1e21" stroke-width="10"/>
+  <rect x="688" y="570" width="324" height="212" fill="#1b1e21"/>
+  <circle cx="850" cy="676" r="74" fill="#efeadd"/>
+  <path d="M850 602v148M776 676h148" stroke="#9b3d2c" stroke-width="16"/>
+  <text x="78" y="102" fill="#1b1e21" font-family="Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="6">NOVA / WORK IN PUBLIC</text>
+  <text x="114" y="858" fill="#1b1e21" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4">01 IDENTITY</text>
+  <text x="612" y="452" fill="#1b1e21" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4">02 PLACE</text>
+  <text x="648" y="876" fill="#1b1e21" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4">03 SCREEN</text>
+  <text x="78" y="944" fill="#1b1e21" font-family="Arial, sans-serif" font-size="20" letter-spacing="3">ORIGINAL LOCAL EVIDENCE STUDY / 2026</text>
+</svg>
