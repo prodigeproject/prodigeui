@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 840" role="img" aria-labelledby="title desc">
+  <title id="title">Forms of Arrival volume study</title>
+  <desc id="desc">An original formal composition of overlapping architectural volumes for an exhibition hero.</desc>
+  <rect width="760" height="840" fill="#20211f"/>
+  <path d="M94 162 479 82 479 664 94 746Z" fill="#c15034"/>
+  <path d="M479 82 650 174 650 733 479 664Z" fill="#887eb9"/>
+  <path d="M162 246 409 194 409 568 162 621Z" fill="#e6e1d3"/>
+  <path d="M409 194 532 258 532 595 409 568Z" fill="#20211f"/>
+  <path d="M202 585H584" stroke="#c6d0b7" stroke-width="5"/>
+  <text x="128" y="128" fill="#e6e1d3" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="5">FORM / VOLUME 08</text>
+  <text x="202" y="478" fill="#20211f" font-family="Georgia, serif" font-size="205" letter-spacing="-20">A</text>
+  <text x="128" y="704" fill="#e6e1d3" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3">THRESHOLD / STUDY</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 840" role="img" aria-labelledby="title desc">
+  <title id="title">Forms of Arrival entry instrument</title>
+  <desc id="desc">An original exhibition entry instrument with a route, a threshold marker, and an invitation token.</desc>
+  <rect width="720" height="840" fill="#202822"/>
+  <rect x="54" y="58" width="612" height="724" fill="#fffdf5"/>
+  <text x="88" y="104" fill="#202822" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="4">FORMS OF ARRIVAL / ENTRY 01</text>
+  <path d="M150 210 452 150 474 588 174 650Z" fill="#a9432b"/>
+  <path d="M457 206 592 251 592 563 478 531Z" fill="#8ea8cf"/>
+  <text x="188" y="260" fill="#fffdf5" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3">ROUTE / 01</text>
+  <text x="184" y="502" fill="#fffdf5" font-family="Georgia, serif" font-size="182" letter-spacing="-16">IN</text>
+  <path d="M508 316h50v142h-50z" fill="#202822"/>
+  <text x="522" y="483" fill="#202822" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2" transform="rotate(-90 522 483)">MARKER / 02</text>
+  <rect x="427" y="591" width="164" height="84" fill="#202822"/>
+  <path d="M449 635h118" stroke="#c3cdb7" stroke-width="9"/>
+  <text x="428" y="704" fill="#202822" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="2">INVITATION / 03</text>
+  <path d="M174 680H592" stroke="#a9432b" stroke-width="3"/>
+</svg>
