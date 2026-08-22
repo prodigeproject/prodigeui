@@ -18,7 +18,7 @@ ProdigeUI is a comprehensive UI/UX knowledge kit that equips AI coding agents wi
 ## Frozen Benchmark Baseline
 
 ProdigeUI's current accepted visual reference is the frozen baseline at commit
-[`07a5ae6`](https://github.com/prodigeproject/prodigeui/tree/07a5ae6).
+[`07a5ae6`](https://github.com/prodigeproject/prodigeui/tree/frozen-benchmark-07a5ae6).
 It is the version the team chose after side-by-side review because it feels the
 most calm, coherent, and composed overall.
 
@@ -34,7 +34,7 @@ checks whether the interface follows the real decision at hand—what people nee
 to understand, compare, choose, or recover from—instead of producing the same
 website in different colours.
 
-- [Browse the frozen benchmark in the ProdigeUI repository](https://github.com/prodigeproject/prodigeui/tree/07a5ae6/benchmark/market-calibrated-fresh-20260822)
+- [Browse the frozen benchmark in the ProdigeUI repository](https://github.com/prodigeproject/prodigeui/tree/frozen-benchmark-07a5ae6/benchmark/market-calibrated-fresh-20260822)
 
 This is a design benchmark, not a claim about conversion, commercial outcomes,
 or universal user preference. Future tuning must prove that it keeps or improves
