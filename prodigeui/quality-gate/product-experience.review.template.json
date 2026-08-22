@@ -1,0 +1,62 @@
+{
+  "artifact": "*",
+  "reviewerRoles": ["ux-designer", "product-designer", "design-engineer"],
+  "instructions": "Replace every not-evaluable status with pass, fail, or flag. Cite a concrete screen, interaction, state, or copy string as evidence. Do not award a pass for a visually polished first viewport alone.",
+  "criteria": [
+    {
+      "id": "product-outcome-clarity",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: identify the primary actor, desired outcome, and visible value mechanism."]
+    },
+    {
+      "id": "differentiated-value-mechanism",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: explain why a direct alternative could not reuse the same proof, flow, and action unchanged."]
+    },
+    {
+      "id": "journey-continuity",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: trace entry, orientation, evidence, choice, action, feedback, result, and next/recovery path."]
+    },
+    {
+      "id": "state-and-recovery-completeness",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: inspect applicable empty, loading, invalid, error, permission, success, and returning states."]
+    },
+    {
+      "id": "market-and-risk-fit",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: evaluate familiarity, terminology, evidence, commitment level, and trust behavior for the intended market."]
+    },
+    {
+      "id": "market-reference-calibration",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: inspect two or more direct market references and trace the retained convention, product-specific departure, and rejected generic fallback."]
+    },
+    {
+      "id": "experience-archetype-fit",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: identify the selected archetype, first-viewport engine, evidence hierarchy, and action it makes possible."]
+    },
+    {
+      "id": "visual-evidence-task-fit",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: explain how the dominant product state, object, place, person, or media resolves a real decision uncertainty."]
+    },
+    {
+      "id": "cross-domain-identity-separation",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: compare this case with an unrelated one across topology, type, palette, media, density, action placement, and sequence; flag unexplained shared grammar."]
+    },
+    {
+      "id": "responsive-task-continuity",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: verify that the primary task, evidence, action, and recovery path remain usable at compact viewports."]
+    },
+    {
+      "id": "implementation-viability",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: inspect semantic controls, component boundaries, data/asset behavior, focus management, and realistic interaction constraints."]
+    }
+  ]
+}

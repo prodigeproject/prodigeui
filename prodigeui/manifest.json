@@ -379,6 +379,16 @@
       "status": "created"
     },
     {
+      "path": "craft/product-experience-architecture.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
+      "path": "craft/market-reference-calibration.md",
+      "type": "documentation",
+      "status": "created"
+    },
+    {
       "path": "craft/design-system-routing.md",
       "type": "documentation",
       "status": "created"
@@ -926,6 +936,11 @@
     {
       "path": "quality-gate/criteria.json",
       "type": "rules",
+      "status": "created"
+    },
+    {
+      "path": "quality-gate/product-experience.review.template.json",
+      "type": "configuration",
       "status": "created"
     },
     {

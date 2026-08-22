@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MIRA — Capsule 05</title>
+  <style>
+    :root { --ink:#17211f; --paper:#f5f2eb; --line:#d8d2c7; --blue:#152b58; --clay:#b55d43; --muted:#6c716b; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.45 Arial, Helvetica, sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .skip { position:absolute; left:-999px; top:0; }
+    .skip:focus { left:12px; z-index:10; padding:10px; background:#fff; }
+    header { height:62px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); padding:0 22px; background:var(--paper); }
+    .brand { font-weight:800; letter-spacing:.14em; font-size:14px; }
+    nav { display:flex; align-items:center; gap:22px; font-size:12px; text-transform:uppercase; letter-spacing:.08em; }
+    .bag { border:1px solid var(--ink); border-radius:999px; padding:7px 11px; }
+    .shop { display:grid; grid-template-columns:minmax(0,1.42fr) minmax(360px,.78fr); min-height:calc(100vh - 62px); }
+    .look { min-height:650px; position:relative; background:#dad4c8; overflow:hidden; }
+    .look img { width:100%; height:100%; min-height:650px; object-fit:cover; object-position:center; display:block; }
+    .look figcaption { position:absolute; left:18px; bottom:17px; color:white; background:rgba(11,20,19,.7); padding:8px 10px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+    .notice { position:absolute; top:17px; left:18px; width:206px; background:rgba(245,242,235,.94); padding:12px; font-size:12px; }
+    .notice b { display:block; margin-bottom:4px; color:var(--blue); }
+    .product { padding:34px clamp(24px,4vw,64px) 44px; align-self:start; }
+    .crumb { color:var(--muted); font-size:11px; letter-spacing:.11em; text-transform:uppercase; }
+    h1 { max-width:430px; margin:16px 0 8px; font-size:clamp(30px,4vw,54px); line-height:.98; letter-spacing:-.06em; font-weight:650; }
+    .subtitle { max-width:430px; margin:0 0 23px; color:#555d58; font-size:16px; }
+    .price { display:flex; justify-content:space-between; align-items:baseline; padding:16px 0; border-top:1px solid var(--ink); border-bottom:1px solid var(--line); font-size:14px; }
+    .price strong { font-size:18px; }
+    form { margin-top:24px; }
+    fieldset { border:0; padding:0; margin:0 0 20px; }
+    legend, .label { display:flex; justify-content:space-between; width:100%; margin-bottom:9px; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .label span { color:var(--muted); font-weight:400; letter-spacing:0; text-transform:none; }
+    .swatch { display:inline-flex; gap:8px; align-items:center; font-size:13px; }
+    .dot { width:18px; height:18px; border-radius:50%; border:2px solid var(--paper); box-shadow:0 0 0 1px var(--ink); background:var(--blue); }
+    .sizes { display:grid; grid-template-columns:repeat(4,1fr); gap:7px; }
+    .sizes input { position:absolute; opacity:0; }
+    .sizes label { min-height:46px; display:grid; place-items:center; border:1px solid var(--line); cursor:pointer; }
+    .sizes input:checked + label, .sizes label:hover { border-color:var(--ink); background:var(--ink); color:var(--paper); }
+    .add { width:100%; min-height:54px; border:0; background:var(--blue); color:white; font:700 13px Arial, sans-serif; letter-spacing:.09em; text-transform:uppercase; cursor:pointer; }
+    .delivery { margin:14px 0 0; color:#555d58; font-size:13px; }
+    .fit { display:grid; grid-template-columns:58px 1fr; gap:14px; margin-top:31px; padding-top:22px; border-top:1px solid var(--line); }
+    .fit b { color:var(--clay); font-size:12px; letter-spacing:.1em; }
+    .fit p { margin:0; color:#49534e; font-size:13px; }
+    .details { grid-column:1 / -1; display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); border-top:1px solid var(--line); }
+    .material { min-height:420px; overflow:hidden; }
+    .material img { width:100%; height:100%; object-fit:cover; display:block; }
+    .notes { padding:clamp(24px,5vw,80px); background:#e9e2d6; }
+    .notes h2 { margin:0 0 18px; max-width:440px; font-size:clamp(25px,3vw,42px); line-height:1; letter-spacing:-.05em; }
+    .notes p { max-width:440px; color:#4d514b; }
+    details { border-top:1px solid #bcb5ab; padding:14px 0; max-width:460px; }
+    summary { cursor:pointer; font-weight:700; }
+    @media (max-width:760px) {
+      header { padding:0 14px; } nav a:not(.bag) { display:none; }
+      .shop, .details { grid-template-columns:1fr; }
+      .look, .look img { min-height:68vh; }
+      .product { padding:26px 20px 38px; }
+      .details { border-top:0; }
+      .material { min-height:290px; }
+      .notes { padding:34px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#product">Skip to product</a>
+  <header>
+    <a class="brand" href="#top">MIRA / JKT</a>
+    <nav aria-label="Primary">
+      <a href="#collection">Capsule 05</a><a href="#material">Material notes</a><a href="#fit">Fit help</a><a class="bag" href="#bag">Bag · 0</a>
+    </nav>
+  </header>
+  <main id="top" class="shop">
+    <figure class="look" aria-label="Model wearing the Capsule 05 silhouette">
+      <img src="assets/mira-look-01.png" alt="Model wearing an ivory overshirt and indigo wide-leg trousers">
+      <aside class="notice"><b>Capsule 05</b>Three pieces cut to be worn together or apart. Made in a limited first run.</aside>
+      <figcaption>Look 01 · ivory / indigo</figcaption>
+    </figure>
+    <section id="product" class="product" aria-labelledby="product-title">
+      <p class="crumb">Capsule 05 / Look 01</p>
+      <h1 id="product-title">The travelling set</h1>
+      <p class="subtitle">A crisp overshirt and relaxed linen trouser, cut for heat, movement, and an unplanned second stop.</p>
+      <div class="price"><span>Two-piece set</span><strong>Rp2.480.000</strong></div>
+      <form aria-label="Choose the travelling set">
+        <fieldset><legend>Colour <span class="swatch"><i class="dot"></i> Ivory + indigo</span></legend></fieldset>
+        <fieldset><legend>Choose trouser size <span>Need measurements?</span></legend>
+          <div class="sizes"><input id="s" name="size" type="radio"><label for="s">S</label><input id="m" name="size" type="radio" checked><label for="m">M</label><input id="l" name="size" type="radio"><label for="l">L</label><input id="xl" name="size" type="radio"><label for="xl">XL</label></div>
+        </fieldset>
+        <button class="add" type="button">Add size M to bag</button>
+        <p class="delivery">Jakarta delivery: 1–2 working days. Exchange size within 7 days, unworn.</p>
+      </form>
+      <div id="fit" class="fit"><b>FIT</b><p>Overshirt sits loose through the chest; trouser has a relaxed leg and elastic back. If you are between sizes, choose the smaller trouser for a neater waist.</p></div>
+    </section>
+    <section id="material" class="details" aria-label="Material and care notes">
+      <figure class="material"><img src="assets/mira-material-01.png" alt="Close view of ivory overshirt and indigo linen trousers on a dark wood rail"></figure>
+      <div class="notes"><p class="crumb">Made to be worn in</p><h2>Material should answer more than colour.</h2><p>Italian-washed cotton keeps the overshirt structured without feeling stiff. The trouser uses a breathable linen blend, with room at the seat so the drape stays easy when you sit.</p><details><summary>Garment measurements</summary><p>Waist, rise, chest, sleeve, and inside-leg measurements appear before checkout. No size chart is hidden behind a contact form.</p></details><details><summary>Care and repair</summary><p>Cold wash, line dry. Bring the set to our Jakarta studio for a simple button or hem repair in its first year.</p></details></div>
+    </section>
+  </main>
+</body>
+</html>

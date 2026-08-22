@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relay — Release room</title>
+  <style>
+    :root { --bg:#101513; --panel:#17201d; --line:#2b3732; --text:#edf4ed; --muted:#9eaaa3; --lime:#b8d95d; --amber:#f0ae63; --red:#f47568; --blue:#89b8f0; }
+    * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--text); font:14px/1.4 Inter, ui-sans-serif, system-ui, sans-serif; }
+    button { font:inherit; } .shell { display:grid; grid-template-columns:218px minmax(0,1fr); min-height:100vh; }
+    aside { border-right:1px solid var(--line); padding:18px 12px; background:#121916; } .logo { display:flex; align-items:center; gap:9px; padding:7px 8px 25px; font-size:15px; font-weight:750; }
+    .mark { display:grid; place-items:center; width:23px; height:23px; border-radius:7px; background:var(--lime); color:#111; font-size:12px; } .team { padding:12px 9px; margin-bottom:17px; border:1px solid var(--line); border-radius:9px; color:var(--muted); font-size:12px; }
+    .team strong { display:block; color:var(--text); margin-top:3px; font-size:13px; } .nav-label { margin:18px 8px 7px; color:#6f7d75; font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+    .nav a { display:flex; justify-content:space-between; padding:8px; color:var(--muted); text-decoration:none; border-radius:6px; } .nav a.active { background:#233029; color:var(--text); } .nav em { color:#7d8d83; font-style:normal; font-size:11px; }
+    main { min-width:0; } .top { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:0 28px; border-bottom:1px solid var(--line); } .crumb { color:var(--muted); font-size:12px; } .crumb b { color:var(--text); font-weight:650; }
+    .top-actions { display:flex; gap:9px; align-items:center; } .saved { color:var(--muted); font-size:12px; } .button { border:1px solid var(--line); background:transparent; color:var(--text); padding:9px 12px; border-radius:7px; cursor:pointer; } .button.primary { border-color:var(--lime); background:var(--lime); color:#152017; font-weight:750; }
+    .wrap { padding:27px 28px 45px; max-width:1500px; margin:auto; } .release-head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:24px; } h1 { margin:0; font-size:25px; letter-spacing:-.045em; } .release-head p { margin:7px 0 0; color:var(--muted); } .meter { min-width:250px; } .meter span { display:flex; justify-content:space-between; margin-bottom:7px; font-size:11px; color:var(--muted); } .bar { height:7px; overflow:hidden; background:#28342e; border-radius:99px; } .bar i { display:block; width:72%; height:100%; background:var(--lime); }
+    .grid { display:grid; grid-template-columns:minmax(0,1.52fr) minmax(290px,.78fr); gap:18px; } .card { border:1px solid var(--line); border-radius:11px; background:var(--panel); overflow:hidden; } .card-title { display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--line); } .card-title h2 { margin:0; font-size:13px; letter-spacing:.02em; } .card-title span { color:var(--muted); font-size:12px; }
+    .issue { display:grid; grid-template-columns:8px minmax(0,1fr) 96px 86px 35px; align-items:center; gap:12px; padding:13px 16px; border-bottom:1px solid var(--line); } .issue:last-child { border:0; } .dot { width:8px; height:8px; border-radius:50%; } .red { background:var(--red); }.amber { background:var(--amber); }.blue { background:var(--blue); }.lime { background:var(--lime); } .issue a { color:var(--text); text-decoration:none; font-weight:650; } .issue p { margin:3px 0 0; color:var(--muted); font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; } .owner { display:flex; align-items:center; gap:6px; color:var(--muted); font-size:12px; } .avatar { width:22px; height:22px; border-radius:50%; display:grid; place-items:center; background:#304038; color:var(--text); font-size:10px; } .tag { justify-self:start; color:#c5d0c7; font-size:11px; border:1px solid #3e4d45; border-radius:99px; padding:4px 7px; }
+    .side { display:grid; gap:18px; align-content:start; } .decision { padding:17px; } .decision h2 { margin:0; font-size:18px; letter-spacing:-.035em; } .decision p { color:var(--muted); margin:9px 0 15px; } .decision button { width:100%; padding:11px; border:1px solid var(--lime); border-radius:7px; background:transparent; color:var(--lime); font-weight:700; cursor:pointer; }
+    .signal { padding:0 16px 15px; } .signal-row { display:grid; grid-template-columns:1fr auto; gap:10px; padding:10px 0; border-bottom:1px solid var(--line); } .signal-row:last-child { border-bottom:0; }.signal-row span { color:var(--muted);font-size:12px;}.signal-row b { font-size:12px;}.good {color:var(--lime);}.warning{color:var(--amber);}
+    .activity { padding:4px 16px 10px; } .activity li { list-style:none; margin:0; padding:10px 0 10px 29px; position:relative; color:var(--muted); font-size:12px; border-bottom:1px solid var(--line);}.activity li:before{content:"";position:absolute;left:4px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--blue);} .activity b {color:var(--text);font-weight:650;}
+    .foot { margin-top:18px; display:grid; grid-template-columns:1fr 1fr; gap:18px; } .empty { padding:16px; border:1px dashed #3a4940; border-radius:9px; color:var(--muted); font-size:12px; } .empty b {color:var(--text);display:block;margin-bottom:4px;}
+    @media (max-width:920px) { .shell{grid-template-columns:1fr;} aside{display:none}.grid{grid-template-columns:1fr}.meter{min-width:190px}.issue{grid-template-columns:8px minmax(0,1fr) 76px}.issue .tag,.issue>span:last-child{display:none} } @media(max-width:570px){.top{padding:0 15px}.saved,.button:not(.primary){display:none}.wrap{padding:20px 15px}.release-head{align-items:start;flex-direction:column}.meter{width:100%}.issue{grid-template-columns:8px minmax(0,1fr) 30px}.owner{display:none}.foot{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <div class="logo"><span class="mark">R</span> relay</div>
+      <div class="team">Workspace<strong>Garden Systems</strong></div>
+      <nav class="nav" aria-label="Workspace navigation"><p class="nav-label">Build</p><a href="#issues">My issues <em>7</em></a><a class="active" href="#release">Release room <em>1</em></a><a href="#projects">Projects</a><p class="nav-label">Observe</p><a href="#updates">Customer signals <em>12</em></a><a href="#activity">Activity</a></nav>
+    </aside>
+    <main id="release">
+      <header class="top"><div class="crumb"><b>Garden Systems</b> / Releases / iOS 4.12</div><div class="top-actions"><span class="saved">Synced 2 min ago</span><button class="button">Share review</button><button class="button primary">Start release check</button></div></header>
+      <div class="wrap">
+        <section class="release-head"><div><h1>iOS 4.12 is nearly ready. Two risks still need an owner.</h1><p>Friday, 30 Aug · staged rollout to 10% once blockers are resolved.</p></div><div class="meter"><span><b>Release confidence</b><b>72%</b></span><div class="bar"><i></i></div></div></section>
+        <div class="grid">
+          <section id="issues" class="card" aria-labelledby="blocker-title"><div class="card-title"><h2 id="blocker-title">Decision queue</h2><span>Sorted by release impact</span></div>
+            <article class="issue"><i class="dot red"></i><div><a href="#payment">MOB-482 · Retry flow can duplicate payment confirmation</a><p>Customer impact: charge status may appear inconsistent after poor connectivity.</p></div><div class="owner"><span class="avatar">AN</span> A. Nia</div><span class="tag">Needs decision</span><span>›</span></article>
+            <article class="issue"><i class="dot red"></i><div><a href="#route">MOB-479 · Route screen waits on full vehicle sync</a><p>Fallback state is defined; approve partial state rendering before release.</p></div><div class="owner"><span class="avatar">DK</span> D. Kyo</div><span class="tag">Needs decision</span><span>›</span></article>
+            <article class="issue"><i class="dot amber"></i><div><a href="#copy">MOB-463 · Update handoff copy for offline booking</a><p>Ready for review. No implementation risk once copy is approved.</p></div><div class="owner"><span class="avatar">SF</span> S. Fira</div><span class="tag">Review</span><span>›</span></article>
+            <article class="issue"><i class="dot lime"></i><div><a href="#a11y">MOB-451 · VoiceOver label order in trip summary</a><p>Verified on the release candidate. Kept here as a completed safeguard.</p></div><div class="owner"><span class="avatar">LT</span> L. Tia</div><span class="tag">Done</span><span>›</span></article>
+          </section>
+          <aside class="side" aria-label="Release evidence">
+            <section class="card decision"><p class="nav-label">The next decision</p><h2>Assign owners before the staging window.</h2><p>Both blockers have a recovery path. The release manager only needs an explicit owner and review time.</p><button type="button">Assign the two blockers</button></section>
+            <section class="card"><div class="card-title"><h2>Release signals</h2><span>24h</span></div><div class="signal"><div class="signal-row"><span>Crash-free sessions</span><b class="good">Within guardrail</b></div><div class="signal-row"><span>Checkout retries</span><b class="warning">Watch after 10%</b></div><div class="signal-row"><span>Support incidents</span><b class="good">No new pattern</b></div></div></section>
+            <section id="activity" class="card"><div class="card-title"><h2>What changed</h2><span>Today</span></div><ul class="activity"><li><b>Nia</b> linked payment retry evidence to MOB-482.</li><li><b>Kyo</b> attached the partial-sync acceptance criteria.</li><li><b>Fira</b> marked support copy ready for product review.</li></ul></section>
+          </aside>
+        </div>
+        <div class="foot"><div class="empty"><b>No untriaged release risk</b>New signals arrive in Customer signals first, so the decision queue stays owned and small.</div><div class="empty"><b>Recovery is defined</b>If staging shows a retry spike, pause at 10%, retain current orders, and send the offline handoff copy.</div></div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
