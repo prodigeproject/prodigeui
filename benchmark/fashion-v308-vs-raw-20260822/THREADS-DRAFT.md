@@ -44,6 +44,6 @@ Dua fail di lane raw adalah pemeriksaan authored spatial rhythm dan project geom
 Catatan jujur: ini bukan klaim conversion atau sales uplift. Ini benchmark satu brief untuk melihat apakah ProdigeUI membantu AI membuat identitas, focal hierarchy, material cue, dan rhythm yang lebih authored.
 
 Viewer + source benchmark:
-https://github.com/prodigeproject/prodigeui/tree/main/benchmark/fashion-v308-vs-raw-20260822
+https://github.com/prodigeproject/prodigeui/tree/master/benchmark/fashion-v308-vs-raw-20260822
 
 Baseline yang dipakai: ProdigeUI v3.0.8 (`2ab4e19`).
