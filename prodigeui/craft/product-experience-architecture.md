@@ -87,6 +87,26 @@ Use the flow to decide navigation, sequence, progressive disclosure, and which
 screens or states are necessary. A visual page can be a valid deliverable only
 when the real next action is outside its scope and the handoff is explicit.
 
+### Map exposure, not only states
+
+A complete state model does **not** mean every state, explanation, reassurance,
+or recovery mechanism belongs in the first viewport. Before composing, classify
+each fact or region as one of the following:
+
+| Exposure | Put it here when |
+| --- | --- |
+| Always visible | It creates orientation, proves the offering, prevents harm, or is needed for the immediate decision. |
+| Decision-time | It is needed only once a person starts comparing, selecting, or committing. |
+| Action-result | It acknowledges a submitted choice, changed state, or retained context. |
+| Exception / recovery | It explains an unavailable, invalid, risky, or failed path. Keep it reachable, not permanently foregrounded. |
+| Return context | It matters when the person comes back after an interruption, change, or saved decision. |
+
+Safety, eligibility, cost, destructive consequence, and time-sensitive facts
+are not candidates for decorative deferral. Otherwise, prefer a quiet default
+surface that shows the next meaningful decision and lets the rest appear at the
+moment it becomes useful. This is progressive disclosure for comprehension, not
+an excuse to hide material information.
+
 ## 5. Create a screen, state, and content contract
 
 For every meaningful flow, record the smallest set of screens or regions that
@@ -112,8 +132,9 @@ undo/escalation behavior appropriate to the actual risk.
 Only now choose the first proof, page topology, and layout family. The structure
 must answer the flow’s current question, not merely make the page visually varied.
 
-1. Put the proposition, mechanism, and relevant proof in the first meaningful
-   viewport. A category label alone is insufficient.
+1. Put the proposition, mechanism, and proof needed for immediate orientation or
+   commitment in the first meaningful viewport. A category label alone is
+   insufficient; neither is a permanent dashboard of future states.
 2. Separate recognition from commitment. Use small, reversible actions before a
    high-risk action when the user is not ready to decide.
 3. Let familiar market conventions carry basic comprehension; spend visual
@@ -148,9 +169,17 @@ this product to exist.
 
 ## 8. Design-engineering handoff
 
+Read `design-engineering-quality.md` before turning this record into UI. It
+adds the required judgement record and the implementation contracts for type,
+colour, headers, action feedback, state transitions, motion, drawers, and
+transient feedback. Its rules make the final mile of craft inspectable without
+forcing one shared visual style across products.
+
 The implementation record must name:
 
 - the selected scope, primary flow, and intentionally excluded flow;
+- the exposure map: what is always visible, decision-time, action-result,
+  exception/recovery, and returning context, including any safety exception;
 - screens/regions, navigation topology, and deep-link or handoff behavior;
 - content model and source/provenance for each material claim or asset;
 - state matrix, semantic controls, keyboard/focus behavior, and assistive copy;

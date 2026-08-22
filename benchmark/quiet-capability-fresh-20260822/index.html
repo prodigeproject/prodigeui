@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProdigeUI — quiet capability benchmark</title>
+  <style>
+    :root{--ink:#1c2925;--paper:#f5f1e8;--line:#d3cbbd;--soft:#e3eadf;--signal:#be5f42;--deep:#133f38}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Arial,Helvetica,sans-serif}main{width:min(1160px,calc(100% - 40px));margin:auto;padding:clamp(43px,8vw,108px) 0 60px}.eyebrow{margin:0 0 14px;color:var(--signal);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}h1{max-width:960px;margin:0;font:clamp(43px,7.5vw,91px)/.9 Georgia,"Times New Roman",serif;letter-spacing:-.065em}.lead{max-width:725px;margin:28px 0 46px;color:#53615a;font-size:clamp(17px,2vw,21px)}.key{display:flex;gap:17px;flex-wrap:wrap;margin:0 0 23px;color:#53615a;font-size:14px}.dot{display:inline-block;width:9px;height:9px;margin-right:7px;border-radius:50%;background:#4f7370}.dot.quiet{background:var(--signal)}.cases{border-top:1px solid var(--line)}.case{display:grid;grid-template-columns:.7fr 1fr 1fr;border-bottom:1px solid var(--line)}.case>div,.case>a{display:flex;min-height:158px;flex-direction:column;justify-content:space-between;padding:22px;border-right:1px solid var(--line)}.case>div{background:var(--soft)}.case>a{color:inherit;text-decoration:none;background:#fbfaf5}.case>a:last-child{border-right:0;background:var(--deep);color:#eff4ec}.case small{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.case>div small{color:#4d655d}.case>a small{opacity:.65}.case h2{margin:10px 0 0;font:clamp(28px,3vw,43px)/.94 Georgia,serif;letter-spacing:-.05em}.case p{max-width:260px;margin:0;color:#53615a;font-size:14px}.case>a:last-child p{color:#c2d4cb}.go{font-weight:800}.note{margin-top:27px;padding:21px;background:#ebe2d2;color:#48564f}.note b{color:var(--ink)}a:focus-visible{outline:3px solid var(--signal);outline-offset:-3px}@media(max-width:760px){main{width:min(100% - 28px,1160px);padding-top:42px}.case{grid-template-columns:1fr}.case>div,.case>a{min-height:132px;border-right:0;border-bottom:1px solid var(--line)}.case>a:last-child{border-bottom:0}}
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">ProdigeUI / fresh comparison / quiet capability</p>
+    <h1>Make the system capable. Keep the first decision quiet.</h1>
+    <p class="lead">The comparison separates visual calm from product completeness. The quiet lane carries real state and recovery, but it earns visibility only when that information changes the decision.</p>
+    <p class="key"><span><i class="dot"></i>Baseline / 43f629e</span><span><i class="dot quiet"></i>Quiet capability / current tuning</span></p>
+    <section class="cases" aria-label="Quiet capability benchmark pairs">
+      <article class="case"><div><small>01 / fashion commerce</small><h2>MIRA</h2><p>Fit, size, price, bag state.</p></div><a href="mira-baseline.html"><small>Baseline</small><b class="go">Open quiet product detail →</b></a><a href="mira-quiet.html"><small>Quiet capability</small><b class="go">Open retained bag flow →</b></a></article>
+      <article class="case"><div><small>02 / operational SaaS</small><h2>Relay</h2><p>One blocker, release check, owner.</p></div><a href="relay-baseline.html"><small>Baseline</small><b class="go">Open calm release room →</b></a><a href="relay-quiet.html"><small>Quiet capability</small><b class="go">Open reveal-on-need review →</b></a></article>
+      <article class="case"><div><small>03 / care navigation</small><h2>Rasa</h2><p>Urgent route, need, safe appointment.</p></div><a href="rasa-baseline.html"><small>Baseline</small><b class="go">Open care entry →</b></a><a href="rasa-quiet.html"><small>Quiet capability</small><b class="go">Open safe guided route →</b></a></article>
+      <article class="case"><div><small>04 / high-consideration booking</small><h2>ORION</h2><p>Vehicle proof, day, available time.</p></div><a href="orion-baseline.html"><small>Baseline</small><b class="go">Open drive planner →</b></a><a href="orion-quiet.html"><small>Quiet capability</small><b class="go">Open retained booking flow →</b></a></article>
+    </section>
+    <aside class="note"><b>Read both measures.</b> A quiet lane passes only when its first screen remains calm <em>and</em> its action, recovery, and returning context remain real. Final observations are recorded in <a href="SCORECARD.md">SCORECARD.md</a>.</aside>
+  </main>
+</body>
+</html>

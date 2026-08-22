@@ -79,6 +79,55 @@
       "severity": "fail"
     },
     {
+      "id": "expressive-spatial-rhythm",
+      "category": "composition",
+      "description": "Expressive portfolio, studio, editorial, fashion, and creative-marketing galleries use at least two independent asymmetry signals: dominance plus offset, stagger, crop or height variation, overlap, or intentional negative space. Repeated proportional grids and consecutive reuse of the same container topology fail.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "project-identity-visibility",
+      "category": "composition",
+      "description": "Project title, category, year, and primary identity cue remain visible without hover or focus. Touch, reduced-motion, screenshot, and static-preview states must not erase project meaning.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "authored-project-geometry",
+      "category": "composition",
+      "description": "Rendered project geometry preserves declared dominance, span, crop, and height variation. A shared fixed height, aspect ratio, or min-height that visually equalizes intended unequal items fails.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "closing-chapter-completeness",
+      "category": "composition",
+      "description": "Expressive pages resolve with proposition-scale type, one specific action, useful contact/navigation/availability context, and continuity with an earlier motif. A thin copyright or social row alone fails.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "closing-system-restraint",
+      "category": "composition",
+      "description": "The closing chapter uses no more than one ambient visual system behind one proposition, one primary action, and one compact context row. When the brief explicitly requires closing footage, the video must remain that ambient system with a poster, responsive crop, reduced-motion fallback, and readable scrim. Dropping it for a flat footer, duplicate marquees, repeated slogans, or competing video/particle systems fails.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "scalar-utility-values",
+      "category": "tokens",
+      "description": "Every CSS or Tailwind utility that expects a scalar color resolves to a scalar color value. Gradient objects, shadow objects, and composite theme namespaces interpolated into scalar utilities fail.",
+      "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "brief-intent-fidelity",
+      "category": "quality",
+      "description": "Every safe supplied URL, explicitly requested dependency, named section or content job, named interaction, and literal content item has concrete source evidence. Security, accessibility, reduced-motion, and collision safety may replace an unsafe technique, but the requested visible intent must remain. Silent flattening into generic static sections fails.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
       "id": "quality-profile-transfer",
       "category": "quality",
       "description": "When a canonical accepted quality profile applies, the output transfers its semantic product intent, artifact credibility, type roles, palette commitment, focal hierarchy, rhythm, and closing behavior without copying benchmark copy or geometry.",
@@ -276,6 +325,125 @@
       "category": "assets",
       "description": "Every rendered image and media dependency loads successfully in the evaluated artifact.",
       "type": "automated",
+      "severity": "fail"
+    },
+    {
+      "id": "product-outcome-clarity",
+      "category": "product-experience",
+      "description": "The primary actor, desired outcome, and specific value mechanism are understandable in the first meaningful task or viewport. A category label, visual mood, or generic promise alone fails.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "differentiated-value-mechanism",
+      "category": "product-experience",
+      "description": "A differentiator is visible through truthful product evidence, workflow, comparison, service pathway, material proof, or decision model. Palette, typography, and decorative geometry alone do not count.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "journey-continuity",
+      "category": "product-experience",
+      "description": "The primary journey has an intelligible path from entry through orientation, evidence, choice, action, feedback, result, and next or recovery behavior. A polished fragment with no credible continuation fails.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "state-and-recovery-completeness",
+      "category": "product-experience",
+      "description": "Every applicable default, loading, empty, invalid/error, permission/eligibility, success, and returning-context state is designed or explicitly marked N/A with a reason. Errors identify what happened and how to recover.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "market-and-risk-fit",
+      "category": "product-experience",
+      "description": "Information density, terminology, proof, interaction commitment, and trust behavior fit the intended market, user knowledge, decision cost, and regulation. Familiar conventions are preserved where they protect comprehension or safety.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "market-reference-calibration",
+      "category": "product-experience",
+      "description": "For a materially new domain, the artifact records at least two current, direct market references and extracts the entry pattern, evidence grammar, commitment/risk, convention to preserve, product-specific departure, and rejected generic fallback. It does not copy a reference identity, copy, assets, or geometry.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "experience-archetype-fit",
+      "category": "product-experience",
+      "description": "The selected experience archetype controls the first viewport, information topology, and next action. A generic marketing hero, dashboard, gallery, split panel, or form without a task rationale fails.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "visual-evidence-task-fit",
+      "category": "product-experience",
+      "description": "The dominant visual or product state actively reduces the user's decision uncertainty. Physical products, place, care, work, and learning contexts use truthful relevant evidence rather than abstract geometry, blank panels, or decorative fake UI.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "cross-domain-identity-separation",
+      "category": "product-experience",
+      "description": "Relative to an unrelated artifact, at least four of first-viewport topology, type behavior, palette posture, media role, density, action placement, and section sequence change when the user job or market evidence changes. Repainting a shared page shell fails.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "quiet-capability-and-first-viewport-budget",
+      "category": "product-experience",
+      "description": "The first viewport exposes one primary decision, its truthful proof, and only the safety, cost, eligibility, or context needed now. Decision-time, action-result, exception/recovery, and returning-context information remains reachable and preserves context, but does not become permanent visual furniture without a task or risk reason.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "responsive-task-continuity",
+      "category": "product-experience",
+      "description": "At compact viewports, users can still find the primary evidence, take the primary action, receive feedback, and recover from failure. Passing overflow checks alone is insufficient.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "implementation-viability",
+      "category": "product-experience",
+      "description": "The visible experience has realistic semantic controls, component boundaries, data/asset behavior, focus management, and interaction constraints. Decorative fake UI or impossible state transitions fail.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "header-topology-and-compact-context",
+      "category": "product-experience",
+      "description": "The persistent header or navigation preserves context required for the current user task. At compact widths, the primary route remains reachable through a deliberate replacement or documented narrower scope; merely hiding generic links fails.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "semantic-colour-state-roles",
+      "category": "design-rules",
+      "description": "Surface, text, action, selected, focus, success, warning, error, and unavailable colours have task-specific roles with verified foreground/background pairings. A decorative palette with untested state combinations fails.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "action-feedback-state-chain",
+      "category": "interaction",
+      "description": "Every material action has an inspectable idle, pressed, pending, success or changed state, error or recovery route, focus treatment, and risk-proportionate confirmation, undo, or escalation. A label-only button fails.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "interaction-interruptibility",
+      "category": "interaction",
+      "description": "Repeated and rapidly interrupted interactions retarget cleanly. Drawers, toasts, tabs, and overlays preserve semantic controls, focus, keyboard behavior, reduced-motion completeness, and realistic compact-device constraints.",
+      "type": "manual",
+      "severity": "fail"
+    },
+    {
+      "id": "judgement-record",
+      "category": "quality",
+      "description": "Material typography, colour, header, action, or motion choices are accompanied by a concrete candidate comparison, product hypothesis, selected treatment, rejected treatment, and rendered test context. Unexamined defaults fail.",
+      "type": "manual",
       "severity": "fail"
     }
   ]

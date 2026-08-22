@@ -2,7 +2,7 @@
 ---
 name: prodige-ui-end-to-end
 description: |
-  Comprehensive UI/UX design skill that guides an AI agent from brief to implementation using ProdigeUI. Covers brief analysis, Design Read declaration, token selection, component composition, and Quality Gate validation.
+  Comprehensive product-experience and UI/UX design skill that guides an AI agent from brief to implementation using ProdigeUI. Covers product opportunity, decisive user flow, Design Read declaration, token selection, component composition, state design, and Quality Gate validation.
 triggers:
   - "design ui"
   - "create interface"
@@ -33,7 +33,7 @@ Actions:
 3. Identify constraints: performance budget, accessibility needs, brand direction
 4. Summarize the brief analysis before proceeding
 
-**Output:** Brief summary document with use-case, audience, platform, key screens, and constraints.
+**Output:** Brief summary document with use-case, audience, platform, known product facts, requested scope, key screens, and constraints. Unknowns are explicitly marked as assumptions.
 
 0. Read `craft/model-robust-generation.md` and keep its six-line Generation Contract in
    working context. This is mandatory on Kiro, DeepSeek, and other models prone to following
@@ -64,47 +64,119 @@ Actions:
    If design SERVES the product (dashboard, admin, enterprise, regulated), consider an
    official design system (Fluent/Carbon/Material/Radix/shadcn/govuk/uswds) before building
    a bespoke token layer. If design IS the product (landing, portfolio, brand), invent with
-   `craft/`. Record the decision; it changes Steps 3–4.
+   `craft/`. Record the decision; it changes Steps 4–5.
 
 ---
 
-## Step 2: Design Read Declaration
+## Step 2: Product Experience Strategy
+
+**Goal:** Define the outcome, differentiator, decisive journey, and implementation scope before visual design.
+
+Actions:
+1. Read `craft/product-experience-architecture.md` and create a private Product Opportunity Record:
+   - primary and supporting actors, trigger, job, desired outcome, and current alternative;
+   - value mechanism, product differentiator, market conventions, risk, and truthful evidence;
+   - facts versus assumptions. Do not invent pricing, customers, metrics, claims, inventory, or capability.
+2. Classify the experience scope: campaign/discovery, commerce, high-consideration decision,
+   trust-critical service, operational product, learning/habit, or cultural/editorial.
+   State the smallest honest scope when the brief does not authorize a full product.
+3. Map the primary flow: entry -> orientation -> evidence -> choice -> action -> feedback ->
+   result -> next/return/recovery. Name the uncertainty resolved at each step.
+4. Define a screen/region map and a state matrix. Include default and every applicable
+   loading, empty, invalid/error, permission/eligibility, success, and returning-context state.
+   Mark only genuinely inapplicable states `N/A` with a reason.
+5. Test differentiation: if a direct alternative could reuse the same claim, proof, task order,
+   and CTA unchanged, rework the value mechanism before choosing a visual direction.
+6. Record the product/system decision: when to use a familiar design system, when a bespoke
+   interaction is justified, and what must remain implementable under responsive, accessibility,
+   privacy, performance, and localization constraints.
+
+**Output:** Product Experience Record with outcome, differentiator, flow, screen/state scope,
+market/risk rationale, evidence plan, and engineering handoff.
+
+**References:** `craft/product-experience-architecture.md`, `craft/market-reference-calibration.md`, `craft/intent-driven-art-direction.md`, `craft/design-system-routing.md`
+
+---
+
+## Step 3: Market Reference Calibration
+
+**Goal:** Learn the task and evidence grammar of the real market before choosing
+page topology, visual language, or a media treatment.
+
+Actions:
+1. Read `craft/market-reference-calibration.md`. Inspect at least two current,
+   direct experiences from the relevant category. Prefer the product's own site,
+   app, purchase flow, service guide, or help centre over galleries and trend
+   roundups.
+2. Create a private Market Reference Read with the direct URLs and date observed,
+   the user's real entry pattern, credible evidence grammar, commitment/risk,
+   visual grammar as function, market convention to preserve, and the
+   product-specific departure. Never copy a reference's copy, assets, geometry,
+   or identity.
+3. Select one experience archetype and state which one owns the first viewport:
+   operational control surface, high-consideration exploration, editorial
+   commerce, trust/care navigation, place/visit, work-led studio, learning
+   practice loop, or travel planning.
+4. Declare the dominant proof, first-viewport compositional engine, and rejected
+   generic fallback. A headline, split panel, dashboard, gallery, or form is
+   permitted only if it helps the selected task.
+5. Compare the proposed direction with the previous unrelated artifact. If four
+   or more of topology, type behavior, palette posture, media role, density,
+   action placement, and section sequence remain unchanged without a product
+   reason, return to the Market Reference Read.
+
+**Output:** Market Reference Read with references, archetype, dominant proof,
+first-viewport engine, convention to preserve, product-specific departure, and
+rejected generic fallback.
+
+**References:** `craft/market-reference-calibration.md`
+
+---
+
+## Step 4: Design Read Declaration
 
 **Goal:** Establish the aesthetic direction and calibrate the Three Dials.
 
 Actions:
-1. Declare the **aesthetic direction** (e.g., minimal-professional, bold-creative, warm-friendly)
-2. Set the **Three Dials** based on use-case and audience:
-   - `DESIGN_VARIANCE` (0.0-1.0): How much variation from standard patterns
-     - 0.0-0.3 = Conservative (enterprise, HRIS)
-     - 0.4-0.6 = Balanced (SaaS, ecommerce)
-     - 0.7-1.0 = Expressive (portfolio, landing page)
-   - `MOTION_INTENSITY` (0.0-1.0): Animation presence and complexity
-     - 0.0-0.3 = Subtle (enterprise, accessibility-first)
-     - 0.4-0.6 = Moderate (SaaS, ecommerce)
-     - 0.7-1.0 = Dynamic (portfolio, agentic app)
-   - `VISUAL_DENSITY` (0.0-1.0): Information density per viewport
-     - 0.0-0.3 = Spacious (landing page, portfolio)
-     - 0.4-0.6 = Balanced (SaaS, ecommerce)
-     - 0.7-1.0 = Dense (HRIS, data-heavy dashboards)
-3. Document the rationale for each dial setting
-4. Declare display, body, and annotation type jobs before choosing font names
-5. Declare the closing CTA surface role and which existing signal/primary token it resolves
+1. Complete the Intent & Art Direction Brief using the Product Experience Record and Market
+   Reference Read. Declare the experience thesis, selected archetype, dominant proof,
+   first-viewport engine, layout family, media role, product-specific departure, rejected
+   generic fallback, and what visual choices make the product mechanism easier to understand.
+2. Set `DESIGN_VARIANCE`, `MOTION_INTENSITY`, and `VISUAL_DENSITY` from decision risk,
+   reading/comparison load, content maturity, and emotional register—not from the category name.
+   Give each dial a one-sentence product rationale and a failure risk if it is too high or low.
+3. Declare display, body, annotation, and data type jobs before choosing font names. Name the
+   actual font source or deliberate system stack and fallback; do not write a font name that is
+   unavailable in the implementation.
+4. Create the Judgement Record in `craft/design-engineering-quality.md` for any material
+   typography, palette, header, action, or interaction choice. Render competing candidates when
+   the product rationale is uncertain, then record the selected and rejected treatment.
+5. Declare the closing CTA surface role and which existing signal/primary token it resolves.
+   Define its idle, pressed, pending, success/changed, error, and recovery states before it is
+   styled.
+6. Make an Exposure Map before composing the first viewport. Mark each region as always visible,
+   decision-time, action-result, exception/recovery, or returning context. Keep the full state
+   contract reachable, but do not make hypothetical status, helper, or recovery panels permanent
+   visual furniture unless safety, cost, eligibility, or the current commitment requires them.
+7. Re-run the differentiation and identity-collapse tests after writing the visual thesis. If
+   the same art direction would still fit an unrelated product, return to the Product
+   Experience Record and Market Reference Read.
 
-**Output:** Design Read with aesthetic direction and Three Dials values with rationale.
+**Output:** Design Read with aesthetic direction, Three Dials values, and an Exposure Map with rationale.
 
-**References:** `design-rules/design-rules.md`, `design-rules/structure.rules.json`
+**References:** `craft/design-engineering-quality.md`, `design-rules/design-rules.md`, `design-rules/structure.rules.json`
 
 ---
 
-## Step 3: Intent-driven token synthesis
+## Step 5: Intent-driven token synthesis
 
 **Goal:** Derive semantic roles from the Intent & Art Direction Brief instead of
 selecting a sector theme or hidden preset.
 
 Actions:
 1. Read `craft/intent-driven-art-direction.md` and record the selected experience
-   route, proof/media strategy, layout family, type jobs, and rejected alternative.
+   route, archetype, proof/media strategy, first-viewport engine, layout family,
+   type jobs, product-specific departure, and rejected alternative.
 2. Read `themes/generative-theme-synthesis.md` and synthesize surface, content,
    signal, border, focus, typography, and spatial roles for this product.
 3. Re-derive the values when product, target market, or user job changes; do not
@@ -122,59 +194,66 @@ Actions:
 
 ---
 
-## Step 4: Component Selection
+## Step 6: Component Selection and State Contracts
 
 **Goal:** Identify needed components from the Component_Library.
 
 Actions:
-1. Map each screen/feature from the brief to required components
+1. Map each flow step, screen/region, and state from the Product Experience Record to required components
 2. Consult `components/components.manifest.json` for available components:
    - Atoms: Button, Input, Icon, Text, Badge, Toggle, Checkbox, Radio
    - Molecules: Field, Card, MenuItem, SearchBar, Tooltip
    - Organisms: Form, Navbar, Table, Modal, Sidebar, Footer
 3. For each component, verify:
    - Required variants match the use-case
-   - All states are accounted for (default, hover, focus, active, disabled, error)
+   - All applicable states are accounted for (default, hover, focus, active, disabled, loading, empty, error, permission, success)
    - ARIA roles and keyboard interactions are documented
 4. Follow `components/composition-guidelines.md` for combining atoms into molecules/organisms
-5. All component values must reference Design_Token only (no raw values)
+5. For drawers, sheets, toasts, tabs, and contextual overlays, define interruption, focus,
+   keyboard, reduced-motion, and compact-viewport behavior with
+   `craft/design-engineering-quality.md`; do not approve a visually static stand-in as a
+   component contract.
+6. All component values must reference Design_Token only (no raw values)
 
-**Output:** Component inventory with variants, states, and composition plan.
+**Output:** Component inventory with variants, state contracts, flow ownership, and composition plan.
 
-**References:** `components/components.manifest.json`, `components/composition-guidelines.md`
+**References:** `craft/design-engineering-quality.md`, `components/components.manifest.json`, `components/composition-guidelines.md`
 
 ---
 
-## Step 5: Layout Design
+## Step 7: Information Architecture and Layout Design
 
 **Goal:** Apply the grid system and structural rules from Design_Rules.
 
 Actions:
-1. Define the page grid using `design-rules/layout.rules.json`:
-   - Grid columns (12-column default)
+1. Define page/screen topology from the decisive flow and selected experience archetype using `design-rules/layout.rules.json`:
+   - Choose grid columns, rails, stacked task steps, gallery sequence, comparison matrix, or app shell from content relationships; 12 columns are an option, not a default
    - Breakpoints: mobile (<768px), tablet (768-1024px), desktop (>1024px)
    - Spacing derived from base unit (consistent scale)
 2. Apply structure rules from `design-rules/structure.rules.json`:
    - Visual hierarchy: heading levels, content grouping, whitespace rhythm
    - Navigation patterns: max items per level, menu depth limits
    - Content grouping: sections, cards, logical clusters
-3. Respect `VISUAL_DENSITY` dial setting for spacing and content per viewport
+3. Respect the documented density rationale for spacing and content per viewport; do not hide a required task merely to preserve a sparse hero
 4. Use spacing tokens from `tokens/semantic.tokens.json` (space.xs through space.3xl)
-5. Ensure responsive behavior across all three breakpoints
+5. Choose and document header topology from the persistent user context. On compact viewports,
+   replace unavailable navigation with a task-appropriate menu, drawer, search, or narrowed
+   scope rather than merely hiding links.
+6. Ensure responsive behavior across all three breakpoints
 
-**Output:** Layout specification with grid, spacing, and structure decisions.
+**Output:** Information architecture and layout specification with flow stage, grid/topology, spacing, evidence, and action decisions.
 
 **References:** `design-rules/layout.rules.json`, `design-rules/structure.rules.json`, `tokens/semantic.tokens.json`
 
 ---
 
-## Step 6: Motion Design
+## Step 8: Motion and Feedback Design
 
 **Goal:** Select motion personality and presets from the Motion_Library.
 
 Actions:
 1. Review motion principles in `motion/principles.md`
-2. Select appropriate presets based on `MOTION_INTENSITY` dial:
+2. Select appropriate presets from the feedback, explanation, and orientation needs recorded in the flow; `MOTION_INTENSITY` calibrates those decisions rather than selecting a category default:
    - Enter/exit animations: `motion/presets/enter-exit.json`
    - State transitions: `motion/presets/state-transition.json`
    - Hover/focus effects: `motion/presets/hover-focus.json`
@@ -184,7 +263,8 @@ Actions:
    - Non-essential animations disabled when `prefers-reduced-motion` is active
    - Essential animations limited to <=100ms, no position-based movement
 5. Each animation choice must link to a documented motion principle
-6. **Apply interaction-level motion craft** from `craft/patterns/motion-craft.md`: committed
+6. **Apply interaction-level motion craft** from `craft/patterns/motion-craft.md` and
+   `craft/design-engineering-quality.md`: committed
    easing curves (not weak built-ins; `ease-in` banned on UI), entrance physics (never
    `scale(0)` → `scale(0.95)`+opacity), origin-aware popovers (modals exempt), interruptible
    transitions for rapid UI, asymmetric enter/exit, GPU-only properties. **No animation on
@@ -192,11 +272,11 @@ Actions:
 
 **Output:** Motion specification with selected presets, curves, and reduce-motion fallbacks.
 
-**References:** `craft/patterns/motion-craft.md`, `motion/principles.md`, `motion/choreography.md`, `motion/motion.tokens.json`, `motion/presets/`, `skills/motion-review/SKILL.md`
+**References:** `craft/design-engineering-quality.md`, `craft/patterns/motion-craft.md`, `motion/principles.md`, `motion/choreography.md`, `motion/motion.tokens.json`, `motion/presets/`, `skills/motion-review/SKILL.md`
 
 ---
 
-## Step 7: Implementation
+## Step 9: Implementation
 
 **Goal:** Generate code or design specification using tokens, components, and rules.
 
@@ -225,6 +305,8 @@ Actions:
    dropdowns (escape overflow clipping), `:focus-visible` rings, roving tabindex for groups,
    skip links, visible form labels + validate-on-blur + `aria-live` errors, undo-toast over
    confirm dialogs, chart empty/loading/error states with tabular numbers.
+8. Implement the primary flow and its declared recovery states, not just its first visual state.
+   If delivery scope is a single page, make the handoff into the next state explicit and truthful.
 
 **Output:** Complete implementation (code, markup, or detailed spec) ready for validation.
 
@@ -232,7 +314,7 @@ Actions:
 
 ---
 
-## Step 8: Quality Gate Validation
+## Step 10: Quality Gate and Product Experience Review
 
 **Goal:** Run the anti-AI-slop checklist and criteria.json evaluation.
 
@@ -252,11 +334,26 @@ Actions:
    - Computed font truth (the intended display family actually rendered)
    - Type-role integrity (display, body, and annotation keep distinct repeated jobs)
    - Closing CTA continuity (no new or muddy near-match hue at the final section)
-3. For each criterion:
+3. Complete `quality-gate/product-experience.review.template.json` from three lenses:
+   UX designer, product designer, and design engineer. Review product-outcome clarity,
+   differentiator, journey continuity, states/recovery, market/risk fit, responsive task
+   continuity, implementation viability, reference calibration, archetype/task fit,
+   visual-evidence/task fit, cross-domain identity separation, actual typography/font
+   availability, colour-state contrast, header topology, action feedback/recovery,
+   interruption/reduced-motion behavior, quiet-capability exposure, and the Judgement Record.
+4. For every material visual product, verify that media is the relevant proof: a
+   physical product, place, or people in context must not be replaced by abstract
+   geometry, a color block, or a fake screenshot where a real/generated asset is
+   available and appropriate.
+5. For each criterion:
    - Status: PASS or FAIL
    - If FAIL: identify the issue, location, and actionable recommendation
-4. Overall result: PASS only if ALL criteria pass
-5. If any criterion fails, iterate back to the relevant step and fix before delivery
+6. Overall result: PASS only if all applicable automated and manual criteria pass.
+7. If any criterion fails, iterate back to the relevant step and fix before delivery.
+8. After any material system tuning, run the fresh-generation comparison protocol in
+   `craft/design-engineering-quality.md`: freeze the baseline, generate independent
+   baseline/tuned artifacts from the same evaluation set plus transfer briefs, and
+   publish both gains and regressions before promoting the tuning.
 
 **Output:** Quality Gate report (pass/fail per criterion, overall status, recommendations).
 
@@ -267,8 +364,10 @@ Actions:
 ## Workflow Summary
 
 ```
-Brief Analysis → Design Read → Token Selection → Component Selection
-     → Layout Design → Motion Design → Implementation → Quality Gate
+Brief Analysis → Product Experience Strategy → Market Reference Calibration
+     → Design Read → Token Selection → Component/State Contracts
+     → Information Architecture → Motion/Feedback → Implementation
+     → Quality Gate + Product Experience Review
 ```
 
 If Quality Gate fails, loop back to the step that produced the violation and fix it.

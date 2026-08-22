@@ -49,6 +49,41 @@
       "evidence": ["Manual review required: compare this case with an unrelated one across topology, type, palette, media, density, action placement, and sequence; flag unexplained shared grammar."]
     },
     {
+      "id": "quiet-capability-and-first-viewport-budget",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: map what is always visible, decision-time, action-result, exception/recovery, and returning context. Verify that the first viewport retains one primary decision and its necessary proof without turning future states or helper panels into permanent visual furniture."]
+    },
+    {
+      "id": "typography-evidence-and-font-reality",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: identify the actual loaded or intentionally named system font, role assignment, fallback, readable measures, and handling of long labels, body copy, numeric data, and error text."]
+    },
+    {
+      "id": "colour-role-and-state-contrast",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: trace surface, text, action, selected, focus, warning, error, success, and unavailable colour roles to the product task; inspect actual contrast pairings."]
+    },
+    {
+      "id": "header-topology-and-compact-task-fit",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: explain why the persistent header or navigation context supports this user moment, and verify the primary task remains reachable at compact width without merely hiding navigation."]
+    },
+    {
+      "id": "action-feedback-and-recovery",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: trace one material action through idle, pressed, pending, success or changed state, error or recovery, focus treatment, and risk-appropriate confirmation or undo."]
+    },
+    {
+      "id": "interaction-interruptibility-and-motion-restraint",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: test rapid interruption, repeated use, reduced motion, origin and duration appropriateness, and any drawer, toast, tab, or reveal semantics rather than awarding points for decorative animation."]
+    },
+    {
+      "id": "judgement-comparison-record",
+      "status": "not-evaluable",
+      "evidence": ["Manual review required: inspect a concrete candidate A/B decision, its product hypothesis, chosen result, rejected alternative, and rendered test context."]
+    },
+    {
       "id": "responsive-task-continuity",
       "status": "not-evaluable",
       "evidence": ["Manual review required: verify that the primary task, evidence, action, and recovery path remain usable at compact viewports."]

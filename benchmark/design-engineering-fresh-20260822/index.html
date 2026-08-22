@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProdigeUI — Design-engineering fresh benchmark</title>
+  <style>
+    :root{--ink:#102c2a;--paper:#f4f0e9;--line:#cbc3b5;--wash:#d9e4d5;--blue:#225c78;--coral:#d76442}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 "Segoe UI",Arial,sans-serif}main{width:min(1180px,calc(100% - 40px));margin:auto;padding:clamp(42px,8vw,110px) 0 54px}.kicker{margin:0 0 13px;color:var(--coral);font:700 11px/1 "Courier New",monospace;letter-spacing:.13em;text-transform:uppercase}h1{max-width:920px;margin:0;font:clamp(43px,7vw,90px)/.91 Georgia,serif;letter-spacing:-.062em}.lead{max-width:730px;margin:28px 0 50px;color:#4f5e58;font-size:clamp(17px,2vw,21px)}.legend{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 26px;color:#4f5e58;font-size:14px}.dot{display:inline-block;width:10px;height:10px;margin-right:7px;border-radius:50%;background:var(--blue)}.dot.tuned{background:var(--coral)}.cases{border-top:1px solid var(--line)}.case{display:grid;grid-template-columns:.65fr 1fr 1fr;gap:0;border-bottom:1px solid var(--line)}.case>div,.case>a{min-height:174px;padding:23px;border-right:1px solid var(--line)}.case>div{display:flex;flex-direction:column;justify-content:space-between;background:var(--wash)}.case>a{display:flex;flex-direction:column;justify-content:space-between;color:inherit;text-decoration:none;background:#faf8f2}.case>a:last-child{border-right:0;background:#152e2c;color:#eff2ea}.case small{color:#49615a;font:700 10px/1 "Courier New",monospace;letter-spacing:.1em;text-transform:uppercase}.case a small{color:inherit;opacity:.65}.case h2{margin:12px 0 0;font:clamp(29px,3vw,44px)/.95 Georgia,serif;letter-spacing:-.05em}.case p{max-width:290px;margin:0;color:#51615a;font-size:14px}.case>a:last-child p{color:#c6d5cd}.go{font-weight:800}.note{margin-top:28px;padding:21px;background:#e7ded0;color:#46544d}.note b{color:var(--ink)}a:focus-visible{outline:3px solid var(--coral);outline-offset:-3px}@media(max-width:740px){main{width:min(100% - 28px,1180px);padding-top:42px}.case{grid-template-columns:1fr}.case>div,.case>a{min-height:136px;border-right:0;border-bottom:1px solid var(--line)}.case>a:last-child{border-bottom:0}}
+  </style>
+</head>
+<body>
+  <main>
+    <p class="kicker">ProdigeUI / fresh comparison / 22 Aug 2026</p>
+    <h1>Same product brief. Baseline strategy versus tuned design engineering.</h1>
+    <p class="lead">The test is not whether one side is more decorative. It is whether the tuned side preserves product clarity while making type, header context, colour roles, and a real action feel more intentional.</p>
+    <p class="legend"><span><i class="dot"></i>Baseline / 43f629e</span><span><i class="dot tuned"></i>Tuned / current working tree</span></p>
+    <section class="cases" aria-label="Benchmark pairs">
+      <article class="case"><div><small>01 / editorial commerce</small><h2>MIRA</h2><p>Fit, material, selected size, bag.</p></div><a href="mira-baseline.html"><small>Baseline</small><b class="go">Open static product detail →</b></a><a href="mira-tuned.html"><small>Tuned</small><b class="go">Open stateful bag flow →</b></a></article>
+      <article class="case"><div><small>02 / operational SaaS</small><h2>Relay</h2><p>Release risk, ownership, check.</p></div><a href="relay-baseline.html"><small>Baseline</small><b class="go">Open static release room →</b></a><a href="relay-tuned.html"><small>Tuned</small><b class="go">Open stateful review flow →</b></a></article>
+      <article class="case"><div><small>03 / care navigation</small><h2>Rasa</h2><p>Need, safe route, availability.</p></div><a href="rasa-baseline.html"><small>Baseline</small><b class="go">Open static care route →</b></a><a href="rasa-tuned.html"><small>Tuned</small><b class="go">Open guided route flow →</b></a></article>
+      <article class="case"><div><small>04 / automotive</small><h2>ORION</h2><p>Vehicle, local time, confirmation.</p></div><a href="orion-baseline.html"><small>Baseline</small><b class="go">Open static drive planner →</b></a><a href="orion-tuned.html"><small>Tuned</small><b class="go">Open confirmation flow →</b></a></article>
+      <article class="case"><div><small>05 / cultural visit</small><h2>Kala</h2><p>Programme, access, ticket time.</p></div><a href="kala-baseline.html"><small>Baseline</small><b class="go">Open static visit page →</b></a><a href="kala-tuned.html"><small>Tuned</small><b class="go">Open ticket decision flow →</b></a></article>
+    </section>
+    <aside class="note"><b>Read the result honestly.</b> The baseline is better than an undifferentiated hero/template. The tuned side is only a gain where its extra craft helps a real decision; full limitations and scores are in <a href="SCORECARD.md">SCORECARD.md</a>.</aside>
+  </main>
+</body>
+</html>
