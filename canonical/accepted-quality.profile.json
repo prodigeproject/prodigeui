@@ -86,6 +86,30 @@
             "copy density that requires the visitor to inventory the proof before understanding the proposition",
             "reference aesthetic reduced to a color palette while its visual mass and negative-space logic disappear"
           ]
+        },
+        "baselinePreserving": {
+          "when": "The user has selected an existing expressive composition as the reference and asks for tuning without losing its calm first-viewport character.",
+          "purpose": "Treat the reference's first viewport as a regression surface and move improvement into work specificity, copy clarity, and the closing invitation.",
+          "lockedZones": [
+            "first-viewport visual mass and reading order",
+            "established palette relationship",
+            "display/body/annotation type roles and proposition scale",
+            "navigation topology and motion restraint"
+          ],
+          "safeTuningZones": [
+            "visible medium and compact metadata inside existing work subjects",
+            "one subordinate code-authored or local proof cue per work subject when it earns unused card volume",
+            "copy-only clarification of manifesto, method, and closing invitation"
+          ],
+          "workChapter": "Keep a coherent reference project count; for two primary studies, make the medium and use explicit without adding a third equal card or a gallery dashboard.",
+          "acceptance": "The first viewport remains recognizable as the selected reference, work evidence becomes more specific, and the full-page silhouette does not feel busier.",
+          "reject": [
+            "new hero proof object introduced only because evidence feels incomplete",
+            "rounded utility chrome, index labels, or pill actions that were absent from the reference",
+            "three equal project cards added to satisfy a delivery-mode taxonomy",
+            "giant closing monogram, marquee, or new ambient visual system",
+            "copy expansion that increases density without adding a concrete consequence"
+          ]
         }
       }
     }

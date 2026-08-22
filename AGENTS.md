@@ -131,6 +131,12 @@ also read `craft/quiet-evidence-mode.md`. Select `quietEvidence` before implemen
 record its hero budget privately; it preserves visual mass and negative space while moving
 detailed proof into the work chapter.
 
+When the user explicitly selects an existing expressive composition as the reference and asks
+for tuning without changing its first-viewport character, read
+`craft/baseline-preserving-studio-tuning.md` after the quiet-evidence guidance. Select
+`baselinePreserving` and tune the work chapter, copy, or closing in isolation; do not escalate
+the request into a new hero treatment.
+
 ---
 
 ## Core Principles
