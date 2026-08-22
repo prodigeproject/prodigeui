@@ -243,6 +243,14 @@ When specificity risks density, make the hero proof one iconic object with one l
 mass and a deliberate quiet field. Put the detailed identity/place/screen taxonomy in the work
 chapter; three equal mini-artifacts above the fold read as a dashboard, not a memorable proof.
 
+### Quiet evidence mode
+
+When a reference or brief values an iconic editorial first viewport, protect its composition
+before improving evidence coverage. Use one proposition, one proof object, at most two compact
+supporting cues, and one broad field of release. The sequence is `claim -> proof -> work detail
+-> invitation`; a second saturated hero panel or dense legend is a sign that the evidence has
+not been reduced enough. See `craft/quiet-evidence-mode.md`.
+
 Additional craft signals (bonus, not required): sticky card stacks, opposing-direction
 marquees, HLS adaptive video, animated gradient-border focal accents, scroll parallax
 with depth — each with a reduced-motion fallback.

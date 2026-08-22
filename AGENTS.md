@@ -126,6 +126,11 @@ When the selected quality profile is `expressiveStudio`, read
 It adds a claim-to-proof decision, a truthful local-media route, non-generic work evidence,
 and a closing invitation without prescribing a benchmark geometry.
 
+When the brief or reference preference calls for a quiet, iconic, editorial first viewport,
+also read `craft/quiet-evidence-mode.md`. Select `quietEvidence` before implementation and
+record its hero budget privately; it preserves visual mass and negative space while moving
+detailed proof into the work chapter.
+
 ---
 
 ## Core Principles

@@ -64,7 +64,30 @@
         "declared unequal project spans canceled by one shared fixed height, aspect ratio, or min-height",
         "closing chapter overloaded with duplicate marquees, repeated slogans, or competing ambient systems",
         "shrinking expressive display type until the page becomes competent but forgettable"
-      ]
+      ],
+      "modes": {
+        "quietEvidence": {
+          "when": "The expressive brief or reference preference needs a quiet, iconic, editorial first viewport while still requiring credible real-world proof.",
+          "purpose": "Preserve one-object visual calm and negative space while moving detailed evidence into the work chapter.",
+          "heroBudget": {
+            "propositionScaleHeadlines": 1,
+            "proofObjects": 1,
+            "supportingCuesMaximum": 2,
+            "primaryActions": 1,
+            "shortExplanatoryParagraphs": 1,
+            "quietField": "One broad paper, neutral, or low-information field must visibly release the first viewport.",
+            "color": "Use one main signal family and at most one counter-accent in the first viewport; do not distribute unrelated saturated panels."
+          },
+          "evidenceSequence": "claim -> one proof object -> work chapter detail -> specific invitation",
+          "workChapter": "Use a 2 + 1 hierarchy when several delivery modes matter: one dominant subject, one supporting subject, and one later or quieter subject. Keep identity and primary metadata visible.",
+          "reject": [
+            "hero proof expanded into a dashboard, legend, or row of equally weighted mini-artifacts",
+            "second saturated hero panel added only to make evidence feel complete",
+            "copy density that requires the visitor to inventory the proof before understanding the proposition",
+            "reference aesthetic reduced to a color palette while its visual mass and negative-space logic disappear"
+          ]
+        }
+      }
     }
   },
   "requiredQualityCriteria": [
