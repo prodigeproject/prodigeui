@@ -39,8 +39,8 @@
     "expressiveStudio": {
       "productIntent": "Make the studio feel capable of turning a small strategic idea into a visible cultural event before asking the visitor to inspect services.",
       "artifactSemantics": {
-        "required": "The studio name, proposition, and one concept-tied claim-to-proof artifact form a single first-viewport statement. The proof is a truthful local work sample, material object, place, interface state, campaign crop, or original authored visual with a concrete deliverable relationship.",
-        "rule": "Artwork is authored as a visual idea with owned captions, not a fake app UI, random gradient mesh, or stock agency decoration. A monogram or abstract geometry can amplify the claim but cannot be its only proof unless it visibly models a specific material relationship or deliverable."
+        "required": "The studio name, proposition, and one concept-tied claim-to-proof artifact form a single first-viewport statement. The proof is a truthful local work sample, material object, place, interface state, campaign crop, or original authored visual with a concrete deliverable relationship. At first glance it must behave as one iconic visual construction, even when it contains subordinate cues for more than one delivery mode.",
+        "rule": "Artwork is authored as a visual idea with owned captions, not a fake app UI, random gradient mesh, stock agency decoration, or an above-fold dashboard of equally weighted proof panels. A monogram or abstract geometry can amplify the claim but cannot be its only proof unless it visibly models a specific material relationship or deliverable."
       },
       "typeRoles": {
         "display": "A committed identity voice that owns repeated poster-scale moments.",
@@ -48,7 +48,7 @@
         "annotation": "A controlled UI voice for navigation, captions, and project metadata."
       },
       "paletteCommitment": "Choose a committed product-derived color family with named structural roles. Saturated fields may carry composition; accents must recur with the same meaning and captions must own a stable contrasting backdrop.",
-      "focalHierarchy": "A specific proposition—not the studio name alone—dominates at poster scale; the concept graphic amplifies it, and compact studio copy explains it. No secondary element may compete for first read.",
+      "focalHierarchy": "A specific proposition—not the studio name alone—dominates at poster scale; one iconic concept-proof object amplifies it, and compact studio copy explains it. Protect a deliberate quiet field beside those two masses. If multiple delivery modes matter, their detailed enumeration belongs in the work chapter rather than an above-fold dashboard. No secondary element may compete for first read.",
       "rhythmArgument": "Alternate high-volume identity moments with editorial breathing room, then increase density around work and capability before a large closing afterimage. Every major gallery combines dominance with at least one independent offset, stagger, crop or height variation, overlap, or intentional negative-space anchor. Let each work subject earn its own scale, crop, field relationship, and truthful delivery cue; where the brief supports it, vary identity/public, environment/editorial, and digital/behavioral evidence rather than repeating a generic card genre. Avoid repeated proportional rows, one repeated container topology, or forced equal project frames. Preserve that hierarchy in rendered CSS instead of canceling it with one shared fixed height or aspect ratio, and keep project identity plus primary metadata visible without hover or focus.",
       "closingBehavior": "Return to an established primary surface and reuse existing signal roles. Build a restrained closing chapter with one proposition-scale statement, one specific action that says what the visitor can bring, start, test, or make, one compact contact/navigation/availability row, one earlier visual echo, and no more than one ambient visual system; utility metadata alone is insufficient. If the brief explicitly supplies a closing video or asks for a footer reprise, that footage remains the single ambient system with poster, focal crop, reduced-motion fallback, and readable foreground ownership. The final action remains keyboard-safe.",
       "reject": [
@@ -56,6 +56,7 @@
         "cream editorial template with fashionable serif switching but no concept",
         "studio wordmark used as the entire proposition without a memorable point of view",
         "abstract monogram, geometry, or visual effect used as the only evidence of studio capability",
+        "hero proof split into equally weighted tiles, mini-artifacts, or captions that compete with the proposition",
         "generic WebGL particles unrelated to the proposition",
         "captions placed directly over uncontrolled artwork pixels",
         "project imagery forced into matching card frames when varied scale would produce a stronger editorial sequence",

@@ -19,6 +19,14 @@ The hero must make the claim and proof read as one statement. A monogram, gradie
 abstract geometry may support a proposition, but it cannot be the only proof unless it
 visibly models a specific material relationship or deliverable.
 
+### Keep the proof iconic
+
+Evidence does not require an above-fold inventory. When one proof represents several delivery
+modes, make it read as one decisive constructed object at first glance. Let one material mass
+lead; embed only subordinate contextual cues inside it, or defer the enumeration to the work
+chapter. Do not turn a credible proof into a tiled dashboard, a row of equal mini-artifacts,
+or a caption system that competes with the proposition.
+
 ## Build evidence, not a gallery shell
 
 For a multi-project studio page, select work subjects by the evidence they provide, not by a
@@ -44,6 +52,11 @@ At each transition, ask whether the section earned its area through proof, readi
 or active framing. Make the artifact, headline, and quiet field counterweight one another.
 Do not repair imbalance with badges, glow, generic gradients, or extra cards.
 
+For a quiet expressive hero, protect reduction as well as specificity: one proof object, one
+compact counter-signal at most, and one broad intentional field of release. The work chapter
+can carry the full evidence taxonomy; the hero only needs enough truth to make its claim
+believable.
+
 ## Close the same argument
 
 The closing action must resolve the original claim in practical language: say what the
@@ -59,6 +72,8 @@ the page is modern, keep the page static.
 ## Review checklist
 
 - Does the first viewport pair a claim with proof rather than an abstract logo treatment?
+- Can the first viewport be remembered as one proposition and one iconic proof object, rather
+  than a collection of equally weighted evidence panels?
 - Is every media asset local, truthful about its origin, and integrated through crop, caption,
   palette, and neighboring type?
 - Do work subjects show distinct media or delivery modes with visible identity and metadata?

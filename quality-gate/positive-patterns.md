@@ -239,6 +239,10 @@ code-authored deliverable, but it must make the claim more credible than a monog
 card, or generic geometric field would. Work subjects should expose distinct media or delivery
 roles when the brief supports them. See `craft/evidence-led-studio-composition.md`.
 
+When specificity risks density, make the hero proof one iconic object with one leading material
+mass and a deliberate quiet field. Put the detailed identity/place/screen taxonomy in the work
+chapter; three equal mini-artifacts above the fold read as a dashboard, not a memorable proof.
+
 Additional craft signals (bonus, not required): sticky card stacks, opposing-direction
 marquees, HLS adaptive video, animated gradient-border focal accents, scroll parallax
 with depth — each with a reduced-motion fallback.
