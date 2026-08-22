@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FOLD fashion benchmark — ProdigeUI v3.0.8 vs raw</title>
+<style>
+*{box-sizing:border-box}body{min-height:100vh;margin:0;background:#101211;color:#f3efe7;font:14px/1.5 Arial,sans-serif;display:grid;grid-template-rows:auto minmax(0,1fr)}header{padding:16px 22px;border-bottom:1px solid #3d413d;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.meta{font-size:.78rem;color:#aeb1a9}.prodigeui{color:#e7aa8f}.raw{color:#b8c7ae}.switch{display:flex;gap:8px;flex-wrap:wrap}button{min-height:44px;padding:0 13px;border:1px solid #4d524d;background:#202520;color:#f3efe7;border-radius:7px;cursor:pointer}button[data-prodigeui=true]{border-color:#e7aa8f}button[data-raw=true]{border-color:#b8c7ae}button[aria-pressed=true]{background:#e7aa8f;color:#241814;border-color:#e7aa8f}button[data-raw=true][aria-pressed=true]{background:#b8c7ae;color:#172018;border-color:#b8c7ae}iframe{display:block;width:100%;height:100%;min-height:620px;border:0;background:#fff}:focus-visible{outline:3px solid #e7aa8f;outline-offset:3px}@media(max-width:700px){header{padding:14px 16px}iframe{min-height:calc(100vh - 230px)}}
+</style>
+</head>
+<body>
+<header><div><strong>FOLD / fair fashion benchmark</strong><div class="meta"><span class="prodigeui">With ProdigeUI v3.0.8</span> vs <span class="raw">Without ProdigeUI</span> · Same brief / same product facts / fresh artifacts</div></div><div class="switch"><button data-page="fashion-with-prodigeui-v308.html" data-prodigeui="true" aria-pressed="true">With ProdigeUI v3.0.8</button><button data-page="fashion-without-prodigeui.html" data-raw="true" aria-pressed="false">Without ProdigeUI</button></div></header>
+<iframe src="fashion-with-prodigeui-v308.html" title="FOLD with ProdigeUI v3.0.8"></iframe>
+<script>const frame=document.querySelector('iframe'),buttons=[...document.querySelectorAll('button')];buttons.forEach(button=>button.addEventListener('click',()=>{buttons.forEach(item=>item.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');frame.src=button.dataset.page;frame.title=button.textContent.trim()}));</script>
+</body>
+</html>
