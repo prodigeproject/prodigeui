@@ -15,36 +15,30 @@ ProdigeUI is a comprehensive UI/UX knowledge kit that equips AI coding agents wi
 - **Quality Gate** — Objective quality criteria and an anti-AI-slop checklist to ensure expert-level output.
 - **Prompt Templates** — Professional prompt templates per use-case (SaaS, landing page, ecommerce, portfolio, HRIS, agentic app) that reference the token system, rules, and components.
 
-## Official Benchmark Suite (FlowAI & NOVA)
+## Frozen Benchmark Baseline
 
-To evaluate real-world performance under **Creative Mode** (vague brief, zero design specifics given), we benchmarked AI generation against two official test suites: **FlowAI** (B2B Engineering SaaS) and **NOVA** (Creative Studio Portfolio).
+ProdigeUI's current accepted visual reference is the frozen baseline at commit
+[`07a5ae6`](https://github.com/prodigeproject/prodigeui/tree/07a5ae6).
+It is the version the team chose after side-by-side review because it feels the
+most calm, coherent, and composed overall.
 
-### Benchmark 1: FlowAI (B2B Engineering SaaS)
-> **Brief:** *"Build a single-page landing for FlowAI — an AI project management tool for engineering teams."*
+The baseline is not a reusable page template. It is a quality reference: a
+fashion shop, release workspace, care route, vehicle test drive, financial
+surface, travel plan, property search, learning flow, cultural visit, and studio
+site should still feel like different products with different users and needs.
 
-| Metric / Dimension | Standard Raw AI Output (Without ProdigeUI) | With ProdigeUI (Creative Mode Engine) |
-| :--- | :--- | :--- |
-| **Visual Identity** | Standard generic dark slate `#0f172a`, purple `#6366f1` accent | Concept-driven dark-tech obsidian `#0b0d10` + lime `#b8ff3a` accent |
-| **Typography** | Default Arial / Inter flat font scale | Space Grotesk + Inter pairing at fluid `clamp()` display scale |
-| **Grid Architecture** | 3 equal 1:1 rectangular cards, no visual hierarchy | **Asymmetric Bento Grid** with dominant hero telemetry cell |
-| **Motion & Physics** | Static / choppy hover opacity `0.9` | **60fps GSAP ScrollTrigger**, particle network canvas, & spring physics |
-| **WCAG 2.1 AA Contrast** | ❌ **2.8:1 (FAIL)** — Unreadable text & low contrast comments | ✅ **7.5:1 (PASS)** — Verified contrast & full keyboard `:focus-visible` rings |
-| **Anti-AI-Slop Score** | 3.5 / 10 (Fails anti-slop gate) | **9.8 / 10** 🚀 (Passes negative slop gate + craft rubric) |
+### What the benchmark checks
 
----
+The frozen suite contains ten independently authored product experiences. It
+checks whether the interface follows the real decision at hand—what people need
+to understand, compare, choose, or recover from—instead of producing the same
+website in different colours.
 
-### Benchmark 2: NOVA (Creative Studio Portfolio)
-> **Brief:** *"Build a landing page for a creative studio called NOVA."*
+- [Browse the frozen benchmark in the ProdigeUI repository](https://github.com/prodigeproject/prodigeui/tree/07a5ae6/benchmark/market-calibrated-fresh-20260822)
 
-| Metric / Dimension | Standard Raw AI Output (Without ProdigeUI) | With ProdigeUI (Creative Mode Engine) |
-| :--- | :--- | :--- |
-| **Hero Subject** | Text floating over plain radial gradient, no focal subject | **Incandescent Vermilion `#ff4d15`**, Three.js WebGL nova core, & 9rem display type |
-| **Gallery Craft** | Static 3-column card grid with flat color fills | **GSAP ScrollTrigger Horizontal Pin-Pan Gallery** with real media |
-| **Typography** | Standard Inter font everywhere, flat scale | Bricolage Grotesque display face with tight tracking (`-0.04em`) |
-| **Accessibility (a11y)** | 0% ARIA attributes, non-semantic `<div>` soup | 100% WCAG 2.1 AA, semantic HTML5 tags, reduced-motion fallbacks |
-| **Anti-AI-Slop Score** | 3.2 / 10 (Fails anti-slop gate) | **9.8 / 10** 🚀 (Passes negative slop gate + craft rubric) |
-
----
+This is a design benchmark, not a claim about conversion, commercial outcomes,
+or universal user preference. Future tuning must prove that it keeps or improves
+the baseline's composure before it can replace this reference.
 
 ## Folder Structure
 
